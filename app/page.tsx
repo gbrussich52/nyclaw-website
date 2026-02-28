@@ -43,7 +43,8 @@ export default function Home() {
       <header className="sticky top-0 z-50 bg-white border-b-2 border-sky-blue">
         <nav className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
           <div className="text-2xl font-bold">
-            <span className="text-navy">NYC</span>
+            <span className="text-navy">NY</span>
+            <span className="text-sky-blue">C</span>
             <span className="text-sky-blue">law</span>
             <span className="text-dark-red">.</span>
             <span className="text-navy">io</span>
@@ -216,7 +217,7 @@ export default function Home() {
           
           <div className="grid md:grid-cols-2 gap-8 mb-12">
             {/* Service 1: AI Setup Agency */}
-            <div className="card-hover pulse-neon">
+            <div className="card-hover pulse-neon min-h-[600px] flex flex-col">
               <div className="mb-4">
                 <div className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-sky-blue text-white mb-3">
                   <span className="text-lg">⚙️</span>
@@ -254,11 +255,11 @@ export default function Home() {
                 <p className="text-sm text-charcoal">Ongoing management</p>
               </div>
 
-              <a href="#contact" className="btn-primary block text-center w-full">Get Setup Plan</a>
+              <a href="#contact" className="btn-primary block text-center w-full mt-auto">Get Setup Plan</a>
             </div>
 
             {/* Service 2: AI Marketing Agency */}
-            <div className="card-hover pulse-neon" style={{animationDelay: '0.5s'}}>
+            <div className="card-hover pulse-neon min-h-[600px] flex flex-col" style={{animationDelay: '0.5s'}}>
               <div className="mb-4">
                 <div className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-dark-red text-white mb-3">
                   <span className="text-lg">📱</span>
@@ -295,7 +296,7 @@ export default function Home() {
                 <p className="text-sm text-charcoal"><strong>Option B:</strong> Fixed monthly + profit share</p>
               </div>
 
-              <a href="#contact" className="btn-primary block text-center w-full">Launch Your AI Brand</a>
+              <a href="#contact" className="btn-primary block text-center w-full mt-auto">Launch Your AI Brand</a>
             </div>
           </div>
         </div>
@@ -313,7 +314,7 @@ export default function Home() {
 
           <div className="grid md:grid-cols-3 gap-8">
             {/* Case 1: Rumble Simulator */}
-            <div className="card hover:border-sky-blue group">
+            <div className="card hover:border-sky-blue group min-h-[480px] flex flex-col">
               <div className="mb-6 h-40 bg-gradient-to-br from-sky-blue to-navy rounded-lg flex items-center justify-center group-hover:shadow-lg transition-all">
                 <div className="text-center">
                   <div className="text-4xl mb-2">🎲</div>
@@ -329,11 +330,11 @@ export default function Home() {
                 <div className="text-xs"><span className="font-bold text-sky-blue">Model:</span> Affiliate CTA</div>
                 <div className="text-xs"><span className="font-bold text-sky-blue">Potential:</span> $500-2K/mo</div>
               </div>
-              <p className="text-sm text-sky-blue font-bold hover:text-dark-red transition">Full case study coming →</p>
+              <p className="text-sm text-sky-blue font-bold hover:text-dark-red transition mt-auto pt-4">Full case study coming →</p>
             </div>
 
             {/* Case 2: Sarah Influencer */}
-            <div className="card hover:border-dark-red group">
+            <div className="card hover:border-dark-red group min-h-[480px] flex flex-col">
               <div className="mb-6 h-40 bg-gradient-to-br from-dark-red to-charcoal rounded-lg flex items-center justify-center group-hover:shadow-lg transition-all">
                 <div className="text-center">
                   <div className="text-4xl mb-2">💪</div>
@@ -349,11 +350,11 @@ export default function Home() {
                 <div className="text-xs"><span className="font-bold text-dark-red">Model:</span> Multi-affiliate</div>
                 <div className="text-xs"><span className="font-bold text-dark-red">Potential:</span> $1-5K/mo</div>
               </div>
-              <p className="text-sm text-dark-red font-bold hover:text-sky-blue transition">Full case study coming →</p>
+              <p className="text-sm text-dark-red font-bold hover:text-sky-blue transition mt-auto pt-4">Full case study coming →</p>
             </div>
 
             {/* Case 3: Property Appraisal */}
-            <div className="card hover:border-sky-blue group">
+            <div className="card hover:border-sky-blue group min-h-[480px] flex flex-col">
               <div className="mb-6 h-40 bg-gradient-to-br from-sky-blue/80 to-charcoal rounded-lg flex items-center justify-center group-hover:shadow-lg transition-all">
                 <div className="text-center">
                   <div className="text-4xl mb-2">🏠</div>
@@ -369,7 +370,7 @@ export default function Home() {
                 <div className="text-xs"><span className="font-bold text-sky-blue">Model:</span> Freemium SaaS</div>
                 <div className="text-xs"><span className="font-bold text-sky-blue">Potential:</span> $2-10K/mo</div>
               </div>
-              <p className="text-sm text-sky-blue font-bold hover:text-dark-red transition">Full case study coming →</p>
+              <p className="text-sm text-sky-blue font-bold hover:text-dark-red transition mt-auto pt-4">Full case study coming →</p>
             </div>
           </div>
 
