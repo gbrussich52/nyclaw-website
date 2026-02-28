@@ -255,7 +255,9 @@ export default function Home() {
                 <p className="text-sm text-charcoal">Ongoing management</p>
               </div>
 
-              <a href="#contact" className="btn-primary block text-center w-full mt-auto">Get Setup Plan</a>
+              <div className="mt-auto pt-6 flex justify-center w-full">
+                <a href="#contact" className="btn-primary">Get Setup Plan</a>
+              </div>
             </div>
 
             {/* Service 2: AI Marketing Agency */}
@@ -296,7 +298,9 @@ export default function Home() {
                 <p className="text-sm text-charcoal"><strong>Option B:</strong> Fixed monthly + profit share</p>
               </div>
 
-              <a href="#contact" className="btn-primary block text-center w-full mt-auto">Launch Your AI Brand</a>
+              <div className="mt-auto pt-6 flex justify-center w-full">
+                <a href="#contact" className="btn-primary">Launch Your AI Brand</a>
+              </div>
             </div>
           </div>
         </div>
@@ -330,7 +334,9 @@ export default function Home() {
                 <div className="text-xs"><span className="font-bold text-sky-blue">Model:</span> Affiliate CTA</div>
                 <div className="text-xs"><span className="font-bold text-sky-blue">Potential:</span> $500-2K/mo</div>
               </div>
-              <p className="text-sm text-sky-blue font-bold hover:text-dark-red transition mt-auto pt-4">Full case study coming →</p>
+              <div className="mt-auto pt-6 flex justify-center">
+                <a href="#contact" className="btn-primary text-sm px-6 py-3">View Details</a>
+              </div>
             </div>
 
             {/* Case 2: Sarah Influencer */}
@@ -350,7 +356,9 @@ export default function Home() {
                 <div className="text-xs"><span className="font-bold text-dark-red">Model:</span> Multi-affiliate</div>
                 <div className="text-xs"><span className="font-bold text-dark-red">Potential:</span> $1-5K/mo</div>
               </div>
-              <p className="text-sm text-dark-red font-bold hover:text-sky-blue transition mt-auto pt-4">Full case study coming →</p>
+              <div className="mt-auto pt-6 flex justify-center">
+                <a href="#contact" className="btn-primary text-sm px-6 py-3">View Details</a>
+              </div>
             </div>
 
             {/* Case 3: Property Appraisal */}
@@ -370,7 +378,9 @@ export default function Home() {
                 <div className="text-xs"><span className="font-bold text-sky-blue">Model:</span> Freemium SaaS</div>
                 <div className="text-xs"><span className="font-bold text-sky-blue">Potential:</span> $2-10K/mo</div>
               </div>
-              <p className="text-sm text-sky-blue font-bold hover:text-dark-red transition mt-auto pt-4">Full case study coming →</p>
+              <div className="mt-auto pt-6 flex justify-center">
+                <a href="#contact" className="btn-primary text-sm px-6 py-3">View Details</a>
+              </div>
             </div>
           </div>
 
