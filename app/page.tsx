@@ -14,7 +14,7 @@ const AinsleySVG = () => (
     <div className="relative w-24 h-24 rounded-full bg-gradient-to-br from-sky-blue to-navy flex items-center justify-center shadow-lg shadow-sky-blue/30">
       <svg className="w-12 h-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5}
-          d="M9.75 3.104v5.714a2.25 2.25 0 01-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 014.5 0m0 0v5.714c0 .597.237 1.17.659 1.591L19.8 15.3M14.25 3.104c.251.023.501.05.75.082M19.8 15.3l-1.57.393A9.065 9.065 0 0112 15a9.065 9.065 0 00-6.23-.693L5 14.5m14.8.8l1.402 1.402c1 1 .03 2.798-1.414 2.798H4.213c-1.444 0-2.414-1.798-1.414-2.798L4.2 15.3" />
+          d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.091zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 0 0-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 0 0 2.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 0 0 2.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 0 0-2.456 2.456z" />
       </svg>
     </div>
   </div>
@@ -345,7 +345,7 @@ export default function Home() {
                   <div className="absolute bottom-3 left-3 w-10 h-10 rounded-full border border-white" />
                 </div>
                 <svg className="w-10 h-10 text-white mb-2 relative z-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M14.25 6.087c0-.355.186-.676.401-.959C15.488 4.049 16.089 3 16.089 3M9.75 6.087c0-.355-.186-.676-.401-.959C8.512 4.049 7.911 3 7.911 3M12 18.75a6 6 0 006-6 6 6 0 00-6-6 6 6 0 00-6 6 6 0 006 6z" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" />
                 </svg>
                 <p className="text-white text-sm font-bold relative z-10">Rumble Simulator</p>
                 <span className="text-xs text-sky-blue/80 bg-white/10 px-2 py-0.5 rounded-full mt-1 relative z-10">Affiliate</span>
