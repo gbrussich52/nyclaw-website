@@ -71,6 +71,10 @@ export default function Home() {
         </div>
         <div className="max-w-4xl mx-auto text-center relative z-10">
           <AinsleySVG />
+          <div className="mb-5 inline-flex items-center gap-2 bg-white/10 border border-white/20 rounded-full px-4 py-1.5">
+            <span className="w-1.5 h-1.5 rounded-full bg-amber inline-block" />
+            <span className="text-xs font-semibold text-white/90 tracking-wide">AI Powered, Human Experience</span>
+          </div>
           <div className="mb-3 inline-block">
             <span className="text-xs font-bold text-sky-blue/80 uppercase tracking-widest">The Problem</span>
           </div>
@@ -571,7 +575,8 @@ export default function Home() {
 
       {/* ── Footer ─────────────────────────────────────────────────────── */}
       <footer className="bg-charcoal text-white py-8 px-6 text-center">
-        <p className="text-sm text-white/60">&copy; 2026 NYClaw.io. Built by Ainsley &amp; Giani.</p>
+        <p className="text-sm font-semibold text-white/80 mb-1">AI Powered, Human Experience</p>
+        <p className="text-xs text-white/40">&copy; 2026 NYClaw.io. Built by Ainsley &amp; Giani.</p>
       </footer>
     </div>
   )
