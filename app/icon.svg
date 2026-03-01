@@ -1,0 +1,6 @@
+<svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+  <!-- Navy rounded background -->
+  <rect width="32" height="32" rx="7" fill="#003366"/>
+  <!-- Amber lightning bolt — matches site's primary CTA color -->
+  <path d="M20 3L7 18h8l-3 11 17-19h-9z" fill="#f59e0b"/>
+</svg>
