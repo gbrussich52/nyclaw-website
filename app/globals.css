@@ -106,17 +106,17 @@ body {
   border-color: #0066cc;
 }
 
-/* Amber CTA button */
-.btn-amber {
+/* Lobster Red CTA button */
+.btn-red {
   @apply px-8 py-4 text-white font-bold rounded-lg transition-all duration-300 inline-block;
-  background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
-  box-shadow: 0 4px 20px rgba(245, 158, 11, 0.4);
-  border: 1px solid #f59e0b;
+  background: linear-gradient(135deg, #c41e3a 0%, #8b1528 100%);
+  box-shadow: 0 4px 20px rgba(196, 30, 58, 0.4);
+  border: 1px solid #c41e3a;
   text-align: center;
 }
 
-.btn-amber:hover {
-  background: linear-gradient(135deg, #d97706 0%, #b45309 100%);
-  box-shadow: 0 8px 30px rgba(245, 158, 11, 0.6);
+.btn-red:hover {
+  background: linear-gradient(135deg, #a01530 0%, #6e1020 100%);
+  box-shadow: 0 8px 30px rgba(196, 30, 58, 0.6);
   transform: translateY(-2px);
 }

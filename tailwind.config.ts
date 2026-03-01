@@ -12,7 +12,6 @@ const config: Config = {
         'sky-blue': '#0066cc',
         'dark-red': '#c41e3a',
         charcoal: '#2c2c2c',
-        amber: '#f59e0b',
       },
       animation: {
         'pulse-slow': 'pulse 2.5s cubic-bezier(0.4, 0, 0.6, 1) infinite',

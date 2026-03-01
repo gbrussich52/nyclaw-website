@@ -56,9 +56,9 @@ export default function Home() {
             </div>
           </div>
           <div className="flex items-center gap-6">
-            <a href="#services" className="text-charcoal hover:text-sky-blue transition text-sm font-medium hidden sm:block">Services</a>
-            <a href="#cases" className="text-charcoal hover:text-sky-blue transition text-sm font-medium hidden sm:block">Case Studies</a>
-            <a href="#contact" className="btn-amber text-sm px-5 py-2.5">Get Started →</a>
+            <a href="#services" className="text-charcoal hover:text-sky-blue transition text-base font-semibold hidden sm:block hover:underline underline-offset-4">Services</a>
+            <a href="#cases" className="text-charcoal hover:text-sky-blue transition text-base font-semibold hidden sm:block hover:underline underline-offset-4">Case Studies</a>
+            <a href="#contact" className="btn-red text-sm px-5 py-2.5">Get Started →</a>
           </div>
         </nav>
       </header>
@@ -72,11 +72,8 @@ export default function Home() {
         <div className="max-w-4xl mx-auto text-center relative z-10">
           <AinsleySVG />
           <div className="mb-5 inline-flex items-center gap-2 bg-white/10 border border-white/20 rounded-full px-4 py-1.5">
-            <span className="w-1.5 h-1.5 rounded-full bg-amber inline-block" />
+            <span className="w-1.5 h-1.5 rounded-full bg-dark-red inline-block" />
             <span className="text-xs font-semibold text-white/90 tracking-wide">AI Powered, Human Experience</span>
-          </div>
-          <div className="mb-3 inline-block">
-            <span className="text-xs font-bold text-sky-blue/80 uppercase tracking-widest">The Problem</span>
           </div>
           <h1 className="text-5xl sm:text-6xl font-bold mb-6 leading-tight">
             Scaling kills you.
@@ -90,7 +87,7 @@ export default function Home() {
             You need to scale but you can&apos;t clone yourself.
           </p>
           <div className="mb-6">
-            <span className="text-xs font-bold text-amber uppercase tracking-widest">The Solution</span>
+            <span className="text-sm font-bold text-dark-red uppercase tracking-widest">The Solution</span>
             <h2 className="text-2xl font-bold mt-2 text-white mb-3">Meet Ainsley — your AI entrepreneur</h2>
             <p className="text-base text-gray-300 max-w-xl mx-auto">
               Running 24/7 on Mac Studio. Full control of websites, email, Stripe, and operations.{' '}
@@ -98,7 +95,7 @@ export default function Home() {
             </p>
           </div>
           <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
-            <a href="#contact" className="btn-amber text-lg px-8 py-4">
+            <a href="#contact" className="btn-red text-lg px-8 py-4">
               Build My AI →
             </a>
             <a href="#cases" className="px-8 py-4 bg-white/10 text-white font-bold rounded-lg hover:bg-white/20 transition-all duration-300 border border-white/30 inline-block">
@@ -211,14 +208,14 @@ export default function Home() {
       {/* ── 30-Day Proof Banner ────────────────────────────────────────── */}
       <section className="bg-navy text-white py-20 px-6">
         <div className="max-w-3xl mx-auto text-center">
-          <p className="text-amber font-bold uppercase tracking-widest text-sm mb-4">The Proof</p>
+          <p className="text-dark-red font-bold uppercase tracking-widest text-sm mb-4">The Proof</p>
           <p className="text-5xl font-extrabold mb-4 leading-tight">
             3 businesses.<br />30 days.
           </p>
           <p className="text-xl text-gray-300 mb-10">
             All generating revenue. Multi-stream is possible.
           </p>
-          <a href="#contact" className="btn-amber inline-block px-10 py-4 text-lg">
+          <a href="#contact" className="btn-red inline-block px-10 py-4 text-lg">
             Build Mine →
           </a>
         </div>
@@ -276,7 +273,7 @@ export default function Home() {
               </div>
 
               <div className="mt-auto">
-                <a href="#contact" className="btn-amber w-full text-center block py-4">
+                <a href="#contact" className="btn-red w-full text-center block py-4">
                   Build My AI Setup →
                 </a>
               </div>
@@ -323,7 +320,7 @@ export default function Home() {
               </div>
 
               <div className="mt-auto">
-                <a href="#contact" className="btn-amber w-full text-center block py-4">
+                <a href="#contact" className="btn-red w-full text-center block py-4">
                   Start My AI Brand →
                 </a>
               </div>
@@ -491,7 +488,7 @@ export default function Home() {
                     placeholder="your@email.com"
                     className="flex-1 px-4 py-3 rounded-lg border-2 border-gray-200 focus:border-sky-blue focus:outline-none text-charcoal text-sm transition-colors"
                   />
-                  <button type="submit" className="btn-amber px-6 py-3 text-sm whitespace-nowrap">
+                  <button type="submit" className="btn-red px-6 py-3 text-sm whitespace-nowrap">
                     Get Early Access →
                   </button>
                 </form>
@@ -522,7 +519,7 @@ export default function Home() {
                 required
                 value={formData.name}
                 onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                className="w-full px-4 py-3 rounded-lg bg-white/95 text-charcoal border-2 border-white/20 focus:border-amber focus:outline-none placeholder-gray-400 transition-colors"
+                className="w-full px-4 py-3 rounded-lg bg-white/95 text-charcoal border-2 border-white/20 focus:border-dark-red focus:outline-none placeholder-gray-400 transition-colors"
                 placeholder="John Doe"
               />
             </div>
@@ -533,7 +530,7 @@ export default function Home() {
                 required
                 value={formData.email}
                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                className="w-full px-4 py-3 rounded-lg bg-white/95 text-charcoal border-2 border-white/20 focus:border-amber focus:outline-none placeholder-gray-400 transition-colors"
+                className="w-full px-4 py-3 rounded-lg bg-white/95 text-charcoal border-2 border-white/20 focus:border-dark-red focus:outline-none placeholder-gray-400 transition-colors"
                 placeholder="you@example.com"
               />
             </div>
@@ -542,7 +539,7 @@ export default function Home() {
               <select
                 value={formData.project}
                 onChange={(e) => setFormData({ ...formData, project: e.target.value })}
-                className="w-full px-4 py-3 rounded-lg bg-white/95 text-charcoal border-2 border-white/20 focus:border-amber focus:outline-none transition-colors"
+                className="w-full px-4 py-3 rounded-lg bg-white/95 text-charcoal border-2 border-white/20 focus:border-dark-red focus:outline-none transition-colors"
               >
                 <option value="setup-agency">AI Setup Agency ($2–5K setup + monthly)</option>
                 <option value="marketing-agency">AI Marketing Agency (revenue share)</option>
@@ -555,14 +552,14 @@ export default function Home() {
               <textarea
                 value={formData.message}
                 onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                className="w-full px-4 py-3 rounded-lg bg-white/95 text-charcoal border-2 border-white/20 focus:border-amber focus:outline-none placeholder-gray-400 transition-colors"
+                className="w-full px-4 py-3 rounded-lg bg-white/95 text-charcoal border-2 border-white/20 focus:border-dark-red focus:outline-none placeholder-gray-400 transition-colors"
                 rows={3}
                 placeholder="What are you building? What's holding you back?"
               />
             </div>
             <button
               type="submit"
-              className="w-full btn-amber py-4 text-lg"
+              className="w-full btn-red py-4 text-lg"
             >
               Claim My Spot →
             </button>

@@ -2,5 +2,5 @@
   <!-- Navy rounded background -->
   <rect width="32" height="32" rx="7" fill="#003366"/>
   <!-- Amber lightning bolt — matches site's primary CTA color -->
-  <path d="M20 3L7 18h8l-3 11 17-19h-9z" fill="#f59e0b"/>
+  <path d="M20 3L7 18h8l-3 11 17-19h-9z" fill="#c41e3a"/>
 </svg>
