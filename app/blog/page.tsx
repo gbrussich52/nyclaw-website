@@ -4,9 +4,17 @@ export default function Blog() {
       {/* Header */}
       <header className="sticky top-0 z-50 bg-white border-b-2 border-sky-blue">
         <nav className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-          <a href="/" className="text-2xl font-bold">
-            <span className="text-navy">NYC</span>
-            <span className="text-sky-blue">law</span>
+          <a href="/" className="block">
+            <div className="text-2xl font-bold leading-none">
+              <span className="text-navy">NY</span>
+              <span className="text-sky-blue">C</span>
+              <span className="text-sky-blue">law</span>
+              <span className="text-dark-red">.</span>
+              <span className="text-navy">io</span>
+            </div>
+            <div className="text-xs text-charcoal/60 font-medium tracking-wide mt-0.5">
+              AI Automation Agency
+            </div>
           </a>
           <a href="/" className="text-charcoal hover:text-sky-blue transition">← Back Home</a>
         </nav>
