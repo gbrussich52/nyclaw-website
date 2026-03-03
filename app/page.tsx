@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import Link from 'next/link'
 
 const PulseIcon = () => (
   <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
@@ -523,6 +524,63 @@ export default function Home() {
               We typically respond within 12 hours. Privacy: Your info is just for us.
             </p>
           </form>
+        </div>
+      </section>
+
+      {/* Knowledge Section */}
+      <section className="py-20 px-6 bg-gray-50" id="knowledge">
+        <div className="max-w-5xl mx-auto">
+          <div className="text-center mb-12">
+            <div className="text-sky-blue text-sm font-semibold tracking-widest uppercase mb-3">Knowledge Base</div>
+            <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4">Learn how we built it</h2>
+            <p className="text-gray-600 max-w-2xl mx-auto">Research-backed guides on AI identity design, mission-driven systems, and operational frameworks. Everything we learned building Ainsley — free.</p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-6 mb-10">
+            {[
+              {
+                href: '/knowledge/ai-assistant-identity',
+                num: '01',
+                tag: 'AI Identity',
+                title: 'How to Build a Scalable AI Assistant',
+                desc: 'The identity framework that makes AI assistants consistent. Persona design, principle-first docs, and the Ainsley case study.',
+                time: '12 min',
+              },
+              {
+                href: '/knowledge/mission-driven-systems',
+                num: '02',
+                tag: 'Operations',
+                title: 'Mission-Driven Systems',
+                desc: 'Why processes fail and how to design ones that resist entropy. OKRs, review cadences, and accountability structures.',
+                time: '13 min',
+              },
+              {
+                href: '/knowledge/operational-excellence',
+                num: '03',
+                tag: 'Anti-Patterns',
+                title: 'Operational Excellence: 7 Critical Anti-Patterns',
+                desc: 'The failure modes we hit — documentation debt, process theater, accountability gaps — and how to prevent each.',
+                time: '10 min',
+              },
+            ].map(a => (
+              <a key={a.href} href={a.href} className="bg-white border-2 border-gray-200 rounded-xl p-6 hover:border-sky-blue transition-colors group block">
+                <div className="flex items-center justify-between mb-3">
+                  <span className="text-3xl font-bold text-gray-100 group-hover:text-sky-blue transition-colors">{a.num}</span>
+                  <span className="text-xs font-semibold bg-navy text-white px-2 py-1 rounded">{a.tag}</span>
+                </div>
+                <h3 className="font-bold text-navy group-hover:text-sky-blue transition-colors mb-2">{a.title}</h3>
+                <p className="text-sm text-gray-600 mb-4">{a.desc}</p>
+                <div className="text-sky-blue text-sm font-semibold">{a.time} read →</div>
+              </a>
+            ))}
+          </div>
+
+          <div className="text-center">
+            <a href="/resources" className="inline-flex items-center gap-2 bg-sky-blue text-white px-6 py-3 rounded-lg font-semibold hover:bg-navy transition-colors">
+              📄 Download the Complete Guide (Free PDF) →
+            </a>
+            <p className="text-sm text-gray-500 mt-2">50 pages. Templates, roadmap, checklists. Free with email.</p>
+          </div>
         </div>
       </section>
 
