@@ -63,10 +63,10 @@ export default function Article2() {
         <article className="max-w-3xl mx-auto px-6 py-12 prose prose-lg prose-headings:text-navy prose-a:text-sky-blue">
 
           <p className="lead text-xl text-gray-700 mb-8">
-            There's a pattern that kills small teams and ambitious solopreneurs at roughly the same rate it kills Fortune 500 companies: <strong>entropy.</strong>
+            Every system you build is dying. Right now. <strong>Entropy</strong> is eating it.
           </p>
 
-          <p>Not bad people. Not wrong tools. Not bad luck. Entropy — the natural tendency of any organized system to degrade toward disorder unless actively maintained.</p>
+          <p>Not bad people. Not wrong tools. Entropy. The natural tendency of any organized system to degrade toward disorder unless you actively fight it.</p>
 
           <h2>The Entropy Problem: Why Good Processes Die</h2>
 
@@ -104,19 +104,19 @@ export default function Article2() {
             </table>
           </div>
 
-          <p><strong>Notice:</strong> none of these are "bad process design." Process failure is mostly a maintenance problem, not a design problem. You solve it by building anti-entropic habits into the system from day one.</p>
+          <p>None of these are "bad process design." Process failure is a maintenance problem. You solve it by building anti-entropic habits into the system from day one.</p>
 
           <h2>The Mission Statement Problem</h2>
 
-          <p>Most mission statements are written for external marketing or internal inspiration. Almost none are written for the decision-maker facing a tough call at 11 PM with no one to ask.</p>
+          <p>Most mission statements are written for marketing decks and investor pitches. Almost none are written for the person facing a tough call at 11 PM with no one to ask.</p>
 
           <h3>The Aspiration Trap</h3>
 
-          <p>Here's a mission statement from a real company:</p>
+          <p>A real mission statement from a real company:</p>
           <blockquote className="border-red-400">
             <p>"We are committed to excellence in delivering innovative solutions that empower our stakeholders to achieve their full potential."</p>
           </blockquote>
-          <p>What decision does this guide? <strong>None.</strong> Compare it to SpaceX: <em>"Make humanity multiplanetary."</em> That statement immediately kills bad ideas and validates good ones.</p>
+          <p>What decision does this help you make? <strong>Zero.</strong> Now look at SpaceX: <em>"Make humanity multiplanetary."</em> That kills bad ideas and validates good ones instantly.</p>
 
           <h3>The Formula That Works</h3>
 
@@ -151,17 +151,17 @@ export default function Article2() {
             </table>
           </div>
 
-          <p><strong>The 3-part test:</strong> Under 15 words? Specific enough to kill bad ideas? Inspiring enough to motivate the work? If it passes all three, it'll drive behavior.</p>
+          <p><strong>The test:</strong> Under 15 words. Specific enough to kill bad ideas. Inspiring enough to motivate the work. All three, or it's not ready.</p>
 
           <h2>The Review Cadence: Anti-Entropic Habits by Design</h2>
 
-          <p>The fix for process entropy isn't willpower. It's scheduled renewal.</p>
+          <p>Willpower doesn't fix entropy. Scheduled renewal does.</p>
 
           <h3>Daily (10-15 minutes)</h3>
           <p>Three questions: What did I complete yesterday? What's the single most important thing today? Any blockers?</p>
 
           <h3>Weekly (30-60 minutes) — The Most Critical</h3>
-          <p>FranklinCovey research: teams with weekly accountability meetings achieve goals at <strong>3x the rate</strong> of teams without them.</p>
+          <p>FranklinCovey found that teams with weekly accountability meetings hit their goals at <strong>3x the rate</strong> of teams without them. Three times.</p>
 
           <div className="bg-blue-50 border border-sky-blue rounded-lg p-4 my-6">
             <p className="font-semibold text-navy mb-2">Weekly Review Checklist</p>
@@ -186,13 +186,13 @@ KR1: Launch 2 of 3 planned revenue streams by [date]
 KR2: Achieve $15K/month recurring revenue by [date]  
 KR3: Automate 80% of client delivery workflows by [date]`}</code></pre>
 
-          <p>Rules: max 3-5 objectives per quarter, max 3 key results each, all results must be measurable, 70% completion = success.</p>
+          <p>Keep it tight: 3-5 objectives per quarter. Max 3 key results each. Every result measurable. 70% completion counts as success (if you're hitting 100%, your targets are too easy).</p>
 
           <h2>Accountability Structures That Work</h2>
 
-          <p><strong>The anti-pattern: willpower-based accountability.</strong> "I'll remember to do the weekly review." This fails because willpower is finite.</p>
+          <p>"I'll remember to do the weekly review." You won't. Willpower is finite and unreliable.</p>
 
-          <p><strong>What actually works:</strong></p>
+          <p><strong>What works instead:</strong></p>
           <ol>
             <li><strong>Calendar blocking</strong> — Same time every week, recurring, non-negotiable</li>
             <li><strong>Visible dashboards</strong> — Progress visible without hunting for it</li>
@@ -233,7 +233,7 @@ KR3: Automate 80% of client delivery workflows by [date]`}</code></pre>
 
           <h2>The Bottom Line</h2>
 
-          <p>Process failure is inevitable without anti-entropic maintenance. Mission failure is inevitable without operational mission statements. The fix isn't discipline — it's design. Build maintenance into the system from day one, anchor everything to a mission specific enough to guide decisions.</p>
+          <p>Process failure is inevitable without maintenance built into the system. The fix isn't discipline. It's design. Anchor everything to a mission specific enough to guide real decisions, then schedule the reviews that keep entropy from winning.</p>
 
         </article>
 

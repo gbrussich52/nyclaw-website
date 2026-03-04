@@ -27,8 +27,8 @@ const antiPatterns = [
     number: '01',
     title: 'Documentation Debt',
     subtitle: 'The Silent Killer',
-    what: 'Documentation that exists but becomes stale, contradictory, or duplicated. The danger isn\'t missing docs — it\'s outdated docs that create false confidence.',
-    symptom: 'Files say different things. Nobody knows which is correct. "We\'ll update this later" is a common phrase.',
+    what: 'Docs that exist but rot. Stale, contradictory, duplicated. The danger isn\'t missing docs. It\'s outdated docs that create false confidence.',
+    symptom: 'Files say different things. Nobody knows which is current. "We\'ll update this later" becomes permanent.',
     fix: [
       'Every file has a declared scope — what it covers and what it does NOT cover',
       'Cross-references instead of copies ("See X for Y" not a repeat of X)',
@@ -42,8 +42,8 @@ const antiPatterns = [
     number: '02',
     title: 'Process Theater',
     subtitle: 'Complexity That Doesn\'t Drive Results',
-    what: 'Building elaborate systems, templates, and workflows that look productive but don\'t move the needle on actual outcomes.',
-    symptom: '"Getting ready to get ready." More time designing the task system than doing tasks. Beautiful Notion dashboard, abandoned after 2 weeks.',
+    what: 'Elaborate systems, templates, and workflows that look productive but move nothing. Activity disguised as progress.',
+    symptom: '"Getting ready to get ready." More time designing the task system than doing tasks. Beautiful Notion board, abandoned in 2 weeks.',
     fix: [
       'Minimum viable process — start with the simplest version that works',
       'Two-week rule — any system unused for 2 weeks is dead. Kill it.',
@@ -56,8 +56,8 @@ const antiPatterns = [
     number: '03',
     title: 'Accountability Gaps',
     subtitle: 'Tasks That Disappear',
-    what: 'Work enters a system, never gets reviewed, stalls indefinitely, and eventually nobody remembers it was supposed to happen.',
-    symptom: '"We should do this someday." Tasks with no owner, no date, no review. The backlog becomes a graveyard.',
+    what: 'Work enters a system, never gets reviewed, stalls, and eventually nobody remembers it existed.',
+    symptom: '"We should do this someday." Tasks with no owner, no date, no review. The backlog becomes a graveyard of good intentions.',
     fix: [
       'Every task has an owner — not "we" or "the team," one person\'s name',
       'Every task has a date — even a soft target beats no target',
@@ -71,8 +71,8 @@ const antiPatterns = [
     number: '04',
     title: 'Identity Creep',
     subtitle: 'Mission/Values That Contradict Behavior',
-    what: 'The document says one thing; actual behavior says another. Over time the gap grows and the document becomes irrelevant.',
-    symptom: 'Enron had "Integrity" in their values. Circuit City had an extensive customer service mission. Both failed while ignoring their stated values.',
+    what: 'The document says one thing. Actual behavior says another. The gap grows until the document becomes fiction.',
+    symptom: 'Enron listed "Integrity" as a core value. Circuit City had an extensive customer service mission. Both collapsed while ignoring what they wrote down.',
     fix: [
       'Behavior-test the document — for each decision, can you cite which principle guided it?',
       'Quarterly behavior audit — "Did we actually act according to our values this month?"',
@@ -85,8 +85,8 @@ const antiPatterns = [
     number: '05',
     title: 'The Planning Fallacy',
     subtitle: 'Optimism Bias in Timelines',
-    what: 'Consistently underestimating how long things take and overestimating how much can be done in any timeframe.',
-    symptom: '70%+ of software projects overrun estimated timelines. Individual estimates are typically off by 1.5-2x. The larger the project, the worse the estimate.',
+    what: 'Consistently underestimating how long things take. Overestimating how much fits in a week.',
+    symptom: 'The Standish Group found 70%+ of software projects overrun their timelines. Individual estimates are off by 1.5-2x. Bigger projects, worse estimates.',
     fix: [
       'Reference class forecasting — how long did similar projects take? Use that.',
       '90% confidence intervals — "Best case: 2 days. Worst case: 2 weeks. Likely: 1 week."',
@@ -99,8 +99,8 @@ const antiPatterns = [
     number: '06',
     title: 'Tool Sprawl',
     subtitle: 'The Notification Graveyard',
-    what: 'Too many tools, integrations, and systems. Each adds small overhead. Together, they consume massive cognitive load.',
-    symptom: 'Notion + Asana + Trello + Slack + Linear + Airtable. None talk to each other. More time updating tools than doing work.',
+    what: 'Too many tools. Each adds small overhead. Together, they eat your entire cognitive budget.',
+    symptom: 'Notion + Asana + Trello + Slack + Linear + Airtable. None of them talk to each other. You spend more time updating tools than doing actual work.',
     fix: [
       'One tool per job type — task management in ONE place, notes in ONE place',
       'Plain text preference — markdown files beat complex tools for most internal workflows',
@@ -113,8 +113,8 @@ const antiPatterns = [
     number: '07',
     title: 'Sunk Cost Fallacy',
     subtitle: 'Can\'t Kill Bad Projects',
-    what: 'Continuing to invest in a project because of past investment rather than future potential.',
-    symptom: '"We\'ve already spent 3 months on this." Features nobody uses, channels that don\'t convert, tools that slow everyone down — but switching feels expensive.',
+    what: 'Continuing to invest in something because of what you already spent, not because of what it could still return.',
+    symptom: '"We\'ve already spent 3 months on this." Features nobody uses. Channels that don\'t convert. Tools that slow everyone down. But killing it feels like waste.',
     fix: [
       'Pre-mortem exercise — before starting, write 3 ways this could fail',
       'Kill criteria defined upfront — "We\'ll stop if X, Y, or Z happens." Write it before you\'re attached.',
@@ -164,7 +164,7 @@ export default function Article3() {
         {/* Intro */}
         <div className="max-w-3xl mx-auto px-6 py-10">
           <p className="text-xl text-gray-700 leading-relaxed">
-            Small teams fail at operations for the same reasons every time. It's not lack of talent, wrong tools, or insufficient budget. It's seven specific, identifiable patterns — and every single one is preventable if you know what to look for.
+            We hit every single one of these building NYClaw.io. Seven patterns that kill small team operations. All preventable. All predictable. Here's what they look like and how to stop them.
           </p>
         </div>
 
