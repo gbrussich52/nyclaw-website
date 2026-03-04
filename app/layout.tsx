@@ -1,11 +1,26 @@
 import type { Metadata } from 'next'
+import { Syne, DM_Sans } from 'next/font/google'
 import './globals.css'
 import Link from 'next/link'
 
+const syne = Syne({
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700', '800'],
+  variable: '--font-syne',
+  display: 'swap',
+})
+
+const dmSans = DM_Sans({
+  subsets: ['latin'],
+  weight: ['400', '500', '600'],
+  variable: '--font-dm-sans',
+  display: 'swap',
+})
+
 export const metadata: Metadata = {
-  title: 'NYClaw.io - AI Solution Builder',
-  description: 'Build AI businesses, automate your operations, and scale revenue with Ainsley. AI setup, marketing agencies, and custom AI solutions.',
-  keywords: 'AI, OpenClaw, automation, entrepreneurship, AI business, AI assistant, operational excellence',
+  title: 'NYClaw.io — AI Implementation Agency for Small Businesses',
+  description: 'NYClaw.io helps small businesses implement AI tools, automate operations, and scale faster. Strategy, implementation, and AI-powered marketing — serving Westchester County, NY and beyond.',
+  keywords: 'AI agency, AI consulting, AI implementation, small business AI, AI automation, Westchester NY, AI strategy, OODA Loop',
 }
 
 export default function RootLayout({
@@ -14,74 +29,86 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
+    <html lang="en" className={`${syne.variable} ${dmSans.variable}`}>
       <body className="bg-white text-charcoal">
-        <header className="sticky top-0 z-50 bg-white border-b-2 border-sky-blue">
+        <header className="sticky top-0 z-50 bg-white border-b border-gray-100 shadow-sm">
           <nav className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-            <Link href="/" className="text-2xl font-bold">
-              <span className="text-navy">NY</span>
-              <span className="text-sky-blue">C</span>
-              <span className="text-sky-blue">law</span>
-              <span className="text-dark-red">.</span>
-              <span className="text-navy">io</span>
+            <Link href="/" className="block">
+              <div className="text-2xl font-bold leading-none">
+                <span className="text-navy">NY</span>
+                <span className="text-sky-blue">C</span>
+                <span className="text-sky-blue">law</span>
+                <span className="text-dark-red">.</span>
+                <span className="text-navy">io</span>
+              </div>
+              <div className="text-xs text-charcoal/60 font-medium tracking-wide mt-0.5">
+                AI Implementation Agency
+              </div>
             </Link>
-            <div className="hidden md:flex items-center gap-8">
+            <div className="hidden md:flex items-center gap-7">
+              <Link href="/#services" className="text-charcoal hover:text-sky-blue font-medium transition-colors">
+                Services
+              </Link>
+              <Link href="/#process" className="text-charcoal hover:text-sky-blue font-medium transition-colors">
+                How It Works
+              </Link>
               <Link href="/knowledge" className="text-charcoal hover:text-sky-blue font-medium transition-colors">
                 Knowledge
               </Link>
               <Link href="/resources" className="text-charcoal hover:text-sky-blue font-medium transition-colors">
                 Free Guide
               </Link>
-              <Link href="/#pricing" className="text-charcoal hover:text-sky-blue font-medium transition-colors">
-                Pricing
-              </Link>
-              <Link href="/#contact" className="bg-sky-blue text-white px-4 py-2 rounded-lg font-medium hover:bg-navy transition-colors">
-                Contact
+              <Link href="/#contact" className="btn-red text-sm px-5 py-2.5">
+                Free Audit →
               </Link>
             </div>
             {/* Mobile nav */}
-            <div className="md:hidden flex items-center gap-4">
-              <Link href="/knowledge" className="text-charcoal hover:text-sky-blue text-sm font-medium">Knowledge</Link>
-              <Link href="/resources" className="text-charcoal hover:text-sky-blue text-sm font-medium">Guide</Link>
-              <Link href="/#contact" className="bg-sky-blue text-white px-3 py-1.5 rounded text-sm font-medium">Contact</Link>
+            <div className="md:hidden flex items-center gap-3">
+              <Link href="/knowledge" className="text-charcoal hover:text-sky-blue text-sm font-medium">Guide</Link>
+              <Link href="/#contact" className="btn-red text-xs px-3 py-2">Free Audit →</Link>
             </div>
           </nav>
         </header>
         {children}
-        <footer className="bg-navy text-white py-12 mt-24">
+        <footer className="bg-navy text-white py-12">
           <div className="max-w-7xl mx-auto px-6">
             <div className="grid md:grid-cols-4 gap-8 mb-8">
               <div>
                 <div className="text-xl font-bold mb-3">
                   <span>NY</span><span className="text-sky-blue">Claw</span><span className="text-dark-red">.</span><span>io</span>
                 </div>
-                <p className="text-gray-400 text-sm">AI systems and operational frameworks for ambitious small teams.</p>
+                <p className="text-gray-400 text-sm">
+                  Full-service AI implementation for small businesses. Strategy, automation, and marketing — serving Westchester County, NY and beyond.
+                </p>
               </div>
               <div>
-                <h4 className="font-semibold mb-3 text-sky-blue">Knowledge</h4>
+                <h4 className="font-semibold mb-3 text-sky-blue">Services</h4>
                 <ul className="space-y-2 text-sm text-gray-400">
-                  <li><Link href="/knowledge/ai-assistant-identity" className="hover:text-white transition-colors">Build a Scalable AI Assistant</Link></li>
-                  <li><Link href="/knowledge/mission-driven-systems" className="hover:text-white transition-colors">Mission-Driven Systems</Link></li>
-                  <li><Link href="/knowledge/operational-excellence" className="hover:text-white transition-colors">Operational Excellence</Link></li>
+                  <li><Link href="/#services" className="hover:text-white transition-colors">AI Workflow Automation</Link></li>
+                  <li><Link href="/#services" className="hover:text-white transition-colors">AI Strategy & Consulting</Link></li>
+                  <li><Link href="/#services" className="hover:text-white transition-colors">AI-Powered Marketing</Link></li>
                 </ul>
               </div>
               <div>
                 <h4 className="font-semibold mb-3 text-sky-blue">Resources</h4>
                 <ul className="space-y-2 text-sm text-gray-400">
-                  <li><Link href="/resources" className="hover:text-white transition-colors">Free AI + Ops Guide (PDF)</Link></li>
-                  <li><Link href="/#pricing" className="hover:text-white transition-colors">Pricing</Link></li>
+                  <li><Link href="/knowledge" className="hover:text-white transition-colors">Knowledge Base</Link></li>
+                  <li><Link href="/resources" className="hover:text-white transition-colors">Free AI Readiness Guide</Link></li>
+                  <li><Link href="/blog" className="hover:text-white transition-colors">Blog</Link></li>
                 </ul>
               </div>
               <div>
                 <h4 className="font-semibold mb-3 text-sky-blue">Contact</h4>
                 <ul className="space-y-2 text-sm text-gray-400">
-                  <li><Link href="/#contact" className="hover:text-white transition-colors">Get in Touch</Link></li>
+                  <li><Link href="/#contact" className="hover:text-white transition-colors">Get a Free AI Audit</Link></li>
                   <li><a href="mailto:hello@nyclaw.io" className="hover:text-white transition-colors">hello@nyclaw.io</a></li>
+                  <li className="text-gray-500">Westchester County, NY</li>
                 </ul>
               </div>
             </div>
             <div className="border-t border-gray-700 pt-6 text-sm text-gray-500 text-center">
-              © {new Date().getFullYear()} NYClaw.io. All rights reserved.
+              <p className="mb-1">AI Powered, Human Experience</p>
+              <p>© {new Date().getFullYear()} NYClaw.io · AI Implementation Agency · All rights reserved.</p>
             </div>
           </div>
         </footer>
