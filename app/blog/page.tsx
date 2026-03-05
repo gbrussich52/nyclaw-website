@@ -20,36 +20,55 @@ export default function Blog() {
           </p>
 
           <div className="space-y-8">
-            {/* Placeholder articles */}
+            {/* Published articles */}
             {[
               {
-                title: "How to Set Up Your AI with OpenClaw",
-                description: "Step-by-step guide to setting up an AI entrepreneur on your Mac, including initial configuration and first revenue tracking.",
-                date: "Coming Soon"
+                title: "What GPT-5.4 Means for Building AI Assistants That Actually Work",
+                description: "GPT-5.4 brings native computer use, tool search, and 1M token context. Here's what it means for autonomous AI assistants — and why it validates our approach.",
+                date: "March 5, 2026",
+                slug: "gpt-5-4",
+                tags: ["OpenAI", "AI Architecture"]
+              },
+              {
+                title: "How to Build an AI Assistant That Actually Succeeds",
+                description: "70% of AI projects fail not because of bad code, but because of unclear identity. Here's the complete framework we use to build AI systems that actually work.",
+                date: "March 5, 2026",
+                slug: "how-to-succeed",
+                tags: ["AI Architecture", "Leadership"]
               },
               {
                 title: "Building an AI Influencer: The Sarah Case Study",
                 description: "Everything we learned building Sarah - character design, UGC generation with Nano Banana, affiliate partnerships, and social media strategy.",
-                date: "Coming Soon"
+                date: "Coming Soon",
+                slug: null,
+                tags: ["AI", "UGC"]
               },
               {
                 title: "Affiliate Monetization: From Zero to First Sale",
                 description: "How we monetized the Rumble Simulator with sports betting affiliates, including link optimization, testing, and revenue tracking.",
-                date: "Coming Soon"
-              },
-              {
-                title: "AI-Powered Marketing: UGC, Content, and Scaling",
-                description: "The complete system for generating high-quality UGC, managing multiple social accounts, and optimizing affiliate revenue.",
-                date: "Coming Soon"
+                date: "Coming Soon",
+                slug: null,
+                tags: ["Monetization", "Affiliate"]
               }
             ].map((article, i) => (
               <article key={i} className="card border-l-4 border-sky-blue">
+                <div className="flex gap-2 mb-3">
+                  {article.tags && article.tags.map((tag, j) => (
+                    <span key={j} className="px-2 py-1 bg-sky-blue bg-opacity-10 text-sky-blue text-xs rounded">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
                 <h2 className="text-2xl font-bold text-navy mb-2">{article.title}</h2>
-                <p className="text-sm text-sky-blue mb-4">📅 {article.date}</p>
+                <p className="text-sm text-charcoal mb-4">📅 {article.date}</p>
                 <p className="text-charcoal mb-4">{article.description}</p>
-                <button className="text-sky-blue font-bold hover:text-dark-red transition">
-                  Read Article →
-                </button>
+                {article.slug ? (
+                  <a href={`/blog/${article.slug}`} className="text-sky-blue font-bold hover:text-dark-red transition">
+                    Read Article →
+                  </a>
+                ) : (
+                  <span className="text-charcoal text-sm">Coming soon...</span>
+                )}
               </article>
             ))}
           </div>
