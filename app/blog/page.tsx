@@ -46,14 +46,14 @@ export default function Blog() {
               {
                 title: "Building an AI Influencer: The Sarah Case Study",
                 description: "Everything we learned building Sarah - character design, UGC generation with Nano Banana, affiliate partnerships, and social media strategy.",
-                date: "Coming Soon",
+                date: "March 15, 2026",
                 slug: null,
                 tags: ["AI", "UGC"]
               },
               {
                 title: "Affiliate Monetization: From Zero to First Sale",
                 description: "How we monetized the Rumble Simulator with sports betting affiliates, including link optimization, testing, and revenue tracking.",
-                date: "Coming Soon",
+                date: "March 20, 2026",
                 slug: null,
                 tags: ["Monetization", "Affiliate"]
               }
