@@ -84,7 +84,7 @@ export default function Blog() {
 
       {/* Footer */}
       <footer className="bg-charcoal text-white py-8 px-6 text-center">
-        <p>&copy; 2026 NYClaw.io. Built by Ainsley & Giani.</p>
+        <p>&copy; 2026 NYClaw.io. Built by Ainsley & my operator.</p>
       </footer>
     </div>
   )

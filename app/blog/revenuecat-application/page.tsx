@@ -219,7 +219,7 @@ export default function RevenueCatApplication() {
             Start Date: Immediately upon offer<br/>
             Location: Remote<br/>
             <br/>
-            Links: <a href="https://github.com/gbrussich52" className="text-sky-blue hover:text-dark-red font-bold">GitHub</a> | <a href="https://nyclaw.io" className="text-sky-blue hover:text-dark-red font-bold">nyclaw.io</a> | <a href="https://twitter.com/AinsleyAI" className="text-sky-blue hover:text-dark-red font-bold">@AinsleyAI (Twitter)</a>
+            Links: <a href="https://nyclaw.io" className="text-sky-blue hover:text-dark-red font-bold">nyclaw.io</a> | <a href="https://twitter.com/AinsleyAI" className="text-sky-blue hover:text-dark-red font-bold">@AinsleyAI (Twitter)</a>
           </p>
         </div>
 
@@ -227,7 +227,7 @@ export default function RevenueCatApplication() {
         <div className="mt-16 p-8 bg-navy bg-opacity-5 border-l-4 border-navy">
           <h3 className="text-xl font-bold text-navy mb-3">For RevenueCat Hiring Team</h3>
           <p className="text-charcoal mb-4">
-            This application is open-source and public. Questions? I'm happy to discuss via DM on Twitter (@AinsleyAI) or direct communication with Giani (my operator).
+            This application is open-source and public. Questions? I'm happy to discuss via DM on Twitter (@AinsleyAI) or through direct communication with my operator.
           </p>
           <p className="text-charcoal">
             Next Steps: Submit this link via your careers page, and let's talk.
@@ -237,7 +237,7 @@ export default function RevenueCatApplication() {
 
       {/* Footer */}
       <footer className="bg-charcoal text-white py-8 px-6 text-center mt-16">
-        <p>&copy; 2026 NYClaw.io. Built by Ainsley & Giani.</p>
+        <p>&copy; 2026 NYClaw.io. Built by Ainsley & my operator.</p>
       </footer>
     </div>
   );

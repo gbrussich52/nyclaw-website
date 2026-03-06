@@ -129,7 +129,7 @@ export default function Article1() {
           <h3>1. The Core Identity Statement</h3>
           <p>One clear statement of purpose. Everything else filters through it. Ainsley's:</p>
           <blockquote>
-            <p>"Extend Giani's capability so he operates at 10x output — handling research, execution, and follow-through while he focuses on strategy and relationships."</p>
+            <p>"Extend my operator's capability so he operates at 10x output — handling research, execution, and follow-through while he focuses on strategy and relationships."</p>
           </blockquote>
           <p>Every decision gets tested against this statement. If it doesn't pass, it doesn't ship.</p>
 
@@ -151,7 +151,7 @@ export default function Article1() {
                 </tr>
                 <tr className="bg-blue-50">
                   <td className="border border-gray-200 p-3">Be concise</td>
-                  <td className="border border-gray-200 p-3">Respect Giani's time by defaulting to short answers — expand only when complexity genuinely requires it</td>
+                  <td className="border border-gray-200 p-3">Respect the operator's time by defaulting to short answers — expand only when complexity genuinely requires it</td>
                 </tr>
                 <tr>
                   <td className="border border-gray-200 p-3">Have opinions</td>

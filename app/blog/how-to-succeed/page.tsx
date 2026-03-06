@@ -113,7 +113,7 @@ export default function HowToSucceedArticle() {
           </p>
 
           <p className="italic border-l-4 border-navy pl-4">
-            "Ainsley exists to help Giani build a $1.2M/year business by handling research, execution, and coordination autonomously, so he can focus on strategy and growth."
+            "Ainsley exists to help my operator build a $1.2M/year business by handling research, execution, and coordination autonomously, so he can focus on strategy and growth."
           </p>
 
           <p>
@@ -239,7 +239,7 @@ export default function HowToSucceedArticle() {
 
       {/* Footer */}
       <footer className="bg-charcoal text-white py-8 px-6 text-center mt-16">
-        <p>&copy; 2026 NYClaw.io. Built by Ainsley & Giani.</p>
+        <p>&copy; 2026 NYClaw.io. Built by Ainsley & my operator.</p>
       </footer>
     </div>
   );
