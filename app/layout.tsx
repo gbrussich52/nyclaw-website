@@ -18,9 +18,27 @@ const dmSans = DM_Sans({
 })
 
 export const metadata: Metadata = {
-  title: 'NYClaw.io — AI Implementation Agency for Small Businesses',
-  description: 'NYClaw.io helps small businesses implement AI tools, automate operations, and scale faster. Strategy, implementation, and AI-powered marketing — serving Westchester County, NY and beyond.',
-  keywords: 'AI agency, AI consulting, AI implementation, small business AI, AI automation, Westchester NY, AI strategy, OODA Loop',
+  title: {
+    default: "NYClaw.io — AI Implementation Agency | Westchester County, NY",
+    template: "%s | NYClaw.io",
+  },
+  description: "NYClaw.io builds AI agents and automation systems for small businesses in Westchester County, NY and NYC. Cut costs, automate operations, and scale without adding staff. Free AI audit.",
+  keywords: ["AI agency Westchester NY", "AI automation small business", "AI consulting NYC", "AI implementation agency", "business automation Westchester", "AI agents for small business", "AI workflow automation NY"],
+  metadataBase: new URL("https://nyclaw.io"),
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: "https://nyclaw.io",
+    siteName: "NYClaw.io",
+    title: "NYClaw.io — AI Implementation Agency | Westchester County, NY",
+    description: "We build AI agents that automate your business. Strategy, implementation, and AI-powered marketing for small businesses in Westchester County, NY and NYC.",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "NYClaw.io — AI Implementation Agency | Westchester County, NY",
+    description: "We build AI agents that automate your business. Free AI audit for Westchester County and NYC small businesses.",
+  },
+  robots: { index: true, follow: true },
 }
 
 export default function RootLayout({
