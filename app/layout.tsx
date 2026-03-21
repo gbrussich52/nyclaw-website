@@ -3,6 +3,8 @@ import { Syne, DM_Sans } from 'next/font/google'
 import './globals.css'
 import Link from 'next/link'
 
+const CALENDLY_URL = 'https://calendly.com/nyclaw'
+
 const syne = Syne({
   subsets: ['latin'],
   weight: ['400', '500', '600', '700', '800'],
@@ -76,13 +78,16 @@ export default function RootLayout({
               <Link href="/resources" className="text-charcoal hover:text-sky-blue font-medium transition-colors">
                 Free Guide
               </Link>
+              <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer" className="btn-primary text-sm px-5 py-2.5">
+                Book a Call →
+              </a>
               <Link href="/#contact" className="btn-red text-sm px-5 py-2.5">
                 Free Audit →
               </Link>
             </div>
             {/* Mobile nav */}
             <div className="md:hidden flex items-center gap-3">
-              <Link href="/knowledge" className="text-charcoal hover:text-sky-blue text-sm font-medium">Guide</Link>
+              <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer" className="btn-primary text-xs px-3 py-2">Book a Call</a>
               <Link href="/#contact" className="btn-red text-xs px-3 py-2">Free Audit →</Link>
             </div>
           </nav>
