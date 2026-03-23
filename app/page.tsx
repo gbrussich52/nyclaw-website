@@ -25,7 +25,7 @@ const CheckIcon = () => (
   <Check className="w-4 h-4 text-sky-blue flex-shrink-0" strokeWidth={2.5} />
 )
 
-const CALENDLY_URL = 'https://calendly.com/nyclaw'
+const CALENDLY_URL = 'https://calendly.com/nyclaw-io-proton/30min'
 
 const painPoints = [
   { Icon: Clock,        title: 'Time Drain',        desc: 'Your team spends hours on tasks — scheduling, data entry, follow-ups — that AI handles in seconds.' },
