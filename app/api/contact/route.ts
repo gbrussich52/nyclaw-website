@@ -77,38 +77,53 @@ export async function POST(req: NextRequest) {
     console.error('[contact] Failed to write leads file:', err)
   }
 
-  // 2. Send email notification via Gmail SMTP (if configured)
-  const notifyEmail = process.env.NOTIFY_EMAIL
-  const gmailUser = process.env.GMAIL_USER
-  const gmailPass = process.env.GMAIL_APP_PASSWORD
+  // 2. Append to Google Sheet (if configured)
+  const sheetsKeyRaw = process.env.GOOGLE_SERVICE_ACCOUNT_JSON
+  const sheetId = process.env.GOOGLE_SHEET_ID
 
-  if (notifyEmail && gmailUser && gmailPass) {
+  if (sheetsKeyRaw && sheetId) {
     try {
-      const nodemailer = await import('nodemailer')
-      const transporter = nodemailer.default.createTransport({
-        service: 'gmail',
-        auth: { user: gmailUser, pass: gmailPass },
+      const { google } = await import('googleapis')
+      const credentials = JSON.parse(sheetsKeyRaw)
+      const auth = new google.auth.GoogleAuth({
+        credentials,
+        scopes: ['https://www.googleapis.com/auth/spreadsheets'],
       })
-      await transporter.sendMail({
-        from: `"NYClaw.io Leads" <${gmailUser}>`,
-        to: notifyEmail,
-        subject: `🔥 New Lead: ${name} — ${businessType}`,
-        text: `
-New contact form submission on NYClaw.io
+      const sheets = google.sheets({ version: 'v4', auth })
 
-Name: ${name}
-Email: ${email}
-Phone: ${phone || 'not provided'}
-SMS Consent: ${smsConsent ? 'YES ✅' : 'No'}
-Business Type: ${businessType}
-Challenge: ${challenge}
-Message: ${message || '(none)'}
-Submitted: ${timestamp}
-        `.trim(),
+      // Ensure header row exists on first run
+      const existing = await sheets.spreadsheets.values.get({
+        spreadsheetId: sheetId,
+        range: 'Sheet1!A1',
+      })
+      if (!existing.data.values?.length) {
+        await sheets.spreadsheets.values.update({
+          spreadsheetId: sheetId,
+          range: 'Sheet1!A1',
+          valueInputOption: 'RAW',
+          requestBody: {
+            values: [['Timestamp', 'Name', 'Email', 'Phone', 'SMS Consent', 'Business Type', 'Challenge', 'Message']],
+          },
+        })
+      }
+
+      // Append lead row
+      await sheets.spreadsheets.values.append({
+        spreadsheetId: sheetId,
+        range: 'Sheet1!A:H',
+        valueInputOption: 'RAW',
+        insertDataOption: 'INSERT_ROWS',
+        requestBody: {
+          values: [[
+            timestamp, name, email, phone,
+            smsConsent ? 'YES' : 'No',
+            businessType, challenge, message,
+          ]],
+        },
       })
     } catch (err) {
-      console.error('[contact] Email notification failed:', err)
-      // Don't fail the request — lead is saved to file
+      console.error('[contact] Google Sheets append failed:', err)
+      // Don't fail the request — lead is saved to local file as fallback
     }
   }
 
