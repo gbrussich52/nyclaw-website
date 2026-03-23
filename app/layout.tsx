@@ -3,7 +3,7 @@ import { Syne, DM_Sans } from 'next/font/google'
 import './globals.css'
 import Link from 'next/link'
 
-const CALENDLY_URL = 'https://calendly.com/nyclaw'
+const CALENDLY_URL = 'https://calendly.com/nyclaw-io-proton/30min'
 
 const syne = Syne({
   subsets: ['latin'],
