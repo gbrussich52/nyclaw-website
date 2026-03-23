@@ -48,9 +48,11 @@ export default function Home() {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
+    phone: '',
     businessType: '',
     challenge: '',
     message: '',
+    smsConsent: false,
   })
   const [formSubmitted, setFormSubmitted] = useState(false)
   const [playbookEmail, setPlaybookEmail] = useState('')
@@ -566,9 +568,27 @@ export default function Home() {
                 </select>
               </div>
               <div>
+                <label className="block font-bold mb-2 text-sm">Phone Number <span className="font-normal opacity-70">(optional)</span></label>
+                <input type="tel" value={formData.phone} onChange={(e) => setFormData({ ...formData, phone: e.target.value })} className="w-full px-4 py-3 rounded-lg bg-white/95 text-charcoal border-2 border-white/20 focus:border-dark-red focus:outline-none placeholder-gray-400 transition-colors" placeholder="(914) 555-0100" />
+              </div>
+              <div>
                 <label className="block font-bold mb-2 text-sm">Tell us about your business</label>
                 <textarea value={formData.message} onChange={(e) => setFormData({ ...formData, message: e.target.value })} className="w-full px-4 py-3 rounded-lg bg-white/95 text-charcoal border-2 border-white/20 focus:border-dark-red focus:outline-none placeholder-gray-400 transition-colors" rows={3} placeholder="How many employees? What does a typical day look like? What takes up the most time?" />
               </div>
+              {formData.phone && (
+                <div className="flex items-start gap-3 bg-white/10 rounded-lg px-4 py-3 border border-white/20">
+                  <input
+                    type="checkbox"
+                    id="sms-consent"
+                    checked={formData.smsConsent}
+                    onChange={(e) => setFormData({ ...formData, smsConsent: e.target.checked })}
+                    className="mt-1 w-4 h-4 accent-dark-red cursor-pointer flex-shrink-0"
+                  />
+                  <label htmlFor="sms-consent" className="text-xs text-gray-200 leading-relaxed cursor-pointer">
+                    By checking this box, I consent to receive SMS text messages from NYClaw.io at the number provided. Message frequency varies. Message &amp; data rates may apply. Reply STOP to unsubscribe at any time. View our <a href="/privacy" className="underline hover:text-white">Privacy Policy</a>.
+                  </label>
+                </div>
+              )}
               <button type="submit" className="w-full btn-red py-4 text-lg">Request My Free Audit &rarr;</button>
               <p className="text-center text-xs opacity-60">We review every submission and respond within 24 hours. Your info stays private.</p>
             </form>
