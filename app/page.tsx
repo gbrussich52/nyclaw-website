@@ -55,6 +55,7 @@ export default function Home() {
     smsConsent: false,
   })
   const [formSubmitted, setFormSubmitted] = useState(false)
+  const [formError, setFormError] = useState('')
   const [playbookEmail, setPlaybookEmail] = useState('')
   const [playbookSubmitted, setPlaybookSubmitted] = useState(false)
 
@@ -531,7 +532,21 @@ export default function Home() {
               <p className="text-gray-200 text-lg">We review every submission and respond within 24 hours.</p>
             </div>
           ) : (
-            <form onSubmit={(e) => { e.preventDefault(); setFormSubmitted(true) }} className="space-y-5 bg-white/10 p-10 rounded-xl backdrop-blur-sm border border-white/20">
+            <form onSubmit={async (e) => {
+              e.preventDefault()
+              setFormError('')
+              try {
+                const res = await fetch('/api/contact', {
+                  method: 'POST',
+                  headers: { 'Content-Type': 'application/json' },
+                  body: JSON.stringify(formData),
+                })
+                if (!res.ok) throw new Error('Server error')
+                setFormSubmitted(true)
+              } catch {
+                setFormError('Something went wrong. Please try again or email us directly.')
+              }
+            }} className="space-y-5 bg-white/10 p-10 rounded-xl backdrop-blur-sm border border-white/20">
               <div>
                 <label className="block font-bold mb-2 text-sm">Your Name *</label>
                 <input type="text" required value={formData.name} onChange={(e) => setFormData({ ...formData, name: e.target.value })} className="w-full px-4 py-3 rounded-lg bg-white/95 text-charcoal border-2 border-white/20 focus:border-dark-red focus:outline-none placeholder-gray-400 transition-colors" placeholder="Jane Smith" />
@@ -589,6 +604,7 @@ export default function Home() {
                   </label>
                 </div>
               )}
+              {formError && <p className="text-red-300 text-sm text-center">{formError}</p>}
               <button type="submit" className="w-full btn-red py-4 text-lg">Request My Free Audit &rarr;</button>
               <p className="text-center text-xs opacity-60">We review every submission and respond within 24 hours. Your info stays private.</p>
             </form>
