@@ -11,15 +11,23 @@ export default function ResourcesPage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setLoading(true)
-    // TODO: Replace with ConvertKit form action URL
-    // ConvertKit embed: POST to https://app.convertkit.com/forms/FORM_ID/subscriptions
-    // For now, simulate submission
-    await new Promise(r => setTimeout(r, 1000))
+    try {
+      await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: formData.firstName || 'Guide Request',
+          email: formData.email,
+          businessType: formData.company || 'Guide Download',
+          challenge: 'Requested free AI guide from /resources page',
+          message: `Company: ${formData.company || 'not provided'}`,
+        }),
+      })
+    } catch { /* non-blocking */ }
     setSubmitted(true)
     setLoading(false)
-    // Track in GA
     if (typeof window !== 'undefined' && (window as any).gtag) {
-      (window as any).gtag('event', 'pdf_download_attempt', { location: 'resources_page' })
+      (window as any).gtag('event', 'pdf_download', { location: 'resources_page' })
     }
   }
 
