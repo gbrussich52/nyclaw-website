@@ -7,23 +7,27 @@ export default function ResourcesPage() {
   const [formData, setFormData] = useState({ firstName: '', email: '', company: '' })
   const [submitted, setSubmitted] = useState(false)
   const [loading, setLoading] = useState(false)
+  const [error, setError] = useState('')
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setLoading(true)
+    setError('')
     try {
       await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          name: formData.firstName || 'Guide Request',
+          name: formData.firstName,
           email: formData.email,
           businessType: formData.company || 'Guide Download',
-          challenge: 'Requested free AI guide from /resources page',
+          challenge: 'Requested AI Operator\'s Playbook from /resources page',
           message: `Company: ${formData.company || 'not provided'}`,
         }),
       })
-    } catch { /* non-blocking */ }
+    } catch {
+      // Non-blocking — still give them the guide if API fails
+    }
     setSubmitted(true)
     setLoading(false)
     if (typeof window !== 'undefined' && (window as any).gtag) {
@@ -32,11 +36,41 @@ export default function ResourcesPage() {
   }
 
   const whatsInside = [
-    { section: 'Section 1', title: 'Building AI Identity', pages: '15 pages', desc: 'The Four-Quadrant Persona Taxonomy, principle-first documentation, priority hierarchies, and the full SOUL.md template.' },
-    { section: 'Section 2', title: 'Mission-Driven Systems', pages: '16 pages', desc: 'Why processes fail, how to design mission statements that actually drive decisions, OKR frameworks, and the review cadence.' },
-    { section: 'Section 3', title: 'Operational Excellence', pages: '9 pages', desc: 'All 7 anti-patterns with real-world examples and specific prevention systems for each.' },
-    { section: 'Section 4', title: 'Implementation Roadmap', pages: '8 pages', desc: 'The 30/60/90-day plan. Week-by-week actions to build your system from scratch.' },
-    { section: 'Appendix', title: 'Templates & Checklists', pages: '4 pages', desc: 'Printable: SOUL.md template, weekly review checklist, monthly audit checklist, anti-pattern scorecard, OKR template.' },
+    {
+      section: 'Intro',
+      title: 'Why Most AI Setups Fail',
+      desc: 'The single mistake that kills every AI deployment — and the one thing that separates setups that scale from ones that collapse.',
+    },
+    {
+      section: 'Part 1',
+      title: 'Identity Before Automation',
+      desc: 'How to write the four foundational documents (SOUL, USER, MEMORY, TOOLS) that give your AI consistent behavior and a real operating context.',
+    },
+    {
+      section: 'Part 2',
+      title: 'Memory Is Architecture',
+      desc: 'Three-tier memory design: session notes, rolling context, and long-term distilled knowledge. How to stop your AI from forgetting everything.',
+    },
+    {
+      section: 'Part 3',
+      title: 'Automation That Actually Runs',
+      desc: 'Real case study: 8 business websites built and deployed at $0 cost. Plus the $55–$110 API runaway story and how to avoid it.',
+    },
+    {
+      section: 'Part 4',
+      title: 'The Revenue Connection',
+      desc: '7 verticals, the free→workshop→retainer model, cold email pipeline math, and how to pitch AI to skeptical business owners.',
+    },
+    {
+      section: 'Part 5',
+      title: '7 Ways AI Projects Die',
+      desc: 'Named anti-patterns with real examples for each: identity drift, memory decay, tool hoarding, fake automation, and more.',
+    },
+    {
+      section: 'Appendix',
+      title: 'Fill-In Templates',
+      desc: '5 ready-to-use templates: SOUL.md, Memory Architecture, Automation Audit Checklist, Client Discovery, and 30-Day Launch Plan.',
+    },
   ]
 
   return (
@@ -48,15 +82,15 @@ export default function ResourcesPage() {
             Free Download
           </div>
           <h1 className="text-4xl md:text-5xl font-bold mb-6">
-            Complete AI Assistant +<br />Process Excellence Guide
+            The AI Operator's Playbook
           </h1>
           <p className="text-xl text-gray-300 max-w-2xl mx-auto mb-4">
-            50 pages. No fluff. The frameworks, templates, and implementation roadmap we used to build Ainsley — free with your email.
+            How to build an AI assistant that actually works — with identity, memory, and automation that doesn't break. Built from what we learned deploying Ainsley.
           </p>
           <div className="flex flex-wrap justify-center gap-6 text-sm text-gray-400 mt-6">
-            <span>✓ 50 pages</span>
-            <span>✓ 5 printable templates</span>
-            <span>✓ 30/60/90-day roadmap</span>
+            <span>✓ 5 parts + appendix</span>
+            <span>✓ 5 fill-in templates</span>
+            <span>✓ Real case studies (no fluff)</span>
             <span>✓ Free. No credit card.</span>
           </div>
         </div>
@@ -70,8 +104,8 @@ export default function ResourcesPage() {
           <div className="sticky top-24">
             {!submitted ? (
               <div className="bg-white border-2 border-sky-blue rounded-2xl p-8 shadow-lg">
-                <h2 className="text-2xl font-bold text-navy mb-2">Get the free guide</h2>
-                <p className="text-gray-600 text-sm mb-6">Enter your details and we'll send it immediately. No spam. Unsubscribe anytime.</p>
+                <h2 className="text-2xl font-bold text-navy mb-2">Get the free playbook</h2>
+                <p className="text-gray-600 text-sm mb-6">Enter your details and you'll get an instant download link. No spam. Unsubscribe anytime.</p>
 
                 <form onSubmit={handleSubmit} className="space-y-4">
                   <div>
@@ -115,39 +149,45 @@ export default function ResourcesPage() {
                       placeholder="Your company name"
                     />
                   </div>
+                  {error && (
+                    <p className="text-red-500 text-sm">{error}</p>
+                  )}
                   <button
                     type="submit"
                     disabled={loading}
                     className="w-full bg-sky-blue text-white py-4 rounded-lg font-semibold text-lg hover:bg-navy transition-colors disabled:opacity-70"
                   >
-                    {loading ? 'Sending...' : 'Send Me the Guide →'}
+                    {loading ? 'One sec...' : 'Get the Playbook →'}
                   </button>
                   <p className="text-xs text-gray-500 text-center">
-                    By submitting, you agree to receive the guide and related emails from NYClaw.io. Unsubscribe anytime.
+                    By submitting, you agree to receive the guide and occasional emails from NYClaw.io. Unsubscribe anytime.
                   </p>
                 </form>
               </div>
             ) : (
               <div className="bg-white border-2 border-green-400 rounded-2xl p-8 shadow-lg text-center">
                 <div className="text-5xl mb-4">✓</div>
-                <h2 className="text-2xl font-bold text-navy mb-3">Check your inbox!</h2>
-                <p className="text-gray-600 mb-6">We sent the guide to <strong>{formData.email}</strong>. It should arrive within 2 minutes.</p>
-                <p className="text-sm text-gray-500 mb-6">While you wait — start with one of the knowledge articles below:</p>
-                <div className="space-y-3">
-                  <Link href="/knowledge/ai-assistant-identity" className="block border border-sky-blue text-sky-blue rounded-lg px-4 py-3 text-sm font-medium hover:bg-sky-blue hover:text-white transition-colors">
-                    Read: How to Build a Scalable AI Assistant →
-                  </Link>
-                  <Link href="/knowledge/operational-excellence" className="block border border-sky-blue text-sky-blue rounded-lg px-4 py-3 text-sm font-medium hover:bg-sky-blue hover:text-white transition-colors">
-                    Read: 7 Critical Anti-Patterns →
+                <h2 className="text-2xl font-bold text-navy mb-3">Here's your playbook, {formData.firstName}.</h2>
+                <p className="text-gray-600 mb-6">Click below to download. It's a PDF — open it in any browser or reader.</p>
+                <a
+                  href="/downloads/ai-operators-playbook.pdf"
+                  download="AI-Operators-Playbook-NYClaw.pdf"
+                  className="block w-full bg-sky-blue text-white py-4 rounded-lg font-semibold text-lg hover:bg-navy transition-colors mb-4"
+                >
+                  ↓ Download the Playbook (PDF)
+                </a>
+                <p className="text-xs text-gray-500 mb-6">If the download doesn't start, <a href="/downloads/ai-operators-playbook.pdf" target="_blank" className="text-sky-blue underline">open it directly</a>.</p>
+                <div className="border-t border-gray-100 pt-4">
+                  <p className="text-sm text-gray-500 mb-3">Want us to build this for your business?</p>
+                  <Link
+                    href="/#contact"
+                    className="block border-2 border-sky-blue text-sky-blue rounded-lg px-4 py-3 text-sm font-medium hover:bg-sky-blue hover:text-white transition-colors"
+                  >
+                    Book a free AI audit →
                   </Link>
                 </div>
               </div>
             )}
-
-            {/* Social proof */}
-            <div className="mt-4 text-center text-sm text-gray-500">
-              📥 Downloaded by 50+ operators and builders
-            </div>
           </div>
 
           {/* What's Inside */}
@@ -156,9 +196,8 @@ export default function ResourcesPage() {
             <div className="space-y-6">
               {whatsInside.map((item) => (
                 <div key={item.section} className="flex gap-4">
-                  <div className="flex-shrink-0 w-16 text-center">
-                    <div className="bg-navy text-white text-xs font-bold px-2 py-1 rounded mb-1">{item.section}</div>
-                    <div className="text-xs text-gray-400">{item.pages}</div>
+                  <div className="flex-shrink-0">
+                    <div className="bg-navy text-white text-xs font-bold px-2 py-1 rounded whitespace-nowrap">{item.section}</div>
                   </div>
                   <div>
                     <h3 className="font-semibold text-navy mb-1">{item.title}</h3>
@@ -168,25 +207,24 @@ export default function ResourcesPage() {
               ))}
             </div>
 
-            {/* Printable callout */}
+            {/* Templates callout */}
             <div className="mt-8 bg-blue-50 border border-sky-blue rounded-xl p-5">
-              <h3 className="font-semibold text-navy mb-2">📋 Printable Templates Included</h3>
+              <h3 className="font-semibold text-navy mb-2">📋 Templates Included</h3>
               <ul className="text-sm text-gray-700 space-y-1">
-                <li>✓ SOUL.md Identity Template (copy-pasteable)</li>
-                <li>✓ Weekly Review Checklist</li>
-                <li>✓ Monthly Documentation Audit</li>
-                <li>✓ Anti-Pattern Audit Scorecard</li>
-                <li>✓ OKR Template for Small Teams</li>
-                <li>✓ System Health Dashboard</li>
+                <li>✓ SOUL.md — AI Identity Document (copy-paste ready)</li>
+                <li>✓ Memory Architecture diagram + file structure</li>
+                <li>✓ Automation Audit Checklist (find your dead crons)</li>
+                <li>✓ Client Discovery Framework (7 verticals)</li>
+                <li>✓ 30-Day AI Operator Launch Plan</li>
               </ul>
             </div>
 
-            {/* Ainsley story */}
+            {/* Ainsley attribution */}
             <div className="mt-8 border-l-4 border-sky-blue pl-4">
               <p className="text-gray-600 text-sm italic">
-                "We built Ainsley for ourselves first — a fully designed AI assistant with consistent identity, operational frameworks, and the ability to handle execution at scale. This guide is everything we learned. The hard way."
+                "Every AI assistant we've seen fail had one thing in common: the operator treated setup as optional. It's not. Setup is the whole game."
               </p>
-              <p className="text-navy font-medium text-sm mt-2">— NYClaw.io team</p>
+              <p className="text-navy font-medium text-sm mt-2">— Ainsley, NYClaw.io</p>
             </div>
           </div>
         </div>
@@ -195,7 +233,7 @@ export default function ResourcesPage() {
       {/* Related Articles */}
       <section className="bg-gray-50 border-t border-gray-200 py-16 px-6">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-2xl font-bold text-navy mb-8 text-center">Read the full articles (free)</h2>
+          <h2 className="text-2xl font-bold text-navy mb-8 text-center">Go deeper (free)</h2>
           <div className="grid md:grid-cols-3 gap-6">
             {[
               { href: '/knowledge/ai-assistant-identity', label: 'AI Identity', title: 'How to Build a Scalable AI Assistant', time: '12 min' },
