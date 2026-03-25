@@ -77,7 +77,42 @@ export async function POST(req: NextRequest) {
     console.error('[contact] Failed to write leads file:', err)
   }
 
-  // 2. Append to Google Sheet (if configured)
+  // 2. Send email notification (if configured)
+  const gmailUser = process.env.GMAIL_USER
+  const gmailPass = process.env.GMAIL_APP_PASSWORD
+  const notifyEmail = process.env.NOTIFY_EMAIL
+
+  if (gmailUser && gmailPass && notifyEmail) {
+    try {
+      const nodemailer = await import('nodemailer')
+      const transporter = nodemailer.default.createTransport({
+        service: 'gmail',
+        auth: { user: gmailUser, pass: gmailPass },
+      })
+      await transporter.sendMail({
+        from: `"NYClaw Lead" <${gmailUser}>`,
+        to: notifyEmail,
+        subject: `🔥 New Lead: ${name} — ${businessType}`,
+        text: [
+          `New contact form submission on NYClaw.io`,
+          ``,
+          `Name: ${name}`,
+          `Email: ${email}`,
+          `Phone: ${phone || 'Not provided'}`,
+          `SMS Consent: ${smsConsent ? 'YES' : 'No'}`,
+          `Business Type: ${businessType}`,
+          `Challenge: ${challenge}`,
+          `Message: ${message || 'None'}`,
+          `Submitted: ${timestamp}`,
+        ].join('\n'),
+      })
+    } catch (err) {
+      console.error('[contact] Email notification failed:', err)
+      // Don't fail the request — lead is still saved
+    }
+  }
+
+  // 3. Append to Google Sheet (if configured)
   const sheetsKeyRaw = process.env.GOOGLE_SERVICE_ACCOUNT_JSON
   const sheetId = process.env.GOOGLE_SHEET_ID
 
