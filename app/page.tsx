@@ -50,6 +50,7 @@ export default function Home() {
     email: '',
     phone: '',
     businessType: '',
+    inquiryType: '',
     challenge: '',
     message: '',
     smsConsent: false,
@@ -570,6 +571,18 @@ export default function Home() {
               <div>
                 <label className="block font-bold mb-2 text-sm">Business Email *</label>
                 <input type="email" required value={formData.email} onChange={(e) => setFormData({ ...formData, email: e.target.value })} className="w-full px-4 py-3 rounded-lg bg-white/95 text-charcoal border-2 border-white/20 focus:border-dark-red focus:outline-none placeholder-gray-400 transition-colors" placeholder="jane@yourcompany.com" />
+              </div>
+              <div>
+                <label className="block font-bold mb-2 text-sm">What are you interested in? *</label>
+                <select required value={formData.inquiryType} onChange={(e) => setFormData({ ...formData, inquiryType: e.target.value })} className="w-full px-4 py-3 rounded-lg bg-white/95 text-charcoal border-2 border-white/20 focus:border-dark-red focus:outline-none transition-colors">
+                  <option value="">Select a service...</option>
+                  <option value="ai-audit">Free AI Audit for My Business</option>
+                  <option value="ai-workshop">AI Workshop / Training for My Team</option>
+                  <option value="ai-automation">AI Automation &amp; Implementation</option>
+                  <option value="ai-marketing">AI Marketing &amp; Content</option>
+                  <option value="ai-consulting">AI Strategy Consulting</option>
+                  <option value="general">General Inquiry</option>
+                </select>
               </div>
               <div>
                 <label className="block font-bold mb-2 text-sm">Business Type *</label>

@@ -26,6 +26,24 @@ export default function AIConsultingPage() {
       <p className="text-gray-700 mb-8">Business owners who want to understand AI before committing to implementation. If you are spending $50K+/year on labor that could be automated, this audit pays for itself immediately.</p>
 
       <Link href="/#contact" className="inline-block bg-blue-700 text-white px-8 py-4 rounded-lg font-semibold hover:bg-blue-800">Book Your AI Strategy Session →</Link>
+
+      <div className="mt-20 border-t pt-16">
+        <h2 className="text-3xl font-bold mb-3">AI Workshops & Team Training</h2>
+        <p className="text-gray-700 mb-8 text-lg">Want to bring AI literacy to your whole team? We offer in-person and virtual workshops for business owners, managers, and staff — no technical background required. Fill out the form below to register or request a custom session.</p>
+        <div className="rounded-xl overflow-hidden border border-gray-200 shadow-sm">
+          <iframe
+            src="https://docs.google.com/forms/d/e/1FAIpQLSfJWgMU7tznW4xfU1GVy7cxL7SmHf2onNqwtnc2o7r-K6sY2Q/viewform?embedded=true"
+            width="100%"
+            height="2204"
+            frameBorder="0"
+            marginHeight={0}
+            marginWidth={0}
+            title="AI Workshop Registration"
+          >
+            Loading…
+          </iframe>
+        </div>
+      </div>
     </main>
   );
 }
