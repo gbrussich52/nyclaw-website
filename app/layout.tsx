@@ -65,7 +65,7 @@ export default function RootLayout({
               </div>
             </Link>
             <div className="hidden md:flex items-center gap-7">
-              <Link href="/#services" className="text-charcoal hover:text-sky-blue font-medium transition-colors">
+              <Link href="/services" className="text-charcoal hover:text-sky-blue font-medium transition-colors">
                 Services
               </Link>
               <Link href="/#process" className="text-charcoal hover:text-sky-blue font-medium transition-colors">
@@ -106,9 +106,10 @@ export default function RootLayout({
               <div>
                 <h4 className="font-semibold mb-3 text-sky-blue">Services</h4>
                 <ul className="space-y-2 text-sm text-gray-400">
-                  <li><Link href="/#services" className="hover:text-white transition-colors">AI Workflow Automation</Link></li>
-                  <li><Link href="/#services" className="hover:text-white transition-colors">AI Strategy & Consulting</Link></li>
-                  <li><Link href="/#services" className="hover:text-white transition-colors">AI-Powered Marketing</Link></li>
+                  <li><Link href="/services/ai-automation" className="hover:text-white transition-colors">AI Workflow Automation</Link></li>
+                  <li><Link href="/services/ai-consulting" className="hover:text-white transition-colors">AI Strategy & Consulting</Link></li>
+                  <li><Link href="/services/ai-marketing" className="hover:text-white transition-colors">AI-Powered Marketing</Link></li>
+                  <li><Link href="/services" className="hover:text-white transition-colors">All Services</Link></li>
                 </ul>
               </div>
               <div>
