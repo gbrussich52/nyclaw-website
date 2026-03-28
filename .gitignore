@@ -32,3 +32,9 @@ Thumbs.db
 secrets*
 credentials*
 *-secrets.json
+secrets.yaml
+secrets.yml
+.secrets/
+*.sqlite
+*.sqlite3
+*.db
