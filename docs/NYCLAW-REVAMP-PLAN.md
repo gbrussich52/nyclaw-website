@@ -177,7 +177,7 @@ OpenClaw setup requires time — yours or ours. Claude subscription is $20-$100/
 
 **Section Header:** Who We Are
 
-NYCLaw.io is run by Giani Brussich, based in New York.
+NYCLaw.io is run by its operator, based in New York.
 
 I'm not a traditional agency. I'm a technical founder who builds things, documents them, and teaches other people how to build them.
 

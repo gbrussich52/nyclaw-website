@@ -1,12 +1,41 @@
-node_modules/
-.next/
-out/
-build/
+# Environment & Secrets
 .env
 .env.local
 .env.*.local
-.DS_Store
-*.pem
-.vercel
+.env.*.example
+
+# Dependencies
+node_modules/
+.next/
+out/
 dist/
+build/
 tsconfig.tsbuildinfo
+
+# OS
+.DS_Store
+*.log
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Sensitive Files
+*.pem
+*.key
+*.p8
+*.p12
+*.pfx
+*.jks
+secrets*
+credentials*
+*-secrets.json
+secrets.yaml
+secrets.yml
+.secrets/
+*.sqlite
+*.sqlite3
+*.db

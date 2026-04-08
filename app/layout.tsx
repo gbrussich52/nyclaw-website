@@ -3,6 +3,7 @@ import { Syne, DM_Sans } from 'next/font/google'
 import './globals.css'
 import Link from 'next/link'
 import { LocalBusinessJsonLd, WebSiteJsonLd } from './components/JsonLd'
+import { CALENDLY_URL } from './config'
 
 const syne = Syne({
   subsets: ['latin'],
@@ -82,13 +83,16 @@ export default function RootLayout({
               <Link href="/resources" className="text-charcoal hover:text-sky-blue font-medium transition-colors">
                 Free Guide
               </Link>
+              <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer" className="btn-primary text-sm px-5 py-2.5">
+                Book a Call →
+              </a>
               <Link href="/#contact" className="btn-red text-sm px-5 py-2.5">
                 Free Audit →
               </Link>
             </div>
             {/* Mobile nav */}
             <div className="md:hidden flex items-center gap-3">
-              <Link href="/knowledge" className="text-charcoal hover:text-sky-blue text-sm font-medium">Guide</Link>
+              <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer" className="btn-primary text-xs px-3 py-2">Book a Call</a>
               <Link href="/#contact" className="btn-red text-xs px-3 py-2">Free Audit →</Link>
             </div>
           </nav>
@@ -111,6 +115,7 @@ export default function RootLayout({
                   <li><Link href="/services/ai-automation" className="hover:text-white transition-colors">AI Workflow Automation</Link></li>
                   <li><Link href="/services/ai-consulting" className="hover:text-white transition-colors">AI Strategy & Consulting</Link></li>
                   <li><Link href="/services/ai-marketing" className="hover:text-white transition-colors">AI-Powered Marketing</Link></li>
+                  <li><Link href="/services" className="hover:text-white transition-colors">All Services</Link></li>
                 </ul>
               </div>
               <div>

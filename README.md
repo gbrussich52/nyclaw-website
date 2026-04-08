@@ -55,7 +55,7 @@ app/
 
 ## Content Placeholders
 
-- `[STORY]` - Giani's origin/background story (to be added)
+- `[STORY]` - Founder's origin/background story (to be added)
 - `[CASE_STUDY_1]` - Rumble Simulator details (to be added)
 - `[CASE_STUDY_2]` - Sarah Influencer details (to be added)
 - `[PRICING_4]` - AI Marketing Agency pricing (to be added)
