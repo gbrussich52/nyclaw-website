@@ -1,65 +1,99 @@
+import type { Metadata } from 'next'
+import Link from 'next/link'
+
+export const metadata: Metadata = {
+  title: 'Blog',
+  description:
+    'Insights on AI implementation, website SEO, automation, and small business technology from NYClaw.io — an AI agency serving Westchester County, NY and NYC.',
+  openGraph: {
+    title: 'Blog | NYClaw.io',
+    description:
+      'Insights on AI implementation, website SEO, automation, and small business technology.',
+    url: 'https://nyclaw.io/blog',
+  },
+  alternates: {
+    canonical: 'https://nyclaw.io/blog',
+  },
+}
+
+const posts = [
+  {
+    title: "I Audited My Own AI Agency's Website. It Was Invisible to Google.",
+    description:
+      "We ran a full SEO audit on our own site and discovered the entire homepage was client-rendered — Google couldn't see a single word. Here's what went wrong and exactly how we fixed it.",
+    date: 'April 7, 2026',
+    href: '/blog/i-audited-my-own-website',
+    tags: ['SEO', 'Next.js', 'Case Study'],
+  },
+  {
+    title: 'How to Set Up Your AI with OpenClaw',
+    description:
+      'Step-by-step guide to setting up an AI entrepreneur on your Mac, including initial configuration and first revenue tracking.',
+    date: 'Coming Soon',
+    href: null,
+    tags: ['Tutorial', 'OpenClaw'],
+  },
+  {
+    title: 'Building an AI Influencer: The Sarah Case Study',
+    description:
+      'Everything we learned building Sarah — character design, UGC generation with Nano Banana, affiliate partnerships, and social media strategy.',
+    date: 'Coming Soon',
+    href: null,
+    tags: ['Case Study', 'AI Marketing'],
+  },
+  {
+    title: 'Affiliate Monetization: From Zero to First Sale',
+    description:
+      'How we monetized the Rumble Simulator with sports betting affiliates, including link optimization, testing, and revenue tracking.',
+    date: 'Coming Soon',
+    href: null,
+    tags: ['Monetization', 'Affiliates'],
+  },
+]
+
 export default function Blog() {
   return (
-    <div className="min-h-screen bg-white">
-      {/* Header */}
-      <header className="sticky top-0 z-50 bg-white border-b-2 border-sky-blue">
-        <nav className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-          <a href="/" className="text-2xl font-bold">
-            <span className="text-navy">NYC</span>
-            <span className="text-sky-blue">law</span>
-          </a>
-          <a href="/" className="text-charcoal hover:text-sky-blue transition">← Back Home</a>
-        </nav>
-      </header>
+    <section className="py-20 px-6">
+      <div className="max-w-4xl mx-auto">
+        <h1 className="text-4xl font-bold text-navy mb-4">Blog & Insights</h1>
+        <p className="text-lg text-charcoal mb-12">
+          Real lessons from building an AI agency — SEO mistakes, automation wins, and
+          everything in between.
+        </p>
 
-      <section className="py-20 px-6">
-        <div className="max-w-4xl mx-auto">
-          <h1 className="text-4xl font-bold text-navy mb-4">Blog & Resources</h1>
-          <p className="text-lg text-charcoal mb-12">
-            Learn how we build AI businesses, automate operations, and generate revenue with OpenClaw.
-          </p>
-
-          <div className="space-y-8">
-            {/* Placeholder articles */}
-            {[
-              {
-                title: "How to Set Up Your AI with OpenClaw",
-                description: "Step-by-step guide to setting up an AI entrepreneur on your Mac, including initial configuration and first revenue tracking.",
-                date: "Coming Soon"
-              },
-              {
-                title: "Building an AI Influencer: The Sarah Case Study",
-                description: "Everything we learned building Sarah - character design, UGC generation with Nano Banana, affiliate partnerships, and social media strategy.",
-                date: "Coming Soon"
-              },
-              {
-                title: "Affiliate Monetization: From Zero to First Sale",
-                description: "How we monetized the Rumble Simulator with sports betting affiliates, including link optimization, testing, and revenue tracking.",
-                date: "Coming Soon"
-              },
-              {
-                title: "AI-Powered Marketing: UGC, Content, and Scaling",
-                description: "The complete system for generating high-quality UGC, managing multiple social accounts, and optimizing affiliate revenue.",
-                date: "Coming Soon"
-              }
-            ].map((article, i) => (
-              <article key={i} className="card border-l-4 border-sky-blue">
-                <h2 className="text-2xl font-bold text-navy mb-2">{article.title}</h2>
-                <p className="text-sm text-sky-blue mb-4">📅 {article.date}</p>
-                <p className="text-charcoal mb-4">{article.description}</p>
-                <button className="text-sky-blue font-bold hover:text-dark-red transition">
+        <div className="space-y-8">
+          {posts.map((post, i) => (
+            <article
+              key={i}
+              className="border border-gray-200 rounded-lg p-6 hover:border-sky-blue transition-colors"
+            >
+              <div className="flex flex-wrap gap-2 mb-3">
+                {post.tags.map((tag) => (
+                  <span
+                    key={tag}
+                    className="text-xs font-medium bg-gray-100 text-sky-blue px-2 py-1 rounded"
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+              <h2 className="text-2xl font-bold text-navy mb-2">{post.title}</h2>
+              <p className="text-sm text-charcoal/60 mb-4">{post.date}</p>
+              <p className="text-charcoal mb-4 leading-relaxed">{post.description}</p>
+              {post.href ? (
+                <Link
+                  href={post.href}
+                  className="text-sky-blue font-bold hover:text-dark-red transition-colors"
+                >
                   Read Article →
-                </button>
-              </article>
-            ))}
-          </div>
+                </Link>
+              ) : (
+                <span className="text-charcoal/40 font-bold">Coming Soon</span>
+              )}
+            </article>
+          ))}
         </div>
-      </section>
-
-      {/* Footer */}
-      <footer className="bg-charcoal text-white py-8 px-6 text-center">
-        <p>&copy; 2026 NYClaw.io. Built by Ainsley & Giani.</p>
-      </footer>
-    </div>
+      </div>
+    </section>
   )
 }

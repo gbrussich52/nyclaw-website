@@ -2,8 +2,22 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 
 export const metadata: Metadata = {
-  title: 'AI System Building & Operational Excellence | NYClaw.io',
-  description: 'Research-backed guides on building AI assistants, mission-driven systems, and operational frameworks. Built from our experience creating Ainsley.',
+  title: 'AI Knowledge Base — Guides on AI Identity, Operations & Excellence',
+  description: 'Research-backed guides on building AI assistants, mission-driven systems, and operational frameworks for small businesses. Free articles from NYClaw.io — the AI implementation agency serving Westchester County, NY.',
+  keywords: 'AI assistant guide, AI identity framework, operational excellence, mission-driven systems, AI implementation guide',
+  openGraph: {
+    title: 'AI Knowledge Base | NYClaw.io',
+    description: 'Research-backed guides on AI identity design, mission-driven operations, and avoiding the failure modes that kill small teams.',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary',
+    title: 'AI Knowledge Base | NYClaw.io',
+    description: 'Free research-backed guides on building AI systems that work.',
+  },
+  alternates: {
+    canonical: 'https://nyclaw.io/knowledge',
+  },
 }
 
 const articles = [

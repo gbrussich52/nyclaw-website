@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { Syne, DM_Sans } from 'next/font/google'
 import './globals.css'
 import Link from 'next/link'
+import { LocalBusinessJsonLd, WebSiteJsonLd } from './components/JsonLd'
 
 const syne = Syne({
   subsets: ['latin'],
@@ -18,9 +19,30 @@ const dmSans = DM_Sans({
 })
 
 export const metadata: Metadata = {
-  title: 'NYClaw.io — AI Implementation Agency for Small Businesses',
-  description: 'NYClaw.io helps small businesses implement AI tools, automate operations, and scale faster. Strategy, implementation, and AI-powered marketing — serving Westchester County, NY and beyond.',
-  keywords: 'AI agency, AI consulting, AI implementation, small business AI, AI automation, Westchester NY, AI strategy, OODA Loop',
+  metadataBase: new URL('https://nyclaw.io'),
+  title: {
+    default: 'NYClaw.io — AI Implementation Agency | Westchester County, NY & NYC',
+    template: '%s | NYClaw.io',
+  },
+  description: 'NYClaw.io builds AI agents and automation systems for small businesses in Westchester County, NY and NYC. Cut costs 40%, automate operations 24/7, and scale without adding staff.',
+  keywords: 'AI agency, AI consulting, AI implementation, small business AI, AI automation, Westchester NY, NYC AI agency, AI strategy, OODA Loop, AI workflow automation, AI marketing',
+  openGraph: {
+    type: 'website',
+    locale: 'en_US',
+    url: 'https://nyclaw.io',
+    siteName: 'NYClaw.io',
+    title: 'NYClaw.io — AI Implementation Agency for Small Businesses',
+    description: 'We build AI agents that automate your business. Strategy, automation, and AI-powered marketing for small businesses in Westchester County & NYC.',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'NYClaw.io — AI Implementation Agency',
+    description: 'AI automation for small businesses. Free AI audit available.',
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 }
 
 export default function RootLayout({
@@ -31,6 +53,8 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${syne.variable} ${dmSans.variable}`}>
       <body className="bg-white text-charcoal">
+        <LocalBusinessJsonLd />
+        <WebSiteJsonLd />
         <header className="sticky top-0 z-50 bg-white border-b border-gray-100 shadow-sm">
           <nav className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
             <Link href="/" className="block">
@@ -46,7 +70,7 @@ export default function RootLayout({
               </div>
             </Link>
             <div className="hidden md:flex items-center gap-7">
-              <Link href="/#services" className="text-charcoal hover:text-sky-blue font-medium transition-colors">
+              <Link href="/services" className="text-charcoal hover:text-sky-blue font-medium transition-colors">
                 Services
               </Link>
               <Link href="/#process" className="text-charcoal hover:text-sky-blue font-medium transition-colors">
@@ -84,9 +108,9 @@ export default function RootLayout({
               <div>
                 <h4 className="font-semibold mb-3 text-sky-blue">Services</h4>
                 <ul className="space-y-2 text-sm text-gray-400">
-                  <li><Link href="/#services" className="hover:text-white transition-colors">AI Workflow Automation</Link></li>
-                  <li><Link href="/#services" className="hover:text-white transition-colors">AI Strategy & Consulting</Link></li>
-                  <li><Link href="/#services" className="hover:text-white transition-colors">AI-Powered Marketing</Link></li>
+                  <li><Link href="/services/ai-automation" className="hover:text-white transition-colors">AI Workflow Automation</Link></li>
+                  <li><Link href="/services/ai-consulting" className="hover:text-white transition-colors">AI Strategy & Consulting</Link></li>
+                  <li><Link href="/services/ai-marketing" className="hover:text-white transition-colors">AI-Powered Marketing</Link></li>
                 </ul>
               </div>
               <div>

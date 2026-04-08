@@ -1,6 +1,4 @@
-'use client'
-
-import { useState } from 'react'
+import type { Metadata } from 'next'
 import {
   Clock,
   TrendingDown,
@@ -16,8 +14,32 @@ import {
   UtensilsCrossed,
   Wrench,
   Check,
-  CheckCircle2,
 } from 'lucide-react'
+import ContactForm from './components/ContactForm'
+import PlaybookForm from './components/PlaybookForm'
+import { FAQJsonLd } from './components/JsonLd'
+
+export const metadata: Metadata = {
+  title: 'NYClaw.io — AI Implementation Agency | Westchester County, NY & NYC',
+  description: 'NYClaw.io builds AI agents and automation systems for small businesses in Westchester County, NY and NYC. Cut costs 40%, automate operations 24/7, and scale without adding staff. Free AI audit available.',
+  keywords: 'AI agency, AI consulting, AI implementation, small business AI, AI automation, Westchester NY, NYC AI agency, AI strategy, OODA Loop, AI workflow automation',
+  openGraph: {
+    title: 'NYClaw.io — AI Implementation Agency for Small Businesses',
+    description: 'We build AI agents that automate your business. From appointment booking to client follow-up — no code, no nonsense, just results.',
+    url: 'https://nyclaw.io',
+    siteName: 'NYClaw.io',
+    type: 'website',
+    locale: 'en_US',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'NYClaw.io — AI Implementation Agency',
+    description: 'AI automation for small businesses in Westchester County & NYC. Free AI audit available.',
+  },
+  alternates: {
+    canonical: 'https://nyclaw.io',
+  },
+}
 
 const CheckIcon = () => (
   <Check className="w-4 h-4 text-sky-blue flex-shrink-0" strokeWidth={2.5} />
@@ -39,20 +61,29 @@ const industries = [
   { Icon: Wrench,          label: 'Contractors' },
 ]
 
-export default function Home() {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    businessType: '',
-    challenge: '',
-    message: '',
-  })
-  const [formSubmitted, setFormSubmitted] = useState(false)
-  const [playbookEmail, setPlaybookEmail] = useState('')
-  const [playbookSubmitted, setPlaybookSubmitted] = useState(false)
+const homepageFaqs = [
+  {
+    question: 'What is AI workflow automation for small businesses?',
+    answer: 'AI workflow automation uses artificial intelligence to handle repetitive business tasks like scheduling, follow-ups, data entry, and customer communication — running 24/7 without adding staff. NYClaw.io implements these systems for small businesses in Westchester County and NYC.',
+  },
+  {
+    question: 'How much does AI implementation cost for a small business?',
+    answer: 'NYClaw.io offers AI workflow automation starting at $1,500-$4,000 for setup with $199-$499/month maintenance. AI strategy consulting starts at $500 for a full audit. AI-powered marketing runs $1,000-$3,000/month or performance-based pricing.',
+  },
+  {
+    question: 'How long does it take to implement AI in my business?',
+    answer: 'NYClaw.io deploys AI systems in 30 days using the OODA Loop framework: Week 1 for business audit and opportunity mapping, Weeks 2-3 for building and deploying, and Week 4 for optimization and team training.',
+  },
+  {
+    question: 'What is the OODA Loop framework for AI implementation?',
+    answer: 'The OODA Loop (Observe, Orient, Decide, Act) is a military decision-making framework adapted by NYClaw.io for AI implementation. It provides a systematic approach: observe your business processes, orient around AI opportunities, decide on priorities with clear ROI, and act by building and deploying AI systems.',
+  },
+]
 
+export default function Home() {
   return (
     <div className="min-h-screen bg-white">
+      <FAQJsonLd items={homepageFaqs} />
 
       {/* Hero */}
       <section className="gradient-navy-sky text-white py-28 px-6 relative overflow-hidden">
@@ -67,26 +98,24 @@ export default function Home() {
         <div className="max-w-4xl mx-auto text-center relative z-10">
           <div className="mb-5 inline-flex items-center gap-2 bg-white/10 border border-white/20 rounded-full px-4 py-1.5">
             <span className="w-1.5 h-1.5 rounded-full bg-dark-red inline-block" />
-            <span className="text-xs font-semibold text-white/90 tracking-wide">Serving Westchester County, NY &amp; Beyond</span>
+            <span className="text-xs font-semibold text-white/90 tracking-wide">Serving NYC, Westchester County &amp; Beyond</span>
           </div>
           <h1 className="text-5xl sm:text-6xl font-bold mb-5" style={{ lineHeight: 1.15 }}>
-            AI is reshaping
+            We build AI agents that
             <br />
-            {/* pb-2 + inline-block prevents bg-clip-text from clipping descenders on g/y */}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-blue to-white inline-block pb-2">
-              every industry.
+              automate your business.
             </span>
           </h1>
           <p className="text-xl font-semibold text-white mb-5">
-            Your competitors are already using it. Are you?
+            No code, no nonsense — just results.
           </p>
           <p className="text-lg text-gray-200 mb-10 max-w-2xl mx-auto leading-relaxed">
-            NYClaw.io implements AI tools, automates your operations, and builds AI-powered marketing
-            for small businesses — so you can cut costs, move faster, and scale without adding staff.
+            From appointment booking to client follow-up, we handle the repetitive work so you can focus on growing.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="#contact" className="btn-red text-lg px-8 py-4">Get a Free AI Audit &rarr;</a>
-            <a href="#process" className="px-8 py-4 bg-white/10 text-white font-bold rounded-lg hover:bg-white/20 transition-all duration-300 border border-white/30 inline-block">See How It Works</a>
+            <a href="https://calendly.com/nyclaw-io-proton/30min" className="btn-red text-lg px-8 py-4">Book a Free Strategy Call</a>
+            <a href="#contact" className="px-8 py-4 bg-white/10 text-white font-bold rounded-lg hover:bg-white/20 transition-all duration-300 border border-white/30 inline-block">Get a Free AI Audit &rarr;</a>
           </div>
         </div>
       </section>
@@ -233,6 +262,15 @@ export default function Home() {
             </div>
 
           </div>
+        </div>
+      </section>
+
+      {/* CTA Break */}
+      <section className="py-16 px-6 bg-gradient-to-r from-sky-blue/5 to-navy/5">
+        <div className="max-w-3xl mx-auto text-center">
+          <p className="text-lg text-charcoal/80 mb-6">Ready to see what AI can do for your business?</p>
+          <p className="text-charcoal/60 mb-8">Book a free 30-minute strategy call. No pitch — just clarity on where to start.</p>
+          <a href="https://calendly.com/nyclaw-io-proton/30min" className="btn-red inline-block px-10 py-4 text-lg">Book a Free Strategy Call</a>
         </div>
       </section>
 
@@ -403,93 +441,28 @@ export default function Home() {
       </section>
 
       {/* Lead Magnet */}
-      <section className="py-24 px-6 bg-gradient-to-b from-white to-sky-blue/5">
-        <div className="max-w-2xl mx-auto text-center">
-          <h2 className="text-4xl font-bold text-navy mb-3">Free AI Readiness Guide</h2>
-          <p className="text-lg text-charcoal/70 mb-12">A plain-English guide to where AI fits your business, what it costs, and what to do first. No jargon. No fluff.</p>
-          <div className="bg-white border-2 border-sky-blue/20 rounded-2xl p-10 shadow-sm">
-            {playbookSubmitted ? (
-              <div className="py-4">
-                <CheckCircle2 className="w-12 h-12 text-sky-blue mx-auto mb-4" strokeWidth={1.5} />
-                <h3 className="text-xl font-bold text-navy mb-2">You&apos;re on the list.</h3>
-                <p className="text-charcoal/70 text-sm">We&apos;ll send the guide to your inbox shortly.</p>
+      <PlaybookForm />
+
+      {/* FAQ */}
+      <section className="py-24 px-6 bg-white">
+        <div className="max-w-3xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-navy mb-4">Frequently Asked Questions</h2>
+            <p className="text-lg text-charcoal/70">Common questions about AI implementation for small businesses.</p>
+          </div>
+          <div className="space-y-6">
+            {homepageFaqs.map((faq) => (
+              <div key={faq.question} className="border-b border-gray-100 pb-6">
+                <h3 className="text-lg font-bold text-navy mb-3">{faq.question}</h3>
+                <p className="text-charcoal/70 leading-relaxed">{faq.answer}</p>
               </div>
-            ) : (
-              <>
-                <h3 className="text-xl font-bold text-navy mb-2">Get the Free Guide</h3>
-                <p className="text-sm text-charcoal/70 mb-6">Where AI Fits Your Business &middot; What to Automate First &middot; Real Costs &amp; Timelines &middot; Common Mistakes</p>
-                <form onSubmit={(e) => { e.preventDefault(); setPlaybookSubmitted(true) }} className="flex flex-col sm:flex-row gap-3">
-                  <input type="email" required value={playbookEmail} onChange={(e) => setPlaybookEmail(e.target.value)} placeholder="your@email.com" className="flex-1 px-4 py-3 rounded-lg border-2 border-gray-200 focus:border-sky-blue focus:outline-none text-charcoal text-sm transition-colors" />
-                  <button type="submit" className="btn-red px-6 py-3 text-sm whitespace-nowrap">Send Me the Guide &rarr;</button>
-                </form>
-                <p className="text-xs text-charcoal/40 mt-3">No spam. Unsubscribe anytime.</p>
-              </>
-            )}
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Contact */}
-      <section id="contact" className="gradient-navy-sky py-32 px-6 relative overflow-hidden">
-        <div className="absolute inset-0 opacity-5 pointer-events-none">
-          <div className="absolute top-20 right-20 w-48 h-48 rounded-full border-2 border-sky-blue animate-pulse" />
-          <div className="absolute bottom-20 left-20 w-32 h-32 rounded-full border-2 border-dark-red animate-pulse" style={{ animationDelay: '1s' }} />
-        </div>
-        <div className="max-w-2xl mx-auto text-white relative z-10">
-          <h2 className="text-5xl font-bold mb-4 text-center">Get Your Free AI Audit</h2>
-          <p className="text-center mb-2 text-xl">No commitment. No pressure.</p>
-          <p className="text-center mb-12 text-lg text-gray-200 max-w-xl mx-auto">We&apos;ll review your business, identify your top 3 AI opportunities, and tell you exactly what implementation would look like and cost.</p>
-          {formSubmitted ? (
-            <div className="bg-white/10 p-10 rounded-xl backdrop-blur-sm border border-white/20 text-center">
-              <CheckCircle2 className="w-16 h-16 text-white mx-auto mb-4" strokeWidth={1.5} />
-              <h3 className="text-2xl font-bold text-white mb-3">We got it.</h3>
-              <p className="text-gray-200 text-lg">We review every submission and respond within 24 hours.</p>
-            </div>
-          ) : (
-            <form onSubmit={(e) => { e.preventDefault(); setFormSubmitted(true) }} className="space-y-5 bg-white/10 p-10 rounded-xl backdrop-blur-sm border border-white/20">
-              <div>
-                <label className="block font-bold mb-2 text-sm">Your Name *</label>
-                <input type="text" required value={formData.name} onChange={(e) => setFormData({ ...formData, name: e.target.value })} className="w-full px-4 py-3 rounded-lg bg-white/95 text-charcoal border-2 border-white/20 focus:border-dark-red focus:outline-none placeholder-gray-400 transition-colors" placeholder="Jane Smith" />
-              </div>
-              <div>
-                <label className="block font-bold mb-2 text-sm">Business Email *</label>
-                <input type="email" required value={formData.email} onChange={(e) => setFormData({ ...formData, email: e.target.value })} className="w-full px-4 py-3 rounded-lg bg-white/95 text-charcoal border-2 border-white/20 focus:border-dark-red focus:outline-none placeholder-gray-400 transition-colors" placeholder="jane@yourcompany.com" />
-              </div>
-              <div>
-                <label className="block font-bold mb-2 text-sm">Business Type *</label>
-                <select required value={formData.businessType} onChange={(e) => setFormData({ ...formData, businessType: e.target.value })} className="w-full px-4 py-3 rounded-lg bg-white/95 text-charcoal border-2 border-white/20 focus:border-dark-red focus:outline-none transition-colors">
-                  <option value="">Select your industry...</option>
-                  <option value="real-estate">Real Estate</option>
-                  <option value="legal">Legal Services</option>
-                  <option value="healthcare">Healthcare / Medical</option>
-                  <option value="retail">Retail / E-Commerce</option>
-                  <option value="hospitality">Hospitality / Restaurant</option>
-                  <option value="contractor">Contractor / Trades</option>
-                  <option value="professional-services">Professional Services</option>
-                  <option value="other">Other</option>
-                </select>
-              </div>
-              <div>
-                <label className="block font-bold mb-2 text-sm">Biggest Challenge *</label>
-                <select required value={formData.challenge} onChange={(e) => setFormData({ ...formData, challenge: e.target.value })} className="w-full px-4 py-3 rounded-lg bg-white/95 text-charcoal border-2 border-white/20 focus:border-dark-red focus:outline-none transition-colors">
-                  <option value="">What&apos;s holding your business back?</option>
-                  <option value="time">Saving time on repetitive operations</option>
-                  <option value="cost">Reducing labor and operational costs</option>
-                  <option value="growth">Growing revenue without adding staff</option>
-                  <option value="marketing">Marketing and lead generation</option>
-                  <option value="where-to-start">Not sure where AI fits my business</option>
-                </select>
-              </div>
-              <div>
-                <label className="block font-bold mb-2 text-sm">Tell us about your business</label>
-                <textarea value={formData.message} onChange={(e) => setFormData({ ...formData, message: e.target.value })} className="w-full px-4 py-3 rounded-lg bg-white/95 text-charcoal border-2 border-white/20 focus:border-dark-red focus:outline-none placeholder-gray-400 transition-colors" rows={3} placeholder="How many employees? What does a typical day look like? What takes up the most time?" />
-              </div>
-              <button type="submit" className="w-full btn-red py-4 text-lg">Request My Free Audit &rarr;</button>
-              <p className="text-center text-xs opacity-60">We review every submission and respond within 24 hours. Your info stays private.</p>
-            </form>
-          )}
-        </div>
-      </section>
+      {/* Contact Form */}
+      <ContactForm />
 
     </div>
   )

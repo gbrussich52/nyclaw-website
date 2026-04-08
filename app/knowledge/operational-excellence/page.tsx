@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import { Check } from 'lucide-react'
 
 export const metadata: Metadata = {
   title: 'Operational Excellence for Small Teams: 7 Anti-Patterns | NYClaw.io',
@@ -162,9 +163,9 @@ export default function Article3() {
         </div>
 
         {/* Intro */}
-        <div className="max-w-3xl mx-auto px-6 py-10">
-          <p className="text-xl text-gray-700 leading-relaxed">
-            Small teams fail at operations for the same reasons every time. It's not lack of talent, wrong tools, or insufficient budget. It's seven specific, identifiable patterns — and every single one is preventable if you know what to look for.
+        <div className="max-w-3xl mx-auto px-6 py-12">
+          <p className="text-xl text-gray-700 leading-relaxed mb-8">
+            Small teams fail at operations for the same reasons every time. It&apos;s not lack of talent, wrong tools, or insufficient budget. It&apos;s seven specific, identifiable patterns — and every single one is preventable if you know what to look for.
           </p>
         </div>
 
@@ -200,7 +201,7 @@ export default function Article3() {
                   <ul className="space-y-1">
                     {ap.fix.map((f, fi) => (
                       <li key={fi} className="flex items-start gap-2 text-sm text-gray-700">
-                        <span className="text-sky-blue font-bold mt-0.5">✓</span>
+                        <Check className="w-4 h-4 text-sky-blue flex-shrink-0 mt-0.5" />
                         <span>{f}</span>
                       </li>
                     ))}
@@ -231,9 +232,9 @@ export default function Article3() {
               <tbody>
                 {antiPatterns.map((ap, i) => (
                   <tr key={ap.number} className={i % 2 === 0 ? 'bg-blue-50' : 'bg-white'}>
-                    <td className="border border-gray-200 p-3 font-bold text-sky-blue">{ap.number}</td>
-                    <td className="border border-gray-200 p-3 font-semibold">{ap.title}</td>
-                    <td className="border border-gray-200 p-3 text-gray-600">{ap.rule}</td>
+                    <td className="border border-gray-200 p-3 font-bold text-sky-blue align-top">{ap.number}</td>
+                    <td className="border border-gray-200 p-3 font-semibold align-top">{ap.title}</td>
+                    <td className="border border-gray-200 p-3 text-gray-600 align-top">{ap.rule}</td>
                   </tr>
                 ))}
               </tbody>
