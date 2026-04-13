@@ -138,6 +138,11 @@ export default function RootLayout({
             <div className="border-t border-gray-700 pt-6 text-sm text-gray-500 text-center">
               <p className="mb-1">AI Powered, Human Experience</p>
               <p>© {new Date().getFullYear()} NYClaw.io · AI Implementation Agency · All rights reserved.</p>
+              <p className="mt-2 space-x-4">
+                <Link href="/dmca" className="hover:text-gray-300 transition-colors">DMCA &amp; Copyright</Link>
+                <span>·</span>
+                <a href="mailto:dmca@nyclaw.io" className="hover:text-gray-300 transition-colors">Report Infringement</a>
+              </p>
             </div>
           </div>
         </footer>
