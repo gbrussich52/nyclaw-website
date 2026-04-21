@@ -18,6 +18,14 @@ export const metadata: Metadata = {
 
 const posts = [
   {
+    title: "I Built a CLI That Turns RevenueCat's Charts API Into a Subscription Health Dashboard",
+    description:
+      "How I built revenuecat-pulse — a Python CLI that fetches MRR, churn, and subscription metrics from RevenueCat's Charts API, renders a terminal dashboard with sparklines, and uses Claude AI to generate strategic health insights.",
+    date: 'April 22, 2026',
+    href: '/blog/revenuecat-pulse',
+    tags: ['Open Source', 'RevenueCat', 'Ainsley'],
+  },
+  {
     title: "I Audited My Own AI Agency's Website. It Was Invisible to Google.",
     description:
       "We ran a full SEO audit on our own site and discovered the entire homepage was client-rendered — Google couldn't see a single word. Here's what went wrong and exactly how we fixed it.",
