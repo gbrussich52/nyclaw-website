@@ -29,5 +29,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     // Blog
     { url: `${baseUrl}/blog`, lastModified: new Date(), changeFrequency: 'weekly', priority: 0.8 },
     { url: `${baseUrl}/blog/i-audited-my-own-website`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.7 },
+    { url: `${baseUrl}/blog/agentic-ai-security-best-practices`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.7 },
+    { url: `${baseUrl}/blog/gpt-5-4`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.7 },
+    { url: `${baseUrl}/blog/how-to-succeed`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.7 },
   ]
 }
