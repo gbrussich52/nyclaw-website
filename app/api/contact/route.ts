@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server'
 import { appendFileSync, mkdirSync } from 'fs'
 import { join } from 'path'
 import { sanitize } from '../../../lib/sanitize'
+import { createRateLimiter } from '../../../lib/rate-limit'
 
 interface ContactFormData {
   name: string
@@ -13,30 +14,29 @@ interface ContactFormData {
   smsConsent?: boolean
 }
 
-// Simple in-memory rate limiter (per IP, max 3 submissions per hour)
-const submissionMap = new Map<string, { count: number; resetAt: number }>()
+// Distributed rate limiter (per IP, max 3 submissions per hour).
+// Upstash-backed when provisioned; per-instance in-memory fallback otherwise.
+const contactLimiter = createRateLimiter({
+  name: 'contact',
+  max: 3,
+  windowMs: 3600_000, // 1 hour
+})
 
 function getRateLimitKey(req: NextRequest): string {
   return req.headers.get('x-forwarded-for')?.split(',')[0]?.trim() ?? 'unknown'
 }
 
-function isRateLimited(ip: string): boolean {
-  const now = Date.now()
-  const entry = submissionMap.get(ip)
-  if (!entry || now > entry.resetAt) {
-    submissionMap.set(ip, { count: 1, resetAt: now + 3600_000 })
-    return false
-  }
-  if (entry.count >= 3) return true
-  entry.count++
-  return false
-}
-
-
 export async function POST(req: NextRequest) {
   const ip = getRateLimitKey(req)
-  if (isRateLimited(ip)) {
-    return NextResponse.json({ error: 'Too many submissions' }, { status: 429 })
+  const rate = await contactLimiter.limit(ip)
+  if (!rate.allowed) {
+    const retryAfterSec = rate.resetAt
+      ? Math.max(1, Math.ceil((rate.resetAt - Date.now()) / 1000))
+      : 3600
+    return NextResponse.json(
+      { error: 'Too many submissions' },
+      { status: 429, headers: { 'Retry-After': String(retryAfterSec) } }
+    )
   }
 
   let body: ContactFormData

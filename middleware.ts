@@ -1,27 +1,18 @@
 import { NextRequest, NextResponse } from 'next/server'
+import { createRateLimiter } from './lib/rate-limit'
 
-// In-memory rate limiter (per-IP, resets every WINDOW_MS)
-const rateLimit = new Map<string, { count: number; resetAt: number }>()
-
+// Distributed rate limiter (per-IP, all /api/* routes — see config.matcher).
+// Upstash-backed when provisioned; per-instance in-memory fallback otherwise.
+// Edge-safe (plain fetch), 2s timeout, fail-open — a Redis outage adds at
+// most one bounded roundtrip and never blocks traffic.
 const WINDOW_MS = 60_000 // 1 minute
 const MAX_REQUESTS = 60
 
-function checkRateLimit(ip: string): { allowed: boolean; remaining: number } {
-  const now = Date.now()
-  const entry = rateLimit.get(ip)
-
-  if (!entry || now > entry.resetAt) {
-    rateLimit.set(ip, { count: 1, resetAt: now + WINDOW_MS })
-    return { allowed: true, remaining: MAX_REQUESTS - 1 }
-  }
-
-  entry.count++
-  if (entry.count > MAX_REQUESTS) {
-    return { allowed: false, remaining: 0 }
-  }
-
-  return { allowed: true, remaining: MAX_REQUESTS - entry.count }
-}
+const apiLimiter = createRateLimiter({
+  name: 'api',
+  max: MAX_REQUESTS,
+  windowMs: WINDOW_MS,
+})
 
 // Reject requests with obviously malicious patterns in the URL
 const MALICIOUS_PATTERNS = [
@@ -36,7 +27,7 @@ function hasMaliciousPattern(url: string): boolean {
   return MALICIOUS_PATTERNS.some((p) => p.test(url))
 }
 
-export function middleware(request: NextRequest) {
+export async function middleware(request: NextRequest) {
   const { pathname, search } = request.nextUrl
 
   // Reject malicious patterns in path or query string
@@ -48,16 +39,19 @@ export function middleware(request: NextRequest) {
   // Rate limit by IP
   const ip =
     request.headers.get('x-forwarded-for')?.split(',')[0]?.trim() ?? '127.0.0.1'
-  const { allowed, remaining } = checkRateLimit(ip)
+  const { allowed, remaining, resetAt } = await apiLimiter.limit(ip)
 
   if (!allowed) {
     console.error('[RateLimit] IP blocked:', ip)
+    const retryAfterSec = resetAt
+      ? Math.max(1, Math.ceil((resetAt - Date.now()) / 1000))
+      : 60
     return NextResponse.json(
       { error: 'Too many requests' },
       {
         status: 429,
         headers: {
-          'Retry-After': '60',
+          'Retry-After': String(retryAfterSec),
           'X-RateLimit-Limit': String(MAX_REQUESTS),
           'X-RateLimit-Remaining': '0',
         },
