@@ -4,7 +4,10 @@
  * (e.g. CONVERTKIT_API_KEY, DATABASE_URL, etc.)
  */
 const REQUIRED_ENV_VARS: string[] = [
-  // Example: 'CONVERTKIT_API_KEY',
+  'GMAIL_USER',
+  'GMAIL_APP_PASSWORD',
+  'GOOGLE_SERVICE_ACCOUNT_JSON',
+  'GOOGLE_SHEET_ID',
 ]
 
 export function validateEnv(): void {

@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { appendFileSync, mkdirSync } from 'fs'
 import { join } from 'path'
+import { sanitize } from '../../../lib/sanitize'
 
 interface ContactFormData {
   name: string
@@ -31,10 +32,6 @@ function isRateLimited(ip: string): boolean {
   return false
 }
 
-function sanitize(val: unknown): string {
-  if (typeof val !== 'string') return ''
-  return val.replace(/[<>"']/g, '').slice(0, 500).trim()
-}
 
 export async function POST(req: NextRequest) {
   const ip = getRateLimitKey(req)

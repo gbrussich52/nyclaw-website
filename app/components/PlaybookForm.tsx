@@ -6,6 +6,38 @@ import { CheckCircle2 } from 'lucide-react'
 export default function PlaybookForm() {
   const [playbookEmail, setPlaybookEmail] = useState('')
   const [playbookSubmitted, setPlaybookSubmitted] = useState(false)
+  const [loading, setLoading] = useState(false)
+  const [errorMsg, setErrorMsg] = useState('')
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    setLoading(true)
+    setErrorMsg('')
+    try {
+      // Route requires name/businessType/challenge — use sentinel values for guide-only capture
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: 'Playbook Request',
+          email: playbookEmail,
+          businessType: 'playbook-signup',
+          challenge: 'guide-download',
+          message: 'Requested via Free AI Readiness Guide form',
+        }),
+      })
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}))
+        setErrorMsg((data as { error?: string }).error ?? 'Something went wrong. Please try again.')
+      } else {
+        setPlaybookSubmitted(true)
+      }
+    } catch {
+      setErrorMsg('Network error. Please check your connection and try again.')
+    } finally {
+      setLoading(false)
+    }
+  }
 
   return (
     <section className="py-24 px-6 bg-gradient-to-b from-white to-sky-blue/5">
@@ -23,10 +55,15 @@ export default function PlaybookForm() {
             <>
               <h3 className="text-xl font-bold text-navy mb-2">Get the Free Guide</h3>
               <p className="text-sm text-charcoal/70 mb-6">Where AI Fits Your Business &middot; What to Automate First &middot; Real Costs &amp; Timelines &middot; Common Mistakes</p>
-              <form onSubmit={(e) => { e.preventDefault(); setPlaybookSubmitted(true) }} className="flex flex-col sm:flex-row gap-3">
+              <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3">
                 <input type="email" required value={playbookEmail} onChange={(e) => setPlaybookEmail(e.target.value)} placeholder="your@email.com" className="flex-1 px-4 py-3 rounded-lg border-2 border-gray-200 focus:border-sky-blue focus:outline-none text-charcoal text-sm transition-colors" />
-                <button type="submit" className="btn-red px-6 py-3 text-sm whitespace-nowrap">Send Me the Guide &rarr;</button>
+                <button type="submit" disabled={loading} className="btn-red px-6 py-3 text-sm whitespace-nowrap disabled:opacity-70">
+                  {loading ? 'Sending…' : 'Send Me the Guide →'}
+                </button>
               </form>
+              {errorMsg && (
+                <p className="text-red-500 text-xs mt-3" role="alert">{errorMsg}</p>
+              )}
               <p className="text-xs text-charcoal/40 mt-3">No spam. Unsubscribe anytime.</p>
             </>
           )}
