@@ -9,12 +9,37 @@ export default function ResourceForm() {
   const [submitted, setSubmitted] = useState(false)
   const [loading, setLoading] = useState(false)
 
+  const [errorMsg, setErrorMsg] = useState('')
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setLoading(true)
-    await new Promise(r => setTimeout(r, 1000))
-    setSubmitted(true)
-    setLoading(false)
+    setErrorMsg('')
+    try {
+      // Route requires name/businessType/challenge — map firstName→name, use sentinel values for resource capture
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: formData.firstName,
+          email: formData.email,
+          businessType: formData.company || 'resource-download',
+          challenge: 'guide-download',
+          message: 'Requested via Resources page guide form',
+        }),
+      })
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}))
+        setErrorMsg((data as { error?: string }).error ?? 'Something went wrong. Please try again.')
+        setLoading(false)
+        return
+      }
+      setSubmitted(true)
+    } catch {
+      setErrorMsg('Network error. Please check your connection and try again.')
+    } finally {
+      setLoading(false)
+    }
     if (typeof window !== 'undefined' && (window as unknown as { gtag?: (...args: unknown[]) => void }).gtag) {
       (window as unknown as { gtag: (...args: unknown[]) => void }).gtag('event', 'pdf_download_attempt', { location: 'resources_page' })
     }
@@ -69,6 +94,9 @@ export default function ResourceForm() {
                 placeholder="Your company name"
               />
             </div>
+            {errorMsg && (
+              <p className="text-red-500 text-sm" role="alert">{errorMsg}</p>
+            )}
             <button
               type="submit"
               disabled={loading}

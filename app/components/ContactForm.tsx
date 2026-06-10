@@ -12,6 +12,31 @@ export default function ContactForm() {
     message: '',
   })
   const [formSubmitted, setFormSubmitted] = useState(false)
+  const [loading, setLoading] = useState(false)
+  const [errorMsg, setErrorMsg] = useState('')
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    setLoading(true)
+    setErrorMsg('')
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      })
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}))
+        setErrorMsg((data as { error?: string }).error ?? 'Something went wrong. Please try again.')
+      } else {
+        setFormSubmitted(true)
+      }
+    } catch {
+      setErrorMsg('Network error. Please check your connection and try again.')
+    } finally {
+      setLoading(false)
+    }
+  }
 
   return (
     <section id="contact" className="gradient-navy-sky py-32 px-6 relative overflow-hidden">
@@ -30,7 +55,7 @@ export default function ContactForm() {
             <p className="text-gray-200 text-lg">We review every submission and respond within 24 hours.</p>
           </div>
         ) : (
-          <form onSubmit={(e) => { e.preventDefault(); setFormSubmitted(true) }} className="space-y-5 bg-white/10 p-10 rounded-xl backdrop-blur-sm border border-white/20">
+          <form onSubmit={handleSubmit} className="space-y-5 bg-white/10 p-10 rounded-xl backdrop-blur-sm border border-white/20">
             <div>
               <label className="block font-bold mb-2 text-sm">Your Name *</label>
               <input type="text" required value={formData.name} onChange={(e) => setFormData({ ...formData, name: e.target.value })} className="w-full px-4 py-3 rounded-lg bg-white/95 text-charcoal border-2 border-white/20 focus:border-dark-red focus:outline-none placeholder-gray-400 transition-colors" placeholder="Jane Smith" />
@@ -68,7 +93,12 @@ export default function ContactForm() {
               <label className="block font-bold mb-2 text-sm">Tell us about your business</label>
               <textarea value={formData.message} onChange={(e) => setFormData({ ...formData, message: e.target.value })} className="w-full px-4 py-3 rounded-lg bg-white/95 text-charcoal border-2 border-white/20 focus:border-dark-red focus:outline-none placeholder-gray-400 transition-colors" rows={3} placeholder="How many employees? What does a typical day look like? What takes up the most time?" />
             </div>
-            <button type="submit" className="w-full btn-red py-4 text-lg">Request My Free Audit &rarr;</button>
+            {errorMsg && (
+              <p className="text-red-300 text-sm text-center" role="alert">{errorMsg}</p>
+            )}
+            <button type="submit" disabled={loading} className="w-full btn-red py-4 text-lg disabled:opacity-70">
+              {loading ? 'Submitting…' : 'Request My Free Audit →'}
+            </button>
             <p className="text-center text-xs opacity-60">We review every submission and respond within 24 hours. Your info stays private.</p>
           </form>
         )}
