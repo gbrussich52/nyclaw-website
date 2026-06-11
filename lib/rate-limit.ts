@@ -171,10 +171,12 @@ export function createMemoryRateLimiter(config: RateLimitConfig): RateLimiter {
  * integration injects — same REST protocol, different names).
  */
 export function getRedisRestCredentials(): { url: string; token: string } | null {
+  // `||` not `??`: a set-but-empty env var must fall through to the KV names,
+  // otherwise an empty UPSTASH_* placeholder silently disables Redis entirely.
   const url =
-    process.env.UPSTASH_REDIS_REST_URL ?? process.env.KV_REST_API_URL
+    process.env.UPSTASH_REDIS_REST_URL || process.env.KV_REST_API_URL
   const token =
-    process.env.UPSTASH_REDIS_REST_TOKEN ?? process.env.KV_REST_API_TOKEN
+    process.env.UPSTASH_REDIS_REST_TOKEN || process.env.KV_REST_API_TOKEN
   return url && token ? { url, token } : null
 }
 
