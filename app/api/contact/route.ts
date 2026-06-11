@@ -3,6 +3,7 @@ import { appendFileSync, mkdirSync } from 'fs'
 import { join } from 'path'
 import { sanitize } from '../../../lib/sanitize'
 import { createRateLimiter } from '../../../lib/rate-limit'
+import { storeLeadInRedis } from '../../../lib/leads'
 
 interface ContactFormData {
   name: string
@@ -65,16 +66,27 @@ export async function POST(req: NextRequest) {
   const timestamp = new Date().toISOString()
   const entry = { timestamp, name, email, phone, businessType, challenge, message, smsConsent }
 
-  // 1. Save to local leads file (append JSON lines)
+  // Track which persistence layers actually succeeded. The visitor only gets
+  // a success response if at least one layer durably captured the lead —
+  // a false "ok" here means a lost lead and lost revenue.
+  let persisted = false
+
+  // 1. Durable backstop: Upstash Redis (works even when email/Sheets are down)
+  if (await storeLeadInRedis(entry)) {
+    persisted = true
+  }
+
+  // 2. Local leads file — meaningful in local dev only (read-only fs on Vercel)
   try {
     const leadsDir = join(process.cwd(), 'data')
     mkdirSync(leadsDir, { recursive: true })
     appendFileSync(join(leadsDir, 'leads.jsonl'), JSON.stringify(entry) + '\n')
+    persisted = true
   } catch (err) {
     console.error('[contact] Failed to write leads file:', err)
   }
 
-  // 2. Send email notification (if configured)
+  // 3. Send email notification (if configured)
   const gmailUser = process.env.GMAIL_USER
   const gmailPass = process.env.GMAIL_APP_PASSWORD
   const notifyEmail = process.env.NOTIFY_EMAIL
@@ -103,13 +115,14 @@ export async function POST(req: NextRequest) {
           `Submitted: ${timestamp}`,
         ].join('\n'),
       })
+      persisted = true
     } catch (err) {
       console.error('[contact] Email notification failed:', err)
-      // Don't fail the request — lead is still saved
+      // Don't fail the request on email alone — other layers may have it
     }
   }
 
-  // 3. Append to Google Sheet (if configured)
+  // 4. Append to Google Sheet (if configured)
   const sheetsKeyRaw = process.env.GOOGLE_SERVICE_ACCOUNT_JSON
   const sheetId = process.env.GOOGLE_SHEET_ID
 
@@ -153,10 +166,21 @@ export async function POST(req: NextRequest) {
           ]],
         },
       })
+      persisted = true
     } catch (err) {
       console.error('[contact] Google Sheets append failed:', err)
-      // Don't fail the request — lead is saved to local file as fallback
+      // Don't fail the request on Sheets alone — other layers may have it
     }
+  }
+
+  if (!persisted) {
+    // Every layer failed — do NOT lie to the visitor with a 200. They can
+    // retry or reach out another way instead of assuming we have their info.
+    console.error('[contact] LEAD LOST: all persistence layers failed', { timestamp, email })
+    return NextResponse.json(
+      { error: 'Unable to save your submission right now. Please try again or email us directly.' },
+      { status: 500 }
+    )
   }
 
   return NextResponse.json({ ok: true })

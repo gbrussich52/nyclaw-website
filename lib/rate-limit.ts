@@ -170,14 +170,19 @@ export function createMemoryRateLimiter(config: RateLimitConfig): RateLimiter {
  * provisioning) or KV_REST_API_* (what the Vercel Marketplace "Upstash KV"
  * integration injects — same REST protocol, different names).
  */
-export function createRateLimiter(config: RateLimitConfig): RateLimiter {
+export function getRedisRestCredentials(): { url: string; token: string } | null {
   const url =
     process.env.UPSTASH_REDIS_REST_URL ?? process.env.KV_REST_API_URL
   const token =
     process.env.UPSTASH_REDIS_REST_TOKEN ?? process.env.KV_REST_API_TOKEN
+  return url && token ? { url, token } : null
+}
 
-  if (url && token) {
-    return createUpstashRateLimiter(config, url, token)
+export function createRateLimiter(config: RateLimitConfig): RateLimiter {
+  const creds = getRedisRestCredentials()
+
+  if (creds) {
+    return createUpstashRateLimiter(config, creds.url, creds.token)
   }
 
   console.warn(
