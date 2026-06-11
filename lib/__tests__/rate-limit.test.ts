@@ -182,9 +182,20 @@ describe('createRateLimiter (factory)', () => {
   it('uses the in-memory backend when Upstash env vars are unset', () => {
     vi.stubEnv('UPSTASH_REDIS_REST_URL', '')
     vi.stubEnv('UPSTASH_REDIS_REST_TOKEN', '')
+    vi.stubEnv('KV_REST_API_URL', '')
+    vi.stubEnv('KV_REST_API_TOKEN', '')
     const limiter = createRateLimiter(CONFIG)
     expect(limiter.backend).toBe('memory')
     expect(console.warn).toHaveBeenCalled()
+  })
+
+  it('uses the Upstash backend via the Marketplace KV_REST_API_* names', () => {
+    vi.stubEnv('UPSTASH_REDIS_REST_URL', '')
+    vi.stubEnv('UPSTASH_REDIS_REST_TOKEN', '')
+    vi.stubEnv('KV_REST_API_URL', URL_BASE)
+    vi.stubEnv('KV_REST_API_TOKEN', TOKEN)
+    const limiter = createRateLimiter(CONFIG)
+    expect(limiter.backend).toBe('upstash')
   })
 
   it('uses the Upstash backend when both env vars are set', () => {
@@ -197,6 +208,8 @@ describe('createRateLimiter (factory)', () => {
   it('falls back to memory when only one env var is set', () => {
     vi.stubEnv('UPSTASH_REDIS_REST_URL', URL_BASE)
     vi.stubEnv('UPSTASH_REDIS_REST_TOKEN', '')
+    vi.stubEnv('KV_REST_API_URL', '')
+    vi.stubEnv('KV_REST_API_TOKEN', '')
     const limiter = createRateLimiter(CONFIG)
     expect(limiter.backend).toBe('memory')
   })

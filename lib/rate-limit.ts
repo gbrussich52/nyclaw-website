@@ -162,20 +162,26 @@ export function createMemoryRateLimiter(config: RateLimitConfig): RateLimiter {
 // ---------------------------------------------------------------------------
 
 /**
- * Create a rate limiter. Uses Upstash Redis when UPSTASH_REDIS_REST_URL and
- * UPSTASH_REDIS_REST_TOKEN are set; otherwise the per-instance in-memory
- * fallback (logged once so the degraded mode is visible in production).
+ * Create a rate limiter. Uses Upstash Redis when REST credentials are set;
+ * otherwise the per-instance in-memory fallback (logged once so the degraded
+ * mode is visible in production).
+ *
+ * Accepts either env naming convention: UPSTASH_REDIS_REST_* (direct Upstash
+ * provisioning) or KV_REST_API_* (what the Vercel Marketplace "Upstash KV"
+ * integration injects — same REST protocol, different names).
  */
 export function createRateLimiter(config: RateLimitConfig): RateLimiter {
-  const url = process.env.UPSTASH_REDIS_REST_URL
-  const token = process.env.UPSTASH_REDIS_REST_TOKEN
+  const url =
+    process.env.UPSTASH_REDIS_REST_URL ?? process.env.KV_REST_API_URL
+  const token =
+    process.env.UPSTASH_REDIS_REST_TOKEN ?? process.env.KV_REST_API_TOKEN
 
   if (url && token) {
     return createUpstashRateLimiter(config, url, token)
   }
 
   console.warn(
-    `[rate-limit:${config.name}] UPSTASH_REDIS_REST_URL/TOKEN not set — using per-instance in-memory fallback`
+    `[rate-limit:${config.name}] no Upstash/KV REST credentials set — using per-instance in-memory fallback`
   )
   return createMemoryRateLimiter(config)
 }
