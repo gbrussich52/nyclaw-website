@@ -51,7 +51,11 @@ function csvCell(v: unknown): string {
   let s: string
   if (typeof v === 'boolean') s = v ? 'YES' : 'No'
   else s = v == null ? '' : String(v)
-  // Escape per RFC 4180 if the cell contains a delimiter, quote, or newline.
+  // CSV/formula-injection guard: lead fields come from an untrusted public
+  // form. If a cell starts with a character a spreadsheet treats as a formula
+  // trigger, prefix it with a single quote so it opens as literal text.
+  if (/^[=+\-@\t\r]/.test(s)) s = "'" + s
+  // Then escape per RFC 4180 if it contains a delimiter, quote, or newline.
   if (/[",\n\r]/.test(s)) s = '"' + s.replace(/"/g, '""') + '"'
   return s
 }
