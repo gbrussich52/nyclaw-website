@@ -9,6 +9,10 @@ export function LocalBusinessJsonLd() {
     description: 'AI implementation agency for small businesses. Strategy, automation, and AI-powered marketing serving Westchester County, NY and NYC.',
     url: 'https://nyclaw.io',
     email: 'hello@nyclaw.io',
+    sameAs: [
+      'https://www.linkedin.com/company/nyclaw-io',
+      'https://twitter.com/AinsleyNYC',
+    ],
     areaServed: [
       {
         '@type': 'City',
@@ -116,11 +120,19 @@ export function ArticleJsonLd({
       '@type': 'Organization',
       name: 'NYClaw.io',
       url: 'https://nyclaw.io',
+      sameAs: [
+        'https://www.linkedin.com/company/nyclaw-io',
+        'https://twitter.com/AinsleyNYC',
+      ],
     },
     publisher: {
       '@type': 'Organization',
       name: 'NYClaw.io',
       url: 'https://nyclaw.io',
+      sameAs: [
+        'https://www.linkedin.com/company/nyclaw-io',
+        'https://twitter.com/AinsleyNYC',
+      ],
     },
   }
 
