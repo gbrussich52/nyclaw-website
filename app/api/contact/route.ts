@@ -122,56 +122,10 @@ export async function POST(req: NextRequest) {
     }
   }
 
-  // 4. Append to Google Sheet (if configured)
-  const sheetsKeyRaw = process.env.GOOGLE_SERVICE_ACCOUNT_JSON
-  const sheetId = process.env.GOOGLE_SHEET_ID
-
-  if (sheetsKeyRaw && sheetId) {
-    try {
-      const { google } = await import('googleapis')
-      const credentials = JSON.parse(sheetsKeyRaw)
-      const auth = new google.auth.GoogleAuth({
-        credentials,
-        scopes: ['https://www.googleapis.com/auth/spreadsheets'],
-      })
-      const sheets = google.sheets({ version: 'v4', auth })
-
-      // Ensure header row exists on first run
-      const existing = await sheets.spreadsheets.values.get({
-        spreadsheetId: sheetId,
-        range: 'Sheet1!A1',
-      })
-      if (!existing.data.values?.length) {
-        await sheets.spreadsheets.values.update({
-          spreadsheetId: sheetId,
-          range: 'Sheet1!A1',
-          valueInputOption: 'RAW',
-          requestBody: {
-            values: [['Timestamp', 'Name', 'Email', 'Phone', 'SMS Consent', 'Business Type', 'Challenge', 'Message']],
-          },
-        })
-      }
-
-      // Append lead row
-      await sheets.spreadsheets.values.append({
-        spreadsheetId: sheetId,
-        range: 'Sheet1!A:H',
-        valueInputOption: 'RAW',
-        insertDataOption: 'INSERT_ROWS',
-        requestBody: {
-          values: [[
-            timestamp, name, email, phone,
-            smsConsent ? 'YES' : 'No',
-            businessType, challenge, message,
-          ]],
-        },
-      })
-      persisted = true
-    } catch (err) {
-      console.error('[contact] Google Sheets append failed:', err)
-      // Don't fail the request on Sheets alone — other layers may have it
-    }
-  }
+  // 4. (Leads are read back for viewing/export via the password-protected
+  //    /api/admin/leads endpoint, which reads the Redis store above. No
+  //    Google Sheets integration — a Google org policy blocked the clean
+  //    service-account + Apps Script paths, and Redis is the durable source.)
 
   if (!persisted) {
     // Every layer failed — do NOT lie to the visitor with a 200. They can

@@ -65,3 +65,52 @@ export async function storeLeadInRedis(
     return false
   }
 }
+
+/**
+ * Read all stored leads back (newest first, as LPUSH ordering). Returns [] on
+ * any failure — callers render an empty list rather than erroring. Used by the
+ * password-protected admin export endpoint.
+ */
+export async function getLeadsFromRedis(): Promise<Record<string, unknown>[]> {
+  const creds = getRedisRestCredentials()
+  if (!creds) {
+    console.warn('[leads] no Upstash/KV REST credentials set — cannot read leads')
+    return []
+  }
+
+  try {
+    const res = await fetch(creds.url, {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${creds.token}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(['LRANGE', LEADS_KEY, '0', '-1']),
+      signal: AbortSignal.timeout(REDIS_TIMEOUT_MS),
+    })
+
+    if (!res.ok) {
+      console.error(`[leads] Redis read failed: HTTP ${res.status}`)
+      return []
+    }
+
+    const data = (await res.json()) as { result?: string[]; error?: string }
+    if (data.error || !Array.isArray(data.result)) {
+      console.error('[leads] Redis LRANGE errored:', data.error ?? 'malformed response')
+      return []
+    }
+
+    return data.result
+      .map((s) => {
+        try {
+          return JSON.parse(s) as Record<string, unknown>
+        } catch {
+          return null
+        }
+      })
+      .filter((x): x is Record<string, unknown> => x !== null)
+  } catch (err) {
+    console.error('[leads] Redis read failed:', err)
+    return []
+  }
+}

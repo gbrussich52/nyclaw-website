@@ -6,8 +6,7 @@
 const REQUIRED_ENV_VARS: string[] = [
   'GMAIL_USER',
   'GMAIL_APP_PASSWORD',
-  'GOOGLE_SERVICE_ACCOUNT_JSON',
-  'GOOGLE_SHEET_ID',
+  'ADMIN_PASSWORD',
 ]
 
 export function validateEnv(): void {
