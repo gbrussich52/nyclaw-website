@@ -15,11 +15,18 @@ html {
 body {
   background: #ffffff;
   color: #2c2c2c;
-  font-family: var(--font-dm-sans), -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: var(--font-body), -apple-system, BlinkMacSystemFont, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-syne), -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: var(--font-display), -apple-system, BlinkMacSystemFont, sans-serif;
+  letter-spacing: -0.02em; /* tighter display tracking reads as premium */
+}
+
+h1 {
+  letter-spacing: -0.035em;
 }
 
 /* Neon glow effect */
@@ -123,4 +130,202 @@ h1, h2, h3, h4, h5, h6 {
 .card-hover:hover {
   box-shadow: 0 0 20px rgba(0, 102, 204, 0.5);
   border-color: #0066cc;
+}
+
+/* ============================================================
+   DUSK SYSTEM — dark, AI-native surfaces + accents
+   (added for the 2026 revamp; light classes above untouched)
+   ============================================================ */
+
+/* Dark section base. Navy-tinted near-black so brand reads through. */
+.dusk {
+  background-color: #07080f;
+  color: #e7e9f3;
+}
+
+/* Layered dusk gradient for hero / marquee sections. */
+.dusk-hero {
+  background:
+    radial-gradient(60% 50% at 75% 18%, rgba(99, 102, 241, 0.20) 0%, transparent 60%),
+    radial-gradient(55% 45% at 20% 90%, rgba(34, 211, 238, 0.14) 0%, transparent 60%),
+    linear-gradient(180deg, #07080f 0%, #0d1020 60%, #07080f 100%);
+}
+
+/* AI-native gradient text — sky → cyan → indigo. */
+.text-gradient-ai {
+  background-image: linear-gradient(100deg, #2e8bff 0%, #22d3ee 45%, #8b5cf6 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Glass surface for cards/nav on dark. */
+.glass {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.glass-card {
+  @apply rounded-2xl p-6 transition-all duration-300;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.glass-card:hover {
+  border-color: rgba(46, 139, 255, 0.45);
+  box-shadow: 0 0 30px rgba(46, 139, 255, 0.18);
+  transform: translateY(-2px);
+}
+
+/* Dark-glass navigation bar (global). */
+.nav-dusk {
+  background: rgba(7, 8, 15, 0.72);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+/* Primary AI CTA — luminous indigo → cyan gradient. */
+.btn-ai {
+  @apply px-8 py-4 font-bold rounded-lg transition-all duration-300 inline-block text-center;
+  color: #ffffff;
+  background: linear-gradient(100deg, #2e8bff 0%, #6366f1 55%, #22d3ee 110%);
+  box-shadow: 0 6px 24px rgba(99, 102, 241, 0.35), 0 0 24px rgba(34, 211, 238, 0.18);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.btn-ai:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 34px rgba(99, 102, 241, 0.5), 0 0 34px rgba(34, 211, 238, 0.3);
+}
+
+.btn-ai:active {
+  transform: translateY(0);
+}
+
+/* Ghost button for dark surfaces. */
+.btn-ghost-dusk {
+  @apply px-8 py-4 font-bold rounded-lg transition-all duration-300 inline-block text-center;
+  color: #e7e9f3;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.btn-ghost-dusk:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.32);
+  transform: translateY(-2px);
+}
+
+/* Eyebrow pill on dark. */
+.pill-dusk {
+  @apply inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-xs font-semibold tracking-wide;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: rgba(231, 233, 243, 0.92);
+}
+
+/* Hairline grid texture for dark sections. */
+.dusk-grid {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  background-size: 64px 64px;
+  -webkit-mask-image: radial-gradient(70% 60% at 50% 40%, #000 0%, transparent 80%);
+  mask-image: radial-gradient(70% 60% at 50% 40%, #000 0%, transparent 80%);
+}
+
+/* Slow hue drift for aurora glows — adds living, premium motion. */
+@keyframes hue {
+  0%, 100% { filter: hue-rotate(0deg); }
+  50% { filter: hue-rotate(26deg); }
+}
+.animate-hue {
+  animation: hue 18s ease-in-out infinite;
+}
+
+/* Film-grain texture overlay for dusk surfaces (inline SVG noise, 0 network). */
+.grain::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.045;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Infinite capability marquee. */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.marquee {
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
+}
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee 34s linear infinite;
+}
+.marquee:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+/* Flowing energy along the OODA connector line. */
+@keyframes flow {
+  from { background-position: 0% 0; }
+  to { background-position: -200% 0; }
+}
+.connector-flow {
+  background-image: linear-gradient(
+    90deg,
+    transparent 0%,
+    #2e8bff 20%,
+    #22d3ee 40%,
+    #8b5cf6 60%,
+    transparent 80%
+  );
+  background-size: 200% 100%;
+  animation: flow 5s linear infinite;
+}
+
+/* Gradient-ring lift for cards (light surfaces). */
+.lift {
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+.lift:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 44px rgba(2, 6, 23, 0.12);
+}
+
+/* Glass capability chip for the marquee. */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.55rem 1rem;
+  border-radius: 9999px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #cdd3e6;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  white-space: nowrap;
+}
+
+/* Respect reduced-motion: kill the looping animations. */
+@media (prefers-reduced-motion: reduce) {
+  .animate-aurora,
+  .animate-float,
+  .animate-pulse-slow,
+  .animate-hue,
+  .marquee-track,
+  .connector-flow {
+    animation: none !important;
+  }
 }

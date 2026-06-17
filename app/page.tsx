@@ -14,10 +14,34 @@ import {
   UtensilsCrossed,
   Wrench,
   Check,
+  Bot,
+  Mail,
+  CalendarClock,
+  Phone,
+  MessageSquare,
+  Database,
+  Workflow,
+  Globe,
 } from 'lucide-react'
 import ContactForm from './components/ContactForm'
 import PlaybookForm from './components/PlaybookForm'
 import { FAQJsonLd } from './components/JsonLd'
+import HeroHelix from './components/HeroHelix'
+import Reveal from './components/Reveal'
+import CountUp from './components/CountUp'
+import { CALENDLY_URL } from './config'
+
+const capabilities = [
+  { Icon: Bot,             label: 'GPT & Claude Agents' },
+  { Icon: Workflow,        label: 'Workflow Automation' },
+  { Icon: Database,        label: 'CRM Sync' },
+  { Icon: Mail,            label: 'Email & SMS Sequences' },
+  { Icon: CalendarClock,   label: 'Smart Scheduling' },
+  { Icon: Phone,           label: 'AI Voice Agents' },
+  { Icon: MessageSquare,   label: 'Customer Support Bots' },
+  { Icon: Globe,           label: 'Web Scraping & Research' },
+  { Icon: BarChart2,       label: 'Live Dashboards' },
+]
 
 export const metadata: Metadata = {
   title: 'NYClaw.io — AI Implementation Agency | Westchester County, NY & NYC',
@@ -86,36 +110,74 @@ export default function Home() {
       <FAQJsonLd items={homepageFaqs} />
 
       {/* Hero */}
-      <section className="gradient-navy-sky text-white py-28 px-6 relative overflow-hidden">
-        <div className="absolute inset-0 opacity-5 pointer-events-none">
-          <div className="absolute top-10 right-10 w-40 h-40 rounded-full border-2 border-sky-blue animate-pulse" />
-          <div className="absolute bottom-10 left-10 w-32 h-32 rounded-full border-2 border-dark-red animate-pulse" style={{ animationDelay: '1s' }} />
-          <div className="absolute inset-0" style={{
-            backgroundImage: 'linear-gradient(rgba(255,255,255,0.15) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.15) 1px, transparent 1px)',
-            backgroundSize: '80px 80px'
-          }} />
+      <section className="dusk-hero grain relative overflow-hidden min-h-[88vh] flex items-center">
+        {/* Hairline grid */}
+        <div className="absolute inset-0 dusk-grid pointer-events-none" />
+
+        {/* Full-bleed DNA data-network — weighted right, faded toward the copy */}
+        <div
+          className="absolute inset-0 pointer-events-none opacity-60 md:opacity-100"
+          style={{
+            WebkitMaskImage: 'linear-gradient(90deg, transparent 0%, transparent 20%, #000 52%)',
+            maskImage: 'linear-gradient(90deg, transparent 0%, transparent 20%, #000 52%)',
+          }}
+        >
+          <HeroHelix centerXRatio={0.64} />
         </div>
-        <div className="max-w-4xl mx-auto text-center relative z-10">
-          <div className="mb-5 inline-flex items-center gap-2 bg-white/10 border border-white/20 rounded-full px-4 py-1.5">
-            <span className="w-1.5 h-1.5 rounded-full bg-dark-red inline-block" />
-            <span className="text-xs font-semibold text-white/90 tracking-wide">Serving NYC, Westchester County &amp; Beyond</span>
+
+        {/* Aurora glows */}
+        <div className="absolute -top-32 right-[-6rem] w-[42rem] h-[42rem] rounded-full bg-indigo/20 blur-3xl animate-aurora animate-hue pointer-events-none" />
+        <div
+          className="absolute bottom-[-12rem] left-[-8rem] w-[34rem] h-[34rem] rounded-full bg-cyan/10 blur-3xl animate-aurora animate-hue pointer-events-none"
+          style={{ animationDelay: '-7s' }}
+        />
+
+        {/* Left scrim keeps the copy crisp over the animation */}
+        <div className="absolute inset-0 pointer-events-none bg-gradient-to-r from-dusk-950 via-dusk-950/85 to-transparent" />
+
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-6 py-24 md:py-28">
+          <div className="max-w-2xl text-center lg:text-left">
+            <div className="pill-dusk mb-6">
+              <span className="w-1.5 h-1.5 rounded-full bg-cyan inline-block animate-pulse-slow" />
+              Serving NYC, Westchester County &amp; Beyond
+            </div>
+            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-white mb-5" style={{ lineHeight: 1.05 }}>
+              We build AI agents that{' '}
+              <span className="text-gradient-ai">automate your business.</span>
+            </h1>
+            <p className="text-xl font-semibold text-white/90 mb-4">
+              No code, no nonsense — just results.
+            </p>
+            <p className="text-lg text-slate-300 mb-9 max-w-xl mx-auto lg:mx-0 leading-relaxed">
+              From appointment booking to client follow-up, we handle the repetitive work so you can focus on growing.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+              <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer" className="btn-ai text-lg">
+                Book a Free Strategy Call
+              </a>
+              <a href="#contact" className="btn-ghost-dusk text-lg">
+                Get a Free AI Audit &rarr;
+              </a>
+            </div>
+            <div className="mt-9 flex flex-wrap gap-x-6 gap-y-2 justify-center lg:justify-start text-sm text-slate-400">
+              <span className="inline-flex items-center gap-2"><span className="text-cyan">⚡</span> 30-day deployment</span>
+              <span className="inline-flex items-center gap-2"><span className="text-cyan">◆</span> No code required</span>
+              <span className="inline-flex items-center gap-2"><span className="text-cyan">●</span> 24/7 automation</span>
+            </div>
           </div>
-          <h1 className="text-5xl sm:text-6xl font-bold mb-5" style={{ lineHeight: 1.15 }}>
-            We build AI agents that
-            <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-blue to-white inline-block pb-2">
-              automate your business.
-            </span>
-          </h1>
-          <p className="text-xl font-semibold text-white mb-5">
-            No code, no nonsense — just results.
-          </p>
-          <p className="text-lg text-gray-200 mb-10 max-w-2xl mx-auto leading-relaxed">
-            From appointment booking to client follow-up, we handle the repetitive work so you can focus on growing.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="https://calendly.com/nyclaw-io-proton/30min" className="btn-red text-lg px-8 py-4">Book a Free Strategy Call</a>
-            <a href="#contact" className="px-8 py-4 bg-white/10 text-white font-bold rounded-lg hover:bg-white/20 transition-all duration-300 border border-white/30 inline-block">Get a Free AI Audit &rarr;</a>
+        </div>
+      </section>
+
+      {/* Capabilities marquee */}
+      <section className="dusk grain relative overflow-hidden border-y border-white/10 py-6">
+        <div className="marquee">
+          <div className="marquee-track gap-3 pr-3">
+            {[...capabilities, ...capabilities].map(({ Icon, label }, i) => (
+              <span key={i} className="chip">
+                <Icon className="w-4 h-4 text-sky-bright" strokeWidth={1.75} />
+                {label}
+              </span>
+            ))}
           </div>
         </div>
       </section>
@@ -124,16 +186,20 @@ export default function Home() {
       <section className="py-16 px-6 bg-white">
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            {[
-              { number: '40%', label: 'Avg. Cost Reduction' },
-              { number: '8x',  label: 'Productivity Gains' },
-              { number: '30',  label: 'Days to Deployment' },
-              { number: '24/7', label: 'Automated Operations' },
-            ].map((stat) => (
-              <div key={stat.label} className="text-center py-8 px-4 bg-gradient-to-b from-sky-blue/5 to-white rounded-2xl border border-sky-blue/10">
-                <div className="text-5xl font-extrabold text-sky-blue mb-2 leading-none">{stat.number}</div>
-                <div className="text-sm font-semibold text-charcoal/70 uppercase tracking-wide">{stat.label}</div>
-              </div>
+            {([
+              { to: 40, suffix: '%', label: 'Avg. Cost Reduction' },
+              { to: 8,  suffix: 'x', label: 'Productivity Gains' },
+              { to: 30, suffix: '',  label: 'Days to Deployment' },
+              { raw: '24/7',         label: 'Automated Operations' },
+            ] as { to?: number; suffix?: string; raw?: string; label: string }[]).map((stat, i) => (
+              <Reveal key={stat.label} delay={i * 90}>
+                <div className="text-center py-8 px-4 bg-gradient-to-b from-sky-blue/5 to-white rounded-2xl border border-sky-blue/10 lift">
+                  <div className="text-5xl font-extrabold text-sky-blue mb-2 leading-none">
+                    <CountUp to={stat.to} suffix={stat.suffix} raw={stat.raw} />
+                  </div>
+                  <div className="text-sm font-semibold text-charcoal/70 uppercase tracking-wide">{stat.label}</div>
+                </div>
+              </Reveal>
             ))}
           </div>
         </div>
@@ -150,14 +216,16 @@ export default function Home() {
             </p>
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {painPoints.map(({ Icon, title, desc }) => (
-              <div key={title} className="bg-white border-2 border-gray-100 rounded-2xl p-6 hover:border-sky-blue hover:shadow-lg transition-all duration-300">
-                <div className="w-10 h-10 rounded-xl bg-navy/5 flex items-center justify-center mb-4">
-                  <Icon className="w-5 h-5 text-navy" strokeWidth={1.5} />
+            {painPoints.map(({ Icon, title, desc }, i) => (
+              <Reveal key={title} delay={i * 80}>
+                <div className="lift h-full bg-white border-2 border-gray-100 rounded-2xl p-6 hover:border-sky-blue">
+                  <div className="w-10 h-10 rounded-xl bg-navy/5 flex items-center justify-center mb-4">
+                    <Icon className="w-5 h-5 text-navy" strokeWidth={1.5} />
+                  </div>
+                  <h3 className="text-base font-bold text-navy mb-2">{title}</h3>
+                  <p className="text-sm text-charcoal/70 leading-relaxed">{desc}</p>
                 </div>
-                <h3 className="text-base font-bold text-navy mb-2">{title}</h3>
-                <p className="text-sm text-charcoal/70 leading-relaxed">{desc}</p>
-              </div>
+              </Reveal>
             ))}
           </div>
         </div>
@@ -173,7 +241,7 @@ export default function Home() {
           </div>
           <div className="grid md:grid-cols-3 gap-8 items-stretch">
 
-            <div className="card-hover flex flex-col">
+            <div className="card-hover lift flex flex-col">
               <div className="flex items-center gap-3 mb-4">
                 <div className="w-10 h-10 rounded-xl bg-sky-blue/10 flex items-center justify-center flex-shrink-0">
                   <Settings2 className="w-5 h-5 text-sky-blue" strokeWidth={1.5} />
@@ -204,7 +272,7 @@ export default function Home() {
               <a href="#contact" className="btn-red w-full text-center block py-4">Build My Automation &rarr;</a>
             </div>
 
-            <div className="card-hover flex flex-col">
+            <div className="card-hover lift flex flex-col">
               <div className="flex items-center gap-3 mb-4">
                 <div className="w-10 h-10 rounded-xl bg-navy/10 flex items-center justify-center flex-shrink-0">
                   <Target className="w-5 h-5 text-navy" strokeWidth={1.5} />
@@ -235,7 +303,7 @@ export default function Home() {
               <a href="#contact" className="btn-red w-full text-center block py-4">Book My AI Audit &rarr;</a>
             </div>
 
-            <div className="card-hover flex flex-col">
+            <div className="card-hover lift flex flex-col">
               <div className="flex items-center gap-3 mb-4">
                 <div className="w-10 h-10 rounded-xl bg-dark-red/10 flex items-center justify-center flex-shrink-0">
                   <Megaphone className="w-5 h-5 text-dark-red" strokeWidth={1.5} />
@@ -266,45 +334,51 @@ export default function Home() {
       </section>
 
       {/* CTA Break */}
-      <section className="py-16 px-6 bg-gradient-to-r from-sky-blue/5 to-navy/5">
-        <div className="max-w-3xl mx-auto text-center">
-          <p className="text-lg text-charcoal/80 mb-6">Ready to see what AI can do for your business?</p>
-          <p className="text-charcoal/60 mb-8">Book a free 30-minute strategy call. No pitch — just clarity on where to start.</p>
-          <a href="https://calendly.com/nyclaw-io-proton/30min" className="btn-red inline-block px-10 py-4 text-lg">Book a Free Strategy Call</a>
+      <section className="dusk grain relative overflow-hidden py-20 px-6">
+        <div className="absolute inset-0 dusk-grid pointer-events-none" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[40rem] h-[24rem] rounded-full bg-indigo/15 blur-3xl pointer-events-none" />
+        <div className="relative z-10 max-w-3xl mx-auto text-center">
+          <p className="text-2xl font-bold text-white mb-3">Ready to see what AI can do for your business?</p>
+          <p className="text-slate-300 mb-8">Book a free 30-minute strategy call. No pitch — just clarity on where to start.</p>
+          <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer" className="btn-ai inline-block text-lg">Book a Free Strategy Call</a>
         </div>
       </section>
 
       {/* OODA Loop */}
-      <section id="process" className="py-24 px-6 bg-gradient-to-b from-gray-50 to-white">
-        <div className="max-w-6xl mx-auto">
+      <section id="process" className="dusk grain relative overflow-hidden py-24 px-6">
+        <div className="absolute inset-0 dusk-grid pointer-events-none" />
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[48rem] h-[28rem] rounded-full bg-indigo/15 blur-3xl pointer-events-none" />
+        <div className="relative z-10 max-w-6xl mx-auto">
           <div className="text-center mb-16">
-            <span className="text-xs font-bold text-sky-blue uppercase tracking-widest block mb-3">Our Framework</span>
-            <h2 className="text-4xl font-bold text-navy mb-4">The OODA Loop</h2>
-            <p className="text-lg text-charcoal/70 max-w-2xl mx-auto">
+            <span className="text-xs font-bold text-sky-bright uppercase tracking-widest block mb-3">Our Framework</span>
+            <h2 className="text-4xl font-bold text-white mb-4">The OODA Loop</h2>
+            <p className="text-lg text-slate-300 max-w-2xl mx-auto">
               Originally developed for high-stakes military decision-making. Adapted into a proven AI implementation framework — fast, systematic, and built for your business.
             </p>
           </div>
           <div className="relative">
-            <div className="hidden md:block absolute top-6 left-[12.5%] right-[12.5%] h-0.5 bg-gradient-to-r from-sky-blue via-navy to-dark-red opacity-30" />
+            <div className="hidden md:block absolute top-6 left-[12.5%] right-[12.5%] h-0.5 connector-flow opacity-70" />
             <div className="grid md:grid-cols-4 gap-8">
               {[
-                { letter: 'O', label: 'Observe', color: 'bg-sky-blue shadow-sky-blue/30', desc: 'We embed in your business — mapping every process, tool, and workflow to understand where time and money are being lost.' },
-                { letter: 'O', label: 'Orient',  color: 'bg-navy shadow-navy/30',      desc: 'We analyze your industry context, competitor AI adoption, and constraints to identify the highest-ROI opportunities.' },
-                { letter: 'D', label: 'Decide',  color: 'bg-sky-blue shadow-sky-blue/30', desc: 'We deliver a prioritized roadmap: which AI tools to deploy, in what order, with clear returns and exact costs.' },
-                { letter: 'A', label: 'Act',     color: 'bg-dark-red shadow-dark-red/30', desc: 'We build, test, deploy, and optimize your AI systems. You get a fully operational setup — and the training to run it.' },
+                { letter: 'O', label: 'Observe', color: 'bg-sky-bright shadow-sky-bright/40', desc: 'We embed in your business — mapping every process, tool, and workflow to understand where time and money are being lost.' },
+                { letter: 'O', label: 'Orient',  color: 'bg-cyan shadow-cyan/40',           desc: 'We analyze your industry context, competitor AI adoption, and constraints to identify the highest-ROI opportunities.' },
+                { letter: 'D', label: 'Decide',  color: 'bg-indigo shadow-indigo/40',       desc: 'We deliver a prioritized roadmap: which AI tools to deploy, in what order, with clear returns and exact costs.' },
+                { letter: 'A', label: 'Act',     color: 'bg-violet shadow-violet/40',       desc: 'We build, test, deploy, and optimize your AI systems. You get a fully operational setup — and the training to run it.' },
               ].map((phase, i) => (
-                <div key={i} className="flex flex-col items-center text-center">
-                  <div className={`w-12 h-12 rounded-full ${phase.color} text-white flex items-center justify-center font-extrabold text-lg mb-4 relative z-10 shadow-lg`}>
-                    {phase.letter}
+                <Reveal key={i} delay={i * 110}>
+                  <div className="flex flex-col items-center text-center">
+                    <div className={`w-12 h-12 rounded-full ${phase.color} text-white flex items-center justify-center font-extrabold text-lg mb-4 relative z-10 shadow-lg`}>
+                      {phase.letter}
+                    </div>
+                    <p className="text-xs font-bold text-sky-bright uppercase tracking-wider mb-2">Step {i + 1}</p>
+                    <p className="text-lg font-bold text-white mb-3">{phase.label}</p>
+                    <p className="text-sm text-slate-300 leading-relaxed">{phase.desc}</p>
                   </div>
-                  <p className="text-xs font-bold text-sky-blue uppercase tracking-wider mb-2">Step {i + 1}</p>
-                  <p className="text-lg font-bold text-navy mb-3">{phase.label}</p>
-                  <p className="text-sm text-charcoal/70 leading-relaxed">{phase.desc}</p>
-                </div>
+                </Reveal>
               ))}
             </div>
           </div>
-          <p className="text-center mt-12 text-sky-blue font-bold">
+          <p className="text-center mt-12 text-sky-bright font-bold">
             Then we loop — continuously observing, orienting, and optimizing as your business grows.
           </p>
         </div>
@@ -408,11 +482,13 @@ export default function Home() {
       </section>
 
       {/* Urgency */}
-      <section className="bg-navy text-white py-20 px-6">
-        <div className="max-w-3xl mx-auto text-center">
+      <section className="dusk grain relative overflow-hidden py-20 px-6">
+        <div className="absolute inset-0 dusk-grid pointer-events-none" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[36rem] h-[20rem] rounded-full bg-dark-red/20 blur-3xl pointer-events-none" />
+        <div className="relative z-10 max-w-3xl mx-auto text-center">
           <p className="text-dark-red font-bold uppercase tracking-widest text-sm mb-4">Limited Capacity</p>
-          <p className="text-5xl font-extrabold mb-4 leading-tight">5 clients.<br />Per quarter.</p>
-          <p className="text-xl text-gray-300 mb-10">We cap our client list to protect implementation quality. Spots fill fast.</p>
+          <p className="text-5xl font-extrabold text-white mb-4 leading-tight">5 clients.<br />Per quarter.</p>
+          <p className="text-xl text-slate-300 mb-10">We cap our client list to protect implementation quality. Spots fill fast.</p>
           <a href="#contact" className="btn-red inline-block px-10 py-4 text-lg">Claim My Spot &rarr;</a>
         </div>
       </section>

@@ -174,3 +174,59 @@ border:     #e2e8f0 (slate-200)
 ---
 
 *Generated 2026-04-04 | NYClaw.io brand spec — navy/blue/red, Ainsley-forward design*
+
+---
+
+## 10. Dusk System (2026 Revamp)
+
+The homepage now uses a **hybrid dark/light rhythm**: dark "dusk" surfaces for the hero
+and high-drama sections (CTA breaks, the OODA framework, urgency, footer), with the
+proven light sections kept for readability + conversion (stats, services/pricing,
+comparison, results, FAQ). Cadence: dark → light → dark → light.
+
+### Dusk palette (extends brand, doesn't replace it)
+| Token            | Hex       | Role                                            |
+|------------------|-----------|-------------------------------------------------|
+| `dusk-950`       | `#07080f` | Base dark surface (navy-tinted near-black)      |
+| `dusk-900/850/800`| `#0d1020`+| Layered dark surfaces / cards                   |
+| `sky-bright`     | `#2e8bff` | Brightened brand sky for dark backgrounds       |
+| `cyan`           | `#22d3ee` | AI accent (glows, gradient text)                |
+| `indigo`         | `#6366f1` | AI accent (glows, gradient text, CTA gradient)  |
+| `violet`         | `#8b5cf6` | AI accent (gradient text tail)                  |
+| `dark-red`       | `#c41e3a` | **Scarcity/urgency only** — demoted from general CTA |
+
+### Dusk utility classes (in `globals.css`)
+- `.dusk` — base dark section background + light text
+- `.dusk-hero` — layered radial+linear dusk gradient for the hero
+- `.text-gradient-ai` — sky→cyan→indigo gradient text
+- `.glass` / `.glass-card` — translucent surfaces on dark
+- `.nav-dusk` — global dark-glass sticky nav (blur + white/8 border)
+- `.btn-ai` — primary CTA, indigo→cyan luminous gradient (replaces red as primary)
+- `.btn-ghost-dusk` — secondary CTA on dark
+- `.pill-dusk` — eyebrow pill on dark
+- `.dusk-grid` — masked hairline grid texture
+
+### Hero animation
+`app/components/HeroHelix.tsx` — a full-bleed 2.5D DNA double-helix **data-network**
+on `<canvas>` (~1.5 kB, no deps). Constellation links join nearby drifting particles
++ sampled helix nodes (neural-mesh feel), data-packets travel each strand, and the
+scene parallaxes toward the pointer. Rendered as the hero backdrop, weighted to
+`centerXRatio` (0.64) and faded left via CSS `mask-image`, with a left-to-right
+`from-dusk-950` scrim so the copy stays crisp. IntersectionObserver pauses it
+offscreen, `devicePixelRatio` (capped 2×) keeps it crisp, the constellation set is
+capped (~80 pts) for <1ms/frame, and `prefers-reduced-motion` renders one static
+frame. Chosen over a Spline/WebGL embed to protect LCP/SEO.
+
+### Page sophistication primitives
+- `app/components/Reveal.tsx` — IntersectionObserver fade/slide-up (pass staggered `delay`)
+- `app/components/CountUp.tsx` — animated stat ramp on scroll (`raw` for non-numeric like "24/7")
+- Capabilities marquee (`.marquee`/`.chip`), flowing OODA connector (`.connector-flow`),
+  film grain (`.grain`), hue-drift aurora (`.animate-hue`), card lift (`.lift`).
+- Display type: **Space Grotesk**; body: **Inter** (both via `next/font`).
+
+**Do:** use `.btn-ai` as the primary CTA; keep `dark-red` for scarcity only;
+animate only via the helix + `animate-aurora` glows (both reduced-motion safe).
+**Don't:** put `.btn-ai` in the small nav (its `@apply px-8 py-4` will override
+`px-5`) — build nav CTAs from inline gradient utilities instead.
+
+*Revamp 2026-06-16 | dusk hybrid + canvas DNA helix*
