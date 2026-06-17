@@ -39,3 +39,4 @@ secrets.yml
 *.sqlite
 *.sqlite3
 *.db
+.env*.local
