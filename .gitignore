@@ -32,7 +32,9 @@ Thumbs.db
 *.jks
 secrets*
 credentials*
+credentials.json
 *-secrets.json
+secrets.json
 secrets.yaml
 secrets.yml
 .secrets/
