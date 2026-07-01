@@ -20,6 +20,28 @@ const nextConfig = {
             key: 'Strict-Transport-Security',
             value: 'max-age=63072000; includeSubDomains; preload',
           },
+          // Defense-in-depth. Verified against current usage: no external
+          // scripts/images/fonts/XHR anywhere in the app — fonts are
+          // self-hosted via next/font, and every <script> is inline
+          // application/ld+json (which CSP script-src does not govern,
+          // since it isn't executable). 'unsafe-inline' is needed only for
+          // style-src, because React renders inline style="" attributes
+          // (e.g. animationDelay) that can't be nonced statically.
+          {
+            key: 'Content-Security-Policy',
+            value: [
+              "default-src 'self'",
+              "script-src 'self'",
+              "style-src 'self' 'unsafe-inline'",
+              "img-src 'self' data:",
+              "font-src 'self'",
+              "connect-src 'self'",
+              "object-src 'none'",
+              "base-uri 'self'",
+              "form-action 'self'",
+              "frame-ancestors 'none'",
+            ].join('; '),
+          },
         ],
       },
       // CORS: restrict API routes to same origin (no wildcard)

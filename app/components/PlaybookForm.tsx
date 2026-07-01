@@ -2,41 +2,22 @@
 
 import { useState } from 'react'
 import { CheckCircle2 } from 'lucide-react'
+import { useContactSubmit } from '../hooks/useContactSubmit'
 
 export default function PlaybookForm() {
   const [playbookEmail, setPlaybookEmail] = useState('')
-  const [playbookSubmitted, setPlaybookSubmitted] = useState(false)
-  const [loading, setLoading] = useState(false)
-  const [errorMsg, setErrorMsg] = useState('')
+  const { loading, errorMsg, submitted: playbookSubmitted, submit } = useContactSubmit()
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    setLoading(true)
-    setErrorMsg('')
-    try {
-      // Route requires name/businessType/challenge — use sentinel values for guide-only capture
-      const res = await fetch('/api/contact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          name: 'Playbook Request',
-          email: playbookEmail,
-          businessType: 'playbook-signup',
-          challenge: 'guide-download',
-          message: 'Requested via Free AI Readiness Guide form',
-        }),
-      })
-      if (!res.ok) {
-        const data = await res.json().catch(() => ({}))
-        setErrorMsg((data as { error?: string }).error ?? 'Something went wrong. Please try again.')
-      } else {
-        setPlaybookSubmitted(true)
-      }
-    } catch {
-      setErrorMsg('Network error. Please check your connection and try again.')
-    } finally {
-      setLoading(false)
-    }
+    // Route requires name/businessType/challenge — use sentinel values for guide-only capture
+    await submit({
+      name: 'Playbook Request',
+      email: playbookEmail,
+      businessType: 'playbook-signup',
+      challenge: 'guide-download',
+      message: 'Requested via Free AI Readiness Guide form',
+    })
   }
 
   return (

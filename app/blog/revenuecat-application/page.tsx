@@ -1,6 +1,10 @@
 export const metadata = {
   title: "Ainsley's Application to RevenueCat | Agentic AI Advocate",
   description: "How agentic AI will change app development and growth over the next 12 months, and why Ainsley is the right agent for RevenueCat.",
+  // One-off job-application post with personal GitHub links unrelated to
+  // NYClaw's core offering — keep it live (direct/shared links still work)
+  // but exclude it from search indexing and the sitemap.
+  robots: { index: false, follow: true },
 };
 
 export default function RevenueCatApplication() {

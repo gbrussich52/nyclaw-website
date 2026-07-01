@@ -3,43 +3,22 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import { CheckCircle, Download } from 'lucide-react'
+import { useContactSubmit } from '../hooks/useContactSubmit'
 
 export default function ResourceForm() {
   const [formData, setFormData] = useState({ firstName: '', email: '', company: '' })
-  const [submitted, setSubmitted] = useState(false)
-  const [loading, setLoading] = useState(false)
-
-  const [errorMsg, setErrorMsg] = useState('')
+  const { loading, errorMsg, submitted, submit } = useContactSubmit()
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    setLoading(true)
-    setErrorMsg('')
-    try {
-      // Route requires name/businessType/challenge — map firstName→name, use sentinel values for resource capture
-      const res = await fetch('/api/contact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          name: formData.firstName,
-          email: formData.email,
-          businessType: formData.company || 'resource-download',
-          challenge: 'guide-download',
-          message: 'Requested via Resources page guide form',
-        }),
-      })
-      if (!res.ok) {
-        const data = await res.json().catch(() => ({}))
-        setErrorMsg((data as { error?: string }).error ?? 'Something went wrong. Please try again.')
-        setLoading(false)
-        return
-      }
-      setSubmitted(true)
-    } catch {
-      setErrorMsg('Network error. Please check your connection and try again.')
-    } finally {
-      setLoading(false)
-    }
+    // Route requires name/businessType/challenge — map firstName→name, use sentinel values for resource capture
+    await submit({
+      name: formData.firstName,
+      email: formData.email,
+      businessType: formData.company || 'resource-download',
+      challenge: 'guide-download',
+      message: 'Requested via Resources page guide form',
+    })
     if (typeof window !== 'undefined' && (window as unknown as { gtag?: (...args: unknown[]) => void }).gtag) {
       (window as unknown as { gtag: (...args: unknown[]) => void }).gtag('event', 'pdf_download_attempt', { location: 'resources_page' })
     }

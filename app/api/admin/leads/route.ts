@@ -1,8 +1,24 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { getLeadsFromRedis } from '@/lib/leads'
+import { createRateLimiter } from '@/lib/rate-limit'
 
 // Read leads live from Redis on every request; never statically cached.
 export const dynamic = 'force-dynamic'
+
+// Endpoint-specific brute-force throttle, on top of the generic site-wide
+// /api/* limit in middleware.ts. This endpoint returns a full PII dump behind
+// a single shared password with no lockout, so it needs a much tighter cap:
+// 10 attempts per 15 minutes per IP (~1 guess every 90s) instead of the
+// generic 60/min shared across all API routes.
+const adminLeadsLimiter = createRateLimiter({
+  name: 'admin-leads',
+  max: 10,
+  windowMs: 15 * 60_000,
+})
+
+function getRateLimitKey(req: NextRequest): string {
+  return req.headers.get('x-forwarded-for')?.split(',')[0]?.trim() ?? 'unknown'
+}
 
 // Column order matches the original lead shape stored by the contact route.
 const FIELDS: { key: string; label: string }[] = [
@@ -61,7 +77,26 @@ function csvCell(v: unknown): string {
 }
 
 export async function GET(req: NextRequest): Promise<NextResponse> {
-  if (!isAuthorized(req)) return unauthorized()
+  const ip = getRateLimitKey(req)
+
+  const rate = await adminLeadsLimiter.limit(ip)
+  if (!rate.allowed) {
+    console.error('[admin/leads] Rate limit exceeded for IP:', ip)
+    const retryAfterSec = rate.resetAt
+      ? Math.max(1, Math.ceil((rate.resetAt - Date.now()) / 1000))
+      : 900
+    return NextResponse.json(
+      { error: 'Too many requests' },
+      { status: 429, headers: { 'Retry-After': String(retryAfterSec) } }
+    )
+  }
+
+  if (!isAuthorized(req)) {
+    // No password/credential in the log — IP + timestamp only, so failed
+    // guesses are visible/alertable in Vercel logs without leaking secrets.
+    console.error('[admin/leads] Failed authentication attempt from IP:', ip)
+    return unauthorized()
+  }
 
   const leads = await getLeadsFromRedis()
 
