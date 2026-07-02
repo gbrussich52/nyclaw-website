@@ -199,7 +199,7 @@ print(f"MoM change: {mrr.period_change_pct():.1f}%")  # +1.0%
 
 # Get a full time series
 for date, value in mrr.time_series():
-    print(f"{date.strftime('%b %Y')}: ${value:.0f}")
+    print(f"{date.strftime('%b %Y')}: \${value:.0f}")
 
 # AI-powered strategic analysis
 insights = generate_insights(charts, anthropic_api_key="sk-ant-...")

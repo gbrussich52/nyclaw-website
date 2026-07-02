@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { CheckCircle2 } from 'lucide-react'
+import { useContactSubmit } from '../hooks/useContactSubmit'
 
 export default function ContactForm() {
   const [formData, setFormData] = useState({
@@ -11,31 +12,11 @@ export default function ContactForm() {
     challenge: '',
     message: '',
   })
-  const [formSubmitted, setFormSubmitted] = useState(false)
-  const [loading, setLoading] = useState(false)
-  const [errorMsg, setErrorMsg] = useState('')
+  const { loading, errorMsg, submitted: formSubmitted, submit } = useContactSubmit()
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    setLoading(true)
-    setErrorMsg('')
-    try {
-      const res = await fetch('/api/contact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
-      })
-      if (!res.ok) {
-        const data = await res.json().catch(() => ({}))
-        setErrorMsg((data as { error?: string }).error ?? 'Something went wrong. Please try again.')
-      } else {
-        setFormSubmitted(true)
-      }
-    } catch {
-      setErrorMsg('Network error. Please check your connection and try again.')
-    } finally {
-      setLoading(false)
-    }
+    await submit(formData)
   }
 
   return (

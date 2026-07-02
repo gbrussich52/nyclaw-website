@@ -76,14 +76,20 @@ export async function POST(req: NextRequest) {
     persisted = true
   }
 
-  // 2. Local leads file — meaningful in local dev only (read-only fs on Vercel)
-  try {
-    const leadsDir = join(process.cwd(), 'data')
-    mkdirSync(leadsDir, { recursive: true })
-    appendFileSync(join(leadsDir, 'leads.jsonl'), JSON.stringify(entry) + '\n')
-    persisted = true
-  } catch (err) {
-    console.error('[contact] Failed to write leads file:', err)
+  // 2. Local leads file — local-dev convenience only. Vercel's filesystem is
+  //    read-only in production, so this always fails there; skip it outright
+  //    on Vercel/production instead of eating a guaranteed-failing syscall
+  //    (and a caught error) on every submission. Redis (#1) is the real
+  //    durable store.
+  if (process.env.NODE_ENV !== 'production') {
+    try {
+      const leadsDir = join(process.cwd(), 'data')
+      mkdirSync(leadsDir, { recursive: true })
+      appendFileSync(join(leadsDir, 'leads.jsonl'), JSON.stringify(entry) + '\n')
+      persisted = true
+    } catch (err) {
+      console.error('[contact] Failed to write leads file:', err)
+    }
   }
 
   // 3. Send email notification (if configured)
@@ -130,7 +136,9 @@ export async function POST(req: NextRequest) {
   if (!persisted) {
     // Every layer failed — do NOT lie to the visitor with a 200. They can
     // retry or reach out another way instead of assuming we have their info.
-    console.error('[contact] LEAD LOST: all persistence layers failed', { timestamp, email })
+    // Never log PII (email) — timestamp only is enough to correlate with the
+    // visitor's own retry/support contact if they follow up.
+    console.error('[contact] LEAD LOST: all persistence layers failed', { timestamp })
     return NextResponse.json(
       { error: 'Unable to save your submission right now. Please try again or email us directly.' },
       { status: 500 }
