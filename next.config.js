@@ -20,18 +20,18 @@ const nextConfig = {
             key: 'Strict-Transport-Security',
             value: 'max-age=63072000; includeSubDomains; preload',
           },
-          // Defense-in-depth. Verified against current usage: no external
-          // scripts/images/fonts/XHR anywhere in the app — fonts are
-          // self-hosted via next/font, and every <script> is inline
-          // application/ld+json (which CSP script-src does not govern,
-          // since it isn't executable). 'unsafe-inline' is needed only for
-          // style-src, because React renders inline style="" attributes
-          // (e.g. animationDelay) that can't be nonced statically.
+          // Defense-in-depth. No external scripts/images/fonts/XHR —
+          // fonts via next/font, images local/data. Next.js App Router
+          // injects many inline <script> tags for Flight/RSC hydration;
+          // script-src must allow 'unsafe-inline' or the page renders
+          // blank (CSP blocks boot). style-src needs 'unsafe-inline'
+          // for React style="" attributes (e.g. animationDelay).
+          // Stronger nonce-based CSP can replace this later via middleware.
           {
             key: 'Content-Security-Policy',
             value: [
               "default-src 'self'",
-              "script-src 'self'",
+              "script-src 'self' 'unsafe-inline'",
               "style-src 'self' 'unsafe-inline'",
               "img-src 'self' data:",
               "font-src 'self'",
