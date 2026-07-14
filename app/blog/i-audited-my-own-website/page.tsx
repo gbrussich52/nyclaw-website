@@ -474,7 +474,7 @@ export default function BlogPost() {
                 href="/#contact"
                 className="btn-red inline-block text-lg px-8 py-3"
               >
-                Get a Free AI Audit →
+                Start a Project →
               </Link>
             </section>
 
@@ -502,7 +502,7 @@ export default function BlogPost() {
                 href="/#contact"
                 className="btn-red inline-block text-lg px-8 py-3"
               >
-                Get a Free AI Audit →
+                Start a Project →
               </Link>
               <div className="mt-8 flex justify-center gap-6 text-sm">
                 <Link

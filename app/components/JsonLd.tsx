@@ -6,7 +6,7 @@ export function LocalBusinessJsonLd() {
     '@context': 'https://schema.org',
     '@type': 'ProfessionalService',
     name: 'NYClaw.io',
-    description: 'AI implementation agency for small businesses. Strategy, automation, and AI-powered marketing serving Westchester County, NY and NYC.',
+    description: 'AI agency that designs and builds custom automations and agents for small businesses in Westchester County, NY and NYC.',
     url: 'https://nyclaw.io',
     email: 'hello@nyclaw.io',
     sameAs: [
@@ -25,9 +25,9 @@ export function LocalBusinessJsonLd() {
         containedInPlace: { '@type': 'State', name: 'New York' },
       },
     ],
-    serviceType: ['AI Consulting', 'AI Workflow Automation', 'AI-Powered Marketing'],
-    priceRange: '$500 - $4,000',
-    knowsAbout: ['Artificial Intelligence', 'Business Automation', 'AI Implementation', 'OODA Loop Framework'],
+    serviceType: ['Custom AI Agents', 'Workflow Automation', 'AI Strategy & Roadmaps', 'Marketing Automations'],
+    priceRange: '$3,500 - $15,000',
+    knowsAbout: ['Artificial Intelligence', 'Custom AI Agents', 'Business Automation', 'OODA Loop Framework'],
   }
 
   return (
@@ -44,7 +44,7 @@ export function WebSiteJsonLd() {
     '@type': 'WebSite',
     name: 'NYClaw.io',
     url: 'https://nyclaw.io',
-    description: 'AI implementation agency for small businesses in Westchester County, NY and NYC.',
+    description: 'AI agency for small businesses — custom automations and agents in Westchester County, NY and NYC.',
     publisher: {
       '@type': 'Organization',
       name: 'NYClaw.io',

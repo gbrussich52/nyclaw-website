@@ -227,7 +227,7 @@ export default function BlogPost() {
                 </div>
                 <div>
                   <p className="font-bold text-navy">NYClaw.io</p>
-                  <p className="text-sm text-gray-500 mb-2">AI Implementation Agency — New York City &amp; Westchester</p>
+                  <p className="text-sm text-gray-500 mb-2">AI Agency — New York City &amp; Westchester</p>
                   <p className="text-charcoal text-sm leading-relaxed">
                     NYClaw.io builds AI automation systems for small businesses across the New York metro area — service businesses, healthcare practices, contractors, and professional service firms. We focus on measurable revenue impact: faster response, higher conversion, and less manual work for business owners.
                   </p>

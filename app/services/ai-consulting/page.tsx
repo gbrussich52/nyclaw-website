@@ -20,24 +20,24 @@ import {
 import { ServiceJsonLd, FAQJsonLd } from '../../components/JsonLd'
 
 export const metadata: Metadata = {
-  title: 'AI Strategy & Consulting for Small Businesses',
+  title: 'AI Fit Audit & Strategy Roadmap',
   description:
-    'NYClaw.io offers AI strategy consulting for small businesses in Westchester County and NYC. Start with a $500 flat-rate AI audit. Get a prioritized roadmap with clear ROI projections.',
+    'NYClaw.io offers free 15-minute fit audits and paid AI roadmaps for small businesses in Westchester County and NYC. Know which custom agents and automations to build first — before you spend on a full system.',
   keywords:
-    'AI consulting small business, AI strategy consulting westchester, AI audit small business, AI roadmap consulting, AI implementation strategy, AI ROI consulting',
+    'AI consulting small business, AI fit audit, AI roadmap, AI strategy westchester, AI agency consulting, automation roadmap',
   openGraph: {
-    title: 'AI Strategy & Consulting for Small Businesses | NYClaw.io',
+    title: 'AI Fit Audit & Strategy Roadmap | NYClaw.io',
     description:
-      'Start with a $500 AI audit. Get a prioritized roadmap showing exactly where AI fits your business and what it will save you.',
+      'Free 15-min fit audit or full roadmap. Know exactly which agents and automations to build first.',
     url: 'https://nyclaw.io/services/ai-consulting',
     siteName: 'NYClaw.io',
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'AI Strategy & Consulting | NYClaw.io',
+    title: 'AI Fit Audit & Roadmap | NYClaw.io',
     description:
-      '$500 flat-rate AI audit for small businesses. Prioritized roadmap with clear ROI projections.',
+      'Free 15-min fit audit. Optional full roadmap with ROI and build order.',
   },
   alternates: {
     canonical: 'https://nyclaw.io/services/ai-consulting',
@@ -95,34 +95,34 @@ const industries = [
 
 const faqs = [
   {
-    question: 'What is included in the $500 AI audit?',
+    question: 'What is the free 15-minute fit audit?',
     answer:
-      'The $500 flat-rate AI audit includes a full business operations review, competitor AI analysis, a prioritized AI opportunity map with ROI projections for each opportunity, a 30/60/90 day implementation roadmap, tool recommendations with cost breakdowns, and a live walkthrough presentation with your team. You walk away knowing exactly where AI fits your business and what it will cost.',
+      'A short call to identify the #1 workflow worth automating and whether a custom agent or automation build makes sense. No pitch deck. If it is a fit, we outline a fixed-scope project. If it is not, we will say so.',
+  },
+  {
+    question: 'What is included in the full roadmap?',
+    answer:
+      'The optional full roadmap ($1,000–$2,500) includes a deeper operations review, prioritized opportunity map with ROI, competitor AI notes, tool recommendations, and a clear build order. You walk away knowing what to build first — whether you hire us or not.',
   },
   {
     question: 'How is NYClaw.io different from other AI consultants?',
     answer:
-      'Most AI consultants sell strategy decks and leave. We build what we recommend. Our consulting is designed to feed directly into implementation — every recommendation comes with a specific build plan, timeline, and cost. We also cap our client list at 5 per quarter so every engagement gets full attention. And we use the OODA Loop framework, not generic methodologies.',
+      'Most consultants sell decks and leave. We are an AI agency that designs and builds the agents and automations we recommend. Every roadmap feeds a real project scope. We cap active builds so every engagement gets senior attention.',
   },
   {
-    question: 'Do I need the audit before hiring you for automation or marketing?',
+    question: 'Do I need a roadmap before a build?',
     answer:
-      'Not strictly, but we recommend it. The audit ensures we are solving the right problems in the right order. Without it, you risk automating the wrong things first. That said, if you already know exactly what you need automated, we can skip straight to a build quote. The $500 audit fee gets credited toward any implementation project over $3,000.',
+      'Not if you already know the workflow. Skip straight to a project quote. The free 15-min fit audit is enough for many clients. The paid roadmap is for teams that want a written plan before investing in a multi-agent system. Roadmap fees credit toward builds over $3,500.',
   },
   {
-    question: 'What does the ongoing consulting retainer include?',
+    question: 'Do I have to buy a monthly retainer?',
     answer:
-      'The retainer is custom-priced based on scope and typically includes monthly strategy sessions, quarterly roadmap updates, vendor evaluation and selection support, implementation oversight, and performance tracking. It is designed for businesses that want a fractional AI strategist without hiring a full-time role. Retainer pricing starts around $1,500/month.',
+      'No. Strategy and builds are project-based. Optional care or fractional strategy support is only if you want ongoing help after systems are live.',
   },
   {
-    question: 'How long does the AI audit take?',
+    question: 'Is this only for Westchester County?',
     answer:
-      'The audit itself takes 5-7 business days from kickoff to final delivery. Day 1-2 is the discovery phase where we review your operations, tools, and team workflows. Day 3-4 is analysis and competitor research. Day 5-7 is building the deliverables and preparing the walkthrough presentation.',
-  },
-  {
-    question: 'Is the AI audit only for businesses in Westchester County?',
-    answer:
-      'No. While we are based in Westchester County, NY and many of our clients are local, the audit can be conducted fully remote. We serve small businesses across NYC, the tri-state area, and nationwide. Local clients get the option of in-person discovery sessions.',
+      'No. We are based in Westchester County, NY, and serve NYC, the tri-state area, and remote clients nationwide. Local clients can do in-person discovery when useful.',
   },
 ]
 
@@ -130,8 +130,8 @@ export default function AIConsultingPage() {
   return (
     <div className="min-h-screen bg-white">
       <ServiceJsonLd
-        name="AI Strategy & Consulting for Small Businesses"
-        description="AI strategy consulting and business audit services for small businesses. $500 flat-rate AI audit with prioritized roadmap and ROI projections. Serving Westchester County, NY and NYC."
+        name="AI Fit Audit & Strategy Roadmap"
+        description="Free 15-minute fit audits and paid AI roadmaps for small businesses. Know which custom agents and automations to build first. NYClaw.io AI agency — Westchester County and NYC."
         url="https://nyclaw.io/services/ai-consulting"
       />
       <FAQJsonLd items={faqs} />
@@ -162,23 +162,23 @@ export default function AIConsultingPage() {
             </span>
           </div>
           <h1 className="text-4xl sm:text-5xl font-bold mb-5" style={{ lineHeight: 1.15 }}>
-            AI Strategy &amp; Consulting
+            Fit Audit &amp; Roadmap
             <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-blue to-white inline-block pb-2">
-              for Small Businesses
+              Before You Build
             </span>
           </h1>
           <p className="text-xl font-semibold text-white mb-3">
-            Know exactly where AI fits — before you spend a dollar building.
+            Know which agent or automation to build first — and what to skip.
           </p>
           <p className="text-lg text-gray-200 mb-10 max-w-2xl mx-auto leading-relaxed">
-            We audit your business, analyze your competitors, and deliver a
-            prioritized AI roadmap with real ROI numbers. Start with a $500
-            flat-rate audit — no ongoing commitment required.
+            Start with a free 15-minute fit audit. Need a deeper plan? We deliver a
+            prioritized roadmap with ROI and build order — before you invest in a
+            full custom system.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="/#contact" className="btn-red text-lg px-8 py-4">
-              Book My AI Audit &rarr;
+              Book Free 15-Min Audit &rarr;
             </Link>
             <Link
               href="#what-you-get"
@@ -194,10 +194,10 @@ export default function AIConsultingPage() {
       <section className="py-12 px-6 bg-white border-b border-gray-100">
         <div className="max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-6">
           {[
-            { number: '$500', label: 'Flat-Rate Audit' },
-            { number: '5-7', label: 'Days to Deliver' },
-            { number: '10+', label: 'Deliverables' },
-            { number: '100%', label: 'Actionable' },
+            { number: '15 min', label: 'Free Fit Audit' },
+            { number: '$1K+', label: 'Full Roadmap From' },
+            { number: '10+', label: 'Roadmap Deliverables' },
+            { number: 'Build', label: 'Credits Toward Project' },
           ].map((stat) => (
             <div key={stat.label} className="text-center py-4">
               <div className="text-3xl font-extrabold text-sky-blue mb-1">{stat.number}</div>
@@ -332,8 +332,8 @@ export default function AIConsultingPage() {
             </div>
           </div>
           <p className="text-center mt-6 text-sm text-charcoal/60">
-            The $500 audit fee gets credited toward any implementation project over
-            $3,000.
+            Full roadmap fees credit toward any custom agent or automation project
+            over $3,500.
           </p>
         </div>
       </section>
@@ -347,28 +347,26 @@ export default function AIConsultingPage() {
             </span>
             <h2 className="text-4xl font-bold text-navy mb-4">Simple, Transparent Pricing</h2>
             <p className="text-lg text-charcoal/70 max-w-2xl mx-auto">
-              Start with the audit. Scale with the retainer when you need ongoing AI
-              strategy support.
+              Free fit call first. Optional written roadmap. Builds are separate
+              projects — no monthly lock-in.
             </p>
           </div>
           <div className="grid md:grid-cols-2 gap-8">
             <div className="bg-navy/5 border-2 border-navy/20 rounded-2xl p-8">
-              <h3 className="text-xl font-bold text-navy mb-2">AI Audit</h3>
+              <h3 className="text-xl font-bold text-navy mb-2">15-Min Fit Audit</h3>
               <div className="flex items-baseline gap-2 mb-4">
-                <span className="text-4xl font-extrabold text-navy">$500</span>
-                <span className="text-charcoal/60">flat rate</span>
+                <span className="text-4xl font-extrabold text-navy">Free</span>
               </div>
               <p className="text-sm text-charcoal/70 mb-4">
-                One-time deep-dive. Full audit, roadmap, and presentation delivered
-                in 5-7 business days.
+                Live call. Name the #1 workflow and whether a custom agent or
+                automation is worth building.
               </p>
               <ul className="space-y-2">
                 {[
-                  'Full operations audit',
-                  'AI opportunity map with ROI scoring',
-                  'Competitor analysis',
-                  '30/60/90 day roadmap',
-                  'Live walkthrough with your team',
+                  'One ranked opportunity',
+                  'Tooling & access checklist',
+                  'Yes / no on a sprint build',
+                  'Plain-English ROI sketch',
                 ].map((item) => (
                   <li key={item} className="flex items-start gap-2 text-sm text-charcoal/80">
                     <CheckIcon /> {item}
@@ -377,21 +375,21 @@ export default function AIConsultingPage() {
               </ul>
             </div>
             <div className="bg-sky-blue/5 border-2 border-sky-blue/20 rounded-2xl p-8">
-              <h3 className="text-xl font-bold text-navy mb-2">Ongoing Retainer</h3>
+              <h3 className="text-xl font-bold text-navy mb-2">Full Roadmap</h3>
               <div className="flex items-baseline gap-2 mb-4">
-                <span className="text-4xl font-extrabold text-sky-blue">Custom</span>
+                <span className="text-4xl font-extrabold text-sky-blue">$1K&ndash;$2.5K</span>
               </div>
               <p className="text-sm text-charcoal/70 mb-4">
-                Fractional AI strategist for your business. Monthly sessions,
-                quarterly updates, ongoing optimization.
+                Written plan with ROI and build order. Credits toward projects over
+                $3,500.
               </p>
               <ul className="space-y-2">
                 {[
-                  'Monthly strategy sessions',
-                  'Quarterly roadmap updates',
-                  'Vendor evaluation and selection',
-                  'Implementation oversight',
-                  'Performance tracking and reporting',
+                  'Operations review & opportunity matrix',
+                  'ROI scoring per opportunity',
+                  'Competitor / industry notes',
+                  'Tool recommendations & build order',
+                  'Walkthrough with your team',
                 ].map((item) => (
                   <li key={item} className="flex items-start gap-2 text-sm text-charcoal/80">
                     <CheckIcon /> {item}
@@ -461,26 +459,26 @@ export default function AIConsultingPage() {
             Ready to see where AI fits your business?
           </h2>
           <p className="text-gray-300 mb-8 text-lg">
-            The $500 AI audit gives you a complete roadmap — no guesswork, no
-            ongoing commitment. Just clarity on your next move.
+            Book a free 15-minute fit audit — no pitch deck, no hour-long sales
+            call. Just clarity on the #1 agent or automation to build.
           </p>
           <Link href="/#contact" className="btn-red inline-block px-10 py-4 text-lg">
-            Book My AI Audit &rarr;
+            Book Free 15-Min Audit &rarr;
           </Link>
           <p className="mt-6 text-sm text-gray-400">
-            Or explore our other services:{' '}
+            Or explore:{' '}
             <Link
               href="/services/ai-automation"
               className="text-sky-blue hover:underline underline-offset-4"
             >
-              AI Automation
+              Custom Agents
             </Link>{' '}
             &middot;{' '}
             <Link
               href="/services/ai-marketing"
               className="text-sky-blue hover:underline underline-offset-4"
             >
-              AI Marketing
+              Marketing Automations
             </Link>
           </p>
         </div>

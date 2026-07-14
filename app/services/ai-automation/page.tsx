@@ -21,24 +21,24 @@ import {
 import { ServiceJsonLd, FAQJsonLd } from '../../components/JsonLd'
 
 export const metadata: Metadata = {
-  title: 'AI Workflow Automation for Small Businesses',
+  title: 'Custom AI Agents & Workflow Automation',
   description:
-    'NYClaw.io builds AI workflow automation systems for small businesses in Westchester County and NYC. Automate scheduling, CRM, follow-ups, and data entry. Setup from $1,500. Deployed in 30 days.',
+    'NYClaw.io is an AI agency that designs and builds custom agents and workflow automations for small businesses in Westchester County and NYC. Project-based sprints from $3,500 — no monthly lock-in.',
   keywords:
-    'AI workflow automation small business, business process automation AI, AI automation westchester, automate scheduling AI, CRM automation small business, AI data entry automation',
+    'custom AI agents, AI workflow automation small business, AI agency westchester, CRM automation, AI automation NYC, agent development',
   openGraph: {
-    title: 'AI Workflow Automation for Small Businesses | NYClaw.io',
+    title: 'Custom AI Agents & Workflow Automation | NYClaw.io',
     description:
-      'Automate scheduling, CRM, follow-ups, and data entry with AI. Setup from $1,500, deployed in 30 days.',
+      'We design and build custom agents and automations — not a template install. Project-based, scoped, delivered.',
     url: 'https://nyclaw.io/services/ai-automation',
     siteName: 'NYClaw.io',
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'AI Workflow Automation | NYClaw.io',
+    title: 'Custom AI Agents & Automation | NYClaw.io',
     description:
-      'Stop doing $20/hour work. AI workflow automation for small businesses — deployed in 30 days.',
+      'Custom agents and workflow automations for small businesses — project-based, no monthly required.',
   },
   alternates: {
     canonical: 'https://nyclaw.io/services/ai-automation',
@@ -83,8 +83,8 @@ const automationAreas = [
 ]
 
 const included = [
-  'Full workflow audit and process mapping',
-  'Custom AI automation build tailored to your business',
+  'Workflow design and success metrics',
+  'Custom agent or automation build (not a stock template)',
   'CRM integration (HubSpot, Salesforce, GoHighLevel, etc.)',
   'Email and calendar platform integration',
   'Scheduling system setup and configuration',
@@ -92,7 +92,7 @@ const included = [
   'Testing across all workflows end-to-end',
   'Team training and video walkthrough',
   'Documentation and runbook handoff',
-  'Ongoing maintenance and optimization support',
+  'Optional care plan after go-live (never required to start)',
 ]
 
 const industries = [
@@ -106,14 +106,14 @@ const industries = [
 
 const faqs = [
   {
-    question: 'How much does AI workflow automation cost for a small business?',
+    question: 'How much do custom AI agents and automations cost?',
     answer:
-      'NYClaw.io offers AI workflow automation starting at $1,500-$4,000 for initial setup, depending on the number of workflows and integrations involved. Ongoing maintenance runs $199-$499 per month and includes monitoring, updates, and optimization. Most clients see a positive ROI within 60-90 days.',
+      'Most agent sprints run $3,500–$8,000 fixed scope. Multi-step workflow systems typically run $5,000–$15,000 as a project. Price depends on integrations and complexity. Every engagement gets a fixed quote before work begins. Monthly care is optional after go-live — never required to start.',
   },
   {
-    question: 'How long does it take to automate my business workflows with AI?',
+    question: 'How long does a build take?',
     answer:
-      'We deploy fully operational AI automation systems in 30 days using our OODA Loop framework. Week 1 is the business audit and workflow mapping. Weeks 2-3 are building and deploying the automations. Week 4 is optimization, testing, and team training. Simple automations (like scheduling) can go live in as little as 1 week.',
+      'Many first agents ship in a focused multi-day sprint once scope and access are clear. Larger multi-agent systems take longer and are priced as a project. We use the OODA Loop (Observe → Orient → Decide → Act) so every build starts with the highest-ROI workflow.',
   },
   {
     question: 'What tools and platforms do you integrate with?',
@@ -121,19 +121,19 @@ const faqs = [
       'We integrate with the tools you already use: Google Workspace, Microsoft 365, HubSpot, Salesforce, GoHighLevel, Calendly, Acuity, QuickBooks, Slack, Twilio, and many more. If your tool has an API, we can connect it. No need to switch platforms.',
   },
   {
-    question: 'Will AI automation replace my employees?',
+    question: 'Is this a product install or a custom build?',
     answer:
-      'No — it replaces the repetitive tasks your employees hate doing. Data entry, scheduling, follow-up emails, form processing — those tasks get automated. Your team gets freed up to focus on high-value work: client relationships, strategy, and growth. Most businesses we work with keep the same team and get 2-3x more output.',
+      'Custom build. We design and create automations and agents around your real workflows — not a one-size product install. You get systems built for how your team works, with a documented handoff.',
   },
   {
     question: 'What happens if something breaks or needs updating?',
     answer:
-      'Our monthly maintenance plan covers exactly this. We monitor your automations continuously, fix issues proactively, and update integrations when platforms release changes. You also get direct access to our team for support requests. If something breaks at 2am, the system alerts us — not you.',
+      'Every project includes a short post-launch window for fixes. Optional care plans cover monitoring, updates, and small changes if you want us to stay on. You can also run the system yourself with the runbook we leave behind.',
   },
   {
-    question: 'Do I need any technical knowledge to use AI automation?',
+    question: 'Do I need any technical knowledge?',
     answer:
-      'Zero. We handle the entire build, and we train your team on how to work with the new systems. Every automation comes with documentation and video walkthroughs. If your team can use email and a web browser, they can use the tools we build.',
+      'Zero. We handle the entire build and train your team. Every system ships with documentation and walkthroughs. If your team can use email and a browser, they can use what we build.',
   },
 ]
 
@@ -141,8 +141,8 @@ export default function AIAutomationPage() {
   return (
     <div className="min-h-screen bg-white">
       <ServiceJsonLd
-        name="AI Workflow Automation for Small Businesses"
-        description="Custom AI workflow automation systems for small businesses. Automate scheduling, CRM, follow-ups, data entry, and more. Setup from $1,500, deployed in 30 days."
+        name="Custom AI Agents & Workflow Automation"
+        description="NYClaw.io designs and builds custom AI agents and workflow automations for small businesses. Project-based sprints — not a template product install."
         url="https://nyclaw.io/services/ai-automation"
       />
       <FAQJsonLd items={faqs} />
@@ -169,27 +169,27 @@ export default function AIAutomationPage() {
           <div className="mb-5 inline-flex items-center gap-2 bg-white/10 border border-white/20 rounded-full px-4 py-1.5">
             <Settings2 className="w-3.5 h-3.5" strokeWidth={2} />
             <span className="text-xs font-semibold text-white/90 tracking-wide">
-              Core Service
+              AI Agency · Custom Builds
             </span>
           </div>
           <h1 className="text-4xl sm:text-5xl font-bold mb-5" style={{ lineHeight: 1.15 }}>
-            AI Workflow Automation
+            Custom AI Agents &amp;
             <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-blue to-white inline-block pb-2">
-              for Small Businesses
+              Workflow Automation
             </span>
           </h1>
           <p className="text-xl font-semibold text-white mb-3">
-            Stop doing $20/hour work. Let AI handle it.
+            We design and build systems — not install a product.
           </p>
           <p className="text-lg text-gray-200 mb-10 max-w-2xl mx-auto leading-relaxed">
-            We map your workflows, find the bottlenecks, and build AI systems that
-            handle scheduling, follow-ups, data entry, and customer communication —
-            24/7, with zero manual effort.
+            Agents and automations for scheduling, follow-ups, CRM, intake, and
+            ops — built around how your team already works. Project-scoped. Delivered
+            with a handoff.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="/#contact" className="btn-red text-lg px-8 py-4">
-              Build My Automation &rarr;
+              Start a Project &rarr;
             </Link>
             <Link
               href="#how-it-works"
@@ -205,10 +205,10 @@ export default function AIAutomationPage() {
       <section className="py-12 px-6 bg-white border-b border-gray-100">
         <div className="max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-6">
           {[
-            { number: '$1.5K', label: 'Starting Setup' },
-            { number: '30', label: 'Days to Deploy' },
+            { number: '$3.5K+', label: 'Agent Sprints From' },
+            { number: 'Sprint', label: 'Project Delivery' },
             { number: '40%', label: 'Avg. Cost Reduction' },
-            { number: '24/7', label: 'Automated Ops' },
+            { number: '0', label: 'Monthly Required' },
           ].map((stat) => (
             <div key={stat.label} className="text-center py-4">
               <div className="text-3xl font-extrabold text-sky-blue mb-1">{stat.number}</div>
@@ -366,17 +366,17 @@ export default function AIAutomationPage() {
           </div>
           <div className="grid md:grid-cols-2 gap-8">
             <div className="bg-sky-blue/5 border-2 border-sky-blue/20 rounded-2xl p-8">
-              <h3 className="text-xl font-bold text-navy mb-2">Setup</h3>
+              <h3 className="text-xl font-bold text-navy mb-2">Agent Sprint</h3>
               <div className="flex items-baseline gap-2 mb-4">
-                <span className="text-4xl font-extrabold text-navy">$1,500&ndash;$4,000</span>
+                <span className="text-4xl font-extrabold text-navy">$3,500&ndash;$8,000</span>
               </div>
-              <p className="text-sm text-charcoal/70 mb-4">One-time investment. Covers audit, build, testing, and training.</p>
+              <p className="text-sm text-charcoal/70 mb-4">Fixed-scope project. One mission-critical agent, live and handed off.</p>
               <ul className="space-y-2">
                 {[
-                  'Full workflow audit and process mapping',
-                  'Custom AI automation build',
-                  'All integrations and testing',
-                  'Team training and documentation',
+                  'Workflow design & success metrics',
+                  'Custom agent build (not a template)',
+                  'Integrations, testing & training',
+                  'Runbook handoff — no monthly required',
                 ].map((item) => (
                   <li key={item} className="flex items-start gap-2 text-sm text-charcoal/80">
                     <CheckIcon /> {item}
@@ -385,18 +385,17 @@ export default function AIAutomationPage() {
               </ul>
             </div>
             <div className="bg-navy/5 border-2 border-navy/20 rounded-2xl p-8">
-              <h3 className="text-xl font-bold text-navy mb-2">Maintenance</h3>
+              <h3 className="text-xl font-bold text-navy mb-2">Workflow System</h3>
               <div className="flex items-baseline gap-2 mb-4">
-                <span className="text-4xl font-extrabold text-sky-blue">$199&ndash;$499</span>
-                <span className="text-charcoal/60">/month</span>
+                <span className="text-4xl font-extrabold text-sky-blue">$5,000&ndash;$15,000</span>
               </div>
-              <p className="text-sm text-charcoal/70 mb-4">Ongoing. Keeps everything running, updated, and optimized.</p>
+              <p className="text-sm text-charcoal/70 mb-4">Multi-step automations across tools. Project-priced, optional care after.</p>
               <ul className="space-y-2">
                 {[
-                  '24/7 monitoring and alerting',
-                  'Proactive issue resolution',
-                  'Platform and integration updates',
-                  'Monthly performance reporting',
+                  '2–3 connected automations',
+                  'Process map & architecture',
+                  'Error handling & documentation',
+                  'Optional care plan after go-live',
                 ].map((item) => (
                   <li key={item} className="flex items-start gap-2 text-sm text-charcoal/80">
                     <CheckIcon /> {item}
@@ -406,8 +405,8 @@ export default function AIAutomationPage() {
             </div>
           </div>
           <p className="text-center mt-8 text-sm text-charcoal/60">
-            Price depends on number of workflows, integrations, and complexity. Every
-            project gets a fixed quote before work begins.
+            Price depends on integrations and complexity. Every project gets a fixed
+            quote before work begins. Monthly is never required to start.
           </p>
         </div>
       </section>
@@ -477,29 +476,29 @@ export default function AIAutomationPage() {
       <section className="bg-navy text-white py-20 px-6">
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="text-3xl font-bold mb-4">
-            Ready to automate your business?
+            Ready for a custom agent or automation?
           </h2>
           <p className="text-gray-300 mb-8 text-lg">
-            Tell us what you want to automate. We will map the opportunity, quote the
-            project, and get you live in 30 days.
+            Tell us the workflow that burns the most time. We&apos;ll scope a fixed
+            project — or start with a free 15-minute fit audit.
           </p>
           <Link href="/#contact" className="btn-red inline-block px-10 py-4 text-lg">
-            Build My Automation &rarr;
+            Start a Project &rarr;
           </Link>
           <p className="mt-6 text-sm text-gray-400">
-            Or explore our other services:{' '}
+            Or explore:{' '}
             <Link
               href="/services/ai-consulting"
               className="text-sky-blue hover:underline underline-offset-4"
             >
-              AI Consulting
+              Fit Audit + Roadmap
             </Link>{' '}
             &middot;{' '}
             <Link
               href="/services/ai-marketing"
               className="text-sky-blue hover:underline underline-offset-4"
             >
-              AI Marketing
+              Marketing Automations
             </Link>
           </p>
         </div>

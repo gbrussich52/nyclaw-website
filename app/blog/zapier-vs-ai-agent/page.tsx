@@ -274,7 +274,7 @@ export default function BlogPost() {
                 </div>
                 <div>
                   <p className="font-bold text-navy">NYClaw.io</p>
-                  <p className="text-sm text-gray-500 mb-2">AI Implementation Agency — New York City &amp; Westchester</p>
+                  <p className="text-sm text-gray-500 mb-2">AI Agency — New York City &amp; Westchester</p>
                   <p className="text-charcoal text-sm leading-relaxed">
                     NYClaw.io builds AI agent systems for small businesses in the New York metro area. We have replaced and extended rule-based automation stacks (Zapier, Make, n8n) with AI-native workflows that handle the judgment layer Zapier cannot touch.
                   </p>

@@ -17,13 +17,13 @@ import {
 import { FAQJsonLd } from '../../components/JsonLd'
 
 export const metadata: Metadata = {
-  title: 'AI Implementation for Westchester County Businesses',
+  title: 'AI Agency for Westchester County Businesses',
   description:
-    'NYClaw.io delivers AI automation, consulting, and AI-powered marketing for small businesses across Westchester County, NY — White Plains, Yonkers, New Rochelle, Scarsdale, and beyond. Free AI audit available.',
+    'NYClaw.io delivers AI automation, consulting, and AI-powered marketing for small businesses across Westchester County, NY — White Plains, Yonkers, New Rochelle, Scarsdale, and beyond. Free 15-min fit audit.',
   keywords:
     'AI agency westchester county, AI automation westchester NY, AI consulting westchester, AI implementation westchester, small business AI westchester county, AI workflow automation white plains, AI consulting yonkers, AI marketing new rochelle',
   openGraph: {
-    title: 'AI Implementation for Westchester County Businesses | NYClaw.io',
+    title: 'AI Agency for Westchester County Businesses | NYClaw.io',
     description:
       'We build AI agents and automation systems for small businesses across Westchester County. Cut costs 40%, automate operations 24/7, and scale without adding staff.',
     url: 'https://nyclaw.io/locations/westchester-county',
@@ -33,9 +33,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'AI Implementation for Westchester County Businesses | NYClaw.io',
+    title: 'AI Agency for Westchester County Businesses | NYClaw.io',
     description:
-      'AI automation for small businesses across Westchester County, NY. Free AI audit available.',
+      'AI automation for small businesses across Westchester County, NY. Free 15-min fit audit.',
   },
   alternates: {
     canonical: 'https://nyclaw.io/locations/westchester-county',
@@ -96,24 +96,24 @@ const services = [
   {
     Icon: Settings2,
     color: 'bg-sky-blue/10 text-sky-blue',
-    title: 'AI Workflow Automation',
-    price: '$1,500-$4,000 setup + $199-$499/mo',
+    title: 'Custom AI Agents & Automation',
+    price: '$3,500–$8,000 agent sprint · project-based',
     desc: 'We map your operations, identify every repetitive task, and build AI systems that handle them 24/7 — scheduling, follow-ups, data entry, CRM updates, and more.',
     href: '/#services',
   },
   {
     Icon: Target,
     color: 'bg-navy/10 text-navy',
-    title: 'AI Strategy & Consulting',
-    price: '$500 flat-rate AI audit',
+    title: 'Fit Audit + Roadmap',
+    price: 'Free 15-min fit · $1K–$2.5K roadmap',
     desc: 'We spend time inside your business, analyze your workflows and competitive landscape, and deliver a prioritized AI roadmap with clear ROI projections.',
     href: '/#services',
   },
   {
     Icon: Megaphone,
     color: 'bg-dark-red/10 text-dark-red',
-    title: 'AI-Powered Marketing',
-    price: '$1,000-$3,000/mo or performance-based',
+    title: 'Marketing Automations',
+    price: '$4K–$12K build · optional ops after',
     desc: 'Automated content production, lead generation funnels, email/SMS sequences, and multi-platform distribution — all running on autopilot.',
     href: '/#services',
   },
@@ -123,7 +123,7 @@ const faqs = [
   {
     question: 'How much does AI cost for a Westchester County business?',
     answer:
-      'NYClaw.io offers AI implementation starting at $1,500-$4,000 for workflow automation setup with $199-$499/month for ongoing maintenance. A full AI audit starts at $500 flat. AI-powered marketing runs $1,000-$3,000/month or performance-based pricing. The exact cost depends on the complexity of your operations and how many processes you want to automate. We always start with a free strategy call to scope the work before quoting.',
+      'Most custom agent sprints run $3,500–$8,000 fixed scope. Multi-step workflow systems typically run $5,000–$15,000 as a project. Marketing automation builds start around $4,000–$12,000 with optional operation after go-live. A free 15-minute fit audit scopes the work; full roadmaps run $1,000–$2,500. Monthly care is never required to start.',
   },
   {
     question: 'What types of Westchester businesses benefit most from AI?',
@@ -131,14 +131,14 @@ const faqs = [
       'Any business with repetitive processes benefits from AI. In Westchester County, we see the strongest ROI for real estate agencies, law firms, medical and dental practices, retail shops, restaurants and hospitality venues, and home service contractors. If your team spends hours each week on scheduling, follow-ups, data entry, or customer communication, AI can likely cut that workload by 40% or more.',
   },
   {
-    question: 'How long does it take to implement AI for my Westchester business?',
+    question: 'How long does an AI build take for my Westchester business?',
     answer:
-      'NYClaw.io deploys AI systems within 30 days using the OODA Loop framework. Week 1 covers your business audit and AI opportunity mapping. Weeks 2-3 are for building, testing, and deploying. Week 4 is optimization and team training. Many clients see measurable time savings within the first two weeks of deployment.',
+      'Many first agents ship in a multi-day sprint once scope and access are clear. Larger multi-agent systems are project-scoped using the OODA Loop framework (Observe → Orient → Decide → Act). Most clients see measurable time savings within the first two weeks of go-live.',
   },
   {
     question: 'Do I need technical staff to maintain the AI systems?',
     answer:
-      'No. We build and maintain the AI systems for you. Every deployment includes team training so your staff knows how to work alongside the AI, but the technical management, monitoring, and optimization is handled by NYClaw.io. Our maintenance plans ($199-$499/mo) cover updates, troubleshooting, and continuous improvement.',
+      'No. We design and build the agents and automations, train your team, and hand off a runbook. You can run the system yourself after go-live. Optional care plans cover monitoring and updates only if you want us to stay on — monthly is never required to start.',
   },
   {
     question: 'Can I meet with NYClaw.io in person in Westchester County?',
@@ -172,7 +172,7 @@ export default function WestchesterCountyPage() {
             className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-5"
             style={{ lineHeight: 1.15 }}
           >
-            AI Implementation for{' '}
+            AI Agency for{' '}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-blue to-white inline-block pb-2">
               Westchester County Businesses
             </span>
@@ -183,20 +183,20 @@ export default function WestchesterCountyPage() {
           <p className="text-lg text-gray-200 mb-10 max-w-2xl mx-auto leading-relaxed">
             From White Plains to Tarrytown, Westchester businesses are using AI to cut
             costs, automate operations, and outpace their competition. We build the systems
-            that make it happen — in 30 days or less.
+            that make it happen — with custom agents and automations built for how you work.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
               href="https://calendly.com/nyclaw-io-proton/30min"
               className="btn-red text-lg px-8 py-4"
             >
-              Book a Free Strategy Call
+              Free 15-Min Fit Audit
             </a>
             <a
               href="/#contact"
               className="px-8 py-4 bg-white/10 text-white font-bold rounded-lg hover:bg-white/20 transition-all duration-300 border border-white/30 inline-block"
             >
-              Get a Free AI Audit &rarr;
+              Start a Project &rarr;
             </a>
           </div>
         </div>
@@ -440,7 +440,7 @@ export default function WestchesterCountyPage() {
               Frequently Asked Questions
             </h2>
             <p className="text-lg text-charcoal/70">
-              Common questions about AI implementation for Westchester County businesses.
+              Common questions about AI agency for Westchester County businesses.
             </p>
           </div>
           <div className="space-y-6">
@@ -464,7 +464,7 @@ export default function WestchesterCountyPage() {
             Ready to bring AI into your business?
           </h2>
           <p className="text-xl text-gray-300 mb-10 max-w-xl mx-auto">
-            Book a free 30-minute strategy call. No pitch — just clarity on where AI fits
+            Book a free 15-minute fit audit. No pitch — just clarity on which agent or automation fits
             your Westchester business and what it will cost.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -472,13 +472,13 @@ export default function WestchesterCountyPage() {
               href="https://calendly.com/nyclaw-io-proton/30min"
               className="btn-red inline-block px-10 py-4 text-lg"
             >
-              Book a Free Strategy Call
+              Free 15-Min Fit Audit
             </a>
             <a
               href="/#contact"
               className="px-10 py-4 bg-white/10 text-white font-bold rounded-lg hover:bg-white/20 transition-all duration-300 border border-white/30 inline-block text-lg"
             >
-              Get a Free AI Audit &rarr;
+              Start a Project &rarr;
             </a>
           </div>
           <p className="mt-8 text-gray-400 text-sm">

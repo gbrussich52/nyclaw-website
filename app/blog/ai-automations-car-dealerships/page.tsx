@@ -193,7 +193,7 @@ export default function BlogPost() {
                 <div className="w-12 h-12 bg-navy rounded-full flex items-center justify-center text-white font-bold text-lg flex-shrink-0">N</div>
                 <div>
                   <p className="font-bold text-navy">NYClaw.io</p>
-                  <p className="text-sm text-gray-500 mb-2">AI Implementation Agency — New York City &amp; Westchester</p>
+                  <p className="text-sm text-gray-500 mb-2">AI Agency — New York City &amp; Westchester</p>
                   <p className="text-charcoal text-sm leading-relaxed">
                     NYClaw.io builds AI automation systems for automotive dealerships and service businesses across the New York metro area. We specialize in internet lead response, CRM automation, and service drive retention systems that generate measurable gross improvement without adding headcount.
                   </p>

@@ -18,13 +18,13 @@ import {
 import { FAQJsonLd } from '../../components/JsonLd'
 
 export const metadata: Metadata = {
-  title: 'AI Implementation for NYC Small Businesses',
+  title: 'AI Agency for NYC Small Businesses',
   description:
     'NYClaw.io builds AI agents and automation systems for small businesses across New York City — Manhattan, Brooklyn, Queens, the Bronx, and Staten Island. Cut costs, automate operations, and compete without adding headcount. Free AI audit.',
   keywords:
     'AI agency NYC, AI automation new york city, AI consulting NYC small business, AI implementation NYC, small business AI new york, AI workflow automation manhattan, AI consulting brooklyn, AI marketing queens, NYC AI agency',
   openGraph: {
-    title: 'AI Implementation for NYC Small Businesses | NYClaw.io',
+    title: 'AI Agency for NYC Small Businesses | NYClaw.io',
     description:
       'We build AI agents and automation systems for small businesses across all five boroughs. Cut costs 40%, automate operations 24/7, and compete without adding headcount.',
     url: 'https://nyclaw.io/locations/new-york-city',
@@ -34,9 +34,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'AI Implementation for NYC Small Businesses | NYClaw.io',
+    title: 'AI Agency for NYC Small Businesses | NYClaw.io',
     description:
-      'AI automation for small businesses across all five NYC boroughs. Free AI audit available.',
+      'AI automation for small businesses across all five NYC boroughs. Free 15-min fit audit.',
   },
   alternates: {
     canonical: 'https://nyclaw.io/locations/new-york-city',
@@ -112,24 +112,24 @@ const services = [
   {
     Icon: Settings2,
     color: 'bg-sky-blue/10 text-sky-blue',
-    title: 'AI Workflow Automation',
-    price: '$1,500-$4,000 setup + $199-$499/mo',
+    title: 'Custom AI Agents & Automation',
+    price: '$3,500–$8,000 agent sprint · project-based',
     desc: 'We map your operations, identify every task that is eating into your margins, and build AI systems that handle them 24/7 — scheduling, follow-ups, data entry, CRM updates, and more.',
     href: '/#services',
   },
   {
     Icon: Target,
     color: 'bg-navy/10 text-navy',
-    title: 'AI Strategy & Consulting',
-    price: '$500 flat-rate AI audit',
+    title: 'Fit Audit + Roadmap',
+    price: 'Free 15-min fit · $1K–$2.5K roadmap',
     desc: 'We analyze your workflows, your competitive landscape, and your NYC-specific cost structure to deliver a prioritized AI roadmap with clear ROI projections.',
     href: '/#services',
   },
   {
     Icon: Megaphone,
     color: 'bg-dark-red/10 text-dark-red',
-    title: 'AI-Powered Marketing',
-    price: '$1,000-$3,000/mo or performance-based',
+    title: 'Marketing Automations',
+    price: '$4K–$12K build · optional ops after',
     desc: 'Automated content production, lead generation funnels, email/SMS sequences, and multi-platform distribution — built to cut through NYC noise and reach your target customers.',
     href: '/#services',
   },
@@ -139,7 +139,7 @@ const faqs = [
   {
     question: 'How much does AI implementation cost for a NYC small business?',
     answer:
-      'NYClaw.io offers AI workflow automation starting at $1,500-$4,000 for setup with $199-$499/month for ongoing maintenance. A full AI business audit starts at $500 flat. AI-powered marketing runs $1,000-$3,000/month or performance-based pricing. Given that the average NYC employee costs $60,000-$90,000+ per year when you factor in wages, benefits, and payroll taxes, AI automation typically pays for itself within the first 2-3 months by replacing hours of manual work.',
+      'Most custom agent sprints run $3,500–$8,000 fixed scope. Multi-step workflow systems typically run $5,000–$15,000 as a project. Marketing automation builds start around $4,000–$12,000 with optional operation after go-live. Given that the average NYC employee costs $60,000–$90,000+ per year fully loaded, a well-scoped automation often pays for itself by recovering hours of manual work — without a monthly lock-in to start.',
   },
   {
     question: 'Which NYC industries benefit most from AI automation?',
@@ -157,9 +157,9 @@ const faqs = [
       'NYC has some of the highest labor costs in the country — minimum wage is $16/hour and rising, and the true cost of an employee (wages + benefits + payroll taxes + overhead) often exceeds $25-$35/hour for entry-level roles. AI handles the tasks those employees spend the most time on: scheduling, follow-ups, data entry, customer inquiries, review management, and reporting. This does not mean replacing people — it means freeing them to do higher-value work while AI handles the repetitive operations 24/7.',
   },
   {
-    question: 'How long does it take to implement AI for my NYC business?',
+    question: 'How long does an AI build take for my NYC business?',
     answer:
-      'NYClaw.io deploys AI systems within 30 days using the OODA Loop framework. Week 1 is your business audit and AI opportunity mapping. Weeks 2-3 are for building, testing, and deploying custom AI systems integrated with your existing tools. Week 4 is performance optimization and team training. Many NYC clients see measurable time savings within the first two weeks of going live.',
+      'Many first agents ship in a multi-day sprint once scope and access are clear. Larger multi-agent systems are project-scoped using the OODA Loop framework and integrate with your existing tools. Most NYC clients see measurable time savings within the first two weeks of go-live.',
   },
 ]
 
@@ -188,7 +188,7 @@ export default function NewYorkCityPage() {
             className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-5"
             style={{ lineHeight: 1.15 }}
           >
-            AI Implementation for{' '}
+            AI Agency for{' '}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-blue to-white inline-block pb-2">
               NYC Small Businesses
             </span>
@@ -199,20 +199,20 @@ export default function NewYorkCityPage() {
           <p className="text-lg text-gray-200 mb-10 max-w-2xl mx-auto leading-relaxed">
             New York City is the most competitive small business market in the country. AI
             levels the playing field — automating operations, cutting costs, and giving you
-            back the hours you need to grow. Deployed in 30 days or less.
+            back the hours you need to grow. Deployed with custom agents and automations built for how you work.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
               href="https://calendly.com/nyclaw-io-proton/30min"
               className="btn-red text-lg px-8 py-4"
             >
-              Book a Free Strategy Call
+              Free 15-Min Fit Audit
             </a>
             <a
               href="/#contact"
               className="px-8 py-4 bg-white/10 text-white font-bold rounded-lg hover:bg-white/20 transition-all duration-300 border border-white/30 inline-block"
             >
-              Get a Free AI Audit &rarr;
+              Start a Project &rarr;
             </a>
           </div>
         </div>
@@ -313,11 +313,11 @@ export default function NewYorkCityPage() {
               </div>
               <ul className="space-y-4">
                 {[
-                  'Setup: $1,500-$4,000 one-time (vs. $50K+/year employee)',
-                  'Maintenance: $199-$499/month — predictable, no surprises',
+                  'Agent sprint: $3,500–$8,000 project (vs. $50K+/year employee)',
+                  'Optional care after go-live — never required to start',
                   'Runs 24/7/365 including weekends and holidays',
                   'Zero turnover — AI does not quit, call in sick, or need PTO',
-                  'Deployed in 30 days, productive from week 2',
+                  'Sprint builds — productive from week one of go-live',
                   'Consistent accuracy — no typos, no missed follow-ups',
                 ].map((item) => (
                   <li key={item} className="flex gap-3 text-charcoal/80 text-sm">
@@ -541,7 +541,7 @@ export default function NewYorkCityPage() {
               Frequently Asked Questions
             </h2>
             <p className="text-lg text-charcoal/70">
-              Common questions about AI implementation for NYC small businesses.
+              Common questions about AI agency for NYC small businesses.
             </p>
           </div>
           <div className="space-y-6">
@@ -565,7 +565,7 @@ export default function NewYorkCityPage() {
             Ready to bring AI into your NYC business?
           </h2>
           <p className="text-xl text-gray-300 mb-10 max-w-xl mx-auto">
-            Book a free 30-minute strategy call. No pitch — just clarity on where AI fits
+            Book a free 15-minute fit audit. No pitch — just clarity on which agent or automation fits
             your business and how much it will save you in the most expensive market in the
             country.
           </p>
@@ -574,13 +574,13 @@ export default function NewYorkCityPage() {
               href="https://calendly.com/nyclaw-io-proton/30min"
               className="btn-red inline-block px-10 py-4 text-lg"
             >
-              Book a Free Strategy Call
+              Free 15-Min Fit Audit
             </a>
             <a
               href="/#contact"
               className="px-10 py-4 bg-white/10 text-white font-bold rounded-lg hover:bg-white/20 transition-all duration-300 border border-white/30 inline-block text-lg"
             >
-              Get a Free AI Audit &rarr;
+              Start a Project &rarr;
             </a>
           </div>
           <p className="mt-8 text-gray-400 text-sm">

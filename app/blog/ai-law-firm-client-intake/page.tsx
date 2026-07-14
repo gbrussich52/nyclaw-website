@@ -254,7 +254,7 @@ export default function BlogPost() {
                 href="/#contact"
                 className="btn-red inline-block text-lg px-8 py-3"
               >
-                Get a Free AI Intake Audit →
+                Start a Project →
               </Link>
             </section>
 
@@ -266,7 +266,7 @@ export default function BlogPost() {
                 </div>
                 <div>
                   <p className="font-bold text-navy">NYClaw.io</p>
-                  <p className="text-sm text-gray-500 mb-2">AI Implementation Agency — New York City &amp; Westchester</p>
+                  <p className="text-sm text-gray-500 mb-2">AI Agency — New York City &amp; Westchester</p>
                   <p className="text-charcoal text-sm leading-relaxed">
                     NYClaw.io builds AI automation systems for law firms, medical practices, and small businesses across the New York metro area. We have implemented intake, follow-up, and client management workflows for service businesses in NYC, Westchester County, and surrounding areas. Our practice focuses on measurable revenue impact, not theoretical AI capabilities.
                   </p>
