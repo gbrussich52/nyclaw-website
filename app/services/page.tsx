@@ -1,26 +1,27 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import { Settings2, Target, Megaphone, ArrowRight } from 'lucide-react'
+import { Bot, Workflow, Target, ArrowRight } from 'lucide-react'
+import { CALENDLY_URL, FREE_AUDIT_LABEL } from '../config'
 
 export const metadata: Metadata = {
-  title: 'AI Services for Small Businesses',
+  title: 'AI Agency Services — Custom Agents & Automations',
   description:
-    'NYClaw.io provides AI services for small businesses in Westchester County and NYC. Workflow automation, strategy consulting, and AI-powered marketing — all under one roof.',
+    'NYClaw.io is an AI agency for small businesses in Westchester County and NYC. We design and build custom AI agents and workflow automations — project-based, not a product install.',
   keywords:
-    'AI services small business, AI services westchester, small business AI automation, AI consulting NYC, AI marketing small business',
+    'AI agency services, custom AI agents, workflow automation, small business AI, Westchester, NYC AI agency',
   openGraph: {
-    title: 'AI Services for Small Businesses | NYClaw.io',
+    title: 'AI Agency Services | NYClaw.io',
     description:
-      'Workflow automation, strategy consulting, and AI-powered marketing for small businesses in Westchester County and NYC.',
+      'Custom AI agents and workflow automations for small businesses in Westchester County and NYC.',
     url: 'https://nyclaw.io/services',
     siteName: 'NYClaw.io',
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'AI Services for Small Businesses | NYClaw.io',
+    title: 'AI Agency Services | NYClaw.io',
     description:
-      'Full-service AI implementation for small businesses. Automation, consulting, and marketing.',
+      'Custom agents and automations — project-based builds for small businesses.',
   },
   alternates: {
     canonical: 'https://nyclaw.io/services',
@@ -29,69 +30,67 @@ export const metadata: Metadata = {
 
 const services = [
   {
-    Icon: Settings2,
+    Icon: Bot,
     iconBg: 'bg-sky-blue/10',
     iconColor: 'text-sky-blue',
-    badge: 'Core Service',
+    badge: 'Flagship',
     badgeColor: 'text-sky-blue',
-    title: 'AI Workflow Automation',
-    tagline: 'Stop doing $20/hour work.',
+    title: 'Custom AI Agents',
+    tagline: 'Agents that do real work in your stack.',
     description:
-      'We map your workflows, identify automation opportunities, and implement AI systems that run 24/7 — without adding staff. From scheduling to CRM to follow-ups, your operations run on autopilot.',
-    pricing: '$1.5K-4K setup · $199-499/mo',
+      'We design and build agents for one mission-critical job — intake, lead response, scheduling, research, support triage — wired into the tools you already use. Not a stock template install.',
+    pricing: '$3.5K–8K per agent sprint · no monthly required',
+    href: '/services/ai-automation',
+    cta: 'Learn About Agents',
+  },
+  {
+    Icon: Workflow,
+    iconBg: 'bg-navy/10',
+    iconColor: 'text-navy',
+    badge: 'Systems',
+    badgeColor: 'text-navy',
+    title: 'Workflow Automation',
+    tagline: 'Multi-step systems across your ops.',
+    description:
+      'End-to-end automations that move work between forms, CRMs, inboxes, calendars, and invoices — so humans only touch exceptions. Scoped as a project, delivered with a runbook.',
+    pricing: '$5K–15K project · 2–3 connected automations',
     href: '/services/ai-automation',
     cta: 'Learn About Automation',
   },
   {
     Icon: Target,
-    iconBg: 'bg-navy/10',
-    iconColor: 'text-navy',
-    badge: 'Strategy',
-    badgeColor: 'text-navy',
-    title: 'AI Strategy & Consulting',
-    tagline: 'Know exactly where AI fits.',
-    description:
-      'We embed in your business, identify every AI opportunity, and deliver a prioritized roadmap with clear ROI projections. Start with a $500 flat-rate AI audit — no ongoing commitment required.',
-    pricing: '$500 AI audit · Custom retainer',
-    href: '/services/ai-consulting',
-    cta: 'Learn About Consulting',
-  },
-  {
-    Icon: Megaphone,
     iconBg: 'bg-dark-red/10',
     iconColor: 'text-dark-red',
-    badge: 'Marketing',
+    badge: 'Entry',
     badgeColor: 'text-dark-red',
-    title: 'AI-Powered Marketing',
-    tagline: 'Generate leads without lifting a finger.',
+    title: 'Fit Audit + Roadmap',
+    tagline: 'Know what to build first — and what to skip.',
     description:
-      'We build AI content engines, lead generation funnels, and automated nurture sequences that work around the clock. Flat-rate or revenue share — you pick the model that works for you.',
-    pricing: '$1K-3K/mo flat · Revenue share available',
-    href: '/services/ai-marketing',
-    cta: 'Learn About AI Marketing',
+      'Start with a free 15-minute fit call. Need a deeper plan? We deliver a prioritized automation roadmap with ROI and build order before you invest in a full system.',
+    pricing: 'Free 15-min fit · $1K–2.5K full roadmap (optional)',
+    href: '/services/ai-consulting',
+    cta: 'Learn About Strategy',
   },
 ]
 
 export default function ServicesPage() {
   return (
     <div className="min-h-screen bg-white">
-      {/* Hero */}
       <section className="gradient-navy-sky text-white py-20 px-6">
         <div className="max-w-4xl mx-auto text-center">
           <span className="text-xs font-bold text-sky-blue/80 uppercase tracking-widest block mb-3">
             Our Services
           </span>
           <h1 className="text-4xl sm:text-5xl font-bold mb-5">
-            Full-Service AI for Small Businesses
+            AI Agency Services for Small Businesses
           </h1>
           <p className="text-lg text-gray-200 max-w-2xl mx-auto leading-relaxed">
-            From strategy to implementation to ongoing optimization. We handle
-            every step so you can focus on growing your business.
+            We design and build custom automations and agents — project-based,
+            scoped to your workflows. Not a one-size product install.
           </p>
         </div>
       </section>
 
-      {/* Services Grid */}
       <section className="py-24 px-6">
         <div className="max-w-6xl mx-auto">
           <div className="grid md:grid-cols-3 gap-8">
@@ -138,17 +137,21 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* CTA */}
       <section className="py-16 px-6 bg-navy text-white">
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="text-3xl font-bold mb-4">Not sure where to start?</h2>
           <p className="text-gray-300 mb-8">
-            Book a free 30-minute strategy call. We will tell you exactly where AI
-            fits your business and what to prioritize first.
+            Book a free 15-minute fit audit. We&apos;ll name the #1 agent or
+            automation worth building — or tell you if now isn&apos;t the time.
           </p>
-          <Link href="/#contact" className="btn-red inline-block px-10 py-4 text-lg">
-            Get a Free AI Audit &rarr;
-          </Link>
+          <a
+            href={CALENDLY_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-red inline-block px-10 py-4 text-lg"
+          >
+            {FREE_AUDIT_LABEL} &rarr;
+          </a>
         </div>
       </section>
     </div>

@@ -26,9 +26,11 @@ export default function ContactForm() {
         <div className="absolute bottom-20 left-20 w-32 h-32 rounded-full border-2 border-dark-red animate-pulse" style={{ animationDelay: '1s' }} />
       </div>
       <div className="max-w-2xl mx-auto text-white relative z-10">
-        <h2 className="text-5xl font-bold mb-4 text-center">Get Your Free AI Audit</h2>
-        <p className="text-center mb-2 text-xl">No commitment. No pressure.</p>
-        <p className="text-center mb-12 text-lg text-gray-200 max-w-xl mx-auto">We&apos;ll review your business, identify your top 3 AI opportunities, and tell you exactly what implementation would look like and cost.</p>
+        <h2 className="text-5xl font-bold mb-4 text-center">Start a Project</h2>
+        <p className="text-center mb-2 text-xl">Custom automations &amp; agents. Project-scoped.</p>
+        <p className="text-center mb-12 text-lg text-gray-200 max-w-xl mx-auto">
+          Tell us the workflow that burns the most time. We&apos;ll reply with whether a custom agent or automation is a fit — and what a fixed-scope build would look like.
+        </p>
         {formSubmitted ? (
           <div className="bg-white/10 p-10 rounded-xl backdrop-blur-sm border border-white/20 text-center">
             <CheckCircle2 className="w-16 h-16 text-white mx-auto mb-4" strokeWidth={1.5} />
@@ -60,27 +62,27 @@ export default function ContactForm() {
               </select>
             </div>
             <div>
-              <label className="block font-bold mb-2 text-sm">Biggest Challenge *</label>
+              <label className="block font-bold mb-2 text-sm">What should we build first? *</label>
               <select required value={formData.challenge} onChange={(e) => setFormData({ ...formData, challenge: e.target.value })} className="w-full px-4 py-3 rounded-lg bg-white/95 text-charcoal border-2 border-white/20 focus:border-dark-red focus:outline-none transition-colors">
-                <option value="">What&apos;s holding your business back?</option>
-                <option value="time">Saving time on repetitive operations</option>
-                <option value="cost">Reducing labor and operational costs</option>
-                <option value="growth">Growing revenue without adding staff</option>
-                <option value="marketing">Marketing and lead generation</option>
-                <option value="where-to-start">Not sure where AI fits my business</option>
+                <option value="">Pick the closest fit...</option>
+                <option value="agent">Custom AI agent (intake, support, research, etc.)</option>
+                <option value="automation">Workflow automation across my tools</option>
+                <option value="lead-response">Lead / missed-call response</option>
+                <option value="scheduling">Scheduling &amp; follow-ups</option>
+                <option value="where-to-start">Not sure — want the 15-min fit audit</option>
               </select>
             </div>
             <div>
-              <label className="block font-bold mb-2 text-sm">Tell us about your business</label>
-              <textarea value={formData.message} onChange={(e) => setFormData({ ...formData, message: e.target.value })} className="w-full px-4 py-3 rounded-lg bg-white/95 text-charcoal border-2 border-white/20 focus:border-dark-red focus:outline-none placeholder-gray-400 transition-colors" rows={3} placeholder="How many employees? What does a typical day look like? What takes up the most time?" />
+              <label className="block font-bold mb-2 text-sm">Describe the workflow</label>
+              <textarea value={formData.message} onChange={(e) => setFormData({ ...formData, message: e.target.value })} className="w-full px-4 py-3 rounded-lg bg-white/95 text-charcoal border-2 border-white/20 focus:border-dark-red focus:outline-none placeholder-gray-400 transition-colors" rows={3} placeholder="What happens today when a lead/call/email comes in? Which tools (CRM, calendar, email)? What should the agent or automation do instead?" />
             </div>
             {errorMsg && (
               <p className="text-red-300 text-sm text-center" role="alert">{errorMsg}</p>
             )}
             <button type="submit" disabled={loading} className="w-full btn-red py-4 text-lg disabled:opacity-70">
-              {loading ? 'Submitting…' : 'Request My Free Audit →'}
+              {loading ? 'Submitting…' : 'Request Project Scope →'}
             </button>
-            <p className="text-center text-xs opacity-60">We review every submission and respond within 24 hours. Your info stays private.</p>
+            <p className="text-center text-xs opacity-60">We respond within 24 hours. Prefer a live call? Book the free 15-min fit audit instead.</p>
           </form>
         )}
       </div>
