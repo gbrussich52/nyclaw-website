@@ -24,9 +24,10 @@ import {
  *  - prefers-reduced-motion renders a single static frame
  */
 export default function HeroHelix({
-  centerXRatio = 0.62,
+  intensity = 1,
 }: {
-  centerXRatio?: number
+  /** Handoff's `heroIntensity` prop — scales every alpha. Range 0.5–1.6. */
+  intensity?: number
 }) {
   const canvasRef = useRef<HTMLCanvasElement | null>(null)
 
@@ -62,7 +63,7 @@ export default function HeroHelix({
     let parY = 0
 
     const drawFrame = (phase: number) =>
-      drawHelixFrame(ctx, { width, height, phase, particles, parX, parY, centerXRatio })
+      drawHelixFrame(ctx, { width, height, phase, particles, parX, parY, intensity })
 
     resize()
 
@@ -118,7 +119,7 @@ export default function HeroHelix({
       window.removeEventListener('resize', onResize)
       window.removeEventListener('pointermove', onPointerMove)
     }
-  }, [centerXRatio])
+  }, [intensity])
 
   return (
     <canvas

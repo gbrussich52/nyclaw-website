@@ -55,11 +55,11 @@ const FPS = 30
 const KEEP = argv.includes('--keep')
 
 /**
- * Right-weighted, matching the live component. The mockup's hero scrim runs
- * left→right (opaque .97 at 0%, transparent by 78%) to protect the left-aligned
- * copy, so the helix must sit in the clear right-hand zone.
+ * The designer's helix is a full-width horizontal sweep, so there is no
+ * centre-weighting parameter any more — it bleeds off both edges by design.
+ * The hero's left→right scrim (opaque .97 at 0%, transparent by 78%) is what
+ * keeps the left-aligned headline legible over it.
  */
-const CENTER_X_RATIO = 0.64
 
 /** Baked to match the mockup's media container background (#0a0a0c). */
 const BG = '#0a0a0c'
@@ -204,7 +204,7 @@ function harnessHtml() {
       particles,
       parX: 0,   // no pointer in headless → parallax is identically zero
       parY: 0,
-      centerXRatio: ${CENTER_X_RATIO},
+      intensity: 1,
     })
 
     // Composite an opaque base *behind* the helix. The shipped <video> has no
@@ -372,11 +372,20 @@ async function encode() {
   // supported and the poster is a dark, low-detail frame that compresses well.
   const poster = path.join(OUT_DIR, 'hero-poster.jpg')
 
+  // Delivered at 1600px, not the 1920 we render at. The designer's helix adds
+  // a three-pass bloom whose smooth gradients are expensive to encode: at
+  // 1920/crf34 the webm was 3.03MB. Measured alternatives on real frames —
+  // 1920/crf38 2.20MB, 1600/crf34 2.21MB, 1600/crf38 1.64MB — and 1600/crf38
+  // showed no visible banding at 1:1, which is generous given the video sits
+  // at 50% opacity behind the hero scrim.
+  const DELIVER = 'scale=1600:-2'
+
   log('encoding webm (VP9)…')
   await run('ffmpeg', [
     '-y', '-framerate', String(FPS), '-i', input,
+    '-vf', DELIVER,
     '-c:v', 'libvpx-vp9',
-    '-b:v', '0', '-crf', '34',
+    '-b:v', '0', '-crf', '38',
     '-row-mt', '1', '-tile-columns', '2',
     '-pix_fmt', 'yuv420p',
     '-an',
@@ -388,8 +397,9 @@ async function encode() {
   log('encoding mp4 (H.264)…')
   await run('ffmpeg', [
     '-y', '-framerate', String(FPS), '-i', input,
+    '-vf', DELIVER,
     '-c:v', 'libx264',
-    '-crf', '28', '-preset', 'slow',
+    '-crf', '30', '-preset', 'slow',
     '-pix_fmt', 'yuv420p',
     '-movflags', '+faststart',
     '-an',

@@ -1,21 +1,24 @@
 /**
  * heroHelixDraw — framework-free drawing core for the hero DNA helix.
  *
- * Extracted from app/components/HeroHelix.tsx so exactly one implementation
- * feeds both consumers:
- *   1. HeroHelix.tsx        — the live <canvas> component
- *   2. scripts/render-hero.mjs — the offline renderer that bakes public/hero.webm
+ * This is the DESIGNER'S helix from the 2026 dusk handoff
+ * (`NYClaw Dusk.dc.html`, the `heroMedia: 'helix'` variant), not the older
+ * hero canvas the site shipped before the redesign. The two are different
+ * compositions, not recolors:
  *
- * Without this split the shipped video would silently drift away from the
- * component every time the design changed. Keep all drawing math here.
+ *   old — vertical column, NODES 60 / TURNS 3.4, discrete node dots only
+ *   new — horizontal ribbon sweeping left→right, NODES 132 / TURNS 1.85,
+ *         continuous stroked strands with a horizontal gradient and a
+ *         three-pass blur bloom composited with 'lighter'
  *
- * Depth is faked: each node's z = sin(angle) drives size + opacity + horizontal
- * foreshortening, so the strand rotating toward the viewer grows brighter and
- * spreads wider. Reads as real 3D for ~free — no WebGL, no dependencies.
+ * Exactly one implementation feeds both consumers:
+ *   1. app/components/HeroHelix.tsx    — the live <canvas> component
+ *   2. scripts/render-hero.mjs         — bakes public/hero.webm + hero.mp4
+ * Edit here, never a copy, then re-run `npm run render:hero`.
  */
 
-export const NODES = 60
-export const TURNS = 3.4
+export const NODES = 132
+export const TURNS = 1.85
 export const PACKETS = 4
 export const PARTICLE_COUNT = 42
 
@@ -25,15 +28,15 @@ export const LIVE_PHASE_STEP = 0.006
 /**
  * Seamless-loop period.
  *
- * The helix itself repeats every 2π (see `helixPoint`: angle = …+ phase), but
- * the data packets advance at half rate (`packetPhase = phase * 0.5`) and so
- * only complete half a cycle in that span. The least common period is 4π —
- * looping at 2π produces a visible jump in the packets on every wrap.
+ * The strands repeat every 2π, but the data packets advance at half rate
+ * (`packetPhase = phase * 0.5`) and so only complete half a cycle in that
+ * span. The least common period is 4π — looping at 2π leaves the packets
+ * mid-flight and the wrap visibly jumps.
  */
 export const LOOP_PERIOD = Math.PI * 4
 
 /** Distance below which two constellation points get linked, in CSS px. */
-const MAX_DIST = 96
+const MAX_DIST = 110
 
 export interface Particle {
   x: number
@@ -51,32 +54,29 @@ export interface DrawParams {
   /** Pointer parallax offsets, already lerped. Zero when there is no pointer. */
   parX: number
   parY: number
-  centerXRatio: number
+  /** Handoff's `heroIntensity` prop — scales every alpha. Range 0.5–1.6. */
+  intensity?: number
 }
 
 /**
- * Node/rung color ramp, top of the helix to the bottom.
+ * Strand gradient stops, left to right. Verbatim from the handoff.
  *
- * These are the exact stops of the dusk accent gradient
- * (`linear-gradient(100deg, #2e8bff 0%, #6366f1 55%, #22d3ee 100%)`), so the
- * hero art obeys the same rule as the chrome. Violet (#8b5cf6) was the old
- * fourth stop and is deliberately gone — TOKENS.md permits exactly one accent
- * gradient and one standalone accent hue, and violet read as a second accent
- * across the bottom half of the hero.
- *
- * Changing these requires re-running `npm run render:hero`.
+ * Violet (#8b5cf6) is deliberately present: TOKENS.md restricts the *chrome*
+ * to one accent, but this is the designer's own hero artwork and their stop
+ * list includes it. Do not "correct" this to match the UI palette.
  */
 const STOPS: [number, number, number][] = [
   [46, 139, 255], // #2e8bff brand-blue
   [99, 102, 241], // #6366f1 indigo-500
+  [139, 92, 246], // #8b5cf6 violet
   [34, 211, 238], // #22d3ee cyan-400
 ]
 
 function colorAt(t: number): [number, number, number] {
-  const clamped = Math.min(0.9999, Math.max(0, t))
-  const scaled = clamped * (STOPS.length - 1)
-  const i = Math.floor(scaled)
-  const f = scaled - i
+  const c = Math.min(0.9999, Math.max(0, t))
+  const s = c * (STOPS.length - 1)
+  const i = Math.floor(s)
+  const f = s - i
   const a = STOPS[i]
   const b = STOPS[i + 1] ?? STOPS[i]
   return [
@@ -85,6 +85,8 @@ function colorAt(t: number): [number, number, number] {
     Math.round(a[2] + (b[2] - a[2]) * f),
   ]
 }
+
+const rgba = (c: [number, number, number], a: number) => `rgba(${c[0]},${c[1]},${c[2]},${a})`
 
 /**
  * Deterministic particle seeds — arithmetic, never Math.random().
@@ -109,23 +111,11 @@ export function stepParticles(particles: Particle[]): void {
   }
 }
 
-function helixPoint(
-  t: number,
-  strandPhase: number,
-  phase: number,
-  cx: number,
-  topPad: number,
-  usableH: number,
-  radius: number
-) {
-  const angle = t * TURNS * Math.PI * 2 + phase + strandPhase
-  const z = Math.sin(angle)
-  return {
-    // foreshorten horizontally with depth for a rounder 3D read
-    x: cx + Math.cos(angle) * radius * (0.82 + 0.18 * ((z + 1) / 2)),
-    y: topPad + t * usableH,
-    z,
-  }
+interface Pt {
+  x: number
+  y: number
+  z: number
+  t: number
 }
 
 /**
@@ -134,39 +124,52 @@ function helixPoint(
  * instead of racing requestAnimationFrame.
  */
 export function drawHelixFrame(ctx: CanvasRenderingContext2D, params: DrawParams): void {
-  const { width, height, phase, particles, parX, parY, centerXRatio } = params
+  const { width, height, phase, particles, parX, parY } = params
+  const inten = params.intensity ?? 1
 
   ctx.clearRect(0, 0, width, height)
 
-  const cx = width * centerXRatio + parX
-  const topPad = height * 0.06
-  const usableH = height * 0.88
-  const radius = Math.min(width * 0.26, height * 0.34, 230)
+  // Horizontal sweep: t runs left to right, strand rotation displaces
+  // vertically. The strand overshoots the canvas on both sides (leftPad is
+  // negative, usableW > width) so it bleeds off-frame rather than terminating.
+  const cy = height * 0.5 + parY
+  const leftPad = -width * 0.06
+  const usableW = width * 1.12
+  const radius = Math.min(height * 0.42, 340)
 
-  // Build helix nodes.
-  type P = { x: number; y: number; z: number; t: number }
-  const nodes: (P & { strand: 0 | 1 })[] = []
-  const rungs: { a: P; b: P }[] = []
+  const helixPoint = (t: number, strandPhase: number): Pt => {
+    const angle = t * TURNS * Math.PI * 2 + phase + strandPhase
+    const z = Math.sin(angle)
+    return {
+      x: leftPad + t * usableW + parX,
+      y: cy + Math.cos(angle) * radius * (0.84 + 0.16 * ((z + 1) / 2)),
+      z,
+      t,
+    }
+  }
+
+  const strands: [Pt[], Pt[]] = [[], []]
+  const rungs: { a: Pt; b: Pt }[] = []
   for (let i = 0; i < NODES; i++) {
     const t = i / (NODES - 1)
-    const a = { ...helixPoint(t, 0, phase, cx, topPad, usableH, radius), t }
-    const b = { ...helixPoint(t, Math.PI, phase, cx, topPad, usableH, radius), t }
-    a.y += parY
-    b.y += parY
-    nodes.push({ ...a, strand: 0 }, { ...b, strand: 1 })
+    const a = helixPoint(t, 0)
+    const b = helixPoint(t, Math.PI)
+    strands[0].push(a)
+    strands[1].push(b)
     if (i % 2 === 0) rungs.push({ a, b })
   }
 
-  // --- Constellation: link particles + sampled helix nodes when close ---
+  // --- Constellation: link drifting particles + sampled strand nodes ---
   const link: { x: number; y: number }[] = []
   for (const p of particles) {
-    const depth = p.z
     link.push({
-      x: p.x * width + parX * (0.4 + depth),
-      y: (p.y % 1) * height + parY * (0.4 + depth),
+      x: p.x * width + parX * (0.4 + p.z),
+      y: (p.y % 1) * height + parY * (0.4 + p.z),
     })
   }
-  for (let i = 0; i < nodes.length; i += 3) link.push({ x: nodes[i].x, y: nodes[i].y })
+  for (let i = 0; i < strands[0].length; i += 6) {
+    link.push({ x: strands[0][i].x, y: strands[0][i].y })
+  }
 
   ctx.lineWidth = 1
   for (let i = 0; i < link.length; i++) {
@@ -175,8 +178,7 @@ export function drawHelixFrame(ctx: CanvasRenderingContext2D, params: DrawParams
       const dy = link[i].y - link[j].y
       const d2 = dx * dx + dy * dy
       if (d2 < MAX_DIST * MAX_DIST) {
-        const a = (1 - Math.sqrt(d2) / MAX_DIST) * 0.16
-        ctx.strokeStyle = `rgba(120, 170, 240, ${a})`
+        ctx.strokeStyle = `rgba(150,170,215,${(1 - Math.sqrt(d2) / MAX_DIST) * 0.075})`
         ctx.beginPath()
         ctx.moveTo(link[i].x, link[i].y)
         ctx.lineTo(link[j].x, link[j].y)
@@ -187,71 +189,119 @@ export function drawHelixFrame(ctx: CanvasRenderingContext2D, params: DrawParams
 
   // Particle dots.
   for (const p of particles) {
-    const depth = p.z
-    const px = p.x * width + parX * (0.4 + depth)
-    const py = (p.y % 1) * height + parY * (0.4 + depth)
+    const px = p.x * width + parX * (0.4 + p.z)
+    const py = (p.y % 1) * height + parY * (0.4 + p.z)
     ctx.beginPath()
-    ctx.fillStyle = `rgba(150, 180, 245, ${0.1 + depth * 0.22})`
-    ctx.arc(px, py, 0.7 + depth * 1.7, 0, Math.PI * 2)
+    ctx.fillStyle = `rgba(190,205,240,${0.05 + p.z * 0.13})`
+    ctx.arc(px, py, 0.6 + p.z * 1.4, 0, Math.PI * 2)
     ctx.fill()
   }
 
+  // Horizontal gradient across the full width, so the ribbon shifts hue
+  // left→right rather than along its own length.
+  const grad = (a0: number) => {
+    const alpha = a0 * inten
+    const g = ctx.createLinearGradient(0, 0, width, 0)
+    g.addColorStop(0, rgba(STOPS[0], alpha * 0.3))
+    g.addColorStop(0.34, rgba(STOPS[0], alpha))
+    g.addColorStop(0.62, rgba(STOPS[1], alpha))
+    g.addColorStop(0.84, rgba(STOPS[2], alpha))
+    g.addColorStop(1, rgba(STOPS[3], alpha * 0.85))
+    return g
+  }
+
+  const traceStrands = (lw: number, alpha: number) => {
+    ctx.lineWidth = lw
+    ctx.lineCap = 'round'
+    ctx.strokeStyle = grad(alpha)
+    for (const s of strands) {
+      ctx.beginPath()
+      ctx.moveTo(s[0].x, s[0].y)
+      for (let k = 1; k < s.length; k++) ctx.lineTo(s[k].x, s[k].y)
+      ctx.stroke()
+    }
+  }
+
+  // Bloom: three successively tighter blurred passes additively composited,
+  // then a crisp core. This is what gives the ribbon its glow — without it the
+  // strands read as flat lines.
+  const supportsFilter = typeof ctx.filter === 'string'
+  ctx.save()
+  ctx.globalCompositeOperation = 'lighter'
+  if (supportsFilter) {
+    ctx.filter = 'blur(30px)'
+    traceStrands(18, 0.34)
+    ctx.filter = 'blur(9px)'
+    traceStrands(6, 0.34)
+    ctx.filter = 'blur(3px)'
+    traceStrands(2.6, 0.4)
+    ctx.filter = 'none'
+  } else {
+    traceStrands(16, 0.09)
+  }
+  traceStrands(2, 0.66)
+  ctx.restore()
+
   // Rungs (base pairs).
-  for (const { a, b } of rungs) {
-    const depth = (a.z + b.z) / 2
-    const alpha = 0.07 + (depth + 1) * 0.08
-    const [r, g, bl] = colorAt((a.t + b.t) / 2)
-    ctx.strokeStyle = `rgba(${r}, ${g}, ${bl}, ${alpha})`
-    ctx.lineWidth = 1
+  for (const r of rungs) {
+    const depth = (r.a.z + r.b.z) / 2
+    ctx.strokeStyle = rgba(colorAt(r.a.t), (0.06 + (depth + 1) * 0.075) * inten)
+    ctx.lineWidth = 1.1
     ctx.beginPath()
-    ctx.moveTo(a.x, a.y)
-    ctx.lineTo(b.x, b.y)
+    ctx.moveTo(r.a.x, r.a.y)
+    ctx.lineTo(r.b.x, r.b.y)
     ctx.stroke()
   }
 
-  // Nodes far → near.
-  nodes
-    .slice()
+  // Nodes, far → near.
+  ctx.save()
+  ctx.globalCompositeOperation = 'lighter'
+  strands[0]
+    .concat(strands[1])
     .sort((p, q) => p.z - q.z)
     .forEach((n) => {
       const depth = (n.z + 1) / 2
-      const size = 1.8 + depth * 3.8
-      const alpha = 0.25 + depth * 0.75
-      const [r, g, b] = colorAt(n.t)
+      const size = 1.4 + depth * 3.4
+      const alpha = (0.14 + depth * 0.6) * inten
+      const c = colorAt(n.t)
       ctx.beginPath()
-      ctx.fillStyle = `rgba(${r}, ${g}, ${b}, ${alpha * 0.18})`
-      ctx.arc(n.x, n.y, size * 3.4, 0, Math.PI * 2)
+      ctx.fillStyle = rgba(c, alpha * 0.12)
+      ctx.arc(n.x, n.y, size * 4.2, 0, Math.PI * 2)
       ctx.fill()
       ctx.beginPath()
-      ctx.fillStyle = `rgba(${r}, ${g}, ${b}, ${alpha})`
+      ctx.fillStyle = rgba(c, alpha)
       ctx.arc(n.x, n.y, size, 0, Math.PI * 2)
       ctx.fill()
     })
+  ctx.restore()
 
   // Traveling data packets + trail.
   const packetPhase = phase * 0.5
+  ctx.save()
+  ctx.globalCompositeOperation = 'lighter'
   for (let strand = 0; strand < 2; strand++) {
     const strandPhase = strand === 0 ? 0 : Math.PI
     for (let k = 0; k < PACKETS; k++) {
       const base = (packetPhase / (Math.PI * 2) + k / PACKETS + strand * 0.17) % 1
-      for (let tr = 0; tr < 6; tr++) {
-        const t = (base - tr * 0.011 + 1) % 1
-        const pt = helixPoint(t, strandPhase, phase, cx, topPad, usableH, radius)
+      for (let tr = 0; tr < 7; tr++) {
+        const t = (base - tr * 0.009 + 1) % 1
+        const pt = helixPoint(t, strandPhase)
         const depth = (pt.z + 1) / 2
-        const [r, g, b] = colorAt(t)
-        const fade = (1 - tr / 6) * (0.4 + depth * 0.6)
-        const size = (tr === 0 ? 3.8 : 2.6) * (0.6 + depth * 0.6)
+        const c = colorAt(t)
+        const fade = (1 - tr / 7) * (0.35 + depth * 0.65) * inten
+        const size = (tr === 0 ? 3.2 : 2.2) * (0.6 + depth * 0.6)
         ctx.beginPath()
-        ctx.fillStyle = `rgba(${r}, ${g}, ${b}, ${fade * (tr === 0 ? 0.28 : 0.12)})`
-        ctx.arc(pt.x, pt.y + parY, size * 2.8, 0, Math.PI * 2)
+        ctx.fillStyle = rgba(c, fade * (tr === 0 ? 0.22 : 0.09))
+        ctx.arc(pt.x, pt.y, size * 3.2, 0, Math.PI * 2)
         ctx.fill()
         ctx.beginPath()
-        ctx.fillStyle = `rgba(255, 255, 255, ${fade * (tr === 0 ? 0.95 : 0.4)})`
-        ctx.arc(pt.x, pt.y + parY, size * 0.6, 0, Math.PI * 2)
+        ctx.fillStyle = `rgba(235,242,255,${fade * (tr === 0 ? 0.85 : 0.3)})`
+        ctx.arc(pt.x, pt.y, size * 0.55, 0, Math.PI * 2)
         ctx.fill()
       }
     }
   }
+  ctx.restore()
 }
 
 /**
