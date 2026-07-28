@@ -13,8 +13,8 @@ html {
 }
 
 body {
-  background: #ffffff;
-  color: #2c2c2c;
+  background: #09090b;
+  color: #d4d4d8;
   font-family: var(--font-body), -apple-system, BlinkMacSystemFont, sans-serif;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
@@ -27,109 +27,6 @@ h1, h2, h3, h4, h5, h6 {
 
 h1 {
   letter-spacing: -0.035em;
-}
-
-/* Neon glow effect */
-.neon-glow {
-  box-shadow: 0 0 20px rgba(0, 102, 204, 0.5);
-  border: 1px solid #0066cc;
-}
-
-.neon-glow-red {
-  box-shadow: 0 0 20px rgba(196, 30, 58, 0.5);
-  border: 1px solid #c41e3a;
-}
-
-/* Pulsing animation */
-.pulse-neon {
-  animation: pulse-neon 2.5s ease-in-out infinite;
-}
-
-@keyframes pulse-neon {
-  0%, 100% {
-    opacity: 1;
-    box-shadow: 0 0 20px rgba(0, 102, 204, 0.5);
-  }
-  50% {
-    opacity: 0.7;
-    box-shadow: 0 0 40px rgba(0, 102, 204, 0.8);
-  }
-}
-
-/* Gradient backgrounds */
-.gradient-navy-sky {
-  background: linear-gradient(135deg, #003366 0%, #0066cc 100%);
-}
-
-.gradient-sky-white {
-  background: linear-gradient(135deg, #0066cc 0%, #ffffff 100%);
-}
-
-/* Button styles */
-.btn-primary {
-  @apply px-8 py-4 text-white font-bold rounded-lg transition-all duration-300 inline-block;
-  background: linear-gradient(135deg, #0066cc 0%, #003366 100%);
-  box-shadow: 0 4px 20px rgba(0, 102, 204, 0.4), 0 0 20px rgba(0, 102, 204, 0.3);
-  border: 1px solid #0066cc;
-  text-align: center;
-  position: relative;
-  overflow: hidden;
-}
-
-.btn-primary:hover {
-  background: linear-gradient(135deg, #0066cc 0%, #003366 100%);
-  box-shadow: 0 8px 30px rgba(0, 102, 204, 0.6), 0 0 30px rgba(196, 30, 58, 0.4);
-  transform: translateY(-2px);
-}
-
-.btn-primary:active {
-  transform: translateY(0);
-}
-
-.btn-secondary {
-  @apply px-8 py-4 text-white font-bold rounded-lg transition-all duration-300 inline-block;
-  background: linear-gradient(135deg, #2c2c2c 0%, #003366 100%);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-  border: 1px solid #003366;
-  text-align: center;
-}
-
-.btn-secondary:hover {
-  background: linear-gradient(135deg, #003366 0%, #0066cc 100%);
-  box-shadow: 0 8px 25px rgba(0, 102, 204, 0.4);
-  transform: translateY(-2px);
-}
-
-/* Red CTA button */
-.btn-red {
-  @apply px-6 py-3 text-white font-bold rounded-lg transition-all duration-300 inline-block;
-  background: #c41e3a;
-  text-align: center;
-}
-
-.btn-red:hover {
-  background: #a01830;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 15px rgba(196, 30, 58, 0.4);
-}
-
-.btn-red:active {
-  transform: translateY(0);
-}
-
-/* Card styles */
-.card {
-  @apply bg-white border-2 border-gray-200 rounded-xl p-6 hover:shadow-2xl transition-all duration-300;
-}
-
-.card-hover {
-  @apply bg-white border-2 border-gray-200 rounded-xl p-6 hover:shadow-2xl transition-all duration-300 hover:border-sky-blue;
-  box-shadow: 0 0 10px rgba(200, 200, 200, 0.2);
-}
-
-.card-hover:hover {
-  box-shadow: 0 0 20px rgba(0, 102, 204, 0.5);
-  border-color: #0066cc;
 }
 
 /* ============================================================
@@ -162,20 +59,6 @@ h1 {
   --accent: #22d3ee;
 }
 
-/* Dark section base. */
-.dusk {
-  background-color: var(--canvas);
-  color: var(--text-secondary);
-}
-
-/* Layered dusk gradient for hero / marquee sections. */
-.dusk-hero {
-  background:
-    radial-gradient(60% 50% at 75% 18%, rgba(99, 102, 241, 0.20) 0%, transparent 60%),
-    radial-gradient(55% 45% at 20% 90%, rgba(34, 211, 238, 0.14) 0%, transparent 60%),
-    linear-gradient(180deg, #09090b 0%, #101014 60%, #09090b 100%);
-}
-
 /* Accent gradient text — reserved for the second line of an h1. */
 .text-gradient-ai {
   background-image: linear-gradient(100deg, #2e8bff 0%, #6366f1 55%, #22d3ee 100%);
@@ -192,101 +75,11 @@ h1 {
   color: transparent;
 }
 
-/* Glass surface for cards/nav on dark. */
-.glass {
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-}
-
-.glass-card {
-  @apply rounded-2xl p-6 transition-all duration-300;
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-}
-
-.glass-card:hover {
-  border-color: rgba(46, 139, 255, 0.45);
-  box-shadow: 0 0 30px rgba(46, 139, 255, 0.18);
-  transform: translateY(-2px);
-}
-
 /* Dark-glass navigation bar (global). */
 .nav-dusk {
   background: rgba(9, 9, 11, 0.6);
   backdrop-filter: blur(40px);
   -webkit-backdrop-filter: blur(40px);
-}
-
-/* Primary AI CTA — luminous indigo → cyan gradient. */
-.btn-ai {
-  @apply px-8 py-4 font-bold rounded-lg transition-all duration-300 inline-block text-center;
-  color: #ffffff;
-  background: linear-gradient(100deg, #2e8bff 0%, #6366f1 55%, #22d3ee 110%);
-  box-shadow: 0 6px 24px rgba(99, 102, 241, 0.35), 0 0 24px rgba(34, 211, 238, 0.18);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-}
-
-.btn-ai:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 34px rgba(99, 102, 241, 0.5), 0 0 34px rgba(34, 211, 238, 0.3);
-}
-
-.btn-ai:active {
-  transform: translateY(0);
-}
-
-/* Ghost button for dark surfaces. */
-.btn-ghost-dusk {
-  @apply px-8 py-4 font-bold rounded-lg transition-all duration-300 inline-block text-center;
-  color: #e7e9f3;
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.18);
-}
-
-.btn-ghost-dusk:hover {
-  background: rgba(255, 255, 255, 0.12);
-  border-color: rgba(255, 255, 255, 0.32);
-  transform: translateY(-2px);
-}
-
-/* Eyebrow pill on dark. */
-.pill-dusk {
-  @apply inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-xs font-semibold tracking-wide;
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  color: rgba(231, 233, 243, 0.92);
-}
-
-/* Hairline grid texture for dark sections. */
-.dusk-grid {
-  background-image:
-    linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
-  background-size: 64px 64px;
-  -webkit-mask-image: radial-gradient(70% 60% at 50% 40%, #000 0%, transparent 80%);
-  mask-image: radial-gradient(70% 60% at 50% 40%, #000 0%, transparent 80%);
-}
-
-/* Slow hue drift for aurora glows — adds living, premium motion. */
-@keyframes hue {
-  0%, 100% { filter: hue-rotate(0deg); }
-  50% { filter: hue-rotate(26deg); }
-}
-.animate-hue {
-  animation: hue 18s ease-in-out infinite;
-}
-
-/* Film-grain texture overlay for dusk surfaces (inline SVG noise, 0 network). */
-.grain::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  opacity: 0.045;
-  mix-blend-mode: overlay;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
 /* Infinite capability marquee. */
@@ -326,30 +119,6 @@ h1 {
   );
   background-size: 200% 100%;
   animation: flow 5s linear infinite;
-}
-
-/* Gradient-ring lift for cards (light surfaces). */
-.lift {
-  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
-}
-.lift:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 20px 44px rgba(2, 6, 23, 0.12);
-}
-
-/* Glass capability chip for the marquee. */
-.chip {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.55rem 1rem;
-  border-radius: 9999px;
-  font-size: 0.875rem;
-  font-weight: 600;
-  color: #cdd3e6;
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  white-space: nowrap;
 }
 
 /* ---------- Dusk structural surfaces (2026 handoff) ---------- */
