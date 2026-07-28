@@ -34,6 +34,11 @@ const nextConfig = {
               "script-src 'self' 'unsafe-inline'",
               "style-src 'self' 'unsafe-inline'",
               "img-src 'self' data:",
+              // Hero background video is self-hosted in /public. Without an
+              // explicit media-src it falls back to default-src and, while
+              // 'self' would still pass, being explicit documents that no
+              // third-party media (e.g. hotlinked stock footage) is permitted.
+              "media-src 'self'",
               "font-src 'self'",
               "connect-src 'self'",
               "object-src 'none'",
