@@ -5,6 +5,10 @@ import Link from 'next/link'
 import { CheckCircle, Download } from 'lucide-react'
 import { useContactSubmit } from '../hooks/useContactSubmit'
 
+/** Shared field chrome — `.input-dusk` carries the fill/border/radius tokens. */
+const fieldClass = 'input-dusk w-full px-4 py-3 text-sm transition-colors'
+const labelClass = 'mb-1.5 block text-[13px] font-medium text-zinc-300'
+
 export default function ResourceForm() {
   const [formData, setFormData] = useState({ firstName: '', email: '', company: '' })
   const { loading, errorMsg, submitted, submit } = useContactSubmit()
@@ -25,15 +29,17 @@ export default function ResourceForm() {
   }
 
   return (
-    <div className="md:sticky md:top-24">
+    <div className="md:sticky md:top-28">
       {!submitted ? (
-        <div className="bg-white border-2 border-sky-blue rounded-2xl p-8 shadow-lg">
-          <h2 className="text-2xl font-bold text-navy mb-2">Get the free guide</h2>
-          <p className="text-gray-600 text-sm mb-6">Enter your details and we&apos;ll send it immediately. No spam. Unsubscribe anytime.</p>
+        <div className="panel rounded-2xl p-8">
+          <h2 className="text-xl font-medium tracking-[-0.02em] text-white">Get the free guide</h2>
+          <p className="mt-2 text-sm leading-relaxed text-zinc-400">
+            Enter your details and we&apos;ll send it immediately. No spam. Unsubscribe anytime.
+          </p>
 
-          <form onSubmit={handleSubmit} className="space-y-4">
+          <form onSubmit={handleSubmit} className="mt-6 flex flex-col gap-4">
             <div>
-              <label className="block text-sm font-medium text-navy mb-1" htmlFor="firstName">
+              <label className={labelClass} htmlFor="firstName">
                 First Name *
               </label>
               <input
@@ -42,12 +48,12 @@ export default function ResourceForm() {
                 required
                 value={formData.firstName}
                 onChange={e => setFormData(p => ({ ...p, firstName: e.target.value }))}
-                className="w-full border-2 border-gray-200 rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-sky-blue transition-colors"
+                className={fieldClass}
                 placeholder="Your first name"
               />
             </div>
             <div>
-              <label className="block text-sm font-medium text-navy mb-1" htmlFor="email">
+              <label className={labelClass} htmlFor="email">
                 Email Address *
               </label>
               <input
@@ -56,57 +62,67 @@ export default function ResourceForm() {
                 required
                 value={formData.email}
                 onChange={e => setFormData(p => ({ ...p, email: e.target.value }))}
-                className="w-full border-2 border-gray-200 rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-sky-blue transition-colors"
+                className={fieldClass}
                 placeholder="you@company.com"
               />
             </div>
             <div>
-              <label className="block text-sm font-medium text-navy mb-1" htmlFor="company">
-                Company <span className="text-gray-400 font-normal">(optional)</span>
+              <label className={labelClass} htmlFor="company">
+                Company <span className="font-normal text-zinc-500">(optional)</span>
               </label>
               <input
                 id="company"
                 type="text"
                 value={formData.company}
                 onChange={e => setFormData(p => ({ ...p, company: e.target.value }))}
-                className="w-full border-2 border-gray-200 rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-sky-blue transition-colors"
+                className={fieldClass}
                 placeholder="Your company name"
               />
             </div>
             {errorMsg && (
-              <p className="text-red-500 text-sm" role="alert">{errorMsg}</p>
+              <p className="text-sm text-zinc-300" role="alert">{errorMsg}</p>
             )}
             <button
               type="submit"
               disabled={loading}
-              className="w-full bg-sky-blue text-white py-4 rounded-lg font-semibold text-lg hover:bg-navy transition-colors disabled:opacity-70"
+              className="mt-1 inline-flex h-12 w-full items-center justify-center rounded-full bg-white px-5 text-base font-medium text-zinc-950 transition-opacity hover:opacity-90 disabled:opacity-70"
             >
-              {loading ? 'Sending...' : 'Send Me the Guide →'}
+              {loading ? 'Sending...' : 'Send me the guide →'}
             </button>
-            <p className="text-xs text-gray-500 text-center">
+            <p className="text-center text-xs leading-relaxed text-zinc-500">
               By submitting, you agree to receive the guide and related emails from NYClaw.io. Unsubscribe anytime.
             </p>
           </form>
         </div>
       ) : (
-        <div className="bg-white border-2 border-green-400 rounded-2xl p-8 shadow-lg text-center">
-          <CheckCircle className="w-12 h-12 text-green-500 mx-auto mb-4" />
-          <h2 className="text-2xl font-bold text-navy mb-3">Check your inbox!</h2>
-          <p className="text-gray-600 mb-6">We sent the guide to <strong>{formData.email}</strong>. It should arrive within 2 minutes.</p>
-          <p className="text-sm text-gray-500 mb-6">While you wait — start with one of the knowledge articles below:</p>
-          <div className="space-y-3">
-            <Link href="/knowledge/ai-assistant-identity" className="block border border-sky-blue text-sky-blue rounded-lg px-4 py-3 text-sm font-medium hover:bg-sky-blue hover:text-white transition-colors">
+        <div className="panel rounded-2xl p-8 text-center">
+          <CheckCircle className="mx-auto mb-4 h-12 w-12 text-white" strokeWidth={1.5} />
+          <h2 className="mb-3 text-xl font-medium tracking-[-0.02em] text-white">Check your inbox!</h2>
+          <p className="mb-6 text-sm leading-relaxed text-zinc-400">
+            We sent the guide to <strong className="font-medium text-white">{formData.email}</strong>. It should arrive within 2 minutes.
+          </p>
+          <p className="mb-6 text-[13px] text-zinc-500">
+            While you wait — start with one of the knowledge articles below:
+          </p>
+          <div className="flex flex-col gap-3">
+            <Link
+              href="/knowledge/ai-assistant-identity"
+              className="block rounded-lg border border-white/10 px-4 py-3 text-sm font-medium text-zinc-300 transition-colors hover:border-white/[0.28] hover:text-white"
+            >
               Read: How to Build a Scalable AI Assistant →
             </Link>
-            <Link href="/knowledge/operational-excellence" className="block border border-sky-blue text-sky-blue rounded-lg px-4 py-3 text-sm font-medium hover:bg-sky-blue hover:text-white transition-colors">
+            <Link
+              href="/knowledge/operational-excellence"
+              className="block rounded-lg border border-white/10 px-4 py-3 text-sm font-medium text-zinc-300 transition-colors hover:border-white/[0.28] hover:text-white"
+            >
               Read: 7 Critical Anti-Patterns →
             </Link>
           </div>
         </div>
       )}
 
-      <div className="mt-4 flex items-center justify-center gap-2 text-sm text-gray-500">
-        <Download className="w-4 h-4" />
+      <div className="mt-4 flex items-center justify-center gap-2 text-[13px] text-zinc-500">
+        <Download className="h-4 w-4" />
         Downloaded by 50+ operators and builders
       </div>
     </div>

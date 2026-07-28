@@ -4,6 +4,13 @@ import { useState } from 'react'
 import { CheckCircle2 } from 'lucide-react'
 import { useContactSubmit } from '../hooks/useContactSubmit'
 
+/** Shared field chrome — `.input-dusk` carries the fill/border/radius tokens. */
+const fieldClass = 'input-dusk w-full px-4 py-3 text-sm transition-colors'
+/* `color-scheme: dark` is what makes the native option popup render dark too —
+   without it the list renders light and reads as a leftover from the old theme. */
+const selectClass = `${fieldClass} [color-scheme:dark]`
+const labelClass = 'mb-2 block text-[13px] font-medium text-zinc-300'
+
 export default function ContactForm() {
   const [formData, setFormData] = useState({
     name: '',
@@ -20,36 +27,73 @@ export default function ContactForm() {
   }
 
   return (
-    <section id="contact" className="gradient-navy-sky py-32 px-6 relative overflow-hidden">
-      <div className="absolute inset-0 opacity-5 pointer-events-none">
-        <div className="absolute top-20 right-20 w-48 h-48 rounded-full border-2 border-sky-blue animate-pulse" />
-        <div className="absolute bottom-20 left-20 w-32 h-32 rounded-full border-2 border-dark-red animate-pulse" style={{ animationDelay: '1s' }} />
-      </div>
-      <div className="max-w-2xl mx-auto text-white relative z-10">
-        <h2 className="text-5xl font-bold mb-4 text-center">Start a Project</h2>
-        <p className="text-center mb-2 text-xl">Custom automations &amp; agents. Project-scoped.</p>
-        <p className="text-center mb-12 text-lg text-gray-200 max-w-xl mx-auto">
-          Tell us the workflow that burns the most time. We&apos;ll reply with whether a custom agent or automation is a fit — and what a fixed-scope build would look like.
-        </p>
+    <section id="contact" className="px-6 pb-24">
+      <div className="mx-auto max-w-[44rem]">
+        <div className="mb-12 flex flex-col items-center gap-4 text-center">
+          <h2 className="text-balance text-[clamp(2rem,4vw,2.75rem)] font-medium leading-[1.12] tracking-[-0.025em] text-white">
+            Start a project
+          </h2>
+          <p className="text-[17px] leading-relaxed text-zinc-300">
+            Custom automations &amp; agents. Project-scoped.
+          </p>
+          <p className="max-w-[34rem] text-[15px] leading-relaxed text-zinc-400">
+            Tell us the workflow that burns the most time. We&apos;ll reply with whether a custom agent or automation is a fit — and what a fixed-scope build would look like.
+          </p>
+        </div>
+
         {formSubmitted ? (
-          <div className="bg-white/10 p-10 rounded-xl backdrop-blur-sm border border-white/20 text-center">
-            <CheckCircle2 className="w-16 h-16 text-white mx-auto mb-4" strokeWidth={1.5} />
-            <h3 className="text-2xl font-bold text-white mb-3">We got it.</h3>
-            <p className="text-gray-200 text-lg">We review every submission and respond within 24 hours.</p>
+          <div className="panel relative isolate overflow-hidden rounded-2xl px-6 py-14 text-center sm:px-10">
+            <div className="bloom-blue pointer-events-none absolute left-1/2 top-0 -z-10 h-[20rem] w-[32rem] -translate-x-1/2 rounded-full" />
+            <CheckCircle2 className="mx-auto mb-5 h-12 w-12 text-white" strokeWidth={1.5} />
+            <h3 className="mb-3 text-xl font-medium tracking-[-0.01em] text-white">We got it.</h3>
+            <p className="text-[15px] leading-relaxed text-zinc-400">
+              We review every submission and respond within 24 hours.
+            </p>
           </div>
         ) : (
-          <form onSubmit={handleSubmit} className="space-y-5 bg-white/10 p-10 rounded-xl backdrop-blur-sm border border-white/20">
+          <form
+            onSubmit={handleSubmit}
+            className="panel flex flex-col gap-5 rounded-2xl p-6 sm:p-10"
+          >
             <div>
-              <label className="block font-bold mb-2 text-sm">Your Name *</label>
-              <input type="text" required value={formData.name} onChange={(e) => setFormData({ ...formData, name: e.target.value })} className="w-full px-4 py-3 rounded-lg bg-white/95 text-charcoal border-2 border-white/20 focus:border-dark-red focus:outline-none placeholder-gray-400 transition-colors" placeholder="Jane Smith" />
+              <label className={labelClass} htmlFor="contact-name">
+                Your name *
+              </label>
+              <input
+                id="contact-name"
+                type="text"
+                required
+                value={formData.name}
+                onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                className={fieldClass}
+                placeholder="Jane Smith"
+              />
             </div>
             <div>
-              <label className="block font-bold mb-2 text-sm">Business Email *</label>
-              <input type="email" required value={formData.email} onChange={(e) => setFormData({ ...formData, email: e.target.value })} className="w-full px-4 py-3 rounded-lg bg-white/95 text-charcoal border-2 border-white/20 focus:border-dark-red focus:outline-none placeholder-gray-400 transition-colors" placeholder="jane@yourcompany.com" />
+              <label className={labelClass} htmlFor="contact-email">
+                Business email *
+              </label>
+              <input
+                id="contact-email"
+                type="email"
+                required
+                value={formData.email}
+                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                className={fieldClass}
+                placeholder="jane@yourcompany.com"
+              />
             </div>
             <div>
-              <label className="block font-bold mb-2 text-sm">Business Type *</label>
-              <select required value={formData.businessType} onChange={(e) => setFormData({ ...formData, businessType: e.target.value })} className="w-full px-4 py-3 rounded-lg bg-white/95 text-charcoal border-2 border-white/20 focus:border-dark-red focus:outline-none transition-colors">
+              <label className={labelClass} htmlFor="contact-business-type">
+                Business type *
+              </label>
+              <select
+                id="contact-business-type"
+                required
+                value={formData.businessType}
+                onChange={(e) => setFormData({ ...formData, businessType: e.target.value })}
+                className={selectClass}
+              >
                 <option value="">Select your industry...</option>
                 <option value="real-estate">Real Estate</option>
                 <option value="legal">Legal Services</option>
@@ -62,8 +106,16 @@ export default function ContactForm() {
               </select>
             </div>
             <div>
-              <label className="block font-bold mb-2 text-sm">What should we build first? *</label>
-              <select required value={formData.challenge} onChange={(e) => setFormData({ ...formData, challenge: e.target.value })} className="w-full px-4 py-3 rounded-lg bg-white/95 text-charcoal border-2 border-white/20 focus:border-dark-red focus:outline-none transition-colors">
+              <label className={labelClass} htmlFor="contact-challenge">
+                What should we build first? *
+              </label>
+              <select
+                id="contact-challenge"
+                required
+                value={formData.challenge}
+                onChange={(e) => setFormData({ ...formData, challenge: e.target.value })}
+                className={selectClass}
+              >
                 <option value="">Pick the closest fit...</option>
                 <option value="agent">Custom AI agent (intake, support, research, etc.)</option>
                 <option value="automation">Workflow automation across my tools</option>
@@ -73,16 +125,33 @@ export default function ContactForm() {
               </select>
             </div>
             <div>
-              <label className="block font-bold mb-2 text-sm">Describe the workflow</label>
-              <textarea value={formData.message} onChange={(e) => setFormData({ ...formData, message: e.target.value })} className="w-full px-4 py-3 rounded-lg bg-white/95 text-charcoal border-2 border-white/20 focus:border-dark-red focus:outline-none placeholder-gray-400 transition-colors" rows={3} placeholder="What happens today when a lead/call/email comes in? Which tools (CRM, calendar, email)? What should the agent or automation do instead?" />
+              <label className={labelClass} htmlFor="contact-message">
+                Describe the workflow
+              </label>
+              <textarea
+                id="contact-message"
+                value={formData.message}
+                onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                className={fieldClass}
+                rows={3}
+                placeholder="What happens today when a lead/call/email comes in? Which tools (CRM, calendar, email)? What should the agent or automation do instead?"
+              />
             </div>
             {errorMsg && (
-              <p className="text-red-300 text-sm text-center" role="alert">{errorMsg}</p>
+              <p className="text-center text-sm text-zinc-300" role="alert">
+                {errorMsg}
+              </p>
             )}
-            <button type="submit" disabled={loading} className="w-full btn-red py-4 text-lg disabled:opacity-70">
-              {loading ? 'Submitting…' : 'Request Project Scope →'}
+            <button
+              type="submit"
+              disabled={loading}
+              className="inline-flex h-12 w-full items-center justify-center rounded-full bg-white px-5 text-base font-medium text-zinc-950 transition-opacity hover:opacity-90 disabled:opacity-70"
+            >
+              {loading ? 'Submitting…' : 'Request project scope →'}
             </button>
-            <p className="text-center text-xs opacity-60">We respond within 24 hours. Prefer a live call? Book the free 15-min fit audit instead.</p>
+            <p className="text-center text-[13px] text-zinc-500">
+              We respond within 24 hours. Prefer a live call? Book the free 15-min fit audit instead.
+            </p>
           </form>
         )}
       </div>

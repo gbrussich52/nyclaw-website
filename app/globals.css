@@ -435,6 +435,143 @@ section[id],
   outline-offset: 0;
 }
 
+/* ---------- Article prose (Dusk-Article spec) ----------
+   Descendant selectors rather than per-element utility classes on purpose:
+   all 16 articles are hand-written JSX with no MDX and no
+   @tailwindcss/typography, so styling by element lets each article drop its
+   old per-tag classes instead of being rewritten line by line. */
+
+.prose-dusk {
+  color: var(--text-secondary);
+  font-size: 17px;
+  line-height: 1.75;
+}
+
+.prose-dusk > * + * {
+  margin-top: 1.5rem;
+}
+
+/* Lead paragraph — first paragraph of the body. */
+.prose-dusk > p:first-of-type {
+  font-size: 20px;
+  line-height: 1.6;
+  color: #fff;
+}
+
+.prose-dusk h2 {
+  margin-top: 3rem;
+  font-size: 30px;
+  line-height: 1.2;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  color: #fff;
+  text-wrap: balance;
+}
+
+.prose-dusk h3 {
+  margin-top: 2.5rem;
+  font-size: 20px;
+  line-height: 1.3;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  color: #fff;
+}
+
+.prose-dusk strong {
+  color: #fff;
+  font-weight: 600;
+}
+
+.prose-dusk a {
+  color: #fff;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-color: rgba(255, 255, 255, 0.35);
+  transition: text-decoration-color 0.15s;
+}
+.prose-dusk a:hover {
+  text-decoration-color: #fff;
+}
+
+.prose-dusk ul,
+.prose-dusk ol {
+  padding-left: 1.25rem;
+}
+.prose-dusk ul { list-style: disc; }
+.prose-dusk ol { list-style: decimal; }
+.prose-dusk li { margin-top: 0.5rem; }
+.prose-dusk li::marker { color: var(--text-faint); }
+
+.prose-dusk blockquote {
+  border-left: 3px solid rgba(255, 255, 255, 0.2);
+  padding-left: 20px;
+  font-style: italic;
+}
+
+/* Pull-quote variant — the one place the standalone accent is used in prose. */
+.prose-dusk blockquote.pull {
+  border-left-color: var(--accent);
+  font-style: normal;
+  font-size: 18px;
+  color: #fff;
+}
+
+.prose-dusk hr {
+  border: 0;
+  border-top: 1px solid var(--line);
+  margin-top: 3rem;
+}
+
+/* Tables scroll inside their own container so the page body never does. */
+.prose-dusk table {
+  width: 100%;
+  border-collapse: collapse;
+  display: block;
+  overflow-x: auto;
+  border: 1px solid var(--line-dashed);
+  border-radius: 12px;
+}
+.prose-dusk thead {
+  background: rgba(255, 255, 255, 0.06);
+}
+.prose-dusk th {
+  text-align: left;
+  padding: 12px 16px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #fff;
+  white-space: nowrap;
+}
+.prose-dusk td {
+  padding: 12px 16px;
+  font-size: 14px;
+  color: var(--text-muted);
+}
+.prose-dusk tbody tr + tr td {
+  border-top: 1px dashed var(--line);
+}
+.prose-dusk td:first-child {
+  color: #fff;
+  font-weight: 500;
+}
+
+.prose-dusk pre {
+  background: var(--code);
+  border: 1px solid var(--line-dashed);
+  border-radius: 10px;
+  padding: 18px 20px;
+  overflow-x: auto;
+  font-family: ui-monospace, 'Geist Mono', Menlo, monospace;
+  font-size: 13.5px;
+  line-height: 1.7;
+  color: var(--accent);
+}
+.prose-dusk :not(pre) > code {
+  font-family: ui-monospace, 'Geist Mono', Menlo, monospace;
+  font-size: 0.9em;
+  color: var(--accent);
+}
+
 /* Respect reduced-motion: kill the looping animations. */
 @media (prefers-reduced-motion: reduce) {
   .animate-aurora,

@@ -8,17 +8,17 @@ import {
   MessageSquare,
   BarChart2,
   Globe,
-  Check,
-  Building2,
-  Scale,
-  Activity,
-  ShoppingBag,
-  UtensilsCrossed,
-  Wrench,
-  TrendingUp,
-  Zap,
 } from 'lucide-react'
 import { ServiceJsonLd, FAQJsonLd } from '../../components/JsonLd'
+import ServiceHero from '../../components/ServiceHero'
+import StatStrip from '../../components/StatStrip'
+import CapabilityGrid from '../../components/CapabilityGrid'
+import OodaPanel from '../../components/OodaPanel'
+import ResultsCards from '../../components/ResultsCards'
+import PricingPair from '../../components/PricingPair'
+import IndustryChips from '../../components/IndustryChips'
+import FaqSection from '../../components/FaqSection'
+import CtaPanel from '../../components/CtaPanel'
 
 export const metadata: Metadata = {
   title: 'AI Marketing Automations & Agents',
@@ -45,71 +45,118 @@ export const metadata: Metadata = {
   },
 }
 
-const CheckIcon = () => (
-  <Check className="w-4 h-4 text-sky-blue flex-shrink-0 mt-0.5" strokeWidth={2.5} />
-)
+/** Figures are the live route's own — the strip only restyles them. */
+const stats = [
+  { raw: 'Project', label: 'Build first' },
+  { raw: '7+', label: 'Content pieces/day' },
+  { raw: '3-5x', label: 'Output increase' },
+  { raw: '24/7', label: 'Lead capture' },
+]
 
-const whatWeBuild = [
+const capabilities = [
   {
     Icon: PenTool,
-    title: 'AI Content Engines',
-    desc: 'Automated content production that publishes daily — blog posts, social media, video scripts, and newsletters generated from your brand voice and industry data.',
+    title: 'AI content engines',
+    desc: 'Automated production that publishes daily — posts, social, scripts and newsletters from your brand voice.',
   },
   {
     Icon: Funnel,
-    title: 'Lead Generation Funnels',
-    desc: 'AI-optimized landing pages, lead magnets, and conversion flows that capture and qualify leads while you sleep. Every funnel gets tested and optimized automatically.',
+    title: 'Lead generation funnels',
+    desc: 'Landing pages, lead magnets and conversion flows that capture and qualify leads while you sleep.',
   },
   {
     Icon: Mail,
-    title: 'Email & SMS Automation',
-    desc: 'Personalized nurture sequences triggered by client behavior — welcome series, re-engagement campaigns, and follow-up flows that convert leads into paying customers.',
+    title: 'Email & SMS automation',
+    desc: 'Nurture sequences triggered by behaviour — welcome, re-engagement and follow-up flows that convert.',
   },
   {
     Icon: MessageSquare,
-    title: 'AI Chat & Response Systems',
-    desc: 'Website chatbots and social media responders that engage visitors instantly, answer questions, and route qualified leads to your team in real time.',
+    title: 'AI chat & response',
+    desc: 'Website and social responders that engage visitors instantly and route qualified leads in real time.',
   },
   {
     Icon: Globe,
-    title: 'Multi-Platform Distribution',
-    desc: 'Content and campaigns distributed automatically across Google, social media, email, and SMS — coordinated for maximum reach with minimum manual work.',
+    title: 'Multi-platform distribution',
+    desc: 'Content and campaigns distributed across search, social, email and SMS — coordinated, not manual.',
   },
   {
     Icon: BarChart2,
-    title: 'Analytics & Optimization',
-    desc: 'Real-time dashboards tracking every metric that matters: leads, conversions, cost per acquisition, and revenue attribution. AI identifies what is working and doubles down.',
+    title: 'Analytics & optimization',
+    desc: 'Dashboards tracking leads, conversions, cost per acquisition and revenue attribution.',
   },
 ]
 
+const ooda = [
+  {
+    letter: 'O',
+    label: 'Observe',
+    timeline: 'Week 1',
+    desc: 'We audit current marketing: what works, where leads come from, what competitors do, and the buying journey.',
+  },
+  {
+    letter: 'O',
+    label: 'Orient',
+    timeline: 'Week 1',
+    desc: 'We map the highest-impact channels and content strategies for your business, audience and budget.',
+  },
+  {
+    letter: 'D',
+    label: 'Decide',
+    timeline: 'Week 2',
+    desc: 'We lock the strategy: channels, content, funnels, automation triggers. You approve before we build.',
+  },
+  {
+    letter: 'A',
+    label: 'Act',
+    timeline: 'Week 2–4',
+    desc: 'We build and launch: content engine, funnels, email/SMS automation, chat and analytics.',
+  },
+]
+
+/** Metrics match the live route's results block exactly. */
 const results = [
   {
-    Icon: TrendingUp,
     metric: '7+',
     label: 'Pieces of content per day',
-    desc: 'Automated daily content production across blog, social media, and email — without your team writing a word.',
+    desc: 'Automated daily production across blog, social and email — without your team writing a word.',
   },
   {
-    Icon: Zap,
     metric: '24/7',
     label: 'Lead capture active',
-    desc: 'AI funnels and chatbots working around the clock — capturing, qualifying, and nurturing leads while you are offline.',
+    desc: 'Funnels and chat working around the clock, capturing and nurturing leads while you are offline.',
   },
   {
-    Icon: BarChart2,
     metric: '3-5x',
     label: 'Marketing output increase',
-    desc: 'Most clients see 3-5x more marketing output in the first 60 days with no additional team members.',
+    desc: 'Most clients see 3-5x more output in the first 60 days with no additional team members.',
   },
 ]
 
-const industries = [
-  { Icon: Building2, label: 'Real Estate' },
-  { Icon: Scale, label: 'Legal Services' },
-  { Icon: Activity, label: 'Healthcare' },
-  { Icon: ShoppingBag, label: 'Retail / E-Comm' },
-  { Icon: UtensilsCrossed, label: 'Hospitality' },
-  { Icon: Wrench, label: 'Contractors' },
+const plans = [
+  {
+    name: 'Marketing System Build',
+    price: '$4K–$12K',
+    unit: 'fixed scope',
+    desc: 'Content engine, funnels and nurture automations designed for your brand.',
+    items: [
+      'Brand voice & channel setup',
+      'Content engine + funnel build',
+      'Email / SMS nurture sequences',
+      'Handoff docs & training',
+    ],
+  },
+  {
+    name: 'Optional Operation',
+    price: '$1K–$3K',
+    unit: '/mo or rev share',
+    desc: 'After go-live only. We keep it running — or you run it yourself.',
+    items: [
+      'Ongoing content & funnel ops',
+      'Performance reporting',
+      'A/B testing & iteration',
+      'Or: self-run with our handoff',
+    ],
+  },
 ]
 
 const faqs = [
@@ -147,7 +194,7 @@ const faqs = [
 
 export default function AIMarketingPage() {
   return (
-    <div className="min-h-screen bg-white">
+    <>
       <ServiceJsonLd
         name="AI Marketing Automations & Agents"
         description="Custom AI marketing automations and agents for small businesses. Content engines, lead funnels, and nurture systems — project-based builds by NYClaw.io."
@@ -155,366 +202,76 @@ export default function AIMarketingPage() {
       />
       <FAQJsonLd items={faqs} />
 
-      {/* Hero */}
-      <section className="gradient-navy-sky text-white py-20 px-6 relative overflow-hidden">
-        <div className="absolute inset-0 opacity-5 pointer-events-none">
-          <div
-            className="absolute inset-0"
-            style={{
-              backgroundImage:
-                'linear-gradient(rgba(255,255,255,0.15) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.15) 1px, transparent 1px)',
-              backgroundSize: '80px 80px',
-            }}
-          />
-        </div>
-        <div className="max-w-4xl mx-auto text-center relative z-10">
-          <Link
-            href="/services"
-            className="inline-flex items-center gap-2 text-sm text-white/70 hover:text-white mb-6 transition-colors"
-          >
-            &larr; All Services
-          </Link>
-          <div className="mb-5 inline-flex items-center gap-2 bg-white/10 border border-white/20 rounded-full px-4 py-1.5">
-            <Megaphone className="w-3.5 h-3.5" strokeWidth={2} />
-            <span className="text-xs font-semibold text-white/90 tracking-wide">
-              Marketing
-            </span>
-          </div>
-          <h1 className="text-4xl sm:text-5xl font-bold mb-5" style={{ lineHeight: 1.15 }}>
-            Marketing Automations
-            <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-blue to-white inline-block pb-2">
-              &amp; Agents
-            </span>
-          </h1>
-          <p className="text-xl font-semibold text-white mb-3">
-            We design and build the system — content, funnels, nurture.
-          </p>
-          <p className="text-lg text-gray-200 mb-10 max-w-2xl mx-auto leading-relaxed">
-            Custom marketing automations and agents that produce content, capture
-            leads, and nurture prospects around the clock. Built as a project for
-            your brand — not a generic product install.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/#contact" className="btn-red text-lg px-8 py-4">
-              Start a Project &rarr;
-            </Link>
-            <Link
-              href="#what-we-build"
-              className="px-8 py-4 bg-white/10 text-white font-bold rounded-lg hover:bg-white/20 transition-all duration-300 border border-white/30 inline-block"
-            >
-              See What We Build
-            </Link>
-          </div>
-        </div>
-      </section>
+      <ServiceHero
+        badge="Marketing"
+        BadgeIcon={Megaphone}
+        titleTop="Marketing automations"
+        titleAccent="& agents"
+        lede="We design and build the system — content, funnels, nurture."
+        blurb="Custom marketing automations and agents that produce content, capture leads and nurture prospects around the clock. Built as a project for your brand — not a generic product install."
+        primary={{ label: 'Start a project', href: '/#contact' }}
+        secondary={{ label: 'See what we build', href: '#what-we-build' }}
+      />
 
-      {/* Quick Stats */}
-      <section className="py-12 px-6 bg-white border-b border-gray-100">
-        <div className="max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-6">
-          {[
-            { number: 'Project', label: 'Build First' },
-            { number: '7+', label: 'Content Pieces/Day' },
-            { number: '3-5x', label: 'Output Increase' },
-            { number: '24/7', label: 'Lead Capture' },
-          ].map((stat) => (
-            <div key={stat.label} className="text-center py-4">
-              <div className="text-3xl font-extrabold text-dark-red mb-1">{stat.number}</div>
-              <div className="text-xs font-semibold text-charcoal/60 uppercase tracking-wide">
-                {stat.label}
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
+      <StatStrip items={stats} />
 
-      {/* What We Build */}
-      <section id="what-we-build" className="py-24 px-6 bg-gray-50">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-16">
-            <span className="text-xs font-bold text-dark-red uppercase tracking-widest block mb-3">
-              Capabilities
-            </span>
-            <h2 className="text-4xl font-bold text-navy mb-4">What We Build</h2>
-            <p className="text-lg text-charcoal/70 max-w-2xl mx-auto">
-              A complete AI marketing system — not a single tool or hack. Everything
-              works together to generate, capture, and convert leads on autopilot.
-            </p>
-          </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {whatWeBuild.map(({ Icon, title, desc }) => (
-              <div
-                key={title}
-                className="bg-white border-2 border-gray-100 rounded-2xl p-6 hover:border-dark-red hover:shadow-lg transition-all duration-300"
-              >
-                <div className="w-10 h-10 rounded-xl bg-dark-red/10 flex items-center justify-center mb-4">
-                  <Icon className="w-5 h-5 text-dark-red" strokeWidth={1.5} />
-                </div>
-                <h3 className="text-base font-bold text-navy mb-2">{title}</h3>
-                <p className="text-sm text-charcoal/70 leading-relaxed">{desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <CapabilityGrid
+        id="what-we-build"
+        title="What we build"
+        blurb="A complete marketing system — not a single tool or hack. Everything works together to generate, capture and convert leads."
+        items={capabilities}
+      />
 
-      {/* How It Works */}
-      <section className="py-24 px-6 bg-white">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-16">
-            <span className="text-xs font-bold text-sky-blue uppercase tracking-widest block mb-3">
-              Our Framework
-            </span>
-            <h2 className="text-4xl font-bold text-navy mb-4">
-              How We Build Your Marketing Engine
-            </h2>
-            <p className="text-lg text-charcoal/70 max-w-2xl mx-auto">
-              Same OODA Loop framework, applied to marketing. We observe your
-              market, orient around opportunities, decide on strategy, and act by
-              building systems that run themselves.
-            </p>
-          </div>
-          <div className="grid md:grid-cols-4 gap-8">
-            {[
-              {
-                step: 1,
-                letter: 'O',
-                label: 'Observe',
-                color: 'bg-sky-blue',
-                desc: 'We audit your current marketing: what is working, what is not, where leads come from, and what your competitors are doing. We also analyze your ideal customer profile and buying journey.',
-                timeline: 'Week 1',
-              },
-              {
-                step: 2,
-                letter: 'O',
-                label: 'Orient',
-                color: 'bg-navy',
-                desc: 'We map the highest-impact marketing channels and content strategies for your specific business, audience, and budget. No generic playbooks — this is custom to you.',
-                timeline: 'Week 1',
-              },
-              {
-                step: 3,
-                letter: 'D',
-                label: 'Decide',
-                color: 'bg-sky-blue',
-                desc: 'We lock in the strategy: which channels, what content, which funnels, what automation triggers. You approve the plan before we build.',
-                timeline: 'Week 2',
-              },
-              {
-                step: 4,
-                letter: 'A',
-                label: 'Act',
-                color: 'bg-dark-red',
-                desc: 'We build and launch everything: content engine, lead funnels, email/SMS automation, chatbots, and analytics dashboards. Your marketing is live and running.',
-                timeline: 'Week 2-4',
-              },
-            ].map((phase) => (
-              <div key={phase.step} className="flex flex-col items-center text-center">
-                <div
-                  className={`w-12 h-12 rounded-full ${phase.color} text-white flex items-center justify-center font-extrabold text-lg mb-4 shadow-lg`}
-                >
-                  {phase.letter}
-                </div>
-                <p className="text-xs font-bold text-dark-red uppercase tracking-wider mb-1">
-                  Step {phase.step} &middot; {phase.timeline}
-                </p>
-                <p className="text-lg font-bold text-navy mb-3">{phase.label}</p>
-                <p className="text-sm text-charcoal/70 leading-relaxed">{phase.desc}</p>
-              </div>
-            ))}
-          </div>
-          <p className="text-center mt-12 text-dark-red font-bold">
-            Then we optimize — every week, the AI analyzes performance data and
-            adjusts strategy automatically.
-          </p>
-        </div>
-      </section>
+      <OodaPanel
+        title="How we build your marketing engine"
+        blurb="The same OODA Loop, applied to marketing: observe the market, orient around opportunity, decide the strategy, act by building systems that run themselves."
+        steps={ooda}
+        note="Then we optimize — performance data reviewed weekly and strategy adjusted."
+      />
 
-      {/* Results You Can Expect */}
-      <section className="py-24 px-6 bg-gray-50">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-16">
-            <span className="text-xs font-bold text-dark-red uppercase tracking-widest block mb-3">
-              Outcomes
-            </span>
-            <h2 className="text-4xl font-bold text-navy mb-4">
-              Results You Can Expect
-            </h2>
-            <p className="text-lg text-charcoal/70 max-w-2xl mx-auto">
-              These are the outcomes our AI marketing systems deliver for small
-              businesses. Real numbers, not aspirational benchmarks.
-            </p>
-          </div>
-          <div className="grid md:grid-cols-3 gap-8">
-            {results.map(({ Icon, metric, label, desc }) => (
-              <div
-                key={label}
-                className="bg-white border-2 border-gray-100 rounded-2xl p-8 text-center hover:border-dark-red hover:shadow-lg transition-all duration-300"
-              >
-                <div className="w-12 h-12 rounded-full bg-dark-red/10 flex items-center justify-center mx-auto mb-4">
-                  <Icon className="w-6 h-6 text-dark-red" strokeWidth={1.5} />
-                </div>
-                <div className="text-4xl font-extrabold text-dark-red mb-2">{metric}</div>
-                <p className="text-sm font-bold text-navy mb-3">{label}</p>
-                <p className="text-sm text-charcoal/70 leading-relaxed">{desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <ResultsCards
+        title="Results you can expect"
+        blurb="These are the outcomes the marketing systems deliver. Real numbers, not aspirational benchmarks."
+        items={results}
+      />
 
-      {/* Pricing */}
-      <section className="py-24 px-6 bg-white">
-        <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-16">
-            <span className="text-xs font-bold text-dark-red uppercase tracking-widest block mb-3">
-              Pricing
-            </span>
-            <h2 className="text-4xl font-bold text-navy mb-4">
-              Build First. Operate Only If You Want.
-            </h2>
-            <p className="text-lg text-charcoal/70 max-w-2xl mx-auto">
-              Project-scoped systems. Optional ongoing operation after go-live —
-              never required to start.
-            </p>
-          </div>
-          <div className="grid md:grid-cols-2 gap-8">
-            <div className="bg-dark-red/5 border-2 border-dark-red/20 rounded-2xl p-8">
-              <h3 className="text-xl font-bold text-navy mb-2">Marketing System Build</h3>
-              <div className="flex items-baseline gap-2 mb-4">
-                <span className="text-4xl font-extrabold text-navy">$4K&ndash;$12K</span>
-              </div>
-              <p className="text-sm text-charcoal/70 mb-4">
-                Fixed-scope project: content engine, funnels, and nurture
-                automations designed for your brand.
-              </p>
-              <ul className="space-y-2">
-                {[
-                  'Brand voice & channel setup',
-                  'Content engine + funnel build',
-                  'Email / SMS nurture sequences',
-                  'Handoff docs & training',
-                ].map((item) => (
-                  <li key={item} className="flex items-start gap-2 text-sm text-charcoal/80">
-                    <CheckIcon /> {item}
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div className="bg-sky-blue/5 border-2 border-sky-blue/20 rounded-2xl p-8">
-              <h3 className="text-xl font-bold text-navy mb-2">Optional Operation</h3>
-              <div className="flex items-baseline gap-2 mb-4">
-                <span className="text-4xl font-extrabold text-sky-blue">$1K&ndash;$3K</span>
-                <span className="text-charcoal/60">/mo or rev share</span>
-              </div>
-              <p className="text-sm text-charcoal/70 mb-4">
-                After go-live only. We keep the system running, optimizing, and
-                producing — or you run it yourself.
-              </p>
-              <ul className="space-y-2">
-                {[
-                  'Ongoing content & funnel ops',
-                  'Performance reporting',
-                  'A/B testing & iteration',
-                  'Or: self-run with our handoff',
-                ].map((item) => (
-                  <li key={item} className="flex items-start gap-2 text-sm text-charcoal/80">
-                    <CheckIcon /> {item}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-          <p className="text-center mt-8 text-sm text-charcoal/60">
-            Every engagement starts as a fixed project quote. Monthly or performance
-            operation is optional after the system is live.
-          </p>
-        </div>
-      </section>
+      <PricingPair
+        title="Build first. Operate only if you want."
+        blurb="Project-scoped systems. Optional ongoing operation after go-live — never required to start."
+        plans={plans}
+        note="Every engagement starts as a fixed project quote."
+      />
 
-      {/* Who It's For */}
-      <section className="py-24 px-6 bg-gray-50">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-12">
-            <span className="text-xs font-bold text-dark-red uppercase tracking-widest block mb-3">
-              Industries
-            </span>
-            <h2 className="text-4xl font-bold text-navy mb-4">Who This Is For</h2>
-            <p className="text-lg text-charcoal/70 max-w-2xl mx-auto">
-              AI marketing works best for small businesses that rely on a steady
-              pipeline of leads — and do not have the bandwidth to produce content
-              and run campaigns manually.
-            </p>
-          </div>
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
-            {industries.map(({ Icon, label }) => (
-              <div
-                key={label}
-                className="text-center py-6 px-4 bg-white rounded-2xl border border-gray-100 hover:border-dark-red hover:bg-dark-red/5 transition-all duration-300 flex flex-col items-center gap-3"
-              >
-                <div className="w-10 h-10 rounded-xl bg-dark-red/5 flex items-center justify-center">
-                  <Icon className="w-5 h-5 text-navy" strokeWidth={1.5} />
-                </div>
-                <p className="text-sm font-semibold text-navy">{label}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <IndustryChips blurb="Best for small businesses that rely on a steady pipeline of leads and have no bandwidth to produce content manually." />
 
-      {/* FAQ */}
-      <section className="py-24 px-6 bg-white">
-        <div className="max-w-3xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-navy mb-4">
-              Frequently Asked Questions
-            </h2>
-            <p className="text-lg text-charcoal/70">
-              Common questions about AI-powered marketing for small businesses.
-            </p>
-          </div>
-          <div className="space-y-6">
-            {faqs.map((faq) => (
-              <div key={faq.question} className="border-b border-gray-100 pb-6">
-                <h3 className="text-lg font-bold text-navy mb-3">{faq.question}</h3>
-                <p className="text-charcoal/70 leading-relaxed">{faq.answer}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <FaqSection
+        blurb="Common questions about AI-powered marketing for small businesses."
+        items={faqs}
+      />
 
-      {/* CTA */}
-      <section className="bg-navy text-white py-20 px-6">
-        <div className="max-w-3xl mx-auto text-center">
-          <h2 className="text-3xl font-bold mb-4">
-            Ready for marketing automations built for your brand?
-          </h2>
-          <p className="text-gray-300 mb-8 text-lg">
-            Tell us your channels and goals. We&apos;ll scope a custom marketing
-            system — project-based, with optional ops after go-live.
-          </p>
-          <Link href="/#contact" className="btn-red inline-block px-10 py-4 text-lg">
-            Start a Project &rarr;
-          </Link>
-          <p className="mt-6 text-sm text-gray-400">
+      <CtaPanel
+        title="Ready for marketing automations built for your brand?"
+        blurb="Tell us your channels and goals. We'll scope a custom marketing system — project-based, with optional ops after go-live."
+        primary={{ label: 'Start a project', href: '/#contact' }}
+        footer={
+          <>
             Or explore:{' '}
             <Link
               href="/services/ai-automation"
-              className="text-sky-blue hover:underline underline-offset-4"
+              className="text-white underline underline-offset-4"
             >
-              Custom Agents
+              Custom agents
             </Link>{' '}
             &middot;{' '}
             <Link
               href="/services/ai-consulting"
-              className="text-sky-blue hover:underline underline-offset-4"
+              className="text-white underline underline-offset-4"
             >
-              Fit Audit + Roadmap
+              Fit audit + roadmap
             </Link>
-          </p>
-        </div>
-      </section>
-    </div>
+          </>
+        }
+      />
+    </>
   )
 }

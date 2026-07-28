@@ -21,31 +21,64 @@ export default function PlaybookForm() {
   }
 
   return (
-    <section className="py-24 px-6 bg-gradient-to-b from-white to-sky-blue/5">
-      <div className="max-w-2xl mx-auto text-center">
-        <h2 className="text-4xl font-bold text-navy mb-3">Free AI Readiness Guide</h2>
-        <p className="text-lg text-charcoal/70 mb-12">A plain-English guide to where AI fits your business, what it costs, and what to do first. No jargon. No fluff.</p>
-        <div className="bg-white border-2 border-sky-blue/20 rounded-2xl p-10 shadow-sm">
+    <section className="px-6 pb-24">
+      <div className="mx-auto max-w-[44rem]">
+        <div className="mb-10 flex flex-col items-center gap-4 text-center">
+          <h2 className="text-balance text-[clamp(1.75rem,3.5vw,2.25rem)] font-medium leading-[1.15] tracking-[-0.025em] text-white">
+            Free AI Readiness Guide
+          </h2>
+          <p className="max-w-[34rem] text-[15px] leading-relaxed text-zinc-400">
+            A plain-English guide to where AI fits your business, what it costs, and what to do first. No jargon. No fluff.
+          </p>
+        </div>
+
+        <div className="panel relative isolate overflow-hidden rounded-2xl px-6 py-10 text-center sm:px-10">
+          <div className="bloom-blue pointer-events-none absolute left-1/2 top-0 -z-10 h-[18rem] w-[30rem] -translate-x-1/2 rounded-full" />
           {playbookSubmitted ? (
             <div className="py-4">
-              <CheckCircle2 className="w-12 h-12 text-sky-blue mx-auto mb-4" strokeWidth={1.5} />
-              <h3 className="text-xl font-bold text-navy mb-2">You&apos;re on the list.</h3>
-              <p className="text-charcoal/70 text-sm">We&apos;ll send the guide to your inbox shortly.</p>
+              <CheckCircle2 className="mx-auto mb-4 h-12 w-12 text-white" strokeWidth={1.5} />
+              <h3 className="mb-2 text-xl font-medium tracking-[-0.01em] text-white">
+                You&apos;re on the list.
+              </h3>
+              <p className="text-sm leading-relaxed text-zinc-400">
+                We&apos;ll send the guide to your inbox shortly.
+              </p>
             </div>
           ) : (
             <>
-              <h3 className="text-xl font-bold text-navy mb-2">Get the Free Guide</h3>
-              <p className="text-sm text-charcoal/70 mb-6">Where AI Fits Your Business &middot; What to Automate First &middot; Real Costs &amp; Timelines &middot; Common Mistakes</p>
-              <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3">
-                <input type="email" required value={playbookEmail} onChange={(e) => setPlaybookEmail(e.target.value)} placeholder="your@email.com" className="flex-1 px-4 py-3 rounded-lg border-2 border-gray-200 focus:border-sky-blue focus:outline-none text-charcoal text-sm transition-colors" />
-                <button type="submit" disabled={loading} className="btn-red px-6 py-3 text-sm whitespace-nowrap disabled:opacity-70">
-                  {loading ? 'Sending…' : 'Send Me the Guide →'}
+              <h3 className="mb-2 text-xl font-medium tracking-[-0.01em] text-white">
+                Get the free guide
+              </h3>
+              <p className="mb-6 text-sm leading-relaxed text-zinc-400">
+                Where AI Fits Your Business &middot; What to Automate First &middot; Real Costs &amp; Timelines &middot; Common Mistakes
+              </p>
+              <form onSubmit={handleSubmit} className="flex flex-col gap-3 sm:flex-row">
+                <label className="sr-only" htmlFor="playbook-email">
+                  Email address
+                </label>
+                <input
+                  id="playbook-email"
+                  type="email"
+                  required
+                  value={playbookEmail}
+                  onChange={(e) => setPlaybookEmail(e.target.value)}
+                  placeholder="your@email.com"
+                  className="input-dusk flex-1 px-4 py-3 text-sm transition-colors"
+                />
+                <button
+                  type="submit"
+                  disabled={loading}
+                  className="inline-flex h-12 items-center justify-center whitespace-nowrap rounded-full bg-white px-6 text-sm font-medium text-zinc-950 transition-opacity hover:opacity-90 disabled:opacity-70"
+                >
+                  {loading ? 'Sending…' : 'Send me the guide →'}
                 </button>
               </form>
               {errorMsg && (
-                <p className="text-red-500 text-xs mt-3" role="alert">{errorMsg}</p>
+                <p className="mt-3 text-xs text-zinc-300" role="alert">
+                  {errorMsg}
+                </p>
               )}
-              <p className="text-xs text-charcoal/40 mt-3">No spam. Unsubscribe anytime.</p>
+              <p className="mt-3 text-xs text-zinc-500">No spam. Unsubscribe anytime.</p>
             </>
           )}
         </div>

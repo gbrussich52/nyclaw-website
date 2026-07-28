@@ -1,6 +1,18 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import { Bot, Workflow, Target, ArrowRight } from 'lucide-react'
+import {
+  Bot,
+  Workflow,
+  Target,
+  Search,
+  Plug,
+  ShieldCheck,
+  GraduationCap,
+  FileText,
+  Activity,
+  ArrowRight,
+} from 'lucide-react'
+import CtaPanel from '../components/CtaPanel'
 import { CALENDLY_URL, FREE_AUDIT_LABEL } from '../config'
 
 export const metadata: Metadata = {
@@ -31,129 +43,171 @@ export const metadata: Metadata = {
 const services = [
   {
     Icon: Bot,
-    iconBg: 'bg-sky-blue/10',
-    iconColor: 'text-sky-blue',
     badge: 'Flagship',
-    badgeColor: 'text-sky-blue',
     title: 'Custom AI Agents',
     tagline: 'Agents that do real work in your stack.',
     description:
-      'We design and build agents for one mission-critical job — intake, lead response, scheduling, research, support triage — wired into the tools you already use, with boundaries and a check that the work still ships after launch. Not a stock template install.',
+      'We design and build agents for one mission-critical job — intake, lead response, scheduling, research, support triage — wired into the tools you already use. Not a stock template install.',
     pricing: '$3.5K–8K per agent sprint · no monthly required',
     href: '/services/ai-automation',
-    cta: 'Learn About Agents',
+    cta: 'Learn about agents',
   },
   {
     Icon: Workflow,
-    iconBg: 'bg-navy/10',
-    iconColor: 'text-navy',
     badge: 'Systems',
-    badgeColor: 'text-navy',
     title: 'Workflow Automation',
     tagline: 'Multi-step systems across your ops.',
     description:
-      'End-to-end automations that move work between forms, CRMs, inboxes, calendars, and invoices — so humans only touch exceptions. Scoped as a project, delivered with a runbook.',
+      'End-to-end automations that move work between forms, CRMs, inboxes, calendars and invoices — so humans only touch exceptions. Scoped as a project, delivered with a runbook.',
     pricing: '$5K–15K project · 2–3 connected automations',
     href: '/services/ai-automation',
-    cta: 'Learn About Automation',
+    cta: 'Learn about automation',
   },
   {
     Icon: Target,
-    iconBg: 'bg-dark-red/10',
-    iconColor: 'text-dark-red',
     badge: 'Entry',
-    badgeColor: 'text-dark-red',
     title: 'Fit Audit + Roadmap',
     tagline: 'Know what to build first — and what to skip.',
     description:
       'Start with a free 15-minute fit call. Need a deeper plan? We deliver a prioritized automation roadmap with ROI and build order before you invest in a full system.',
     pricing: 'Free 15-min fit · $1K–2.5K full roadmap (optional)',
     href: '/services/ai-consulting',
-    cta: 'Learn About Strategy',
+    cta: 'Learn about strategy',
+  },
+]
+
+const includes = [
+  {
+    Icon: Search,
+    title: 'Workflow design',
+    desc: 'The process mapped, the success metric agreed before anything is built.',
+  },
+  {
+    Icon: Plug,
+    title: 'Integrations',
+    desc: 'CRM, email, calendar, SMS and web wired up by us, not left to you.',
+  },
+  {
+    Icon: ShieldCheck,
+    title: 'Error handling',
+    desc: 'Exceptions surfaced to a human instead of failing silently.',
+  },
+  {
+    Icon: GraduationCap,
+    title: 'Team training',
+    desc: 'A working session so the people using it know what it does.',
+  },
+  {
+    Icon: FileText,
+    title: 'Runbook',
+    desc: 'Written handoff: what it does, what to check, how to change it.',
+  },
+  {
+    Icon: Activity,
+    title: 'Optional care',
+    desc: 'Monitoring and iteration after go-live, only if you want it.',
   },
 ]
 
 export default function ServicesPage() {
   return (
-    <div className="min-h-screen bg-white">
-      <section className="gradient-navy-sky text-white py-20 px-6">
-        <div className="max-w-4xl mx-auto text-center">
-          <span className="text-xs font-bold text-sky-blue/80 uppercase tracking-widest block mb-3">
-            Our Services
-          </span>
-          <h1 className="text-4xl sm:text-5xl font-bold mb-5">
-            AI Agency Services for Small Businesses
+    <>
+      {/* ---------------------------------------------------------- Hero --- */}
+      <section className="relative isolate overflow-hidden px-6 pb-20 pt-16">
+        <div className="bloom-indigo pointer-events-none absolute -top-[14rem] -right-24 -z-10 h-[44rem] w-[44rem] rounded-full" />
+        <div className="hero-grid pointer-events-none absolute inset-0 -z-10" />
+
+        <div className="mx-auto max-w-[64rem]">
+          <div className="mb-6 inline-flex h-7 items-center gap-2 rounded-full px-3 text-xs font-medium text-zinc-300 outline outline-1 outline-white/[0.12] [background:color-mix(in_oklab,#27272a_55%,#000)]">
+            <span className="inline-block h-[5px] w-[5px] rounded-full bg-cyan-400" />
+            Our services
+          </div>
+
+          <h1 className="max-w-[36rem] text-balance text-[clamp(2.5rem,5.5vw,3.5rem)] font-normal leading-[1.08] tracking-[-0.03em] text-white">
+            AI agency services for small businesses
           </h1>
-          <p className="text-lg text-gray-200 max-w-2xl mx-auto leading-relaxed">
-            We design and build custom automations and agents — project-based,
-            scoped to your workflows, with verification after go-live. Not a chatbot install and not a one-size product.
+
+          <p className="mt-6 max-w-[34rem] text-lg leading-relaxed text-zinc-300">
+            We design and build custom automations and agents — project-based, scoped to your
+            workflows. Not a one-size product install.
           </p>
         </div>
       </section>
 
-      <section className="py-24 px-6">
-        <div className="max-w-6xl mx-auto">
-          <div className="grid md:grid-cols-3 gap-8">
-            {services.map((service) => (
-              <Link
-                key={service.title}
-                href={service.href}
-                className="card-hover flex flex-col group"
-              >
-                <div className="flex items-center gap-3 mb-4">
-                  <div
-                    className={`w-10 h-10 rounded-xl ${service.iconBg} flex items-center justify-center flex-shrink-0`}
-                  >
-                    <service.Icon
-                      className={`w-5 h-5 ${service.iconColor}`}
-                      strokeWidth={1.5}
-                    />
-                  </div>
-                  <span
-                    className={`text-xs font-bold ${service.badgeColor} uppercase tracking-wider`}
-                  >
-                    {service.badge}
-                  </span>
-                </div>
-                <h2 className="text-2xl font-bold text-navy mb-1">
-                  {service.title}
-                </h2>
-                <p className="text-sky-blue font-bold mb-4 text-sm">
-                  {service.tagline}
-                </p>
-                <p className="text-charcoal/80 text-sm mb-6 leading-relaxed flex-1">
-                  {service.description}
-                </p>
-                <p className="text-sm font-bold text-navy mb-4">
-                  {service.pricing}
-                </p>
-                <span className="text-sky-blue font-bold text-sm flex items-center gap-2 group-hover:gap-3 transition-all">
-                  {service.cta}{' '}
-                  <ArrowRight className="w-4 h-4" strokeWidth={2} />
+      {/* ------------------------------------------------- Service cards --- */}
+      <section className="px-6 pb-24">
+        <div className="mx-auto grid max-w-[64rem] items-stretch gap-6 md:grid-cols-3">
+          {services.map((service) => (
+            <Link
+              key={service.title}
+              href={service.href}
+              className="panel panel-hover group flex flex-col gap-3 rounded-xl p-7"
+            >
+              <div className="flex items-center gap-2.5">
+                <span className="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-white/[0.07] text-white">
+                  <service.Icon size={16} strokeWidth={1.75} aria-hidden="true" />
                 </span>
-              </Link>
+                <span className="text-[11px] font-medium uppercase tracking-[0.08em] text-zinc-400">
+                  {service.badge}
+                </span>
+              </div>
+
+              <h2 className="text-[21px] font-medium leading-tight tracking-[-0.02em] text-white">
+                {service.title}
+              </h2>
+              <p className="text-sm font-medium text-zinc-300">{service.tagline}</p>
+              <p className="flex-1 text-sm leading-relaxed text-zinc-400">{service.description}</p>
+              <p className="border-t border-dashed border-white/15 pt-3.5 text-[13px] text-zinc-300">
+                {service.pricing}
+              </p>
+              <span className="inline-flex items-center gap-1.5 text-sm font-medium text-white">
+                {service.cta}
+                <ArrowRight
+                  size={15}
+                  strokeWidth={2}
+                  aria-hidden="true"
+                  className="transition-transform group-hover:translate-x-0.5"
+                />
+              </span>
+            </Link>
+          ))}
+        </div>
+      </section>
+
+      {/* ---------------------------------------- What's always included --- */}
+      <section className="px-6 pb-24">
+        <div className="mx-auto flex max-w-[64rem] flex-col gap-12">
+          <div className="flex max-w-[36rem] flex-col gap-5">
+            <h2 className="text-balance text-[clamp(2rem,4vw,2.5rem)] font-medium leading-[1.15] tracking-[-0.025em] text-white">
+              What every engagement includes
+            </h2>
+            <p className="text-[17px] leading-relaxed text-zinc-300">
+              Same shape whichever service you start with: one scoped system, wired into your
+              tools, handed over with a runbook.
+            </p>
+          </div>
+
+          <div className="hairline-grid grid overflow-hidden rounded-sm border border-white/10 sm:grid-cols-2 lg:grid-cols-3">
+            {includes.map(({ Icon, title, desc }) => (
+              <div key={title} className="flex flex-col gap-3 p-10">
+                <div className="flex items-center gap-2">
+                  <Icon size={16} strokeWidth={1.75} className="text-white" aria-hidden="true" />
+                  <h3 className="text-sm font-medium text-white">{title}</h3>
+                </div>
+                <p className="text-sm leading-relaxed text-zinc-400">{desc}</p>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="py-16 px-6 bg-navy text-white">
-        <div className="max-w-3xl mx-auto text-center">
-          <h2 className="text-3xl font-bold mb-4">Not sure where to start?</h2>
-          <p className="text-gray-300 mb-8">
-            Book a free 15-minute fit audit. We&apos;ll name the #1 agent or
-            automation worth building — or tell you if now isn&apos;t the time.
-          </p>
-          <a
-            href={CALENDLY_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn-red inline-block px-10 py-4 text-lg"
-          >
-            {FREE_AUDIT_LABEL} &rarr;
-          </a>
-        </div>
-      </section>
-    </div>
+      {/* ----------------------------------------------------- CTA panel --- */}
+      <CtaPanel
+        title="Not sure where to start?"
+        blurb="Book a free 15-minute fit audit. We'll name the #1 agent or automation worth building — or tell you if now isn't the time."
+        primary={{ label: FREE_AUDIT_LABEL, href: CALENDLY_URL, external: true }}
+        secondary={{ label: 'Send us the workflow', href: '/#contact' }}
+      />
+    </>
   )
 }
