@@ -1,44 +1,38 @@
 import type { Metadata } from 'next'
+import Link from 'next/link'
 import {
-  Clock,
-  TrendingDown,
-  BarChart2,
-  HelpCircle,
-  Target,
-  Building2,
-  Scale,
-  Activity,
-  ShoppingBag,
-  UtensilsCrossed,
-  Wrench,
-  Check,
   Bot,
+  Workflow,
+  Target,
   Mail,
   CalendarClock,
   Phone,
   MessageSquare,
   Database,
-  Workflow,
   Globe,
+  BarChart2,
+  ChevronRight,
+  ArrowUpRight,
 } from 'lucide-react'
 import ContactForm from './components/ContactForm'
 import PlaybookForm from './components/PlaybookForm'
 import { FAQJsonLd } from './components/JsonLd'
-import HeroHelix from './components/HeroHelix'
+import HeroVideo from './components/HeroVideo'
+import FaqAccordion from './components/FaqAccordion'
 import Reveal from './components/Reveal'
 import CountUp from './components/CountUp'
-import { CALENDLY_URL, FREE_AUDIT_LABEL } from './config'
+import { CALENDLY_URL } from './config'
 
 const capabilities = [
-  { Icon: Bot,             label: 'GPT & Claude Agents' },
-  { Icon: Workflow,        label: 'Workflow Automation' },
-  { Icon: Database,        label: 'CRM Sync' },
-  { Icon: Mail,            label: 'Email & SMS Sequences' },
-  { Icon: CalendarClock,   label: 'Smart Scheduling' },
-  { Icon: Phone,           label: 'AI Voice Agents' },
-  { Icon: MessageSquare,   label: 'Customer Support Bots' },
-  { Icon: Globe,           label: 'Web Scraping & Research' },
-  { Icon: BarChart2,       label: 'Live Dashboards' },
+  { Icon: Bot, label: 'GPT & Claude Agents' },
+  { Icon: Workflow, label: 'Workflow Automation' },
+  { Icon: Database, label: 'CRM Sync' },
+  { Icon: Mail, label: 'Email & SMS Sequences' },
+  { Icon: CalendarClock, label: 'Smart Scheduling' },
+  { Icon: Phone, label: 'AI Voice Agents' },
+  { Icon: MessageSquare, label: 'Customer Support Bots' },
+  { Icon: Globe, label: 'Web Scraping & Research' },
+  { Icon: BarChart2, label: 'Live Dashboards' },
 ]
 
 export const metadata: Metadata = {
@@ -67,24 +61,97 @@ export const metadata: Metadata = {
   },
 }
 
-const CheckIcon = () => (
-  <Check className="w-4 h-4 text-sky-blue flex-shrink-0" strokeWidth={2.5} />
-)
+const stats = [
+  { to: 40, suffix: '%', label: 'Avg. cost reduction' },
+  { to: 8, suffix: 'x', label: 'Productivity gains' },
+  { raw: 'Sprint', label: 'Project-based delivery' },
+  { raw: '24/7', label: 'Agents that keep working' },
+] as { to?: number; suffix?: string; raw?: string; label: string }[]
 
-const painPoints = [
-  { Icon: Clock,         title: 'Time Drain',          desc: 'Your team spends hours on tasks — scheduling, data entry, follow-ups — that AI handles in seconds.' },
-  { Icon: TrendingDown,  title: 'Rising Labor Costs',   desc: 'Every manual process has a human cost. AI automates the repetitive work without adding headcount.' },
-  { Icon: BarChart2,     title: 'Falling Behind',       desc: 'Your competitors are using AI to outpace you on marketing, pricing, and customer response speed.' },
-  { Icon: HelpCircle,    title: 'No Clear Path',        desc: "You know AI is important. You just don't know where it fits your business — or where to start." },
+const services = [
+  {
+    Icon: Bot,
+    eyebrow: 'Flagship',
+    title: 'Custom AI agents',
+    price: '$3.5K–8K',
+    unit: 'per agent sprint',
+    desc: 'We design, build and ship an agent for one mission-critical job — intake, lead response, scheduling, research, support triage — wired into the tools you already use.',
+    href: '/services/ai-automation',
+  },
+  {
+    Icon: Workflow,
+    eyebrow: 'Systems',
+    title: 'Workflow automation',
+    price: '$5K–15K',
+    unit: 'project',
+    desc: 'End-to-end automations that move work between tools — forms, CRMs, inboxes, calendars, invoices — so humans only touch exceptions.',
+    href: '/services/ai-automation',
+  },
+  {
+    Icon: Target,
+    eyebrow: 'Entry',
+    title: 'Fit audit + roadmap',
+    price: 'Free',
+    unit: '15-min fit audit · roadmap $1K–2.5K',
+    desc: 'Start with a free 15-minute fit call. If you need a deeper plan, we deliver a prioritized automation roadmap with ROI and build order — before you spend on a full system.',
+    href: '/services/ai-consulting',
+  },
+]
+
+const ooda = [
+  {
+    letter: 'O',
+    timeline: '15 min',
+    label: 'Observe',
+    desc: 'We map your processes, tools and workflows to find where time and money are being lost.',
+  },
+  {
+    letter: 'O',
+    timeline: 'Days',
+    label: 'Orient',
+    desc: 'We weigh your industry context, competitor AI adoption and constraints to rank the highest-ROI opportunities.',
+  },
+  {
+    letter: 'D',
+    timeline: 'Scoping',
+    label: 'Decide',
+    desc: 'We scope the first agent or automation: what it does, which tools it touches, success metrics and a fixed project price.',
+  },
+  {
+    letter: 'A',
+    timeline: 'Sprint',
+    label: 'Act',
+    desc: 'We design, build and ship the system — plus training and a documented handoff so your team can run it.',
+  },
+]
+
+/**
+ * Real client builds. Copy is approved and exact — company names must match
+ * how each business writes its own, and no build may be described as free,
+ * unpaid or a pilot. Do not paraphrase.
+ */
+const work = [
+  {
+    badge: 'Electrical contractor',
+    title: 'Estimating, billing and invoicing on one automated path',
+    body: 'Andrew, electrician and owner of Valentine Family Electric, was moving every job from estimate to bill to invoice by hand. A Claude-driven process drafts the estimate, turns the approved job into a bill, and issues the invoice with no re-typing between steps.',
+    footer: 'Valentine Family Electric · Westchester County, NY',
+  },
+  {
+    badge: 'Building & stone supply',
+    title: 'Claude configured to carry complex design work',
+    body: 'Frank, owner of Byram Mason, Building & Stone Supply, needed AI that could hold a detailed client design job start to finish. His instructions, project files and skills were structured across Claude Fable, Opus and ChatGPT 5.6 Sol so context survives the whole build.',
+    footer: 'Byram Mason, Building & Stone Supply · byrammason.com',
+  },
 ]
 
 const industries = [
-  { Icon: Building2,       label: 'Real Estate' },
-  { Icon: Scale,           label: 'Legal Services' },
-  { Icon: Activity,        label: 'Healthcare' },
-  { Icon: ShoppingBag,     label: 'Retail / E-Comm' },
-  { Icon: UtensilsCrossed, label: 'Hospitality' },
-  { Icon: Wrench,          label: 'Contractors' },
+  'Real estate',
+  'Legal services',
+  'Healthcare',
+  'Retail / e-comm',
+  'Hospitality',
+  'Contractors',
 ]
 
 const homepageFaqs = [
@@ -112,77 +179,249 @@ const homepageFaqs = [
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-white">
+    <>
       <FAQJsonLd items={homepageFaqs} />
 
-      {/* Hero */}
-      <section className="dusk-hero grain relative overflow-hidden min-h-[88vh] flex items-center">
-        {/* Hairline grid */}
-        <div className="absolute inset-0 dusk-grid pointer-events-none" />
+      {/* ---------------------------------------------------------- Hero --- */}
+      {/* -mt-[92px] cancels the layout spacer so the media card sits under the
+          fixed header, as in the mockup. */}
+      <section className="-mt-[92px] px-2 pt-2">
+        <div className="relative isolate overflow-hidden rounded-[48px] border border-white/5 bg-[#0a0a0c]">
+          <HeroVideo className="opacity-50" />
 
-        {/* Full-bleed DNA data-network — weighted right, faded toward the copy */}
-        <div
-          className="absolute inset-0 pointer-events-none opacity-60 md:opacity-100"
-          style={{
-            WebkitMaskImage: 'linear-gradient(90deg, transparent 0%, transparent 20%, #000 52%)',
-            maskImage: 'linear-gradient(90deg, transparent 0%, transparent 20%, #000 52%)',
-          }}
-        >
-          <HeroHelix centerXRatio={0.64} />
-        </div>
+          {/* Ambient blooms, then the scrims that protect the copy. */}
+          <div className="bloom-indigo pointer-events-none absolute -top-[10%] right-[2%] h-[44rem] w-[44rem] rounded-full" />
+          <div className="bloom-blue pointer-events-none absolute -bottom-[20%] left-[24%] h-[32rem] w-[32rem] rounded-full" />
+          <div className="hero-scrim-x pointer-events-none absolute inset-0" />
+          <div className="hero-scrim-y pointer-events-none absolute inset-0" />
+          <div className="hero-grid pointer-events-none absolute inset-0" />
 
-        {/* Aurora glows */}
-        <div className="absolute -top-32 right-[-6rem] w-[42rem] h-[42rem] rounded-full bg-indigo-500/20 blur-3xl animate-aurora animate-hue pointer-events-none" />
-        <div
-          className="absolute bottom-[-12rem] left-[-8rem] w-[34rem] h-[34rem] rounded-full bg-cyan-400/10 blur-3xl animate-aurora animate-hue pointer-events-none"
-          style={{ animationDelay: '-7s' }}
-        />
+          <div className="relative z-10 flex min-h-[680px] flex-col justify-end px-6 pb-20 pt-40 sm:min-h-[780px] sm:px-12 sm:pb-32">
+            <div className="mx-auto w-full max-w-[80rem]">
+              <div className="max-w-[32rem]">
+                <div className="mb-6 inline-flex h-7 items-center gap-2 rounded-full px-3 text-xs font-medium text-zinc-300 outline outline-1 outline-white/[0.12] [background:color-mix(in_oklab,#27272a_55%,#000)]">
+                  <span className="inline-block h-[5px] w-[5px] rounded-full bg-cyan-400" />
+                  AI agency · Westchester County &amp; NYC
+                </div>
 
-        {/* Left scrim keeps the copy crisp over the animation */}
-        <div className="absolute inset-0 pointer-events-none bg-gradient-to-r from-dusk-950 via-dusk-950/85 to-transparent" />
+                <h1 className="text-balance text-[clamp(2.75rem,6vw,3.75rem)] font-normal leading-[1.05] tracking-[-0.03em] text-white">
+                  Custom AI agents, built for{' '}
+                  <span className="text-gradient-ai">how you already work.</span>
+                </h1>
 
-        <div className="relative z-10 w-full max-w-7xl mx-auto px-6 py-24 md:py-28">
-          <div className="max-w-2xl text-center lg:text-left">
-            <div className="pill-dusk mb-6">
-              <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 inline-block animate-pulse-slow" />
-              AI Agency · NYC, Westchester County &amp; Beyond
-            </div>
-            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-white mb-5" style={{ lineHeight: 1.05 }}>
-              Custom AI automations{' '}
-              <span className="text-gradient-ai">&amp; agents</span>
-              {' '}— built for your business.
-            </h1>
-            <p className="text-xl font-semibold text-white/90 mb-4">
-              Not a template. Not a product install. A real agency build.
-            </p>
-            <p className="text-lg text-slate-300 mb-9 max-w-xl mx-auto lg:mx-0 leading-relaxed">
-              We design and ship AI systems that run lead response, scheduling, CRM, follow-ups, and ops —
-              around how your team already works. Built with a harness (tools, rules, checks) and a closed loop after go-live so they keep working.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-              <a href="#contact" className="btn-ai text-lg">
-                Start a Project &rarr;
-              </a>
-              <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer" className="btn-ghost-dusk text-lg">
-                {FREE_AUDIT_LABEL}
-              </a>
-            </div>
-            <div className="mt-9 flex flex-wrap gap-x-6 gap-y-2 justify-center lg:justify-start text-sm text-slate-400">
-              <span className="inline-flex items-center gap-2"><span className="text-cyan-400">⚡</span> Project &amp; sprint builds</span>
-              <span className="inline-flex items-center gap-2"><span className="text-cyan-400">◆</span> Custom agents &amp; automations</span>
-              <span className="inline-flex items-center gap-2"><span className="text-cyan-400">●</span> No monthly lock-in</span>
+                <p className="mt-6 max-w-[28rem] text-balance text-lg leading-relaxed text-zinc-300">
+                  Not a template install. We scope, build and hand off the automation that takes
+                  the most time off your team.
+                </p>
+
+                <div className="mt-8 flex flex-wrap items-center gap-2">
+                  <a
+                    href="#contact"
+                    className="inline-flex h-12 items-center gap-1 rounded-full bg-white pl-5 pr-3 text-base font-medium text-zinc-950 shadow-[0_1px_2px_rgba(0,0,0,.2)] transition-opacity hover:opacity-90"
+                  >
+                    <span className="whitespace-nowrap">Start a project</span>
+                    <ChevronRight size={18} aria-hidden="true" />
+                  </a>
+                  <a
+                    href={CALENDLY_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex h-12 items-center rounded-full px-5 text-base font-medium text-white outline outline-1 outline-white/[0.18] transition-colors hover:bg-white/5"
+                  >
+                    <span className="whitespace-nowrap">Book the 15-min audit</span>
+                  </a>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Capabilities marquee */}
-      <section className="dusk grain relative overflow-hidden border-y border-white/10 py-6">
-        <div className="marquee">
-          <div className="marquee-track gap-3 pr-3">
-            {[...capabilities, ...capabilities].map(({ Icon, label }, i) => (
-              <span key={i} className="chip">
-                <Icon className="w-4 h-4 text-brand-blue" strokeWidth={1.75} />
+      {/* ------------------------------------------------------- Marquee --- */}
+      <section className="py-6">
+        <div className="mx-auto max-w-[80rem] px-6">
+          <div className="flex items-center gap-6">
+            <p className="hidden max-w-[11rem] shrink-0 border-r border-white/10 pr-6 text-right text-sm text-zinc-400 md:block">
+              Wired into the tools you already run
+            </p>
+            <div className="marquee flex-1 py-6">
+              <div className="marquee-track gap-16 pr-16">
+                {[...capabilities, ...capabilities].map(({ Icon, label }, i) => (
+                  <span
+                    key={i}
+                    className="inline-flex items-center gap-2.5 whitespace-nowrap text-[15px] font-medium text-white"
+                  >
+                    <Icon size={18} strokeWidth={1.75} aria-hidden="true" />
+                    {label}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* --------------------------------------------------------- Stats --- */}
+      <section className="px-6 pb-24">
+        <div className="mx-auto max-w-[64rem]">
+          <div className="hairline-grid grid grid-cols-2 overflow-hidden rounded-sm border-y border-white/10 md:grid-cols-4">
+            {stats.map((stat, i) => (
+              <Reveal key={stat.label} delay={i * 80}>
+                <div className="px-6 py-8">
+                  <div className="text-gradient-metric text-[32px] font-semibold leading-none tracking-[-0.03em]">
+                    <CountUp to={stat.to} suffix={stat.suffix} raw={stat.raw} />
+                  </div>
+                  <div className="mt-3 text-[11px] font-medium uppercase tracking-[0.08em] text-zinc-400">
+                    {stat.label}
+                  </div>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ------------------------------------------------------ Services --- */}
+      <section id="services" className="px-6 pb-24">
+        <div className="mx-auto flex max-w-[64rem] flex-col gap-12">
+          <div className="flex max-w-[36rem] flex-col gap-6">
+            <h2 className="text-balance text-[clamp(2rem,4vw,2.75rem)] font-medium leading-[1.12] tracking-[-0.025em] text-white">
+              An AI agency — not a product installer.
+            </h2>
+            <p className="text-[17px] leading-relaxed text-zinc-400">
+              We create automations and agents from the ground up for your workflows, tools and
+              team. Project-based. Scoped. Delivered.
+            </p>
+          </div>
+
+          <div className="grid gap-6 md:grid-cols-3">
+            {services.map(({ Icon, eyebrow, title, price, unit, desc, href }) => (
+              <Link
+                key={title}
+                href={href}
+                className="panel panel-hover group flex flex-col gap-4 rounded-xl p-7"
+              >
+                <div className="flex items-center justify-between">
+                  <Icon size={18} strokeWidth={1.75} className="text-zinc-300" aria-hidden="true" />
+                  <span className="text-[11px] font-medium uppercase tracking-[0.08em] text-zinc-500">
+                    {eyebrow}
+                  </span>
+                </div>
+                <h3 className="text-xl font-medium tracking-[-0.01em] text-white">{title}</h3>
+                <div>
+                  <span className="text-[30px] font-semibold tracking-[-0.03em] text-white">
+                    {price}
+                  </span>
+                  <p className="mt-1 text-[13px] text-zinc-500">{unit}</p>
+                </div>
+                <p className="flex-1 text-sm leading-relaxed text-zinc-400">{desc}</p>
+                <span className="inline-flex items-center gap-1 text-sm font-medium text-white">
+                  Learn more
+                  <ChevronRight
+                    size={16}
+                    aria-hidden="true"
+                    className="transition-transform group-hover:translate-x-0.5"
+                  />
+                </span>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ------------------------------------------------ How it works --- */}
+      <section id="process" className="px-6 pb-24">
+        <div className="mx-auto max-w-[64rem]">
+          <div className="panel relative overflow-hidden rounded-2xl px-6 py-14 sm:px-10">
+            <div className="mb-12 flex max-w-[36rem] flex-col gap-4">
+              <h2 className="text-balance text-[clamp(1.75rem,3.5vw,2.25rem)] font-medium leading-[1.15] tracking-[-0.025em] text-white">
+                How it works — the OODA loop
+              </h2>
+              <p className="text-[15px] leading-relaxed text-zinc-400">
+                Every build starts with the highest-ROI workflow, not a random tool stack.
+              </p>
+            </div>
+
+            <div className="relative">
+              {/* Connector sits at the circles' vertical midpoint (44px / 2). */}
+              <div className="connector-flow pointer-events-none absolute left-[12%] right-[12%] top-[22px] hidden h-px md:block" />
+              <div className="grid gap-10 md:grid-cols-4 md:gap-12">
+                {ooda.map((step, i) => (
+                  <Reveal key={step.label} delay={i * 90}>
+                    <div className="flex flex-col gap-3">
+                      <div className="grid h-11 w-11 place-items-center rounded-full border border-white/15 bg-zinc-950 text-[15px] font-semibold text-white">
+                        {step.letter}
+                      </div>
+                      <p className="whitespace-nowrap text-[11px] font-medium uppercase tracking-[0.08em] text-zinc-400">
+                        Step {i + 1} · {step.timeline}
+                      </p>
+                      <p className="text-base font-medium text-white">{step.label}</p>
+                      <p className="text-[13px] leading-relaxed text-zinc-400">{step.desc}</p>
+                    </div>
+                  </Reveal>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ---------------------------------------------------------- Work --- */}
+      <section id="work" className="px-6 pb-24">
+        <div className="mx-auto flex max-w-[64rem] flex-col gap-12">
+          <div className="flex max-w-[36rem] flex-col gap-6">
+            <h2 className="text-balance text-[clamp(2rem,4vw,2.75rem)] font-medium leading-[1.12] tracking-[-0.025em] text-white">
+              Recent builds
+            </h2>
+            <p className="text-[17px] leading-relaxed text-zinc-400">
+              Two systems running on real operations. New builds are being scoped now.
+            </p>
+          </div>
+
+          <div className="grid gap-6 md:grid-cols-3">
+            {work.map((item) => (
+              <article key={item.title} className="panel panel-hover flex flex-col gap-4 rounded-xl p-7">
+                <span className="inline-flex w-fit rounded-full bg-white/[0.07] px-3 py-1 text-[11px] font-medium text-zinc-300">
+                  {item.badge}
+                </span>
+                <h3 className="text-lg font-medium leading-snug tracking-[-0.01em] text-white">
+                  {item.title}
+                </h3>
+                <p className="flex-1 text-sm leading-relaxed text-zinc-400">{item.body}</p>
+                <p className="border-t border-white/10 pt-4 text-[13px] text-zinc-500">
+                  {item.footer}
+                </p>
+              </article>
+            ))}
+
+            <article className="panel flex flex-col justify-between gap-6 rounded-xl p-7">
+              <div className="flex flex-col gap-3">
+                <h3 className="text-lg font-medium tracking-[-0.01em] text-white">
+                  Your build could be next
+                </h3>
+                <p className="text-sm leading-relaxed text-zinc-400">
+                  We cap active builds so every automation gets senior attention. Start with the
+                  free fit audit and we will name the #1 workflow worth automating.
+                </p>
+              </div>
+              <a
+                href={CALENDLY_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex h-10 w-fit items-center gap-1 rounded-full bg-white px-4 text-sm font-medium text-zinc-950 transition-opacity hover:opacity-90"
+              >
+                Book the audit
+                <ArrowUpRight size={16} aria-hidden="true" />
+              </a>
+            </article>
+          </div>
+
+          <div className="flex flex-wrap gap-3">
+            {industries.map((label) => (
+              <span
+                key={label}
+                className="rounded-full border border-white/10 px-5 py-2 text-sm text-zinc-400"
+              >
                 {label}
               </span>
             ))}
@@ -190,377 +429,48 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Stats */}
-      <section className="py-16 px-6 bg-white">
-        <div className="max-w-6xl mx-auto">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            {([
-              { to: 40, suffix: '%', label: 'Avg. Cost Reduction' },
-              { to: 8,  suffix: 'x', label: 'Productivity Gains' },
-              { raw: 'Sprint',       label: 'Project-Based Delivery' },
-              { raw: '24/7',         label: 'Agents That Keep Working' },
-            ] as { to?: number; suffix?: string; raw?: string; label: string }[]).map((stat, i) => (
-              <Reveal key={stat.label} delay={i * 90}>
-                <div className="text-center py-8 px-4 bg-gradient-to-b from-sky-blue/5 to-white rounded-2xl border border-sky-blue/10 lift">
-                  <div className="text-5xl font-extrabold text-sky-blue mb-2 leading-none">
-                    <CountUp to={stat.to} suffix={stat.suffix} raw={stat.raw} />
-                  </div>
-                  <div className="text-sm font-semibold text-charcoal/70 uppercase tracking-wide">{stat.label}</div>
-                </div>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* The Problem */}
-      <section className="py-24 px-6 bg-gray-50">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-16">
-            <span className="text-xs font-bold text-dark-red uppercase tracking-widest block mb-3">The Reality</span>
-            <h2 className="text-4xl font-bold text-navy mb-4">Your business is already competing against AI.</h2>
-            <p className="text-lg text-charcoal/70 max-w-2xl mx-auto">
-              Businesses adopting AI are cutting costs, moving faster, and winning more customers. The window to get ahead is closing.
-            </p>
-          </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {painPoints.map(({ Icon, title, desc }, i) => (
-              <Reveal key={title} delay={i * 80}>
-                <div className="lift h-full bg-white border-2 border-gray-100 rounded-2xl p-6 hover:border-sky-blue">
-                  <div className="w-10 h-10 rounded-xl bg-navy/5 flex items-center justify-center mb-4">
-                    <Icon className="w-5 h-5 text-navy" strokeWidth={1.5} />
-                  </div>
-                  <h3 className="text-base font-bold text-navy mb-2">{title}</h3>
-                  <p className="text-sm text-charcoal/70 leading-relaxed">{desc}</p>
-                </div>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Services */}
-      <section id="services" className="py-24 px-6 bg-white">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-16">
-            <span className="text-xs font-bold text-sky-blue uppercase tracking-widest block mb-3">What We Build</span>
-            <h2 className="text-4xl font-bold text-navy mb-4">An AI agency — not a product installer.</h2>
-            <p className="text-lg text-charcoal/70 max-w-2xl mx-auto">
-              We create automations and agents from the ground up for your workflows, tools, and team.
-              Project-based. Scoped. Delivered.
-            </p>
-          </div>
-          <div className="grid md:grid-cols-3 gap-8 items-stretch">
-
-            <div className="card-hover lift flex flex-col">
-              <div className="flex items-center gap-3 mb-4">
-                <div className="w-10 h-10 rounded-xl bg-sky-blue/10 flex items-center justify-center flex-shrink-0">
-                  <Bot className="w-5 h-5 text-sky-blue" strokeWidth={1.5} />
-                </div>
-                <span className="text-xs font-bold text-sky-blue uppercase tracking-wider">Flagship</span>
-              </div>
-              <h3 className="text-2xl font-bold text-navy mb-1">Custom AI Agents</h3>
-              <p className="text-sky-blue font-bold mb-5 text-sm">Agents that do real work in your stack.</p>
-              <div className="bg-sky-blue/5 border border-sky-blue/20 rounded-xl p-4 mb-6">
-                <div className="flex items-baseline gap-1 mb-1">
-                  <span className="text-2xl font-extrabold text-navy">$3.5K&ndash;8K</span>
-                  <span className="text-sm text-charcoal/60">per agent sprint</span>
-                </div>
-                <p className="text-xs text-charcoal/60">Fixed scope · multi-day build · no monthly required</p>
-              </div>
-              <p className="text-charcoal/80 text-sm mb-6 leading-relaxed">
-                We design, build, and ship an agent for one mission-critical job — intake, lead response,
-                scheduling, research, support triage — wired into the tools you already use.
-              </p>
-              <div className="p-4 bg-gray-50 rounded-xl mb-6 flex-1">
-                <h4 className="font-bold text-navy text-sm mb-3">Includes:</h4>
-                <ul className="space-y-2">
-                  {['Workflow design & success metrics', 'Custom agent build (not a stock template)', 'Tool integrations (CRM, email, calendar, SMS)', 'Testing, training & documented handoff'].map((item) => (
-                    <li key={item} className="flex items-center gap-2 text-sm text-charcoal/80"><CheckIcon /> {item}</li>
-                  ))}
-                </ul>
-              </div>
-              <a href="#contact" className="btn-red w-full text-center block py-4">Build My Agent &rarr;</a>
-            </div>
-
-            <div className="card-hover lift flex flex-col">
-              <div className="flex items-center gap-3 mb-4">
-                <div className="w-10 h-10 rounded-xl bg-navy/10 flex items-center justify-center flex-shrink-0">
-                  <Workflow className="w-5 h-5 text-navy" strokeWidth={1.5} />
-                </div>
-                <span className="text-xs font-bold text-navy uppercase tracking-wider">Systems</span>
-              </div>
-              <h3 className="text-2xl font-bold text-navy mb-1">Workflow Automation</h3>
-              <p className="text-sky-blue font-bold mb-5 text-sm">Multi-step systems across your ops.</p>
-              <div className="bg-navy/5 border border-navy/20 rounded-xl p-4 mb-6">
-                <div className="flex items-baseline gap-1 mb-1">
-                  <span className="text-2xl font-extrabold text-navy">$5K&ndash;15K</span>
-                  <span className="text-sm text-charcoal/60">project</span>
-                </div>
-                <p className="text-xs text-charcoal/60">2–3 connected automations · scoped project</p>
-              </div>
-              <p className="text-charcoal/80 text-sm mb-6 leading-relaxed">
-                End-to-end automations that move work between tools — forms, CRMs, inboxes, calendars,
-                invoices — so humans only touch exceptions.
-              </p>
-              <div className="p-4 bg-gray-50 rounded-xl mb-6 flex-1">
-                <h4 className="font-bold text-navy text-sm mb-3">Includes:</h4>
-                <ul className="space-y-2">
-                  {['Process mapping & opportunity ranking', 'Automation architecture & build', 'Integrations + error handling', 'Team training & runbook'].map((item) => (
-                    <li key={item} className="flex items-center gap-2 text-sm text-charcoal/80"><CheckIcon /> {item}</li>
-                  ))}
-                </ul>
-              </div>
-              <a href="#contact" className="btn-red w-full text-center block py-4">Automate My Workflows &rarr;</a>
-            </div>
-
-            <div className="card-hover lift flex flex-col">
-              <div className="flex items-center gap-3 mb-4">
-                <div className="w-10 h-10 rounded-xl bg-dark-red/10 flex items-center justify-center flex-shrink-0">
-                  <Target className="w-5 h-5 text-dark-red" strokeWidth={1.5} />
-                </div>
-                <span className="text-xs font-bold text-dark-red uppercase tracking-wider">Entry</span>
-              </div>
-              <h3 className="text-2xl font-bold text-navy mb-1">Fit Audit + Roadmap</h3>
-              <p className="text-dark-red font-bold mb-5 text-sm">Know what to build first — and what to skip.</p>
-              <div className="bg-dark-red/5 border border-dark-red/20 rounded-xl p-4 mb-6">
-                <div className="flex items-baseline gap-1 mb-1">
-                  <span className="text-2xl font-extrabold text-navy">Free</span>
-                  <span className="text-sm text-charcoal/60">15-min fit audit</span>
-                </div>
-                <div className="flex items-baseline gap-1">
-                  <span className="text-xl font-extrabold text-sky-blue">$1K&ndash;2.5K</span>
-                  <span className="text-sm text-charcoal/60">full roadmap (optional)</span>
-                </div>
-              </div>
-              <p className="text-charcoal/80 text-sm mb-6 leading-relaxed">
-                Start with a free 15-minute fit call. If you need a deeper plan, we deliver a prioritized
-                automation roadmap with ROI and build order — before you spend on a full system.
-              </p>
-              <div className="p-4 bg-gray-50 rounded-xl mb-6 flex-1">
-                <h4 className="font-bold text-navy text-sm mb-3">Includes:</h4>
-                <ul className="space-y-2">
-                  {['#1 workflow opportunity identified', 'Tooling & access checklist', 'Yes/no on a sprint build', 'Optional written roadmap + ROI'].map((item) => (
-                    <li key={item} className="flex items-center gap-2 text-sm text-charcoal/80"><CheckIcon /> {item}</li>
-                  ))}
-                </ul>
-              </div>
-              <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer" className="btn-red w-full text-center block py-4">Book Free 15-Min Audit &rarr;</a>
-            </div>
-
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Break */}
-      <section className="dusk grain relative overflow-hidden py-20 px-6">
-        <div className="absolute inset-0 dusk-grid pointer-events-none" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[40rem] h-[24rem] rounded-full bg-indigo-500/15 blur-3xl pointer-events-none" />
-        <div className="relative z-10 max-w-3xl mx-auto text-center">
-          <p className="text-2xl font-bold text-white mb-3">Ready for an AI system built for how you work?</p>
-          <p className="text-slate-300 mb-8">
-            Book a free 15-minute fit audit. We&apos;ll name the #1 automation or agent worth building — or tell you if now isn&apos;t the time.
-          </p>
-          <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer" className="btn-ai inline-block text-lg">{FREE_AUDIT_LABEL}</a>
-        </div>
-      </section>
-
-      {/* OODA Loop */}
-      <section id="process" className="dusk grain relative overflow-hidden py-24 px-6">
-        <div className="absolute inset-0 dusk-grid pointer-events-none" />
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[48rem] h-[28rem] rounded-full bg-indigo-500/15 blur-3xl pointer-events-none" />
-        <div className="relative z-10 max-w-6xl mx-auto">
-          <div className="text-center mb-16">
-            <span className="text-xs font-bold text-brand-blue uppercase tracking-widest block mb-3">Our Framework</span>
-            <h2 className="text-4xl font-bold text-white mb-4">The OODA Loop</h2>
-            <p className="text-lg text-slate-300 max-w-2xl mx-auto">
-              Originally developed for high-stakes military decision-making. Adapted into a proven AI implementation framework — fast, systematic, and built for your business.
-            </p>
-          </div>
-          <div className="relative">
-            <div className="hidden md:block absolute top-6 left-[12.5%] right-[12.5%] h-0.5 connector-flow opacity-70" />
-            <div className="grid md:grid-cols-4 gap-8">
-              {[
-                { letter: 'O', label: 'Observe', color: 'bg-brand-blue shadow-brand-blue/40', desc: 'We embed in your business — mapping every process, tool, and workflow to understand where time and money are being lost.' },
-                { letter: 'O', label: 'Orient',  color: 'bg-cyan-400 shadow-cyan-400/40',           desc: 'We analyze your industry context, competitor AI adoption, and constraints to identify the highest-ROI opportunities.' },
-                { letter: 'D', label: 'Decide',  color: 'bg-indigo-500 shadow-indigo-500/40',       desc: 'We scope the first agent or automation: what it does, which tools it uses, success metrics, and a fixed project price.' },
-                { letter: 'A', label: 'Act',     color: 'bg-indigo-500 shadow-indigo-500/40',       desc: 'We design, build, and ship the system. You get a working automation or agent — plus training and a handoff so your team can run it.' },
-              ].map((phase, i) => (
-                <Reveal key={i} delay={i * 110}>
-                  <div className="flex flex-col items-center text-center">
-                    <div className={`w-12 h-12 rounded-full ${phase.color} text-white flex items-center justify-center font-extrabold text-lg mb-4 relative z-10 shadow-lg`}>
-                      {phase.letter}
-                    </div>
-                    <p className="text-xs font-bold text-brand-blue uppercase tracking-wider mb-2">Step {i + 1}</p>
-                    <p className="text-lg font-bold text-white mb-3">{phase.label}</p>
-                    <p className="text-sm text-slate-300 leading-relaxed">{phase.desc}</p>
-                  </div>
-                </Reveal>
-              ))}
-            </div>
-          </div>
-          <p className="text-center mt-12 text-brand-blue font-bold">
-            Then we loop — continuously observing, orienting, and optimizing as your business grows.
-          </p>
-        </div>
-      </section>
-
-      {/* Comparison */}
-      <section className="py-24 px-6 bg-white">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-navy mb-3">Template install vs custom agency build</h2>
-            <p className="text-lg text-charcoal/70">What changes when systems are designed for your workflows</p>
-          </div>
-          <div className="grid md:grid-cols-2 gap-8">
-            <div className="bg-red-50 border-2 border-red-100 rounded-2xl p-8">
-              <h3 className="text-xl font-bold text-charcoal mb-6 flex items-center gap-2">
-                <span className="text-red-400 font-bold">&times;</span> One-size product / DIY install
-              </h3>
-              <ul className="space-y-4">
-                {['Generic bot that doesn\'t match how you sell or serve', 'You own the glue work between tools', 'Breaks when a process or CRM field changes', 'No clear owner when something fails', 'Months of tinkering with little production value', 'Monthly fee for software that still needs babysitting'].map((item) => (
-                  <li key={item} className="flex gap-3 text-charcoal/80 text-sm">
-                    <span className="text-red-400 font-bold flex-shrink-0 mt-0.5">&ndash;</span>
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div className="bg-sky-blue/5 border-2 border-sky-blue/30 rounded-2xl p-8">
-              <h3 className="text-xl font-bold text-navy mb-6 flex items-center gap-2">
-                <Check className="w-5 h-5 text-sky-blue flex-shrink-0" strokeWidth={2.5} /> With NYClaw as your AI agency
-              </h3>
-              <ul className="space-y-4">
-                {['Automations & agents designed around your real process', 'We wire the stack — CRM, email, calendar, SMS, web', 'Scoped project with a clear go-live definition', 'Documented handoff so your team can operate it', 'Highest-ROI workflow first — not a random chatbot', 'Optional care only after the system is already working'].map((item) => (
-                  <li key={item} className="flex gap-3 text-charcoal/80 text-sm">
-                    <Check className="w-4 h-4 text-sky-blue flex-shrink-0 mt-0.5" strokeWidth={2.5} />
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Results */}
-      <section id="results" className="py-24 px-6 bg-gray-50">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-16">
-            <span className="text-xs font-bold text-sky-blue uppercase tracking-widest block mb-3">Proof It Works</span>
-            <h2 className="text-4xl font-bold text-navy mb-3">We don&apos;t resell a product. We build systems.</h2>
-            <p className="text-lg text-charcoal/70">Example agency work &mdash; custom automations and agents, not a one-click install.</p>
-          </div>
-          <div className="grid md:grid-cols-3 gap-8 items-stretch">
-            {[
-              { gradient: 'from-sky-blue to-navy', border: 'hover:border-sky-blue', badge: 'Digital Automation', badgeColor: 'text-sky-blue/80', title: 'Automated Revenue System', desc: 'A fully automated digital revenue engine with AI-driven optimization and real-time performance tracking — live in under 2 weeks.', s1k: 'Timeline', s1v: 'Concept to live in 2 weeks', s2k: 'Operations', s2v: '100% automated, 0 manual work', revenue: '$500–2K/mo recurring' },
-              { gradient: 'from-dark-red to-charcoal', border: 'hover:border-dark-red', badge: 'Brand Automation', badgeColor: 'text-red-200', title: 'AI-Powered Content & Marketing', desc: 'Full-stack AI marketing: daily content generation, multi-platform distribution, and AI-managed lead funnels — zero manual work.', s1k: 'Output', s1v: '7+ pieces of content/day, automated', s2k: 'Distribution', s2v: 'Multi-platform, parallel', revenue: '$1–5K/mo potential' },
-              { gradient: 'from-sky-blue/80 to-charcoal', border: 'hover:border-sky-blue', badge: 'Industry SaaS', badgeColor: 'text-sky-blue/80', title: 'Custom AI Tooling', desc: 'Custom-built AI workflow platform for a regulated professional services industry — replacing hours of manual work per job.', s1k: 'Impact', s1v: 'Hours of manual work eliminated/job', s2k: 'Model', s2v: 'Freemium SaaS, tiered pricing', revenue: '$2–10K/mo recurring' },
-            ].map((c, i) => (
-              <div key={i} className={`card ${c.border} group flex flex-col`}>
-                <div className={`mb-6 h-36 bg-gradient-to-br ${c.gradient} rounded-xl flex flex-col items-center justify-center group-hover:shadow-lg transition-all relative overflow-hidden`}>
-                  <div className="absolute inset-0 opacity-10">
-                    <div className="absolute top-3 right-3 w-16 h-16 rounded-full border border-white" />
-                    <div className="absolute bottom-3 left-3 w-10 h-10 rounded-full border border-white" />
-                  </div>
-                  <p className="text-white text-sm font-bold relative z-10">{c.title}</p>
-                  <span className={`text-xs ${c.badgeColor} bg-white/10 px-2 py-0.5 rounded-full mt-1 relative z-10`}>{c.badge}</span>
-                </div>
-                <h3 className="text-lg font-bold text-navy mb-2">{c.title}</h3>
-                <p className="text-sm text-charcoal/70 mb-4 flex-1">{c.desc}</p>
-                <div className="space-y-1.5 mb-5">
-                  <div className="text-xs text-charcoal/60"><span className="font-semibold text-sky-blue">{c.s1k}:</span> {c.s1v}</div>
-                  <div className="text-xs text-charcoal/60"><span className="font-semibold text-sky-blue">{c.s2k}:</span> {c.s2v}</div>
-                  <div className="text-xs font-bold text-dark-red">{c.revenue}</div>
-                </div>
-                <a href="#contact" className="btn-primary text-sm text-center block py-3">Apply This to My Business</a>
-              </div>
-            ))}
-          </div>
-
-          <div className="mt-16 bg-white border border-gray-100 rounded-2xl p-10">
-            <h3 className="text-2xl font-bold text-navy mb-10 text-center">From fit call to live system</h3>
-            <div className="relative">
-              <div className="hidden md:block absolute top-5 left-[16.67%] right-[16.67%] h-0.5 bg-gradient-to-r from-sky-blue via-navy to-sky-blue opacity-30" />
-              <div className="grid md:grid-cols-3 gap-8 text-center">
-                {[
-                  { date: '15 min',    label: 'Fit Audit', desc: 'Free call: #1 workflow, tools, and whether a custom agent or automation is worth building.' },
-                  { date: 'Sprint',  label: 'Design + Build',   desc: 'We design the agent or automation, integrate your tools, and ship a working system.' },
-                  { date: 'Handoff',    label: 'Train + Optional Care', desc: 'Your team owns the runbook. Optional monitoring only if you want us to stay on.' },
-                ].map((step, i) => (
-                  <div key={i} className="flex flex-col items-center">
-                    <div className="w-10 h-10 rounded-full bg-sky-blue text-white flex items-center justify-center font-bold text-sm mb-3 relative z-10 shadow-md shadow-sky-blue/30">{i + 1}</div>
-                    <p className="text-xs font-bold text-sky-blue uppercase tracking-wider mb-1">{step.date}</p>
-                    <p className="text-base font-bold text-navy mb-2">{step.label}</p>
-                    <p className="text-sm text-charcoal/70 leading-relaxed">{step.desc}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-            <p className="text-center mt-10 text-sky-blue font-bold">Project-based delivery. No monthly required to start.</p>
-          </div>
-        </div>
-      </section>
-
-      {/* Urgency */}
-      <section className="dusk grain relative overflow-hidden py-20 px-6">
-        <div className="absolute inset-0 dusk-grid pointer-events-none" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[36rem] h-[20rem] rounded-full bg-dark-red/20 blur-3xl pointer-events-none" />
-        <div className="relative z-10 max-w-3xl mx-auto text-center">
-          <p className="text-dark-red font-bold uppercase tracking-widest text-sm mb-4">Limited Capacity</p>
-          <p className="text-5xl font-extrabold text-white mb-4 leading-tight">5 clients.<br />Per quarter.</p>
-          <p className="text-xl text-slate-300 mb-10">We cap active builds so every automation and agent gets senior attention. Spots fill fast.</p>
-          <a href="#contact" className="btn-red inline-block px-10 py-4 text-lg">Start a Project &rarr;</a>
-        </div>
-      </section>
-
-      {/* Industries */}
-      <section className="py-24 px-6 bg-white">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-navy mb-3">Industries We Serve</h2>
-            <p className="text-lg text-charcoal/70">Every industry has repetitive processes. AI can automate them.</p>
-          </div>
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
-            {industries.map(({ Icon, label }) => (
-              <div key={label} className="text-center py-6 px-4 bg-gray-50 rounded-2xl border border-gray-100 hover:border-sky-blue hover:bg-sky-blue/5 transition-all duration-300 flex flex-col items-center gap-3">
-                <div className="w-10 h-10 rounded-xl bg-navy/8 flex items-center justify-center">
-                  <Icon className="w-5 h-5 text-navy" strokeWidth={1.5} />
-                </div>
-                <p className="text-sm font-semibold text-navy">{label}</p>
-              </div>
-            ))}
-          </div>
-          <p className="text-center mt-8 text-charcoal/60 text-sm">
-            Don&apos;t see your industry? <a href="#contact" className="text-sky-blue font-semibold hover:underline underline-offset-4">Get in touch</a> &mdash; we likely have a solution.
-          </p>
-        </div>
-      </section>
-
-      {/* Lead Magnet */}
+      {/* -------------------------------------------------- Free guide --- */}
       <PlaybookForm />
 
-      {/* FAQ */}
-      <section className="py-24 px-6 bg-white">
-        <div className="max-w-3xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-navy mb-4">Frequently Asked Questions</h2>
-            <p className="text-lg text-charcoal/70">Common questions about working with an AI agency.</p>
-          </div>
-          <div className="space-y-6">
-            {homepageFaqs.map((faq) => (
-              <div key={faq.question} className="border-b border-gray-100 pb-6">
-                <h3 className="text-lg font-bold text-navy mb-3">{faq.question}</h3>
-                <p className="text-charcoal/70 leading-relaxed">{faq.answer}</p>
-              </div>
-            ))}
-          </div>
+      {/* ----------------------------------------------------------- FAQ --- */}
+      <section className="px-6 pb-24">
+        <div className="mx-auto flex max-w-[64rem] flex-col gap-10">
+          <h2 className="max-w-[36rem] text-balance text-[clamp(1.75rem,3.5vw,2.25rem)] font-medium leading-[1.15] tracking-[-0.025em] text-white">
+            Questions, answered
+          </h2>
+          <FaqAccordion items={homepageFaqs} />
         </div>
       </section>
 
-      {/* Contact Form */}
+      {/* ------------------------------------------------------- Contact --- */}
       <ContactForm />
 
-    </div>
+      {/* ----------------------------------------------------- CTA panel --- */}
+      <section className="px-6 pb-24">
+        <div className="mx-auto max-w-[64rem]">
+          <div className="panel relative isolate overflow-hidden rounded-2xl px-6 py-14 text-center sm:px-10">
+            <div className="bloom-blue pointer-events-none absolute left-1/2 top-0 -z-10 h-[24rem] w-[40rem] -translate-x-1/2 rounded-full" />
+            <div className="mx-auto flex max-w-[34rem] flex-col items-center gap-6">
+              <h2 className="text-balance text-[clamp(1.75rem,3.5vw,2.25rem)] font-medium leading-[1.15] tracking-[-0.025em] text-white">
+                Ready for a system built for how you work?
+              </h2>
+              <p className="text-[15px] leading-relaxed text-zinc-400">
+                Book a free 15-minute fit audit. We will name the #1 automation or agent worth
+                building — or tell you if now is not the time.
+              </p>
+              <a
+                href={CALENDLY_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex h-12 items-center gap-1 rounded-full bg-white pl-5 pr-3 text-base font-medium text-zinc-950 transition-opacity hover:opacity-90"
+              >
+                Book the 15-min audit
+                <ChevronRight size={18} aria-hidden="true" />
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </>
   )
 }
