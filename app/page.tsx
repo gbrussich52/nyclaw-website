@@ -132,9 +132,9 @@ export default function Home() {
         </div>
 
         {/* Aurora glows */}
-        <div className="absolute -top-32 right-[-6rem] w-[42rem] h-[42rem] rounded-full bg-indigo/20 blur-3xl animate-aurora animate-hue pointer-events-none" />
+        <div className="absolute -top-32 right-[-6rem] w-[42rem] h-[42rem] rounded-full bg-indigo-500/20 blur-3xl animate-aurora animate-hue pointer-events-none" />
         <div
-          className="absolute bottom-[-12rem] left-[-8rem] w-[34rem] h-[34rem] rounded-full bg-cyan/10 blur-3xl animate-aurora animate-hue pointer-events-none"
+          className="absolute bottom-[-12rem] left-[-8rem] w-[34rem] h-[34rem] rounded-full bg-cyan-400/10 blur-3xl animate-aurora animate-hue pointer-events-none"
           style={{ animationDelay: '-7s' }}
         />
 
@@ -144,7 +144,7 @@ export default function Home() {
         <div className="relative z-10 w-full max-w-7xl mx-auto px-6 py-24 md:py-28">
           <div className="max-w-2xl text-center lg:text-left">
             <div className="pill-dusk mb-6">
-              <span className="w-1.5 h-1.5 rounded-full bg-cyan inline-block animate-pulse-slow" />
+              <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 inline-block animate-pulse-slow" />
               AI Agency · NYC, Westchester County &amp; Beyond
             </div>
             <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-white mb-5" style={{ lineHeight: 1.05 }}>
@@ -168,9 +168,9 @@ export default function Home() {
               </a>
             </div>
             <div className="mt-9 flex flex-wrap gap-x-6 gap-y-2 justify-center lg:justify-start text-sm text-slate-400">
-              <span className="inline-flex items-center gap-2"><span className="text-cyan">⚡</span> Project &amp; sprint builds</span>
-              <span className="inline-flex items-center gap-2"><span className="text-cyan">◆</span> Custom agents &amp; automations</span>
-              <span className="inline-flex items-center gap-2"><span className="text-cyan">●</span> No monthly lock-in</span>
+              <span className="inline-flex items-center gap-2"><span className="text-cyan-400">⚡</span> Project &amp; sprint builds</span>
+              <span className="inline-flex items-center gap-2"><span className="text-cyan-400">◆</span> Custom agents &amp; automations</span>
+              <span className="inline-flex items-center gap-2"><span className="text-cyan-400">●</span> No monthly lock-in</span>
             </div>
           </div>
         </div>
@@ -182,7 +182,7 @@ export default function Home() {
           <div className="marquee-track gap-3 pr-3">
             {[...capabilities, ...capabilities].map(({ Icon, label }, i) => (
               <span key={i} className="chip">
-                <Icon className="w-4 h-4 text-sky-bright" strokeWidth={1.75} />
+                <Icon className="w-4 h-4 text-brand-blue" strokeWidth={1.75} />
                 {label}
               </span>
             ))}
@@ -355,7 +355,7 @@ export default function Home() {
       {/* CTA Break */}
       <section className="dusk grain relative overflow-hidden py-20 px-6">
         <div className="absolute inset-0 dusk-grid pointer-events-none" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[40rem] h-[24rem] rounded-full bg-indigo/15 blur-3xl pointer-events-none" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[40rem] h-[24rem] rounded-full bg-indigo-500/15 blur-3xl pointer-events-none" />
         <div className="relative z-10 max-w-3xl mx-auto text-center">
           <p className="text-2xl font-bold text-white mb-3">Ready for an AI system built for how you work?</p>
           <p className="text-slate-300 mb-8">
@@ -368,10 +368,10 @@ export default function Home() {
       {/* OODA Loop */}
       <section id="process" className="dusk grain relative overflow-hidden py-24 px-6">
         <div className="absolute inset-0 dusk-grid pointer-events-none" />
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[48rem] h-[28rem] rounded-full bg-indigo/15 blur-3xl pointer-events-none" />
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[48rem] h-[28rem] rounded-full bg-indigo-500/15 blur-3xl pointer-events-none" />
         <div className="relative z-10 max-w-6xl mx-auto">
           <div className="text-center mb-16">
-            <span className="text-xs font-bold text-sky-bright uppercase tracking-widest block mb-3">Our Framework</span>
+            <span className="text-xs font-bold text-brand-blue uppercase tracking-widest block mb-3">Our Framework</span>
             <h2 className="text-4xl font-bold text-white mb-4">The OODA Loop</h2>
             <p className="text-lg text-slate-300 max-w-2xl mx-auto">
               Originally developed for high-stakes military decision-making. Adapted into a proven AI implementation framework — fast, systematic, and built for your business.
@@ -381,17 +381,17 @@ export default function Home() {
             <div className="hidden md:block absolute top-6 left-[12.5%] right-[12.5%] h-0.5 connector-flow opacity-70" />
             <div className="grid md:grid-cols-4 gap-8">
               {[
-                { letter: 'O', label: 'Observe', color: 'bg-sky-bright shadow-sky-bright/40', desc: 'We embed in your business — mapping every process, tool, and workflow to understand where time and money are being lost.' },
-                { letter: 'O', label: 'Orient',  color: 'bg-cyan shadow-cyan/40',           desc: 'We analyze your industry context, competitor AI adoption, and constraints to identify the highest-ROI opportunities.' },
-                { letter: 'D', label: 'Decide',  color: 'bg-indigo shadow-indigo/40',       desc: 'We scope the first agent or automation: what it does, which tools it uses, success metrics, and a fixed project price.' },
-                { letter: 'A', label: 'Act',     color: 'bg-violet shadow-violet/40',       desc: 'We design, build, and ship the system. You get a working automation or agent — plus training and a handoff so your team can run it.' },
+                { letter: 'O', label: 'Observe', color: 'bg-brand-blue shadow-brand-blue/40', desc: 'We embed in your business — mapping every process, tool, and workflow to understand where time and money are being lost.' },
+                { letter: 'O', label: 'Orient',  color: 'bg-cyan-400 shadow-cyan-400/40',           desc: 'We analyze your industry context, competitor AI adoption, and constraints to identify the highest-ROI opportunities.' },
+                { letter: 'D', label: 'Decide',  color: 'bg-indigo-500 shadow-indigo-500/40',       desc: 'We scope the first agent or automation: what it does, which tools it uses, success metrics, and a fixed project price.' },
+                { letter: 'A', label: 'Act',     color: 'bg-indigo-500 shadow-indigo-500/40',       desc: 'We design, build, and ship the system. You get a working automation or agent — plus training and a handoff so your team can run it.' },
               ].map((phase, i) => (
                 <Reveal key={i} delay={i * 110}>
                   <div className="flex flex-col items-center text-center">
                     <div className={`w-12 h-12 rounded-full ${phase.color} text-white flex items-center justify-center font-extrabold text-lg mb-4 relative z-10 shadow-lg`}>
                       {phase.letter}
                     </div>
-                    <p className="text-xs font-bold text-sky-bright uppercase tracking-wider mb-2">Step {i + 1}</p>
+                    <p className="text-xs font-bold text-brand-blue uppercase tracking-wider mb-2">Step {i + 1}</p>
                     <p className="text-lg font-bold text-white mb-3">{phase.label}</p>
                     <p className="text-sm text-slate-300 leading-relaxed">{phase.desc}</p>
                   </div>
@@ -399,7 +399,7 @@ export default function Home() {
               ))}
             </div>
           </div>
-          <p className="text-center mt-12 text-sky-bright font-bold">
+          <p className="text-center mt-12 text-brand-blue font-bold">
             Then we loop — continuously observing, orienting, and optimizing as your business grows.
           </p>
         </div>

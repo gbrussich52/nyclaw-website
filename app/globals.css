@@ -134,13 +134,38 @@ h1 {
 
 /* ============================================================
    DUSK SYSTEM — dark, AI-native surfaces + accents
-   (added for the 2026 revamp; light classes above untouched)
+   Values are exact, from the 2026 design handoff TOKENS.md.
+   The palette is Tailwind's `zinc` ramp plus one custom blue;
+   #22d3ee is the ONLY standalone accent — do not add a second.
    ============================================================ */
 
-/* Dark section base. Navy-tinted near-black so brand reads through. */
+:root {
+  /* Surfaces */
+  --canvas: #09090b;        /* zinc-950 — page canvas */
+  --panel: color-mix(in oklab, #27272a 55%, #000); /* cards, FAQ/OODA panels */
+  --solid: #18181b;         /* zinc-900 — pricing cards, form inputs */
+  --code: #0a0a0c;          /* pre blocks, hero media card fill */
+
+  /* Text */
+  --text-primary: #ffffff;
+  --text-secondary: #d4d4d8; /* zinc-300 — body copy, nav links */
+  --text-muted: #a1a1aa;     /* zinc-400 — captions, eyebrows */
+  --text-faint: #71717a;     /* zinc-500 — ".io", marquee, placeholders */
+
+  /* Hairlines */
+  --line: rgba(255, 255, 255, 0.1);
+  --line-hover: rgba(255, 255, 255, 0.28);
+  --line-dashed: rgba(255, 255, 255, 0.12);
+
+  /* Accent */
+  --brand-blue: #2e8bff;
+  --accent: #22d3ee;
+}
+
+/* Dark section base. */
 .dusk {
-  background-color: #07080f;
-  color: #e7e9f3;
+  background-color: var(--canvas);
+  color: var(--text-secondary);
 }
 
 /* Layered dusk gradient for hero / marquee sections. */
@@ -148,12 +173,20 @@ h1 {
   background:
     radial-gradient(60% 50% at 75% 18%, rgba(99, 102, 241, 0.20) 0%, transparent 60%),
     radial-gradient(55% 45% at 20% 90%, rgba(34, 211, 238, 0.14) 0%, transparent 60%),
-    linear-gradient(180deg, #07080f 0%, #0d1020 60%, #07080f 100%);
+    linear-gradient(180deg, #09090b 0%, #101014 60%, #09090b 100%);
 }
 
-/* AI-native gradient text — sky → cyan → indigo. */
+/* Accent gradient text — reserved for the second line of an h1. */
 .text-gradient-ai {
-  background-image: linear-gradient(100deg, #2e8bff 0%, #22d3ee 45%, #8b5cf6 100%);
+  background-image: linear-gradient(100deg, #2e8bff 0%, #6366f1 55%, #22d3ee 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Metric gradient — stat and result numbers only. */
+.text-gradient-metric {
+  background-image: linear-gradient(to right, #fff, #52525b);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -181,10 +214,9 @@ h1 {
 
 /* Dark-glass navigation bar (global). */
 .nav-dusk {
-  background: rgba(7, 8, 15, 0.72);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
+  background: rgba(9, 9, 11, 0.6);
+  backdrop-filter: blur(40px);
+  -webkit-backdrop-filter: blur(40px);
 }
 
 /* Primary AI CTA — luminous indigo → cyan gradient. */
@@ -281,13 +313,15 @@ h1 {
   from { background-position: 0% 0; }
   to { background-position: -200% 0; }
 }
+/* Violet (#8b5cf6) intentionally dropped here — TOKENS.md permits exactly one
+   accent gradient and one standalone accent hue. */
 .connector-flow {
   background-image: linear-gradient(
     90deg,
     transparent 0%,
     #2e8bff 20%,
-    #22d3ee 40%,
-    #8b5cf6 60%,
+    #6366f1 45%,
+    #22d3ee 65%,
     transparent 80%
   );
   background-size: 200% 100%;
@@ -316,6 +350,82 @@ h1 {
   background: rgba(255, 255, 255, 0.04);
   border: 1px solid rgba(255, 255, 255, 0.08);
   white-space: nowrap;
+}
+
+/* ---------- Dusk structural surfaces (2026 handoff) ---------- */
+
+/* Card / panel fill. Depth comes from fill difference + hairlines, not shadow. */
+.panel {
+  background: var(--panel);
+  border: 1px solid var(--line);
+}
+
+.panel-hover {
+  transition: border-color 0.2s, transform 0.2s;
+}
+.panel-hover:hover {
+  border-color: var(--line-hover);
+  transform: translateY(-2px);
+}
+
+/* Hairline grid: 1px gaps between cells reveal the canvas beneath.
+   Wrap cells in `.hairline-grid` and give the wrapper a 1px gap. */
+.hairline-grid {
+  background: var(--line);
+  gap: 1px;
+}
+.hairline-grid > * {
+  background: var(--canvas);
+}
+
+/* 80px grid overlay for the hero, masked to fade downward. */
+.hero-grid {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+  background-size: 80px 80px;
+  -webkit-mask-image: radial-gradient(60% 70% at 50% 0%, #000, transparent 80%);
+  mask-image: radial-gradient(60% 70% at 50% 0%, #000, transparent 80%);
+}
+
+/* Hero scrims. The horizontal one is what keeps the left-aligned headline
+   legible over the video — the media is weighted to the right. */
+.hero-scrim-x {
+  background-image: linear-gradient(
+    to right,
+    rgba(9, 9, 11, 0.97) 0%,
+    rgba(9, 9, 11, 0.92) 26%,
+    rgba(9, 9, 11, 0.62) 48%,
+    transparent 78%
+  );
+}
+.hero-scrim-y {
+  background-image: linear-gradient(to top, rgba(9, 9, 11, 0.85) 0%, transparent 55%);
+}
+
+/* Ambient blooms behind headings and CTA panels. */
+.bloom-indigo {
+  background: radial-gradient(circle, rgba(99, 102, 241, 0.2) 0%, transparent 60%);
+  filter: blur(40px);
+}
+.bloom-blue {
+  background: radial-gradient(circle, rgba(46, 139, 255, 0.18) 0%, transparent 65%);
+  filter: blur(30px);
+}
+
+/* Dusk form inputs. */
+.input-dusk {
+  background: var(--solid);
+  border: 1px solid var(--line-dashed);
+  border-radius: 8px;
+  color: #fff;
+}
+.input-dusk::placeholder {
+  color: var(--text-faint);
+}
+.input-dusk:focus {
+  outline: 1px solid var(--line-hover);
+  outline-offset: 0;
 }
 
 /* Respect reduced-motion: kill the looping animations. */

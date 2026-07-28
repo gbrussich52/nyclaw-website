@@ -67,7 +67,7 @@ export default function RootLayout({
               <div className="text-2xl font-bold leading-none">
                 <span className="text-white">NY</span>
                 <span className="text-gradient-ai">Claw</span>
-                <span className="text-cyan">.</span>
+                <span className="text-cyan-400">.</span>
                 <span className="text-white/80">io</span>
               </div>
               <div className="text-xs text-slate-400 font-medium tracking-wide mt-0.5">
@@ -97,7 +97,7 @@ export default function RootLayout({
               </a>
               <Link
                 href="/#contact"
-                className="rounded-lg px-5 py-2.5 text-sm font-bold text-white bg-gradient-to-r from-sky-bright via-indigo to-cyan shadow-lg shadow-indigo/30 hover:-translate-y-0.5 transition-all"
+                className="rounded-lg px-5 py-2.5 text-sm font-bold text-white bg-gradient-to-r from-brand-blue via-indigo-500 to-cyan-400 shadow-lg shadow-indigo-500/30 hover:-translate-y-0.5 transition-all"
               >
                 Start a Project →
               </Link>
@@ -114,7 +114,7 @@ export default function RootLayout({
               </a>
               <Link
                 href="/#contact"
-                className="rounded-lg px-3 py-2 text-xs font-bold text-white bg-gradient-to-r from-sky-bright via-indigo to-cyan"
+                className="rounded-lg px-3 py-2 text-xs font-bold text-white bg-gradient-to-r from-brand-blue via-indigo-500 to-cyan-400"
               >
                 Start Project →
               </Link>
@@ -127,14 +127,14 @@ export default function RootLayout({
             <div className="grid md:grid-cols-4 gap-8 mb-8">
               <div>
                 <div className="text-xl font-bold mb-3">
-                  <span className="text-white">NY</span><span className="text-gradient-ai">Claw</span><span className="text-cyan">.</span><span className="text-white/80">io</span>
+                  <span className="text-white">NY</span><span className="text-gradient-ai">Claw</span><span className="text-cyan-400">.</span><span className="text-white/80">io</span>
                 </div>
                 <p className="text-slate-400 text-sm">
                   AI agency for small businesses. We design and build custom automations and agents — serving Westchester County, NY and beyond.
                 </p>
               </div>
               <div>
-                <h4 className="font-semibold mb-3 text-sky-bright">Services</h4>
+                <h4 className="font-semibold mb-3 text-brand-blue">Services</h4>
                 <ul className="space-y-2 text-sm text-slate-400">
                   <li><Link href="/services/ai-automation" className="hover:text-white transition-colors">Custom AI Agents</Link></li>
                   <li><Link href="/services/ai-automation" className="hover:text-white transition-colors">Workflow Automation</Link></li>
@@ -143,7 +143,7 @@ export default function RootLayout({
                 </ul>
               </div>
               <div>
-                <h4 className="font-semibold mb-3 text-sky-bright">Resources</h4>
+                <h4 className="font-semibold mb-3 text-brand-blue">Resources</h4>
                 <ul className="space-y-2 text-sm text-slate-400">
                   <li><Link href="/knowledge" className="hover:text-white transition-colors">Knowledge Base</Link></li>
                   <li><Link href="/resources" className="hover:text-white transition-colors">Free AI Readiness Guide</Link></li>
@@ -151,7 +151,7 @@ export default function RootLayout({
                 </ul>
               </div>
               <div>
-                <h4 className="font-semibold mb-3 text-sky-bright">Contact</h4>
+                <h4 className="font-semibold mb-3 text-brand-blue">Contact</h4>
                 <ul className="space-y-2 text-sm text-slate-400">
                   <li><Link href="/#contact" className="hover:text-white transition-colors">Start a Project</Link></li>
                   <li><a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">15-Min Fit Audit</a></li>

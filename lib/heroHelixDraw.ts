@@ -54,11 +54,22 @@ export interface DrawParams {
   centerXRatio: number
 }
 
+/**
+ * Node/rung color ramp, top of the helix to the bottom.
+ *
+ * These are the exact stops of the dusk accent gradient
+ * (`linear-gradient(100deg, #2e8bff 0%, #6366f1 55%, #22d3ee 100%)`), so the
+ * hero art obeys the same rule as the chrome. Violet (#8b5cf6) was the old
+ * fourth stop and is deliberately gone — TOKENS.md permits exactly one accent
+ * gradient and one standalone accent hue, and violet read as a second accent
+ * across the bottom half of the hero.
+ *
+ * Changing these requires re-running `npm run render:hero`.
+ */
 const STOPS: [number, number, number][] = [
-  [46, 139, 255], // #2e8bff sky-bright
-  [34, 211, 238], // #22d3ee cyan
-  [99, 102, 241], // #6366f1 indigo
-  [139, 92, 246], // #8b5cf6 violet
+  [46, 139, 255], // #2e8bff brand-blue
+  [99, 102, 241], // #6366f1 indigo-500
+  [34, 211, 238], // #22d3ee cyan-400
 ]
 
 function colorAt(t: number): [number, number, number] {

@@ -8,13 +8,30 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // Brand anchors (kept for recognition + SEO trust equity)
+        // --- Dusk system (2026 handoff) ---------------------------------
+        // The palette is otherwise stock Tailwind `zinc` — #09090b is
+        // zinc-950, #18181b zinc-900, #d4d4d8 zinc-300, and so on. Only this
+        // blue has no stock equivalent.
+        //
+        // NOTE: `cyan`, `indigo` and `violet` used to be declared here as flat
+        // strings. Extending a color with a string REPLACES the entire ramp,
+        // so `cyan-400` did not exist and any such class silently emitted
+        // nothing. They are gone now; use the stock ramps (cyan-400 is exactly
+        // #22d3ee, indigo-500 exactly #6366f1). Violet is retired outright —
+        // TOKENS.md permits one accent gradient and one accent hue.
+        'brand-blue': '#2e8bff',
+
+        // --- Legacy light palette ---------------------------------------
+        // ~1,300 class usages still reference these across routes not yet
+        // ported to dusk. Removing them now would blank out live pages
+        // mid-migration. Deleted in the final phase, once grep comes back
+        // clean. Do not add new usages.
         navy: '#003366',
         'sky-blue': '#0066cc',
         'dark-red': '#c41e3a',
         charcoal: '#2c2c2c',
 
-        // Dusk surfaces — navy-tinted near-blacks for dark sections
+        // Legacy navy-tinted dusk ramp, superseded by zinc. Same deal.
         dusk: {
           950: '#07080f',
           900: '#0d1020',
@@ -22,12 +39,6 @@ const config: Config = {
           800: '#161a2e',
           700: '#1e2440',
         },
-
-        // AI-native accent ramp (used in glows + gradient text)
-        'sky-bright': '#2e8bff', // brightened brand sky for dark backgrounds
-        cyan: '#22d3ee',
-        indigo: '#6366f1',
-        violet: '#8b5cf6',
       },
       animation: {
         'pulse-slow': 'pulse 2.5s cubic-bezier(0.4, 0, 0.6, 1) infinite',
