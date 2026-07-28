@@ -59,7 +59,10 @@ export default function ResourcesPage() {
             The AI Operator&apos;s Playbook
           </h1>
           <p className="text-xl text-gray-300 max-w-2xl mx-auto mb-4">
-            How to build an AI assistant that actually works — with identity, memory, and automation that doesn&apos;t break. Built from what we learned deploying Ainsley.
+            How to build an AI assistant that actually works — with identity, memory, a harness around the model, and a closed loop after go-live so automation doesn&apos;t die in 30 days. Built from what we learned deploying Ainsley.
+          </p>
+          <p className="text-sm text-sky-blue/90 font-semibold tracking-wide uppercase mb-2">
+            Updated July 2026
           </p>
           <div className="flex flex-wrap justify-center gap-6 text-sm text-gray-400 mt-6">
             {trustSignals.map((signal) => (

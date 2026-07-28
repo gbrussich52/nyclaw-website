@@ -386,6 +386,9 @@
   <div class="cover-badge">NYClaw.io — Free Resource</div>
   <h1>The AI Operator's Playbook</h1>
   <div class="cover-subtitle">A No-BS Framework for Founders Who Want to<br>Automate More, Delegate More, and Work Less</div>
+  <p style="font-family:'Arial',sans-serif; font-size:0.85rem; letter-spacing:0.06em; text-transform:uppercase; color:#0066cc; margin:12px 0 0; font-weight:700;">
+    Updated July 2026 · Operator practices, not tool rankings
+  </p>
   <div class="cover-divider"></div>
   <p style="color:#333; font-size:1.05rem; max-width:560px;">
     Most AI setups fail in the first 30 days. This guide explains exactly why — and gives you the framework to build one that actually runs your business. Built from real experience, real results, real failures.
@@ -466,6 +469,16 @@
   <div class="toc-group">
     <div class="toc-item">
       <div>
+        <div class="toc-section">Part 3B</div>
+        <div class="toc-title">Harness + Closed Loop — After Go-Live, Measure One Leak and Fix It Weekly</div>
+      </div>
+      <div class="toc-page">—</div>
+    </div>
+  </div>
+
+  <div class="toc-group">
+    <div class="toc-item">
+      <div>
         <div class="toc-section">Part 4</div>
         <div class="toc-title">The Revenue Connection — Turning AI Into Actual Money</div>
       </div>
@@ -529,12 +542,14 @@
 <p>You'll walk away with:</p>
 <ul>
   <li>A clear understanding of <em>why</em> the standard approach fails</li>
-  <li>The four core documents every AI operator needs</li>
+  <li>The four core documents every AI operator needs — and when to prune extra prompts</li>
   <li>A three-tier memory architecture that eliminates the amnesia problem</li>
+  <li>A plain-English definition of the <em>harness</em> (the system around the model)</li>
   <li>A framework for building automation that runs forever, not just once</li>
+  <li>A closed loop after go-live: measure one dollar leak weekly and improve one thing</li>
   <li>Real revenue connection — how this becomes money</li>
   <li>The seven anti-patterns that kill AI projects, with real examples</li>
-  <li>Five fill-in templates you can use immediately</li>
+  <li>Six fill-in templates you can use immediately</li>
 </ul>
 
 <h3>What This Guide Is Not</h3>
@@ -550,6 +565,8 @@
 <p>Read Parts 1 and 2 before you touch any tool. Identity and memory are the foundation — skip them and everything else is built on sand.</p>
 
 <p>Part 3 is for implementation. Read it when you're ready to build actual automations.</p>
+
+<p>Part 3B is what most guides skip: the harness around the model, and the closed loop after go-live so the system gets better instead of rotting.</p>
 
 <p>Part 4 is the revenue layer. If you're building this for your own business, apply it. If you're building it for clients, it's your pitch deck in framework form.</p>
 
@@ -622,6 +639,10 @@
     <h4>TOOLS.md — Your Environment</h4>
     <p>A note file about the specific setup the AI is operating in. Not generic instructions — your actual environment. Camera names, SSH hosts, API keys (or where to find them), preferred services, account details. The AI needs to know your kitchen layout before it can cook. This file is the kitchen map.</p>
   </div>
+</div>
+
+<div class="callout">
+  <p><strong>Prune as models get stronger (July 2026):</strong> These four documents still matter. What usually does <em>not</em> help is a pile of extra prompts, roleplay skins, and one-off “skills” that no longer match how you work. Stronger models need less clutter — not more instruction files. Quarterly rule: if a doc or skill wasn’t opened in the last 90 days and doesn’t encode a real failure you learned, archive or delete it. Lean identity + current memory beats twenty generic playbooks.</p>
 </div>
 
 <div class="real-example">
@@ -973,6 +994,78 @@
   <p><strong>The operator's rule:</strong> Never claim a system is "working" based on the fact that it hasn't broken yet. That's survivorship bias. Working means you've verified the output matches the expected result. Recently. With a real test case.</p>
 </div>
 
+<!-- ===================== PART 3B — HARNESS + CLOSED LOOP ===================== -->
+<div class="part-header">
+  <div class="part-label">Part 3B</div>
+  <h2>Harness + Closed Loop</h2>
+  <p class="part-desc">The model is not the product. The system around it is — and that system only stays useful if you measure what broke and fix one thing at a time.</p>
+</div>
+
+<h3>The Model Is the Engine. The Harness Is the Car.</h3>
+
+<p>People keep buying a new engine and wondering why the car still won’t start. In plain English:</p>
+
+<ul>
+  <li><strong>The model</strong> is the engine — ChatGPT, Claude, Gemini, whatever you prefer this quarter. It reasons and writes.</li>
+  <li><strong>The harness</strong> is everything that makes that engine useful for a business: the tools it can use (email, CRM, calendar, files), the rules it must follow (your four core docs), the budgets and permissions, and <em>how you check its work</em>.</li>
+</ul>
+
+<p>Without a harness, you have a smart chatbot. With a harness, you have an operator assistant: it can act inside defined boundaries, leave a trail, and get corrected when reality disagrees with the plan.</p>
+
+<div class="pull-quote">
+  "Stop comparing models like car magazines compare horsepower. Ask: what tools can it use, what is it forbidden to do, and how do we know when last week’s automation stopped working?" — NYClaw.io
+</div>
+
+<p>If you only remember one sentence from this section: <strong>install the car, not just the engine.</strong> Identity, memory, tools, and verification are the car.</p>
+
+<h3>Start With One Dollar Leak — Not “An AI Assistant”</h3>
+
+<p>Small businesses that actually keep AI automations share a pattern: they did not start with “give me a general AI employee.” They started with one specific leak the owner can feel in dollars — missed calls that never get a text-back, leads that sit in the inbox overnight, quotes that never get a follow-up, appointments that don’t get confirmed.</p>
+
+<p>That leak is your first mission. Map it. Automate the boring path. Leave the edge cases for humans. Then measure whether the leak closed.</p>
+
+<table>
+  <thead>
+    <tr><th>Weak start</th><th>Operator start</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>“We need AI / a chatbot.”</td><td>“We lose X leads a week after hours.”</td></tr>
+    <tr><td>Buy a tool stack first</td><td>Name the leak, the success metric, then tools</td></tr>
+    <tr><td>Train staff on n8n/Make theory</td><td>Ship one closed path the owner can see</td></tr>
+    <tr><td>Declare victory at go-live</td><td>Check the metric every week for 90 days</td></tr>
+  </tbody>
+</table>
+
+<h3>After Go-Live: The Closed Loop (Sense → Improve)</h3>
+
+<p>Week-1 install is not the hard part. Week-4 silence is. Most abandoned AI projects “worked” in the demo and then quietly stopped matching reality — an API changed, a form broke, a cron died, a person stopped reading the summary email.</p>
+
+<p>A closed loop is deliberately boring:</p>
+
+<ol>
+  <li><strong>Sense</strong> — Pick one number that proves the automation still does its job (leads answered within 5 minutes, missed-call texts sent, hours saved on a weekly report). Write it down. Review it weekly.</li>
+  <li><strong>Verify</strong> — Once a week, run a real test: submit a fake lead, trigger the job, confirm the message arrived. “No errors in the log” is not enough.</li>
+  <li><strong>Improve</strong> — If the metric slips, change <em>one</em> thing (threshold, template, routing, a dead job). Do not rebuild the whole stack.</li>
+  <li><strong>Document</strong> — One line in MEMORY.md: what broke, what you changed, what you expect next week.</li>
+</ol>
+
+<div class="callout">
+  <p><strong>Operator cadence:</strong> 15 minutes every Monday. Open the metric. Smoke-test the main path. Kill or fix anything that failed. That 15 minutes is the difference between “we tried AI” and “AI runs our lead response.”</p>
+</div>
+
+<p>This is the same shape as continuous delivery in software: ship, measure, fix, ship again — applied to business automations. Fancy dashboards are optional. A spreadsheet and a calendar reminder are enough.</p>
+
+<h3>How You Know You’re Buying an Operator Setup (Not a Chatbot Install)</h3>
+
+<ul>
+  <li>There is a named first workflow and a success metric before tools are chosen.</li>
+  <li>Go-live includes a handoff: how to kill the automation, who owns the weekly check, where the logs live.</li>
+  <li>The builder talks about failure modes (forms that look live but don’t post, dead cron jobs, runaway API spend) — not only demos.</li>
+  <li>After launch, someone is responsible for Sense and Improve. If that person is “nobody,” the system will rot.</li>
+</ul>
+
+<p>If a vendor only sells “we install ChatGPT for your team,” ask what happens on day 45 when nobody has looked at the outputs. If the answer is silence, you bought a tab, not infrastructure.</p>
+
 <h3>Template: Automation Architecture Checklist</h3>
 
 <div class="template">
@@ -1264,12 +1357,14 @@
 
 <p><strong>The fix:</strong> Semi-annual tool audit (every 6 months). What tools are actively used? What delivers clear ROI? Everything else gets cut. New tools only get adopted when there's a specific capability gap that existing tools can't fill — and only after a 30-day trial with a defined success metric. "It's interesting" is not sufficient justification. "It saves X hours/month" is.</p>
 
+<p>Same rule for models: upgrade when a specific job fails on the current model, not when a blog posts a new leaderboard. The harness (tools, rules, checks) almost always outperforms a naked model swap.</p>
+
 
 <!-- ===================== APPENDIX ===================== -->
 <div class="appendix-header">
   <div class="part-label">Appendix</div>
   <h2>Working Templates</h2>
-  <p style="color:#555;font-style:italic;">Five templates designed to be used immediately — not read once and filed.</p>
+  <p style="color:#555;font-style:italic;">Six templates designed to be used immediately — not read once and filed.</p>
 </div>
 
 <h3>Template 1 — SOUL.md Starter</h3>
@@ -1415,20 +1510,43 @@
     <li>Update SOUL.md with anything learned about how you actually want the AI to behave</li>
     <li>Schedule monthly maintenance reminder: automation audit, memory review, doc check</li>
     <li>Define one thing to build in month 2 based on what you learned in month 1</li>
+    <li>Write your closed-loop metric and Monday Sense check (see Template 6)</li>
   </ul>
+</div>
+
+<h3>Template 6 — Closed-Loop Weekly Sense Check</h3>
+
+<div class="template">
+  <div class="template-label">📋 After Go-Live — 15 Minutes Every Monday</div>
+  <p>Fill this in once after your first automation ships. Revisit weekly for 90 days.</p>
+
+  <div class="template-field"><strong>Dollar leak we closed:</strong> [e.g. missed calls after 5pm with no text-back]<br><br><strong>One success metric:</strong> [e.g. % of missed calls that get a text within 2 minutes]<br><br><strong>Baseline before automation:</strong> [number or honest guess]<br><br><strong>Where the number lives:</strong> [spreadsheet / CRM report / log file]<br><br><strong>Owner of the Monday check:</strong> [name — not “the AI”]</div>
+
+  <p style="margin-top:16px;"><strong>Weekly checklist:</strong></p>
+  <ul class="checklist">
+    <li>Read this week’s metric. Up, flat, or down vs last week?</li>
+    <li>Smoke test the main path with a real fake lead / call / form submit</li>
+    <li>Confirm output arrived in the real destination (inbox, CRM, SMS log)</li>
+    <li>If broken: fix one thing OR kill the job. Do not ignore it</li>
+    <li>One line in MEMORY.md: what changed</li>
+  </ul>
+
+  <p style="margin-top:16px;"><strong>AI search attribution (optional but high leverage):</strong></p>
+  <div class="template-field">When a lead or client says how they found you, record it in one CRM/source field — including “ChatGPT / Claude / Perplexity / Gemini” if they used an AI answer engine. You cannot improve what you never measure. Fancy citation dashboards are optional; a “How did you hear about us?” field is not.</div>
 </div>
 
 
 <!-- ===================== CTA ===================== -->
 <div class="cta-box">
   <h2>Ready to Build This for Your Business?</h2>
-  <p>NYClaw.io builds AI automation infrastructure for small businesses and agencies. We start with a free consultation — no pitch, just an honest look at where automation makes sense for your situation and where it doesn't.</p>
+  <p>NYClaw.io builds AI automation infrastructure for small businesses and agencies — systems with a harness and a closed loop after go-live, not a chatbot tab that dies in 30 days. We start with a free consultation: one honest look at your dollar leak and whether automation is the right fix.</p>
   <a href="https://nyclaw.io" class="cta-btn">Book a Free AI Audit at NYClaw.io →</a>
   <div class="cta-url">nyclaw.io</div>
 </div>
 
 <div style="margin-top:48px; padding:24px; background:#f5f8ff; border-radius:6px;">
   <h3 style="margin-top:0;">About This Guide</h3>
+  <p><strong>Last updated:</strong> July 2026. Principles first; tool names second. We revise when operator practice changes, not every model release.</p>
   <p>This guide was built from the actual experience of designing, building, and running Ainsley — a personal AI assistant operating on a Mac Studio (M4 Max, 36GB RAM) across multiple businesses simultaneously. The case studies, the numbers, and the lessons are real. Nothing was invented for the sake of sounding good.</p>
   <p style="margin-bottom:0;">NYClaw.io is an AI automation consultancy based in New York. We work with small businesses, agencies, and founders who want operational leverage without operational complexity.</p>
 </div>

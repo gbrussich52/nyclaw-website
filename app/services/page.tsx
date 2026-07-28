@@ -38,7 +38,7 @@ const services = [
     title: 'Custom AI Agents',
     tagline: 'Agents that do real work in your stack.',
     description:
-      'We design and build agents for one mission-critical job — intake, lead response, scheduling, research, support triage — wired into the tools you already use. Not a stock template install.',
+      'We design and build agents for one mission-critical job — intake, lead response, scheduling, research, support triage — wired into the tools you already use, with boundaries and a check that the work still ships after launch. Not a stock template install.',
     pricing: '$3.5K–8K per agent sprint · no monthly required',
     href: '/services/ai-automation',
     cta: 'Learn About Agents',
@@ -86,7 +86,7 @@ export default function ServicesPage() {
           </h1>
           <p className="text-lg text-gray-200 max-w-2xl mx-auto leading-relaxed">
             We design and build custom automations and agents — project-based,
-            scoped to your workflows. Not a one-size product install.
+            scoped to your workflows, with verification after go-live. Not a chatbot install and not a one-size product.
           </p>
         </div>
       </section>

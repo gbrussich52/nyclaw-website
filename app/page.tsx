@@ -157,7 +157,7 @@ export default function Home() {
             </p>
             <p className="text-lg text-slate-300 mb-9 max-w-xl mx-auto lg:mx-0 leading-relaxed">
               We design and ship AI systems that run lead response, scheduling, CRM, follow-ups, and ops —
-              around how your team already works.
+              around how your team already works. Built with a harness (tools, rules, checks) and a closed loop after go-live so they keep working.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
               <a href="#contact" className="btn-ai text-lg">

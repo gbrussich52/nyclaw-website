@@ -37,7 +37,15 @@ npm test         # vitest run — lib/__tests__/ covers sanitize, leads, rate-li
 
 ## Current focus
 
-SEO overhaul + automation. Engineering should serve organic acquisition.
+SEO + **living free guide** (AI Operator’s Playbook) + services copy that match current AI operator practice.
+
+**Offerings refresh loop (do not improvise content randomly):**  
+`docs/OFFERINGS-REFRESH-LOOP.md` — daily X radar → `docs/loop/improve-queue.md` → ship playbook/services → Sense.
+
+```bash
+# Weekly (also launchd Mon 8:00): market briefs → playbook/service update plan
+./scripts/nyclaw-weekly-refresh/run.sh
+```
 
 ## Related memory
 
