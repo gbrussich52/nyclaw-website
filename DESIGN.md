@@ -1,232 +1,349 @@
-# DESIGN.md — NYClaw.io
+# DESIGN.md — NYClaw.io ("Dusk" system)
 
-> AI agent automation agency for SMBs. Ainsley is the face/voice of the brand.
-> Drop this into any AI coding agent context for consistent UI generation.
+> AI agency for SMBs in Westchester County & NYC.
+> This documents the design system **that actually ships**. Values below were read
+> from `app/globals.css`, `tailwind.config.ts`, `app/layout.tsx`, `app/components/*`
+> and the original handoff (`TOKENS.md`). Do not invent tokens that are not here.
 
----
-
-## 1. Visual Theme & Atmosphere
-
-**Mood**: Sharp, credible, authoritative. NYC-native professional agency. Not a startup, not a law firm — an AI-first automation agency.
-**Density**: Medium. Marketing pages breathe. Service pages are crisp.
-**Philosophy**: Clean editorial + conversion-focused. Trust through design precision.
-**Surfaces**: White + dark navy sections. Subtle pulsing animation (2.5s) on key accent elements.
+The retired navy / sky-blue / dark-red light theme is **gone**. Every route is dark.
+If you find navy, `slate-*`, `sky-blue`, `charcoal` or `dark-red` in the codebase,
+it is dead code, not the system.
 
 ---
 
-## 2. Color Palette & Roles
+## 0. Three warnings (read these first)
 
-| Name          | Hex       | Tailwind Class  | Role                                          |
-|---------------|-----------|-----------------|-----------------------------------------------|
-| Brand Navy    | `#003366` | `navy`          | Primary authority: headers, hero, nav, CTAs   |
-| Sky Blue      | `#0066cc` | `sky-blue`      | Links, hover states, accent highlights        |
-| Dark Red      | `#c41e3a` | `dark-red`      | Urgency, alert accents, selective emphasis    |
-| Charcoal      | `#2c2c2c` | `charcoal`      | Dark sections, footer                         |
-| White         | `#ffffff` | `white`         | Primary background, text on dark sections     |
-| Slate 50      | `#f8fafc` | `slate-50`      | Alternating section backgrounds               |
-| Slate 200     | `#e2e8f0` | `slate-200`     | Borders, dividers                             |
-| Slate 400     | `#94a3b8` | `slate-400`     | Captions, secondary labels                    |
-| Slate 600     | `#475569` | `slate-600`     | Body text                                     |
+### 1. Never declare a Tailwind color as a flat string
 
-**Do NOT use**: orange, yellow, purple, bright green.
-**Subtle animation**: `animate-pulse-slow` (2.5s) on the main CTA badge/dot — not on buttons.
+In `tailwind.config.ts`, extending a color with a **string** replaces that color's
+entire ramp:
+
+```ts
+// ☠️ DO NOT DO THIS
+colors: { cyan: '#22d3ee' }   // `cyan-400` now resolves to nothing —
+                              // classes emit no CSS, with NO error and NO warning
+```
+
+This is exactly how `cyan-400` silently stopped existing in this repo. The failure
+mode is invisible: the build passes, the class name stays in the markup, and the
+color just never paints. Only `brand-blue` is declared, and only because `#2e8bff`
+has no stock Tailwind equivalent. Everything else is stock `zinc`, `cyan-400`,
+`indigo-500`.
+
+### 2. Headings are never bolder than 600 — and h1 is weight 400
+
+Hero h1 and page h1 are `font-normal` (400). Section h2 is 500–600. Nothing on the
+site is `font-bold`. **The scale does the work, not the weight.** A 700-weight
+heading reads as a different brand.
+
+### 3. Violet `#8b5cf6` is not part of the UI palette
+
+One accent gradient, one standalone accent hue (`#22d3ee`). Violet appears in
+exactly one place: the hero helix artwork in `lib/heroHelixDraw.ts`, which is the
+designer's own composition and is explicitly exempt. Do **not** pull violet into
+buttons, borders, text, blooms or gradients. Do not add a second accent hue either.
 
 ---
 
-## 3. Typography Rules
+## 1. Atmosphere
 
-**Font Stack**: System sans-serif (`font-sans`, Inter/system-ui)
-
-| Element            | Size    | Weight    | Class                                              |
-|--------------------|---------|-----------|----------------------------------------------------|
-| Hero H1            | 4xl–6xl | Bold 700  | `text-4xl md:text-6xl font-bold text-white`        |
-| Section H2         | 3xl     | Bold 700  | `text-3xl font-bold text-navy`                     |
-| Card title         | xl      | Semibold  | `text-xl font-semibold text-navy`                  |
-| Body               | base    | Normal    | `text-base text-slate-600`                         |
-| Label / eyebrow    | xs      | Semibold  | `text-xs font-semibold uppercase tracking-widest`  |
-| Nav links          | sm      | Medium    | `text-sm font-medium`                              |
+**Mood:** dark, AI-native, precise. Restraint over decoration.
+**Depth comes from fill difference and hairlines — not shadows.** The only shadow in
+the system is `0 1px 2px rgba(0,0,0,.2)` on solid white buttons.
+**Texture:** masked 1px grids, radial blooms, and a single accent gradient. Nothing else.
 
 ---
 
-## 4. Component Stylings
+## 2. Color tokens
 
-### Hero Section
-```
-Container:   bg-navy min-h-screen flex items-center
-Headline:    text-white font-bold (large, tight tracking)
-Subhead:     text-white/70 text-xl
-CTA primary: bg-sky-blue text-white hover:bg-sky-blue/90 rounded-xl px-8 py-3 font-semibold shadow-lg
-CTA ghost:   border border-white/30 text-white hover:bg-white/10 rounded-xl px-8 py-3
-Badge/tag:   bg-white/10 text-white text-xs font-semibold uppercase tracking-widest px-3 py-1 rounded-full animate-pulse-slow
-```
+All defined in `:root` in `app/globals.css`. Prefer the CSS variable or the stock
+Tailwind class; never re-type a hex inline unless the pattern below already does.
 
-### Buttons
-```
-Primary:   bg-navy text-white hover:bg-navy/90 rounded-xl px-6 py-3 font-semibold shadow-sm
-Secondary: border border-slate-200 bg-white text-navy hover:bg-slate-50 rounded-xl px-6 py-3
-Accent:    bg-sky-blue text-white hover:opacity-90 rounded-xl px-6 py-3 font-semibold
-Danger:    bg-dark-red text-white hover:opacity-90 rounded-xl px-6 py-3
-```
+### Surfaces
 
-### Cards
-```
-Standard:   rounded-2xl border border-slate-200 bg-white p-8 shadow-sm
-Hover:      transition-all hover:-translate-y-1 hover:shadow-md hover:border-navy/20
-Dark card:  bg-navy text-white rounded-2xl p-8
-Icon block: inline-flex rounded-xl bg-sky-blue/10 p-3 mb-4
-```
+| Variable | Value | Tailwind | Role |
+|---|---|---|---|
+| `--canvas` | `#09090b` | `zinc-950` | page canvas, `body`, circle fills, text on white buttons |
+| `--panel` | `color-mix(in oklab, #27272a 55%, #000)` | — (use `.panel`) | cards, FAQ / OODA panels, ghost buttons |
+| `--solid` | `#18181b` | `zinc-900` | pricing cards, form inputs |
+| `--code` | `#0a0a0c` | — | `pre` blocks, hero media-card fill |
 
-### Navigation
-```
-Light nav:  bg-white border-b border-slate-200 sticky top-0 z-50
-Dark nav:   bg-navy
-Logo:       font-bold text-navy (light) / text-white (dark)
-Nav link:   text-slate-600 hover:text-navy text-sm font-medium
-CTA in nav: bg-navy text-white rounded-lg px-4 py-2 text-sm font-semibold
-```
+### Text
 
-### Sections (alternating)
-```
-White:      bg-white py-24
-Light gray: bg-slate-50 py-24
-Dark navy:  bg-navy py-24 (text-white inside)
-```
+| Variable | Value | Tailwind | Role |
+|---|---|---|---|
+| `--text-primary` | `#ffffff` | `text-white` | headings, `strong`, active nav |
+| `--text-secondary` | `#d4d4d8` | `zinc-300` | body copy, nav links, list items |
+| `--text-muted` | `#a1a1aa` | `zinc-400` | captions, eyebrows, table body, FAQ answers |
+| `--text-faint` | `#71717a` | `zinc-500` | ".io" suffix, marquee, placeholders |
 
-### Social Proof / Testimonials
-```
-Card:       rounded-2xl bg-slate-50 border border-slate-200 p-6
-Quote:      text-slate-700 italic text-base
-Attribution:text-navy font-semibold text-sm
-```
+### Hairlines
 
----
+| Variable | Value | Role |
+|---|---|---|
+| `--line` | `rgba(255,255,255,.1)` | grid gaps, section rules, card borders |
+| `--line-hover` | `rgba(255,255,255,.28)` | card hover border, input focus outline |
+| `--line-dashed` | `rgba(255,255,255,.12)` | FAQ row dividers, pricing divider |
 
-## 5. Layout Principles
+Button outlines are `white/[0.15]` (small) and `white/[0.18]` (large).
+Chip / tag fill is `white/[0.07]`. Ghost hover fill is `white/5`–`white/[0.06]`.
 
-**Max widths**: `max-w-6xl` for wide sections, `max-w-4xl` for content, `max-w-2xl` for single-column text blocks.
-**Section rhythm**: `py-24` for major sections, `py-16` for sub-sections.
-**Grid**: 3-column card grids (`grid-cols-1 md:grid-cols-3 gap-8`), 2-column for features.
-**Alignment**: Content sections center-aligned on hero/marketing, left-aligned on content/data pages.
+### Accent
+
+| Variable | Value | Tailwind | Role |
+|---|---|---|---|
+| `--brand-blue` | `#2e8bff` | `brand-blue` | gradient stop; the one custom color |
+| `--accent` | `#22d3ee` | `cyan-400` | the **only** standalone accent — code text, article CTA rule, hero badge dot |
+
+`#6366f1` (`indigo-500`) exists only as a gradient/bloom stop, never as a flat fill.
+
+### Gradients & blooms (utility classes)
+
+| Class | Definition | Use |
+|---|---|---|
+| `.text-gradient-ai` | `linear-gradient(100deg, #2e8bff 0%, #6366f1 55%, #22d3ee 100%)`, clipped to text | **second line of an h1 only** |
+| `.text-gradient-metric` | `linear-gradient(to right, #fff, #52525b)`, clipped to text | stat and result numbers only |
+| `.bloom-indigo` | `radial-gradient(circle, rgba(99,102,241,.2), transparent 60%)`, `blur(40px)` | behind page headers / hero |
+| `.bloom-blue` | `radial-gradient(circle, rgba(46,139,255,.18), transparent 65%)`, `blur(30px)` | behind CTA and form panels |
+| `.connector-flow` | animated blue → indigo → cyan sweep, `200%` background-size | the OODA timeline connector |
+| `.hero-scrim-x` | left-heavy `zinc-950` ramp (`.97 → .92 → .62 → transparent`) | keeps hero copy legible over the video (media is weighted right) |
+| `.hero-scrim-y` | bottom-up `rgba(9,9,11,.85) → transparent 55%` | grounds the hero card |
+| `.hero-grid` | `rgba(255,255,255,.035)` 1px lines on an `80px` grid, radially masked | hero + service-hero texture |
 
 ---
 
-## 6. Depth & Elevation
+## 3. Typography
 
+Loaded via `next/font/google` in `app/layout.tsx`:
+
+- **Display** — Space Grotesk → `--font-display`, applied to all `h1`–`h6`
+- **Body** — Inter → `--font-body`, applied to `body`
+
+Global tracking: headings `-0.02em`, `h1` `-0.035em`.
+
+| Token | Size / line-height / weight / tracking | Typical class |
+|---|---|---|
+| Hero h1 | `clamp(2.75rem, 6vw, 3.75rem)` / 1.05 / **400** / `-.03em` | `text-[clamp(2.75rem,6vw,3.75rem)] font-normal leading-[1.05] tracking-[-0.03em]` |
+| Page h1 (service hero) | `clamp(2.5rem, 5.5vw, 3.75rem)` / 1.06 / **400** / `-.03em` | — |
+| Article h1 | `clamp(2rem, 5vw, 3rem)` / 1.1 / **400** / `-.03em` | set by `ArticleShell` |
+| Section h2 | `clamp(2rem, 4vw, 2.75rem)` / 1.12 / 500–600 / `-.025em` | — |
+| Panel h2 | `clamp(1.75rem, 3.5vw, 2.25rem)` / 1.15 / 500 / `-.025em` | — |
+| Article h2 | 30px / 1.2 / 500 / `-.02em` | `.prose-dusk h2` |
+| h3 | 20px / 1.3 / 500 / `-.01em` | `.prose-dusk h3` |
+| Lede | 19px / 1.55 / 500, white | — |
+| Body lg | 17px / 1.65–1.75 / 400 | `text-[17px] leading-relaxed` |
+| Article lead | 20px / 1.6 / 400, white | `.prose-dusk > p:first-of-type` |
+| Body | 15–16px / 1.6 / 400 | `text-sm` / `text-[15px]` |
+| Body sm | 14px / 1.6 | `text-sm` |
+| Caption | 13px / 1.6 | `text-[13px] text-zinc-500` |
+| Eyebrow | 11–12px / 500 / `.08em` / uppercase | `text-[11px] font-medium uppercase tracking-[0.08em] text-zinc-400` |
+| Metric | 32px (strip) · 40px (cards) / 600 / `-.03em` | + `.text-gradient-metric` |
+| Price | 30px / 600 / `-.03em` | `text-[30px] font-semibold tracking-[-0.03em]` |
+| Mono | 13.5px / 1.7 — `ui-monospace, 'Geist Mono', Menlo, monospace` | `.prose-dusk pre` / `code` |
+
+`text-wrap: balance` on headings (`text-balance`), `pretty` on body.
+
+---
+
+## 4. Spacing rhythm
+
+- **Section rhythm:** `px-6 pb-24` on every section; the closing CTA uses `pb-32`.
+  The fixed header is cleared globally by `pt-[92px]` on the layout wrapper —
+  full-bleed heroes cancel it with `-mt-[92px]` and paint underneath.
+- **Anchor offset:** `section[id]` and `[id]:target` get `scroll-margin-top: 108px`
+  so in-page jumps don't land under the fixed header. Do not remove.
+- **Content widths:** `80rem` header + hero inner · `64rem` wide sections ·
+  `56rem` pricing / checklist · `52rem` service-hero · `48rem` article shell ·
+  `44rem` prose measure · `38rem` centred intros · `36rem` hero subhead ·
+  `34rem` CTA copy.
+- **Card padding:** `p-9` capability cells · `p-8` result cards · `p-7`
+  service/pricing/work cards · `p-5` related cards.
+- **Panel padding:** `px-6 py-14 sm:px-10` (OODA, CTA) · `p-9` (checklist) ·
+  `px-5 sm:px-8` (FAQ).
+- **Grid gaps:** `1px` hairline grids · `gap-3` chips · `gap-4` related cards ·
+  `gap-6` cards · `gap-10`/`gap-12` OODA steps.
+
+---
+
+## 5. Radii
+
+| Radius | Where |
+|---|---|
+| `rounded-[48px]` | hero media card |
+| `rounded-3xl` (24px) | floating header shell |
+| `rounded-2xl` (16px) | large panels — OODA, CTA, FAQ, forms, checklist |
+| `rounded-xl` (12px) | cards, article CTA strip, tables (`.prose-dusk table`) |
+| `10px` | `.prose-dusk pre` |
+| `rounded-lg` (8px) | inputs (`.input-dusk`), logo mark |
+| `rounded-md` (6px) | header buttons, mobile nav rows |
+| `rounded-full` | pills, chips, CTAs, OODA step circles |
+| `rounded-sm` | hairline-grid wrappers |
+
+**Elevation:** effectively none. `shadow-[0_1px_2px_rgba(0,0,0,.2)]` on solid white
+buttons only. No large soft shadows anywhere.
+
+---
+
+## 6. Motion
+
+| Property | Duration | Easing |
+|---|---|---|
+| color / border-color / opacity | `.15s`–`.2s` | default |
+| transform (card lift, `.panel-hover`) | `.2s` | default |
+| chevron rotate (FAQ) | `.2s` (`duration-200`) | default |
+| accordion `max-height` | `.3s` (`duration-300`) | `ease-out` |
+| `Reveal` fade/slide-up | `.7s` (`duration-700`) | `ease-out`, staggered ~80–90ms |
+| `CountUp` ramp | 1500ms | easeOutCubic |
+| marquee loop | 34s | linear, infinite |
+| connector flow | 5s | linear, infinite |
+
+**Reduced motion is handled and must stay handled.** `globals.css` kills
+`.marquee-track`, `.connector-flow` and the aurora/float/pulse animations under
+`prefers-reduced-motion: reduce`; `Reveal` and `CountUp` short-circuit to their
+final state; `HeroVideo` renders the poster still and never mounts the `<video>`
+(so the loop isn't even downloaded).
+
+---
+
+## 7. Structural utilities (`globals.css`)
+
+| Class | What it does |
+|---|---|
+| `.panel` | `--panel` fill + 1px `--line` border. The default card/panel surface. |
+| `.panel-hover` | border → `--line-hover` and `translateY(-2px)` on hover, `.2s`. |
+| `.hairline-grid` | Wrapper paints `--line`; children get the canvas fill, so the `1px` gap reads as a hairline. Used for stat strips and capability grids. |
+| `.hero-grid` | 80px masked grid overlay. |
+| `.hero-scrim-x` / `.hero-scrim-y` | Hero legibility scrims. |
+| `.bloom-indigo` / `.bloom-blue` | Ambient radial blooms (position them absolutely, `pointer-events-none`). |
+| `.nav-dusk` | Dark-glass header: `rgba(9,9,11,.6)` + `blur(40px)`. |
+| `.marquee` / `.marquee-track` | Edge-masked infinite marquee; pauses on hover. |
+| `.connector-flow` | Animated OODA connector line. |
+| `.input-dusk` | Form field: `--solid` fill, `--line-dashed` border, `8px` radius, white text, faint placeholder, `--line-hover` focus outline. |
+| `.text-gradient-ai` / `.text-gradient-metric` | See §2. |
+
+---
+
+## 8. Component inventory (`app/components/`)
+
+### Chrome
+
+| Component | Use it for | Used by |
+|---|---|---|
+| `SiteHeader` | The floating dusk header. Client component (needs `usePathname` for the active link and state for the mobile menu). Owns the `Wordmark`, also re-exported for the footer. | `app/layout.tsx` |
+| `JsonLd` | Structured data: `LocalBusinessJsonLd`, `WebSiteJsonLd`, `ServiceJsonLd`, `FAQJsonLd`. Pass `FAQJsonLd` the **same array** you render, so markup and schema can't drift. | layout + most routes |
+
+### Page sections
+
+| Component | Use it for | Used by |
+|---|---|---|
+| `ServiceHero` | The shared top of every `/services/*` detail route: back link → badge pill → split h1 (accent gradient on the **second** line) → lede → blurb → two CTAs. | all 3 service detail routes |
+| `StatStrip` | 4-up hairline proof strip under a hero. Numeric stats animate; pass `raw` for non-numeric ("24/7", "Sprint"). | service routes, both `/locations/*` |
+| `CapabilityGrid` | Centred intro + 3-col hairline grid of icon/title/desc cells. Takes an optional `id` so an existing anchor can be preserved. | all 3 service routes |
+| `OodaPanel` | The 4-step OODA timeline on service routes (centred variant with the flowing connector). The homepage has its own left-aligned inline version. | all 3 service routes |
+| `DeliverablesChecklist` | 2-col "what's included" check list in a panel. | ai-automation, ai-consulting |
+| `ResultsCards` | 3-up outcome cards with a 40px gradient metric. The marketing route's counterpart to the checklist. | ai-marketing |
+| `PricingPair` | Two pricing cards. Uses the **solid** `zinc-900` fill (not `.panel`) to separate commercial content from editorial panels without adding a color. | all 3 service routes |
+| `IndustryChips` | The 6-up "Who this is for" row. The industry list is baked in; only the blurb varies. | all 3 service routes |
+| `FaqSection` | Centred heading + blurb wrapping `FaqAccordion`. | service routes, both `/locations/*` |
+| `FaqAccordion` | Single-open disclosure list. Row 0 starts open. Animates `max-height` with a **320px ceiling** — a longer answer will clip, so keep answers short or raise it deliberately. | homepage, via `FaqSection` |
+| `CtaPanel` | Closing CTA panel with a blue bloom. `footer` carries "Or explore: …" cross-links; the services index passes a second button instead. | services index + all 3 detail routes |
+| `ArticleShell` | Chrome for **every** knowledge/blog article: back link, tags + meta, h1, deck, optional download CTA strip, `.prose-dusk` body at `44rem`, and "Keep reading" cards. There is no `[slug]` route and no MDX — articles are hand-written JSX folders, so the shell is what keeps them consistent. Articles should pass plain `<p>/<h2>/<ul>/<table>` and let `.prose-dusk` style them. | 13 blog routes, 3 knowledge routes, `/dmca` |
+
+### Forms
+
+| Component | Use it for |
+|---|---|
+| `ContactForm` | The `#contact` section on the homepage. Panel + `.input-dusk` fields + full-width white submit. |
+| `PlaybookForm` | Inline single-field email capture for the free guide (homepage). |
+| `ResourceForm` | The `/resources` gated-download form, including the post-submit success panel. |
+
+### Primitives
+
+| Component | Use it for |
+|---|---|
+| `Reveal` | One-shot IntersectionObserver fade/slide-up. Pass an incrementing `delay` (80–90ms) to stagger a row. Disconnects after firing; renders instantly under reduced motion. |
+| `CountUp` | Animates `0 → to` on first scroll into view. Pass `raw` for non-numeric values. |
+| `HeroVideo` | The homepage hero background loop. Serves `hero.webm` + `hero.mp4` (Safari doesn't play VP9-in-WebM reliably) and the poster still under reduced motion. |
+| `HeroHelix` | The **live `<canvas>`** version of the helix. Currently **not imported by any route** — the homepage ships the baked video instead. Kept because it shares `lib/heroHelixDraw.ts`; treat it as available-but-unused, not as the shipping hero. |
+
+---
+
+## 9. Prose system — `.prose-dusk`
+
+Applied by `ArticleShell` to the article body. It styles **by element**, on purpose:
+all articles are hand-written JSX with no MDX and no `@tailwindcss/typography`, so
+one CSS block restyles every article without editing any of them. **Write semantic
+tags and add no per-tag classes.**
+
+| Element | Style |
+|---|---|
+| container | `--text-secondary`, 17px / 1.75; `1.5rem` gap between all top-level children |
+| first `<p>` (lead) | 20px / 1.6, **white** |
+| `h2` | 30px / 1.2 / 500 / `-.02em`, white, `3rem` top margin, `text-wrap: balance` |
+| `h3` | 20px / 1.3 / 500 / `-.01em`, white, `2.5rem` top margin |
+| `strong` | white, 600 |
+| `a` | white, underlined at `3px` offset, `rgba(255,255,255,.35)` → white on hover |
+| `ul` / `ol` | `1.25rem` left padding, disc / decimal, `li` `0.5rem` top margin, markers `--text-faint` |
+| `blockquote` | 3px `rgba(255,255,255,.2)` left rule, `20px` padding, italic |
+| `blockquote.pull` | pull-quote variant — `--accent` left rule, not italic, 18px, white. **The one place the standalone accent appears in prose.** |
+| `hr` | 1px `--line`, `3rem` top margin |
+| `table` | `display: block` + `overflow-x: auto` so wide tables scroll **inside** their container and the page body never does. 12px radius, `--line-dashed` border |
+| `thead` | `rgba(255,255,255,.06)` fill |
+| `th` | 14px / 500, white, left-aligned, `12px 16px`, `nowrap` |
+| `td` | 14px, `--text-muted`; first cell white + 500; rows separated by a dashed `--line` |
+| `pre` | `--code` fill, `--line-dashed` border, 10px radius, `13.5px/1.7` mono, `--accent` text, horizontal scroll |
+| inline `code` | `0.9em` mono, `--accent` |
+
+---
+
+## 10. The hero video is generated — do not hand-edit it
+
+```bash
+npm run render:hero      # node scripts/render-hero.mjs
 ```
-Flat:     border-slate-200 no shadow (dividers, borders)
-Card:     shadow-sm
-Hover:    shadow-md + -translate-y-1
-Modal:    shadow-2xl
-```
 
-Border radius: `rounded-xl` buttons/inputs, `rounded-2xl` cards, `rounded-full` badges/avatars.
+`lib/heroHelixDraw.ts` is the single framework-free drawing core. It feeds **two**
+consumers:
 
----
+1. `app/components/HeroHelix.tsx` — the live `<canvas>` component (currently unused)
+2. `scripts/render-hero.mjs` — bakes `public/hero.webm` + `public/hero.mp4` (+ poster)
 
-## 7. Do's and Don'ts
+**Edit the shared module, then re-render. Never fork or copy it** — a second copy
+means the live canvas and the baked video drift apart silently.
 
-**Do:**
-- Lead with navy for authority. Sky blue for action/links.
-- Use pulsing animation ONLY on the hero badge/dot, nowhere else
-- Section eyebrows: `text-xs font-semibold uppercase tracking-widest text-slate-400`
-- Feature icon containers: `bg-sky-blue/10 rounded-xl p-3 inline-flex`
-- Alternate white/slate-50/navy sections for rhythm
+Why a baked video rather than the live canvas on the homepage: the hero is a
+full-bleed media card, and a GPU-decoded loop costs no main-thread JS on an
+LCP-critical surface. The original mockup used a 20MB stock clip, which would also
+have been blocked by the CSP (`default-src 'self'`, no `media-src`) — rendering our
+own footage keeps it first-party and far lighter.
 
-**Don't:**
-- Don't use orange, yellow, or purple
-- Don't use gradients on nav or body backgrounds
-- Don't center body text in content sections — only on hero/marketing
-- Don't use more than 2 CTAs per section
-- Don't put red on anything that isn't urgent/error/alert
+The renderer is deterministic (no `Math.random()`; particle seeds are arithmetic) and
+verifies frame 0 and frame N are byte-identical before encoding, so the loop is
+genuinely seamless.
 
 ---
 
-## 8. Responsive Behavior
+## 11. Do / Don't
 
-- Mobile: single column, hamburger nav, stacked hero
-- `sm` (640px): 2-col grids begin
-- `md` (768px): 3-col grids, nav shows full
-- `lg` (1024px): max-width containers kick in
+**Do**
+- Reach for an existing component before writing a new section.
+- Use `.panel` + `.panel-hover` for cards; let hairlines and fill difference create depth.
+- Keep the accent gradient to the second line of an h1, and `--accent` to code, the article CTA rule, and the `blockquote.pull` variant.
+- Wrap staggered rows in `Reveal`.
+- Keep every new animation behind the `prefers-reduced-motion` block.
+- Keep wide content (tables, code) scrolling inside its own container.
 
-Touch targets: min 44px height on all interactives.
-
----
-
-## 9. Agent Prompt Guide
-
-### Quick color reference:
-```
-primary:    #003366 (navy)
-secondary:  #0066cc (sky-blue)
-accent-red: #c41e3a (dark-red)
-bg:         #ffffff / #f8fafc (slate-50)
-dark-bg:    #2c2c2c (charcoal)
-text:       #475569 (slate-600)
-muted:      #94a3b8 (slate-400)
-border:     #e2e8f0 (slate-200)
-```
-
-### Ready-to-use prompts:
-> "Build this section using the DESIGN.md system. Hero: bg-navy, white text, sky-blue CTA. Section background alternates white/slate-50. Cards: rounded-2xl border-slate-200 shadow-sm hover:-translate-y-1. No orange, no gradients."
-
-> "Create a feature grid: 3 columns, each card has an icon in bg-sky-blue/10 rounded-xl p-3, card title in text-navy font-semibold, body in text-slate-600. Hover lifts card."
+**Don't**
+- Don't declare Tailwind colors as flat strings (§0.1).
+- Don't use `font-bold` on headings; nothing exceeds 600, and h1 is 400.
+- Don't introduce violet, or any second accent hue (§0.3).
+- Don't add box-shadows for depth.
+- Don't reintroduce navy / `slate-*` / `sky-blue` / `charcoal` / `dark-red`.
+- Don't copy `heroHelixDraw.ts`; edit it and re-render.
+- Don't remove `scroll-margin-top` from `section[id]` — anchors will land under the fixed header.
 
 ---
 
-*Generated 2026-04-04 | NYClaw.io brand spec — navy/blue/red, Ainsley-forward design*
-
----
-
-## 10. Dusk System (2026 Revamp)
-
-The homepage now uses a **hybrid dark/light rhythm**: dark "dusk" surfaces for the hero
-and high-drama sections (CTA breaks, the OODA framework, urgency, footer), with the
-proven light sections kept for readability + conversion (stats, services/pricing,
-comparison, results, FAQ). Cadence: dark → light → dark → light.
-
-### Dusk palette (extends brand, doesn't replace it)
-| Token            | Hex       | Role                                            |
-|------------------|-----------|-------------------------------------------------|
-| `dusk-950`       | `#07080f` | Base dark surface (navy-tinted near-black)      |
-| `dusk-900/850/800`| `#0d1020`+| Layered dark surfaces / cards                   |
-| `sky-bright`     | `#2e8bff` | Brightened brand sky for dark backgrounds       |
-| `cyan`           | `#22d3ee` | AI accent (glows, gradient text)                |
-| `indigo`         | `#6366f1` | AI accent (glows, gradient text, CTA gradient)  |
-| `violet`         | `#8b5cf6` | AI accent (gradient text tail)                  |
-| `dark-red`       | `#c41e3a` | **Scarcity/urgency only** — demoted from general CTA |
-
-### Dusk utility classes (in `globals.css`)
-- `.dusk` — base dark section background + light text
-- `.dusk-hero` — layered radial+linear dusk gradient for the hero
-- `.text-gradient-ai` — sky→cyan→indigo gradient text
-- `.glass` / `.glass-card` — translucent surfaces on dark
-- `.nav-dusk` — global dark-glass sticky nav (blur + white/8 border)
-- `.btn-ai` — primary CTA, indigo→cyan luminous gradient (replaces red as primary)
-- `.btn-ghost-dusk` — secondary CTA on dark
-- `.pill-dusk` — eyebrow pill on dark
-- `.dusk-grid` — masked hairline grid texture
-
-### Hero animation
-`app/components/HeroHelix.tsx` — a full-bleed 2.5D DNA double-helix **data-network**
-on `<canvas>` (~1.5 kB, no deps). Constellation links join nearby drifting particles
-+ sampled helix nodes (neural-mesh feel), data-packets travel each strand, and the
-scene parallaxes toward the pointer. Rendered as the hero backdrop, weighted to
-`centerXRatio` (0.64) and faded left via CSS `mask-image`, with a left-to-right
-`from-dusk-950` scrim so the copy stays crisp. IntersectionObserver pauses it
-offscreen, `devicePixelRatio` (capped 2×) keeps it crisp, the constellation set is
-capped (~80 pts) for <1ms/frame, and `prefers-reduced-motion` renders one static
-frame. Chosen over a Spline/WebGL embed to protect LCP/SEO.
-
-### Page sophistication primitives
-- `app/components/Reveal.tsx` — IntersectionObserver fade/slide-up (pass staggered `delay`)
-- `app/components/CountUp.tsx` — animated stat ramp on scroll (`raw` for non-numeric like "24/7")
-- Capabilities marquee (`.marquee`/`.chip`), flowing OODA connector (`.connector-flow`),
-  film grain (`.grain`), hue-drift aurora (`.animate-hue`), card lift (`.lift`).
-- Display type: **Space Grotesk**; body: **Inter** (both via `next/font`).
-
-**Do:** use `.btn-ai` as the primary CTA; keep `dark-red` for scarcity only;
-animate only via the helix + `animate-aurora` glows (both reduced-motion safe).
-**Don't:** put `.btn-ai` in the small nav (its `@apply px-8 py-4` will override
-`px-5`) — build nav CTAs from inline gradient utilities instead.
-
-*Revamp 2026-06-16 | dusk hybrid + canvas DNA helix*
+*Rewritten 2026-07-28 — documents the shipped dusk system. Sources: `app/globals.css`,
+`tailwind.config.ts`, `app/layout.tsx`, `app/components/*`, `lib/heroHelixDraw.ts`,
+and the 2026 dusk handoff `TOKENS.md`.*
