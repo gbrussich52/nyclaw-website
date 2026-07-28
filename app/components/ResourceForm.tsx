@@ -22,10 +22,7 @@ export default function ResourceForm() {
       businessType: formData.company || 'resource-download',
       challenge: 'guide-download',
       message: 'Requested via Resources page guide form',
-    })
-    if (typeof window !== 'undefined' && (window as unknown as { gtag?: (...args: unknown[]) => void }).gtag) {
-      (window as unknown as { gtag: (...args: unknown[]) => void }).gtag('event', 'pdf_download_attempt', { location: 'resources_page' })
-    }
+    }, 'resource_form')
   }
 
   return (

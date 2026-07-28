@@ -2,6 +2,9 @@ import type { Metadata } from 'next'
 import { Space_Grotesk, Inter } from 'next/font/google'
 import './globals.css'
 import Link from 'next/link'
+import { Analytics } from '@vercel/analytics/next'
+import { SpeedInsights } from '@vercel/speed-insights/next'
+import OutboundTracker from './components/OutboundTracker'
 import { LocalBusinessJsonLd, WebSiteJsonLd } from './components/JsonLd'
 import SiteHeader, { Wordmark } from './components/SiteHeader'
 import { CALENDLY_URL } from './config'
@@ -90,6 +93,16 @@ export default function RootLayout({
             </div>
           </div>
         </footer>
+        {/*
+          Analytics. Both report to /_vercel/* on this origin, so the strict CSP
+          in next.config.js (script-src 'self', connect-src 'self') covers them
+          with no exceptions — unlike Google Analytics, which would need
+          googletagmanager.com allow-listed on two directives. Cookieless, so no
+          consent banner obligation.
+        */}
+        <Analytics />
+        <OutboundTracker />
+        <SpeedInsights />
       </body>
     </html>
   )

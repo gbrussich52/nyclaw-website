@@ -17,7 +17,7 @@ export default function PlaybookForm() {
       businessType: 'playbook-signup',
       challenge: 'guide-download',
       message: 'Requested via Free AI Readiness Guide form',
-    })
+    }, 'playbook_form')
   }
 
   return (
