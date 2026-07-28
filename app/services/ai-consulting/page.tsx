@@ -141,7 +141,7 @@ const plans = [
   },
   {
     name: 'Full Roadmap',
-    price: '$1K–$2.5K',
+    price: '$1K–2.5K',
     unit: 'written plan',
     desc: 'Written plan with ROI and build order. Credits toward projects over $3,500.',
     items: [

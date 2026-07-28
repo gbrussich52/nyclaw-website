@@ -129,7 +129,7 @@ const included = [
 const plans = [
   {
     name: 'Agent Sprint',
-    price: '$3,500–$8,000',
+    price: '$3.5K–8K',
     unit: 'fixed scope',
     desc: 'One mission-critical agent, live and handed off.',
     items: [
@@ -141,7 +141,7 @@ const plans = [
   },
   {
     name: 'Workflow System',
-    price: '$5,000–$15,000',
+    price: '$5K–15K',
     unit: 'project',
     desc: 'Multi-step automations across tools, optional care after.',
     items: [

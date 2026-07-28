@@ -49,7 +49,7 @@ export const metadata: Metadata = {
 const stats = [
   { raw: 'Project', label: 'Build first' },
   { raw: '7+', label: 'Content pieces/day' },
-  { raw: '3-5x', label: 'Output increase' },
+  { raw: '3–5x', label: 'Output increase' },
   { raw: '24/7', label: 'Lead capture' },
 ]
 
@@ -126,7 +126,7 @@ const results = [
     desc: 'Funnels and chat working around the clock, capturing and nurturing leads while you are offline.',
   },
   {
-    metric: '3-5x',
+    metric: '3–5x',
     label: 'Marketing output increase',
     desc: 'Most clients see 3-5x more output in the first 60 days with no additional team members.',
   },
@@ -135,7 +135,7 @@ const results = [
 const plans = [
   {
     name: 'Marketing System Build',
-    price: '$4K–$12K',
+    price: '$4K–12K',
     unit: 'fixed scope',
     desc: 'Content engine, funnels and nurture automations designed for your brand.',
     items: [
@@ -147,7 +147,7 @@ const plans = [
   },
   {
     name: 'Optional Operation',
-    price: '$1K–$3K',
+    price: '$1K–3K',
     unit: '/mo or rev share',
     desc: 'After go-live only. We keep it running — or you run it yourself.',
     items: [

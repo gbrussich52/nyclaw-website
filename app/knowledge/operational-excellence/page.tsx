@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import { Check } from 'lucide-react'
+import { Check, ChevronRight } from 'lucide-react'
+import ArticleShell from '../../components/ArticleShell'
 
 export const metadata: Metadata = {
   title: 'Operational Excellence for Small Teams: 7 Anti-Patterns | NYClaw.io',
@@ -132,142 +133,133 @@ export default function Article3() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }}
       />
-      <main className="min-h-screen bg-white">
-        {/* Header */}
-        <section className="bg-navy text-white py-16 px-6">
-          <div className="max-w-3xl mx-auto">
-            <Link href="/knowledge" className="text-sky-blue text-sm hover:underline mb-4 inline-block">← Knowledge Base</Link>
-            <div className="flex flex-wrap gap-2 mb-4">
-              <span className="text-xs bg-sky-blue text-white px-2 py-1 rounded font-medium">Anti-Patterns</span>
-              <span className="text-xs bg-sky-blue text-white px-2 py-1 rounded font-medium">Small Teams</span>
-              <span className="text-xs bg-sky-blue text-white px-2 py-1 rounded font-medium">Implementation</span>
-              <span className="text-xs text-gray-400 self-center ml-2">10 min read</span>
+      <ArticleShell
+        backHref="/knowledge"
+        backLabel="Knowledge Base"
+        tags={['Anti-Patterns', 'Small Teams', 'Implementation']}
+        meta="10 min read"
+        title="Operational Excellence for Small Teams: Avoiding 7 Critical Anti-Patterns"
+        deck="The failure modes we hit building NYClaw.io — and specific prevention systems for each one."
+        cta={{
+          href: '/resources',
+          label: 'Get the printable anti-pattern audit scorecard',
+          blurb: 'Full implementation roadmap (PDF, free).',
+        }}
+        related={[
+          {
+            href: '/knowledge/ai-assistant-identity',
+            title: 'How to Build a Scalable AI Assistant',
+            blurb: 'AI Identity',
+          },
+          {
+            href: '/knowledge/mission-driven-systems',
+            title: 'Mission-Driven Systems: Why Most Processes Fail',
+            blurb: 'Operations',
+          },
+        ]}
+      >
+        <p>
+          Small teams fail at operations for the same reasons every time. It&apos;s not lack of
+          talent, wrong tools, or insufficient budget. It&apos;s seven specific, identifiable
+          patterns — and every single one is preventable if you know what to look for.
+        </p>
+
+        {/* Each anti-pattern is a self-contained card, so it opts out of prose flow. */}
+        {antiPatterns.map((ap) => (
+          <section key={ap.number} className="panel overflow-hidden rounded-2xl">
+            <div className="flex items-start gap-4 border-b border-white/10 bg-white/[0.03] p-6">
+              <div className="text-gradient-metric shrink-0 text-[34px] font-semibold leading-none tracking-[-0.04em]">
+                {ap.number}
+              </div>
+              <div>
+                <h2 className="mt-0 text-xl font-medium tracking-[-0.01em] text-white">
+                  {ap.title}
+                </h2>
+                <p className="mt-1 text-sm text-zinc-400">{ap.subtitle}</p>
+              </div>
             </div>
-            <h1 className="text-3xl md:text-4xl font-bold mb-4">
-              Operational Excellence for Small Teams: Avoiding 7 Critical Anti-Patterns
-            </h1>
-            <p className="text-xl text-gray-300">
-              The failure modes we hit building NYClaw.io — and specific prevention systems for each one.
-            </p>
-          </div>
-        </section>
 
-        {/* Inline CTA */}
-        <div className="bg-sky-blue/10 border-l-4 border-sky-blue px-6 py-4">
-          <div className="max-w-3xl mx-auto flex flex-wrap items-center justify-between gap-4">
-            <p className="text-navy font-medium">Get the printable anti-pattern audit scorecard + full implementation roadmap (PDF, free).</p>
-            <Link href="/resources" className="bg-sky-blue text-white px-4 py-2 rounded font-semibold text-sm whitespace-nowrap hover:bg-navy transition-colors">
-              Download Free →
-            </Link>
-          </div>
-        </div>
+            <div className="flex flex-col gap-5 p-6">
+              <div>
+                <h3 className="mt-0 text-[11px] font-medium uppercase tracking-[0.08em] text-zinc-400">
+                  What It Is
+                </h3>
+                <p className="mt-2 text-[15px] leading-relaxed text-zinc-300">{ap.what}</p>
+              </div>
 
-        {/* Intro */}
-        <div className="max-w-3xl mx-auto px-6 py-12">
-          <p className="text-xl text-gray-700 leading-relaxed mb-8">
-            Small teams fail at operations for the same reasons every time. It&apos;s not lack of talent, wrong tools, or insufficient budget. It&apos;s seven specific, identifiable patterns — and every single one is preventable if you know what to look for.
+              <div className="rounded-lg border border-white/10 border-l-[3px] border-l-indigo-500 bg-white/[0.03] p-4">
+                <h3 className="mt-0 text-[11px] font-medium uppercase tracking-[0.08em] text-zinc-400">
+                  Symptoms
+                </h3>
+                <p className="mt-2 text-sm leading-relaxed text-zinc-300">{ap.symptom}</p>
+              </div>
+
+              <div>
+                <h3 className="mt-0 text-[11px] font-medium uppercase tracking-[0.08em] text-zinc-400">
+                  Prevention System
+                </h3>
+                <ul className="mt-2 list-none space-y-1.5 pl-0">
+                  {ap.fix.map((f) => (
+                    <li key={f} className="flex items-start gap-2 text-sm text-zinc-300">
+                      <Check
+                        size={16}
+                        className="mt-0.5 shrink-0 text-cyan-400"
+                        aria-hidden="true"
+                      />
+                      <span>{f}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <p className="rounded-lg bg-white/[0.06] px-4 py-3 text-sm text-zinc-300">
+                <span className="font-medium text-cyan-400">The Rule: </span>
+                {ap.rule}
+              </p>
+            </div>
+          </section>
+        ))}
+
+        <h2>Quick Reference: All 7 Anti-Patterns</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Anti-Pattern</th>
+              <th>Key Fix</th>
+            </tr>
+          </thead>
+          <tbody>
+            {antiPatterns.map((ap) => (
+              <tr key={ap.number}>
+                <td>{ap.number}</td>
+                <td>{ap.title}</td>
+                <td>{ap.rule}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+
+        <div className="panel relative isolate mt-16 overflow-hidden rounded-2xl px-6 py-14 text-center sm:px-10">
+          <div className="bloom-indigo pointer-events-none absolute -bottom-[10rem] left-1/2 -z-10 h-[22rem] w-[32rem] -translate-x-1/2 rounded-full" />
+          <h2 className="mt-0 text-[clamp(1.625rem,3vw,2rem)] font-medium leading-[1.15] tracking-[-0.025em] text-white">
+            Get the full implementation roadmap
+          </h2>
+          <p className="mx-auto mt-3.5 max-w-[32rem] text-base leading-relaxed text-zinc-300">
+            Includes the printable anti-pattern audit scorecard, 30/60/90-day roadmap, and all
+            templates from this guide. Free PDF.
           </p>
+          <div className="mt-7 flex justify-center">
+            <Link
+              href="/resources"
+              className="inline-flex h-11 items-center gap-1 rounded-full bg-white pl-5 pr-3 text-[15px] font-medium text-zinc-950 no-underline transition-opacity hover:opacity-90"
+            >
+              Download Free (PDF)
+              <ChevronRight size={17} aria-hidden="true" />
+            </Link>
+          </div>
         </div>
-
-        {/* Anti-Patterns */}
-        <section className="max-w-3xl mx-auto px-6 pb-16 space-y-12">
-          {antiPatterns.map((ap, i) => (
-            <div key={ap.number} className="border-2 border-gray-200 rounded-xl overflow-hidden">
-              {/* Header */}
-              <div className="bg-navy text-white p-6 flex items-start gap-4">
-                <div className="text-4xl font-bold text-sky-blue flex-shrink-0">{ap.number}</div>
-                <div>
-                  <h2 className="text-xl font-bold">{ap.title}</h2>
-                  <p className="text-gray-300 text-sm">{ap.subtitle}</p>
-                </div>
-              </div>
-
-              <div className="p-6 space-y-4">
-                {/* What */}
-                <div>
-                  <h3 className="font-semibold text-navy text-sm uppercase tracking-wide mb-1">What It Is</h3>
-                  <p className="text-gray-700">{ap.what}</p>
-                </div>
-
-                {/* Symptom */}
-                <div className="bg-red-50 border border-red-200 rounded-lg p-4">
-                  <h3 className="font-semibold text-dark-red text-sm uppercase tracking-wide mb-1">Symptoms</h3>
-                  <p className="text-gray-700 text-sm">{ap.symptom}</p>
-                </div>
-
-                {/* Fix */}
-                <div>
-                  <h3 className="font-semibold text-navy text-sm uppercase tracking-wide mb-2">Prevention System</h3>
-                  <ul className="space-y-1">
-                    {ap.fix.map((f, fi) => (
-                      <li key={fi} className="flex items-start gap-2 text-sm text-gray-700">
-                        <Check className="w-4 h-4 text-sky-blue flex-shrink-0 mt-0.5" />
-                        <span>{f}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                {/* Rule */}
-                <div className="bg-navy text-white rounded-lg px-4 py-3">
-                  <p className="text-sm"><span className="font-semibold text-sky-blue">The Rule: </span>{ap.rule}</p>
-                </div>
-              </div>
-            </div>
-          ))}
-        </section>
-
-        {/* Summary table */}
-        <section className="max-w-3xl mx-auto px-6 pb-16">
-          <h2 className="text-2xl font-bold text-navy mb-6">Quick Reference: All 7 Anti-Patterns</h2>
-          <div className="overflow-x-auto">
-            <table className="w-full border-collapse border border-gray-200 text-sm">
-              <thead>
-                <tr className="bg-navy text-white">
-                  <th className="border border-gray-300 p-3">#</th>
-                  <th className="border border-gray-300 p-3">Anti-Pattern</th>
-                  <th className="border border-gray-300 p-3">Key Fix</th>
-                </tr>
-              </thead>
-              <tbody>
-                {antiPatterns.map((ap, i) => (
-                  <tr key={ap.number} className={i % 2 === 0 ? 'bg-blue-50' : 'bg-white'}>
-                    <td className="border border-gray-200 p-3 font-bold text-sky-blue align-top">{ap.number}</td>
-                    <td className="border border-gray-200 p-3 font-semibold align-top">{ap.title}</td>
-                    <td className="border border-gray-200 p-3 text-gray-600 align-top">{ap.rule}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </section>
-
-        {/* Bottom CTA */}
-        <section className="bg-navy text-white py-16 px-6">
-          <div className="max-w-2xl mx-auto text-center">
-            <h2 className="text-3xl font-bold mb-4">Get the full implementation roadmap</h2>
-            <p className="text-gray-300 mb-6">Includes the printable anti-pattern audit scorecard, 30/60/90-day roadmap, and all templates from this guide. Free PDF.</p>
-            <Link href="/resources" className="inline-block bg-sky-blue text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-blue-600 transition-colors">
-              Download Free (PDF) →
-            </Link>
-          </div>
-        </section>
-
-        {/* Related */}
-        <section className="max-w-3xl mx-auto px-6 py-12">
-          <h3 className="text-xl font-bold text-navy mb-6">Related Articles</h3>
-          <div className="grid md:grid-cols-2 gap-4">
-            <Link href="/knowledge/ai-assistant-identity" className="border-2 border-gray-200 rounded-lg p-4 hover:border-sky-blue transition-colors group">
-              <div className="text-sm text-sky-blue font-medium mb-1">AI Identity</div>
-              <h4 className="font-semibold text-navy group-hover:text-sky-blue transition-colors">How to Build a Scalable AI Assistant</h4>
-            </Link>
-            <Link href="/knowledge/mission-driven-systems" className="border-2 border-gray-200 rounded-lg p-4 hover:border-sky-blue transition-colors group">
-              <div className="text-sm text-sky-blue font-medium mb-1">Operations</div>
-              <h4 className="font-semibold text-navy group-hover:text-sky-blue transition-colors">Mission-Driven Systems: Why Most Processes Fail</h4>
-            </Link>
-          </div>
-        </section>
-      </main>
+      </ArticleShell>
     </>
   )
 }

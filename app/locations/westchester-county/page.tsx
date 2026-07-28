@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Link from 'next/link'
 import {
   MapPin,
   Building2,
@@ -10,11 +11,17 @@ import {
   Settings2,
   Target,
   Megaphone,
-  Check,
-  Clock,
-  ArrowRight,
 } from 'lucide-react'
 import { FAQJsonLd } from '../../components/JsonLd'
+import StatStrip from '../../components/StatStrip'
+import FaqSection from '../../components/FaqSection'
+import LocationHero from '../_components/LocationHero'
+import SectionIntro from '../_components/SectionIntro'
+import ServiceCards from '../_components/ServiceCards'
+import ProcessSteps from '../_components/ProcessSteps'
+import LocationCta from '../_components/LocationCta'
+import InternalLinks from '../_components/InternalLinks'
+import { CALENDLY_URL } from '../../config'
 
 export const metadata: Metadata = {
   title: 'AI Agency for Westchester County Businesses',
@@ -41,10 +48,6 @@ export const metadata: Metadata = {
     canonical: 'https://nyclaw.io/locations/westchester-county',
   },
 }
-
-const CheckIcon = () => (
-  <Check className="w-4 h-4 text-sky-blue flex-shrink-0" strokeWidth={2.5} />
-)
 
 const industries = [
   {
@@ -95,7 +98,6 @@ const towns = [
 const services = [
   {
     Icon: Settings2,
-    color: 'bg-sky-blue/10 text-sky-blue',
     title: 'Custom AI Agents & Automation',
     price: '$3,500–$8,000 agent sprint · project-based',
     desc: 'We map your operations, identify every repetitive task, and build AI systems that handle them 24/7 — scheduling, follow-ups, data entry, CRM updates, and more.',
@@ -103,7 +105,6 @@ const services = [
   },
   {
     Icon: Target,
-    color: 'bg-navy/10 text-navy',
     title: 'Fit Audit + Roadmap',
     price: 'Free 15-min fit · $1K–$2.5K roadmap',
     desc: 'We spend time inside your business, analyze your workflows and competitive landscape, and deliver a prioritized AI roadmap with clear ROI projections.',
@@ -111,12 +112,45 @@ const services = [
   },
   {
     Icon: Megaphone,
-    color: 'bg-dark-red/10 text-dark-red',
     title: 'Marketing Automations',
     price: '$4K–$12K build · optional ops after',
     desc: 'Automated content production, lead generation funnels, email/SMS sequences, and multi-platform distribution — all running on autopilot.',
     href: '/#services',
   },
+]
+
+/** Figures are the live route's own — the strip only restyles them. */
+const stats = [
+  { raw: '40%', label: 'Avg. Cost Reduction' },
+  { to: 30, label: 'Days to Deployment' },
+  { raw: '24/7', label: 'Automated Operations' },
+  { raw: 'Local', label: 'Westchester-Based Team' },
+]
+
+const phases = [
+  {
+    step: 'Week 1',
+    title: 'Observe & Orient',
+    desc: 'We embed in your Westchester business — mapping every process, tool, and workflow. We analyze your competitive landscape and identify the highest-ROI automation opportunities specific to your industry and local market.',
+  },
+  {
+    step: 'Weeks 2-3',
+    title: 'Decide & Build',
+    desc: 'We deliver a prioritized roadmap, then build and deploy your custom AI systems. Everything is integrated with your existing tools — CRM, scheduling, email, phone — so your team keeps working the way they already do.',
+  },
+  {
+    step: 'Week 4',
+    title: 'Optimize & Train',
+    desc: 'We review performance data, fine-tune the AI systems, and train your team to work alongside them. You get a fully operational setup and a clear path for continuous improvement.',
+  },
+]
+
+const explore = [
+  { label: 'Homepage', href: '/' },
+  { label: 'AI for NYC Businesses', href: '/locations/new-york-city' },
+  { label: 'Knowledge Base', href: '/knowledge' },
+  { label: 'Free AI Readiness Guide', href: '/resources' },
+  { label: 'Blog', href: '/blog' },
 ]
 
 const faqs = [
@@ -149,71 +183,27 @@ const faqs = [
 
 export default function WestchesterCountyPage() {
   return (
-    <div className="min-h-screen bg-white">
+    <>
       <FAQJsonLd items={faqs} />
 
-      {/* Hero */}
-      <section className="gradient-navy-sky text-white py-24 px-6 relative overflow-hidden">
-        <div className="absolute inset-0 opacity-5 pointer-events-none">
-          <div className="absolute top-10 right-10 w-40 h-40 rounded-full border-2 border-sky-blue animate-pulse" />
-          <div
-            className="absolute bottom-10 left-10 w-32 h-32 rounded-full border-2 border-dark-red animate-pulse"
-            style={{ animationDelay: '1s' }}
-          />
-        </div>
-        <div className="max-w-4xl mx-auto text-center relative z-10">
-          <div className="mb-5 inline-flex items-center gap-2 bg-white/10 border border-white/20 rounded-full px-4 py-1.5">
-            <MapPin className="w-3.5 h-3.5 text-white/90" />
-            <span className="text-xs font-semibold text-white/90 tracking-wide">
-              Serving Westchester County, NY
-            </span>
-          </div>
-          <h1
-            className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-5"
-            style={{ lineHeight: 1.15 }}
-          >
-            AI Agency for{' '}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-blue to-white inline-block pb-2">
-              Westchester County Businesses
-            </span>
-          </h1>
-          <p className="text-xl font-semibold text-white mb-5">
-            Local expertise. Proven AI systems. Measurable results.
-          </p>
-          <p className="text-lg text-gray-200 mb-10 max-w-2xl mx-auto leading-relaxed">
-            From White Plains to Tarrytown, Westchester businesses are using AI to cut
-            costs, automate operations, and outpace their competition. We build the systems
-            that make it happen — with custom agents and automations built for how you work.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a
-              href="https://calendly.com/nyclaw-io-proton/30min"
-              className="btn-red text-lg px-8 py-4"
-            >
-              Free 15-Min Fit Audit
-            </a>
-            <a
-              href="/#contact"
-              className="px-8 py-4 bg-white/10 text-white font-bold rounded-lg hover:bg-white/20 transition-all duration-300 border border-white/30 inline-block"
-            >
-              Start a Project &rarr;
-            </a>
-          </div>
-        </div>
-      </section>
+      <LocationHero
+        badge="Serving Westchester County, NY"
+        titleTop="AI Agency for"
+        titleAccent="Westchester County Businesses"
+        lede="Local expertise. Proven AI systems. Measurable results."
+        blurb="From White Plains to Tarrytown, Westchester businesses are using AI to cut costs, automate operations, and outpace their competition. We build the systems that make it happen — with custom agents and automations built for how you work."
+        primary={{ label: 'Free 15-Min Fit Audit', href: CALENDLY_URL, external: true }}
+        secondary={{ label: 'Start a Project →', href: '/#contact' }}
+      />
 
       {/* Why Westchester Needs AI */}
-      <section className="py-24 px-6 bg-white">
-        <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-12">
-            <span className="text-xs font-bold text-dark-red uppercase tracking-widest block mb-3">
-              The Local Landscape
-            </span>
-            <h2 className="text-3xl sm:text-4xl font-bold text-navy mb-4">
-              Why Westchester County Businesses Need AI Now
-            </h2>
-          </div>
-          <div className="prose prose-lg max-w-none text-charcoal/80 leading-relaxed space-y-5">
+      <section className="px-6 pb-24">
+        <div className="mx-auto flex max-w-[44rem] flex-col gap-10">
+          <SectionIntro
+            eyebrow="The Local Landscape"
+            title="Why Westchester County Businesses Need AI Now"
+          />
+          <div className="flex flex-col gap-5 text-[17px] leading-relaxed text-zinc-300">
             <p>
               Westchester County is home to more than 30,000 small businesses. From the
               professional services firms clustered around White Plains and the retail
@@ -246,66 +236,62 @@ export default function WestchesterCountyPage() {
       </section>
 
       {/* Towns We Serve */}
-      <section className="py-16 px-6 bg-gray-50">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-10">
-            <h2 className="text-3xl font-bold text-navy mb-3">
-              Serving Businesses Across Westchester County
-            </h2>
-            <p className="text-charcoal/70">
-              On-site consultations and in-person strategy sessions available countywide.
-            </p>
-          </div>
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
+      <section className="px-6 pb-24">
+        <div className="mx-auto flex max-w-[64rem] flex-col gap-8">
+          <SectionIntro
+            title="Serving Businesses Across Westchester County"
+            blurb="On-site consultations and in-person strategy sessions available countywide."
+          />
+          <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
             {towns.map((town) => (
               <div
                 key={town}
-                className="text-center py-5 px-3 bg-white rounded-2xl border border-gray-100 hover:border-sky-blue hover:bg-sky-blue/5 transition-all duration-300"
+                className="panel panel-hover flex flex-col items-center gap-2.5 rounded-xl px-3 py-5"
               >
-                <MapPin className="w-5 h-5 text-sky-blue mx-auto mb-2" strokeWidth={1.5} />
-                <p className="text-sm font-semibold text-navy">{town}</p>
+                <MapPin
+                  size={17}
+                  strokeWidth={1.75}
+                  className="text-zinc-300"
+                  aria-hidden="true"
+                />
+                <p className="text-center text-[13px] font-medium text-white">{town}</p>
               </div>
             ))}
           </div>
-          <p className="text-center mt-6 text-charcoal/60 text-sm">
+          <p className="text-center text-sm text-zinc-400">
             Plus every community in between.{' '}
-            <a
+            <Link
               href="/#contact"
-              className="text-sky-blue font-semibold hover:underline underline-offset-4"
+              className="font-medium text-white underline underline-offset-4"
             >
               Contact us
-            </a>{' '}
+            </Link>{' '}
             to discuss your location.
           </p>
         </div>
       </section>
 
       {/* Industries */}
-      <section className="py-24 px-6 bg-white">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-16">
-            <span className="text-xs font-bold text-sky-blue uppercase tracking-widest block mb-3">
-              Industries We Serve
-            </span>
-            <h2 className="text-3xl sm:text-4xl font-bold text-navy mb-4">
-              AI Solutions for Westchester&apos;s Key Industries
-            </h2>
-            <p className="text-lg text-charcoal/70 max-w-2xl mx-auto">
-              Every industry has repetitive processes that drain time and money. Here is how
-              AI transforms the industries that power Westchester County.
-            </p>
-          </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <section className="px-6 pb-24">
+        <div className="mx-auto flex max-w-[64rem] flex-col gap-12">
+          <SectionIntro
+            eyebrow="Industries We Serve"
+            title="AI Solutions for Westchester's Key Industries"
+            blurb="Every industry has repetitive processes that drain time and money. Here is how AI transforms the industries that power Westchester County."
+          />
+          <div className="hairline-grid grid overflow-hidden rounded-sm border border-white/10 sm:grid-cols-2 lg:grid-cols-3">
             {industries.map(({ Icon, label, desc }) => (
-              <div
-                key={label}
-                className="bg-white border-2 border-gray-100 rounded-2xl p-6 hover:border-sky-blue hover:shadow-lg transition-all duration-300"
-              >
-                <div className="w-10 h-10 rounded-xl bg-navy/5 flex items-center justify-center mb-4">
-                  <Icon className="w-5 h-5 text-navy" strokeWidth={1.5} />
+              <div key={label} className="flex flex-col gap-3 p-9">
+                <div className="flex items-center gap-2">
+                  <Icon
+                    size={16}
+                    strokeWidth={1.75}
+                    className="text-white"
+                    aria-hidden="true"
+                  />
+                  <h3 className="text-sm font-medium text-white">{label}</h3>
                 </div>
-                <h3 className="text-lg font-bold text-navy mb-2">{label}</h3>
-                <p className="text-sm text-charcoal/70 leading-relaxed">{desc}</p>
+                <p className="text-sm leading-relaxed text-zinc-400">{desc}</p>
               </div>
             ))}
           </div>
@@ -313,228 +299,43 @@ export default function WestchesterCountyPage() {
       </section>
 
       {/* Services Overview */}
-      <section className="py-24 px-6 bg-gray-50">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-16">
-            <span className="text-xs font-bold text-sky-blue uppercase tracking-widest block mb-3">
-              What We Offer
-            </span>
-            <h2 className="text-3xl sm:text-4xl font-bold text-navy mb-4">
-              Full-Service AI for Westchester Businesses
-            </h2>
-            <p className="text-lg text-charcoal/70">
-              From strategy to implementation to ongoing optimization — all delivered
-              locally.
-            </p>
-          </div>
-          <div className="grid md:grid-cols-3 gap-8">
-            {services.map(({ Icon, color, title, price, desc, href }) => (
-              <a
-                key={title}
-                href={href}
-                className="card-hover flex flex-col group"
-              >
-                <div className="flex items-center gap-3 mb-4">
-                  <div
-                    className={`w-10 h-10 rounded-xl ${color.split(' ')[0]} flex items-center justify-center flex-shrink-0`}
-                  >
-                    <Icon className={`w-5 h-5 ${color.split(' ')[1]}`} strokeWidth={1.5} />
-                  </div>
-                </div>
-                <h3 className="text-xl font-bold text-navy mb-1">{title}</h3>
-                <p className="text-sky-blue font-bold text-sm mb-4">{price}</p>
-                <p className="text-sm text-charcoal/70 leading-relaxed flex-1">{desc}</p>
-                <span className="mt-4 text-sky-blue font-semibold text-sm flex items-center gap-1 group-hover:gap-2 transition-all">
-                  Learn more <ArrowRight className="w-4 h-4" />
-                </span>
-              </a>
-            ))}
-          </div>
+      <section className="px-6 pb-24">
+        <div className="mx-auto flex max-w-[64rem] flex-col gap-12">
+          <SectionIntro
+            eyebrow="What We Offer"
+            title="Full-Service AI for Westchester Businesses"
+            blurb="From strategy to implementation to ongoing optimization — all delivered locally."
+          />
+          <ServiceCards items={services} />
         </div>
       </section>
 
-      {/* Stats */}
-      <section className="py-16 px-6 bg-white">
-        <div className="max-w-6xl mx-auto">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            {[
-              { number: '40%', label: 'Avg. Cost Reduction' },
-              { number: '30', label: 'Days to Deployment' },
-              { number: '24/7', label: 'Automated Operations' },
-              { number: 'Local', label: 'Westchester-Based Team' },
-            ].map((stat) => (
-              <div
-                key={stat.label}
-                className="text-center py-8 px-4 bg-gradient-to-b from-sky-blue/5 to-white rounded-2xl border border-sky-blue/10"
-              >
-                <div className="text-4xl sm:text-5xl font-extrabold text-sky-blue mb-2 leading-none">
-                  {stat.number}
-                </div>
-                <div className="text-sm font-semibold text-charcoal/70 uppercase tracking-wide">
-                  {stat.label}
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <StatStrip items={stats} />
 
       {/* How It Works */}
-      <section className="py-24 px-6 bg-gray-50">
-        <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-16">
-            <span className="text-xs font-bold text-sky-blue uppercase tracking-widest block mb-3">
-              Our Process
-            </span>
-            <h2 className="text-3xl sm:text-4xl font-bold text-navy mb-4">
-              From Audit to Live AI in 30 Days
-            </h2>
-            <p className="text-lg text-charcoal/70">
-              Our OODA Loop framework ensures fast, systematic implementation with
-              measurable ROI.
-            </p>
-          </div>
-          <div className="space-y-6">
-            {[
-              {
-                step: 'Week 1',
-                title: 'Observe & Orient',
-                desc: 'We embed in your Westchester business — mapping every process, tool, and workflow. We analyze your competitive landscape and identify the highest-ROI automation opportunities specific to your industry and local market.',
-              },
-              {
-                step: 'Weeks 2-3',
-                title: 'Decide & Build',
-                desc: 'We deliver a prioritized roadmap, then build and deploy your custom AI systems. Everything is integrated with your existing tools — CRM, scheduling, email, phone — so your team keeps working the way they already do.',
-              },
-              {
-                step: 'Week 4',
-                title: 'Optimize & Train',
-                desc: 'We review performance data, fine-tune the AI systems, and train your team to work alongside them. You get a fully operational setup and a clear path for continuous improvement.',
-              },
-            ].map((phase, i) => (
-              <div
-                key={i}
-                className="flex gap-6 items-start bg-white rounded-2xl p-6 border border-gray-100"
-              >
-                <div className="w-12 h-12 rounded-full bg-sky-blue text-white flex items-center justify-center font-bold text-sm flex-shrink-0 shadow-md shadow-sky-blue/30">
-                  {i + 1}
-                </div>
-                <div>
-                  <p className="text-xs font-bold text-sky-blue uppercase tracking-wider mb-1">
-                    {phase.step}
-                  </p>
-                  <h3 className="text-lg font-bold text-navy mb-2">{phase.title}</h3>
-                  <p className="text-sm text-charcoal/70 leading-relaxed">{phase.desc}</p>
-                </div>
-              </div>
-            ))}
-          </div>
+      <section className="px-6 pb-24">
+        <div className="mx-auto flex max-w-[56rem] flex-col gap-10">
+          <SectionIntro
+            eyebrow="Our Process"
+            title="From Audit to Live AI in 30 Days"
+            blurb="Our OODA Loop framework ensures fast, systematic implementation with measurable ROI."
+          />
+          <ProcessSteps items={phases} />
         </div>
       </section>
 
-      {/* FAQ */}
-      <section className="py-24 px-6 bg-white">
-        <div className="max-w-3xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold text-navy mb-4">
-              Frequently Asked Questions
-            </h2>
-            <p className="text-lg text-charcoal/70">
-              Common questions about AI agency for Westchester County businesses.
-            </p>
-          </div>
-          <div className="space-y-6">
-            {faqs.map((faq) => (
-              <div key={faq.question} className="border-b border-gray-100 pb-6">
-                <h3 className="text-lg font-bold text-navy mb-3">{faq.question}</h3>
-                <p className="text-charcoal/70 leading-relaxed">{faq.answer}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <FaqSection
+        blurb="Common questions about AI agency for Westchester County businesses."
+        items={faqs}
+      />
 
-      {/* CTA */}
-      <section className="bg-navy text-white py-20 px-6">
-        <div className="max-w-3xl mx-auto text-center">
-          <p className="text-dark-red font-bold uppercase tracking-widest text-sm mb-4">
-            Westchester County, NY
-          </p>
-          <h2 className="text-3xl sm:text-4xl font-extrabold mb-4 leading-tight">
-            Ready to bring AI into your business?
-          </h2>
-          <p className="text-xl text-gray-300 mb-10 max-w-xl mx-auto">
-            Book a free 15-minute fit audit. No pitch — just clarity on which agent or automation fits
-            your Westchester business and what it will cost.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a
-              href="https://calendly.com/nyclaw-io-proton/30min"
-              className="btn-red inline-block px-10 py-4 text-lg"
-            >
-              Free 15-Min Fit Audit
-            </a>
-            <a
-              href="/#contact"
-              className="px-10 py-4 bg-white/10 text-white font-bold rounded-lg hover:bg-white/20 transition-all duration-300 border border-white/30 inline-block text-lg"
-            >
-              Start a Project &rarr;
-            </a>
-          </div>
-          <p className="mt-8 text-gray-400 text-sm">
-            Or email us directly at{' '}
-            <a
-              href="mailto:hello@nyclaw.io"
-              className="text-sky-blue hover:underline underline-offset-4"
-            >
-              hello@nyclaw.io
-            </a>
-          </p>
-        </div>
-      </section>
+      <LocationCta
+        eyebrow="Westchester County, NY"
+        title="Ready to bring AI into your business?"
+        blurb="Book a free 15-minute fit audit. No pitch — just clarity on which agent or automation fits your Westchester business and what it will cost."
+      />
 
-      {/* Internal Links */}
-      <section className="py-12 px-6 bg-gray-50">
-        <div className="max-w-4xl mx-auto text-center">
-          <p className="text-sm text-charcoal/60 mb-4">Explore more from NYClaw.io</p>
-          <div className="flex flex-wrap gap-4 justify-center">
-            <a
-              href="/"
-              className="text-sm font-semibold text-sky-blue hover:underline underline-offset-4"
-            >
-              Homepage
-            </a>
-            <span className="text-charcoal/30">|</span>
-            <a
-              href="/locations/new-york-city"
-              className="text-sm font-semibold text-sky-blue hover:underline underline-offset-4"
-            >
-              AI for NYC Businesses
-            </a>
-            <span className="text-charcoal/30">|</span>
-            <a
-              href="/knowledge"
-              className="text-sm font-semibold text-sky-blue hover:underline underline-offset-4"
-            >
-              Knowledge Base
-            </a>
-            <span className="text-charcoal/30">|</span>
-            <a
-              href="/resources"
-              className="text-sm font-semibold text-sky-blue hover:underline underline-offset-4"
-            >
-              Free AI Readiness Guide
-            </a>
-            <span className="text-charcoal/30">|</span>
-            <a
-              href="/blog"
-              className="text-sm font-semibold text-sky-blue hover:underline underline-offset-4"
-            >
-              Blog
-            </a>
-          </div>
-        </div>
-      </section>
-    </div>
+      <InternalLinks links={explore} />
+    </>
   )
 }

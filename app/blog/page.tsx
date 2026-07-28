@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import { ArrowRight, ChevronRight } from 'lucide-react'
 
 export const metadata: Metadata = {
   title: 'Blog',
@@ -117,47 +118,96 @@ const posts = [
 
 export default function Blog() {
   return (
-    <section className="py-20 px-6">
-      <div className="max-w-4xl mx-auto">
-        <h1 className="text-4xl font-bold text-navy mb-4">Blog & Insights</h1>
-        <p className="text-lg text-charcoal mb-12">
-          Real lessons from building an AI agency — SEO mistakes, automation wins, and
-          everything in between.
-        </p>
+    <>
+      {/* ---------------------------------------------------------- Hero --- */}
+      <section className="relative isolate overflow-hidden px-6 pb-16 pt-[88px]">
+        <div className="bloom-blue pointer-events-none absolute -top-[16rem] right-[10%] -z-10 h-[40rem] w-[40rem] rounded-full" />
+        <div className="mx-auto max-w-[56rem]">
+          <div className="mb-6 inline-flex h-7 items-center gap-2 rounded-full px-3 text-xs font-medium text-zinc-300 outline outline-1 outline-white/[0.12] [background:color-mix(in_oklab,#27272a_55%,#000)]">
+            <span className="inline-block h-[5px] w-[5px] rounded-full bg-cyan-400" />
+            Blog &amp; insights
+          </div>
 
-        <div className="space-y-8">
-          {posts.map((post, i) => (
+          <h1 className="max-w-[32rem] text-balance text-[clamp(2.5rem,5.5vw,3.5rem)] font-normal leading-[1.08] tracking-[-0.03em] text-white">
+            Real lessons from building an AI agency
+          </h1>
+
+          <p className="mt-6 max-w-[34rem] text-lg leading-relaxed text-zinc-300">
+            SEO mistakes, automation wins, and everything in between.
+          </p>
+        </div>
+      </section>
+
+      {/* --------------------------------------------------------- Posts --- */}
+      {/* 1px gaps over a hairline background render the dividers between rows. */}
+      <section className="px-6 pb-24">
+        <div className="mx-auto flex max-w-[56rem] flex-col gap-px border-y border-white/10 bg-white/10">
+          {posts.map((post) => (
             <article
-              key={i}
-              className="border border-gray-200 rounded-lg p-6 hover:border-sky-blue transition-colors"
+              key={post.title}
+              className="flex flex-col gap-6 bg-zinc-950 px-1 py-8 sm:flex-row sm:gap-8"
             >
-              <div className="flex flex-wrap gap-2 mb-3">
-                {post.tags.map((tag) => (
-                  <span
-                    key={tag}
-                    className="text-xs font-medium bg-gray-100 text-sky-blue px-2 py-1 rounded"
-                  >
-                    {tag}
-                  </span>
-                ))}
+              <div className="shrink-0 pt-0.5 text-[13px] text-zinc-400 sm:w-[7rem]">
+                {post.date}
               </div>
-              <h2 className="text-2xl font-bold text-navy mb-2">{post.title}</h2>
-              <p className="text-sm text-charcoal/60 mb-4">{post.date}</p>
-              <p className="text-charcoal mb-4 leading-relaxed">{post.description}</p>
-              {post.href ? (
-                <Link
-                  href={post.href}
-                  className="text-sky-blue font-bold hover:text-dark-red transition-colors"
-                >
-                  Read Article →
-                </Link>
-              ) : (
-                <span className="text-charcoal/40 font-bold">Coming Soon</span>
-              )}
+              <div className="flex flex-1 flex-col gap-2.5">
+                <div className="flex flex-wrap gap-2">
+                  {post.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className="rounded-full bg-white/[0.07] px-2 py-[3px] text-[11px] font-medium tracking-[0.04em] text-zinc-300"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+                <h2 className="text-pretty text-[21px] font-medium leading-[1.25] tracking-[-0.02em] text-white">
+                  {post.title}
+                </h2>
+                <p className="text-sm leading-relaxed text-zinc-400">{post.description}</p>
+                {post.href ? (
+                  <Link
+                    href={post.href}
+                    className="group mt-1 inline-flex w-fit items-center gap-1.5 text-sm font-medium text-white"
+                  >
+                    Read article
+                    <ArrowRight
+                      size={15}
+                      aria-hidden="true"
+                      className="transition-transform group-hover:translate-x-0.5"
+                    />
+                  </Link>
+                ) : (
+                  <span className="mt-1 inline-flex w-fit items-center gap-1.5 text-sm font-medium text-zinc-400">
+                    Coming soon
+                  </span>
+                )}
+              </div>
             </article>
           ))}
         </div>
-      </div>
-    </section>
+      </section>
+
+      {/* ----------------------------------------------------- CTA panel --- */}
+      <section className="px-6 pb-32">
+        <div className="panel mx-auto flex max-w-[56rem] flex-wrap items-center justify-between gap-6 rounded-2xl px-6 py-12 sm:px-10">
+          <div className="max-w-[30rem]">
+            <h2 className="text-balance text-[26px] font-medium tracking-[-0.02em] text-white">
+              Want the whole playbook instead?
+            </h2>
+            <p className="mt-2.5 text-[15px] leading-relaxed text-zinc-400">
+              50 pages of frameworks, templates and a 30/60/90-day roadmap. Free with your email.
+            </p>
+          </div>
+          <Link
+            href="/resources"
+            className="inline-flex h-11 items-center gap-1 rounded-full bg-white pl-5 pr-3 text-[15px] font-medium text-zinc-950 transition-opacity hover:opacity-90"
+          >
+            Get the guide
+            <ChevronRight size={17} aria-hidden="true" />
+          </Link>
+        </div>
+      </section>
+    </>
   )
 }
