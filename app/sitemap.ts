@@ -40,6 +40,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${baseUrl}/blog/ai-law-firm-client-intake`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.7 },
     { url: `${baseUrl}/blog/revenuecat-pulse`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.7 },
     { url: `${baseUrl}/blog/zapier-vs-ai-agent`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.7 },
+    { url: `${baseUrl}/blog/ai-consulting-westchester`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.8 },
+    { url: `${baseUrl}/blog/ai-implementation-cost`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.8 },
     // Note: /blog/revenuecat-application is intentionally omitted — it carries
     // a noindex directive (personal GitHub links / RevenueCat job application
     // content unrelated to NYClaw's core offering), so it shouldn't appear in

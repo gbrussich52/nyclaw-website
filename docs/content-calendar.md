@@ -14,16 +14,25 @@
 | 5 | What GPT-5.4 Means for AI Assistants | /blog/gpt-5-4 | 2026-03-05 | GPT-5.4, AI architecture | Published |
 | 6 | How to Build an AI Assistant That Succeeds | /blog/how-to-succeed | 2026-03-05 | AI assistant, AI project failure | Published |
 | 7 | I Audited My Own Website. It Was Invisible. | /blog/i-audited-my-own-website | 2026-04-07 | SEO audit, Next.js SEO, client-side rendering | Published |
+| 8 | 5 Things NYC Small Business Owners Are Automating in 2026 | /blog/ai-automation-small-business-nyc | 2026-04-29 | AI automation small business NYC | Published |
+| 9 | Why Zapier Cannot Replace a Real AI Agent | /blog/zapier-vs-ai-agent | 2026-05-01 | Zapier vs AI agent, AI automation small business | Published |
+| 10 | How Law Firms Are Using AI for Client Intake | /blog/ai-law-firm-client-intake | 2026-05-10 | AI law firm intake, legal intake automation | Published |
+| 11 | 5 AI Automations Every Dental Practice Should Be Running | /blog/ai-automations-dental | 2026-05-15 | AI dental, dental practice automation | Published |
+| 12 | AI Automations for Medical Practices | /blog/ai-automations-medical | 2026-05-20 | AI medical, healthcare automation | Published |
+| 13 | AI Automations for Plumbing and HVAC | /blog/ai-automations-plumbing-hvac | 2026-05-25 | AI plumbing, HVAC automation | Published |
+| 14 | AI Automations for Car Dealerships | /blog/ai-automations-car-dealerships | 2026-06-01 | AI car dealership, dealership automation | Published |
+| 15 | Agentic AI Security Best Practices | /blog/agentic-ai-security-best-practices | 2026-06-10 | agentic AI security, AI safety | Published |
+| 16 | RevenueCat Pulse | /blog/revenuecat-pulse | 2026-06-15 | RevenueCat, app monetization | Published |
+| 17 | Why Westchester Businesses Are Hiring AI Consultants in 2026 | /blog/ai-consulting-westchester | 2026-08-03 | AI consulting westchester county, AI agency NY | Published |
+| 18 | How Much Does AI Implementation Actually Cost? (2026 Pricing Guide) | /blog/ai-implementation-cost | 2026-08-03 | AI implementation cost, AI pricing 2026 | Published |
 
 ## Queue — HIGH Priority (Next 2 Weeks)
 
 | # | Title | Route | Target Keywords | Priority | Est. Effort |
 |---|-------|-------|-----------------|----------|-------------|
-| 8 | How AI Saves Real Estate Agents 10 Hours/Week | /blog/ai-real-estate-agents | AI real estate, real estate automation | HIGH | 2h |
-| 9 | AI Appointment Scheduling: Complete Guide for Small Businesses | /blog/ai-appointment-scheduling | AI scheduling, appointment automation | HIGH | 2h |
-| 10 | Why Westchester Businesses Are Hiring AI Consultants in 2026 | /blog/ai-consulting-westchester | AI consulting westchester, AI agency NY | HIGH | 2h |
-| 11 | How Much Does AI Implementation Actually Cost? (2026 Pricing Guide) | /blog/ai-implementation-cost | AI cost, AI pricing, AI implementation price | HIGH | 2.5h |
-| 12 | AI Agent vs. Virtual Assistant: Which Is Right for Your Business? | /blog/ai-agent-vs-virtual-assistant | AI agent, virtual assistant, AI comparison | HIGH | 2h |
+| 19 | AI Appointment Scheduling: Complete Guide for Small Businesses | /blog/ai-appointment-scheduling | AI scheduling, appointment automation | HIGH | 2h |
+| 20 | How AI Saves Real Estate Agents 10 Hours/Week | /blog/ai-real-estate-agents | AI real estate, real estate automation | HIGH | 2h |
+| 21 | AI Agent vs. Virtual Assistant: Which Is Right for Your Business? | /blog/ai-agent-vs-virtual-assistant | AI agent, virtual assistant, AI comparison | HIGH | 2h |
 
 ## Queue — MEDIUM Priority (Weeks 3-4)
 
