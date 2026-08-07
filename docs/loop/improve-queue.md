@@ -5,6 +5,8 @@ Auto-appended by weekly refresh + any agent that finds a real gap.
 
 ## Open
 
+- [x] **2026-08-07** `bof-cost-page` — Shipped: `/blog/ai-automation-cost-westchester` — DIY vs freelancer vs managed-agency cost breakdown, grounded in real services pricing ($3.5K–15K project range). Source: marketing-seo audit, Cody Schneider bottom-of-funnel framework.
+- [x] **2026-08-07** `bof-chatgpt-vs-consultant` — Shipped: `/blog/chatgpt-vs-ai-consultant` — vs-format post addressing the "just use ChatGPT" sales objection. Source: marketing-seo audit, Cody Schneider bottom-of-funnel framework.
 - [ ] **2026-07-27** `aeo-original-data` — AEO signal: engines cite original claims. Add one original operator artifact to playbook or blog (e.g. cost of a failed automation, time saved pattern, Westchester vertical checklist). Partial: Template 6 + CRM source field note shipped in playbook; still want a dated “original number” post. Source: daily brief AEO + last30days radar.
 - [ ] **2026-07-27** `sense-guide-downloads` — Instrument or document how many guide downloads / lead form hits per week so Sense is not only market radar.
 - [ ] **2026-07-27** `pdf-mirror` — `public/downloads/ai-operators-playbook.pdf` still dated Apr 2026; regenerate from updated HTML when a clean HTML→PDF path is available (or drop PDF if unused in email).

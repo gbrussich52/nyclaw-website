@@ -22,15 +22,15 @@ npm test         # vitest run — lib/__tests__/ covers sanitize, leads, rate-li
 ## Layout
 
 - `app/` — App Router (flat, no `src/`)
-- `content/` — markdown/JSON content (likely SEO landing pages)
+- `content/drafts/`, `content/seo/` — markdown/JSON content
 - `docs/` — internal docs (8 files)
 - `middleware.ts` — request middleware (read first)
-- `DESIGN.md` — design system / brand notes (consult before UI changes)
+- `DESIGN.md` — design system / brand notes; **stale as of the 2026-07-28 dusk redesign** — verify against current UI before treating it as authoritative
 - `scripts/` — utility scripts
 
 ## Gotchas
 
-- **SEO is the active growth lever.** Per memory: full SEO overhaul scheduled 2026-04-07, automation in progress. Don't ship pages that hurt indexability (noindex, blocked robots, broken canonicals) without flagging.
+- **SEO is the active growth lever, on a standing weekly cadence** (not a one-time event). Don't ship pages that hurt indexability (noindex, blocked robots, broken canonicals) without flagging.
 - **`middleware.ts` runs on every request** — performance-sensitive. Don't add synchronous/blocking network calls. Documented exception: the distributed rate limiter (`lib/rate-limit.ts`) does call Upstash Redis via REST on every `/api/*` request — it's async, 2s-timeout-bounded, and fail-open, so an outage adds latency but never blocks traffic. Any other network call added to middleware must meet the same bar.
 - **Email goes through nodemailer** — credentials in env vars, never hardcoded. Check `.env.local` shape before touching mail flows.
 - **Public-facing site** — any SQL/log path must not leak PII or internal metric names.

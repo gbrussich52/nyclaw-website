@@ -19,6 +19,22 @@ export const metadata: Metadata = {
 
 const posts = [
   {
+    title: 'What AI Automation Actually Costs a Small Business in 2026',
+    description:
+      'DIY tools, a freelancer, or a managed AI operator — an honest breakdown of what each path actually costs a Westchester or NYC small business, and what drives the price.',
+    date: 'August 7, 2026',
+    href: '/blog/ai-automation-cost-westchester',
+    tags: ['Pricing', 'AI Automation'],
+  },
+  {
+    title: 'ChatGPT vs. Hiring an AI Consultant: Which Does Your Business Actually Need?',
+    description:
+      "ChatGPT is a tool you operate manually. An AI consultant builds a system that runs without you. Here's the honest difference, and how to know which one your business needs right now.",
+    date: 'August 7, 2026',
+    href: '/blog/chatgpt-vs-ai-consultant',
+    tags: ['AI Tools', 'AI Consulting'],
+  },
+  {
     title: "I Built a CLI That Turns RevenueCat's Charts API Into a Subscription Health Dashboard",
     description:
       "How I built revenuecat-pulse — a Python CLI that fetches MRR, churn, and subscription metrics from RevenueCat's Charts API, renders a terminal dashboard with sparklines, and uses Claude AI to generate strategic health insights.",
