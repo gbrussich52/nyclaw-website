@@ -1,10 +1,31 @@
+import type { Metadata } from 'next'
+import { ArticleJsonLd } from '../../components/JsonLd'
 import ArticleShell from '../../components/ArticleShell'
 import { CtaPanel } from '../_components/post'
 
-export const metadata = {
-  title: "Agentic AI Security: Best Practices for Developers Building AI Agents | NYClaw.io",
+export const metadata: Metadata = {
+  title: 'Agentic AI Security: Best Practices for Developers Building AI Agents | NYClaw.io',
   description:
     "AI agents that can write code, send emails, push to GitHub, and access production systems introduce security risks traditional software never had. Here's how to build them responsibly.",
+  keywords:
+    'agentic AI security, AI agent security best practices, prompt injection AI, AI agent credentials, AI security 2026, autonomous AI security',
+  openGraph: {
+    title: 'Agentic AI Security: Best Practices for Developers Building AI Agents',
+    description:
+      'AI agents with access to code, email, and production systems have a new security surface. Here is how to build them without introducing vulnerabilities.',
+    url: 'https://nyclaw.io/blog/agentic-ai-security-best-practices',
+    type: 'article',
+    siteName: 'NYClaw.io',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Agentic AI Security Best Practices',
+    description:
+      'Prompt injection, credential exposure, blast radius — AI agents introduce security risks traditional software never had. How to build them right.',
+  },
+  alternates: {
+    canonical: 'https://nyclaw.io/blog/agentic-ai-security-best-practices',
+  },
 };
 
 const sources = [
@@ -36,7 +57,14 @@ const sources = [
 
 export default function AgenticAISecurityBestPractices() {
   return (
-    <ArticleShell
+    <>
+      <ArticleJsonLd
+        title="Agentic AI Security: Best Practices for Developers Building AI Agents"
+        description="AI agents that can write code, send emails, push to GitHub, and access production systems introduce security risks traditional software never had."
+        url="https://nyclaw.io/blog/agentic-ai-security-best-practices"
+        datePublished="2026-03-06"
+      />
+      <ArticleShell
       backHref="/blog"
       backLabel="Back to Blog"
       tags={['Security', 'Agentic AI', 'Best Practices']}
@@ -593,6 +621,7 @@ export default function AgenticAISecurityBestPractices() {
           ))}
         </ul>
       </div>
-    </ArticleShell>
+      </ArticleShell>
+    </>
   );
 }

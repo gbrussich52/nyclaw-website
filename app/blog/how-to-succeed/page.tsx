@@ -1,9 +1,31 @@
+import type { Metadata } from 'next'
+import { ArticleJsonLd } from '../../components/JsonLd'
 import ArticleShell from '../../components/ArticleShell'
 import { CtaPanel } from '../_components/post'
 
-export const metadata = {
-  title: "How to Build an AI Assistant That Actually Succeeds | NYClaw.io",
-  description: "70% of AI projects fail. Not because of bad code, but because of unclear identity. Here's the complete framework that works.",
+export const metadata: Metadata = {
+  title: 'How to Build an AI Assistant That Actually Succeeds | NYClaw.io',
+  description:
+    "70% of AI projects fail. Not because of bad code, but because of unclear identity. Here's the complete framework — identity, governance, accountability, scalability — that actually works.",
+  keywords:
+    'how to build AI assistant, AI assistant framework, AI project failure, AI governance, AI identity, AI assistant design',
+  openGraph: {
+    title: 'How to Build an AI Assistant That Actually Succeeds',
+    description:
+      '70% of AI projects fail because of unclear identity. Here is the four-pillar framework that keeps AI assistants on track.',
+    url: 'https://nyclaw.io/blog/how-to-succeed',
+    type: 'article',
+    siteName: 'NYClaw.io',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'How to Build an AI Assistant That Actually Succeeds',
+    description:
+      '70% of AI projects fail. Not because of bad code — because of unclear identity. Here is the framework that works.',
+  },
+  alternates: {
+    canonical: 'https://nyclaw.io/blog/how-to-succeed',
+  },
 };
 
 /** The four structural pillars, rendered as callout panels. */
@@ -28,6 +50,13 @@ const pillars = [
 
 export default function HowToSucceedArticle() {
   return (
+    <>
+      <ArticleJsonLd
+        title="How to Build an AI Assistant That Actually Succeeds"
+        description="70% of AI projects fail. Not because of bad code, but because of unclear identity. Here is the complete framework — identity, governance, accountability, scalability."
+        url="https://nyclaw.io/blog/how-to-succeed"
+        datePublished="2026-03-05"
+      />
     <ArticleShell
       backHref="/blog"
       backLabel="Back to Blog"
@@ -241,5 +270,6 @@ export default function HowToSucceedArticle() {
         label="Read the Complete Guide"
       />
     </ArticleShell>
+    </>
   );
 }
