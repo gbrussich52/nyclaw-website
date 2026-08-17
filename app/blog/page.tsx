@@ -19,6 +19,14 @@ export const metadata: Metadata = {
 
 const posts = [
   {
+    title: 'Why Westchester Businesses Are Hiring AI Consultants in 2026',
+    description:
+      'From White Plains law firms to Tarrytown restaurants, Westchester small businesses are bringing in AI consultants — not to experiment, but to compete. What is driving the shift and what a good engagement looks like.',
+    date: 'August 17, 2026',
+    href: '/blog/ai-consulting-westchester',
+    tags: ['AI Consulting', 'Westchester County'],
+  },
+  {
     title: 'What AI Automation Actually Costs a Small Business in 2026',
     description:
       'DIY tools, a freelancer, or a managed AI operator — an honest breakdown of what each path actually costs a Westchester or NYC small business, and what drives the price.',
