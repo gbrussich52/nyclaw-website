@@ -18,3 +18,6 @@ Auto-appended by weekly refresh + any agent that finds a real gap.
 - [x] **2026-07-27** `positioning-closed-loop` — Shipped: playbook Part 3B (harness + closed loop + dollar leak); homepage hero + services intro/agent card language. Deploy required.
 - [x] **2026-07-27** `playbook-skill-hygiene` — Shipped: prune callout after Four Core Documents; anti-pattern 7 model-upgrade note.
 - [x] **2026-07-27** `playbook-template-6` — Shipped: Closed-Loop Weekly Sense Check + optional AI-search source field.
+
+## 2026-08-24 — from the portfolio SEO audit (`docs/tasks/2026-08-24-seo-portfolio-audit.md`)
+- [ ] **`com.giani.nyclaw-weekly-refresh` has failed every Monday since 8/03:** `bash -n scripts/nyclaw-weekly-refresh/run.sh` → line 34 "unexpected EOF while looking for matching `'`" (apostrophe inside a heredoc inside `$(...)`). Fix: write the prompt to a temp file instead of a nested heredoc; run once by hand; confirm `docs/seo-reports/` gets its first artifact (empty since April). Verified 2026-08-24 23:45 ET.
