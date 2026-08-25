@@ -44,6 +44,9 @@ Today's date for filenames: $DATE_LOCAL
 Write the weekly plan and update the improve queue as specified. Confirm paths.
 EOF
 
+  SNAP="$(mktemp "${TMPDIR:-/tmp}/nyclaw-weekly-snap.XXXXXX")"
+  bash "$SCRIPT_DIR/scope-guard.sh" before "$SNAP"
+
   "$GROK_BIN" \
     --always-approve \
     --max-turns "$MAX_TURNS" \
@@ -57,6 +60,7 @@ EOF
   trap - EXIT
 
   PLAN="$ROOT/docs/loop/weekly-refresh-${DATE_LOCAL}.md"
+  bash "$SCRIPT_DIR/scope-guard.sh" after "$SNAP" "$PLAN"; rm -f "$SNAP"
   if [ -f "$PLAN" ] && [ -s "$PLAN" ]; then
     echo "OK plan $PLAN ($(wc -c < "$PLAN") bytes)"
     exit 0
