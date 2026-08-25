@@ -22,7 +22,15 @@ export PATH="/opt/homebrew/bin:/usr/local/bin:$HOME/.local/bin:$HOME/.grok/bin:$
     exit 2
   fi
 
-  RUN_PROMPT=$(cat <<EOF
+  # NOTE: bash 3.2 (macOS system bash) cannot parse an unquoted heredoc that is
+  # nested inside a $(...) command substitution when the heredoc body contains an
+  # apostrophe (e.g. "Today's date") — it misreads the apostrophe as an unterminated
+  # single quote and the whole script fails to parse. Writing the heredoc straight to
+  # a file (no $(...) wrapper around the heredoc itself) avoids the parser bug.
+  RUN_PROMPT_FILE="$(mktemp "${TMPDIR:-/tmp}/nyclaw-weekly-prompt.XXXXXX")"
+  trap 'rm -f "$RUN_PROMPT_FILE"' EXIT
+
+  cat > "$RUN_PROMPT_FILE" <<EOF
 Read and follow: $PROMPT_FILE
 
 Workspace monorepo may be at $HOME/project-claude. NYClaw site root is:
@@ -35,7 +43,6 @@ Today's date for filenames: $DATE_LOCAL
 
 Write the weekly plan and update the improve queue as specified. Confirm paths.
 EOF
-)
 
   "$GROK_BIN" \
     --always-approve \
@@ -43,8 +50,11 @@ EOF
     --permission-mode bypassPermissions \
     --cwd "$ROOT" \
     --output-format plain \
-    -p "$RUN_PROMPT" \
+    -p "$(cat "$RUN_PROMPT_FILE")" \
     2>&1 || true
+
+  rm -f "$RUN_PROMPT_FILE"
+  trap - EXIT
 
   PLAN="$ROOT/docs/loop/weekly-refresh-${DATE_LOCAL}.md"
   if [ -f "$PLAN" ] && [ -s "$PLAN" ]; then
