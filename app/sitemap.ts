@@ -57,6 +57,7 @@ const ENTRIES: Entry[] = [
   { path: '/blog/ai-law-firm-client-intake', lastModified: '2026-07-28', changeFrequency: 'monthly', priority: 0.7 },
   { path: '/blog/revenuecat-pulse', lastModified: '2026-07-28', changeFrequency: 'monthly', priority: 0.7 },
   { path: '/blog/zapier-vs-ai-agent', lastModified: '2026-07-28', changeFrequency: 'monthly', priority: 0.7 },
+  { path: '/blog/ai-consulting-westchester', lastModified: '2026-08-10', changeFrequency: 'monthly', priority: 0.7 },
   // Note: /blog/revenuecat-application is intentionally omitted — it carries
   // a noindex directive (personal GitHub links / RevenueCat job application
   // content unrelated to NYClaw's core offering), so it shouldn't appear in
