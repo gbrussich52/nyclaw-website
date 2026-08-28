@@ -5,7 +5,7 @@ import Link from 'next/link'
 import { Analytics } from '@vercel/analytics/next'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import OutboundTracker from './components/OutboundTracker'
-import { LocalBusinessJsonLd, WebSiteJsonLd } from './components/JsonLd'
+import { LocalBusinessJsonLd, WebSiteJsonLd, OrganizationJsonLd } from './components/JsonLd'
 import SiteHeader, { Wordmark } from './components/SiteHeader'
 import { CALENDLY_URL } from './config'
 
@@ -65,13 +65,16 @@ export default function RootLayout({
       <body className="bg-zinc-950 text-zinc-300">
         <LocalBusinessJsonLd />
         <WebSiteJsonLd />
+        <OrganizationJsonLd />
         <SiteHeader />
         {/*
           The header is fixed, so it no longer occupies layout space. This
           spacer keeps every page clear of it; full-bleed heroes cancel it with
           `-mt-[92px]` and paint underneath (see app/page.tsx).
         */}
-        <div className="pt-[92px]">{children}</div>
+        <div className="pt-[92px]">
+          <main>{children}</main>
+        </div>
         <footer className="border-t border-white/10 py-12">
           <div className="mx-auto flex max-w-4xl flex-col gap-8 px-6">
             <div className="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
@@ -82,6 +85,7 @@ export default function RootLayout({
                 <Link href="/services" className="transition-colors hover:text-white">Services</Link>
                 <Link href="/knowledge" className="transition-colors hover:text-white">Knowledge</Link>
                 <Link href="/blog" className="transition-colors hover:text-white">Blog</Link>
+                <Link href="/about" className="transition-colors hover:text-white">About</Link>
                 <Link href="/resources" className="transition-colors hover:text-white">Free guide</Link>
                 <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-white">Fit audit</a>
                 <Link href="/dmca" className="transition-colors hover:text-white">DMCA</Link>

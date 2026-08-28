@@ -1,0 +1,32 @@
+# NYClaw
+
+> AI agency that designs and builds custom AI automations and agents for small businesses in Westchester County, NY and NYC. Project-based builds — not a one-size product install. Custom agent sprints run $3,500–8,000; workflow automation projects run $5,000–15,000; a free 15-minute fit audit and an optional $1,000–2,500 roadmap are available first.
+
+## Key pages
+
+- [Home](https://nyclaw.io/): Overview, services, recent builds, FAQ, and the free 15-minute fit audit.
+- [Services](https://nyclaw.io/services): Custom AI agents, workflow automation, and fit audit + roadmap — what each includes and costs.
+- [AI Automation](https://nyclaw.io/services/ai-automation): Custom agent and workflow automation service detail.
+- [AI Consulting](https://nyclaw.io/services/ai-consulting): Fit audit and automation roadmap service detail.
+- [AI Marketing](https://nyclaw.io/services/ai-marketing): AI-driven marketing automation service detail.
+- [Westchester County](https://nyclaw.io/locations/westchester-county): Location-specific service page.
+- [New York City](https://nyclaw.io/locations/new-york-city): Location-specific service page.
+- [Knowledge Base](https://nyclaw.io/knowledge): Research-backed guides on AI identity, mission-driven systems, and operational excellence.
+- [Free AI Operator's Playbook](https://nyclaw.io/resources): 50-page free guide with frameworks, templates, and a 30/60/90-day implementation roadmap.
+- [Blog](https://nyclaw.io/blog): Articles on AI automation cost, AI vs. consultants, and small business AI adoption.
+- [What AI Automation Actually Costs a Small Business in 2026](https://nyclaw.io/blog/ai-automation-cost-westchester): Pricing breakdown across DIY, freelance, and agency paths.
+- [ChatGPT vs. Hiring an AI Consultant](https://nyclaw.io/blog/chatgpt-vs-ai-consultant): When a manual tool is enough vs. when a business needs a built system.
+- [About](https://nyclaw.io/about): Who NYClaw is, service area, and founder.
+- [Contact](https://nyclaw.io/#contact): Project inquiry form on the homepage.
+
+## Facts
+
+- NYClaw.io is an AI agency serving small businesses in Westchester County, NY and New York City.
+- Services: custom AI agents ($3,500–8,000 per sprint), workflow automation ($5,000–15,000 per project), and a free 15-minute fit audit with an optional $1,000–2,500 roadmap.
+- Engagements are project- or sprint-based; no monthly retainer is required to start. Optional ongoing care/monitoring is available after go-live.
+- Build process follows the OODA Loop: Observe, Orient, Decide, Act.
+- Real client builds include Valentine Family Electric (estimating/billing/invoicing automation) and Byram Mason, Building & Stone Supply (structured multi-model AI workflow).
+
+## Contact
+
+Book the free 15-minute fit audit or send a project inquiry via the contact form at https://nyclaw.io/#contact.

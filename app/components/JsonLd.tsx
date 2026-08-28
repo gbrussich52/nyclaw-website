@@ -38,6 +38,47 @@ export function LocalBusinessJsonLd() {
   )
 }
 
+/**
+ * Organization JSON-LD — distinct from LocalBusinessJsonLd (ProfessionalService).
+ * AEO/GEO audits and LLM answer engines look for schema.org Organization
+ * specifically (logo, sameAs, founder) to resolve brand identity; the existing
+ * ProfessionalService type alone was scoring as a gap. Additive, not a
+ * replacement — both can validly describe the same entity.
+ */
+export function OrganizationJsonLd() {
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: 'NYClaw.io',
+    url: 'https://nyclaw.io',
+    logo: 'https://nyclaw.io/icon',
+    description:
+      'AI agency that designs and builds custom automations and agents for small businesses in Westchester County, NY and NYC.',
+    email: 'hello@nyclaw.io',
+    areaServed: 'Westchester County, NY',
+    sameAs: [
+      'https://www.linkedin.com/company/nyclaw-io',
+      'https://github.com/gbrussich52',
+    ],
+    founder: {
+      '@type': 'Person',
+      name: 'Giani Brussich',
+      sameAs: [
+        'https://linkedin.com/in/gianib',
+        'https://github.com/gbrussich52',
+        'https://gianibrussich.com',
+      ],
+    },
+  }
+
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+    />
+  )
+}
+
 export function WebSiteJsonLd() {
   const jsonLd = {
     '@context': 'https://schema.org',

@@ -48,7 +48,8 @@ const trustSignals = [
 
 export default function ResourcesPage() {
   return (
-    <main>
+    <>{/* <main> now comes from the root layout — this page's own <main> was
+        creating a nested <main> in violation of HTML semantics. */}
       {/* Hero */}
       <section className="relative overflow-hidden px-6 pb-16 pt-16 text-center">
         {/* Indigo bloom behind the page header, per TOKENS.md. */}
@@ -160,6 +161,6 @@ export default function ResourcesPage() {
           </div>
         </div>
       </section>
-    </main>
+    </>
   )
 }

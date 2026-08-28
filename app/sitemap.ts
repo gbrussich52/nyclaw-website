@@ -21,6 +21,7 @@ type Entry = {
 const ENTRIES: Entry[] = [
   // Homepage
   { path: '', lastModified: '2026-07-27', changeFrequency: 'weekly', priority: 1 },
+  { path: '/about', lastModified: '2026-08-27', changeFrequency: 'monthly', priority: 0.6 },
 
   // Service pages
   { path: '/services', lastModified: '2026-07-28', changeFrequency: 'monthly', priority: 0.9 },
