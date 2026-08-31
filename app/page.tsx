@@ -36,13 +36,13 @@ const capabilities = [
 ]
 
 export const metadata: Metadata = {
-  title: 'NYClaw.io — AI Agency | Custom Automations & Agents | Westchester & NYC',
+  title: 'NYClaw.io | AI Automation Agency | Westchester, NYC',
   description:
     'NYClaw.io is an AI agency that designs and builds custom automations and agents for small businesses in Westchester County, NY and NYC. Project-based builds — not a one-size product install. Free 15-min fit audit.',
   keywords:
     'AI agency, custom AI agents, AI automation agency, small business AI, workflow automation, Westchester NY, NYC AI agency, agent development, OODA Loop',
   openGraph: {
-    title: 'NYClaw.io — AI Agency for Custom Automations & Agents',
+    title: 'NYClaw.io | AI Automation Agency | Westchester, NYC',
     description:
       'We design and build AI automations and agents for how your business actually works. No template install — systems built around your workflows.',
     url: 'https://nyclaw.io',
@@ -52,7 +52,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'NYClaw.io — AI Agency',
+    title: 'NYClaw.io | AI Automation Agency | Westchester, NYC',
     description:
       'Custom AI automations and agents for small businesses in Westchester County & NYC. Free 15-min fit audit.',
   },

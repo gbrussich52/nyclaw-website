@@ -28,7 +28,7 @@ const inter = Inter({
 export const metadata: Metadata = {
   metadataBase: new URL('https://nyclaw.io'),
   title: {
-    default: 'NYClaw.io — AI Agency | Custom Automations & Agents | Westchester & NYC',
+    default: 'NYClaw.io | AI Automation Agency | Westchester, NYC',
     template: '%s | NYClaw.io',
   },
   description:
@@ -40,13 +40,13 @@ export const metadata: Metadata = {
     locale: 'en_US',
     url: 'https://nyclaw.io',
     siteName: 'NYClaw.io',
-    title: 'NYClaw.io — AI Agency | Custom Automations & Agents',
+    title: 'NYClaw.io | AI Automation Agency | Westchester, NYC',
     description:
       'We design and build custom AI automations and agents for small businesses. Strategy, build, and handoff — Westchester County & NYC.',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'NYClaw.io — AI Agency',
+    title: 'NYClaw.io | AI Automation Agency | Westchester, NYC',
     description: 'Custom AI automations and agents for small businesses. Free 15-min fit audit.',
   },
   robots: {
