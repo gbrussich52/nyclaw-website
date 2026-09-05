@@ -20,7 +20,6 @@ import { FAQJsonLd } from './components/JsonLd'
 import HeroVideo from './components/HeroVideo'
 import FaqAccordion from './components/FaqAccordion'
 import Reveal from './components/Reveal'
-import CountUp from './components/CountUp'
 import { CALENDLY_URL } from './config'
 
 const capabilities = [
@@ -62,11 +61,11 @@ export const metadata: Metadata = {
 }
 
 const stats = [
-  { to: 40, suffix: '%', label: 'Avg. cost reduction' },
-  { to: 8, suffix: 'x', label: 'Productivity gains' },
+  { raw: 'Scoped', label: 'Fixed project price' },
+  { raw: 'Handoff', label: 'Training and documentation' },
   { raw: 'Sprint', label: 'Project-based delivery' },
-  { raw: '24/7', label: 'Agents that keep working' },
-] as { to?: number; suffix?: string; raw?: string; label: string }[]
+  { raw: 'Your tools', label: 'Built around your workflow' },
+]
 
 const services = [
   {
@@ -269,7 +268,7 @@ export default function Home() {
               <Reveal key={stat.label} delay={i * 80}>
                 <div className="px-6 py-8">
                   <div className="text-gradient-metric text-[32px] font-semibold leading-none tracking-[-0.03em]">
-                    <CountUp to={stat.to} suffix={stat.suffix} raw={stat.raw} />
+                    {stat.raw}
                   </div>
                   <div className="mt-3 text-[11px] font-medium uppercase tracking-[0.08em] text-zinc-400">
                     {stat.label}
