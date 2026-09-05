@@ -13,6 +13,9 @@ MAX_TURNS="${MAX_TURNS:-35}"
 
 mkdir -p "$LOG_DIR" "$ROOT/docs/loop/drafts"
 export PATH="/opt/homebrew/bin:/usr/local/bin:$HOME/.local/bin:$HOME/.grok/bin:${PATH:-/usr/bin:/bin}"
+# grok quota preflight (Giani 2026-09-05): a spent weekly window is a quiet skip, never NEEDS_GIANI — it resets itself.
+source /Users/gianibrussich/project-claude/scripts/loops/preflight-quota.sh 2>/dev/null && { preflight_grok || exit 0; }
+
 
 {
   echo "=== $(date -u +%Y-%m-%dT%H:%M:%SZ) nyclaw weekly refresh start ==="
