@@ -1,6 +1,12 @@
 import { NextRequest, NextResponse } from 'next/server'
+import { z } from 'zod'
 import { getLeadsFromRedis } from '@/lib/leads'
 import { createRateLimiter } from '@/lib/rate-limit'
+
+// Only external input this route reads besides the auth header.
+const QuerySchema = z.object({
+  format: z.enum(['json', 'csv']).optional(),
+})
 
 // Read leads live from Redis on every request; never statically cached.
 export const dynamic = 'force-dynamic'
@@ -98,9 +104,16 @@ export async function GET(req: NextRequest): Promise<NextResponse> {
     return unauthorized()
   }
 
+  const parsedQuery = QuerySchema.safeParse({
+    format: req.nextUrl.searchParams.get('format') ?? undefined,
+  })
+  if (!parsedQuery.success) {
+    return NextResponse.json({ error: 'Invalid query parameters' }, { status: 400 })
+  }
+
   const leads = await getLeadsFromRedis()
 
-  if (req.nextUrl.searchParams.get('format') === 'json') {
+  if (parsedQuery.data.format === 'json') {
     return NextResponse.json({ count: leads.length, leads })
   }
 
