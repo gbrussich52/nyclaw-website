@@ -14,6 +14,9 @@
 | 5 | What GPT-5.4 Means for AI Assistants | /blog/gpt-5-4 | 2026-03-05 | GPT-5.4, AI architecture | Published |
 | 6 | How to Build an AI Assistant That Succeeds | /blog/how-to-succeed | 2026-03-05 | AI assistant, AI project failure | Published |
 | 7 | I Audited My Own Website. It Was Invisible. | /blog/i-audited-my-own-website | 2026-04-07 | SEO audit, Next.js SEO, client-side rendering | Published |
+| — | What AI Automation Actually Costs a Small Business in 2026 | /blog/ai-automation-cost-westchester | 2026-08-07 | AI automation cost, small business AI pricing | Published |
+| — | ChatGPT vs. Hiring an AI Consultant | /blog/chatgpt-vs-ai-consultant | 2026-08-07 | ChatGPT vs AI consultant | Published |
+| — | Why Westchester Businesses Are Hiring AI Consultants in 2026 | /blog/ai-consulting-westchester | 2026-09-07 | AI consulting westchester, AI consulting westchester county | Published |
 
 ## Queue — HIGH Priority (Next 2 Weeks)
 
@@ -21,7 +24,7 @@
 |---|-------|-------|-----------------|----------|-------------|
 | 8 | How AI Saves Real Estate Agents 10 Hours/Week | /blog/ai-real-estate-agents | AI real estate, real estate automation | HIGH | 2h |
 | 9 | AI Appointment Scheduling: Complete Guide for Small Businesses | /blog/ai-appointment-scheduling | AI scheduling, appointment automation | HIGH | 2h |
-| 10 | Why Westchester Businesses Are Hiring AI Consultants in 2026 | /blog/ai-consulting-westchester | AI consulting westchester, AI agency NY | HIGH | 2h |
+| 10 | Why Westchester Businesses Are Hiring AI Consultants in 2026 | /blog/ai-consulting-westchester | AI consulting westchester, AI agency NY | HIGH — SHIPPED 2026-09-07 | 2h |
 | 11 | How Much Does AI Implementation Actually Cost? (2026 Pricing Guide) | /blog/ai-implementation-cost | AI cost, AI pricing, AI implementation price | HIGH | 2.5h |
 | 12 | AI Agent vs. Virtual Assistant: Which Is Right for Your Business? | /blog/ai-agent-vs-virtual-assistant | AI agent, virtual assistant, AI comparison | HIGH | 2h |
 
