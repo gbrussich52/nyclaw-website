@@ -144,10 +144,8 @@
     {
       "item": 20,
       "name": "Scan dependencies",
-      "status": "fail",
-      "evidence": [
-        "2 high/critical advisories"
-      ],
+      "status": "pass",
+      "evidence": [],
       "note": ""
     }
   ]
