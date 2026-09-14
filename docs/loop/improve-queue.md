@@ -1,3 +1,6 @@
+---
+classification: PRIVATE
+---
 # NYClaw.io — Improve queue
 
 Auto-appended by weekly refresh + any agent that finds a real gap.  
@@ -14,6 +17,11 @@ Auto-appended by weekly refresh + any agent that finds a real gap.
 - [ ] **2026-08-25** `playbook-installed-not-implemented` — Add Part 3B section + bump cover/About to August 2026: tools installed, process unchanged is not implementation. Source: weekly refresh / briefs 08-22 and 08-24.
 - [ ] **2026-08-25** `playbook-done-means-receipt` — Extend operator-setup checklist: allowed sites, no card on the agent, expected record appeared and can be undone, failed tries do not commit to memory. Source: weekly refresh / briefs 08-19 through 08-24.
 - [ ] **2026-08-25** `services-process-change-copy` — Hero/agent-card aspirin line: they use ChatGPT and nothing runs differently; drop or rewrite homepage 24/7 / 8x / 40% stats; keep live prices; no MCP/Managed Agents SKU. Source: weekly refresh / briefs 08-18, 08-22, 08-24.
+- [ ] **2026-08-31** `playbook-clerk-not-associate` — Add Part 3B section: AI drafts, a named human sends; intake capture yes, outbound legal/financial email never without a person. Source: weekly refresh / briefs 08-30 and 08-31.
+- [ ] **2026-08-31** `playbook-skills-are-code` — Extend Part 3 security: instruction files are executable; never paste a chat-given install command; read every skill/hook on restore. Source: weekly refresh / brief 08-30.
+- [ ] **2026-08-31** `playbook-fewer-tools` — One paragraph: expose jobs (one tool, more parameters), not 40 CRM endpoints; past ~20 tools the agent is guessing. Source: weekly refresh / brief 08-31.
+- [ ] **2026-09-13** `playbook-aeo-local-owners` — Part 4 section + Template 6 self-test: 10 unbranded questions × 4 engines, question then short answer then detail, citation is not a booked job. Source: weekly refresh / briefs 09-06 through 09-13.
+- [ ] **2026-09-13** `radar-md-gap` — last30days radar markdown in ~/Documents/Last30Days/radar/ stopped at 2026-09-01; weekly refresh had to use X-brief Part 2 extracts. Restore the md files or document the new path. Source: weekly refresh 2026-09-13.
 
 ## Done
 
