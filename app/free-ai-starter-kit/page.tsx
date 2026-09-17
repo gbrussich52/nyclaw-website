@@ -22,13 +22,13 @@ const GITHUB_URL = 'https://github.com/gbrussich52/mainstreet-mcp'
 export const metadata: Metadata = {
   title: 'Free AI Starter Kit for Small Business',
   description:
-    'A free starter kit that lets Claude or ChatGPT answer customer questions from your real business information — hours, services, prices, FAQs and policies. Ten industry versions, built by NYClaw.io.',
+    'A free starter kit that lets Claude answer customer questions from your real business information — hours, services, prices, FAQs and policies. Ten industry versions, built by NYClaw.io.',
   keywords:
-    'AI starter kit small business, MCP server small business, Claude business assistant, ChatGPT business assistant, Main Street MCP, free AI tool small business',
+    'AI starter kit small business, MCP server small business, Claude business assistant, Main Street MCP, free AI tool small business',
   openGraph: {
     title: 'Free AI Starter Kit for Small Business | NYClaw.io',
     description:
-      'Fill in one file with your hours, services, prices, FAQs and policies. Claude or ChatGPT answers customer questions from your real information instead of guessing.',
+      'Fill in one file with your hours, services, prices, FAQs and policies. Claude answers customer questions from your real information instead of guessing.',
     url: 'https://nyclaw.io/free-ai-starter-kit',
     siteName: 'NYClaw.io',
     type: 'website',
@@ -37,7 +37,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Free AI Starter Kit for Small Business | NYClaw.io',
     description:
-      'A free starter kit so Claude or ChatGPT can answer from your real business information, not a guess.',
+      'A free starter kit so Claude can answer from your real business information, not a guess.',
   },
   alternates: {
     canonical: 'https://nyclaw.io/free-ai-starter-kit',
@@ -81,8 +81,8 @@ const steps = [
   },
   {
     n: '3',
-    title: 'Add it to Claude or ChatGPT',
-    body: 'Point the assistant at the file. From then on it answers from what you wrote, not a guess.',
+    title: 'Add it to Claude',
+    body: 'Install the Claude plugin or desktop extension and point it at the file. From then on it answers from what you wrote, not a guess.',
     code: null,
   },
 ]
@@ -91,7 +91,7 @@ const faqs = [
   {
     question: 'Is this actually free?',
     answer:
-      'Yes. The starter kit and all ten industry packs are open source on GitHub, free to download and use. There is no paid tier to unlock the base functionality.',
+      'Yes. The starter kit and all ten industry packs are open source on GitHub, free to download and use. Everything on this page is included at no cost. We only charge if you want us to connect it to your own systems.',
   },
   {
     question: 'Do I need to know how to code?',
@@ -120,7 +120,7 @@ export default function FreeAIStarterKitPage() {
     <>
       <SoftwareApplicationJsonLd
         name="Main Street MCP"
-        description="Free, open-source starter kit that lets Claude, ChatGPT and other AI assistants answer small-business customer questions from the owner's own hours, services, prices, FAQs and policies."
+        description="Free, open-source starter kit that lets Claude and other MCP-compatible AI assistants answer small-business customer questions from the owner's own hours, services, prices, FAQs and policies."
         url="https://nyclaw.io/free-ai-starter-kit"
       />
       <FAQJsonLd items={faqs} />
@@ -144,7 +144,7 @@ export default function FreeAIStarterKitPage() {
 
           <p className="mt-6 max-w-[38rem] text-[17px] leading-relaxed text-zinc-300">
             A free starter kit: fill in one file with your hours, services, prices, FAQs and
-            policies, and Claude or ChatGPT can answer customer questions from your real
+            policies, and Claude can answer customer questions from your real
             information instead of guessing.
           </p>
 
