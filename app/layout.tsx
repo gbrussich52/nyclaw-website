@@ -87,6 +87,7 @@ export default function RootLayout({
                 <Link href="/blog" className="transition-colors hover:text-white">Blog</Link>
                 <Link href="/about" className="transition-colors hover:text-white">About</Link>
                 <Link href="/resources" className="transition-colors hover:text-white">Free guide</Link>
+                <Link href="/free-ai-starter-kit" className="transition-colors hover:text-white">Starter kit</Link>
                 <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-white">Fit audit</a>
                 <Link href="/dmca" className="transition-colors hover:text-white">DMCA</Link>
               </nav>

@@ -185,6 +185,51 @@ export function ArticleJsonLd({
   )
 }
 
+/**
+ * SoftwareApplicationJsonLd — for a free downloadable tool page (e.g. the
+ * Main Street MCP starter kit), distinct from ServiceJsonLd which describes
+ * a paid engagement. Free-price offer is hardcoded to match the page's own
+ * claim; keep both in sync if the offer ever changes.
+ */
+export function SoftwareApplicationJsonLd({
+  name,
+  description,
+  url,
+  applicationCategory = 'BusinessApplication',
+}: {
+  name: string
+  description: string
+  url: string
+  applicationCategory?: string
+}) {
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'SoftwareApplication',
+    name,
+    description,
+    url,
+    applicationCategory,
+    operatingSystem: 'Any',
+    offers: {
+      '@type': 'Offer',
+      price: '0',
+      priceCurrency: 'USD',
+    },
+    author: {
+      '@type': 'Organization',
+      name: 'NYClaw.io',
+      url: 'https://nyclaw.io',
+    },
+  }
+
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, '\\u003c') }}
+    />
+  )
+}
+
 export function FAQJsonLd({ items }: { items: { question: string; answer: string }[] }) {
   const jsonLd = {
     '@context': 'https://schema.org',

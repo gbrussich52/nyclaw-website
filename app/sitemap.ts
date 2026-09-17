@@ -41,6 +41,7 @@ const ENTRIES: Entry[] = [
 
   // Resources
   { path: '/resources', lastModified: '2026-07-28', changeFrequency: 'monthly', priority: 0.8 },
+  { path: '/free-ai-starter-kit', lastModified: '2026-09-17', changeFrequency: 'monthly', priority: 0.8 },
 
   // Blog
   { path: '/blog', lastModified: '2026-08-07', changeFrequency: 'weekly', priority: 0.8 },
