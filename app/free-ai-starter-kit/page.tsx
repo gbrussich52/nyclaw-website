@@ -71,7 +71,7 @@ const steps = [
     n: '1',
     title: 'Run the setup command',
     body: 'Pick the industry pack that matches your business.',
-    code: 'npx mainstreet-mcp init --industry dental',
+    code: 'npx -y github:gbrussich52/mainstreet-mcp init --industry dental',
   },
   {
     n: '2',
