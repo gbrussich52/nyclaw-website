@@ -4,7 +4,7 @@ import ArticleShell from '../components/ArticleShell'
 export const metadata: Metadata = {
   title: 'Privacy Policy | NYClaw.io',
   description:
-    'How NYClaw.io collects and uses your information — no accounts, no cookies, no data sold. Contact hello@nyclaw.io anytime.',
+    'How NYClaw.io collects and uses your information: no accounts, no cookies, no data sold. Contact hello@nyclaw.io anytime.',
   alternates: {
     canonical: 'https://nyclaw.io/privacy',
   },
@@ -24,14 +24,14 @@ export default function PrivacyPage() {
       <p>We collect information only when you choose to give it to us, through one of three forms:</p>
       <ul>
         <li>
-          The homepage contact/project form — your name, business email, business type, what you
+          The homepage contact/project form: your name, business email, business type, what you
           want built first, and an optional message describing your workflow.
         </li>
         <li>
-          The homepage newsletter form — your email address, to send the free AI Readiness Guide.
+          The homepage newsletter form: your email address, to send the free AI Readiness Guide.
         </li>
         <li>
-          The Resources page guide form — your first name, email, and an optional company name, to
+          The Resources page guide form: your first name, email, and an optional company name, to
           send the free AI Operator&apos;s Playbook PDF.
         </li>
       </ul>
@@ -44,7 +44,7 @@ export default function PrivacyPage() {
       <h2>How we use it</h2>
       <p>
         We use the information you submit to respond to your inquiry or send you the guide you
-        requested — nothing else. We never sell, rent, or share your information with any third
+        requested, nothing else. We never sell, rent, or share your information with any third
         party, advertiser, or data broker.
       </p>
 
@@ -72,7 +72,7 @@ export default function PrivacyPage() {
       <p>
         You can ask to see what information we have about you, or ask us to delete it, at any time
         by emailing <a href="mailto:hello@nyclaw.io">hello@nyclaw.io</a>. No account or
-        verification process is required — just tell us the email address you used.
+        verification process is required. Just tell us the email address you used.
       </p>
 
       <h2>DMCA</h2>

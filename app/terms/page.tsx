@@ -28,7 +28,7 @@ export default function TermsPage() {
 
       <h2>Services scoped by written proposal</h2>
       <p>
-        Every engagement is scoped by a written proposal before any work begins — the proposal sets
+        Every engagement is scoped by a written proposal before any work begins. The proposal sets
         the deliverables, timeline, and price. We don&apos;t guarantee specific business outcomes or
         results from any automation, agent, or consulting engagement; a proposal describes what we
         will build and deliver, not a promised financial result.

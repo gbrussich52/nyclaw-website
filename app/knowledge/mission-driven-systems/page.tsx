@@ -5,7 +5,7 @@ import ArticleShell from '../../components/ArticleShell'
 
 export const metadata: Metadata = {
   title: 'Mission-Driven Systems: Why Most Processes Fail | NYClaw.io',
-  description: 'Why operational processes degrade over time and how to design mission-driven systems that resist entropy — OKR frameworks and review cadences.',
+  description: 'Why operational processes degrade over time and how to design mission-driven systems that resist entropy, with OKR frameworks and review cadences.',
   keywords: 'mission-driven systems, operational excellence, process design, OKR framework, accountability structures',
   openGraph: {
     title: 'Mission-Driven Systems: Why Most Processes Fail (And How to Fix Them)',
