@@ -5,12 +5,15 @@ import ArticleShell from '../../components/ArticleShell'
 
 export const metadata: Metadata = {
   title: 'How to Build a Scalable AI Assistant | NYClaw.io',
-  description: 'The complete identity framework for building consistent, scalable AI assistants. Covers the Four-Quadrant Persona Taxonomy, principle-first documentation, and the Ainsley case study.',
+  description: 'The complete identity framework for building consistent, scalable AI assistants — the Four-Quadrant Persona Taxonomy and the Ainsley case study.',
   keywords: 'AI assistant identity, build AI assistant, AI persona design, scalable AI, AI identity framework',
   openGraph: {
     title: 'How to Build a Scalable AI Assistant: The Complete Identity Framework',
     description: 'The architecture that makes AI assistants consistent. Used to build Ainsley at NYClaw.io.',
     type: 'article',
+  },
+  alternates: {
+    canonical: 'https://nyclaw.io/knowledge/ai-assistant-identity',
   },
 }
 

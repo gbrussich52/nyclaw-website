@@ -5,7 +5,7 @@ import ResourceForm from '../components/ResourceForm'
 
 export const metadata: Metadata = {
   title: 'Free AI Operator\'s Playbook — 50 Pages, No Fluff',
-  description: 'Download the free AI Operator\'s Playbook: 50 pages of frameworks, templates, and a 30/60/90-day implementation roadmap for building AI systems that actually work. Used to build Ainsley at NYClaw.io.',
+  description: 'Download the free AI Operator\'s Playbook: 50 pages of frameworks, templates, and a 30/60/90-day roadmap for building AI systems that actually work.',
   keywords: 'AI playbook, AI implementation guide, AI assistant framework, free AI guide, AI templates',
   openGraph: {
     title: 'The AI Operator\'s Playbook — Free Download',

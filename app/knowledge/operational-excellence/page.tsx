@@ -4,13 +4,16 @@ import { Check, ChevronRight } from 'lucide-react'
 import ArticleShell from '../../components/ArticleShell'
 
 export const metadata: Metadata = {
-  title: 'Operational Excellence for Small Teams: 7 Anti-Patterns | NYClaw.io',
+  title: 'Operational Excellence for Small Teams | NYClaw.io',
   description: 'The 7 critical anti-patterns that kill small team operations — and how to prevent each one. Practical, implementable, based on 50+ framework research.',
   keywords: 'operational excellence, small team operations, process anti-patterns, team management, documentation debt',
   openGraph: {
     title: 'Operational Excellence for Small Teams: Avoiding 7 Critical Anti-Patterns',
     description: 'The failure modes we hit building NYClaw.io — and specific prevention systems for each.',
     type: 'article',
+  },
+  alternates: {
+    canonical: 'https://nyclaw.io/knowledge/operational-excellence',
   },
 }
 

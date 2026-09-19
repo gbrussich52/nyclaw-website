@@ -23,7 +23,7 @@ import CtaPanel from '../../components/CtaPanel'
 export const metadata: Metadata = {
   title: 'AI Marketing Automations & Agents',
   description:
-    'NYClaw.io designs and builds AI marketing automations and agents for small businesses — content engines, lead funnels, and nurture systems. Project-based builds; optional ongoing operation. Westchester County and NYC.',
+    'NYClaw.io builds AI marketing automations and agents for small businesses — content engines, lead funnels, and nurture systems. Westchester County and NYC.',
   keywords:
     'AI marketing automation, AI lead generation agents, content engine build, AI email automation, AI marketing westchester, marketing automation agency',
   openGraph: {

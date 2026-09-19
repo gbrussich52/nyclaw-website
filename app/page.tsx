@@ -37,7 +37,7 @@ const capabilities = [
 export const metadata: Metadata = {
   title: 'NYClaw.io | AI Automation Agency | Westchester, NYC',
   description:
-    'NYClaw.io is an AI agency that designs and builds custom automations and agents for small businesses in Westchester County, NY and NYC. Project-based builds — not a one-size product install. Free 15-min fit audit.',
+    'NYClaw.io is an AI agency that builds custom automations and agents for small businesses in Westchester County, NY and NYC. Free 15-min fit audit.',
   keywords:
     'AI agency, custom AI agents, AI automation agency, small business AI, workflow automation, Westchester NY, NYC AI agency, agent development, OODA Loop',
   openGraph: {
@@ -214,20 +214,27 @@ export default function Home() {
                 </p>
 
                 <div className="mt-8 flex flex-wrap items-center gap-2">
-                  <a
-                    href="#contact"
-                    className="inline-flex h-12 items-center gap-1 rounded-full bg-white pl-5 pr-3 text-base font-medium text-zinc-950 shadow-[0_1px_2px_rgba(0,0,0,.2)] transition-opacity hover:opacity-90"
-                  >
-                    <span className="whitespace-nowrap">Start a project</span>
-                    <ChevronRight size={18} aria-hidden="true" />
-                  </a>
+                  {/*
+                    Site launch baseline item 20: one filled primary CTA per
+                    hero. Booking the free audit converts at a lower-commitment
+                    ask than "start a project" cold, so it takes the filled
+                    slot; "Start a project" is the ghost secondary for anyone
+                    ready to skip straight to scoping.
+                  */}
                   <a
                     href={CALENDLY_URL}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex h-12 items-center rounded-full px-5 text-base font-medium text-white outline outline-1 outline-white/[0.18] transition-colors hover:bg-white/5"
+                    className="inline-flex h-12 items-center gap-1 rounded-full bg-white pl-5 pr-3 text-base font-medium text-zinc-950 shadow-[0_1px_2px_rgba(0,0,0,.2)] transition-opacity hover:opacity-90"
                   >
                     <span className="whitespace-nowrap">Book the 15-min audit</span>
+                    <ChevronRight size={18} aria-hidden="true" />
+                  </a>
+                  <a
+                    href="#contact"
+                    className="inline-flex h-12 items-center rounded-full px-5 text-base font-medium text-white outline outline-1 outline-white/[0.18] transition-colors hover:bg-white/5"
+                  >
+                    <span className="whitespace-nowrap">Start a project</span>
                   </a>
                 </div>
               </div>
@@ -302,7 +309,7 @@ export default function Home() {
               >
                 <div className="flex items-center justify-between">
                   <Icon size={18} strokeWidth={1.75} className="text-zinc-300" aria-hidden="true" />
-                  <span className="text-[11px] font-medium uppercase tracking-[0.08em] text-zinc-500">
+                  <span className="text-[11px] font-medium uppercase tracking-[0.08em] text-zinc-400">
                     {eyebrow}
                   </span>
                 </div>
@@ -311,7 +318,7 @@ export default function Home() {
                   <span className="text-[30px] font-semibold tracking-[-0.03em] text-white">
                     {price}
                   </span>
-                  <p className="mt-1 text-[13px] text-zinc-500">{unit}</p>
+                  <p className="mt-1 text-[13px] text-zinc-400">{unit}</p>
                 </div>
                 <p className="flex-1 text-sm leading-relaxed text-zinc-400">{desc}</p>
                 <span className="inline-flex items-center gap-1 text-sm font-medium text-white">
@@ -387,7 +394,7 @@ export default function Home() {
                   {item.title}
                 </h3>
                 <p className="flex-1 text-sm leading-relaxed text-zinc-400">{item.body}</p>
-                <p className="border-t border-white/10 pt-4 text-[13px] text-zinc-500">
+                <p className="border-t border-white/10 pt-4 text-[13px] text-zinc-400">
                   {item.footer}
                 </p>
               </article>

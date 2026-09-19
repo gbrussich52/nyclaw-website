@@ -30,7 +30,7 @@ import { CALENDLY_URL } from '../../config'
 export const metadata: Metadata = {
   title: 'AI Agency for NYC Small Businesses',
   description:
-    'NYClaw.io builds AI agents and automation systems for small businesses across New York City — Manhattan, Brooklyn, Queens, the Bronx, and Staten Island. Cut costs, automate operations, and compete without adding headcount. Free AI audit.',
+    "NYClaw.io builds AI agents and automation systems for small businesses across NYC's five boroughs — cut costs and automate operations without adding headcount.",
   keywords:
     'AI agency NYC, AI automation new york city, AI consulting NYC small business, AI implementation NYC, small business AI new york, AI workflow automation manhattan, AI consulting brooklyn, AI marketing queens, NYC AI agency',
   openGraph: {

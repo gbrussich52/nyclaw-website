@@ -11,7 +11,7 @@ const labelClass = 'mb-1.5 block text-[13px] font-medium text-zinc-300'
 
 export default function ResourceForm() {
   const [formData, setFormData] = useState({ firstName: '', email: '', company: '' })
-  const { loading, errorMsg, submitted, submit } = useContactSubmit()
+  const { loading, errorMsg, submitted, submit, honeypotRef } = useContactSubmit()
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -35,6 +35,15 @@ export default function ResourceForm() {
           </p>
 
           <form onSubmit={handleSubmit} className="mt-6 flex flex-col gap-4">
+            <input
+              ref={honeypotRef}
+              type="text"
+              name="website"
+              tabIndex={-1}
+              autoComplete="off"
+              aria-hidden="true"
+              className="hidden"
+            />
             <div>
               <label className={labelClass} htmlFor="firstName">
                 First Name *

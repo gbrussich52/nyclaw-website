@@ -23,7 +23,7 @@ import CtaPanel from '../../components/CtaPanel'
 export const metadata: Metadata = {
   title: 'AI Fit Audit & Strategy Roadmap',
   description:
-    'NYClaw.io offers free 15-minute fit audits and paid AI roadmaps for small businesses in Westchester County and NYC. Know which custom agents and automations to build first — before you spend on a full system.',
+    'NYClaw.io offers free 15-minute AI fit audits and paid roadmaps for small businesses in Westchester County and NYC — know what to build first.',
   keywords:
     'AI consulting small business, AI fit audit, AI roadmap, AI strategy westchester, AI agency consulting, automation roadmap',
   openGraph: {
