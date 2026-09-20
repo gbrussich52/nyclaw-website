@@ -87,7 +87,7 @@ export default function PlaybookForm() {
                   {errorMsg}
                 </p>
               )}
-              <p className="mt-3 text-xs text-zinc-500">No spam. Unsubscribe anytime.</p>
+              <p className="mt-3 text-xs text-zinc-400">No spam. Unsubscribe anytime.</p>
             </>
           )}
         </div>

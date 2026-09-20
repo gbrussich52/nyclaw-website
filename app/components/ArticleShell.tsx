@@ -67,7 +67,7 @@ export default function ArticleShell({
                   {tag}
                 </span>
               ))}
-              {meta && <span className="text-[13px] text-zinc-500">{meta}</span>}
+              {meta && <span className="text-[13px] text-zinc-400">{meta}</span>}
             </div>
           )}
 

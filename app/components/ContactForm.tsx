@@ -158,7 +158,7 @@ export default function ContactForm() {
             >
               {loading ? 'Submitting…' : 'Request project scope →'}
             </button>
-            <p className="text-center text-[13px] text-zinc-500">
+            <p className="text-center text-[13px] text-zinc-400">
               We respond within 24 hours. Prefer a live call? Book the free 15-min fit audit instead.
             </p>
           </form>

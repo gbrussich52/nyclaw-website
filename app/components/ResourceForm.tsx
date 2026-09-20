@@ -74,7 +74,7 @@ export default function ResourceForm() {
             </div>
             <div>
               <label className={labelClass} htmlFor="company">
-                Company <span className="font-normal text-zinc-500">(optional)</span>
+                Company <span className="font-normal text-zinc-400">(optional)</span>
               </label>
               <input
                 id="company"
@@ -95,7 +95,7 @@ export default function ResourceForm() {
             >
               {loading ? 'Sending...' : 'Send me the guide →'}
             </button>
-            <p className="text-center text-xs leading-relaxed text-zinc-500">
+            <p className="text-center text-xs leading-relaxed text-zinc-400">
               By submitting, you agree to receive the guide and related emails from NYClaw.io. Unsubscribe anytime.
             </p>
           </form>
@@ -107,7 +107,7 @@ export default function ResourceForm() {
           <p className="mb-6 text-sm leading-relaxed text-zinc-400">
             We sent the guide to <strong className="font-medium text-white">{formData.email}</strong>. It should arrive within 2 minutes.
           </p>
-          <p className="mb-6 text-[13px] text-zinc-500">
+          <p className="mb-6 text-[13px] text-zinc-400">
             While you wait — start with one of the knowledge articles below:
           </p>
           <div className="flex flex-col gap-3">
@@ -127,7 +127,7 @@ export default function ResourceForm() {
         </div>
       )}
 
-      <div className="mt-4 flex items-center justify-center gap-2 text-[13px] text-zinc-500">
+      <div className="mt-4 flex items-center justify-center gap-2 text-[13px] text-zinc-400">
         <Download className="h-4 w-4" />
         Downloaded by 50+ operators and builders
       </div>

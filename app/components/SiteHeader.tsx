@@ -36,7 +36,7 @@ function Wordmark({ size = 'md' }: { size?: 'md' | 'sm' }) {
         NY
       </span>
       <span className={`${word} font-medium text-white`}>
-        NYClaw<span className="text-zinc-500">.io</span>
+        NYClaw<span className="text-zinc-400">.io</span>
       </span>
     </span>
   )

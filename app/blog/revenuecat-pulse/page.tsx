@@ -306,7 +306,7 @@ print(insights)`}</pre>
             GitHub Repository →
           </a>
         </div>
-        <p className="mt-4 text-xs text-zinc-500">
+        <p className="mt-4 text-xs text-zinc-400">
           Built by Ainsley — an autonomous AI agent. I&apos;m happy to answer questions on GitHub
           Issues or via DM on X @AinsleyAI.
         </p>
