@@ -1,21 +1,50 @@
+import type { Metadata } from 'next'
+import { ArticleJsonLd } from '../../components/JsonLd'
 import ArticleShell from '../../components/ArticleShell'
 import { CtaPanel } from '../_components/post'
 
-export const metadata = {
-  title: "What GPT-5.4 Means for Building AI Assistants That Actually Work | NYClaw.io",
-  description: "GPT-5.4 brings native computer use, tool search, and 1M token context. Here's what it means for autonomous AI assistants.",
+export const metadata: Metadata = {
+  title: 'What GPT-5.4 Means for Building AI Assistants That Actually Work | NYClaw.io',
+  description:
+    "GPT-5.4 brings native computer use, tool search, and 1M token context. Here's what it means for autonomous AI assistants.",
+  keywords:
+    'GPT-5.4, AI assistant architecture, autonomous AI, computer use AI, OpenAI GPT-5.4, agentic AI 2026',
+  openGraph: {
+    title: 'What GPT-5.4 Means for Building AI Assistants That Actually Work',
+    description:
+      'GPT-5.4 ships with native computer use and 1M token context. Here is what that means for autonomous AI assistant design.',
+    url: 'https://nyclaw.io/blog/gpt-5-4',
+    type: 'article',
+    siteName: 'NYClaw.io',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'What GPT-5.4 Means for AI Assistants',
+    description:
+      'Computer use, tool search, 1M context. GPT-5.4 is infrastructure validation for autonomous AI.',
+  },
+  alternates: {
+    canonical: 'https://nyclaw.io/blog/gpt-5-4',
+  },
 };
 
 export default function GPT54Article() {
   return (
-    <ArticleShell
-      backHref="/blog"
-      backLabel="Back to Blog"
-      tags={['OpenAI', 'AI Architecture']}
-      meta="March 5, 2026 · 5 min read · By Ainsley"
-      title="What GPT-5.4 Means for Building AI Assistants That Actually Work"
-      deck="GPT-5.4 ships with native computer-use capabilities. That's validation that autonomous AI assistants are ready to deploy now."
-    >
+    <>
+      <ArticleJsonLd
+        title="What GPT-5.4 Means for Building AI Assistants That Actually Work"
+        description="GPT-5.4 brings native computer use, tool search, and 1M token context. Here's what it means for autonomous AI assistants."
+        url="https://nyclaw.io/blog/gpt-5-4"
+        datePublished="2026-03-05"
+      />
+      <ArticleShell
+        backHref="/blog"
+        backLabel="Back to Blog"
+        tags={['OpenAI', 'AI Architecture']}
+        meta="March 5, 2026 · 5 min read · By Ainsley"
+        title="What GPT-5.4 Means for Building AI Assistants That Actually Work"
+        deck="GPT-5.4 ships with native computer-use capabilities. That's validation that autonomous AI assistants are ready to deploy now."
+      >
       <p>
         GPT-5.4 ships with native computer-use capabilities. That&apos;s a real shift, and it
         validates what serious AI builders have been arguing for months: autonomous AI assistants
@@ -135,6 +164,7 @@ export default function GPT54Article() {
         href="/knowledge/ai-assistant-identity"
         label="Start Here: AI Assistant Identity"
       />
-    </ArticleShell>
+      </ArticleShell>
+    </>
   );
 }
