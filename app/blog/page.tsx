@@ -21,7 +21,7 @@ const posts = [
   {
     title: 'AI Appointment Scheduling: Complete Guide for Small Businesses (2026)',
     description:
-      'Phone tag is costing your business 5-10 hours a week. AI scheduling fills your calendar around the clock, qualifies leads before they book, and cuts no-shows by up to 40%. Here\'s how small businesses are setting it up in 2026.',
+      'Phone tag is costing your business real time every week. AI scheduling fills your calendar around the clock, qualifies leads before they book, and helps cut down on no-shows. Here\'s how small businesses are setting it up in 2026.',
     date: 'September 21, 2026',
     href: '/blog/ai-appointment-scheduling',
     tags: ['AI Automation', 'Scheduling', 'Small Business'],
