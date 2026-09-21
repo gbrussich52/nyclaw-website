@@ -1,9 +1,31 @@
+import type { Metadata } from 'next'
+import { ArticleJsonLd, FAQJsonLd } from '../../components/JsonLd'
 import ArticleShell from '../../components/ArticleShell'
-import { CtaPanel } from '../_components/post'
+import { CtaPanel, FaqSection } from '../_components/post'
 
-export const metadata = {
-  title: "How to Build an AI Assistant That Actually Succeeds | NYClaw.io",
-  description: "70% of AI projects fail. Not because of bad code, but because of unclear identity. Here's the complete framework that works.",
+export const metadata: Metadata = {
+  title: 'How to Build an AI Assistant That Actually Succeeds | NYClaw.io',
+  description:
+    "70% of AI projects fail. Not because of bad code, but because of unclear identity. Here's the complete framework, identity, governance, accountability, scalability, that actually works.",
+  keywords:
+    'how to build AI assistant, AI assistant framework, AI project failure, AI governance, AI identity, AI assistant design',
+  openGraph: {
+    title: 'How to Build an AI Assistant That Actually Succeeds',
+    description:
+      'Most AI projects fail because of unclear identity, not bad code. Here is the four-pillar framework that keeps AI assistants on track.',
+    url: 'https://nyclaw.io/blog/how-to-succeed',
+    type: 'article',
+    siteName: 'NYClaw.io',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'How to Build an AI Assistant That Actually Succeeds',
+    description:
+      'AI projects usually fail because of unclear identity, not bad code. Here is the framework that works.',
+  },
+  alternates: {
+    canonical: 'https://nyclaw.io/blog/how-to-succeed',
+  },
 };
 
 /** The four structural pillars, rendered as callout panels. */
@@ -26,8 +48,39 @@ const pillars = [
   },
 ]
 
+const faqItems = [
+  {
+    question: 'Why do most AI assistant projects fail?',
+    answer:
+      'Most failures are structural, not technical. Teams skip defining identity, governance, accountability, and scalability up front, so the AI drifts, contradicts itself, or makes decisions nobody approved.',
+  },
+  {
+    question: 'What are the four pillars of an AI assistant that actually works?',
+    answer:
+      'Identity (a clear, written sense of purpose and limits), governance (what the AI can decide alone versus what needs approval), accountability (regular review of outputs and drift), and scalability (new capabilities that plug into the existing framework instead of replacing it).',
+  },
+  {
+    question: 'How long does it take to set up this framework?',
+    answer:
+      'On the timeline in this guide: Week 1 to define identity, Weeks 2 to 3 to establish governance, Week 4 to build accountability loops, then ongoing work to scale with confidence.',
+  },
+  {
+    question: 'What is a governance decision matrix?',
+    answer:
+      'A simple map of your AI’s decision space into three zones: green (it decides and acts on its own), yellow (it prepares, a human approves), and red (it flags the situation and stops).',
+  },
+]
+
 export default function HowToSucceedArticle() {
   return (
+    <>
+      <ArticleJsonLd
+        title="How to Build an AI Assistant That Actually Succeeds"
+        description="Most AI projects fail because of unclear identity, not bad code. Here is the complete framework, identity, governance, accountability, scalability."
+        url="https://nyclaw.io/blog/how-to-succeed"
+        datePublished="2026-03-05"
+      />
+      <FAQJsonLd items={faqItems} />
     <ArticleShell
       backHref="/blog"
       backLabel="Back to Blog"
@@ -234,6 +287,9 @@ export default function HowToSucceedArticle() {
         <a href="/knowledge/operational-excellence">NYClaw Operational Excellence guide</a>.
       </p>
 
+      <h2>Frequently Asked Questions</h2>
+      <FaqSection items={faqItems} />
+
       <CtaPanel
         title="Ready to Build Your AI?"
         blurb="Identity. Governance. Accountability. Scalability. Here's how to implement all four, with real templates from our build."
@@ -241,5 +297,6 @@ export default function HowToSucceedArticle() {
         label="Read the Complete Guide"
       />
     </ArticleShell>
+    </>
   );
 }

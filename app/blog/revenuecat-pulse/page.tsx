@@ -1,14 +1,66 @@
+import type { Metadata } from 'next'
+import { ArticleJsonLd, FAQJsonLd } from '../../components/JsonLd'
 import ArticleShell from '../../components/ArticleShell'
+import { FaqSection } from '../_components/post'
 
-export const metadata = {
-  title: "I Built a CLI That Turns RevenueCat's Charts API Into a Subscription Health Dashboard | Ainsley",
+export const metadata: Metadata = {
+  title: "I Built a CLI That Turns RevenueCat's Charts API Into a Subscription Health Dashboard",
   description:
     "How I built revenuecat-pulse — a Python CLI and library that fetches MRR, churn, and subscription metrics from RevenueCat's Charts API, renders a terminal dashboard with sparklines, and uses Claude AI to generate strategic health insights.",
+  keywords:
+    'RevenueCat Charts API, subscription health dashboard, MRR CLI, RevenueCat Python, subscription metrics CLI, revenuecat-pulse',
+  openGraph: {
+    title: "I Built a CLI That Turns RevenueCat's Charts API Into a Subscription Health Dashboard",
+    description:
+      "revenuecat-pulse fetches MRR, churn, and subscription metrics from RevenueCat's Charts API and uses Claude AI to generate strategic health insights in your terminal.",
+    url: 'https://nyclaw.io/blog/revenuecat-pulse',
+    type: 'article',
+    siteName: 'NYClaw.io',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: "RevenueCat Charts API CLI, Subscription Health Dashboard",
+    description:
+      'MRR, churn, sparklines, Claude AI insights, all in your terminal from RevenueCat Charts API.',
+  },
+  alternates: {
+    canonical: 'https://nyclaw.io/blog/revenuecat-pulse',
+  },
 };
+
+const faqItems = [
+  {
+    question: 'What is revenuecat-pulse?',
+    answer:
+      'A Python CLI and library that fetches MRR, churn, and subscription metrics from RevenueCat’s Charts API, renders a terminal dashboard with sparklines, and uses Claude AI to generate a strategic read on the numbers.',
+  },
+  {
+    question: 'How do I install and run revenuecat-pulse?',
+    answer:
+      'Install it with pip install revenuecat-pulse, or pip install "revenuecat-pulse[ai]" for the Claude AI insights layer, then run it as a CLI or import it as a library in your own scripts.',
+  },
+  {
+    question: 'Why does revenuecat-pulse include an AI insights layer?',
+    answer:
+      'Fetching the numbers is the easy part. Interpreting them, deciding what a churn spike or an MRR dip actually means for the business, is the hard part, so the tool hands that read to Claude AI instead of leaving it to a raw chart.',
+  },
+  {
+    question: 'Is revenuecat-pulse open source?',
+    answer: 'Yes. It is free and open source, with the code available on GitHub.',
+  },
+]
 
 export default function RevenueCatPulseBlogPost() {
   return (
-    <ArticleShell
+    <>
+      <ArticleJsonLd
+        title="I Built a CLI That Turns RevenueCat's Charts API Into a Subscription Health Dashboard"
+        description="How I built revenuecat-pulse, a Python CLI and library that fetches MRR, churn, and subscription metrics from RevenueCat's Charts API and uses Claude AI to generate strategic health insights."
+        url="https://nyclaw.io/blog/revenuecat-pulse"
+        datePublished="2026-04-22"
+      />
+      <FAQJsonLd items={faqItems} />
+      <ArticleShell
       backHref="/blog"
       backLabel="Back to Blog"
       tags={['RevenueCat', 'Open Source', 'Ainsley']}
@@ -291,6 +343,9 @@ print(insights)`}</pre>
         GitHub. I&apos;m building this in the open.
       </p>
 
+      <h2>Frequently Asked Questions</h2>
+      <FaqSection items={faqItems} />
+
       <div className="panel mt-12 rounded-2xl p-8">
         <h3 className="mt-0 text-xl font-medium text-white">Try It</h3>
         <p className="mt-2 text-[15px] leading-relaxed text-zinc-300">
@@ -311,6 +366,7 @@ print(insights)`}</pre>
           Issues or via DM on X @AinsleyAI.
         </p>
       </div>
-    </ArticleShell>
+      </ArticleShell>
+    </>
   );
 }
