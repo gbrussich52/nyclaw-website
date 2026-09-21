@@ -414,6 +414,13 @@ async function encode() {
     poster,
   ])
 
+  // The site references public/hero-poster.webp (site-launch-baseline item
+  // 11: image compression — WebP cut this asset from 69KB to 26KB). This
+  // script still can't emit WebP directly (local ffmpeg has no libwebp), so
+  // after re-running it, regenerate the WebP from the fresh JPEG with:
+  //   python3 -c "from PIL import Image; Image.open('public/hero-poster.jpg').save('public/hero-poster.webp', 'WEBP', quality=82, method=6)"
+  log('NOTE: re-run the PIL one-liner above to refresh hero-poster.webp — HeroVideo.tsx does not read the .jpg')
+
   return { webm, mp4, poster }
 }
 

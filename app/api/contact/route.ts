@@ -1,19 +1,22 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { appendFileSync, mkdirSync } from 'fs'
 import { join } from 'path'
+import { z } from 'zod'
 import { sanitize } from '../../../lib/sanitize'
 import { createRateLimiter } from '../../../lib/rate-limit'
 import { storeLeadInRedis } from '../../../lib/leads'
 
-interface ContactFormData {
-  name: string
-  email: string
-  phone?: string
-  businessType: string
-  challenge: string
-  message?: string
-  smsConsent?: boolean
-}
+const ContactSchema = z.object({
+  name: z.string().min(1).max(200),
+  email: z.string().email().max(254),
+  phone: z.string().max(50).optional(),
+  businessType: z.string().min(1).max(200),
+  challenge: z.string().min(1).max(200),
+  message: z.string().max(5000).optional(),
+  smsConsent: z.boolean().optional(),
+  website: z.string().max(0).optional(), // honeypot — real visitors never fill this
+  ts: z.coerce.number().optional(),      // form-render timestamp, for the time-trap check
+})
 
 // Distributed rate limiter (per IP, max 3 submissions per hour).
 // Upstash-backed when provisioned; per-instance in-memory fallback otherwise.
@@ -40,21 +43,40 @@ export async function POST(req: NextRequest) {
     )
   }
 
-  let body: ContactFormData
+  let body: unknown
   try {
     body = await req.json()
   } catch {
     return NextResponse.json({ error: 'Invalid request' }, { status: 400 })
   }
 
-  const name = sanitize(body.name)
-  const email = sanitize(body.email)
-  const phone = sanitize(body.phone ?? '')
-  const businessType = sanitize(body.businessType)
-  const challenge = sanitize(body.challenge)
-  const message = sanitize(body.message ?? '')
-  const smsConsent = body.smsConsent === true
+  const parsed = ContactSchema.safeParse(body)
+  if (!parsed.success) {
+    return NextResponse.json({ error: 'Invalid request' }, { status: 400 })
+  }
 
+  // Honeypot: a real visitor never sees or fills this field. A bot that
+  // fills every input trips it. Return a fake success so the bot doesn't
+  // learn it was caught, before any persistence happens.
+  if (parsed.data.website) {
+    return NextResponse.json({ ok: true })
+  }
+  // Time-trap: a submission within 2s of the form rendering is almost
+  // certainly a scripted bot, not a human filling out the form.
+  if (parsed.data.ts && Date.now() - parsed.data.ts < 2000) {
+    return NextResponse.json({ ok: true })
+  }
+
+  const name = sanitize(parsed.data.name)
+  const email = sanitize(parsed.data.email)
+  const phone = sanitize(parsed.data.phone ?? '')
+  const businessType = sanitize(parsed.data.businessType)
+  const challenge = sanitize(parsed.data.challenge)
+  const message = sanitize(parsed.data.message ?? '')
+  const smsConsent = parsed.data.smsConsent === true
+
+  // Defense-in-depth: zod already enforces required fields, but keep the
+  // explicit check in case sanitize() strips a field down to empty.
   if (!name || !email || !businessType || !challenge) {
     return NextResponse.json({ error: 'Missing required fields' }, { status: 400 })
   }

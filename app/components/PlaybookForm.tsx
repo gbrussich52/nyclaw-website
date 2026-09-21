@@ -6,7 +6,7 @@ import { useContactSubmit } from '../hooks/useContactSubmit'
 
 export default function PlaybookForm() {
   const [playbookEmail, setPlaybookEmail] = useState('')
-  const { loading, errorMsg, submitted: playbookSubmitted, submit } = useContactSubmit()
+  const { loading, errorMsg, submitted: playbookSubmitted, submit, honeypotRef } = useContactSubmit()
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -53,6 +53,15 @@ export default function PlaybookForm() {
                 Where AI Fits Your Business &middot; What to Automate First &middot; Real Costs &amp; Timelines &middot; Common Mistakes
               </p>
               <form onSubmit={handleSubmit} className="flex flex-col gap-3 sm:flex-row">
+                <input
+                  ref={honeypotRef}
+                  type="text"
+                  name="website"
+                  tabIndex={-1}
+                  autoComplete="off"
+                  aria-hidden="true"
+                  className="hidden"
+                />
                 <label className="sr-only" htmlFor="playbook-email">
                   Email address
                 </label>
@@ -78,7 +87,7 @@ export default function PlaybookForm() {
                   {errorMsg}
                 </p>
               )}
-              <p className="mt-3 text-xs text-zinc-500">No spam. Unsubscribe anytime.</p>
+              <p className="mt-3 text-xs text-zinc-400">No spam. Unsubscribe anytime.</p>
             </>
           )}
         </div>

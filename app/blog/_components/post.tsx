@@ -124,7 +124,7 @@ export function AuthorBio({ children }: { children: React.ReactNode }) {
       </span>
       <div>
         <p className="font-medium text-white">NYClaw.io</p>
-        <p className="mt-0.5 text-[13px] text-zinc-500">
+        <p className="mt-0.5 text-[13px] text-zinc-400">
           AI Agency — New York City &amp; Westchester
         </p>
         <p className="mt-2 text-sm leading-relaxed text-zinc-300">{children}</p>

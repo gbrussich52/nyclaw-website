@@ -23,7 +23,7 @@ import CtaPanel from '../../components/CtaPanel'
 export const metadata: Metadata = {
   title: 'Custom AI Agents & Workflow Automation',
   description:
-    'NYClaw.io is an AI agency that designs and builds custom agents and workflow automations for small businesses in Westchester County and NYC. Project-based sprints from $3,500 — no monthly lock-in.',
+    'NYClaw.io builds custom AI agents and workflow automations for small businesses in Westchester County and NYC — project sprints from $3,500, no monthly lock-in.',
   keywords:
     'custom AI agents, AI workflow automation small business, AI agency westchester, CRM automation, AI automation NYC, agent development',
   openGraph: {

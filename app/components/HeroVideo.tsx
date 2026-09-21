@@ -33,7 +33,7 @@ export default function HeroVideo({ className = '' }: { className?: string }) {
   if (!motionOk) {
     return (
       <img
-        src="/hero-poster.jpg"
+        src="/hero-poster.webp"
         alt=""
         aria-hidden="true"
         className={`absolute inset-0 h-full w-full object-cover ${className}`}
@@ -48,7 +48,7 @@ export default function HeroVideo({ className = '' }: { className?: string }) {
       muted
       playsInline
       preload="metadata"
-      poster="/hero-poster.jpg"
+      poster="/hero-poster.webp"
       aria-hidden="true"
       className={`absolute inset-0 h-full w-full object-cover ${className}`}
     >

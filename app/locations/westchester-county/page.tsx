@@ -26,7 +26,7 @@ import { CALENDLY_URL } from '../../config'
 export const metadata: Metadata = {
   title: 'AI Agency for Westchester County Businesses',
   description:
-    'NYClaw.io delivers AI automation, consulting, and AI-powered marketing for small businesses across Westchester County, NY — White Plains, Yonkers, New Rochelle, Scarsdale, and beyond. Free 15-min fit audit.',
+    'NYClaw.io delivers AI automation, consulting, and AI marketing for small businesses across Westchester County, NY — White Plains, Yonkers. Free fit audit.',
   keywords:
     'AI agency westchester county, AI automation westchester NY, AI consulting westchester, AI implementation westchester, small business AI westchester county, AI workflow automation white plains, AI consulting yonkers, AI marketing new rochelle',
   openGraph: {

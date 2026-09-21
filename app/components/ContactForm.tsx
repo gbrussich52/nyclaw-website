@@ -19,7 +19,7 @@ export default function ContactForm() {
     challenge: '',
     message: '',
   })
-  const { loading, errorMsg, submitted: formSubmitted, submit } = useContactSubmit()
+  const { loading, errorMsg, submitted: formSubmitted, submit, honeypotRef } = useContactSubmit()
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -55,6 +55,15 @@ export default function ContactForm() {
             onSubmit={handleSubmit}
             className="panel flex flex-col gap-5 rounded-2xl p-6 sm:p-10"
           >
+            <input
+              ref={honeypotRef}
+              type="text"
+              name="website"
+              tabIndex={-1}
+              autoComplete="off"
+              aria-hidden="true"
+              className="hidden"
+            />
             <div>
               <label className={labelClass} htmlFor="contact-name">
                 Your name *
@@ -149,7 +158,7 @@ export default function ContactForm() {
             >
               {loading ? 'Submitting…' : 'Request project scope →'}
             </button>
-            <p className="text-center text-[13px] text-zinc-500">
+            <p className="text-center text-[13px] text-zinc-400">
               We respond within 24 hours. Prefer a live call? Book the free 15-min fit audit instead.
             </p>
           </form>

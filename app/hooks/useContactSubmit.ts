@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import { track } from '@vercel/analytics'
 
 /**
@@ -22,12 +22,23 @@ export interface UseContactSubmitResult {
   submitted: boolean
   /** POSTs `payload` to /api/contact. Returns true on success. */
   submit: (payload: Record<string, unknown>, source?: string) => Promise<boolean>
+  /**
+   * Ref for a hidden honeypot input rendered by each form. Real visitors
+   * never see or fill it; a bot that fills every input trips it. Read at
+   * submit time (not stored in state) so it never triggers a re-render.
+   */
+  honeypotRef: React.RefObject<HTMLInputElement | null>
 }
 
 export function useContactSubmit(): UseContactSubmitResult {
   const [loading, setLoading] = useState(false)
   const [errorMsg, setErrorMsg] = useState('')
   const [submitted, setSubmitted] = useState(false)
+  const honeypotRef = useRef<HTMLInputElement>(null)
+  // Captured once, at first render, as the form's render timestamp — the
+  // server rejects submissions that arrive suspiciously soon after (see
+  // the time-trap check in app/api/contact/route.ts).
+  const renderedAtRef = useRef(Date.now())
 
   const submit = async (
     payload: Record<string, unknown>,
@@ -44,7 +55,11 @@ export function useContactSubmit(): UseContactSubmitResult {
       const res = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload),
+        body: JSON.stringify({
+          ...payload,
+          website: honeypotRef.current?.value ?? '',
+          ts: renderedAtRef.current,
+        }),
       })
       if (!res.ok) {
         const data = await res.json().catch(() => ({}))
@@ -64,5 +79,5 @@ export function useContactSubmit(): UseContactSubmitResult {
     return ok
   }
 
-  return { loading, errorMsg, submitted, submit }
+  return { loading, errorMsg, submitted, submit, honeypotRef }
 }

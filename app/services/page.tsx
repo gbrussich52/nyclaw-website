@@ -18,7 +18,7 @@ import { CALENDLY_URL, FREE_AUDIT_LABEL } from '../config'
 export const metadata: Metadata = {
   title: 'AI Agency Services — Custom Agents & Automations',
   description:
-    'NYClaw.io is an AI agency for small businesses in Westchester County and NYC. We design and build custom AI agents and workflow automations — project-based, not a product install.',
+    'NYClaw.io is an AI agency for small businesses in Westchester County and NYC — custom AI agents and workflow automations, project-based, not a product install.',
   keywords:
     'AI agency services, custom AI agents, workflow automation, small business AI, Westchester, NYC AI agency',
   openGraph: {

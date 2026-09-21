@@ -1,3 +1,6 @@
+---
+classification: PRIVATE
+---
 # Weekly NYClaw offerings + free guide refresh
 
 You are refreshing **NYClaw.io** (https://nyclaw.io) so free materials and paid offerings stay at the frontier of AI operator practice for small businesses.
