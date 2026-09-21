@@ -3,11 +3,11 @@ import Link from 'next/link'
 import { ArrowRight, ChevronRight } from 'lucide-react'
 
 export const metadata: Metadata = {
-  title: 'Blog',
+  title: 'AI Automation Blog | Westchester & NYC Small Business Insights',
   description:
     'Insights on AI implementation, website SEO, automation, and small business technology from NYClaw.io — an AI agency serving Westchester County, NY and NYC.',
   openGraph: {
-    title: 'Blog | NYClaw.io',
+    title: 'AI Automation Blog | Westchester & NYC Small Business Insights',
     description:
       'Insights on AI implementation, website SEO, automation, and small business technology.',
     url: 'https://nyclaw.io/blog',
@@ -18,6 +18,14 @@ export const metadata: Metadata = {
 }
 
 const posts = [
+  {
+    title: 'AI Appointment Scheduling: Complete Guide for Small Businesses (2026)',
+    description:
+      'Phone tag is costing your business real time every week. AI scheduling fills your calendar around the clock, qualifies leads before they book, and helps cut down on no-shows. Here\'s how small businesses are setting it up in 2026.',
+    date: 'September 21, 2026',
+    href: '/blog/ai-appointment-scheduling',
+    tags: ['AI Automation', 'Scheduling', 'Small Business'],
+  },
   {
     title: 'Why Westchester Businesses Are Hiring AI Consultants in 2026',
     description:
@@ -113,30 +121,6 @@ const posts = [
     date: 'April 29, 2026',
     href: '/blog/ai-automations-car-dealerships',
     tags: ['Automotive', 'Dealerships', 'AI Automation'],
-  },
-  {
-    title: 'How to Set Up Your AI with OpenClaw',
-    description:
-      'Step-by-step guide to setting up an AI entrepreneur on your Mac, including initial configuration and first revenue tracking.',
-    date: 'Coming Soon',
-    href: null,
-    tags: ['Tutorial', 'OpenClaw'],
-  },
-  {
-    title: 'Building an AI Influencer: The Sarah Case Study',
-    description:
-      'Everything we learned building Sarah — character design, UGC generation with Nano Banana, affiliate partnerships, and social media strategy.',
-    date: 'Coming Soon',
-    href: null,
-    tags: ['Case Study', 'AI Marketing'],
-  },
-  {
-    title: 'Affiliate Monetization: From Zero to First Sale',
-    description:
-      'How we monetized the Rumble Simulator with sports betting affiliates, including link optimization, testing, and revenue tracking.',
-    date: 'Coming Soon',
-    href: null,
-    tags: ['Monetization', 'Affiliates'],
   },
 ]
 
