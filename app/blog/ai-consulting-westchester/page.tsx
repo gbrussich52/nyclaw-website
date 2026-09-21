@@ -145,9 +145,9 @@ export default function BlogPost() {
 
         <FeatureBlock title="Lead response">
           A new lead from Google, Yelp, Zillow, or your website contact form gets a personalized
-          reply within 60 seconds — 24 hours a day, including weekends. Studies consistently show
-          that contacting a lead within 5 minutes of inquiry is 100x more effective than a same-day
-          callback. For a contractor or real estate office where an average job or transaction is
+          reply within 60 seconds, 24 hours a day, including weekends. The Lead Response Management
+          study (Oldroyd, MIT, 2007) found a lead contacted within 5 minutes is far more likely to be
+          reached and qualified than one contacted an hour later. For a contractor or real estate office where an average job or transaction is
           worth $5,000-50,000, a missed weekend lead is a material loss.
         </FeatureBlock>
 
@@ -161,8 +161,8 @@ export default function BlogPost() {
         <FeatureBlock title="Client intake">
           Intake forms, document collection, and pre-appointment questionnaires run over SMS or
           email before the first meeting. By the time the client arrives (or the call begins),
-          the information is already in your system. Law firms using AI-assisted intake typically
-          see a 40% reduction in first-appointment prep time.
+          the information is already in your system, and the first meeting starts on the substance
+          instead of the paperwork.
         </FeatureBlock>
 
         <FeatureBlock title="Follow-up sequences">
