@@ -1,6 +1,6 @@
 # NYClaw.io Content Calendar
 
-> Updated: 2026-04-07
+> Updated: 2026-09-21
 > Target: 2-3 articles/week, 20+ articles in 60 days
 
 ## Published
@@ -14,16 +14,27 @@
 | 5 | What GPT-5.4 Means for AI Assistants | /blog/gpt-5-4 | 2026-03-05 | GPT-5.4, AI architecture | Published |
 | 6 | How to Build an AI Assistant That Succeeds | /blog/how-to-succeed | 2026-03-05 | AI assistant, AI project failure | Published |
 | 7 | I Audited My Own Website. It Was Invisible. | /blog/i-audited-my-own-website | 2026-04-07 | SEO audit, Next.js SEO, client-side rendering | Published |
+| 8 | What AI Automation Actually Costs a Small Business | /blog/ai-automation-cost-westchester | AI automation cost, AI pricing westchester | 2026-08-07 | Published |
+| 9 | ChatGPT vs. Hiring an AI Consultant | /blog/chatgpt-vs-ai-consultant | ChatGPT vs consultant, AI tools comparison | 2026-08-07 | Published |
+| 10 | 5 Things NYC Small Business Owners Are Automating | /blog/ai-automation-small-business-nyc | AI automation NYC, small business AI | 2026-04-29 | Published |
+| 11 | Why Zapier Cannot Replace a Real AI Agent | /blog/zapier-vs-ai-agent | Zapier vs AI agent, workflow automation | 2026-04-29 | Published |
+| 12 | 5 AI Automations Every Dental Practice Should Run | /blog/ai-automations-dental | AI dental, dental automation | 2026-04-29 | Published |
+| 13 | 5 AI Automations Every NYC Medical Practice Should Run | /blog/ai-automations-medical | AI medical, healthcare automation | 2026-04-29 | Published |
+| 14 | How NYC Plumbers Are Losing Thousands to Missed Calls | /blog/ai-automations-plumbing-hvac | AI plumbing, HVAC automation | 2026-04-29 | Published |
+| 15 | How NYC Car Dealers Are Closing More Deals | /blog/ai-automations-car-dealerships | AI car dealership, automotive AI | 2026-04-29 | Published |
+| 16 | How Law Firms Are Using AI for Client Intake | /blog/ai-law-firm-client-intake | AI law firm, legal intake automation | 2026-04-29 | Published |
+| 17 | I Built a CLI That Turns RevenueCat Into a Dashboard | /blog/revenuecat-pulse | RevenueCat CLI, subscription metrics | 2026-04-22 | Published |
+| 18 | Agentic AI Security Best Practices | /blog/agentic-ai-security-best-practices | AI agent security, agentic AI security | 2026-03-06 | Published |
+| 19 | Why Westchester Businesses Are Hiring AI Consultants in 2026 | /blog/ai-consulting-westchester | AI consulting westchester, AI agency NY | 2026-09-14 | **Published 2026-09-14** |
+| 20 | AI Appointment Scheduling: Complete Guide for Small Businesses | /blog/ai-appointment-scheduling | AI scheduling, appointment automation | 2026-09-21 | **Published 2026-09-21** |
 
 ## Queue — HIGH Priority (Next 2 Weeks)
 
 | # | Title | Route | Target Keywords | Priority | Est. Effort |
 |---|-------|-------|-----------------|----------|-------------|
-| 8 | How AI Saves Real Estate Agents 10 Hours/Week | /blog/ai-real-estate-agents | AI real estate, real estate automation | HIGH | 2h |
-| 9 | AI Appointment Scheduling: Complete Guide for Small Businesses | /blog/ai-appointment-scheduling | AI scheduling, appointment automation | HIGH | 2h |
-| 10 | Why Westchester Businesses Are Hiring AI Consultants in 2026 | /blog/ai-consulting-westchester | AI consulting westchester, AI agency NY | HIGH | 2h |
-| 11 | How Much Does AI Implementation Actually Cost? (2026 Pricing Guide) | /blog/ai-implementation-cost | AI cost, AI pricing, AI implementation price | HIGH | 2.5h |
-| 12 | AI Agent vs. Virtual Assistant: Which Is Right for Your Business? | /blog/ai-agent-vs-virtual-assistant | AI agent, virtual assistant, AI comparison | HIGH | 2h |
+| 21 | How AI Saves Real Estate Agents 10 Hours/Week | /blog/ai-real-estate-agents | AI real estate, real estate automation | HIGH | 2h |
+| 22 | How Much Does AI Implementation Actually Cost? (2026 Pricing Guide) | /blog/ai-implementation-cost | AI cost, AI pricing, AI implementation price | HIGH | 2.5h |
+| 23 | AI Agent vs. Virtual Assistant: Which Is Right for Your Business? | /blog/ai-agent-vs-virtual-assistant | AI agent, virtual assistant, AI comparison | HIGH | 2h |
 
 ## Queue — MEDIUM Priority (Weeks 3-4)
 
