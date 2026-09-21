@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
-import { ArticleJsonLd } from '../../components/JsonLd'
+import { ArticleJsonLd, FAQJsonLd } from '../../components/JsonLd'
 import ArticleShell from '../../components/ArticleShell'
-import { CtaPanel } from '../_components/post'
+import { CtaPanel, FaqSection } from '../_components/post'
 
 export const metadata: Metadata = {
   title: 'Agentic AI Security: Best Practices for Developers Building AI Agents | NYClaw.io',
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Agentic AI Security Best Practices',
     description:
-      'Prompt injection, credential exposure, blast radius — AI agents introduce security risks traditional software never had. How to build them right.',
+      'Prompt injection, credential exposure, blast radius. AI agents introduce security risks traditional software never had. How to build them right.',
   },
   alternates: {
     canonical: 'https://nyclaw.io/blog/agentic-ai-security-best-practices',
@@ -55,6 +55,34 @@ const sources = [
   },
 ]
 
+const faqItems = [
+  {
+    question: 'What makes agentic AI security different from traditional application security?',
+    answer:
+      'An AI agent takes multi-step actions across systems on its own. When it makes a mistake or is manipulated, it does not just return a wrong value. It can take a chain of actions across multiple systems before anyone notices, so the blast radius scales with the agent’s access and autonomy.',
+  },
+  {
+    question: 'What is prompt injection?',
+    answer:
+      'Prompt injection is an attack where instructions hidden in content an agent processes, such as a webpage, email, or file, get treated as commands rather than data. It is one of the most common ways an agent with real access gets misused.',
+  },
+  {
+    question: 'Where should AI agent credentials be stored?',
+    answer:
+      'In environment variables or a secrets manager, never hardcoded in source or committed to git. Credentials should also be scoped to the minimum access the agent actually needs.',
+  },
+  {
+    question: 'What should you do if a credential is accidentally committed to git?',
+    answer:
+      'Rotate the credential immediately, remove it from the codebase, purge it from git history, and force-push the cleaned history. Treat the old credential as compromised even after it is removed.',
+  },
+  {
+    question: 'What is the principle of minimal authority for AI agents?',
+    answer:
+      'Give an agent only the access it needs for its current task, not standing access to everything it might ever touch. Narrower scopes mean a mistake or a successful prompt injection has a smaller blast radius.',
+  },
+]
+
 export default function AgenticAISecurityBestPractices() {
   return (
     <>
@@ -64,6 +92,7 @@ export default function AgenticAISecurityBestPractices() {
         url="https://nyclaw.io/blog/agentic-ai-security-best-practices"
         datePublished="2026-03-06"
       />
+      <FAQJsonLd items={faqItems} />
       <ArticleShell
       backHref="/blog"
       backLabel="Back to Blog"
@@ -608,6 +637,9 @@ export default function AgenticAISecurityBestPractices() {
         href="/#contact"
         label="Talk to Us"
       />
+
+      <h2>Frequently Asked Questions</h2>
+      <FaqSection items={faqItems} />
 
       <div className="panel rounded-xl p-6">
         <h4 className="text-lg font-medium text-white">Sources &amp; Further Reading</h4>

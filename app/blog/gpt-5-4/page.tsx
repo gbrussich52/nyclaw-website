@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
-import { ArticleJsonLd } from '../../components/JsonLd'
+import { ArticleJsonLd, FAQJsonLd } from '../../components/JsonLd'
 import ArticleShell from '../../components/ArticleShell'
-import { CtaPanel } from '../_components/post'
+import { CtaPanel, FaqSection } from '../_components/post'
 
 export const metadata: Metadata = {
   title: 'What GPT-5.4 Means for Building AI Assistants That Actually Work | NYClaw.io',
@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'What GPT-5.4 Means for Building AI Assistants That Actually Work',
     description:
-      'GPT-5.4 ships with native computer use and 1M token context. Here is what that means for autonomous AI assistant design.',
+      'GPT-5.4 ships with native computer use and a much larger context window. Here is what that means for autonomous AI assistant design.',
     url: 'https://nyclaw.io/blog/gpt-5-4',
     type: 'article',
     siteName: 'NYClaw.io',
@@ -21,12 +21,35 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'What GPT-5.4 Means for AI Assistants',
     description:
-      'Computer use, tool search, 1M context. GPT-5.4 is infrastructure validation for autonomous AI.',
+      'Computer use, tool search, a much larger context window. GPT-5.4 is infrastructure validation for autonomous AI.',
   },
   alternates: {
     canonical: 'https://nyclaw.io/blog/gpt-5-4',
   },
 };
+
+const faqItems = [
+  {
+    question: 'What are the three GPT-5.4 breakthroughs that matter for AI assistants?',
+    answer:
+      'Native computer use, which lets an agent operate a computer to complete multi-step tasks end to end, tool search, which cuts the token overhead of large toolsets, and a much larger context window for long-horizon memory. See OpenAI’s announcement for the details: https://openai.com/index/introducing-gpt-5-4/.',
+  },
+  {
+    question: 'Does native computer use mean autonomous AI assistants are ready to deploy now?',
+    answer:
+      'It is a strong signal. With native computer use, an assistant can run a workflow start to finish, research, draft, send, log, without a human handling every step in between.',
+  },
+  {
+    question: 'Why does governance matter more, not less, as models gain computer-use capabilities?',
+    answer:
+      'An AI that can operate a computer needs firm boundaries and decision rules before it touches anything real. Governance is what turns a capable-but-unsupervised agent into a scalable team member instead of a liability.',
+  },
+  {
+    question: "What should I do first if I'm building an AI assistant on GPT-5.4?",
+    answer:
+      'Start with identity, define who the AI is before what it does, build governance upfront rather than retrofitting it later, and only then add agentic workflows that run without human intervention.',
+  },
+]
 
 export default function GPT54Article() {
   return (
@@ -37,6 +60,7 @@ export default function GPT54Article() {
         url="https://nyclaw.io/blog/gpt-5-4"
         datePublished="2026-03-05"
       />
+      <FAQJsonLd items={faqItems} />
       <ArticleShell
         backHref="/blog"
         backLabel="Back to Blog"
@@ -157,6 +181,9 @@ export default function GPT54Article() {
         Benchmarks cited: OSWorld 75% computer-use success rate, 47% token reduction with tool
         search, 1M token context window.
       </p>
+
+      <h2>Frequently Asked Questions</h2>
+      <FaqSection items={faqItems} />
 
       <CtaPanel
         title="Ready to Build Your AI Assistant?"
