@@ -23,6 +23,10 @@ const ENTRIES: Entry[] = [
   { path: '', lastModified: '2026-07-27', changeFrequency: 'weekly', priority: 1 },
   { path: '/about', lastModified: '2026-08-27', changeFrequency: 'monthly', priority: 0.6 },
 
+  // Legal pages
+  { path: '/privacy', lastModified: '2026-09-19', changeFrequency: 'monthly', priority: 0.3 },
+  { path: '/terms', lastModified: '2026-09-19', changeFrequency: 'monthly', priority: 0.3 },
+
   // Service pages
   { path: '/services', lastModified: '2026-07-28', changeFrequency: 'monthly', priority: 0.9 },
   { path: '/services/ai-automation', lastModified: '2026-07-28', changeFrequency: 'monthly', priority: 0.9 },
@@ -41,6 +45,7 @@ const ENTRIES: Entry[] = [
 
   // Resources
   { path: '/resources', lastModified: '2026-07-28', changeFrequency: 'monthly', priority: 0.8 },
+  { path: '/free-ai-starter-kit', lastModified: '2026-09-17', changeFrequency: 'monthly', priority: 0.8 },
 
   // Blog
   { path: '/blog', lastModified: '2026-09-21', changeFrequency: 'weekly', priority: 0.8 },
