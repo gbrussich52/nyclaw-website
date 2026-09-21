@@ -19,6 +19,14 @@ export const metadata: Metadata = {
 
 const posts = [
   {
+    title: 'Why Westchester Businesses Are Hiring AI Consultants in 2026',
+    description:
+      "Most Westchester small businesses are still running the same manual processes they ran in 2022. Here's what an AI consultant actually does, what it costs, and what changes after — a ground-level guide for the Westchester market.",
+    date: 'September 14, 2026',
+    href: '/blog/ai-consulting-westchester',
+    tags: ['AI Consulting', 'Westchester', 'Small Business'],
+  },
+  {
     title: 'What AI Automation Actually Costs a Small Business in 2026',
     description:
       'DIY tools, a freelancer, or a managed AI operator — an honest breakdown of what each path actually costs a Westchester or NYC small business, and what drives the price.',
