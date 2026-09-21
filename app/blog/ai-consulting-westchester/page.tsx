@@ -146,21 +146,16 @@ export default function BlogPost() {
         <FeatureBlock title="Lead response">
           A new lead from Google, Yelp, Zillow, or your website contact form gets a personalized
           reply within 60 seconds, 24 hours a day, including weekends. The Lead Response Management
-          study (Oldroyd, MIT, 2007) found a lead contacted within 5 minutes is far more likely to
-          be reached and qualified than one contacted an hour later. For a contractor or real estate
-          office where an average job or transaction is worth $5,000–50,000, a missed weekend lead
-          is a material loss.
+          study (Oldroyd, MIT, 2007) found a lead contacted within 5 minutes is far more likely to be
+          reached and qualified than one contacted an hour later. For a contractor or real estate office where an average job or transaction is
+          worth $5,000-50,000, a missed weekend lead is a material loss.
         </FeatureBlock>
 
         <FeatureBlock title="Appointment scheduling">
-          Instead of a phone tag loop, an AI agent qualifies the lead, presents availability from
-          your calendar, and books the appointment — without a human touching the exchange. For
-          medical practices, law firms, and contractors, this removes 5-10 hours of administrative
-          work per week. See our full guide:{' '}
-          <a href="/blog/ai-appointment-scheduling">
-            AI Appointment Scheduling for Small Businesses
-          </a>
-          .
+          Instead of a phone tag loop, an AI agent qualifies the lead, presents availability
+          from your calendar, and books the appointment — without a human touching the exchange.
+          For medical practices, law firms, and contractors, this removes 5-10 hours of
+          administrative work per week.
         </FeatureBlock>
 
         <FeatureBlock title="Client intake">
@@ -216,26 +211,27 @@ export default function BlogPost() {
         <p>
           <strong>Free 15-minute fit audit.</strong> The right starting point before any money
           changes hands. A short call to identify the highest-ROI workflow in your business and
-          whether a custom build is the right tool for it. No pitch deck. If it is not a fit, you
-          will hear that.
+          whether a custom build is the right tool for it. No pitch deck. If it is not a fit,
+          you will hear that.
         </p>
         <p>
           <strong>Written AI roadmap: $1,000–2,500.</strong> A prioritized plan that maps 3-5
-          workflows worth automating, sequences the build order by ROI and complexity, and includes
-          a fixed-scope estimate for each. This credit applies toward any build over $3,500 — it is
-          an investment in knowing what to build, not a prerequisite to hiring someone.
+          workflows worth automating, sequences the build order by ROI and complexity, and
+          includes a fixed-scope estimate for each. This credit applies toward any build over
+          $3,500 — it is an investment in knowing what to build, not a prerequisite to hiring
+          someone.
         </p>
         <p>
-          <strong>Single agent or automation sprint: $3,500–8,000.</strong> A focused build scoped
-          to one mission-critical workflow — intake, lead response, scheduling, estimating, or
-          follow-up. Includes integration with your existing tools, testing against real edge cases,
-          and a handoff. Most first builds land in this range.
+          <strong>Single agent or automation sprint: $3,500–8,000.</strong> A focused build
+          scoped to one mission-critical workflow — intake, lead response, scheduling, estimating,
+          or follow-up. Includes integration with your existing tools, testing against real edge
+          cases, and a handoff. Most first builds land in this range.
         </p>
         <p>
           <strong>Multi-automation project: $5,000–15,000.</strong> Two or three connected
           workflows built as a cohesive system — for example, lead response that feeds into
-          scheduling, which feeds into intake and invoicing. Larger scope, more integrations, longer
-          timeline (4-8 weeks from kickoff).
+          scheduling, which feeds into intake and invoicing. Larger scope, more integrations,
+          longer timeline (4-8 weeks from kickoff).
         </p>
         <p>
           Monthly operation and monitoring after launch is available but optional. You own the
@@ -243,18 +239,20 @@ export default function BlogPost() {
         </p>
 
         <h2>How to Evaluate an AI Consultant Before Hiring</h2>
-        <p>Four questions worth asking in any first call:</p>
+        <p>
+          Four questions worth asking in any first call:
+        </p>
         <p>
           <strong>What workflows would you target in my business, and in what order?</strong> If
           the answer is generic or requires a paid discovery phase before they can say anything
           specific, that is a yellow flag. A consultant with real implementation experience should
-          be able to name the two or three highest-ROI workflows for your category within the first
-          15 minutes.
+          be able to name the two or three highest-ROI workflows for your category within the
+          first 15 minutes.
         </p>
         <p>
           <strong>What does the handoff look like?</strong> You should own the system after launch.
-          If the consultant can&apos;t explain clearly how your team will run the automation without
-          them, the engagement is structured around dependency, not delivery.
+          If the consultant can&apos;t explain clearly how your team will run the automation
+          without them, the engagement is structured around dependency, not delivery.
         </p>
         <p>
           <strong>Can you show me a system you have built that is similar?</strong> Not a case
