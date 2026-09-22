@@ -215,7 +215,7 @@ export default function WestchesterCountyPage() {
             <p>
               The median household income in Westchester County is among the highest in New
               York State — which means customers expect premium service, fast response
-              times, and seamless experiences. Meeting those expectations with a small team
+              times, and no dropped requests. Meeting those expectations with a small team
               is unsustainable without automation.
             </p>
             <p>
