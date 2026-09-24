@@ -157,6 +157,16 @@ export default function BlogPost() {
           leaves a professional impression on people who might refer business later.
         </FeatureBlock>
 
+        <p>
+          Worth knowing if your attorneys already work inside Claude for case research: that is a
+          separate layer from intake automation.{' '}
+          <a href="https://legalaimcp.com" target="_blank" rel="noopener noreferrer">
+            LegalAIMCP
+          </a>{' '}
+          connects Claude directly to CourtListener case law and other legal data sources — it
+          handles the research side of the practice, not the intake workflow covered here.
+        </p>
+
         <h2>What AI Does Not Replace</h2>
         <p>
           This matters, especially in legal: AI does not evaluate the merits of a case. It does not

@@ -10,7 +10,6 @@ export function LocalBusinessJsonLd() {
     url: 'https://nyclaw.io',
     email: 'hello@nyclaw.io',
     sameAs: [
-      'https://www.linkedin.com/company/nyclaw-io',
       'https://twitter.com/AinsleyNYC',
     ],
     areaServed: [
@@ -57,7 +56,6 @@ export function OrganizationJsonLd() {
     email: 'hello@nyclaw.io',
     areaServed: 'Westchester County, NY',
     sameAs: [
-      'https://www.linkedin.com/company/nyclaw-io',
       'https://github.com/gbrussich52',
     ],
     founder: {
@@ -162,7 +160,6 @@ export function ArticleJsonLd({
       name: 'NYClaw.io',
       url: 'https://nyclaw.io',
       sameAs: [
-        'https://www.linkedin.com/company/nyclaw-io',
         'https://twitter.com/AinsleyNYC',
       ],
     },
@@ -171,7 +168,6 @@ export function ArticleJsonLd({
       name: 'NYClaw.io',
       url: 'https://nyclaw.io',
       sameAs: [
-        'https://www.linkedin.com/company/nyclaw-io',
         'https://twitter.com/AinsleyNYC',
       ],
     },

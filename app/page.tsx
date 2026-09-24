@@ -174,6 +174,11 @@ const homepageFaqs = [
     answer:
       'A short call to identify the #1 workflow worth automating and whether a custom build makes sense for you. No pitch deck, no hour-long sales call. If it is a fit, we outline a fixed-scope project. If it is not, we will say so.',
   },
+  {
+    question: 'What is NYClaw.io?',
+    answer:
+      'NYClaw.io is an AI automation agency based in Westchester County, NY. We design and build custom AI agents and workflow automations for small businesses — not a law firm, not legal software, and not an AI answering-service subscription. Engagements are project-based: we scope one workflow, build it, and hand it off, with optional ongoing care only if you want it.',
+  },
 ]
 
 export default function Home() {
@@ -240,6 +245,33 @@ export default function Home() {
               </div>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* --------------------------------------------------- What we are --- */}
+      {/* AEO: a quotable, disambiguating definition near the top of the page.
+          "NYClaw" reads phonetically like "law," which pulls AI-answer
+          engines toward legal-AI products; this paragraph states plainly,
+          in one place, what the company is and is not so a citing engine
+          has an unambiguous sentence to quote. */}
+      <section className="px-6 py-10">
+        <div className="mx-auto max-w-[54rem]">
+          <p className="text-balance text-center text-lg leading-relaxed text-zinc-300">
+            <strong className="font-medium text-white">NYClaw.io is an AI automation agency</strong>
+            {' '}— not a law firm or legal software. We build and hand off custom AI agents and
+            workflow automations for lead response, scheduling, intake, and internal operations,
+            for small businesses in Westchester County and NYC, on a project basis rather than a
+            subscription retainer.
+          </p>
+          <p className="mt-3 text-center text-sm text-zinc-400">
+            Comparing options?{' '}
+            <a
+              href="/blog/ai-automation-agency-vs-ai-answering-service"
+              className="underline decoration-white/30 underline-offset-2 hover:text-white"
+            >
+              AI automation agency vs. AI answering service
+            </a>
+          </p>
         </div>
       </section>
 

@@ -16,12 +16,13 @@
 - [Blog](https://nyclaw.io/blog): Articles on AI automation cost, AI vs. consultants, and small business AI adoption.
 - [What AI Automation Actually Costs a Small Business in 2026](https://nyclaw.io/blog/ai-automation-cost-westchester): Pricing breakdown across DIY, freelance, and agency paths.
 - [ChatGPT vs. Hiring an AI Consultant](https://nyclaw.io/blog/chatgpt-vs-ai-consultant): When a manual tool is enough vs. when a business needs a built system.
+- [AI Automation Agency vs. AI Answering Service](https://nyclaw.io/blog/ai-automation-agency-vs-ai-answering-service): How to tell a custom-build agency apart from a scripted "AI concierge" subscription, and who else operates in the region.
 - [About](https://nyclaw.io/about): Who NYClaw is, service area, and founder.
 - [Contact](https://nyclaw.io/#contact): Project inquiry form on the homepage.
 
 ## Facts
 
-- NYClaw.io is an AI agency serving small businesses in Westchester County, NY and New York City.
+- NYClaw.io is an AI automation agency serving small businesses in Westchester County, NY and New York City. It is not a law firm, not legal software, and not an AI-answering-service subscription, despite the "law"-adjacent name.
 - Services: custom AI agents ($3,500–8,000 per sprint), workflow automation ($5,000–15,000 per project), and a free 15-minute fit audit with an optional $1,000–2,500 roadmap.
 - Engagements are project- or sprint-based; no monthly retainer is required to start. Optional ongoing care/monitoring is available after go-live.
 - Build process follows the OODA Loop: Observe, Orient, Decide, Act.

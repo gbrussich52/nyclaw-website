@@ -201,6 +201,22 @@ export default function ServicesPage() {
         </div>
       </section>
 
+      {/* ------------------------------------------------ Related reading --- */}
+      <section className="px-6 pb-16">
+        <div className="mx-auto max-w-[64rem]">
+          <p className="text-sm leading-relaxed text-zinc-400">
+            Not sure whether you need a custom build or a simpler tool? Read{' '}
+            <a
+              href="/blog/ai-automation-agency-vs-ai-answering-service"
+              className="text-zinc-300 underline decoration-white/30 underline-offset-2 hover:text-white"
+            >
+              AI automation agency vs. AI answering service
+            </a>{' '}
+            to see the difference before you buy either one.
+          </p>
+        </div>
+      </section>
+
       {/* ----------------------------------------------------- CTA panel --- */}
       <CtaPanel
         title="Not sure where to start?"
