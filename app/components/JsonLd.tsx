@@ -48,6 +48,9 @@ export function OrganizationJsonLd() {
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'Organization',
+    // Stable @id: gianibrussich.com's Person node lists this exact id under
+    // `owns`, so the two sites resolve to one entity graph (2026-09-24).
+    '@id': 'https://nyclaw.io/#organization',
     name: 'NYClaw.io',
     url: 'https://nyclaw.io',
     logo: 'https://nyclaw.io/icon',
@@ -60,6 +63,7 @@ export function OrganizationJsonLd() {
     ],
     founder: {
       '@type': 'Person',
+      '@id': 'https://gianibrussich.com/#person',
       name: 'Giani Brussich',
       sameAs: [
         'https://linkedin.com/in/gianib',
@@ -86,6 +90,7 @@ export function WebSiteJsonLd() {
     description: 'AI agency for small businesses — custom automations and agents in Westchester County, NY and NYC.',
     publisher: {
       '@type': 'Organization',
+      '@id': 'https://nyclaw.io/#organization',
       name: 'NYClaw.io',
       url: 'https://nyclaw.io',
     },
