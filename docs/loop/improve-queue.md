@@ -24,6 +24,8 @@ Auto-appended by weekly refresh + any agent that finds a real gap.
 - [ ] **2026-09-13** `radar-md-gap` — last30days radar markdown in ~/Documents/Last30Days/radar/ stopped at 2026-09-01; weekly refresh had to use X-brief Part 2 extracts. Restore the md files or document the new path. Source: weekly refresh 2026-09-13.
 - [ ] **2026-09-14** `playbook-works-on-tuesday` — Part 3B section: named job still fires mid-week; quota-exhausted is a Sense break; fallback is not “add another agent.” Source: weekly refresh / brief 2026-09-14.
 - [ ] **2026-09-14** `playbook-pin-tools` — Part 3 security: pin MCP versions; read skill pre-approvals; refuse Bash(*) / fake-scoped shell grants. Source: weekly refresh / brief 2026-09-14.
+- [ ] **2026-09-21** `playbook-demo-not-delivery` — Part 3B section: a weekend demo is not a finished job. Paste from `docs/loop/drafts/2026-09-21-playbook-section-demo-not-delivery.md`. Source: weekly refresh 2026-09-21. (Rebuilt 2026-09-26 from weekly-refresh-2026-09-21.md after the original uncommitted edit was lost to a git reset.)
+- [ ] **2026-09-21** `playbook-aeo-rerun-perplexity-first` — Extend `playbook-aeo-local-owners` with the rerun / Perplexity-first paragraph from the 09-21 draft. Source: weekly refresh 2026-09-21, ship-order item 5. (Rebuilt 2026-09-26, same reason.)
 
 ## Done
 
