@@ -1,3 +1,6 @@
+---
+classification: PRIVATE
+---
 # NYClaw.io Weekly SEO Audit — Automated Prompt
 
 > This prompt is executed by a scheduled Claude Code trigger every Monday at 9am ET.

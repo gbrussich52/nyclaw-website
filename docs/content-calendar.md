@@ -1,3 +1,6 @@
+---
+classification: PRIVATE
+---
 # NYClaw.io Content Calendar
 
 > Updated: 2026-09-21
