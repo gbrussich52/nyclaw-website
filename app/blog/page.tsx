@@ -19,6 +19,22 @@ export const metadata: Metadata = {
 
 const posts = [
   {
+    title: 'How AI Saves Real Estate Agents Hours Every Week',
+    description:
+      "A property inquiry that sits for even 30 minutes is usually already gone. Here's how agents are using AI to respond instantly, qualify leads, book showings, and follow up automatically.",
+    date: 'September 28, 2026',
+    href: '/blog/ai-real-estate-agents',
+    tags: ['AI Automation', 'Real Estate', 'Small Business'],
+  },
+  {
+    title: 'AI Automation Agency vs. AI Answering Service: What Are You Actually Comparing?',
+    description:
+      'Both get called "AI concierge." One answers phone calls with a script. The other builds a system that runs your workflow. Here is how to tell which one your business actually needs.',
+    date: 'September 24, 2026',
+    href: '/blog/ai-automation-agency-vs-ai-answering-service',
+    tags: ['AI Automation', 'Comparison', 'Westchester County'],
+  },
+  {
     title: 'AI Appointment Scheduling: Complete Guide for Small Businesses (2026)',
     description:
       'Phone tag is costing your business real time every week. AI scheduling fills your calendar around the clock, qualifies leads before they book, and helps cut down on no-shows. Here\'s how small businesses are setting it up in 2026.',
@@ -121,6 +137,30 @@ const posts = [
     date: 'April 29, 2026',
     href: '/blog/ai-automations-car-dealerships',
     tags: ['Automotive', 'Dealerships', 'AI Automation'],
+  },
+  {
+    title: 'Agentic AI Security: Best Practices for Developers Building AI Agents',
+    description:
+      'AI agents with access to code, email, and production systems have a new security surface. Here is how to build them without introducing vulnerabilities.',
+    date: 'March 6, 2026',
+    href: '/blog/agentic-ai-security-best-practices',
+    tags: ['Security', 'Agentic AI', 'Best Practices'],
+  },
+  {
+    title: 'What GPT-5.4 Means for Building AI Assistants That Actually Work',
+    description:
+      'GPT-5.4 ships with native computer use and a much larger context window. Here is what that means for autonomous AI assistant design.',
+    date: 'March 5, 2026',
+    href: '/blog/gpt-5-4',
+    tags: ['OpenAI', 'AI Architecture'],
+  },
+  {
+    title: 'How to Build an AI Assistant That Actually Succeeds',
+    description:
+      'Most AI projects fail because of unclear identity, not bad code. Here is the four-pillar framework that keeps AI assistants on track.',
+    date: 'March 5, 2026',
+    href: '/blog/how-to-succeed',
+    tags: ['AI Architecture', 'Leadership'],
   },
 ]
 

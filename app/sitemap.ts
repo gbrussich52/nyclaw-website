@@ -48,7 +48,8 @@ const ENTRIES: Entry[] = [
   { path: '/free-ai-starter-kit', lastModified: '2026-09-17', changeFrequency: 'monthly', priority: 0.8 },
 
   // Blog
-  { path: '/blog', lastModified: '2026-09-21', changeFrequency: 'weekly', priority: 0.8 },
+  { path: '/blog', lastModified: '2026-09-28', changeFrequency: 'weekly', priority: 0.8 },
+  { path: '/blog/ai-real-estate-agents', lastModified: '2026-09-28', changeFrequency: 'monthly', priority: 0.7 },
   { path: '/blog/ai-appointment-scheduling', lastModified: '2026-09-21', changeFrequency: 'monthly', priority: 0.7 },
   { path: '/blog/ai-consulting-westchester', lastModified: '2026-09-14', changeFrequency: 'monthly', priority: 0.7 },
   { path: '/blog/ai-automation-agency-vs-ai-answering-service', lastModified: '2026-09-24', changeFrequency: 'monthly', priority: 0.8 },
