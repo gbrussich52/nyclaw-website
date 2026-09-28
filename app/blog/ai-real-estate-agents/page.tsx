@@ -135,15 +135,15 @@ export default function BlogPost() {
           (<a href="https://www.nar.realtor/newsroom/realtors-adopt-technology-to-save-time-and-improve-the-client-experience-nar-report-finds">nar.realtor</a>)
           found that 23% of agents now use AI daily and another 25% use it weekly, roughly half of
           the profession, while the share of agents not using AI at all fell to 21%, down from 32%
-          the year before. The same report found that 81% of agents said saving time is their main
-          reason for adopting new technology, up from 66% a year earlier.
+          the year before. The same NAR report (nar.realtor) found that 81% of agents said saving
+          time is their main reason for adopting new technology, up from 66% a year earlier.
         </p>
         <p>
-          What the report also shows is where that AI use is concentrated today: 75% of agents who
-          use AI apply it to listing descriptions, and just over half use it for social posts and
-          emails. That is largely content generation, a real time-saver, but it stops well short
-          of the harder problem: the minutes between a lead coming in and someone actually
-          responding to it. That gap is where a purpose-built AI agent, rather than a
+          The same NAR report (nar.realtor) also shows where that AI use is concentrated today:
+          75% of agents who use AI apply it to listing descriptions, and just over half use it for
+          social posts and emails. That is largely content generation, a real time-saver, but it
+          stops well short of the harder problem: the minutes between a lead coming in and someone
+          actually responding to it. That gap is where a purpose-built AI agent, rather than a
           general-purpose chat tool, does the most work.
         </p>
 
