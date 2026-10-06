@@ -75,7 +75,7 @@ Required links: `/law-firm-workflows` as the assessment CTA; `https://legalaimcp
 
 ## Content Requirements (Every Article)
 
-- [ ] 1500-2500 words
+- [ ] Answer the named buyer question with primary-source support; no minimum word count
 - [ ] Unique H1 with primary keyword
 - [ ] Meta description (150-160 chars) with keyword
 - [ ] OpenGraph + Twitter Card tags

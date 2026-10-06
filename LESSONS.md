@@ -19,3 +19,5 @@ The company acquisition page now gives law-firm owners a fictional output, expli
 ## 2026-10-06 — Bound research inputs and verify the conversion destination
 
 Turn limits alone do not prevent expensive repeated reading. Use small source excerpts, stop at the qualified-candidate cap, and preserve facts after compaction. The first real probe exposed oversized inputs despite passing structural tests. Live booking verification also found15-minute site copy pointing to an active30-minute event; correct the public offer instead of assuming the URL slug proves duration. Gates:14 research-boundary tests and rendered booking labels checked against the actual calendar. No recorded appointment or acquired customer is implied.
+
+- 2026-10-06 — A corrected agent prompt can still inherit a retired rule from a second input. The successful weekly pilot repeated the calendar's old word quota. Remove the conflicting checklist at its source; the producer prompt already prioritizes evidence over length. Gate: read the real output and both scheduled inputs, rather than treating saved instructions as behavior.
