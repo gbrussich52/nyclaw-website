@@ -1,6 +1,9 @@
+---
+classification: PRIVATE
+---
 # NYClaw.io Content Calendar
 
-> Updated: 2026-09-28
+> Updated: 2026-10-06
 > Target: 2-3 articles/week, 20+ articles in 60 days
 
 ## Published
@@ -29,6 +32,19 @@
 | 20 | AI Appointment Scheduling: Complete Guide for Small Businesses | /blog/ai-appointment-scheduling | AI scheduling, appointment automation | 2026-09-21 | **Published 2026-09-21** |
 | 21a | AI Automation Agency vs. AI Answering Service | /blog/ai-automation-agency-vs-ai-answering-service | ai automation agency vs ai answering service, ai concierge for small business | 2026-09-24 | **Published 2026-09-24** (shipped outside this loop; added to calendar and blog index by 2026-09-28 audit) |
 | 21 | How AI Saves Real Estate Agents Hours Every Week | /blog/ai-real-estate-agents | AI real estate, real estate automation | 2026-09-28 | **Published 2026-09-28** |
+
+## Next article — missing-document follow-up (2026-10-06 priority)
+
+Write **Missing-Document Follow-Up for Law Firms: What to Check Before Automating** at `/blog/law-firm-missing-document-follow-up`. The route does not currently exist; check the route tree again before drafting. This is the one next editorial priority, ahead of the general queue below. It extends the existing intake article rather than duplicating it.
+
+Audience: law-firm owners and operations leads. Explain an agreed checklist → received documents → missing/uncertain items → staff-reviewed reminder → stop/escalate workflow. Use fictional examples only. Do not claim measured time savings, customer results, automatic legal compliance or universal integration support.
+
+Source-backed facts to distinguish carefully:
+
+- Clio Grow supports reminders for documents sent for electronic signatures; scheduling a future automatic reminder requires a due date. This does **not** establish automatic detection of every missing client document. [Clio: Share Documents](https://help.clio.com/hc/en-us/articles/14983640722971-Share-Documents) (checked 2026-10-06).
+- Clio documents native client intake and document management features. Assess these before assuming custom automation is necessary. [Clio features](https://www.clio.com/features/) (checked 2026-10-06). Confirm the firm's plan and configuration rather than assuming every feature is available.
+
+Required links: `/law-firm-workflows` as the assessment CTA; `https://legalaimcp.com/workflow-plan?utm_source=nyclaw&utm_medium=referral&utm_campaign=law_firm_workflows` for a fictional plan. Identify NYClaw as LegalAIMCP's operator. Free fit call first; any assessment fee/scope must be agreed in writing. No payment activation. Publish only after checking primary sources and the expected-output example.
 
 ## Queue — HIGH Priority (Next 2 Weeks)
 

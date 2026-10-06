@@ -1,111 +1,28 @@
-# NYClaw.io Weekly SEO Audit — Automated Prompt
+---
+classification: PRIVATE
+---
+# NYClaw weekly buyer-content routine
 
-> This prompt is executed by a scheduled Claude Code trigger every Monday at 9am ET.
-> Output: `docs/seo-reports/YYYY-MM-DD.md`
+Purpose: answer one concrete buyer question with useful, sourced content that leads to a scoped workflow assessment. This replaces the repeated whole-site scrape and generic volume target; no new schedule, tooling or metered API spend. The existing Monday cloud routine and content PR reviewer remain the distribution path.
 
-## Instructions
+## Start and budget
 
-You are running the weekly SEO audit for nyclaw.io. Complete ALL steps below and generate a report.
+Fetch origin, start from origin/main, and list existing app/blog routes before choosing a slug. Read this file and docs/content-calendar.md. Reconcile already published entries rather than rewriting them. One article maximum per run, 45 turns maximum, existing Sonnet subscription only. No paid Firecrawl or additional API key is required; use available web search and primary documentation. If sources or tools are unavailable, report the limitation truthfully and leave the article unpublished.
 
-### 1. Site Health Check
-- Scrape all pages listed in sitemap.ts via Firecrawl
-- Verify each page returns 200 and has content
-- Check that `/sitemap.xml` is valid and includes all pages
-- Check that `/robots.txt` is serving correctly
-- Flag any new pages that aren't in the sitemap
+## Buyer question and evidence
 
-### 2. Structured Data Validation
-- For each page, check for `application/ld+json` scripts
-- Verify homepage has: ProfessionalService, WebSite, FAQPage
-- Verify service pages have: Service, FAQPage
-- Verify blog posts have: Article, FAQPage
-- Verify knowledge articles have: Article
-- Flag any pages missing expected schemas
+Follow the calendar's explicit next-article priority, then its HIGH queue. Prefer a law-firm operations buyer question that connects to /law-firm-workflows. Do not create a second intake overview or new guide while an existing article answers the question. Explain the current manual handoff, native software features to check first, a fictional expected output, exceptions, a human approval point and a useful no-build outcome.
 
-### 3. Metadata Check
-- Every page must have: unique title, meta description, canonical URL
-- Every page must have: og:title, og:description
-- Flag duplicate titles or descriptions across pages
-- Flag titles > 60 chars or descriptions > 160 chars
+Verify current product facts against official vendor documentation during this run; link supporting sources next to claims. Numbers require a named source and URL in the same sentence. No invented savings, customer results, testimonials, search positions, integrations, certifications or guarantees. Minimum word counts are not evidence of quality: use the length needed to answer the question. Never equate hiring or a public workflow description with intent to buy automation.
 
-### 4. Content Quality
-- Check each page has an H1 tag
-- Flag pages with < 800 words (thin content)
-- Check blog posts have FAQ sections
-- Verify internal links exist (at least 2 per article)
-- Check for broken internal links
+## Build and conversion
 
-### 5. Keyword Rankings
-Run Firecrawl searches for these keywords and record NYClaw.io position:
+Reuse an existing article's Next.js structure, metadata, ArticleJsonLd, FAQ and components. Add the new route to app/blog/page.tsx and app/sitemap.ts, preserving every existing entry. Use a stable publication date. The CTA links /law-firm-workflows: free fit call first, any paid assessment fee/scope agreed in writing. Where a fictional demo or planner helps, link LegalAIMCP with utm_source=nyclaw&utm_medium=referral&utm_campaign=law_firm_workflows and disclose that NYClaw operates it. No client files, credentials, personal contact data, outbound email or payment activation.
 
-```
-"AI automation agency westchester" → target: top 3
-"AI implementation small business NYC" → target: top 5
-"AI consulting westchester county" → target: top 5
-"AI workflow automation small business" → target: top 10
-"AI agency NYC small business" → target: top 10
-"AI marketing small business" → target: top 10
-"OODA Loop business framework" → target: top 5
-```
+## Verify and distribute
 
-Compare against previous week's report (if exists) and flag movement.
+Check type/build, the new rendered route, its internal links and source claims. Check the live homepage, sitemap, robots and acquisition landing page; sample two existing article routes. Do not scrape the entire site every week. Record only observed checks. A unavailable authenticated analytics source is unknown, not zero. Search results can be observations with date/query, never a precise ranking claim without reproducible evidence. A local deployment is not indexed or acquired traffic.
 
-### 6. Competitor Monitor
-Check rankings for top 5 competitors:
-- redkeysolutions.com
-- nypcfix.com
-- hummingagent.ai
-- westchesterai.com
-- aiagencyny.com
+Update the calendar and write a concise report at docs/seo-reports/YYYY-MM-DD.md: buyer question, supporting URLs and observation dates, tests, live health, intended conversion path, remaining faults. Fix faults inside the allowed paths first. If no useful new article is justified, report why instead of producing filler.
 
-### 7. Content Calendar Review
-Read `docs/content-calendar.md` and:
-- Check which articles are due this week
-- Verify published articles meet quality requirements
-- Suggest next article to write based on keyword gaps
-
-### 8. Content Generation (if scheduled)
-If the content calendar has an article due:
-- Research the topic via Firecrawl (competitor articles, current data)
-- Write the full article with proper metadata, JSON-LD, FAQ, internal links
-- Create the page file in `app/blog/[slug]/page.tsx`
-- Update the content calendar status
-- Commit to a `content/[date]-[slug]` branch
-- Open a PR for review
-
-### 9. Content Freshness
-- Check for "coming soon" blog entries that need to be replaced
-- Check date-sensitive content (pricing, year references)
-- Flag articles older than 90 days that reference specific tool versions
-
-### Report Format
-
-```markdown
-# NYClaw.io SEO Report — [DATE]
-
-## Summary
-- Pages indexed: X
-- Structured data schemas: X valid, X missing
-- Content quality: X pages OK, X flagged
-- Keyword movement: [summary]
-
-## Rankings
-| Keyword | This Week | Last Week | Change |
-|---------|-----------|-----------|--------|
-
-## Issues Found
-1. [issue description + recommended fix]
-
-## Content Status
-- Published this week: X
-- Due next week: [article title]
-- Content freshness flags: X
-
-## Competitor Movement
-[notable changes]
-
-## Recommendations
-1. [prioritized action items]
-```
-
-Save report to: `docs/seo-reports/[YYYY-MM-DD].md`
+Commit and push a content/YYYY-MM-DD-slug branch; open a reviewable PR. Allowed paths: app/blog/, app/sitemap.ts, docs/content-calendar.md, docs/seo-reports/. Preserve concurrent edits. Never merge or push main from this producer. The existing reviewer can fix and merge only after its own PASS and green checks, under Giani's September 28 authorization. Report a PR URL as prepared for distribution until the merge and production URL are verified. Do not count reports, PRs, pageviews or demos as paid customers.

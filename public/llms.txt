@@ -4,6 +4,8 @@
 
 ## Key pages
 
+- [Law-firm workflows](https://nyclaw.io/law-firm-workflows): For firm owners and operations leads assessing one intake, missing-document follow-up, or invoice preparation workflow. Free fit call first; any subsequent assessment fee and scope are agreed in writing. NYClaw operates LegalAIMCP, whose fictional document check and workflow planner are linked from this page.
+
 - [Home](https://nyclaw.io/): Overview, services, recent builds, FAQ, and the free 15-minute fit audit.
 - [Services](https://nyclaw.io/services): Custom AI agents, workflow automation, and fit audit + roadmap — what each includes and costs.
 - [AI Automation](https://nyclaw.io/services/ai-automation): Custom agent and workflow automation service detail.
