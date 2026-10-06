@@ -247,10 +247,10 @@ export default function BlogPost() {
         </p>
 
         <CtaPanel
-          title="Want to See What This Looks Like for Your Practice?"
-          blurb="We map out exactly what an AI agent would handle in your intake workflow — and what it's worth in recovered revenue. Free, no commitment."
-          href="/#contact"
-          label="Start a Project"
+          title="Assess One Intake Handoff Before You Automate It"
+          blurb="For law-firm owners and operations leads: define the expected output, check your existing tools, and decide where staff approval is needed. Start with a free fit call; any follow-on assessment is scoped and priced in writing."
+          href="/law-firm-workflows"
+          label="Explore Law-Firm Workflows"
         />
 
         {/* Author bio — E-E-A-T signal. */}

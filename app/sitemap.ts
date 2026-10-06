@@ -28,6 +28,7 @@ const ENTRIES: Entry[] = [
   { path: '/terms', lastModified: '2026-09-19', changeFrequency: 'monthly', priority: 0.3 },
 
   // Service pages
+  { path: '/law-firm-workflows', lastModified: '2026-10-06', changeFrequency: 'monthly', priority: 0.9 },
   { path: '/services', lastModified: '2026-07-28', changeFrequency: 'monthly', priority: 0.9 },
   { path: '/services/ai-automation', lastModified: '2026-07-28', changeFrequency: 'monthly', priority: 0.9 },
   { path: '/services/ai-consulting', lastModified: '2026-07-28', changeFrequency: 'monthly', priority: 0.9 },
@@ -48,7 +49,8 @@ const ENTRIES: Entry[] = [
   { path: '/free-ai-starter-kit', lastModified: '2026-09-17', changeFrequency: 'monthly', priority: 0.8 },
 
   // Blog
-  { path: '/blog', lastModified: '2026-09-21', changeFrequency: 'weekly', priority: 0.8 },
+  { path: '/blog', lastModified: '2026-09-28', changeFrequency: 'weekly', priority: 0.8 },
+  { path: '/blog/ai-real-estate-agents', lastModified: '2026-09-28', changeFrequency: 'monthly', priority: 0.7 },
   { path: '/blog/ai-appointment-scheduling', lastModified: '2026-09-21', changeFrequency: 'monthly', priority: 0.7 },
   { path: '/blog/ai-consulting-westchester', lastModified: '2026-09-14', changeFrequency: 'monthly', priority: 0.7 },
   { path: '/blog/ai-automation-agency-vs-ai-answering-service', lastModified: '2026-09-24', changeFrequency: 'monthly', priority: 0.8 },
@@ -63,7 +65,7 @@ const ENTRIES: Entry[] = [
   { path: '/blog/ai-automations-dental', lastModified: '2026-07-28', changeFrequency: 'monthly', priority: 0.7 },
   { path: '/blog/ai-automations-medical', lastModified: '2026-07-28', changeFrequency: 'monthly', priority: 0.7 },
   { path: '/blog/ai-automations-plumbing-hvac', lastModified: '2026-07-28', changeFrequency: 'monthly', priority: 0.7 },
-  { path: '/blog/ai-law-firm-client-intake', lastModified: '2026-07-28', changeFrequency: 'monthly', priority: 0.7 },
+  { path: '/blog/ai-law-firm-client-intake', lastModified: '2026-10-06', changeFrequency: 'monthly', priority: 0.7 },
   { path: '/blog/revenuecat-pulse', lastModified: '2026-07-28', changeFrequency: 'monthly', priority: 0.7 },
   { path: '/blog/zapier-vs-ai-agent', lastModified: '2026-07-28', changeFrequency: 'monthly', priority: 0.7 },
   // Note: /blog/revenuecat-application is intentionally omitted — it carries

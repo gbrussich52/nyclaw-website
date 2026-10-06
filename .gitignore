@@ -42,3 +42,11 @@ secrets.yml
 *.sqlite3
 *.db
 .env*.local
+
+# Private company research; never publish draft outreach packets
+docs/loop/acquisition-*.json
+scripts/nyclaw-weekly-refresh/logs/
+
+# Private research plans and working drafts
+docs/loop/weekly-refresh-*.md
+docs/loop/drafts/

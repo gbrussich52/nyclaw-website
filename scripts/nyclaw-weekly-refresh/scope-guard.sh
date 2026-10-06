@@ -46,6 +46,7 @@ case "$mode" in
         [ -n "$flagged" ]  && { echo "Left in place, NOT committed — new files outside docs/loop/ (review or delete):"; printf '%s' "$flagged" | sed 's/^/- /'; }
       } >> "$plan" 2>/dev/null || true
       echo "scope-guard: reverted $(printf '%s' "$reverted" | grep -c .) file(s), flagged $(printf '%s' "$flagged" | grep -c .) untracked" >&2
+      exit 1
     fi
     ;;
   *) echo "scope-guard: unknown mode $mode" >&2; exit 2;;
