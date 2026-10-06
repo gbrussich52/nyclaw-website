@@ -55,7 +55,7 @@ export default function AboutPage() {
       <p>
         Every build starts with the OODA Loop — Observe, Orient, Decide, Act — so the first thing
         we build is the highest-ROI workflow, not a random tool stack. Engagements start with a
-        free 15-minute fit audit; if a deeper plan is needed, we scope a prioritized automation
+        free 30-minute fit audit; if a deeper plan is needed, we scope a prioritized automation
         roadmap before any full build begins.
       </p>
 
@@ -84,7 +84,7 @@ export default function AboutPage() {
         <p className="mt-2 text-sm text-zinc-400">
           Or{' '}
           <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer">
-            book the free 15-minute fit audit
+            book the free 30-minute fit audit
           </a>
           .
         </p>

@@ -46,7 +46,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'AI Agency for NYC Small Businesses | NYClaw.io',
     description:
-      'AI automation for small businesses across all five NYC boroughs. Free 15-min fit audit.',
+      'AI automation for small businesses across all five NYC boroughs. Free 30-min fit audit.',
   },
   alternates: {
     canonical: 'https://nyclaw.io/locations/new-york-city',
@@ -125,7 +125,7 @@ const services = [
   {
     Icon: Target,
     title: 'Fit Audit + Roadmap',
-    price: 'Free 15-min fit · $1K–$2.5K roadmap',
+    price: 'Free 30-min fit · $1K–$2.5K roadmap',
     desc: 'We analyze your workflows, your competitive landscape, and your NYC-specific cost structure to deliver a prioritized AI roadmap with clear ROI projections.',
     href: '/#services',
   },
@@ -229,7 +229,7 @@ export default function NewYorkCityPage() {
         titleAccent="NYC Small Businesses"
         lede="Compete with the big players. Without their headcount."
         blurb="New York City is the most competitive small business market in the country. AI levels the playing field — automating operations, cutting costs, and giving you back the hours you need to grow. Deployed with custom agents and automations built for how you work."
-        primary={{ label: 'Free 15-Min Fit Audit', href: CALENDLY_URL, external: true }}
+        primary={{ label: 'Free 30-Min Fit Audit', href: CALENDLY_URL, external: true }}
         secondary={{ label: 'Start a Project →', href: '/#contact' }}
       />
 
@@ -445,7 +445,7 @@ export default function NewYorkCityPage() {
       <LocationCta
         eyebrow="New York City"
         title="Ready to bring AI into your NYC business?"
-        blurb="Book a free 15-minute fit audit. No pitch — just clarity on which agent or automation fits your business and how much it will save you in the most expensive market in the country."
+        blurb="Book a free 30-minute fit audit. No pitch — just clarity on which agent or automation fits your business and how much it will save you in the most expensive market in the country."
       />
 
       <InternalLinks links={explore} />
