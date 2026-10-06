@@ -42,7 +42,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'AI Agency for Westchester County Businesses | NYClaw.io',
     description:
-      'AI automation for small businesses across Westchester County, NY. Free 15-min fit audit.',
+      'AI automation for small businesses across Westchester County, NY. Free 30-min fit audit.',
   },
   alternates: {
     canonical: 'https://nyclaw.io/locations/westchester-county',
@@ -106,7 +106,7 @@ const services = [
   {
     Icon: Target,
     title: 'Fit Audit + Roadmap',
-    price: 'Free 15-min fit · $1K–$2.5K roadmap',
+    price: 'Free 30-min fit · $1K–$2.5K roadmap',
     desc: 'We spend time inside your business, analyze your workflows and competitive landscape, and deliver a prioritized AI roadmap with clear ROI projections.',
     href: '/#services',
   },
@@ -157,7 +157,7 @@ const faqs = [
   {
     question: 'How much does AI cost for a Westchester County business?',
     answer:
-      'Most custom agent sprints run $3,500–$8,000 fixed scope. Multi-step workflow systems typically run $5,000–$15,000 as a project. Marketing automation builds start around $4,000–$12,000 with optional operation after go-live. A free 15-minute fit audit scopes the work; full roadmaps run $1,000–$2,500. Monthly care is never required to start.',
+      'Most custom agent sprints run $3,500–$8,000 fixed scope. Multi-step workflow systems typically run $5,000–$15,000 as a project. Marketing automation builds start around $4,000–$12,000 with optional operation after go-live. A free 30-minute fit audit scopes the work; full roadmaps run $1,000–$2,500. Monthly care is never required to start.',
   },
   {
     question: 'What types of Westchester businesses benefit most from AI?',
@@ -192,7 +192,7 @@ export default function WestchesterCountyPage() {
         titleAccent="Westchester County Businesses"
         lede="Local expertise. Proven AI systems. Measurable results."
         blurb="From White Plains to Tarrytown, Westchester businesses are using AI to cut costs, automate operations, and outpace their competition. We build the systems that make it happen — with custom agents and automations built for how you work."
-        primary={{ label: 'Free 15-Min Fit Audit', href: CALENDLY_URL, external: true }}
+        primary={{ label: 'Free 30-Min Fit Audit', href: CALENDLY_URL, external: true }}
         secondary={{ label: 'Start a Project →', href: '/#contact' }}
       />
 
@@ -332,7 +332,7 @@ export default function WestchesterCountyPage() {
       <LocationCta
         eyebrow="Westchester County, NY"
         title="Ready to bring AI into your business?"
-        blurb="Book a free 15-minute fit audit. No pitch — just clarity on which agent or automation fits your Westchester business and what it will cost."
+        blurb="Book a free 30-minute fit audit. No pitch — just clarity on which agent or automation fits your Westchester business and what it will cost."
       />
 
       <InternalLinks links={explore} />

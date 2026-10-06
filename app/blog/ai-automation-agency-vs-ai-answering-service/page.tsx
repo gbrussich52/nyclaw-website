@@ -148,7 +148,7 @@ export default function BlogPost() {
 
         <CtaPanel
           title="Not Sure Which One Solves Your Problem?"
-          blurb="A free 15-minute fit call will tell you honestly whether a subscription answering tool covers it, or your workflow needs a custom build."
+          blurb="A free 30-minute fit call will tell you honestly whether a subscription answering tool covers it, or your workflow needs a custom build."
           href="/#contact"
           label="Talk to Us"
         />

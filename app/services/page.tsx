@@ -69,8 +69,8 @@ const services = [
     title: 'Fit Audit + Roadmap',
     tagline: 'Know what to build first — and what to skip.',
     description:
-      'Start with a free 15-minute fit call. Need a deeper plan? We deliver a prioritized automation roadmap with ROI and build order before you invest in a full system.',
-    pricing: 'Free 15-min fit · $1K–2.5K full roadmap (optional)',
+      'Start with a free 30-minute fit call. Need a deeper plan? We deliver a prioritized automation roadmap with ROI and build order before you invest in a full system.',
+    pricing: 'Free 30-min fit · $1K–2.5K full roadmap (optional)',
     href: '/services/ai-consulting',
     cta: 'Learn about strategy',
   },
@@ -220,7 +220,7 @@ export default function ServicesPage() {
       {/* ----------------------------------------------------- CTA panel --- */}
       <CtaPanel
         title="Not sure where to start?"
-        blurb="Book a free 15-minute fit audit. We'll name the #1 agent or automation worth building — or tell you if now isn't the time."
+        blurb="Book a free 30-minute fit audit. We'll name the #1 agent or automation worth building — or tell you if now isn't the time."
         primary={{ label: FREE_AUDIT_LABEL, href: CALENDLY_URL, external: true }}
         secondary={{ label: 'Send us the workflow', href: '/#contact' }}
       />

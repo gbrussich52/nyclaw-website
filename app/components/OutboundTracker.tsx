@@ -6,7 +6,7 @@ import { track } from '@vercel/analytics'
 /**
  * OutboundTracker — records clicks on the booking CTA.
  *
- * The free 15-minute fit audit is the primary conversion, and it lives on
+ * The free 30-minute fit audit is the primary conversion, and it lives on
  * Calendly. Those clicks leave the site, so without this they are invisible:
  * analytics would show traffic and zero conversions even when the funnel is
  * working perfectly.
