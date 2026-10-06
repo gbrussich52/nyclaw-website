@@ -47,7 +47,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'NYClaw.io | AI Automation Agency | Westchester, NYC',
-    description: 'Custom AI automations and agents for small businesses. Free 15-min fit audit.',
+    description: 'Custom AI automations and agents for small businesses. Free 30-min fit audit.',
   },
   robots: {
     index: true,

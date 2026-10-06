@@ -5,7 +5,11 @@ classification: PRIVATE
 
 Operate only inside this site's `docs/loop/`. Do not edit production code, commit, publish, send messages, submit forms, buy anything, or create schedules. Public-site read-only research GETs are allowed; no outreach requests or contact scraping.
 
-Read the current content calendar, improve queue, last weekly plan and prior `acquisition-*.json` packets. Read the last seven days of existing AI briefs/radar only for relevant evidence. NYClaw offers a free fit call; follow-on assessment scope and fee require written agreement. NYClaw operates LegalAIMCP. The focal route is `/law-firm-workflows`; LegalAIMCP's planner and document example help qualify a workflow, not prove a deployed service.
+Use a compact input budget: read only the calendar's current priority, open improve items, the last plan's next step, and prior packet domain lists (extract domains, not full packets). Add at most three relevant existing brief headlines if useful. Keep this initial context under 2,000 words total. Do not read the whole codebase, tests, skills or brief archive. Read validator code/tests only to diagnose an actual validation failure.
+
+Run one batched public-primary discovery search. Then inspect company pages only through `python3 scripts/nyclaw-weekly-refresh/acquisition-check.py --source-excerpt HTTPS_URL`, not raw WebFetch or full HTML. This reuses bounded safe fetches and prints at most 600 visible words around workflow/location terms, with email/phone strings redacted. Select exact unredacted text for quotations; do not quote across an excerpt gap or a redaction. Count failed URLs toward the eight-URL total. Fetch each selected page once during research; the final validator independently rechecks evidence. Stop research as soon as three relevant firms are confirmed and write the artifacts. If fewer qualify by the cap, write that honest result immediately.
+
+After compaction, do not reread the same inputs. Preserve the inspected URLs, selected quotations, already-used domains, remaining source budget, exact run ID and packet schema in your working summary. NYClaw offers a free fit call; follow-on assessment scope and fee require written agreement. NYClaw operates LegalAIMCP. The focal route is `/law-firm-workflows`; LegalAIMCP's planner and document example help qualify a workflow, not prove a deployed service.
 
 Write exactly these bounded artifacts using the date and run ID supplied by the runner:
 

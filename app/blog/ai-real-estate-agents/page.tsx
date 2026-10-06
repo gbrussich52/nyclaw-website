@@ -286,7 +286,7 @@ export default function BlogPost() {
         <AuthorBio>
           NYClaw.io is an AI agency based in Westchester County, NY. We build custom AI lead
           response, scheduling, and follow-up systems for real estate agents and small businesses
-          across Westchester and NYC. Free 15-minute fit audit available, no obligation.
+          across Westchester and NYC. Free 30-minute fit audit available, no obligation.
         </AuthorBio>
 
         <h2>Frequently Asked Questions</h2>

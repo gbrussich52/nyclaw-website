@@ -15,3 +15,7 @@ evidence, what changed.
 ## 2026-10-06 — Put workflow evidence before a paid assessment
 
 The company acquisition page now gives law-firm owners a fictional output, explicit review boundaries and named assessment deliverables before the free-fit-call CTA. The proposed $495 fee in the revenue audit remains a hypothesis; this release does not activate a payment or imply validated demand. Gate: every follow-on assessment requires scope and fee in writing, and acquisition content must link to an actual route with a stable sitemap date. This improves existing pages and the existing content queue; no new scheduled loop is added.
+
+## 2026-10-06 — Bound research inputs and verify the conversion destination
+
+Turn limits alone do not prevent expensive repeated reading. Use small source excerpts, stop at the qualified-candidate cap, and preserve facts after compaction. The first real probe exposed oversized inputs despite passing structural tests. Live booking verification also found15-minute site copy pointing to an active30-minute event; correct the public offer instead of assuming the URL slug proves duration. Gates:14 research-boundary tests and rendered booking labels checked against the actual calendar. No recorded appointment or acquired customer is implied.

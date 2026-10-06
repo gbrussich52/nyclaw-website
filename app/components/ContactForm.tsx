@@ -130,7 +130,7 @@ export default function ContactForm() {
                 <option value="automation">Workflow automation across my tools</option>
                 <option value="lead-response">Lead / missed-call response</option>
                 <option value="scheduling">Scheduling &amp; follow-ups</option>
-                <option value="where-to-start">Not sure — want the 15-min fit audit</option>
+                <option value="where-to-start">Not sure — want the 30-min fit audit</option>
               </select>
             </div>
             <div>
@@ -159,7 +159,7 @@ export default function ContactForm() {
               {loading ? 'Submitting…' : 'Request project scope →'}
             </button>
             <p className="text-center text-[13px] text-zinc-400">
-              We respond within 24 hours. Prefer a live call? Book the free 15-min fit audit instead.
+              We respond within 24 hours. Prefer a live call? Book the free 30-min fit audit instead.
             </p>
           </form>
         )}

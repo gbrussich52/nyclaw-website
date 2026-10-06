@@ -37,7 +37,7 @@ const faqItems = [
   {
     question: 'How much does AI consulting cost in Westchester County?',
     answer:
-      'A free 15-minute fit audit starts the engagement at no cost. A written AI roadmap — which maps your highest-ROI workflows and sequences the build order — runs $1,000–2,500 and is credited toward any project over $3,500. A custom agent build (intake bot, lead responder, scheduling assistant, estimating workflow) runs $3,500–8,000 per sprint. A larger project covering 2-3 connected automations runs $5,000–15,000. Monthly monitoring and iteration after launch is available but never required.',
+      'A free 30-minute fit audit starts the engagement at no cost. A written AI roadmap — which maps your highest-ROI workflows and sequences the build order — runs $1,000–2,500 and is credited toward any project over $3,500. A custom agent build (intake bot, lead responder, scheduling assistant, estimating workflow) runs $3,500–8,000 per sprint. A larger project covering 2-3 connected automations runs $5,000–15,000. Monthly monitoring and iteration after launch is available but never required.',
   },
   {
     question: 'Is it worth hiring an AI consultant if my business already uses Zapier or ChatGPT?',
@@ -47,7 +47,7 @@ const faqItems = [
   {
     question: 'How long does a typical AI consulting project take?',
     answer:
-      'A fit audit is 15 minutes. A written roadmap takes 1-2 weeks. A focused agent sprint — scoped to one mission-critical workflow — ships in 2-4 weeks from kickoff once access and integrations are sorted. Larger multi-automation projects run 4-8 weeks. Every engagement starts with the OODA Loop: Observe (map your current process), Orient (rank the ROI opportunities), Decide (scope the first build), Act (build and hand it off).',
+      'A fit audit is 30 minutes. A written roadmap takes 1-2 weeks. A focused agent sprint — scoped to one mission-critical workflow — ships in 2-4 weeks from kickoff once access and integrations are sorted. Larger multi-automation projects run 4-8 weeks. Every engagement starts with the OODA Loop: Observe (map your current process), Orient (rank the ROI opportunities), Decide (scope the first build), Act (build and hand it off).',
   },
   {
     question: 'What makes an AI agency different from a freelancer or a national AI vendor?',
@@ -86,7 +86,7 @@ export default function BlogPost() {
         <Callout>
           <strong>The short answer:</strong> An AI consultant maps your real workflows, builds
           custom automations and agents around them, and hands off working systems — not a report.
-          A free 15-minute fit audit is the starting point. A full engagement in Westchester County
+          A free 30-minute fit audit is the starting point. A full engagement in Westchester County
           typically runs $3,500–15,000 depending on scope.
         </Callout>
 
@@ -209,7 +209,7 @@ export default function BlogPost() {
           process. Here is a realistic breakdown of what each level of engagement looks like:
         </p>
         <p>
-          <strong>Free 15-minute fit audit.</strong> The right starting point before any money
+          <strong>Free 30-minute fit audit.</strong> The right starting point before any money
           changes hands. A short call to identify the highest-ROI workflow in your business and
           whether a custom build is the right tool for it. No pitch deck. If it is not a fit,
           you will hear that.
@@ -288,7 +288,7 @@ export default function BlogPost() {
 
         <CtaPanel
           title="Find Out What an AI Consultant Would Build First for Your Business"
-          blurb="Book a free 15-minute fit audit. We'll name the #1 workflow worth automating — or tell you honestly if now isn't the time."
+          blurb="Book a free 30-minute fit audit. We'll name the #1 workflow worth automating — or tell you honestly if now isn't the time."
           href="/#contact"
           label="Book the Free Audit"
         />
@@ -296,7 +296,7 @@ export default function BlogPost() {
         <AuthorBio>
           NYClaw.io is an AI agency based in Westchester County, NY, building custom AI agents
           and automations for small businesses across Westchester and NYC. Project pricing runs
-          $3,500–15,000. Free 15-minute fit audit available at no cost.
+          $3,500–15,000. Free 30-minute fit audit available at no cost.
         </AuthorBio>
 
         <h2>Frequently Asked Questions</h2>

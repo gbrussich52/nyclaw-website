@@ -1,12 +1,12 @@
 # NYClaw
 
-> AI agency that designs and builds custom AI automations and agents for small businesses in Westchester County, NY and NYC. Project-based builds — not a one-size product install. Custom agent sprints run $3,500–8,000; workflow automation projects run $5,000–15,000; a free 15-minute fit audit and an optional $1,000–2,500 roadmap are available first.
+> AI agency that designs and builds custom AI automations and agents for small businesses in Westchester County, NY and NYC. Project-based builds — not a one-size product install. Custom agent sprints run $3,500–8,000; workflow automation projects run $5,000–15,000; a free 30-minute fit audit and an optional $1,000–2,500 roadmap are available first.
 
 ## Key pages
 
 - [Law-firm workflows](https://nyclaw.io/law-firm-workflows): For firm owners and operations leads assessing one intake, missing-document follow-up, or invoice preparation workflow. Free fit call first; any subsequent assessment fee and scope are agreed in writing. NYClaw operates LegalAIMCP, whose fictional document check and workflow planner are linked from this page.
 
-- [Home](https://nyclaw.io/): Overview, services, recent builds, FAQ, and the free 15-minute fit audit.
+- [Home](https://nyclaw.io/): Overview, services, recent builds, FAQ, and the free 30-minute fit audit.
 - [Services](https://nyclaw.io/services): Custom AI agents, workflow automation, and fit audit + roadmap — what each includes and costs.
 - [AI Automation](https://nyclaw.io/services/ai-automation): Custom agent and workflow automation service detail.
 - [AI Consulting](https://nyclaw.io/services/ai-consulting): Fit audit and automation roadmap service detail.
@@ -25,11 +25,11 @@
 ## Facts
 
 - NYClaw.io is an AI automation agency serving small businesses in Westchester County, NY and New York City. It is not a law firm, not legal software, and not an AI-answering-service subscription, despite the "law"-adjacent name.
-- Services: custom AI agents ($3,500–8,000 per sprint), workflow automation ($5,000–15,000 per project), and a free 15-minute fit audit with an optional $1,000–2,500 roadmap.
+- Services: custom AI agents ($3,500–8,000 per sprint), workflow automation ($5,000–15,000 per project), and a free 30-minute fit audit with an optional $1,000–2,500 roadmap.
 - Engagements are project- or sprint-based; no monthly retainer is required to start. Optional ongoing care/monitoring is available after go-live.
 - Build process follows the OODA Loop: Observe, Orient, Decide, Act.
 - Real client builds include Valentine Family Electric (estimating/billing/invoicing automation) and Byram Mason, Building & Stone Supply (structured multi-model AI workflow).
 
 ## Contact
 
-Book the free 15-minute fit audit or send a project inquiry via the contact form at https://nyclaw.io/#contact.
+Book the free 30-minute fit audit or send a project inquiry via the contact form at https://nyclaw.io/#contact.

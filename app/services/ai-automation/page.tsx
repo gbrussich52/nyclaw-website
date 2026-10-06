@@ -246,7 +246,7 @@ export default function AIAutomationPage() {
 
       <CtaPanel
         title="Ready for a custom agent or automation?"
-        blurb="Tell us the workflow that burns the most time. We'll scope a fixed project — or start with a free 15-minute fit audit."
+        blurb="Tell us the workflow that burns the most time. We'll scope a fixed project — or start with a free 30-minute fit audit."
         primary={{ label: 'Start a project', href: '/#contact' }}
         footer={
           <>

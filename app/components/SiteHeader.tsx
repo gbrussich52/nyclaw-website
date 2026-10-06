@@ -79,8 +79,8 @@ export default function SiteHeader() {
           {/*
             Site launch baseline item 20: the fixed header sits over the hero,
             so its CTA and the hero's two CTAs were competing above the fold
-            as three actionable elements. The "15-min fit audit" button was
-            the duplicate (Book the 15-min audit already covers that action
+            as three actionable elements. The "30-min fit audit" button was
+            the duplicate (Book the 30-min audit already covers that action
             in the hero) and is dropped here; "Start a project" stays as the
             one persistent nav CTA.
           */}
@@ -134,7 +134,7 @@ export default function SiteHeader() {
                 className="flex h-10 items-center justify-center rounded-md text-sm font-medium text-zinc-200 outline outline-1 outline-white/15"
                 style={{ background: 'color-mix(in oklab, #27272a 55%, #000)' }}
               >
-                Book the 15-min audit
+                Book the 30-min audit
               </a>
             </div>
           </div>

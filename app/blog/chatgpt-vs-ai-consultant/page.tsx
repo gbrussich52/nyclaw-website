@@ -145,7 +145,7 @@ export default function BlogPost() {
 
         <CtaPanel
           title="Not Sure Which Side of the Line You're On?"
-          blurb="A free 15-minute fit call will tell you honestly whether ChatGPT alone covers it, or your process needs something built to run on its own."
+          blurb="A free 30-minute fit call will tell you honestly whether ChatGPT alone covers it, or your process needs something built to run on its own."
           href="/#contact"
           label="Talk to Us"
         />

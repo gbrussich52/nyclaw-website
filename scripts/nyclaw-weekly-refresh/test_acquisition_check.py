@@ -69,6 +69,16 @@ class AcquisitionTests(unittest.TestCase):
 
 class SourceTests(unittest.TestCase):
  packet=AcquisitionTests.packet
+ def test_excerpt_is_bounded_relevant_case_preserved_and_contacts_removed(self):
+  page='<script>InvisibleDocument</script><style>HiddenIntake</style><p>'+'Noise '*800+'New York Document Intake records for fictional firm. Email hello@firmcompany.com or call (212) 555-0199. '+'Tail '*900+'</p>'
+  excerpt=a.source_excerpt(page)
+  self.assertLessEqual(len(excerpt.split()),600)
+  self.assertIn('New York Document Intake records',excerpt)
+  self.assertNotIn('hello@',excerpt);self.assertNotIn('555-0199',excerpt)
+  self.assertNotIn('InvisibleDocument',excerpt);self.assertNotIn('HiddenIntake',excerpt)
+  plain=a.source_excerpt('<p>'+'Ordinary '*900+'</p>')
+  self.assertEqual(len(plain.split()),600)
+  self.assertTrue(plain.startswith('Ordinary'))
  def test_visible_quote_verification_rejects_fabrication_and_hidden_scripts(self):
   p=self.packet()
   self.assertTrue(a.verify_sources(p,lambda url:'<p>We handle residential transactions.</p>'))

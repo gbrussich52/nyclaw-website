@@ -23,13 +23,13 @@ import CtaPanel from '../../components/CtaPanel'
 export const metadata: Metadata = {
   title: 'AI Fit Audit & Strategy Roadmap',
   description:
-    'NYClaw.io offers free 15-minute AI fit audits and paid roadmaps for small businesses in Westchester County and NYC — know what to build first.',
+    'NYClaw.io offers free 30-minute AI fit audits and paid roadmaps for small businesses in Westchester County and NYC — know what to build first.',
   keywords:
     'AI consulting small business, AI fit audit, AI roadmap, AI strategy westchester, AI agency consulting, automation roadmap',
   openGraph: {
     title: 'AI Fit Audit & Strategy Roadmap | NYClaw.io',
     description:
-      'Free 15-min fit audit or full roadmap. Know exactly which agents and automations to build first.',
+      'Free 30-min fit audit or full roadmap. Know exactly which agents and automations to build first.',
     url: 'https://nyclaw.io/services/ai-consulting',
     siteName: 'NYClaw.io',
     type: 'website',
@@ -38,7 +38,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'AI Fit Audit & Roadmap | NYClaw.io',
     description:
-      'Free 15-min fit audit. Optional full roadmap with ROI and build order.',
+      'Free 30-min fit audit. Optional full roadmap with ROI and build order.',
   },
   alternates: {
     canonical: 'https://nyclaw.io/services/ai-consulting',
@@ -47,7 +47,7 @@ export const metadata: Metadata = {
 
 /** Figures are the live route's own — the strip only restyles them. */
 const stats = [
-  { raw: '15 min', label: 'Free fit audit' },
+  { raw: '30 min', label: 'Free fit audit' },
   { raw: '$1K+', label: 'Full roadmap from' },
   { to: 10, suffix: '+', label: 'Roadmap deliverables' },
   { raw: 'Build', label: 'Credits toward project' },
@@ -128,7 +128,7 @@ const deliverables = [
 
 const plans = [
   {
-    name: '15-Min Fit Audit',
+    name: '30-Min Fit Audit',
     price: 'Free',
     unit: 'live call',
     desc: 'Name the #1 workflow and whether a custom agent or automation is worth building.',
@@ -156,7 +156,7 @@ const plans = [
 
 const faqs = [
   {
-    question: 'What is the free 15-minute fit audit?',
+    question: 'What is the free 30-minute fit audit?',
     answer:
       'A short call to identify the #1 workflow worth automating and whether a custom agent or automation build makes sense. No pitch deck. If it is a fit, we outline a fixed-scope project. If it is not, we will say so.',
   },
@@ -173,7 +173,7 @@ const faqs = [
   {
     question: 'Do I need a roadmap before a build?',
     answer:
-      'Not if you already know the workflow. Skip straight to a project quote. The free 15-min fit audit is enough for many clients. The paid roadmap is for teams that want a written plan before investing in a multi-agent system. Roadmap fees credit toward builds over $3,500.',
+      'Not if you already know the workflow. Skip straight to a project quote. The free 30-min fit audit is enough for many clients. The paid roadmap is for teams that want a written plan before investing in a multi-agent system. Roadmap fees credit toward builds over $3,500.',
   },
   {
     question: 'Do I have to buy a monthly retainer?',
@@ -192,7 +192,7 @@ export default function AIConsultingPage() {
     <>
       <ServiceJsonLd
         name="AI Fit Audit & Strategy Roadmap"
-        description="Free 15-minute fit audits and paid AI roadmaps for small businesses. Know which custom agents and automations to build first. NYClaw.io AI agency — Westchester County and NYC."
+        description="Free 30-minute fit audits and paid AI roadmaps for small businesses. Know which custom agents and automations to build first. NYClaw.io AI agency — Westchester County and NYC."
         url="https://nyclaw.io/services/ai-consulting"
       />
       <FAQJsonLd items={faqs} />
@@ -203,8 +203,8 @@ export default function AIConsultingPage() {
         titleTop="Fit audit & roadmap"
         titleAccent="before you build"
         lede="Know which agent or automation to build first — and what to skip."
-        blurb="Start with a free 15-minute fit audit. Need a deeper plan? We deliver a prioritized roadmap with ROI and build order — before you invest in a full custom system."
-        primary={{ label: 'Book free 15-min audit', href: '/#contact' }}
+        blurb="Start with a free 30-minute fit audit. Need a deeper plan? We deliver a prioritized roadmap with ROI and build order — before you invest in a full custom system."
+        primary={{ label: 'Book free 30-min audit', href: '/#contact' }}
         secondary={{ label: 'See what you get', href: '#what-you-get' }}
       />
 
@@ -247,8 +247,8 @@ export default function AIConsultingPage() {
 
       <CtaPanel
         title="Ready to see where AI fits your business?"
-        blurb="Book a free 15-minute fit audit — no pitch deck, no hour-long sales call. Just clarity on the #1 thing to build."
-        primary={{ label: 'Book free 15-min audit', href: '/#contact' }}
+        blurb="Book a free 30-minute fit audit — no pitch deck, no hour-long sales call. Just clarity on the #1 thing to build."
+        primary={{ label: 'Book free 30-min audit', href: '/#contact' }}
         footer={
           <>
             Or explore:{' '}

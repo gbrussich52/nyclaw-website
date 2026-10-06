@@ -37,7 +37,7 @@ const capabilities = [
 export const metadata: Metadata = {
   title: 'NYClaw.io | AI Automation Agency | Westchester, NYC',
   description:
-    'NYClaw.io is an AI agency that builds custom automations and agents for small businesses in Westchester County, NY and NYC. Free 15-min fit audit.',
+    'NYClaw.io is an AI agency that builds custom automations and agents for small businesses in Westchester County, NY and NYC. Free 30-min fit audit.',
   keywords:
     'AI agency, custom AI agents, AI automation agency, small business AI, workflow automation, Westchester NY, NYC AI agency, agent development, OODA Loop',
   openGraph: {
@@ -53,7 +53,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'NYClaw.io | AI Automation Agency | Westchester, NYC',
     description:
-      'Custom AI automations and agents for small businesses in Westchester County & NYC. Free 15-min fit audit.',
+      'Custom AI automations and agents for small businesses in Westchester County & NYC. Free 30-min fit audit.',
   },
   alternates: {
     canonical: 'https://nyclaw.io',
@@ -91,8 +91,8 @@ const services = [
     eyebrow: 'Entry',
     title: 'Fit audit + roadmap',
     price: 'Free',
-    unit: '15-min fit audit · roadmap $1K–2.5K',
-    desc: 'Start with a free 15-minute fit call. If you need a deeper plan, we deliver a prioritized automation roadmap with ROI and build order — before you spend on a full system.',
+    unit: '30-min fit audit · roadmap $1K–2.5K',
+    desc: 'Start with a free 30-minute fit call. If you need a deeper plan, we deliver a prioritized automation roadmap with ROI and build order — before you spend on a full system.',
     href: '/services/ai-consulting',
   },
 ]
@@ -100,7 +100,7 @@ const services = [
 const ooda = [
   {
     letter: 'O',
-    timeline: '15 min',
+    timeline: '30 min',
     label: 'Observe',
     desc: 'We map your processes, tools and workflows to find where time and money are being lost.',
   },
@@ -170,7 +170,7 @@ const homepageFaqs = [
       'Many first agents ship in a focused multi-day sprint once scope and access are clear. Larger multi-agent systems take longer and are priced as a project. We use the OODA Loop (Observe → Orient → Decide → Act) so every build starts with the highest-ROI workflow, not a random tool stack.',
   },
   {
-    question: 'What is the free 15-minute fit audit?',
+    question: 'What is the free 30-minute fit audit?',
     answer:
       'A short call to identify the #1 workflow worth automating and whether a custom build makes sense for you. No pitch deck, no hour-long sales call. If it is a fit, we outline a fixed-scope project. If it is not, we will say so.',
   },
@@ -232,7 +232,7 @@ export default function Home() {
                     rel="noopener noreferrer"
                     className="inline-flex h-12 items-center gap-1 rounded-full bg-white pl-5 pr-3 text-base font-medium text-zinc-950 shadow-[0_1px_2px_rgba(0,0,0,.2)] transition-opacity hover:opacity-90"
                   >
-                    <span className="whitespace-nowrap">Book the 15-min audit</span>
+                    <span className="whitespace-nowrap">Book the 30-min audit</span>
                     <ChevronRight size={18} aria-hidden="true" />
                   </a>
                   <a
@@ -493,7 +493,7 @@ export default function Home() {
                 Ready for a system built for how you work?
               </h2>
               <p className="text-[15px] leading-relaxed text-zinc-400">
-                Book a free 15-minute fit audit. We will name the #1 automation or agent worth
+                Book a free 30-minute fit audit. We will name the #1 automation or agent worth
                 building — or tell you if now is not the time.
               </p>
               <a
@@ -502,7 +502,7 @@ export default function Home() {
                 rel="noopener noreferrer"
                 className="inline-flex h-12 items-center gap-1 rounded-full bg-white pl-5 pr-3 text-base font-medium text-zinc-950 transition-opacity hover:opacity-90"
               >
-                Book the 15-min audit
+                Book the 30-min audit
                 <ChevronRight size={18} aria-hidden="true" />
               </a>
             </div>

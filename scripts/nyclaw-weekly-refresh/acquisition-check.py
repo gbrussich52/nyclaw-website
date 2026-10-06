@@ -139,6 +139,29 @@ def fetch_source(url):
         return raw.decode('utf-8',errors='replace')
 
 
+def source_excerpt(page):
+    """At most 600 visible words; preserve case for quotes, omit contact strings."""
+    parser=VisibleText();parser.feed(page)
+    visible=html.unescape(' '.join(parser.parts))
+    visible=re.sub(r'[\w.+-]+@[\w.-]+\.[a-z]{2,}', '[redacted]', visible, flags=re.I)
+    visible=re.sub(r'(?<!\w)(?:\+?\d[\s().-]*){8,}(?!\w)', '[redacted]', visible)
+    words=visible.split()
+    terms={'intake','document','documents','records','westchester','brooklyn'}
+    hits=[]
+    for index,word in enumerate(words):
+        token=word.strip('.,:;!?()[]').casefold()
+        if token in terms or (token=='new' and index+1<len(words) and words[index+1].strip('.,:;!?()[]').casefold()=='york'):
+            if not hits or index>hits[-1]+70:hits.append(index)
+            if len(hits)==8:break
+    if not hits:return ' '.join(words[:600])
+    output=[];previous_end=0
+    for index in hits:
+        start=max(previous_end,index-35);end=min(len(words),index+36)
+        if output and start>previous_end:output.append('[…]')
+        output.extend(words[start:end]);previous_end=end
+    return ' '.join(output[:600])
+
+
 def verify_sources(data,fetch=fetch_source):
     validate(data)
     visible={}
@@ -161,10 +184,14 @@ def main():
     parser=argparse.ArgumentParser()
     parser.add_argument('--root',type=Path,default=Path(__file__).resolve().parents[2])
     parser.add_argument('--validate-latest',action='store_true')
+    parser.add_argument('--source-excerpt',metavar='HTTPS_URL')
     parser.add_argument('--verify-sources',action='store_true');parser.add_argument('--json',action='store_true')
     parser.add_argument('--packet',type=Path);parser.add_argument('--run-id');parser.add_argument('--plan',type=Path)
     args=parser.parse_args()
     try:
+        if args.source_excerpt:
+            print(source_excerpt(fetch_source(args.source_excerpt)))
+            return 0
         packet=args.packet
         run_id=args.run_id
         if args.validate_latest:

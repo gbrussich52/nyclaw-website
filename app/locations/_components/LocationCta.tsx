@@ -41,7 +41,7 @@ export default function LocationCta({
               rel="noopener noreferrer"
               className="inline-flex h-11 items-center rounded-full bg-white px-5 text-[15px] font-medium text-zinc-950 transition-opacity hover:opacity-90"
             >
-              <span className="whitespace-nowrap">Free 15-Min Fit Audit</span>
+              <span className="whitespace-nowrap">Free 30-Min Fit Audit</span>
             </a>
             <Link
               href="/#contact"

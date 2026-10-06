@@ -126,7 +126,7 @@ export default function BlogPost() {
         <p>
           At NYClaw, a custom agent sprint runs $3,500–8,000, and a project covering 2-3
           connected automations runs $5,000–15,000 — monthly operation is optional after launch,
-          not bundled by default. A free 15-minute fit call and an optional $1,000–2,500 written
+          not bundled by default. A free 30-minute fit call and an optional $1,000–2,500 written
           roadmap (credited toward any build over $3,500) are available before you commit to a
           project price.
         </p>
@@ -155,7 +155,7 @@ export default function BlogPost() {
 
         <CtaPanel
           title="Not Sure Which Path Fits Your Business?"
-          blurb="A free 15-minute fit call will tell you honestly whether you need a $50/month Zapier stack or a managed build — before you spend anything."
+          blurb="A free 30-minute fit call will tell you honestly whether you need a $50/month Zapier stack or a managed build — before you spend anything."
           href="/#contact"
           label="Talk to Us"
         />
