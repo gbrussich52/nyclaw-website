@@ -6,7 +6,7 @@ const files = [
   'app/page.tsx', 'app/about/page.tsx', 'app/services/page.tsx',
   'app/services/ai-automation/page.tsx', 'app/services/ai-consulting/page.tsx',
   'app/services/ai-marketing/page.tsx', 'app/components/ContactForm.tsx',
-  'app/components/WorkflowBlueprintOffer.tsx',
+  'app/components/WorkflowBlueprintOffer.tsx', 'app/components/WorkflowExplorer.tsx',
   'app/locations/new-york-city/page.tsx', 'app/locations/westchester-county/page.tsx',
   'app/components/ResourceForm.tsx',
 ]

@@ -6,12 +6,6 @@ import {
   Workflow,
   Target,
   Mail,
-  CalendarClock,
-  Phone,
-  MessageSquare,
-  Database,
-  Globe,
-  BarChart2,
   ChevronRight,
   ArrowUpRight,
 } from 'lucide-react'
@@ -22,19 +16,8 @@ import HeroVideo from './components/HeroVideo'
 import FaqAccordion from './components/FaqAccordion'
 import Reveal from './components/Reveal'
 import WorkflowBlueprintOffer from './components/WorkflowBlueprintOffer'
+import WorkflowExplorer from './components/WorkflowExplorer'
 import { CALENDLY_URL } from './config'
-
-const capabilities = [
-  { Icon: Bot, label: 'AI assistants' },
-  { Icon: Workflow, label: 'Connected workflows' },
-  { Icon: Database, label: 'One set of customer details' },
-  { Icon: Mail, label: 'Follow-up reminders' },
-  { Icon: CalendarClock, label: 'Booking & scheduling' },
-  { Icon: Phone, label: 'Inquiry routing' },
-  { Icon: MessageSquare, label: 'Common customer questions' },
-  { Icon: Globe, label: 'Research & draft preparation' },
-  { Icon: BarChart2, label: 'A clear view of the work' },
-]
 
 export const metadata: Metadata = {
   title: 'AI Automation for Small Business | Westchester & NYC',
@@ -61,13 +44,6 @@ export const metadata: Metadata = {
     canonical: 'https://nyclaw.io',
   },
 }
-
-const stats = [
-  { raw: 'Scoped', label: 'Fixed project price' },
-  { raw: 'Handoff', label: 'Training and documentation' },
-  { raw: 'Sprint', label: 'Project-based delivery' },
-  { raw: 'Your tools', label: 'Built around your workflow' },
-]
 
 const services = [
   {
@@ -190,7 +166,7 @@ export default function Home() {
                 </p>
 
                 <div className="mt-8 flex flex-wrap items-center gap-2">
-                  {/* Book directly; the secondary action shows existing approved work. */}
+                  {/* Book directly or inspect a clearly labeled fictional workflow example. */}
                   <a
                     href={CALENDLY_URL}
                     target="_blank"
@@ -201,10 +177,10 @@ export default function Home() {
                     <ChevronRight size={18} aria-hidden="true" />
                   </a>
                   <a
-                    href="#work"
+                    href="#workflow-examples"
                     className="inline-flex h-12 items-center rounded-full px-5 text-base font-medium text-white outline outline-1 outline-white/[0.18] transition-colors hover:bg-white/5"
                   >
-                    <span className="whitespace-nowrap">See real client work</span>
+                    <span className="whitespace-nowrap">See workflow examples</span>
                   </a>
                 </div>
               </div>
@@ -239,49 +215,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ------------------------------------------------------- Marquee --- */}
-      <section className="py-6">
-        <div className="mx-auto max-w-[80rem] px-6">
-          <div className="flex items-center gap-6">
-            <p className="hidden max-w-[11rem] shrink-0 border-r border-white/10 pr-6 text-right text-sm text-zinc-400 md:block">
-              Wired into the tools you already run
-            </p>
-            <div className="marquee flex-1 py-6">
-              <div className="marquee-track gap-16 pr-16">
-                {[...capabilities, ...capabilities].map(({ Icon, label }, i) => (
-                  <span
-                    key={i}
-                    className="inline-flex items-center gap-2.5 whitespace-nowrap text-[15px] font-medium text-white"
-                  >
-                    <Icon size={18} strokeWidth={1.75} aria-hidden="true" />
-                    {label}
-                  </span>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* --------------------------------------------------------- Stats --- */}
-      <section className="px-6 pb-24">
-        <div className="mx-auto max-w-[64rem]">
-          <div className="hairline-grid grid grid-cols-2 overflow-hidden rounded-sm border-y border-white/10 md:grid-cols-4">
-            {stats.map((stat, i) => (
-              <Reveal key={stat.label} delay={i * 80}>
-                <div className="px-6 py-8">
-                  <div className="text-gradient-metric text-[32px] font-semibold leading-none tracking-[-0.03em]">
-                    {stat.raw}
-                  </div>
-                  <div className="mt-3 text-[11px] font-medium uppercase tracking-[0.08em] text-zinc-400">
-                    {stat.label}
-                  </div>
-                </div>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
+      <WorkflowExplorer />
 
       {/* ---------------------------------------------------------- Work --- */}
       <section id="work" className="px-6 pb-24">
