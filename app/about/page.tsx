@@ -49,7 +49,7 @@ export default function AboutPage() {
 
       <h2>Real work, described plainly</h2>
       <p>
-        The <Link href="/#work">approved client examples on the homepage</Link> describe work
+        The <Link href="/work">client examples</Link> describe work
         for Valentine Family Electric and Byram Mason, Building &amp; Stone Supply. They are
         specific builds, not a promise that every business will get the same result.
       </p>

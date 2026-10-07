@@ -21,7 +21,7 @@ import { CALENDLY_URL } from '../config'
 const NAV = [
   { href: '/services', label: 'Services' },
   { href: '/#process', label: 'How it works' },
-  { href: '/#work', label: 'Work' },
+  { href: '/work', label: 'Work' },
   { href: '/knowledge', label: 'Knowledge' },
   { href: '/resources', label: 'Free guide' },
 ] as const

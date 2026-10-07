@@ -21,7 +21,7 @@ export default function PlaybookForm() {
   }
 
   return (
-    <section className="px-6 pb-24">
+    <section id="playbook-guide" className="px-6 pb-24">
       <div className="mx-auto max-w-[44rem]">
         <div className="mb-10 flex flex-col items-center gap-4 text-center">
           <h2 className="text-balance text-[clamp(1.75rem,3.5vw,2.25rem)] font-medium leading-[1.15] tracking-[-0.025em] text-white">
@@ -35,14 +35,22 @@ export default function PlaybookForm() {
         <div className="panel relative isolate overflow-hidden rounded-2xl px-6 py-10 text-center sm:px-10">
           <div className="bloom-blue pointer-events-none absolute left-1/2 top-0 -z-10 h-[18rem] w-[30rem] -translate-x-1/2 rounded-full" />
           {playbookSubmitted ? (
-            <div className="py-4">
+            <div className="py-4" role="status" aria-live="polite">
               <CheckCircle2 className="mx-auto mb-4 h-12 w-12 text-white" strokeWidth={1.5} />
               <h3 className="mb-2 text-xl font-medium tracking-[-0.01em] text-white">
-                You&apos;re on the list.
+                Request received
               </h3>
-              <p className="text-sm leading-relaxed text-zinc-400">
-                We&apos;ll send the guide to your inbox shortly.
+              <p className="mb-6 text-sm leading-relaxed text-zinc-400">
+                Your request was received. The playbook is ready to open.
               </p>
+              <a
+                href="/ai-operators-playbook.html"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex min-h-12 items-center justify-center rounded-full bg-white px-6 py-3 text-sm font-medium text-zinc-950 transition-opacity hover:opacity-90"
+              >
+                Open the playbook ↗
+              </a>
             </div>
           ) : (
             <>
@@ -79,7 +87,7 @@ export default function PlaybookForm() {
                   disabled={loading}
                   className="inline-flex h-12 items-center justify-center whitespace-nowrap rounded-full bg-white px-6 text-sm font-medium text-zinc-950 transition-opacity hover:opacity-90 disabled:opacity-70"
                 >
-                  {loading ? 'Sending…' : 'Send me the guide →'}
+                  {loading ? 'Sending…' : 'Get the playbook →'}
                 </button>
               </form>
               {errorMsg && (
@@ -87,7 +95,7 @@ export default function PlaybookForm() {
                   {errorMsg}
                 </p>
               )}
-              <p className="mt-3 text-xs text-zinc-400">No spam. Unsubscribe anytime.</p>
+              <p className="mt-3 text-xs text-zinc-400">After your request is received, you can open the playbook here.</p>
             </>
           )}
         </div>

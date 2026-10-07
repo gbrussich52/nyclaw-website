@@ -387,7 +387,7 @@
   <h1>The AI Operator's Playbook</h1>
   <div class="cover-subtitle">A No-BS Framework for Founders Who Want to<br>Automate More, Delegate More, and Work Less</div>
   <p style="font-family:'Arial',sans-serif; font-size:0.85rem; letter-spacing:0.06em; text-transform:uppercase; color:#0066cc; margin:12px 0 0; font-weight:700;">
-    Updated July 2026 · Operator practices, not tool rankings
+    Updated October 2026 · Operator practices, not tool rankings
   </p>
   <div class="cover-divider"></div>
   <p style="color:#333; font-size:1.05rem; max-width:560px;">
@@ -629,7 +629,7 @@
   <div class="num-badge">3</div>
   <div class="num-row-content">
     <h4>MEMORY.md — Durable Facts</h4>
-    <p>A structured file of things the AI needs to remember across sessions: active projects, decisions made, lessons learned, infrastructure details, account credentials, pending work. This is different from a conversation log — it's curated, compressed information that would otherwise evaporate. Updated whenever something significant happens. Hard limit: 8KB, compressed when exceeded.</p>
+    <p>A structured file of things the AI needs to remember across sessions: active projects, decisions made, lessons learned, infrastructure details, references to secure credential storage, pending work. This is different from a conversation log — it's curated, compressed information that would otherwise evaporate. Updated whenever something significant happens. Hard limit: 8KB, compressed when exceeded.</p>
   </div>
 </div>
 
@@ -637,7 +637,7 @@
   <div class="num-badge">4</div>
   <div class="num-row-content">
     <h4>TOOLS.md — Your Environment</h4>
-    <p>A note file about the specific setup the AI is operating in. Not generic instructions — your actual environment. Camera names, SSH hosts, API keys (or where to find them), preferred services, account details. The AI needs to know your kitchen layout before it can cook. This file is the kitchen map.</p>
+    <p>A note file about the specific setup the AI is operating in. Not generic instructions — your actual environment. Camera names, SSH hosts, secure credential locations, preferred services and non-secret account references. Never put keys or passwords in instruction files. The AI needs to know your kitchen layout before it can cook. This file is the kitchen map.</p>
   </div>
 </div>
 
@@ -1131,125 +1131,39 @@
 
 <p>If it doesn't answer one of those three questions, you're building infrastructure for its own sake. That's fine occasionally — but it's not strategy.</p>
 
-<h3>The 7 Verticals: Where AI Automation Pays Fastest</h3>
+<h3>Example Workflows to Investigate</h3>
+<p>These are possible starting points, not sector-wide findings or a ranking of returns. Check whether the problem exists in the actual business and whether its tools already address it.</p>
+<table><thead><tr><th>Business</th><th>If this happens</th><th>What to check first</th></tr></thead><tbody>
+<tr><td><strong>Legal services</strong></td><td>A document checklist needs staff review</td><td>Compare expected items with document status; ask staff to check exceptions</td></tr>
+<tr><td><strong>Dental practices</strong></td><td>Appointment reminders need consistent ownership</td><td>Check existing reminder settings and approved contact preferences</td></tr>
+<tr><td><strong>Real estate</strong></td><td>An inquiry has no assigned next step</td><td>Route the request to an owner for review</td></tr>
+<tr><td><strong>Plumbing / HVAC</strong></td><td>Job details are entered in more than one tool</td><td>Check whether approved job details can pass into scheduling or billing</td></tr>
+<tr><td><strong>Medical practices</strong></td><td>A referral status requires repeated checking</td><td>Review access, privacy and existing workflow features before any build</td></tr>
+<tr><td><strong>Car dealers</strong></td><td>A lead handoff is unclear</td><td>Assign a reviewer and record the next action</td></tr>
+<tr><td><strong>Small businesses</strong></td><td>A recurring task depends on one person remembering it</td><td>Document the inputs, next step and fallback owner</td></tr>
+</tbody></table>
 
-<p>Based on direct campaign experience across industries, these seven verticals produce the fastest ROI for AI automation services — and represent the most accessible client base for an AI operator building a book of business:</p>
+<p>For any business, look for a recurring job, an approved source record and a person who can check the result. The industry label alone does not establish a need for automation or a likely return.</p>
 
-<table>
-  <thead>
-    <tr><th>Vertical</th><th>Core Pain</th><th>Fastest AI Win</th></tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><strong>Lawyers</strong></td>
-      <td>Lead intake is manual, slow, expensive to staff</td>
-      <td>AI intake qualifier + appointment setter</td>
-    </tr>
-    <tr>
-      <td><strong>Dentists</strong></td>
-      <td>No-show rate, appointment reminders, new patient follow-up</td>
-      <td>Automated follow-up sequences + recall reminders</td>
-    </tr>
-    <tr>
-      <td><strong>Real Estate Agents</strong></td>
-      <td>Lead nurture across long sales cycles, too many cold leads</td>
-      <td>AI drip + qualification + market report automation</td>
-    </tr>
-    <tr>
-      <td><strong>Plumbers / HVAC</strong></td>
-      <td>No web presence, no lead gen, no follow-up</td>
-      <td>Local SEO pipeline + automated booking</td>
-    </tr>
-    <tr>
-      <td><strong>Doctors</strong></td>
-      <td>Admin overhead, patient communication, referral management</td>
-      <td>Intake automation + follow-up + review generation</td>
-    </tr>
-    <tr>
-      <td><strong>Car Dealers</strong></td>
-      <td>Leads go cold fast, follow-up inconsistent</td>
-      <td>24/7 AI response + lead scoring + sequence automation</td>
-    </tr>
-    <tr>
-      <td><strong>Small Business (General)</strong></td>
-      <td>Owner-dependent — everything requires them personally</td>
-      <td>AI operator setup — delegate tasks off the owner's plate</td>
-    </tr>
-  </tbody>
-</table>
-
-<p>The common thread: all seven verticals have high-value customer relationships and low investment in automation. They're not competing on AI. They don't have in-house technical staff. They're cash-flow businesses where one automated system can produce measurable ROI within weeks.</p>
-
-<h3>The Revenue Model: Free Touch → Workshop → Retainer</h3>
-
-<p>The most effective revenue model for AI automation services isn't a one-time project. Projects end. Retainers compound. The model that works:</p>
-
-<div class="num-row" style="margin-top:24px;">
-  <div class="num-badge" style="background:#0066cc;">1</div>
-  <div class="num-row-content">
-    <h4>Free Touch — Lead Generation</h4>
-    <p>A free audit, guide, or consultation that delivers immediate value and creates a qualified lead. This guide is an example of that. The free touch should solve a real problem or reveal a real insight — not just tease paid content. If the free thing isn't genuinely useful, it doesn't generate trust. No trust, no sale.</p>
-  </div>
-</div>
-
-<div class="num-row">
-  <div class="num-badge" style="background:#0066cc;">2</div>
-  <div class="num-row-content">
-    <h4>Paid Workshop — First Revenue ($5,000–$10,000)</h4>
-    <p>A focused engagement where you build the client's core AI infrastructure. Identity documents, memory architecture, one or two automations. Scoped, time-bound, tangible deliverables. This is where you prove you can build something that works — and creates the foundation for everything that follows. Pricing: $5,000–$10,000 depending on scope and client size.</p>
-  </div>
-</div>
-
-<div class="num-row">
-  <div class="num-badge" style="background:#0066cc;">3</div>
-  <div class="num-row-content">
-    <h4>Ongoing Retainer — Recurring Revenue ($2,000–$10,000/month)</h4>
-    <p>Once the foundation is built, the AI system needs management: new automations, maintenance, updates as the business evolves, monitoring, optimization. This is ongoing operator work — not passive. The retainer covers the operator's time and expertise. Pricing: $2,000–$10,000/month based on scope.</p>
-  </div>
-</div>
-
-<div class="callout">
-  <p><strong>The math at scale:</strong> 15 retainer clients averaging $6,700/month = $100,500/month recurring revenue. That's not theoretical — it's the model NYClaw.io is built on. The HVAC pipeline, the cold email campaign, the content machine — all of it is designed to fill those 15 slots with qualified clients who can see the ROI.</p>
-</div>
-
-<h3>Real Pipeline Numbers</h3>
-
-<p>Here's what an actual early-stage AI agency pipeline looks like — not projected, not average industry numbers, but the real production numbers from building NYClaw.io:</p>
-
-<div class="stat-row">
-  <div class="stat-box">
-    <div class="stat-number">42</div>
-    <div class="stat-label">Cold emails sent across 7 verticals (initial test run)</div>
-  </div>
-  <div class="stat-box">
-    <div class="stat-number">7</div>
-    <div class="stat-label">Verticals tested simultaneously</div>
-  </div>
-  <div class="stat-box">
-    <div class="stat-number">8</div>
-    <div class="stat-label">HVAC sites built and deployed in one pipeline run</div>
-  </div>
-  <div class="stat-box">
-    <div class="stat-number">$0</div>
-    <div class="stat-label">Extra spend to optimize past paid experiment results</div>
-  </div>
-</div>
-
-<p>Industry benchmarks for personalized B2B cold outreach (across multiple sources including Woodpecker, Reply.io, and Lemlist studies) show open rates of 35–50% with proper personalization, response rates of 5–15%, and call booking rates of 2–5% of total sent. These are <em>industry averages</em> — your actual numbers will vary based on list quality, targeting, and copy. At 100 targeted emails per campaign, that's realistically 2–5 qualified calls. At a 20–40% close rate from booked calls: 0.5–2 new clients per 100-email campaign.</p>
-
-<p>The math works — but only if the pipeline is parameterized and repeatable. A one-time email blast isn't a lead generation system. A pipeline that generates, personalizes, and sends at scale across multiple verticals continuously is.</p>
+<h3>Choose the engagement around the work</h3>
+<p>A useful first conversation identifies one process, the tools involved and the part that gets stuck. A clearer setting or handoff may be enough. If paid work would help, name the deliverable, scope, price and acceptance check before it starts.</p>
+<p>NYClaw works on scoped projects. A written roadmap, assistant setup or connected workflow are different kinds of work. Ongoing help is optional and agreed separately. See the <a href="/services">current services and price ranges</a>; this guide does not set additional fees.</p>
+<div class="callout"><p><strong>Inspect the work:</strong> Our <a href="/work">client examples</a> describe an electrical contractor's estimating and invoicing process and a building supplier's AI setup for detailed design work. These descriptions are not a measured savings or revenue guarantee.</p></div>
+<h3>Measure each step separately</h3>
+<p>A research candidate is not a prospect who has replied. A visit is not an inquiry. A booked conversation is not paid work, and paid work is not accepted delivery. Keep those counts separate when judging whether an acquisition process works.</p>
+<p>For one workflow, record the starting condition, the agreed change and the result after the team uses it. Include software costs and the time spent reviewing exceptions. Only describe savings or commercial outcomes you can substantiate.</p>
 
 <h3>How to Position AI Automation to Skeptical Clients</h3>
 
-<p>The most common client objection isn't price. It's prior experience. "We tried AI/automation and it didn't work" is the sentence you'll hear most often. It's not a no — it's an invitation to explain what went wrong and how you do it differently.</p>
+<p>If a customer says a previous automation failed, ask where it broke and who was responsible for the next step. Inspect the actual process before recommending another build.</p>
 
-<p>Three positioning principles that convert skeptics:</p>
+<p>Three questions that help frame the work:</p>
 
 <p><strong>1. Lead with the audit, not the pitch.</strong> Before talking about what you'll build, show them what's broken. The contact forms that aren't connected. The cron jobs that died. The follow-up sequence that stopped running six weeks ago. Most businesses have infrastructure problems they don't know about. Finding one real problem in their existing setup is worth more than any sales pitch.</p>
 
-<p><strong>2. Show one specific result, not capabilities.</strong> "Our AI can do X, Y, and Z" lands differently than "We found 8 HVAC businesses in your market with no website and built them all in an afternoon." Specificity signals competence. Generic capabilities sound like every other vendor.</p>
+<p><strong>2. Show work you can substantiate.</strong> Describe the customer problem and the actual change. Keep illustrative examples separate from client work. Add measured results only when the underlying records support them.</p>
 
-<p><strong>3. Price the ROI conversation first.</strong> For an HVAC company spending $3,000/month on Google Ads: if AI automation generates one additional qualified lead per week that converts to a $4,000 job — that's $16,000/month in new revenue. Your $2,000/month retainer has an 8x ROI. The question isn't "can you afford this?" — it's "what's your conversion rate on additional qualified leads?"</p>
+<p><strong>3. Check the costs before quoting a return.</strong> Agree how to measure the change. Count the build, subscriptions, review time and maintenance. Extra revenue is not profit, and an estimated benefit is not a client result. Do not present a hypothetical calculation as measured ROI.</p>
 
 <div class="pull-quote">
   "The objection 'we tried AI and it didn't work' means they tried the tool without the framework. Your job is to show them what the framework looks like — and what it produces."
@@ -1478,7 +1392,7 @@
     <li>Write USER.md: who you're helping, their communication style, their goals</li>
     <li>Set up memory directory: create folder structure for daily notes</li>
     <li>Write initial MEMORY.md: active projects, key infrastructure, accounts</li>
-    <li>Write TOOLS.md: environment specifics, API keys (or where they live), services</li>
+    <li>Write TOOLS.md: environment specifics, secure credential locations and services; never actual keys or passwords</li>
     <li>Test: give the AI a real task using all four documents. See what breaks.</li>
   </ul>
 
@@ -1546,7 +1460,7 @@
 
 <div style="margin-top:48px; padding:24px; background:#f5f8ff; border-radius:6px;">
   <h3 style="margin-top:0;">About This Guide</h3>
-  <p><strong>Last updated:</strong> July 2026. Principles first; tool names second. We revise when operator practice changes, not every model release.</p>
+  <p><strong>Last updated:</strong> October 2026. Principles first; tool names second. We revise when operator practice changes, not every model release.</p>
   <p>This guide was built from the actual experience of designing, building, and running Ainsley — a personal AI assistant operating on a Mac Studio (M4 Max, 36GB RAM) across multiple businesses simultaneously. The case studies, the numbers, and the lessons are real. Nothing was invented for the sake of sounding good.</p>
   <p style="margin-bottom:0;">NYClaw.io is an AI automation consultancy based in New York. We work with small businesses, agencies, and founders who want operational leverage without operational complexity.</p>
 </div>

@@ -59,10 +59,10 @@ const posts = [
     tags: ['Pricing', 'AI Automation'],
   },
   {
-    title: 'ChatGPT vs. Hiring an AI Consultant: Which Does Your Business Actually Need?',
+    title: 'ChatGPT or an AI Consultant? Start With the Work.',
     description:
-      "ChatGPT is a tool you operate manually. An AI consultant builds a system that runs without you. Here's the honest difference, and how to know which one your business needs right now.",
-    date: 'August 7, 2026',
+      'Decide whether your current tools, a clearer process or a scoped build can help. Start with one recurring job and inspect real client examples.',
+    date: 'October 7, 2026',
     href: '/blog/chatgpt-vs-ai-consultant',
     tags: ['AI Tools', 'AI Consulting'],
   },
