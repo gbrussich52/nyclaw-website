@@ -1,3 +1,4 @@
+/* PUBLIC — NYClaw location page copy. */
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import {
@@ -30,13 +31,13 @@ import { CALENDLY_URL } from '../../config'
 export const metadata: Metadata = {
   title: 'AI Agency for NYC Small Businesses',
   description:
-    "NYClaw.io builds AI agents and automation systems for small businesses across NYC's five boroughs — cut costs and automate operations without adding headcount.",
+    "NYClaw.io builds scoped AI and workflow automations for small businesses across NYC's five boroughs, with human review, testing and a documented handoff.",
   keywords:
     'AI agency NYC, AI automation new york city, AI consulting NYC small business, AI implementation NYC, small business AI new york, AI workflow automation manhattan, AI consulting brooklyn, AI marketing queens, NYC AI agency',
   openGraph: {
     title: 'AI Agency for NYC Small Businesses | NYClaw.io',
     description:
-      'We build AI agents and automation systems for small businesses across all five boroughs. Cut costs 40%, automate operations 24/7, and compete without adding headcount.',
+      'We help NYC small businesses connect inquiries, follow-ups and job records. We check existing tools first, then scope and test the work.',
     url: 'https://nyclaw.io/locations/new-york-city',
     siteName: 'NYClaw.io',
     type: 'website',
@@ -46,7 +47,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'AI Agency for NYC Small Businesses | NYClaw.io',
     description:
-      'AI automation for small businesses across all five NYC boroughs. Free 30-min fit audit.',
+      'Practical AI and workflow automation for small businesses across all five NYC boroughs. Start with a free 30-minute call.',
   },
   alternates: {
     canonical: 'https://nyclaw.io/locations/new-york-city',
@@ -57,27 +58,27 @@ const boroughs = [
   {
     name: 'Manhattan',
     areas: 'Midtown, Lower Manhattan, Upper East & West Side, Harlem, Washington Heights',
-    focus: 'Professional services firms, boutique retail, restaurants, medical practices, and creative agencies competing in the most expensive commercial real estate market in the country.',
+    focus: 'Professional firms, retailers, restaurants and creative teams may need a clearer handoff from inquiry to response or from job request to invoice.',
   },
   {
     name: 'Brooklyn',
     areas: 'Williamsburg, DUMBO, Park Slope, Bushwick, Bay Ridge, Flatbush',
-    focus: 'Indie retail, co-working spaces, food and beverage, creative studios, e-commerce brands, and the growing tech-adjacent small business ecosystem.',
+    focus: 'Retailers, food businesses, creative studios and online shops may need help keeping customer requests and follow-ups in one place.',
   },
   {
     name: 'Queens',
     areas: 'Astoria, Long Island City, Flushing, Jackson Heights, Forest Hills',
-    focus: 'One of the most diverse business communities in the world — restaurants, import/export, healthcare providers, legal services, and family-run operations serving hyper-local neighborhoods.',
+    focus: 'Restaurants, professional offices and family businesses may benefit from clearer scheduling, inquiry routing and customer updates.',
   },
   {
     name: 'The Bronx',
     areas: 'Fordham, Hunts Point, Riverdale, Mott Haven, City Island',
-    focus: 'Food distribution, healthcare facilities, construction and contracting firms, community-serving businesses, and the growing South Bronx commercial corridor.',
+    focus: 'Distribution, construction and community-serving teams may need cleaner handoffs between requests, job records and billing.',
   },
   {
     name: 'Staten Island',
     areas: 'St. George, Tottenville, New Dorp, Great Kills',
-    focus: 'Home service contractors, medical offices, local retail, auto services, and small professional firms serving a tight-knit community market.',
+    focus: 'Contractors, offices, retailers and auto services may need a reliable way to assign inquiries and track the next step.',
   },
 ]
 
@@ -85,32 +86,32 @@ const industries = [
   {
     Icon: Building2,
     label: 'Real Estate',
-    desc: 'NYC brokerages and property managers use AI to automate lead response, schedule showings, manage listings across platforms, and nurture buyer/renter pipelines — critical in a market where speed determines who closes the deal.',
+    desc: 'A brokerage could route an inquiry, draft a showing reply and keep the property record current, with an agent reviewing each exception.',
   },
   {
     Icon: Scale,
     label: 'Legal Services',
-    desc: 'Solo practitioners and small firms across NYC use AI to automate client intake, manage document workflows, track deadlines, and handle billing follow-ups — reclaiming 10+ hours per week of admin time.',
+    desc: 'A law firm could turn intake details into a staff checklist or draft a missing-document reminder. Staff retain conflict checks, case acceptance and approval.',
   },
   {
     Icon: Activity,
     label: 'Healthcare',
-    desc: 'Medical, dental, and therapy practices use AI to manage patient scheduling, automate insurance follow-ups, reduce no-shows with smart reminders, and handle post-visit communications across multiple locations.',
+    desc: 'A practice could review appointment requests, draft reminders and route insurance questions to staff, subject to its privacy and approval requirements.',
   },
   {
     Icon: ShoppingBag,
     label: 'Retail & E-Commerce',
-    desc: 'From SoHo storefronts to Astoria boutiques, retailers use AI for inventory management, personalized customer outreach, automated loyalty programs, and round-the-clock customer support via chat.',
+    desc: 'A retailer could bring stock questions, online inquiries and follow-up tasks into a workflow with a clear owner.',
   },
   {
     Icon: UtensilsCrossed,
     label: 'Restaurants & Hospitality',
-    desc: 'NYC restaurants, bars, and hotels use AI to manage reservations, respond to reviews instantly, automate email and SMS marketing, optimize staffing patterns, and handle catering inquiries without tying up front-of-house staff.',
+    desc: 'A restaurant or venue could route catering inquiries, prepare a response and flag booking changes for the front desk.',
   },
   {
     Icon: Wrench,
     label: 'Contractors & Home Services',
-    desc: 'Plumbers, electricians, HVAC techs, and renovation crews serving NYC buildings use AI to automate quote requests, dispatch scheduling, invoice follow-ups, and review generation — winning more jobs while spending less time on the phone.',
+    desc: 'A contractor could connect a quote request to the job record and invoice draft, then review changes before anything is sent.',
   },
 ]
 
@@ -119,66 +120,65 @@ const services = [
     Icon: Settings2,
     title: 'Custom AI Agents & Automation',
     price: '$3,500–$8,000 agent sprint · project-based',
-    desc: 'We map your operations, identify every task that is eating into your margins, and build AI systems that handle them 24/7 — scheduling, follow-ups, data entry, CRM updates, and more.',
+    desc: 'We trace an agreed workflow, check what your tools already do, then scope the missing handoffs and human review points.',
     href: '/#services',
   },
   {
     Icon: Target,
     title: 'Fit Audit + Roadmap',
     price: 'Free 30-min fit · $1K–$2.5K roadmap',
-    desc: 'We analyze your workflows, your competitive landscape, and your NYC-specific cost structure to deliver a prioritized AI roadmap with clear ROI projections.',
+    desc: 'The free call starts with one stuck workflow. An optional paid roadmap records options, estimated costs and the assumptions behind a build order.',
     href: '/#services',
   },
   {
     Icon: Megaphone,
     title: 'Marketing Automations',
     price: '$4K–$12K build · optional ops after',
-    desc: 'Automated content production, lead generation funnels, email/SMS sequences, and multi-platform distribution — built to cut through NYC noise and reach your target customers.',
+    desc: 'Scope an inquiry, follow-up or content-review workflow with a clear owner and a way to check actual results.',
     href: '/#services',
   },
 ]
 
-/** Figures are the live route's own — the strip only restyles them. */
 const stats = [
-  { raw: '40%', label: 'Avg. Cost Reduction' },
-  { to: 30, label: 'Days to Deployment' },
-  { raw: '24/7', label: 'Automated Operations' },
-  { to: 5, label: 'Boroughs Served' },
+  { raw: '5', label: 'NYC Boroughs' },
+  { raw: 'Scope', label: 'Agreed Before Build' },
+  { raw: 'Review', label: 'Human Exception Path' },
+  { raw: 'Test', label: 'Handoffs Before Launch' },
 ]
 
 const manualCosts = [
-  'Full-time admin: $50K-$70K/year (salary + taxes + benefits)',
-  'Part-time help: $16-$25/hour, still limited to business hours',
-  'Overtime for busy periods: 1.5x hourly rate',
-  'Turnover cost: 50-200% of annual salary to replace',
-  'Training new hires: 2-4 weeks before full productivity',
-  'Human error in data entry, scheduling, follow-ups',
+  'An inquiry arrives in one inbox while the job record sits elsewhere',
+  'Staff copy details between forms, calendars and invoices',
+  'A customer update waits because no one owns the next step',
+  'Missing information is discovered late in the handoff',
+  'A change gets lost between the office and the field',
+  'The team cannot easily tell whether the process improved',
 ]
 
 const aiCosts = [
-  'Agent sprint: $3,500–$8,000 project (vs. $50K+/year employee)',
-  'Optional care after go-live — never required to start',
-  'Runs 24/7/365 including weekends and holidays',
-  'Zero turnover — AI does not quit, call in sick, or need PTO',
-  'Sprint builds — productive from week one of go-live',
-  'Consistent accuracy — no typos, no missed follow-ups',
+  'Check native features and access before proposing a build',
+  'Agree the scope, price and review points in writing',
+  'Connect the specific handoffs included in that scope',
+  'Refer missing information and exceptions to a person',
+  'Test normal and exception cases with the team',
+  'Leave a runbook and compare actual results with a baseline',
 ]
 
 const phases = [
   {
-    step: 'Week 1',
-    title: 'Observe & Orient',
-    desc: 'We audit your NYC business operations — mapping every process, tool, and workflow. We analyze your competitive landscape, your borough-specific market dynamics, and your cost structure to identify the highest-ROI automation opportunities.',
+    step: 'Scope',
+    title: 'Trace one workflow',
+    desc: 'Show us where an inquiry, customer update or job detail gets stuck. We check native tool features and agree who reviews exceptions.',
   },
   {
-    step: 'Weeks 2-3',
-    title: 'Decide & Build',
-    desc: 'We deliver a prioritized roadmap, then build and deploy your custom AI systems. Everything integrates with your existing tools — CRM, scheduling, email, POS, phone systems — so your team keeps working the way they already do.',
+    step: 'Build',
+    title: 'Agree and connect',
+    desc: 'A written quote names the tools, handoffs, price and delivery timing. We build only the connections included in that scope.',
   },
   {
-    step: 'Week 4',
-    title: 'Optimize & Train',
-    desc: 'We review performance data, fine-tune the AI systems for your specific customer patterns, and train your team. You get a fully operational setup and a clear path for continuous improvement as your NYC business grows.',
+    step: 'Handoff',
+    title: 'Test and train',
+    desc: 'We test agreed examples with your team, document how to handle exceptions and leave a runbook. Actual results can then be checked against the starting baseline.',
   },
 ]
 
@@ -194,27 +194,27 @@ const faqs = [
   {
     question: 'How much does AI implementation cost for a NYC small business?',
     answer:
-      'Most custom agent sprints run $3,500–$8,000 fixed scope. Multi-step workflow systems typically run $5,000–$15,000 as a project. Marketing automation builds start around $4,000–$12,000 with optional operation after go-live. Given that the average NYC employee costs $60,000–$90,000+ per year fully loaded, a well-scoped automation often pays for itself by recovering hours of manual work — without a monthly lock-in to start.',
+      'Agent sprints are listed at $3,500–$8,000, workflow systems at $5,000–$15,000 and marketing builds at $4,000–$12,000. The quote depends on the tools, access and review steps involved. We agree the scope and price before work begins; care after launch is optional.',
   },
   {
-    question: 'Which NYC industries benefit most from AI automation?',
+    question: 'Which NYC teams might use workflow automation?',
     answer:
-      'Any NYC business with repetitive operations benefits from AI, but we see the strongest ROI for real estate brokerages and property managers, law firms and solo practitioners, medical and dental practices, restaurants and hospitality venues, retail and e-commerce brands, and home service contractors. If your team spends hours each week on scheduling, client follow-ups, data entry, or customer communication, AI can likely cut that workload by 40% or more.',
+      'A team that repeatedly copies inquiry details, prepares follow-ups or moves job information between tools may have a useful starting point. We first check the current process, native features and human review needs. The industry examples on this page are possible workflows, not measured client results.',
   },
   {
     question: 'Do you work with businesses in all five NYC boroughs?',
     answer:
-      'Yes. NYClaw.io serves small businesses across all five boroughs — Manhattan, Brooklyn, Queens, the Bronx, and Staten Island. We offer both in-person consultations and remote support. Our on-site business audits are available throughout the city, and our ongoing support and optimization is handled remotely so you get fast response times regardless of your location.',
+      'Yes. NYClaw.io works with small businesses in Manhattan, Brooklyn, Queens, the Bronx and Staten Island. We can discuss whether an in-person visit or remote review makes sense for the scoped work.',
   },
   {
-    question: 'How does AI help NYC businesses deal with high labor costs?',
+    question: 'How do you decide whether a workflow is worth changing?',
     answer:
-      'NYC has some of the highest labor costs in the country — minimum wage is $16/hour and rising, and the true cost of an employee (wages + benefits + payroll taxes + overhead) often exceeds $25-$35/hour for entry-level roles. AI handles the tasks those employees spend the most time on: scheduling, follow-ups, data entry, customer inquiries, review management, and reporting. This does not mean replacing people — it means freeing them to do higher-value work while AI handles the repetitive operations 24/7.',
+      'We record how the current work moves, where people re-enter information and what a proposed change would cost. We check native features before custom code and agree a baseline so actual results can be measured after launch.',
   },
   {
     question: 'How long does an AI build take for my NYC business?',
     answer:
-      'Many first agents ship in a multi-day sprint once scope and access are clear. Larger multi-agent systems are project-scoped using the OODA Loop framework and integrate with your existing tools. Most NYC clients see measurable time savings within the first two weeks of go-live.',
+      'Timing depends on the workflow, tool access and review requirements. We put the delivery plan in the written scope, test the agreed cases with your team and provide a documented handoff.',
   },
 ]
 
@@ -227,62 +227,51 @@ export default function NewYorkCityPage() {
         badge="Serving All Five NYC Boroughs"
         titleTop="AI Agency for"
         titleAccent="NYC Small Businesses"
-        lede="Compete with the big players. Without their headcount."
-        blurb="New York City is the most competitive small business market in the country. AI levels the playing field — automating operations, cutting costs, and giving you back the hours you need to grow. Deployed with custom agents and automations built for how you work."
-        primary={{ label: 'Free 30-Min Fit Audit', href: CALENDLY_URL, external: true }}
-        secondary={{ label: 'Start a Project →', href: '/#contact' }}
+        lede="Keep the next customer request from getting lost."
+        blurb="Across NYC, a small team may handle an inquiry in one tool and finish the job in another. We check the workflow, use native features where they fit and build scoped handoffs with human review."
+        primary={{ label: 'Book a free 30-minute call', href: CALENDLY_URL, external: true }}
+        secondary={{ label: 'Tell us where work gets stuck', href: '/#contact' }}
       />
 
-      {/* The NYC Problem */}
+      {/* A possible NYC workflow problem, not a client result. */}
       <section className="px-6 pb-24">
         <div className="mx-auto flex max-w-[44rem] flex-col gap-10">
           <SectionIntro
-            eyebrow="The NYC Reality"
-            title="Why NYC Small Businesses Need AI to Compete"
+            eyebrow="The Work Between Tools"
+            title="A Clearer Handoff for NYC Small Businesses"
           />
           <div className="flex flex-col gap-5 text-[17px] leading-relaxed text-zinc-300">
             <p>
-              New York City is home to more than 240,000 small businesses, making it the
-              densest small business market in the United States. Whether you run a law firm
-              in Midtown, a restaurant in Williamsburg, a medical practice in Flushing, or
-              a contracting business in the Bronx, you are competing for customers against
-              thousands of similar operations — many of which are already using AI to move
-              faster, respond quicker, and operate leaner than you.
+              An inquiry can arrive while your team is serving a customer or finishing a job.
+              Someone still has to capture the details, assign a response and update the right
+              record. That handoff may span a form, an inbox and a calendar.
             </p>
             <p>
-              The economics of running a small business in NYC are brutal. Commercial rent
-              in Manhattan averages $70-$120 per square foot. The minimum wage is $16/hour
-              and climbing. When you factor in benefits, payroll taxes, and overhead, a
-              single full-time employee costs $50,000-$90,000 per year — often more. Every
-              hour your team spends on scheduling, data entry, follow-ups, and admin is an
-              hour they are not spending on revenue-generating work.
+              The same information may be typed again when a quote becomes a job and again
+              when the job becomes an invoice. A practical workflow starts by finding where
+              the information lives and who should check it before the next step.
             </p>
             <p>
-              AI does not replace your team. It eliminates the repetitive, low-value tasks
-              that consume their day. A well-implemented AI system handles appointment
-              booking, lead follow-up, customer communication, content generation, review
-              management, and data entry — running 24/7, including weekends and holidays,
-              without overtime pay. For a NYC small business, that is the difference between
-              hiring another employee at $60K+ per year and deploying an AI system at a
-              fraction of that cost.
+              We check the features your current tools offer before proposing a new build.
+              Where a connection is needed, the scope names the input, output, owner and
+              exception path. A person stays responsible for uncertain or sensitive work.
             </p>
             <p>
-              NYClaw.io builds AI systems specifically for the way NYC small businesses
-              operate — fast-paced, margin-conscious, and customer-obsessed. We serve
-              businesses across all five boroughs: Manhattan, Brooklyn, Queens, the Bronx,
-              and Staten Island. No generic solutions. No bloated tech stacks. Just AI that
-              works inside your existing tools and starts saving time from day one.
+              NYClaw.io serves businesses across Manhattan, Brooklyn, Queens, the Bronx and
+              Staten Island. We agree the scope and price before building, test the handoff
+              with your team and leave instructions for running it. Results can be compared
+              with the starting baseline after launch.
             </p>
           </div>
         </div>
       </section>
 
-      {/* Cost Comparison */}
+      {/* Workflow comparison */}
       <section className="px-6 pb-24">
         <div className="mx-auto flex max-w-[64rem] flex-col gap-10">
           <SectionIntro
-            title="The NYC Labor Cost Reality"
-            blurb="AI does not replace people — it replaces the tasks that drain their time and your margins."
+            title="Where the handoff gets stuck"
+            blurb="These are examples to examine with your team, followed by the checks a scoped build can include."
           />
           <div className="grid items-start gap-6 md:grid-cols-2">
             <div className="panel flex flex-col gap-6 rounded-2xl p-8">
@@ -294,7 +283,7 @@ export default function NewYorkCityPage() {
                   aria-hidden="true"
                 />
                 <h3 className="text-base font-medium text-white">
-                  Manual Operations (NYC Cost)
+                  A manual handoff might look like
                 </h3>
               </div>
               <ul className="flex flex-col gap-3.5">
@@ -320,7 +309,7 @@ export default function NewYorkCityPage() {
                   aria-hidden="true"
                 />
                 <h3 className="text-base font-medium text-white">
-                  AI-Powered Operations (NYClaw.io)
+                  A scoped workflow can include
                 </h3>
               </div>
               <ul className="flex flex-col gap-3.5">
@@ -347,7 +336,7 @@ export default function NewYorkCityPage() {
           <SectionIntro
             eyebrow="All Five Boroughs"
             title="AI for Every NYC Neighborhood"
-            blurb="We serve small businesses across every borough — each with its own industries, challenges, and opportunities."
+            blurb="We can discuss a specific handoff with teams in any of the five boroughs. These are example settings, not client results."
           />
           <div className="hairline-grid grid overflow-hidden rounded-sm border border-white/10 sm:grid-cols-2 lg:grid-cols-3">
             {boroughs.map((borough) => (
@@ -370,14 +359,13 @@ export default function NewYorkCityPage() {
               <Users size={20} strokeWidth={1.75} className="text-white" aria-hidden="true" />
               <h3 className="text-sm font-medium text-white">Your Neighborhood</h3>
               <p className="text-sm leading-relaxed text-zinc-400">
-                Every NYC neighborhood has businesses that run on repetitive processes. We
-                build AI that fits yours.
+                Tell us which inquiry, customer update or job handoff needs a clearer next step.
               </p>
               <Link
                 href="/#contact"
                 className="text-sm font-medium text-white underline underline-offset-4"
               >
-                Tell us about your business &rarr;
+                Tell us where work gets stuck &rarr;
               </Link>
             </div>
           </div>
@@ -390,7 +378,7 @@ export default function NewYorkCityPage() {
           <SectionIntro
             eyebrow="Industries We Serve"
             title="AI Solutions for NYC's Key Industries"
-            blurb="Every industry in New York City has processes that AI can automate — saving time, cutting costs, and improving the customer experience."
+            blurb="These are possible workflows to examine with a team. What works depends on its tools, access and review requirements."
           />
           <div className="hairline-grid grid overflow-hidden rounded-sm border border-white/10 sm:grid-cols-2 lg:grid-cols-3">
             {industries.map(({ Icon, label, desc }) => (
@@ -416,8 +404,8 @@ export default function NewYorkCityPage() {
         <div className="mx-auto flex max-w-[64rem] flex-col gap-12">
           <SectionIntro
             eyebrow="What We Offer"
-            title="Full-Service AI for NYC Small Businesses"
-            blurb="From strategy to implementation to ongoing optimization."
+            title="AI and Workflow Automation for NYC Small Businesses"
+            blurb="Start with a free call, scope a build if useful and arrange ongoing care only when needed."
           />
           <ServiceCards items={services} />
         </div>
@@ -430,8 +418,8 @@ export default function NewYorkCityPage() {
         <div className="mx-auto flex max-w-[56rem] flex-col gap-10">
           <SectionIntro
             eyebrow="Our Process"
-            title="From Audit to Live AI in 30 Days"
-            blurb="Our OODA Loop framework ensures fast, systematic implementation with measurable ROI — built for the pace of NYC."
+            title="From One Workflow to a Tested Handoff"
+            blurb="The timeline depends on the systems and approvals involved. We agree it in writing before work starts."
           />
           <ProcessSteps items={phases} />
         </div>
@@ -444,8 +432,8 @@ export default function NewYorkCityPage() {
 
       <LocationCta
         eyebrow="New York City"
-        title="Ready to bring AI into your NYC business?"
-        blurb="Book a free 30-minute fit audit. No pitch — just clarity on which agent or automation fits your business and how much it will save you in the most expensive market in the country."
+        title="Which NYC handoff needs a clearer next step?"
+        blurb="Book a free 30-minute call to discuss the work, current tools and who reviews the result."
       />
 
       <InternalLinks links={explore} />

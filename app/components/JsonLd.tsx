@@ -1,3 +1,4 @@
+// classification: PUBLIC
 // JSON-LD structured data components for SEO
 // All content is hardcoded server-side data — no user input, no XSS risk.
 
@@ -6,7 +7,7 @@ export function LocalBusinessJsonLd() {
     '@context': 'https://schema.org',
     '@type': 'ProfessionalService',
     name: 'NYClaw.io',
-    description: 'AI agency that designs and builds custom automations and agents for small businesses in Westchester County, NY and NYC.',
+    description: 'AI and automation agency for small businesses in Westchester County and NYC. Advice, custom builds, marketing systems and a written handoff.',
     url: 'https://nyclaw.io',
     email: 'hello@nyclaw.io',
     sameAs: [
@@ -55,7 +56,7 @@ export function OrganizationJsonLd() {
     url: 'https://nyclaw.io',
     logo: 'https://nyclaw.io/icon',
     description:
-      'AI agency that designs and builds custom automations and agents for small businesses in Westchester County, NY and NYC.',
+      'AI and automation agency for small businesses in Westchester County and NYC. Advice, custom builds, marketing systems and a written handoff.',
     email: 'hello@nyclaw.io',
     areaServed: 'Westchester County, NY',
     sameAs: [
@@ -87,7 +88,7 @@ export function WebSiteJsonLd() {
     '@type': 'WebSite',
     name: 'NYClaw.io',
     url: 'https://nyclaw.io',
-    description: 'AI agency for small businesses — custom automations and agents in Westchester County, NY and NYC.',
+    description: 'Practical AI and automation for small businesses in Westchester County and NYC.',
     publisher: {
       '@type': 'Organization',
       '@id': 'https://nyclaw.io/#organization',

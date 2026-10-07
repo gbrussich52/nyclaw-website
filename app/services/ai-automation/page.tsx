@@ -1,3 +1,4 @@
+// classification: PUBLIC
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import {
@@ -23,13 +24,13 @@ import CtaPanel from '../../components/CtaPanel'
 export const metadata: Metadata = {
   title: 'Custom AI Agents & Workflow Automation',
   description:
-    'NYClaw.io builds custom AI agents and workflow automations for small businesses in Westchester County and NYC — project sprints from $3,500, no monthly lock-in.',
+    'NYClaw.io builds scoped workflow automations and AI agents for small businesses in Westchester County and NYC, with tested handoffs and team documentation.',
   keywords:
     'custom AI agents, AI workflow automation small business, AI agency westchester, CRM automation, AI automation NYC, agent development',
   openGraph: {
     title: 'Custom AI Agents & Workflow Automation | NYClaw.io',
     description:
-      'We design and build custom agents and automations — not a template install. Project-based, scoped, delivered.',
+      'Connect the steps between forms, records and invoices. Agree the scope, test the handoffs and give your team a clear way to review exceptions.',
     url: 'https://nyclaw.io/services/ai-automation',
     siteName: 'NYClaw.io',
     type: 'website',
@@ -38,92 +39,89 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Custom AI Agents & Automation | NYClaw.io',
     description:
-      'Custom agents and workflow automations for small businesses — project-based, no monthly required.',
+      'Scoped agents and workflow automations for small businesses, with optional care after handoff.',
   },
   alternates: {
     canonical: 'https://nyclaw.io/services/ai-automation',
   },
 }
 
-/** Figures are the live route's own — the strip only restyles them. */
 const stats = [
   { raw: '$3.5K+', label: 'Agent sprints from' },
-  { raw: 'Sprint', label: 'Project delivery' },
-  { to: 40, suffix: '%', label: 'Avg. cost reduction' },
-  { raw: '0', label: 'Monthly required' },
+  { raw: 'Fixed', label: 'Scope agreed first' },
+  { raw: 'Tested', label: 'Handoffs before launch' },
+  { raw: 'Optional', label: 'Care after launch' },
 ]
 
 const capabilities = [
   {
     Icon: CalendarCheck,
     title: 'Scheduling & appointments',
-    desc: 'Booking systems that handle availability, confirmations, reminders and rescheduling — no human needed.',
+    desc: 'Keep booking details, confirmations and changes together. Agree which exceptions go back to a person.',
   },
   {
     Icon: Users,
     title: 'CRM & client management',
-    desc: 'Automatic lead capture, contact updates, deal stage tracking and activity logging across your CRM.',
+    desc: 'Move approved form details into the right record and show your team what needs review.',
   },
   {
     Icon: Mail,
     title: 'Follow-up sequences',
-    desc: 'Personalized email and SMS follow-ups triggered by client actions — sent at the right time, every time.',
+    desc: 'Prepare follow-ups from agreed triggers, with a review step where your team needs one.',
   },
   {
     Icon: Database,
     title: 'Data entry & processing',
-    desc: 'AI reads, categorizes and enters data from forms, invoices, emails and documents into your systems.',
+    desc: 'Reduce re-entry between forms, emails, job records and invoices when the source data is clear.',
   },
   {
     Icon: FileText,
     title: 'Document generation',
-    desc: 'Proposals, invoices, contracts and reports generated from templates using your live business data.',
+    desc: 'Draft a proposal, billing packet or report from approved information for a person to check.',
   },
   {
     Icon: PhoneCall,
     title: 'Customer communication',
-    desc: 'Chatbots and voicebots that answer common questions, route inquiries and collect information 24/7.',
+    desc: 'Route common inquiries and collect the details staff need for the next conversation.',
   },
 ]
 
 const ooda = [
   {
-    letter: 'O',
-    label: 'Observe',
-    timeline: 'Week 1',
-    desc: 'We audit your operations end to end. Every process, tool and manual task documented — and where time is wasted.',
+    letter: '1',
+    label: 'Trace the work',
+    timeline: 'Scope',
+    desc: 'Show us one job from first request to final handoff. We record where information is copied or lost.',
   },
   {
-    letter: 'O',
-    label: 'Orient',
-    timeline: 'Week 1',
-    desc: 'We analyse your industry, competitors, tools and constraints to find the highest-ROI opportunities.',
+    letter: '2',
+    label: 'Check your tools',
+    timeline: 'Feasibility',
+    desc: 'We check native features and available connections, then agree what people should still approve.',
   },
   {
-    letter: 'D',
-    label: 'Decide',
-    timeline: 'Week 1–2',
-    desc: 'A prioritized roadmap with exact costs, expected savings and timeline for each workflow.',
+    letter: '3',
+    label: 'Agree the build',
+    timeline: 'Quote',
+    desc: 'You get a fixed scope, price, delivery plan and a baseline for checking whether the work improved.',
   },
   {
-    letter: 'A',
-    label: 'Act',
-    timeline: 'Week 2–4',
-    desc: 'We build, test, deploy and optimize. You get working automations, training and documentation.',
+    letter: '4',
+    label: 'Test and hand off',
+    timeline: 'Delivery',
+    desc: 'We test normal cases and exceptions with your team, then leave instructions for running the workflow.',
   },
 ]
 
 const included = [
-  'Workflow design and success metrics',
-  'Custom agent or automation build (not a stock template)',
-  'CRM integration (HubSpot, Salesforce, GoHighLevel, etc.)',
-  'Email and calendar platform integration',
-  'Scheduling system setup and configuration',
-  'SMS and messaging automation',
-  'Testing across all workflows end-to-end',
-  'Team training and video walkthrough',
-  'Documentation and runbook handoff',
-  'Optional care plan after go-live (never required to start)',
+  'A written scope for one agreed workflow and its handoffs',
+  'A check of native features and the connections your tools allow',
+  'The agent or automation agreed in your project scope',
+  'A review path for missing information and exceptions',
+  'Tests using agreed examples before the workflow goes live',
+  'Team walkthrough and written handoff instructions',
+  'A baseline and a way to check actual results after launch',
+  'Optional care scoped separately after delivery',
 ]
 
 const plans = [
@@ -131,24 +129,24 @@ const plans = [
     name: 'Agent Sprint',
     price: '$3.5K–8K',
     unit: 'fixed scope',
-    desc: 'One mission-critical agent, live and handed off.',
+    desc: 'One scoped agent, tested with your team and handed off.',
     items: [
-      'Workflow design & success metrics',
-      'Custom agent build (not a template)',
-      'Integrations, testing & training',
-      'Runbook handoff — no monthly required',
+      'Agreed workflow and review steps',
+      'Agent build for the scoped task',
+      'Connection and exception tests',
+      'Team walkthrough and runbook',
     ],
   },
   {
     name: 'Workflow System',
     price: '$5K–15K',
     unit: 'project',
-    desc: 'Multi-step automations across tools, optional care after.',
+    desc: 'Connected handoffs across tools, with optional care after delivery.',
     items: [
       '2–3 connected automations',
-      'Process map & architecture',
-      'Error handling & documentation',
-      'Optional care plan after go-live',
+      'Process map and agreed connections',
+      'Exception handling and documentation',
+      'Optional care scoped after handoff',
     ],
   },
 ]
@@ -157,32 +155,32 @@ const faqs = [
   {
     question: 'How much do custom AI agents and automations cost?',
     answer:
-      'Most agent sprints run $3,500–$8,000 fixed scope. Multi-step workflow systems typically run $5,000–$15,000 as a project. Price depends on integrations and complexity. Every engagement gets a fixed quote before work begins. Monthly care is optional after go-live — never required to start.',
+      'Agent sprints are listed at $3,500–$8,000 and multi-step workflow systems at $5,000–$15,000. The quote depends on the systems, access and review steps involved. We agree the fixed scope and price before work begins. Care after launch is optional.',
   },
   {
     question: 'How long does a build take?',
     answer:
-      'Many first agents ship in a focused multi-day sprint once scope and access are clear. Larger multi-agent systems take longer and are priced as a project. We use the OODA Loop (Observe → Orient → Decide → Act) so every build starts with the highest-ROI workflow.',
+      'The schedule is part of the written scope. We first check tool access and the handoffs involved, then set time for building, testing with your team and training.',
   },
   {
     question: 'What tools and platforms do you integrate with?',
     answer:
-      'We integrate with the tools you already use: Google Workspace, Microsoft 365, HubSpot, Salesforce, GoHighLevel, Calendly, Acuity, QuickBooks, Slack, Twilio, and many more. If your tool has an API, we can connect it. No need to switch platforms.',
+      'We assess the tools already in use, including forms, email, calendars, CRMs and billing software. Native features may cover the job. Where a connection is needed, we verify access and feasibility before including it in the quote.',
   },
   {
     question: 'Is this a product install or a custom build?',
     answer:
-      'Custom build. We design and create automations and agents around your real workflows — not a one-size product install. You get systems built for how your team works, with a documented handoff.',
+      'We start with the job and the tools you have. The recommendation may use a native feature, configuration or a custom connection. A build includes the agreed tests and a documented handoff.',
   },
   {
     question: 'What happens if something breaks or needs updating?',
     answer:
-      'Every project includes a short post-launch window for fixes. Optional care plans cover monitoring, updates, and small changes if you want us to stay on. You can also run the system yourself with the runbook we leave behind.',
+      'We document how to spot and handle exceptions, and agree the post-launch fix window in the project scope. Ongoing monitoring and changes can be scoped separately.',
   },
   {
     question: 'Do I need any technical knowledge?',
     answer:
-      'Zero. We handle the entire build and train your team. Every system ships with documentation and walkthroughs. If your team can use email and a browser, they can use what we build.',
+      'Your team needs to show us the current work and review test cases. We provide a walkthrough and handoff instructions for the workflow we build.',
   },
 ]
 
@@ -191,19 +189,19 @@ export default function AIAutomationPage() {
     <>
       <ServiceJsonLd
         name="Custom AI Agents & Workflow Automation"
-        description="NYClaw.io designs and builds custom AI agents and workflow automations for small businesses. Project-based sprints — not a template product install."
+        description="NYClaw.io scopes and builds agents and workflow automations for small businesses, tests the agreed handoffs and provides team documentation."
         url="https://nyclaw.io/services/ai-automation"
       />
       <FAQJsonLd items={faqs} />
 
       <ServiceHero
-        badge="AI agency · custom builds"
+        badge="Workflow automation"
         BadgeIcon={Settings2}
-        titleTop="Custom AI agents &"
-        titleAccent="workflow automation"
-        lede="We design and build systems — not install a product."
-        blurb="Agents and automations for scheduling, follow-ups, CRM, intake and ops — built around how your team already works. Project-scoped, delivered with a handoff."
-        primary={{ label: 'Start a project', href: '/#contact' }}
+        titleTop="Spend less time copying"
+        titleAccent="the same details around."
+        lede="Connect the steps between a request, a job record and an invoice."
+        blurb="When the same details need to move from a form to a customer record or an invoice, we check what your existing tools can do. Where a connection is missing, we build and test it. Your team knows which results need a review."
+        primary={{ label: 'Tell us where work gets stuck', href: '/#contact' }}
         secondary={{ label: 'See how it works', href: '#how-it-works' }}
       />
 
@@ -211,33 +209,33 @@ export default function AIAutomationPage() {
 
       <CapabilityGrid
         title="What we automate"
-        blurb="If your team does it more than once, we can probably automate it. These are the workflows we build most."
+        blurb="A repeated handoff is a good place to start. We agree the exact work and review points before quoting a build."
         items={capabilities}
       />
 
       <OodaPanel
         id="how-it-works"
-        title="How we build your automation"
-        blurb="We use the OODA Loop — a military decision-making framework adapted for AI implementation. It keeps us fast, systematic and focused on ROI."
+        title="From one handoff to a working system"
+        blurb="We begin with the work your team does today and agree how to tell whether the new workflow helps."
         steps={ooda}
-        note="Then we loop — monitoring and improving as the business evolves."
+        note="After launch, compare actual results with the starting baseline. Further changes and monitoring can be scoped separately."
       />
 
       <DeliverablesChecklist
-        title="What's included in every build"
-        blurb="A complete, production-ready system — not a half-baked prototype. Here is exactly what ships."
+        title="What a scoped build includes"
+        blurb="The exact connections depend on your tools. The agreed scope names the deliverables and review steps."
         items={included}
         note="Price depends on integrations and complexity. Every project gets a fixed quote before work begins."
       />
 
       <PricingPair
-        title="Transparent, predictable pricing"
-        blurb="No hidden fees, no surprise invoices. You know what you are paying before we write a single line of code."
+        title="Project pricing"
+        blurb="We price the work after checking the systems and approvals involved, then agree the fixed scope before building."
         plans={plans}
-        note="Monthly is never required to start."
+        note="Care after launch is optional and scoped separately."
       />
 
-      <IndustryChips blurb="Any small business with repetitive processes can benefit. These are the industries we serve most." />
+      <IndustryChips blurb="We work with small teams whose information moves between forms, records, inboxes and billing tools." />
 
       <FaqSection
         blurb="Common questions about AI workflow automation for small businesses."
@@ -245,9 +243,9 @@ export default function AIAutomationPage() {
       />
 
       <CtaPanel
-        title="Ready for a custom agent or automation?"
-        blurb="Tell us the workflow that burns the most time. We'll scope a fixed project — or start with a free 30-minute fit audit."
-        primary={{ label: 'Start a project', href: '/#contact' }}
+        title="Where does your team enter the same information twice?"
+        blurb="Describe the handoff and the tools involved. We'll identify what to check before quoting a project."
+        primary={{ label: 'Tell us where work gets stuck', href: '/#contact' }}
         footer={
           <>
             Or explore:{' '}
