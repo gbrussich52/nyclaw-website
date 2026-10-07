@@ -4,17 +4,17 @@ import { Check, ClipboardList } from 'lucide-react'
 import ResourceForm from '../components/ResourceForm'
 
 export const metadata: Metadata = {
-  title: 'Free AI Operator\'s Playbook — 50 Pages, No Fluff',
-  description: 'Download the free AI Operator\'s Playbook: 50 pages of frameworks, templates, and a 30/60/90-day roadmap for building AI systems that actually work.',
+  title: 'Free AI Operator\'s Playbook',
+  description: 'Download the free AI Operator\'s Playbook: Practical frameworks, templates, and a 30/60/90-day roadmap for building AI systems that actually work.',
   keywords: 'AI playbook, AI implementation guide, AI assistant framework, free AI guide, AI templates',
   openGraph: {
     title: 'The AI Operator\'s Playbook — Free Download',
-    description: '50 pages of frameworks, templates, and the implementation roadmap we used to build Ainsley. Free with your email.',
+    description: 'Practical frameworks, templates, and the implementation roadmap we used to build Ainsley. Open it after your request is received.',
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Free AI Operator\'s Playbook — 50 Pages',
+    title: 'Free AI Operator\'s Playbook',
     description: 'Frameworks, templates, and a 30/60/90-day roadmap for building AI systems that work.',
   },
   alternates: {
@@ -23,11 +23,11 @@ export const metadata: Metadata = {
 }
 
 const whatsInside = [
-  { section: 'Section 1', title: 'Building AI Identity', pages: '15 pages', desc: 'The Four-Quadrant Persona Taxonomy, principle-first documentation, priority hierarchies, and the full SOUL.md template.' },
-  { section: 'Section 2', title: 'Mission-Driven Systems', pages: '16 pages', desc: 'Why processes fail, how to design mission statements that actually drive decisions, OKR frameworks, and the review cadence.' },
-  { section: 'Section 3', title: 'Operational Excellence', pages: '9 pages', desc: 'All 7 anti-patterns with real-world examples and specific prevention systems for each.' },
-  { section: 'Section 4', title: 'Implementation Roadmap', pages: '8 pages', desc: 'The 30/60/90-day plan. Week-by-week actions to build your system from scratch.' },
-  { section: 'Appendix', title: 'Templates & Checklists', pages: '4 pages', desc: 'Printable: SOUL.md template, weekly review checklist, monthly audit checklist, anti-pattern scorecard, OKR template.' },
+  { section: 'Section 1', title: 'Building AI Identity', desc: 'The Four-Quadrant Persona Taxonomy, principle-first documentation, priority hierarchies, and the full SOUL.md template.' },
+  { section: 'Section 2', title: 'Mission-Driven Systems', desc: 'Why processes fail, how to design mission statements that actually drive decisions, OKR frameworks, and the review cadence.' },
+  { section: 'Section 3', title: 'Operational Excellence', desc: 'All 7 anti-patterns with real-world examples and specific prevention systems for each.' },
+  { section: 'Section 4', title: 'Implementation Roadmap', desc: 'The 30/60/90-day plan. Week-by-week actions to build your system from scratch.' },
+  { section: 'Appendix', title: 'Templates & Checklists', desc: 'Printable: SOUL.md template, weekly review checklist, monthly audit checklist, anti-pattern scorecard, OKR template.' },
 ]
 
 const templates = [
@@ -40,8 +40,8 @@ const templates = [
 ]
 
 const trustSignals = [
-  '50 pages',
-  '5 printable templates',
+  'Practical checklists',
+  'Reusable templates',
   '30/60/90-day roadmap',
   'Free. No credit card.',
 ]
@@ -62,10 +62,13 @@ export default function ResourcesPage() {
             The AI Operator&apos;s Playbook
           </h1>
           <p className="mx-auto mt-6 max-w-[36rem] text-balance text-lg leading-relaxed text-zinc-300">
-            How to build an AI assistant that actually works — with identity, memory, a harness around the model, and a closed loop after go-live so automation doesn&apos;t die in 30 days. Built from what we learned deploying Ainsley.
+            Practical instructions, reference files and review checklists for putting AI to work. Use the templates to clarify the job, check the result and keep the setup useful.
+          </p>
+          <p className="mx-auto mt-3 max-w-[36rem] text-sm leading-relaxed text-zinc-400">
+            Submit a request to open the playbook directly on this page.
           </p>
           <p className="mt-4 text-[11px] font-medium uppercase tracking-[0.08em] text-zinc-400">
-            Updated July 2026
+            Updated October 2026
           </p>
           <div className="mt-7 flex flex-wrap justify-center gap-6 text-sm text-zinc-400">
             {trustSignals.map((signal) => (
@@ -100,7 +103,6 @@ export default function ResourcesPage() {
                     <div className="rounded-md bg-white/[0.07] px-1.5 py-1 text-[11px] font-medium tracking-[0.04em] text-zinc-300">
                       {item.section}
                     </div>
-                    <div className="mt-1.5 text-[11px] text-zinc-400">{item.pages}</div>
                   </div>
                   <div>
                     <h3 className="mb-1.5 text-base font-medium text-white">{item.title}</h3>

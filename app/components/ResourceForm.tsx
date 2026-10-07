@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
-import { CheckCircle, Download } from 'lucide-react'
+import { CheckCircle } from 'lucide-react'
 import { useContactSubmit } from '../hooks/useContactSubmit'
 
 /** Shared field chrome — `.input-dusk` carries the fill/border/radius tokens. */
@@ -31,7 +31,7 @@ export default function ResourceForm() {
         <div className="panel rounded-2xl p-8">
           <h2 className="text-xl font-medium tracking-[-0.02em] text-white">Get the free guide</h2>
           <p className="mt-2 text-sm leading-relaxed text-zinc-400">
-            Enter your details to request the free guide. You&apos;ll also receive related emails; unsubscribe anytime.
+            Enter your details. Once your request is received, you can open the playbook here.
           </p>
 
           <form onSubmit={handleSubmit} className="mt-6 flex flex-col gap-4">
@@ -93,23 +93,29 @@ export default function ResourceForm() {
               disabled={loading}
               className="mt-1 inline-flex h-12 w-full items-center justify-center rounded-full bg-white px-5 text-base font-medium text-zinc-950 transition-opacity hover:opacity-90 disabled:opacity-70"
             >
-              {loading ? 'Sending...' : 'Send me the guide →'}
+              {loading ? 'Sending...' : 'Get the playbook →'}
             </button>
             <p className="text-center text-xs leading-relaxed text-zinc-400">
-              By submitting, you agree to receive the guide and related emails from NYClaw.io. Unsubscribe anytime.
+              We use your email to record your request. A link to the playbook appears here after a successful submission.
             </p>
           </form>
         </div>
       ) : (
-        <div className="panel rounded-2xl p-8 text-center">
+        <div className="panel rounded-2xl p-8 text-center" role="status" aria-live="polite">
           <CheckCircle className="mx-auto mb-4 h-12 w-12 text-white" strokeWidth={1.5} />
           <h2 className="mb-3 text-xl font-medium tracking-[-0.02em] text-white">Request received</h2>
           <p className="mb-6 text-sm leading-relaxed text-zinc-400">
-            Your guide request has been received. Check your inbox and spam folder.
+            Your guide request has been received. The playbook is ready to open.
           </p>
-          <p className="mb-6 text-[13px] text-zinc-400">
-            While you wait — start with one of the knowledge articles below:
-          </p>
+          <a
+            href="/ai-operators-playbook.html"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mb-6 inline-flex min-h-12 items-center justify-center rounded-full bg-white px-6 py-3 text-sm font-medium text-zinc-950 transition-opacity hover:opacity-90"
+          >
+            Open the playbook ↗
+          </a>
+          <p className="mb-6 text-[13px] text-zinc-400">You can also explore these articles:</p>
           <div className="flex flex-col gap-3">
             <Link
               href="/knowledge/ai-assistant-identity"
@@ -126,11 +132,6 @@ export default function ResourceForm() {
           </div>
         </div>
       )}
-
-      <div className="mt-4 flex items-center justify-center gap-2 text-[13px] text-zinc-400">
-        <Download className="h-4 w-4" />
-        Downloaded by 50+ operators and builders
-      </div>
     </div>
   )
 }

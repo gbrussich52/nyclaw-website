@@ -18,6 +18,7 @@ import Reveal from './components/Reveal'
 import WorkflowBlueprintOffer from './components/WorkflowBlueprintOffer'
 import WorkflowExplorer from './components/WorkflowExplorer'
 import { CALENDLY_URL } from './config'
+import { work, workPaths } from '../lib/client-work'
 
 export const metadata: Metadata = {
   title: 'AI Automation for Small Business | Westchester & NYC',
@@ -83,25 +84,7 @@ const ooda = [
     desc: 'Check normal work and exceptions, then hand over instructions and training. Ongoing support is a separate choice.' },
 ]
 
-/**
- * Real client builds. Copy is approved and exact — company names must match
- * how each business writes its own, and no build may be described as free,
- * unpaid or a pilot. Do not paraphrase.
- */
-const work = [
-  {
-    badge: 'Electrical contractor',
-    title: 'Estimating, billing and invoicing on one automated path',
-    body: 'Andrew, electrician and owner of Valentine Family Electric, was moving every job from estimate to bill to invoice by hand. A Claude-driven process drafts the estimate, turns the approved job into a bill, and issues the invoice with no re-typing between steps.',
-    footer: 'Valentine Family Electric · Westchester County, NY',
-  },
-  {
-    badge: 'Building & stone supply',
-    title: 'Claude configured to carry complex design work',
-    body: 'Frank, owner of Byram Mason, Building & Stone Supply, needed AI that could hold a detailed client design job start to finish. His instructions, project files and skills were structured across Claude Fable, Opus and ChatGPT 5.6 Sol so context survives the whole build.',
-    footer: 'Byram Mason, Building & Stone Supply · byrammason.com',
-  },
-]
+
 
 const industries = [
   'Real estate',
@@ -230,7 +213,7 @@ export default function Home() {
           </div>
 
           <div className="grid gap-6 md:grid-cols-3">
-            {work.map((item) => (
+            {work.map((item, index) => (
               <article key={item.title} className="panel panel-hover flex flex-col gap-4 rounded-xl p-7">
                 <span className="inline-flex w-fit rounded-full bg-white/[0.07] px-3 py-1 text-[11px] font-medium text-zinc-300">
                   {item.badge}
@@ -242,17 +225,17 @@ export default function Home() {
                 <p className="border-t border-white/10 pt-4 text-[13px] text-zinc-400">
                   {item.footer}
                 </p>
+                <Link href={`/work#${workPaths[index].id}`} className="text-sm font-medium text-cyan-300 underline underline-offset-4">See this client example</Link>
               </article>
             ))}
 
             <article className="panel flex flex-col justify-between gap-6 rounded-xl p-7">
               <div className="flex flex-col gap-3">
                 <h3 className="text-lg font-medium tracking-[-0.01em] text-white">
-                  What keeps landing back on your desk?
+                  We build for our own businesses, too.
                 </h3>
                 <p className="text-sm leading-relaxed text-zinc-400">
-                  Tell us about the last time it happened. We can talk through the current
-                  process and whether a small change or a scoped build is worth considering.
+                  Creative preparation, customer emails, alerts and content production. Explore those systems alongside our client work.
                 </p>
               </div>
               <a
@@ -264,6 +247,7 @@ export default function Home() {
                 Book a free call
                 <ArrowUpRight size={16} aria-hidden="true" />
               </a>
+              <Link href="/work#own-operations" className="text-sm font-medium text-cyan-300 underline underline-offset-4">Explore our own operating builds</Link>
             </article>
           </div>
 

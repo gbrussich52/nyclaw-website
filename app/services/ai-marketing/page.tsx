@@ -248,6 +248,13 @@ export default function AIMarketingPage() {
         items={faqs}
       />
 
+      <section className="px-6 pb-12">
+        <div className="mx-auto max-w-[64rem] border-t border-white/10 pt-7">
+          <p className="text-sm text-zinc-400">Built for our own businesses</p>
+          <Link href="/work#own-operations" className="mt-2 inline-block text-base font-medium text-cyan-300 underline underline-offset-4">See our creative, email and content workflows</Link>
+        </div>
+      </section>
+
       <CtaPanel
         title="Where do inquiries wait for a reply?"
         blurb="Tell us the channel, the current handoff and who should own the next step. We'll assess a scoped build."

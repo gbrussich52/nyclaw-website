@@ -20,8 +20,10 @@ type Entry = {
  */
 const ENTRIES: Entry[] = [
   // Homepage
-  { path: '', lastModified: '2026-07-27', changeFrequency: 'weekly', priority: 1 },
-  { path: '/about', lastModified: '2026-08-27', changeFrequency: 'monthly', priority: 0.6 },
+  { path: '', lastModified: '2026-10-07', changeFrequency: 'weekly', priority: 1 },
+  { path: '/about', lastModified: '2026-10-07', changeFrequency: 'monthly', priority: 0.6 },
+
+  { path: '/work', lastModified: '2026-10-07', changeFrequency: 'monthly', priority: 0.8 },
 
   // Legal pages
   { path: '/privacy', lastModified: '2026-09-19', changeFrequency: 'monthly', priority: 0.3 },
@@ -29,14 +31,14 @@ const ENTRIES: Entry[] = [
 
   // Service pages
   { path: '/law-firm-workflows', lastModified: '2026-10-06', changeFrequency: 'monthly', priority: 0.9 },
-  { path: '/services', lastModified: '2026-07-28', changeFrequency: 'monthly', priority: 0.9 },
-  { path: '/services/ai-automation', lastModified: '2026-07-28', changeFrequency: 'monthly', priority: 0.9 },
-  { path: '/services/ai-consulting', lastModified: '2026-07-28', changeFrequency: 'monthly', priority: 0.9 },
-  { path: '/services/ai-marketing', lastModified: '2026-07-28', changeFrequency: 'monthly', priority: 0.9 },
+  { path: '/services', lastModified: '2026-10-07', changeFrequency: 'monthly', priority: 0.9 },
+  { path: '/services/ai-automation', lastModified: '2026-10-07', changeFrequency: 'monthly', priority: 0.9 },
+  { path: '/services/ai-consulting', lastModified: '2026-10-07', changeFrequency: 'monthly', priority: 0.9 },
+  { path: '/services/ai-marketing', lastModified: '2026-10-07', changeFrequency: 'monthly', priority: 0.9 },
 
   // Location pages
-  { path: '/locations/westchester-county', lastModified: '2026-07-28', changeFrequency: 'monthly', priority: 0.8 },
-  { path: '/locations/new-york-city', lastModified: '2026-07-28', changeFrequency: 'monthly', priority: 0.8 },
+  { path: '/locations/westchester-county', lastModified: '2026-10-07', changeFrequency: 'monthly', priority: 0.8 },
+  { path: '/locations/new-york-city', lastModified: '2026-10-07', changeFrequency: 'monthly', priority: 0.8 },
 
   // Knowledge base
   { path: '/knowledge', lastModified: '2026-07-28', changeFrequency: 'weekly', priority: 0.8 },
@@ -45,17 +47,17 @@ const ENTRIES: Entry[] = [
   { path: '/knowledge/operational-excellence', lastModified: '2026-07-28', changeFrequency: 'monthly', priority: 0.7 },
 
   // Resources
-  { path: '/resources', lastModified: '2026-07-28', changeFrequency: 'monthly', priority: 0.8 },
+  { path: '/resources', lastModified: '2026-10-07', changeFrequency: 'monthly', priority: 0.8 },
   { path: '/free-ai-starter-kit', lastModified: '2026-09-17', changeFrequency: 'monthly', priority: 0.8 },
 
   // Blog
-  { path: '/blog', lastModified: '2026-09-28', changeFrequency: 'weekly', priority: 0.8 },
+  { path: '/blog', lastModified: '2026-10-07', changeFrequency: 'weekly', priority: 0.8 },
   { path: '/blog/ai-real-estate-agents', lastModified: '2026-09-28', changeFrequency: 'monthly', priority: 0.7 },
   { path: '/blog/ai-appointment-scheduling', lastModified: '2026-09-21', changeFrequency: 'monthly', priority: 0.7 },
   { path: '/blog/ai-consulting-westchester', lastModified: '2026-09-14', changeFrequency: 'monthly', priority: 0.7 },
   { path: '/blog/ai-automation-agency-vs-ai-answering-service', lastModified: '2026-09-24', changeFrequency: 'monthly', priority: 0.8 },
   { path: '/blog/ai-automation-cost-westchester', lastModified: '2026-08-07', changeFrequency: 'monthly', priority: 0.7 },
-  { path: '/blog/chatgpt-vs-ai-consultant', lastModified: '2026-08-07', changeFrequency: 'monthly', priority: 0.7 },
+  { path: '/blog/chatgpt-vs-ai-consultant', lastModified: '2026-10-07', changeFrequency: 'monthly', priority: 0.7 },
   { path: '/blog/i-audited-my-own-website', lastModified: '2026-07-28', changeFrequency: 'monthly', priority: 0.7 },
   { path: '/blog/agentic-ai-security-best-practices', lastModified: '2026-07-28', changeFrequency: 'monthly', priority: 0.7 },
   { path: '/blog/gpt-5-4', lastModified: '2026-07-28', changeFrequency: 'monthly', priority: 0.7 },
