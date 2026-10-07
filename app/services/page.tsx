@@ -15,6 +15,7 @@ import {
 } from 'lucide-react'
 import CtaPanel from '../components/CtaPanel'
 import WorkflowBlueprintOffer from '../components/WorkflowBlueprintOffer'
+import WorkflowExplorer from '../components/WorkflowExplorer'
 import { CALENDLY_URL, FREE_AUDIT_LABEL } from '../config'
 
 export const metadata: Metadata = {
@@ -118,6 +119,8 @@ export default function ServicesPage() {
           </p>
         </div>
       </section>
+
+      <WorkflowExplorer />
 
       {/* ------------------------------------------------- Service cards --- */}
       <section className="px-6 pb-24">
