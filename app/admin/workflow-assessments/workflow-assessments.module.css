@@ -1,0 +1,63 @@
+/* classification: PUBLIC */
+.page {
+  min-height: 100vh;
+  padding: 56px 20px 88px;
+  background: #09090b;
+  color: #e4e4e7;
+}
+
+.shell { width: min(100%, 1040px); margin: 0 auto; }
+.header { max-width: 720px; margin: 0 0 36px; }
+.eyebrow { color: #67e8f9; font-size: 11px; font-weight: 700; letter-spacing: .16em; }
+.header h1 { margin: 12px 0; color: #fff; font-size: clamp(30px, 5vw, 44px); line-height: 1.08; letter-spacing: -.04em; }
+.intro, .muted { color: #a1a1aa; font-size: 15px; line-height: 1.65; }
+.queue { overflow: hidden; border: 1px solid rgba(255,255,255,.12); border-radius: 18px; background: rgba(24,24,27,.8); }
+.queueHeading { display: flex; align-items: center; justify-content: space-between; gap: 18px; padding: 24px; border-bottom: 1px solid rgba(255,255,255,.1); }
+.queueHeading h2 { margin-top: 5px; color: #fff; font-size: 22px; }
+.toolbar { display: flex; flex-wrap: wrap; gap: 9px; }
+.unlockForm { display: grid; gap: 12px; max-width: 590px; padding: 24px; }
+.label { display: block; color: #d4d4d8; font-size: 13px; font-weight: 600; }
+.unlockRow, .statusRow { display: flex; gap: 10px; }
+.input { width: 100%; min-width: 0; border: 1px solid rgba(255,255,255,.17); border-radius: 10px; background: #111114; padding: 11px 13px; color: #fafafa; font: inherit; }
+.input:focus-visible, .primaryButton:focus-visible, .secondaryButton:focus-visible, .contact a:focus-visible { outline: 2px solid #67e8f9; outline-offset: 2px; }
+.primaryButton, .secondaryButton { flex: 0 0 auto; min-height: 42px; border-radius: 999px; padding: 0 17px; font: inherit; font-size: 13px; font-weight: 700; cursor: pointer; }
+.primaryButton { border: 1px solid #fff; background: #fff; color: #09090b; }
+.secondaryButton { border: 1px solid rgba(255,255,255,.2); background: transparent; color: #e4e4e7; }
+.primaryButton:disabled, .secondaryButton:disabled { cursor: not-allowed; opacity: .5; }
+.error, .notice { margin: 0 24px 18px; border-radius: 10px; padding: 12px 14px; font-size: 14px; line-height: 1.5; }
+.error { border: 1px solid rgba(248,113,113,.35); background: rgba(127,29,29,.2); color: #fecaca; }
+.notice { border: 1px solid rgba(103,232,249,.22); background: rgba(8,145,178,.1); color: #a5f3fc; }
+.empty { margin: 24px; border: 1px dashed rgba(255,255,255,.18); border-radius: 14px; padding: 30px; color: #a1a1aa; }
+.empty h3 { margin-bottom: 8px; color: #fff; font-size: 17px; }
+.empty p, .note { font-size: 13px; line-height: 1.55; }
+.list { display: grid; gap: 14px; padding: 20px; }
+.card { min-width: 0; border: 1px solid rgba(255,255,255,.1); border-radius: 14px; background: rgba(9,9,11,.6); padding: 20px; }
+.cardTop { display: flex; align-items: flex-start; justify-content: space-between; gap: 18px; }
+.reference { margin-bottom: 7px; color: #a1a1aa; font-size: 12px; }
+.reference strong { color: #67e8f9; font-variant-numeric: tabular-nums; }
+.cardTop h3 { color: #fff; font-size: 20px; overflow-wrap: anywhere; }
+.contact { margin-top: 5px; color: #c4c4cc; font-size: 14px; overflow-wrap: anywhere; }
+.contact a { color: #a5f3fc; text-decoration: underline; text-underline-offset: 3px; }
+.statusBadge { flex: 0 0 auto; border: 1px solid rgba(255,255,255,.18); border-radius: 999px; padding: 6px 10px; color: #e4e4e7; font-size: 12px; }
+.statusBadge[data-status='received'] { border-color: rgba(103,232,249,.4); color: #a5f3fc; }
+.details { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; margin: 20px 0; }
+.details dt { margin-bottom: 5px; color: #71717a; font-size: 11px; letter-spacing: .07em; text-transform: uppercase; }
+.details dd { color: #e4e4e7; font-size: 14px; line-height: 1.45; overflow-wrap: anywhere; }
+.software { grid-column: span 2; }
+.statusEditor { border-top: 1px solid rgba(255,255,255,.1); padding-top: 16px; }
+.statusRow { margin-top: 8px; max-width: 520px; }
+.note { margin-top: 10px; color: #a1a1aa; }
+
+@media (max-width: 680px) {
+  .page { padding: 32px 14px 56px; }
+  .queueHeading { align-items: flex-start; flex-direction: column; padding: 20px; }
+  .unlockForm { padding: 20px; }
+  .unlockRow, .statusRow { align-items: stretch; flex-direction: column; }
+  .primaryButton, .secondaryButton { min-height: 44px; }
+  .error, .notice { margin-right: 20px; margin-left: 20px; }
+  .list { padding: 12px; }
+  .card { padding: 16px; }
+  .cardTop { flex-direction: column; }
+  .details { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px 10px; }
+  .software { grid-column: span 2; }
+}
