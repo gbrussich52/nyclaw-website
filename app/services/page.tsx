@@ -1,3 +1,4 @@
+// classification: PUBLIC
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import {
@@ -13,10 +14,11 @@ import {
   ArrowRight,
 } from 'lucide-react'
 import CtaPanel from '../components/CtaPanel'
+import WorkflowBlueprintOffer from '../components/WorkflowBlueprintOffer'
 import { CALENDLY_URL, FREE_AUDIT_LABEL } from '../config'
 
 export const metadata: Metadata = {
-  title: 'AI Agency Services — Custom Agents & Automations',
+  title: 'AI and Automation Services for Small Businesses',
   description:
     'NYClaw.io is an AI agency for small businesses in Westchester County and NYC — custom AI agents and workflow automations, project-based, not a product install.',
   keywords:
@@ -41,39 +43,22 @@ export const metadata: Metadata = {
 }
 
 const services = [
-  {
-    Icon: Bot,
-    badge: 'Flagship',
-    title: 'Custom AI Agents',
-    tagline: 'Agents that do real work in your stack.',
-    description:
-      'We design and build agents for one mission-critical job — intake, lead response, scheduling, research, support triage — wired into the tools you already use. Not a stock template install.',
-    pricing: '$3.5K–8K per agent sprint · no monthly required',
-    href: '/services/ai-automation',
-    cta: 'Learn about agents',
-  },
-  {
-    Icon: Workflow,
-    badge: 'Systems',
-    title: 'Workflow Automation',
-    tagline: 'Multi-step systems across your ops.',
-    description:
-      'End-to-end automations that move work between forms, CRMs, inboxes, calendars and invoices — so humans only touch exceptions. Scoped as a project, delivered with a runbook.',
-    pricing: '$5K–15K project · 2–3 connected automations',
-    href: '/services/ai-automation',
-    cta: 'Learn about automation',
-  },
-  {
-    Icon: Target,
-    badge: 'Entry',
-    title: 'Fit Audit + Roadmap',
-    tagline: 'Know what to build first — and what to skip.',
-    description:
-      'Start with a free 30-minute fit call. Need a deeper plan? We deliver a prioritized automation roadmap with ROI and build order before you invest in a full system.',
-    pricing: 'Free 30-min fit · $1K–2.5K full roadmap (optional)',
-    href: '/services/ai-consulting',
-    cta: 'Learn about strategy',
-  },
+  { Icon: Bot, badge: 'AI assistants', title: 'Give a recurring job a useful assistant',
+    tagline: 'Research, sorting and draft preparation with review.',
+    description: 'Choose one job and the approved tools it needs. Define which outputs your team checks and where an unclear request goes.',
+    pricing: '$3.5K–8K per agent sprint · ongoing care optional', href: '/services/ai-automation', cta: 'See assistant builds' },
+  { Icon: Workflow, badge: 'Connected workflows', title: 'Move the work between your tools',
+    tagline: 'Less retyping. A clearer handoff.',
+    description: 'Connect the form, customer record, calendar or invoice. Agree the source of each detail and who handles an exception.',
+    pricing: '$5K–15K project · 2–3 connected automations', href: '/services/ai-automation', cta: 'See workflow builds' },
+  { Icon: Activity, badge: 'Marketing & follow-up', title: 'Give inquiries a clearer path to a reply',
+    tagline: 'An intake and follow-up process your team can check.',
+    description: 'Build the content, inquiry and follow-up system around how people become customers. Set approval rules and measure the handoffs.',
+    pricing: '$4K–12K marketing system build · operation optional', href: '/services/ai-marketing', cta: 'See marketing systems' },
+  { Icon: Target, badge: 'Advice & planning', title: 'Decide what is worth changing',
+    tagline: 'Check the current tools before paying for a build.',
+    description: 'Start with a free conversation about one process. If you need a deeper plan, agree a written roadmap with assumptions, costs and a sensible order of work.',
+    pricing: 'Free 30-minute call · $1K–2.5K written roadmap', href: '/services/ai-consulting', cta: 'See advice & roadmaps' },
 ]
 
 const includes = [
@@ -85,12 +70,12 @@ const includes = [
   {
     Icon: Plug,
     title: 'Integrations',
-    desc: 'CRM, email, calendar, SMS and web wired up by us, not left to you.',
+    desc: 'Check access and software limits before connecting the tools agreed in the scope.',
   },
   {
     Icon: ShieldCheck,
     title: 'Error handling',
-    desc: 'Exceptions surfaced to a human instead of failing silently.',
+    desc: 'Name the person who reviews unclear inputs, failed steps and unexpected results.',
   },
   {
     Icon: GraduationCap,
@@ -124,19 +109,19 @@ export default function ServicesPage() {
           </div>
 
           <h1 className="max-w-[36rem] text-balance text-[clamp(2.5rem,5.5vw,3.5rem)] font-normal leading-[1.08] tracking-[-0.03em] text-white">
-            AI agency services for small businesses
+            Choose the work you want to make easier.
           </h1>
 
           <p className="mt-6 max-w-[34rem] text-lg leading-relaxed text-zinc-300">
-            We design and build custom automations and agents — project-based, scoped to your
-            workflows. Not a one-size product install.
+            An inquiry to answer, a quote to prepare, a handoff to finish. Choose the problem
+            first. We will check whether your current tools, a simpler process or a build can help.
           </p>
         </div>
       </section>
 
       {/* ------------------------------------------------- Service cards --- */}
       <section className="px-6 pb-24">
-        <div className="mx-auto grid max-w-[64rem] items-stretch gap-6 md:grid-cols-3">
+        <div className="mx-auto grid max-w-[64rem] items-stretch gap-6 md:grid-cols-2">
           {services.map((service) => (
             <Link
               key={service.title}
@@ -174,16 +159,18 @@ export default function ServicesPage() {
         </div>
       </section>
 
+      <WorkflowBlueprintOffer />
+
       {/* ---------------------------------------- What's always included --- */}
       <section className="px-6 pb-24">
         <div className="mx-auto flex max-w-[64rem] flex-col gap-12">
           <div className="flex max-w-[36rem] flex-col gap-5">
             <h2 className="text-balance text-[clamp(2rem,4vw,2.5rem)] font-medium leading-[1.15] tracking-[-0.025em] text-white">
-              What every engagement includes
+              What to expect from a build
             </h2>
             <p className="text-[17px] leading-relaxed text-zinc-300">
-              Same shape whichever service you start with: one scoped system, wired into your
-              tools, handed over with a runbook.
+              Before a build, agree the scope and how to test it. Your team should know what the
+              system does, what it cannot decide and how to handle an exception.
             </p>
           </div>
 
@@ -219,10 +206,10 @@ export default function ServicesPage() {
 
       {/* ----------------------------------------------------- CTA panel --- */}
       <CtaPanel
-        title="Not sure where to start?"
-        blurb="Book a free 30-minute fit audit. We'll name the #1 agent or automation worth building — or tell you if now isn't the time."
+        title="Bring us the part that keeps getting repeated."
+        blurb="Talk through one process and your current tools. The call is free; scope, price and timing for any paid work are agreed separately."
         primary={{ label: FREE_AUDIT_LABEL, href: CALENDLY_URL, external: true }}
-        secondary={{ label: 'Send us the workflow', href: '/#contact' }}
+        secondary={{ label: 'Tell us where work gets stuck', href: '/#contact' }}
       />
     </>
   )

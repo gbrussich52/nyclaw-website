@@ -1,3 +1,4 @@
+// classification: PUBLIC
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import {
@@ -23,13 +24,13 @@ import CtaPanel from '../../components/CtaPanel'
 export const metadata: Metadata = {
   title: 'AI Marketing Automations & Agents',
   description:
-    'NYClaw.io builds AI marketing automations and agents for small businesses — content engines, lead funnels, and nurture systems. Westchester County and NYC.',
+    'NYClaw.io builds marketing workflows for small businesses: inquiry routing, follow-up drafts, approved content and clear measurement. Westchester County and NYC.',
   keywords:
     'AI marketing automation, AI lead generation agents, content engine build, AI email automation, AI marketing westchester, marketing automation agency',
   openGraph: {
     title: 'AI Marketing Automations & Agents | NYClaw.io',
     description:
-      'Custom marketing automations and agents — content, funnels, nurture. Built as projects, not a product install.',
+      'Give inquiries a clear next step with scoped follow-ups, content review and reporting.',
     url: 'https://nyclaw.io/services/ai-marketing',
     siteName: 'NYClaw.io',
     type: 'website',
@@ -38,97 +39,95 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'AI Marketing Automations | NYClaw.io',
     description:
-      'Custom marketing agents and automations for small businesses — project-scoped.',
+      'Scoped marketing workflows for inquiries, follow-ups and content review.',
   },
   alternates: {
     canonical: 'https://nyclaw.io/services/ai-marketing',
   },
 }
 
-/** Figures are the live route's own — the strip only restyles them. */
 const stats = [
-  { raw: 'Project', label: 'Build first' },
-  { raw: '7+', label: 'Content pieces/day' },
-  { raw: '3–5x', label: 'Output increase' },
-  { raw: '24/7', label: 'Lead capture' },
+  { raw: 'Scope', label: 'Agree the workflow' },
+  { raw: 'Review', label: 'Approve content' },
+  { raw: 'Route', label: 'Name the next owner' },
+  { raw: 'Measure', label: 'Check actual results' },
 ]
 
 const capabilities = [
   {
     Icon: PenTool,
-    title: 'AI content engines',
-    desc: 'Automated production that publishes daily — posts, social, scripts and newsletters from your brand voice.',
+    title: 'Content drafting',
+    desc: 'Prepare posts, emails or page copy from an agreed brief for your team to edit and approve.',
   },
   {
     Icon: Funnel,
-    title: 'Lead generation funnels',
-    desc: 'Landing pages, lead magnets and conversion flows that capture and qualify leads while you sleep.',
+    title: 'Inquiry capture',
+    desc: 'Collect the details your team needs, record the source and assign a clear next step.',
   },
   {
     Icon: Mail,
-    title: 'Email & SMS automation',
-    desc: 'Nurture sequences triggered by behaviour — welcome, re-engagement and follow-up flows that convert.',
+    title: 'Email and SMS follow-ups',
+    desc: 'Draft or send agreed messages when a defined event occurs, with approval where your team needs it.',
   },
   {
     Icon: MessageSquare,
-    title: 'AI chat & response',
-    desc: 'Website and social responders that engage visitors instantly and route qualified leads in real time.',
+    title: 'Response routing',
+    desc: 'Help visitors reach the right person or form and surface questions that need a human answer.',
   },
   {
     Icon: Globe,
-    title: 'Multi-platform distribution',
-    desc: 'Content and campaigns distributed across search, social, email and SMS — coordinated, not manual.',
+    title: 'Publishing workflow',
+    desc: 'Keep drafts, approvals and publishing steps visible across the channels included in scope.',
   },
   {
     Icon: BarChart2,
-    title: 'Analytics & optimization',
-    desc: 'Dashboards tracking leads, conversions, cost per acquisition and revenue attribution.',
+    title: 'Simple reporting',
+    desc: 'Agree which inquiry and follow-up events to track, then compare actual results with the starting baseline.',
   },
 ]
 
 const ooda = [
   {
-    letter: 'O',
-    label: 'Observe',
-    timeline: 'Week 1',
-    desc: 'We audit current marketing: what works, where leads come from, what competitors do, and the buying journey.',
+    letter: '1',
+    label: 'Trace an inquiry',
+    timeline: 'Scope',
+    desc: 'Show us how a new inquiry arrives, who replies and where the conversation can stall.',
   },
   {
-    letter: 'O',
-    label: 'Orient',
-    timeline: 'Week 1',
-    desc: 'We map the highest-impact channels and content strategies for your business, audience and budget.',
+    letter: '2',
+    label: 'Set review points',
+    timeline: 'Design',
+    desc: 'Agree which messages can be drafted, who approves them and when a person takes over.',
   },
   {
-    letter: 'D',
-    label: 'Decide',
-    timeline: 'Week 2',
-    desc: 'We lock the strategy: channels, content, funnels, automation triggers. You approve before we build.',
+    letter: '3',
+    label: 'Agree the scope',
+    timeline: 'Quote',
+    desc: 'Choose the channels, triggers, owners and measurements for the first build.',
   },
   {
-    letter: 'A',
-    label: 'Act',
-    timeline: 'Week 2–4',
-    desc: 'We build and launch: content engine, funnels, email/SMS automation, chat and analytics.',
+    letter: '4',
+    label: 'Test and hand off',
+    timeline: 'Delivery',
+    desc: 'We test the agreed examples with your team and document how to review, pause or change the workflow.',
   },
 ]
 
-/** Metrics match the live route's results block exactly. */
 const results = [
   {
-    metric: '7+',
-    label: 'Pieces of content per day',
-    desc: 'Automated daily production across blog, social and email — without your team writing a word.',
+    metric: 'Review',
+    label: 'Content approval',
+    desc: 'See the draft, owner and approval decision before a message is published.',
   },
   {
-    metric: '24/7',
-    label: 'Lead capture active',
-    desc: 'Funnels and chat working around the clock, capturing and nurturing leads while you are offline.',
+    metric: 'Follow-up',
+    label: 'A clear next step',
+    desc: 'Check whether an inquiry has an owner, a response and an exception for staff to resolve.',
   },
   {
-    metric: '3–5x',
-    label: 'Marketing output increase',
-    desc: 'Most clients see 3-5x more output in the first 60 days with no additional team members.',
+    metric: 'Measure',
+    label: 'Actual performance',
+    desc: 'Compare real inquiry and follow-up activity with the baseline after launch.',
   },
 ]
 
@@ -137,58 +136,58 @@ const plans = [
     name: 'Marketing System Build',
     price: '$4K–12K',
     unit: 'fixed scope',
-    desc: 'Content engine, funnels and nurture automations designed for your brand.',
+    desc: 'A scoped inquiry, follow-up or content-review workflow for your team.',
     items: [
-      'Brand voice & channel setup',
-      'Content engine + funnel build',
-      'Email / SMS nurture sequences',
-      'Handoff docs & training',
+      'Agreed channels, messages and review steps',
+      'Inquiry and follow-up workflow',
+      'Tests for agreed triggers and exceptions',
+      'Handoff instructions and team walkthrough',
     ],
   },
   {
     name: 'Optional Operation',
     price: '$1K–3K',
     unit: '/mo or rev share',
-    desc: 'After go-live only. We keep it running — or you run it yourself.',
+    desc: 'Separately scoped help after launch, if your team wants it.',
     items: [
-      'Ongoing content & funnel ops',
-      'Performance reporting',
-      'A/B testing & iteration',
-      'Or: self-run with our handoff',
+      'Agreed publishing and follow-up support',
+      'Reporting against agreed measures',
+      'Review and iteration within the care scope',
+      'Team can also use the handoff independently',
     ],
   },
 ]
 
 const faqs = [
   {
-    question: 'How does AI-powered marketing differ from traditional digital marketing?',
+    question: 'What can a marketing workflow change?',
     answer:
-      'Traditional digital marketing requires manual content creation, campaign management, and optimization. AI-powered marketing automates the entire pipeline: content gets generated from your brand voice, campaigns get optimized in real time based on performance data, and leads get nurtured through personalized sequences — all without manual work. You get 3-5x more output at a fraction of the labor cost.',
+      'It can connect an inquiry form to a record, assign a person to reply and prepare an approved follow-up. We agree the steps and review points in scope, then measure what actually changes.',
   },
   {
     question: 'How much do AI marketing automations cost?',
     answer:
-      'Most marketing systems start as a project build ($4,000–$12,000) for the content engine, funnel, and nurture stack. Optional ongoing operation can be flat ($1,000–$3,000/mo) or performance-based after go-live. You can also take a handoff and run it yourself — monthly is never required to start.',
+      'Marketing system builds are listed at $4,000–$12,000. Optional operation after launch is $1,000–$3,000 per month or a separately agreed revenue-share arrangement. The project scope and price are agreed before the build.',
   },
   {
     question: 'What kind of content does the AI produce?',
     answer:
-      'The AI content engine produces blog posts, social media posts (LinkedIn, Instagram, Facebook, X), email newsletters, SMS campaigns, video scripts, ad copy, and landing page content. All content is trained on your brand voice, industry terminology, and target audience. Every piece goes through quality checks before publishing — this is not generic ChatGPT output.',
+      'Depending on the agreed scope, it can draft posts, emails, page copy or other messages from examples and a brief your team provides. A named reviewer checks factual claims, voice and fit before publishing.',
   },
   {
-    question: 'How long until I see results from AI marketing?',
+    question: 'How will we tell whether it helps?',
     answer:
-      'Most clients see measurable results within 30-60 days. The first 2 weeks focus on building your content engine and lead funnels. By week 3-4, content is publishing daily and funnels are capturing leads. By day 60, you have enough data to see clear trends in traffic, leads, and conversions. SEO-driven results (organic search traffic) typically take 90-180 days to compound.',
+      'We agree a starting baseline and the events worth tracking, such as inquiries received, replies sent and handoffs completed. After launch, your team can compare actual activity with that baseline. Timing depends on the workflow and traffic.',
   },
   {
     question: 'Will the content sound like it was written by AI?',
     answer:
-      'No, and that is a non-negotiable for us. We train the content engine on your brand voice, your past content, and your industry language. Every output goes through a quality and authenticity check. The goal is content that sounds like it was written by someone who deeply understands your business — because the AI was trained to do exactly that.',
+      'Your team supplies examples and guidance. Drafts need a human check for accuracy, tone and approvals before they go live.',
   },
   {
     question: 'Can I approve content before it goes live?',
     answer:
-      'Yes. We offer two modes: fully automated (content publishes on schedule without manual review) and approval-based (content queues for your review before publishing). Most clients start with approval mode for the first 30 days, then switch to fully automated once they trust the quality and voice consistency.',
+      'Yes. We can set a review step so a named person approves content before publishing. The workflow also needs a way to pause or correct a message.',
   },
 ]
 
@@ -197,7 +196,7 @@ export default function AIMarketingPage() {
     <>
       <ServiceJsonLd
         name="AI Marketing Automations & Agents"
-        description="Custom AI marketing automations and agents for small businesses. Content engines, lead funnels, and nurture systems — project-based builds by NYClaw.io."
+        description="Scoped marketing workflows for small businesses: inquiry routing, follow-up drafts, content approval and measurement."
         url="https://nyclaw.io/services/ai-marketing"
       />
       <FAQJsonLd items={faqs} />
@@ -205,11 +204,11 @@ export default function AIMarketingPage() {
       <ServiceHero
         badge="Marketing"
         BadgeIcon={Megaphone}
-        titleTop="Marketing automations"
-        titleAccent="& agents"
-        lede="We design and build the system — content, funnels, nurture."
-        blurb="Custom marketing automations and agents that produce content, capture leads and nurture prospects around the clock. Built as a project for your brand — not a generic product install."
-        primary={{ label: 'Start a project', href: '/#contact' }}
+        titleTop="Make the next customer"
+        titleAccent="conversation easier to start."
+        lede="Forms, follow-ups and content your team can keep track of."
+        blurb="If an inquiry lands in a busy inbox, the response needs an owner and a next step. We connect intake and follow-up, help prepare the message and show your team what needs attention."
+        primary={{ label: 'Tell us where work gets stuck', href: '/#contact' }}
         secondary={{ label: 'See what we build', href: '#what-we-build' }}
       />
 
@@ -218,41 +217,41 @@ export default function AIMarketingPage() {
       <CapabilityGrid
         id="what-we-build"
         title="What we build"
-        blurb="A complete marketing system — not a single tool or hack. Everything works together to generate, capture and convert leads."
+        blurb="Choose the inquiry, follow-up or content handoff that needs a clearer owner. The build is limited to the agreed channels and tools."
         items={capabilities}
       />
 
       <OodaPanel
-        title="How we build your marketing engine"
-        blurb="The same OODA Loop, applied to marketing: observe the market, orient around opportunity, decide the strategy, act by building systems that run themselves."
+        title="From inquiry to an agreed next step"
+        blurb="We map the current handoff, agree the review points, then test the workflow with your team."
         steps={ooda}
-        note="Then we optimize — performance data reviewed weekly and strategy adjusted."
+        note="Ongoing reporting and changes can be scoped after launch if your team wants support."
       />
 
       <ResultsCards
-        title="Results you can expect"
-        blurb="These are the outcomes the marketing systems deliver. Real numbers, not aspirational benchmarks."
+        title="What your team can check"
+        blurb="These checkpoints make the workflow visible. Business results depend on your offer, audience and follow-through."
         items={results}
       />
 
       <PricingPair
-        title="Build first. Operate only if you want."
-        blurb="Project-scoped systems. Optional ongoing operation after go-live — never required to start."
+        title="Project build, optional operation"
+        blurb="We agree the build scope first. Ongoing operation is a separate decision after launch."
         plans={plans}
         note="Every engagement starts as a fixed project quote."
       />
 
-      <IndustryChips blurb="Best for small businesses that rely on a steady pipeline of leads and have no bandwidth to produce content manually." />
+      <IndustryChips blurb="For small teams that need a clearer path from inquiry to reply, or from draft to approved publication." />
 
       <FaqSection
-        blurb="Common questions about AI-powered marketing for small businesses."
+        blurb="Common questions about marketing workflows for small businesses."
         items={faqs}
       />
 
       <CtaPanel
-        title="Ready for marketing automations built for your brand?"
-        blurb="Tell us your channels and goals. We'll scope a custom marketing system — project-based, with optional ops after go-live."
-        primary={{ label: 'Start a project', href: '/#contact' }}
+        title="Where do inquiries wait for a reply?"
+        blurb="Tell us the channel, the current handoff and who should own the next step. We'll assess a scoped build."
+        primary={{ label: 'Tell us where work gets stuck', href: '/#contact' }}
         footer={
           <>
             Or explore:{' '}

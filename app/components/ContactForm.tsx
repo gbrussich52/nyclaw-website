@@ -1,7 +1,9 @@
+// classification: PUBLIC
 'use client'
 
 import { useState } from 'react'
 import { CheckCircle2 } from 'lucide-react'
+import { CALENDLY_URL } from '../config'
 import { useContactSubmit } from '../hooks/useContactSubmit'
 
 /** Shared field chrome — `.input-dusk` carries the fill/border/radius tokens. */
@@ -31,13 +33,13 @@ export default function ContactForm() {
       <div className="mx-auto max-w-[44rem]">
         <div className="mb-12 flex flex-col items-center gap-4 text-center">
           <h2 className="text-balance text-[clamp(2rem,4vw,2.75rem)] font-medium leading-[1.12] tracking-[-0.025em] text-white">
-            Start a project
+            Tell us where work gets stuck
           </h2>
           <p className="text-[17px] leading-relaxed text-zinc-300">
-            Custom automations &amp; agents. Project-scoped.
+            Start with the problem. You do not need a technical brief.
           </p>
           <p className="max-w-[34rem] text-[15px] leading-relaxed text-zinc-400">
-            Tell us the workflow that burns the most time. We&apos;ll reply with whether a custom agent or automation is a fit — and what a fixed-scope build would look like.
+            Tell us what happens today, what gets repeated and which tools you use. This is an inquiry, not a booking or an agreement to start paid work.
           </p>
         </div>
 
@@ -47,7 +49,7 @@ export default function ContactForm() {
             <CheckCircle2 className="mx-auto mb-5 h-12 w-12 text-white" strokeWidth={1.5} />
             <h3 className="mb-3 text-xl font-medium tracking-[-0.01em] text-white">We got it.</h3>
             <p className="text-[15px] leading-relaxed text-zinc-400">
-              We review every submission and respond within 24 hours.
+              Your inquiry has been received. We will review it and contact you at the email you provided. Scope, price and timing are agreed separately.
             </p>
           </div>
         ) : (
@@ -116,7 +118,7 @@ export default function ContactForm() {
             </div>
             <div>
               <label className={labelClass} htmlFor="contact-challenge">
-                What should we build first? *
+                Where does work get stuck? *
               </label>
               <select
                 id="contact-challenge"
@@ -126,16 +128,16 @@ export default function ContactForm() {
                 className={selectClass}
               >
                 <option value="">Pick the closest fit...</option>
-                <option value="agent">Custom AI agent (intake, support, research, etc.)</option>
-                <option value="automation">Workflow automation across my tools</option>
-                <option value="lead-response">Lead / missed-call response</option>
-                <option value="scheduling">Scheduling &amp; follow-ups</option>
-                <option value="where-to-start">Not sure — want the 30-min fit audit</option>
+                <option value="agent">Preparing answers, drafts or research</option>
+                <option value="automation">Copying information between tools</option>
+                <option value="lead-response">Replying to new inquiries or missed calls</option>
+                <option value="scheduling">Booking, reminders or follow-ups</option>
+                <option value="where-to-start">I am not sure where to start</option>
               </select>
             </div>
             <div>
               <label className={labelClass} htmlFor="contact-message">
-                Describe the workflow
+                What happens today?
               </label>
               <textarea
                 id="contact-message"
@@ -143,7 +145,7 @@ export default function ContactForm() {
                 onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                 className={fieldClass}
                 rows={3}
-                placeholder="What happens today when a lead/call/email comes in? Which tools (CRM, calendar, email)? What should the agent or automation do instead?"
+                placeholder="Describe one recent example and the tools involved. Leave out client details, confidential files, passwords and account numbers."
               />
             </div>
             {errorMsg && (
@@ -156,10 +158,11 @@ export default function ContactForm() {
               disabled={loading}
               className="inline-flex h-12 w-full items-center justify-center rounded-full bg-white px-5 text-base font-medium text-zinc-950 transition-opacity hover:opacity-90 disabled:opacity-70"
             >
-              {loading ? 'Submitting…' : 'Request project scope →'}
+              {loading ? 'Submitting…' : 'Send my inquiry'}
             </button>
             <p className="text-center text-[13px] text-zinc-400">
-              We respond within 24 hours. Prefer a live call? Book the free 30-min fit audit instead.
+              No paid work starts from this form. Prefer a conversation?{' '}
+              <a className="underline underline-offset-4" href={CALENDLY_URL} target="_blank" rel="noopener noreferrer">Book a free 30-minute call</a>.
             </p>
           </form>
         )}
