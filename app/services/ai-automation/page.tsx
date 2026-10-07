@@ -242,6 +242,13 @@ export default function AIAutomationPage() {
         items={faqs}
       />
 
+      <section className="px-6 pb-12">
+        <div className="mx-auto max-w-[64rem] border-t border-white/10 pt-7">
+          <p className="text-sm text-zinc-400">See related client work</p>
+          <Link href="/work#valentine-family-electric" className="mt-2 inline-block text-base font-medium text-cyan-300 underline underline-offset-4">See the electrical contractor example</Link>
+        </div>
+      </section>
+
       <CtaPanel
         title="Where does your team enter the same information twice?"
         blurb="Describe the handoff and the tools involved. We'll identify what to check before quoting a project."
