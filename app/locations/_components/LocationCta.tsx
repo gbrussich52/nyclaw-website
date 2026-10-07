@@ -41,13 +41,13 @@ export default function LocationCta({
               rel="noopener noreferrer"
               className="inline-flex h-11 items-center rounded-full bg-white px-5 text-[15px] font-medium text-zinc-950 transition-opacity hover:opacity-90"
             >
-              <span className="whitespace-nowrap">Free 30-Min Fit Audit</span>
+              <span className="whitespace-nowrap">Book a free 30-minute call</span>
             </a>
             <Link
               href="/#contact"
               className="inline-flex h-11 items-center rounded-full px-5 text-[15px] font-medium text-white outline outline-1 outline-white/[0.18] transition-colors hover:bg-white/5"
             >
-              <span className="whitespace-nowrap">Start a Project &rarr;</span>
+              <span className="whitespace-nowrap">Tell us where work gets stuck</span>
             </Link>
           </div>
 

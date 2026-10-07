@@ -1,3 +1,4 @@
+// classification: PUBLIC
 'use client'
 
 import Link from 'next/link'
@@ -80,8 +81,8 @@ export default function SiteHeader() {
             Site launch baseline item 20: the fixed header sits over the hero,
             so its CTA and the hero's two CTAs were competing above the fold
             as three actionable elements. The "30-min fit audit" button was
-            the duplicate (Book the 30-min audit already covers that action
-            in the hero) and is dropped here; "Start a project" stays as the
+            the duplicate (Book a free 30-minute call already covers that action
+            in the hero) and is dropped here; "Tell us what’s stuck" stays as the
             one persistent nav CTA.
           */}
           <div className="hidden items-center gap-2 md:flex">
@@ -89,7 +90,7 @@ export default function SiteHeader() {
               href="/#contact"
               className="flex h-8 items-center rounded-md bg-white px-3 text-[13px] font-medium text-zinc-950 shadow-[0_1px_2px_rgba(0,0,0,.2)] transition-opacity hover:opacity-90"
             >
-              Start a project
+              Tell us what’s stuck
             </Link>
           </div>
 
@@ -125,7 +126,7 @@ export default function SiteHeader() {
                 href="/#contact"
                 className="flex h-10 items-center justify-center rounded-md bg-white text-sm font-medium text-zinc-950"
               >
-                Start a project
+                Tell us what’s stuck
               </Link>
               <a
                 href={CALENDLY_URL}
@@ -134,7 +135,7 @@ export default function SiteHeader() {
                 className="flex h-10 items-center justify-center rounded-md text-sm font-medium text-zinc-200 outline outline-1 outline-white/15"
                 style={{ background: 'color-mix(in oklab, #27272a 55%, #000)' }}
               >
-                Book the 30-min audit
+                Book a free 30-minute call
               </a>
             </div>
           </div>

@@ -31,7 +31,7 @@ export default function ResourceForm() {
         <div className="panel rounded-2xl p-8">
           <h2 className="text-xl font-medium tracking-[-0.02em] text-white">Get the free guide</h2>
           <p className="mt-2 text-sm leading-relaxed text-zinc-400">
-            Enter your details and we&apos;ll send it immediately. No spam. Unsubscribe anytime.
+            Enter your details to request the free guide. You&apos;ll also receive related emails; unsubscribe anytime.
           </p>
 
           <form onSubmit={handleSubmit} className="mt-6 flex flex-col gap-4">
@@ -103,9 +103,9 @@ export default function ResourceForm() {
       ) : (
         <div className="panel rounded-2xl p-8 text-center">
           <CheckCircle className="mx-auto mb-4 h-12 w-12 text-white" strokeWidth={1.5} />
-          <h2 className="mb-3 text-xl font-medium tracking-[-0.02em] text-white">Check your inbox!</h2>
+          <h2 className="mb-3 text-xl font-medium tracking-[-0.02em] text-white">Request received</h2>
           <p className="mb-6 text-sm leading-relaxed text-zinc-400">
-            We sent the guide to <strong className="font-medium text-white">{formData.email}</strong>. It should arrive within 2 minutes.
+            Your guide request has been received. Check your inbox and spam folder.
           </p>
           <p className="mb-6 text-[13px] text-zinc-400">
             While you wait — start with one of the knowledge articles below:

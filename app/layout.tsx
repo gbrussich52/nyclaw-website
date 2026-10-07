@@ -1,3 +1,4 @@
+// classification: PUBLIC
 import type { Metadata } from 'next'
 import { Space_Grotesk, Inter } from 'next/font/google'
 import './globals.css'
@@ -32,7 +33,7 @@ export const metadata: Metadata = {
     template: '%s | NYClaw.io',
   },
   description:
-    'NYClaw.io is an AI agency that designs and builds custom automations and agents for small businesses in Westchester County, NY and NYC. Not a plug-and-play install — systems built for how you work.',
+    'NYClaw.io is an AI agency that designs and builds custom automations and agents for small businesses in Westchester County, NY and NYC. Inquiries, follow-up and repeat work, built around the tools your team uses.',
   keywords:
     'AI agency, custom AI agents, AI automation agency, small business AI, workflow automation, Westchester NY, NYC AI agency, AI consulting, agent development',
   openGraph: {
@@ -47,7 +48,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'NYClaw.io | AI Automation Agency | Westchester, NYC',
-    description: 'Custom AI automations and agents for small businesses. Free 30-min fit audit.',
+    description: 'Custom AI automations and agents for small businesses. Free 30-minute call.',
   },
   robots: {
     index: true,
@@ -88,7 +89,7 @@ export default function RootLayout({
                 <Link href="/about" className="transition-colors hover:text-white">About</Link>
                 <Link href="/resources" className="transition-colors hover:text-white">Free guide</Link>
                 <Link href="/free-ai-starter-kit" className="transition-colors hover:text-white">Starter kit</Link>
-                <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-white">Fit audit</a>
+                <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-white">Free 30-minute call</a>
                 <Link href="/privacy" className="transition-colors hover:text-white">Privacy</Link>
                 <Link href="/terms" className="transition-colors hover:text-white">Terms</Link>
                 <Link href="/dmca" className="transition-colors hover:text-white">DMCA</Link>
@@ -96,7 +97,7 @@ export default function RootLayout({
             </div>
             <div className="flex flex-col gap-2 text-[13px] text-zinc-400 sm:flex-row sm:items-center sm:justify-between">
               <p>© {new Date().getFullYear()} NYClaw.io · AI agency · Westchester County, NY</p>
-              <p>AI powered, human experience</p>
+              <p>Practical AI. Clear next steps.</p>
             </div>
           </div>
         </footer>
