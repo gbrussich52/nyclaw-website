@@ -9,7 +9,9 @@
     "start": "next start",
     "lint": "next lint",
     "test": "vitest run",
-    "render:hero": "node scripts/render-hero.mjs"
+    "render:hero": "node scripts/render-hero.mjs",
+    "workflow-lab:setup": "node scripts/workflow-lab-setup.mjs",
+    "test:workflow-lab": "node scripts/workflow-lab-replay.mjs && node scripts/workflow-lab-browser.mjs"
   },
   "dependencies": {
     "@vercel/analytics": "2.0.1",
