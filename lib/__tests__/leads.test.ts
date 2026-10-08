@@ -1,5 +1,5 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
-import { storeLeadInRedis } from '../leads'
+import { getLeadsFromRedis, LeadReadUnavailableError, storeLeadInRedis } from '../leads'
 
 const URL_BASE = 'https://fake-redis.upstash.io'
 const TOKEN = 'fake-token'
@@ -68,6 +68,30 @@ describe('storeLeadInRedis', () => {
     expect(await storeLeadInRedis(ENTRY)).toBe(false)
   })
 
+  it.each([
+    null,
+    {},
+    [],
+    [{ result: null }, { result: 'OK' }],
+    [{}, { result: 'OK' }],
+    [{ result: '1' }, { result: 'OK' }],
+    [{ result: 0 }, { result: 'OK' }],
+    [{ result: -1 }, { result: 'OK' }],
+    [{ result: 1.5 }, { result: 'OK' }],
+  ])('does not acknowledge an unconfirmed LPUSH response: %j', async (result) => {
+    stubCreds()
+    vi.stubGlobal('fetch', vi.fn().mockResolvedValue(new Response(JSON.stringify(result), { status: 200 })))
+    expect(await storeLeadInRedis(ENTRY)).toBe(false)
+  })
+
+  it('acknowledges a confirmed LPUSH even when the following trim errors', async () => {
+    stubCreds()
+    vi.stubGlobal('fetch', vi.fn().mockResolvedValue(
+      new Response(JSON.stringify([{ result: 1 }, { error: 'trim unavailable' }]), { status: 200 })
+    ))
+    expect(await storeLeadInRedis(ENTRY)).toBe(true)
+  })
+
   it('returns false on network failure instead of throwing', async () => {
     stubCreds()
     vi.stubGlobal('fetch', vi.fn().mockRejectedValue(new TypeError('fetch failed')))
@@ -78,5 +102,50 @@ describe('storeLeadInRedis', () => {
     stubCreds()
     vi.stubGlobal('fetch', vi.fn().mockResolvedValue(new Response('not-json', { status: 200 })))
     expect(await storeLeadInRedis(ENTRY)).toBe(false)
+  })
+})
+
+describe('getLeadsFromRedis', () => {
+  beforeEach(() => {
+    vi.spyOn(console, 'error').mockImplementation(() => {})
+  })
+
+  afterEach(() => {
+    vi.unstubAllEnvs()
+    vi.unstubAllGlobals()
+    vi.restoreAllMocks()
+  })
+
+  it('returns a genuine empty LRANGE as an empty list', async () => {
+    stubCreds()
+    vi.stubGlobal('fetch', vi.fn().mockResolvedValue(new Response(JSON.stringify({ result: [] }), { status: 200 })))
+    expect(await getLeadsFromRedis()).toEqual([])
+  })
+
+  it('throws a sanitized error when storage is unconfigured or unavailable', async () => {
+    vi.stubEnv('UPSTASH_REDIS_REST_URL', '')
+    vi.stubEnv('UPSTASH_REDIS_REST_TOKEN', '')
+    vi.stubEnv('KV_REST_API_URL', '')
+    vi.stubEnv('KV_REST_API_TOKEN', '')
+    await expect(getLeadsFromRedis()).rejects.toBeInstanceOf(LeadReadUnavailableError)
+
+    stubCreds()
+    vi.stubGlobal('fetch', vi.fn().mockRejectedValue(new Error('secret upstream detail')))
+    await expect(getLeadsFromRedis()).rejects.toMatchObject({ message: 'Lead records unavailable' })
+    expect(console.error).not.toHaveBeenCalled()
+  })
+
+  it.each([
+    { result: ['not-json'] },
+    { result: ['null'] },
+    { result: ['[]'] },
+    { result: ['{}'] },
+    { result: [42] },
+    { error: 'secret upstream detail' },
+    { result: null },
+  ])('fails closed on malformed rows or replies: %j', async (reply) => {
+    stubCreds()
+    vi.stubGlobal('fetch', vi.fn().mockResolvedValue(new Response(JSON.stringify(reply), { status: 200 })))
+    await expect(getLeadsFromRedis()).rejects.toBeInstanceOf(LeadReadUnavailableError)
   })
 })

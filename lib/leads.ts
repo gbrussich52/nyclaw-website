@@ -20,6 +20,14 @@ const LEADS_KEY = 'nyclaw:leads'
 const LEADS_CAP = 5000
 const REDIS_TIMEOUT_MS = 3000
 
+/** Fixed, non-sensitive failure surfaced to the authenticated admin route. */
+export class LeadReadUnavailableError extends Error {
+  constructor() {
+    super('Lead records unavailable')
+    this.name = 'LeadReadUnavailableError'
+  }
+}
+
 /**
  * Persist a lead to Redis. Returns true only when Redis confirms the write.
  * Never throws — the caller aggregates layer successes and decides whether
@@ -53,29 +61,34 @@ export async function storeLeadInRedis(
       return false
     }
 
-    const results = (await res.json()) as Array<{ result?: unknown; error?: string }>
-    const pushResult = results?.[0]
-    if (!pushResult || pushResult.error !== undefined) {
-      console.error('[leads] Redis LPUSH errored:', pushResult?.error ?? 'malformed response')
+    const results: unknown = await res.json()
+    const pushResult = Array.isArray(results) ? results[0] : undefined
+    if (
+      !pushResult ||
+      typeof pushResult !== 'object' ||
+      pushResult.error !== undefined ||
+      !Number.isSafeInteger(pushResult.result) ||
+      pushResult.result <= 0
+    ) {
+      console.error('[leads] Redis LPUSH unconfirmed')
       return false
     }
+    // LPUSH confirms capture. A later LTRIM error does not undo that write.
     return true
-  } catch (err) {
-    console.error('[leads] Redis write failed:', err)
+  } catch {
+    console.error('[leads] Redis write failed')
     return false
   }
 }
 
 /**
- * Read all stored leads back (newest first, as LPUSH ordering). Returns [] on
- * any failure — callers render an empty list rather than erroring. Used by the
- * password-protected admin export endpoint.
+ * Read all stored leads back (newest first, as LPUSH ordering). Only a confirmed
+ * empty LRANGE returns []; unavailable or malformed storage throws a fixed error.
  */
 export async function getLeadsFromRedis(): Promise<Record<string, unknown>[]> {
   const creds = getRedisRestCredentials()
   if (!creds) {
-    console.warn('[leads] no Upstash/KV REST credentials set — cannot read leads')
-    return []
+    throw new LeadReadUnavailableError()
   }
 
   try {
@@ -89,28 +102,25 @@ export async function getLeadsFromRedis(): Promise<Record<string, unknown>[]> {
       signal: AbortSignal.timeout(REDIS_TIMEOUT_MS),
     })
 
-    if (!res.ok) {
-      console.error(`[leads] Redis read failed: HTTP ${res.status}`)
-      return []
-    }
+    if (!res.ok) throw new LeadReadUnavailableError()
 
-    const data = (await res.json()) as { result?: string[]; error?: string }
-    if (data.error || !Array.isArray(data.result)) {
-      console.error('[leads] Redis LRANGE errored:', data.error ?? 'malformed response')
-      return []
-    }
+    const data: unknown = await res.json()
+    if (!data || typeof data !== 'object' || Array.isArray(data)) throw new LeadReadUnavailableError()
+    const response = data as { result?: unknown; error?: unknown }
+    if (response.error !== undefined || !Array.isArray(response.result)) throw new LeadReadUnavailableError()
 
-    return data.result
-      .map((s) => {
-        try {
-          return JSON.parse(s) as Record<string, unknown>
-        } catch {
-          return null
-        }
-      })
-      .filter((x): x is Record<string, unknown> => x !== null)
-  } catch (err) {
-    console.error('[leads] Redis read failed:', err)
-    return []
+    return response.result.map((row: unknown) => {
+      if (typeof row !== 'string') throw new LeadReadUnavailableError()
+      const value: unknown = JSON.parse(row)
+      if (!value || typeof value !== 'object' || Array.isArray(value)) throw new LeadReadUnavailableError()
+      const record = value as Record<string, unknown>
+      if (!['timestamp', 'name', 'email', 'businessType', 'challenge'].every((key) => typeof record[key] === 'string')) {
+        throw new LeadReadUnavailableError()
+      }
+      return record
+    })
+  } catch {
+    // Do not log upstream payloads, exception messages, records or credentials.
+    throw new LeadReadUnavailableError()
   }
 }

@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { z } from 'zod'
-import { getLeadsFromRedis } from '@/lib/leads'
-import { createRateLimiter } from '@/lib/rate-limit'
+import { getLeadsFromRedis } from '../../../../lib/leads'
+import { createRateLimiter } from '../../../../lib/rate-limit'
 
 // Only external input this route reads besides the auth header.
 const QuerySchema = z.object({
@@ -36,6 +36,7 @@ const FIELDS: { key: string; label: string }[] = [
   { key: 'businessType', label: 'Business Type' },
   { key: 'challenge', label: 'Challenge' },
   { key: 'message', label: 'Message' },
+  { key: 'source', label: 'Source' },
 ]
 
 function unauthorized(): NextResponse {
@@ -111,7 +112,16 @@ export async function GET(req: NextRequest): Promise<NextResponse> {
     return NextResponse.json({ error: 'Invalid query parameters' }, { status: 400 })
   }
 
-  const leads = await getLeadsFromRedis()
+  let leads: Record<string, unknown>[]
+  try {
+    leads = await getLeadsFromRedis()
+  } catch {
+    console.error('[admin/leads] Lead store read unavailable')
+    return NextResponse.json(
+      { error: 'Lead records are temporarily unavailable' },
+      { status: 503, headers: { 'Cache-Control': 'no-store' } }
+    )
+  }
 
   if (parsedQuery.data.format === 'json') {
     return NextResponse.json({ count: leads.length, leads })
