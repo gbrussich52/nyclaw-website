@@ -3,7 +3,7 @@ classification: PRIVATE
 ---
 # NYClaw.io Content Calendar
 
-> Updated: 2026-10-06
+> Updated: 2026-10-08
 > Target: 2-3 articles/week, 20+ articles in 60 days
 
 ## Published
@@ -34,6 +34,8 @@ classification: PRIVATE
 | 21 | How AI Saves Real Estate Agents Hours Every Week | /blog/ai-real-estate-agents | AI real estate, real estate automation | 2026-09-28 | **Published 2026-09-28** |
 
 ## Next article — missing-document follow-up (2026-10-06 priority)
+
+> **Status 2026-10-08:** drafted at `/blog/law-firm-missing-document-follow-up`, PR open. After merge, next HIGH item is #22.
 
 Write **Missing-Document Follow-Up for Law Firms: What to Check Before Automating** at `/blog/law-firm-missing-document-follow-up`. The route does not currently exist; check the route tree again before drafting. This is the one next editorial priority, ahead of the general queue below. It extends the existing intake article rather than duplicating it.
 
