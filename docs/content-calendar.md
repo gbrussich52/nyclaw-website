@@ -3,7 +3,7 @@ classification: PRIVATE
 ---
 # NYClaw.io Content Calendar
 
-> Updated: 2026-10-06
+> Updated: 2026-10-08
 > Target: 2-3 articles/week, 20+ articles in 60 days
 
 ## Published
@@ -32,8 +32,11 @@ classification: PRIVATE
 | 20 | AI Appointment Scheduling: Complete Guide for Small Businesses | /blog/ai-appointment-scheduling | AI scheduling, appointment automation | 2026-09-21 | **Published 2026-09-21** |
 | 21a | AI Automation Agency vs. AI Answering Service | /blog/ai-automation-agency-vs-ai-answering-service | ai automation agency vs ai answering service, ai concierge for small business | 2026-09-24 | **Published 2026-09-24** (shipped outside this loop; added to calendar and blog index by 2026-09-28 audit) |
 | 21 | How AI Saves Real Estate Agents Hours Every Week | /blog/ai-real-estate-agents | AI real estate, real estate automation | 2026-09-28 | **Published 2026-09-28** |
+| 21b | Missing-Document Follow-Up for Law Firms: What to Check Before Automating | /blog/law-firm-missing-document-follow-up | law firm missing document follow up, client document reminders law firm | 2026-10-08 | **Published 2026-10-08** |
 
 ## Next article — missing-document follow-up (2026-10-06 priority)
+
+> **Status 2026-10-08:** published at `/blog/law-firm-missing-document-follow-up` (row 21b above). Next HIGH item is #22.
 
 Write **Missing-Document Follow-Up for Law Firms: What to Check Before Automating** at `/blog/law-firm-missing-document-follow-up`. The route does not currently exist; check the route tree again before drafting. This is the one next editorial priority, ahead of the general queue below. It extends the existing intake article rather than duplicating it.
 

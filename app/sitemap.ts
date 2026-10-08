@@ -67,6 +67,7 @@ const ENTRIES: Entry[] = [
   { path: '/blog/ai-automations-dental', lastModified: '2026-07-28', changeFrequency: 'monthly', priority: 0.7 },
   { path: '/blog/ai-automations-medical', lastModified: '2026-07-28', changeFrequency: 'monthly', priority: 0.7 },
   { path: '/blog/ai-automations-plumbing-hvac', lastModified: '2026-07-28', changeFrequency: 'monthly', priority: 0.7 },
+  { path: '/blog/law-firm-missing-document-follow-up', lastModified: '2026-10-08', changeFrequency: 'monthly', priority: 0.7 },
   { path: '/blog/ai-law-firm-client-intake', lastModified: '2026-10-06', changeFrequency: 'monthly', priority: 0.7 },
   { path: '/blog/revenuecat-pulse', lastModified: '2026-07-28', changeFrequency: 'monthly', priority: 0.7 },
   { path: '/blog/zapier-vs-ai-agent', lastModified: '2026-07-28', changeFrequency: 'monthly', priority: 0.7 },

@@ -2,6 +2,7 @@
 
 import { useRef, useState } from 'react'
 import { track } from '@vercel/analytics'
+import type { ContactSource } from '../../lib/contact-sources'
 
 /**
  * Shared submit/loading/error handling for every form that posts to
@@ -21,7 +22,7 @@ export interface UseContactSubmitResult {
   errorMsg: string
   submitted: boolean
   /** POSTs `payload` to /api/contact. Returns true on success. */
-  submit: (payload: Record<string, unknown>, source?: string) => Promise<boolean>
+  submit: (payload: Record<string, unknown>, source?: ContactSource) => Promise<boolean>
   /**
    * Ref for a hidden honeypot input rendered by each form. Real visitors
    * never see or fill it; a bot that fills every input trips it. Read at
@@ -42,7 +43,7 @@ export function useContactSubmit(): UseContactSubmitResult {
 
   const submit = async (
     payload: Record<string, unknown>,
-    source = 'unknown'
+    source: ContactSource = 'unknown'
   ): Promise<boolean> => {
     setLoading(true)
     setErrorMsg('')
@@ -57,6 +58,7 @@ export function useContactSubmit(): UseContactSubmitResult {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           ...payload,
+          source,
           website: honeypotRef.current?.value ?? '',
           ts: renderedAtRef.current,
         }),

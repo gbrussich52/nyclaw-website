@@ -83,6 +83,14 @@ const posts = [
     tags: ['SEO', 'Next.js', 'Case Study'],
   },
   {
+    title: 'Missing-Document Follow-Up for Law Firms: What to Check Before Automating',
+    description:
+      'Check what Clio already does, define the checklist and the staff approval point, and decide whether automating missing-document reminders is worth it at all.',
+    date: 'October 8, 2026',
+    href: '/blog/law-firm-missing-document-follow-up',
+    tags: ['Legal', 'Workflow', 'Intake'],
+  },
+  {
     title: 'How Law Firms Are Using AI to Handle Client Intake Without Hiring More Staff',
     description:
       "AI responds within 60 seconds, qualifies leads, schedules consultations, and runs follow-up — so attorneys spend time on billable work, not inbox management. The math: slow intake costs a $3,000 average case firm $312,000/year in lost leads.",

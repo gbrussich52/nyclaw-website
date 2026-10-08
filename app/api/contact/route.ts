@@ -5,6 +5,7 @@ import { z } from 'zod'
 import { sanitize } from '../../../lib/sanitize'
 import { createRateLimiter } from '../../../lib/rate-limit'
 import { storeLeadInRedis } from '../../../lib/leads'
+import { CONTACT_SOURCES } from '../../../lib/contact-sources'
 
 const ContactSchema = z.object({
   name: z.string().min(1).max(200),
@@ -14,6 +15,7 @@ const ContactSchema = z.object({
   challenge: z.string().min(1).max(200),
   message: z.string().max(5000).optional(),
   smsConsent: z.boolean().optional(),
+  source: z.enum(CONTACT_SOURCES).optional().default('unknown'),
   website: z.string().max(0).optional(), // honeypot — real visitors never fill this
   ts: z.coerce.number().optional(),      // form-render timestamp, for the time-trap check
 })
@@ -74,6 +76,7 @@ export async function POST(req: NextRequest) {
   const challenge = sanitize(parsed.data.challenge)
   const message = sanitize(parsed.data.message ?? '')
   const smsConsent = parsed.data.smsConsent === true
+  const source = parsed.data.source
 
   // Defense-in-depth: zod already enforces required fields, but keep the
   // explicit check in case sanitize() strips a field down to empty.
@@ -86,7 +89,7 @@ export async function POST(req: NextRequest) {
   }
 
   const timestamp = new Date().toISOString()
-  const entry = { timestamp, name, email, phone, businessType, challenge, message, smsConsent }
+  const entry = { timestamp, name, email, phone, businessType, challenge, message, smsConsent, source }
 
   // Track which persistence layers actually succeeded. The visitor only gets
   // a success response if at least one layer durably captured the lead —
@@ -137,6 +140,7 @@ export async function POST(req: NextRequest) {
           `Email: ${email}`,
           `Phone: ${phone || 'Not provided'}`,
           `SMS Consent: ${smsConsent ? 'YES' : 'No'}`,
+          `Source: ${source}`,
           `Business Type: ${businessType}`,
           `Challenge: ${challenge}`,
           `Message: ${message || 'None'}`,

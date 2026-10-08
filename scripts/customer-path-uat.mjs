@@ -40,7 +40,7 @@ try {
     check(kind+' failure retains email and hides receipt',await page.$eval(kind==='resource'?'#email':'#playbook-email',e=>e.value==='fictional@example.com')&&!(await page.$(section+' a[href="/ai-operators-playbook.html"]')))
     mode='success';await page.click(section+' button[type="submit"]');await page.waitForSelector(section+' a[href="/ai-operators-playbook.html"]')
     check(kind+' success exposes real guide safely',await page.$eval(section+' a[href="/ai-operators-playbook.html"]',e=>e.textContent.includes('Open the playbook')&&e.target==='_blank'&&e.rel.includes('noopener')))
-    check(kind+' payload preserved',payloads.at(-1).challenge==='guide-download'&&payloads.at(-1).email==='fictional@example.com')
+    check(kind+' payload preserved',payloads.at(-1).challenge==='guide-download'&&payloads.at(-1).email==='fictional@example.com'&&payloads.at(-1).source===(kind==='resource'?'resource_form':'playbook_form'))
   }
   check('Exactly four mocked contact requests',writes===4);check('No browser runtime errors',errors.length===0)
   console.log(JSON.stringify({passed:results.length,total:results.length,mockedContactOnly:true,errors}))
