@@ -5,7 +5,7 @@ import ResourceForm from '../components/ResourceForm'
 
 export const metadata: Metadata = {
   title: 'Free AI Operator\'s Playbook',
-  description: 'Download the free AI Operator\'s Playbook: Practical frameworks, templates, and a 30/60/90-day roadmap for building AI systems that actually work.',
+  description: 'Download the free AI Operator\'s Playbook: Practical frameworks, templates, and a 30-day launch checklist with a weekly check for the first 90 days.',
   keywords: 'AI playbook, AI implementation guide, AI assistant framework, free AI guide, AI templates',
   openGraph: {
     title: 'The AI Operator\'s Playbook — Free Download',
@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Free AI Operator\'s Playbook',
-    description: 'Frameworks, templates, and a 30/60/90-day roadmap for building AI systems that work.',
+    description: 'Frameworks, templates, and a 30-day launch checklist for AI systems that work.',
   },
   alternates: {
     canonical: 'https://nyclaw.io/resources',
@@ -26,7 +26,7 @@ const whatsInside = [
   { section: 'Section 1', title: 'Building AI Identity', desc: 'The Four-Quadrant Persona Taxonomy, principle-first documentation, priority hierarchies, and the full SOUL.md template.' },
   { section: 'Section 2', title: 'Mission-Driven Systems', desc: 'Why processes fail, how to design mission statements that actually drive decisions, OKR frameworks, and the review cadence.' },
   { section: 'Section 3', title: 'Operational Excellence', desc: 'All 7 anti-patterns with real-world examples and specific prevention systems for each.' },
-  { section: 'Section 4', title: 'Implementation Roadmap', desc: 'The 30/60/90-day plan. Week-by-week actions to build your system from scratch.' },
+  { section: 'Section 4', title: 'Implementation Roadmap', desc: 'A 30-day launch checklist and a weekly check for the first 90 days.' },
   { section: 'Appendix', title: 'Templates & Checklists', desc: 'Printable: SOUL.md template, weekly review checklist, monthly audit checklist, anti-pattern scorecard, OKR template.' },
 ]
 
@@ -42,7 +42,7 @@ const templates = [
 const trustSignals = [
   'Practical checklists',
   'Reusable templates',
-  '30/60/90-day roadmap',
+  '30-day launch checklist',
   'Free. No credit card.',
 ]
 

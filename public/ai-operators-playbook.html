@@ -385,37 +385,37 @@
 <div class="cover">
   <div class="cover-badge">NYClaw.io — Free Resource</div>
   <h1>The AI Operator's Playbook</h1>
-  <div class="cover-subtitle">A No-BS Framework for Founders Who Want to<br>Automate More, Delegate More, and Work Less</div>
+  <div class="cover-subtitle">A plain framework for founders who want AI to<br>take real work off their plate</div>
   <p style="font-family:'Arial',sans-serif; font-size:0.85rem; letter-spacing:0.06em; text-transform:uppercase; color:#0066cc; margin:12px 0 0; font-weight:700;">
     Updated October 2026 · Operator practices, not tool rankings
   </p>
   <div class="cover-divider"></div>
   <p style="color:#333; font-size:1.05rem; max-width:560px;">
-    Most AI setups fail in the first 30 days. This guide explains exactly why — and gives you the framework to build one that actually runs your business. Built from real experience, real results, real failures.
+    In our experience, most small-business AI setups stall within a month. This guide covers why, and what to do instead: one job, written down, with a weekly check.
   </p>
 
   <div class="stat-row" style="margin-top:48px;">
     <div class="stat-box">
-      <div class="stat-number">8</div>
-      <div class="stat-label">HVAC sites built in one pipeline run</div>
+      <div class="stat-number">1</div>
+      <div class="stat-label">Start with one dollar leak, not "an AI assistant"</div>
     </div>
     <div class="stat-box">
-      <div class="stat-number">$0</div>
-      <div class="stat-label">Cost to beat a $55 API experiment</div>
+      <div class="stat-number">15 min</div>
+      <div class="stat-label">The Monday check that keeps an automation alive</div>
     </div>
     <div class="stat-box">
-      <div class="stat-number">849</div>
-      <div class="stat-label">Tests passing, zero manual work</div>
+      <div class="stat-number">Day 45</div>
+      <div class="stat-label">When many installs quietly stop, and what to ask your vendor</div>
     </div>
     <div class="stat-box">
-      <div class="stat-number">14</div>
-      <div class="stat-label">Dead cron jobs found in one audit</div>
+      <div class="stat-number">0</div>
+      <div class="stat-label">Numbers in this guide we can't show you the record for</div>
     </div>
   </div>
 
   <div class="cover-meta">
     <strong>NYClaw.io</strong> — AI Automation for Small Business<br>
-    nyclaw.io &nbsp;|&nbsp; Ainsley, AI Operations Lead<br><br>
+    nyclaw.io &nbsp;|&nbsp; Giani Brussich, Founder<br><br>
     © 2026 NYClaw.io. All rights reserved.
   </div>
 </div>
@@ -528,12 +528,12 @@
 <p>The AI isn't the issue. The operator is — specifically, what they skipped before flipping the switch. They gave the AI no identity. No memory. No defined boundaries. No way to understand what the business actually is, who it serves, or what "good work" looks like. They handed a talented contractor the keys and said "figure it out," then got annoyed when the result didn't reflect their standards.</p>
 
 <div class="pull-quote">
-  "Every AI assistant we've seen fail had one thing in common: the operator treated setup as optional. It's not. Setup is the whole game." — Ainsley, NYClaw.io
+  "Every AI assistant we've seen fail had one thing in common: the operator treated setup as optional. It's not. Setup is the whole game." — NYClaw.io
 </div>
 
 <p>The setups that work have a completely different character. They start with <em>identity</em> — a clear document that explains who the AI is, how it should think, when to act versus when to ask, and what the non-negotiables are. They build <em>persistent memory</em> — structured files the AI reads at the start of every session so it's never starting from zero. And they run <em>automation with oversight</em> — not set-it-and-forget-it, but verified, tested systems with clear failure modes.</p>
 
-<p>This guide is the framework I built building Ainsley — a personal AI assistant running on a Mac Studio, managing multiple businesses, executing pipelines, and learning every session. The lessons here come from real results and real failures. Not theory. Not vendor promises. Operator experience.</p>
+<p>This guide covers the part that usually gets skipped: pick one leak you can feel in dollars, give the assistant a written brief of how your business works, decide what it may do alone and what it must ask about, and check the result for fifteen minutes every Monday. The examples come from running our own businesses with an AI assistant (we call it Ainsley). Where we can't show the record, we don't quote a number.</p>
 
 <h3>What This Guide Is</h3>
 
@@ -574,7 +574,6 @@
 
 <p>The Appendix templates are meant to be used — not read once and filed. Print them. Fill them in. They're designed to be your actual working documents.</p>
 
-<p>Let's get into it.</p>
 
 
 <!-- ===================== PART 1 ===================== -->
@@ -816,13 +815,6 @@
   <p>Multiply this across every technical lesson learned over months of development. The compounding effect of a well-maintained memory file is significant. You stop solving the same problems. You build on what you've learned instead of starting over.</p>
 </div>
 
-<div class="real-example">
-  <div class="real-example-label">Real Example — The NYRezone Optimizer History</div>
-  <h4>How Memory Preserved $0 in Rework</h4>
-  <p>The NYRezone opportunity scorer went through three versions. Version 1 baseline: 0.852 rank correlation. Version 2 used a <code>claude --print</code> loop that burned approximately $55 in API costs over three hours — and only reached 0.926. Version 3 used pure Python grid search on the same Mac hardware, ran 6 million+ combinations in minutes, cost nothing, and hit 0.947.</p>
-  <p>The lesson from this experiment — never use LLM API calls for parameter optimization when pure math will do it faster and for free — went directly into MEMORY.md under the "API Costs" section, along with the specific config values that worked best. Any future optimizer work picks up from that baseline, not from zero.</p>
-</div>
-
 <h3>The Write It Down Now Principle</h3>
 
 <p>There is no such thing as a mental note in an AI system. If you learn something and don't write it down before the session ends, it's gone. The AI wakes up the next session with zero recollection. The human operator usually remembers vaguely but not precisely. Precision is what matters in technical work.</p>
@@ -851,7 +843,7 @@
 </ul>
 
 <div class="callout">
-  <p><strong>The signal-to-noise principle:</strong> A lean, current MEMORY.md that the AI reads and uses is worth 10x more than a comprehensive but bloated one that takes three seconds to process and is 40% outdated. Curate aggressively.</p>
+  <p><strong>The signal-to-noise principle:</strong> A lean, current MEMORY.md that the AI reads and uses is worth far more than a comprehensive but bloated one that takes three seconds to process and is 40% outdated. Curate aggressively.</p>
 </div>
 
 <h3>Template: Memory Architecture Starter</h3>
@@ -885,7 +877,7 @@
 
 <h3>One-Time vs. Permanent Automation</h3>
 
-<p>Most AI automations built by first-time operators have a lifespan of about 72 hours. The operator builds it, it runs once, they call it a success, and within three days it's either broken or abandoned. That's not automation — that's a demo.</p>
+<p>Many AI automations built by first-time operators die within days. The operator builds it, it runs once, they call it a success, and within three days it's either broken or abandoned. That's not automation — that's a demo.</p>
 
 <p>Real automation has completely different design requirements. It needs to handle failure gracefully. It needs to be monitored. It needs to know the difference between "completed normally" and "crashed." It needs to run unattended for weeks without requiring babysitting.</p>
 
@@ -915,42 +907,14 @@
 
 <div class="warning">
   <div class="warning-label">⚠ Critical Architecture Mistake — Read This Carefully</div>
-  <p>Never put an AI API call inside a watchdog loop. A process monitor that restarts any "dead" process + a single-shot AI command that exits after one response = an infinite loop burning API credits. This is exactly what happened in the NYRezone optimizer incident. The <code>claude --print</code> command exits normally after responding — the watchdog sees "process exited" and immediately restarts it — which triggers another API call — which exits — which triggers another restart. Over and over, silently, until you check your billing dashboard and find your credit gone.</p>
+  <p>Never put an AI API call inside a watchdog loop. A process monitor that restarts any "dead" process + a single-shot AI command that exits after one response = an infinite loop burning API credits. A single-shot command like <code>claude --print</code> exits normally after responding — the watchdog sees "process exited" and immediately restarts it — which triggers another API call — which exits — which triggers another restart. Over and over, silently, until you check your billing dashboard and find your credit gone.</p>
 </div>
 
-<div class="real-example">
-  <div class="real-example-label">Real Example — The $55 Lesson</div>
-  <h4>API Runaway: What Happened and the Fix</h4>
-  <p>The NYRezone opportunity scorer needed parameter optimization. The initial approach: use <code>claude --print</code> inside a watchdog loop to iterate through configurations. The model would evaluate each configuration and suggest adjustments.</p>
-  <p>What actually happened: <code>claude --print</code> is single-shot — it exits after one response. The watchdog, seeing the process exit, interpreted this as a crash and immediately restarted it. Rinse and repeat. Over approximately three hours: tens of millions of tokens burned across hundreds of unintended restarts. Estimated cost before the loop was caught: $55–$110.</p>
-  <p>The fix: pure Python grid search. Wrote a script that iterated through 6 million+ parameter combinations using local CPU on the M4 Max. Runtime: minutes. Cost: $0. Result: 0.947 rank correlation — <em>better</em> than the expensive AI approach at 0.926.</p>
-  <p>The rule this produced: <strong>Never use LLM API calls for work that's fundamentally math.</strong> Parameter optimization, threshold tuning, scoring algorithms — these are computation problems, not reasoning problems. Computation is free on modern hardware. Reasoning costs money. Know the difference.</p>
-</div>
-
-<h3>The Lead Machine: A Real Pipeline in Production</h3>
-
-<p>Here's what a properly designed automation pipeline looks like in practice. Not a demo — a production system that ran and produced real deliverables.</p>
-
-<div class="real-example">
-  <div class="real-example-label">Real Example — 8 Sites Built in One Pipeline Run</div>
-  <h4>The HVAC Lead Machine: Apify → Gemini → HTML → Vercel</h4>
-  <p><strong>The problem:</strong> HVAC businesses in Westchester, NY needed web presence to rank on Google. Most had none. Finding them, building for them, and deploying individually would take weeks manually.</p>
-  <p><strong>The pipeline:</strong></p>
-  <ul>
-    <li><strong>Apify scrape:</strong> Pulled Google Maps data for HVAC businesses in the target area — business names, phone numbers, addresses, service descriptions. Free tier, no manual scraping.</li>
-    <li><strong>Filter pass:</strong> Automated check — does each business have a website? 8 of 8 did not. All 8 became targets.</li>
-    <li><strong>AI generation (Gemini):</strong> For each business, generated a custom HTML landing page using the business data — name, services, location, phone. Each page unique, each page targeted to local SEO keywords.</li>
-    <li><strong>Vercel deploy:</strong> Each HTML file deployed to Vercel via CLI in the same pipeline run. 8 live URLs in one run.</li>
-  </ul>
-  <p><strong>The result:</strong> 8 business websites live on the internet, all within a single pipeline run, with zero manual page building. Total setup time for the pipeline: a few hours. Recurring value: run it again in any market with any vertical in minutes.</p>
-  <p><strong>What made it permanent:</strong> The pipeline script is parameterized. Change the location and vertical, run the script, get new sites. It's not a one-time trick — it's a repeatable lead generation engine.</p>
-</div>
-
-<h3>Cron Hygiene: The 14 Dead Jobs Problem</h3>
+<h3>Cron Hygiene: Dead Jobs Create False Confidence</h3>
 
 <p>Cron jobs are the backbone of automated systems — they're what makes things run on schedule without human intervention. They're also where entropy accumulates fastest.</p>
 
-<p>During a routine audit of the automation stack, 14 dead cron jobs were found. Not broken — dead. Jobs that had been created at some point for some purpose, never properly decommissioned, running (or attempting to run) on schedule, accomplishing nothing. Some were trying to trigger scripts that no longer existed. Some were calling endpoints that had moved. Some were for projects that had been shelved months ago.</p>
+<p>In audits of automation stacks, dead scheduled jobs are a common find. Not broken — dead. Jobs that had been created at some point for some purpose, never properly decommissioned, running (or attempting to run) on schedule, accomplishing nothing. Some were trying to trigger scripts that no longer existed. Some were calling endpoints that had moved. Some were for projects that had been shelved months ago.</p>
 
 <p>The danger isn't just wasted compute. Dead cron jobs create false confidence. You think something is running. It's not. Data isn't being collected. Reports aren't being generated. Leads aren't being processed. You find out weeks later when you go looking for the output.</p>
 
@@ -969,14 +933,14 @@
 
 <div class="real-example">
   <div class="real-example-label">Real Example — The Contact Form Audit</div>
-  <h4>Three Forms. Zero Data. Zero Awareness.</h4>
-  <p>During a security hardening session covering four production websites, a full code audit was run on all form submissions. Discovery: three contact forms across a site were completely non-functional. They were setting local state (appearing to submit), but never actually POSTing data anywhere. No error. No confirmation. The user got a success message. The data went nowhere.</p>
-  <p>These forms had been live. Real people had submitted real inquiries. Every one of those submissions was lost. The business had no idea. The forms looked fine. They just weren't connected to anything.</p>
-  <p>What the audit also found and fixed in the same session: missing rate limiting (no protection against submission flooding), CORS misconfigurations, unsanitized inputs, and missing HSTS headers — across all four sites.</p>
+  <h4>The Form That Says "Sent" and Sends Nothing</h4>
+  <p>A common audit finding on small-business sites: contact forms that are completely non-functional. They were setting local state (appearing to submit), but never actually POSTing data anywhere. No error. No confirmation. The user got a success message. The data went nowhere.</p>
+  <p>If such a form is live, every inquiry submitted through it is lost and the business never knows. The form looks fine. It just isn't connected to anything. Test yours this week: submit a fake lead and confirm it arrives.</p>
+  <p>The same audit typically turns up missing rate limiting, loose CORS settings, unsanitized inputs, and missing security headers.</p>
   <p>The principle: <strong>Trust but verify. Assume nothing works until you've tested it yourself.</strong> "It looks fine" is not the same as "it works."</p>
 </div>
 
-<p>The same session that found the fake forms added rate limiting, proper CORS headers, input sanitization, and HSTS security headers to four production sites. These aren't optional hardening steps — they're basic infrastructure that most small business sites launch without.</p>
+<p>These aren't optional hardening steps. They're basic infrastructure that many small business sites launch without.</p>
 
 <h3>The Audit-First Mindset</h3>
 
@@ -1060,7 +1024,7 @@
 <ul>
   <li>There is a named first workflow and a success metric before tools are chosen.</li>
   <li>Go-live includes a handoff: how to kill the automation, who owns the weekly check, where the logs live.</li>
-  <li>The builder talks about failure modes (forms that look live but don’t post, dead cron jobs, runaway API spend) — not only demos.</li>
+  <li>The builder talks about failure modes (forms that look live but don’t post, dead scheduled jobs, runaway API spend) — not only demos.</li>
   <li>After launch, someone is responsible for Sense and Improve. If that person is “nobody,” the system will rot.</li>
 </ul>
 
@@ -1120,7 +1084,7 @@
 
 <h3>AI Should Make You Money — The Direct Line</h3>
 
-<p>Too many AI projects live in the infrastructure layer and never reach the revenue layer. Founders spend weeks building impressive automation that doesn't have a clear connection to a customer, a dollar, or a result that matters to the business. That's how you end up with 14 dead cron jobs and no additional revenue.</p>
+<p>Too many AI projects live in the infrastructure layer and never reach the revenue layer. Founders spend weeks building impressive automation that doesn't have a clear connection to a customer, a dollar, or a result that matters to the business. That's how you end up with a pile of dead scheduled jobs and no additional revenue.</p>
 
 <p>The discipline is to work backwards from money. Every automation you build should answer one of three questions:</p>
 <ul>
@@ -1215,11 +1179,6 @@
 
 <p>The restart-and-forget cycle compounds over time. By the third restart of a project, you've done more setup than productive work.</p>
 
-<div class="real-example">
-  <div class="real-example-label">Real Example</div>
-  <h4>The NYRezone Optimizer Versions</h4>
-  <p>The opportunity scorer went through three distinct iterations. Without proper memory, each could have started from scratch — re-trying approaches that had already failed, re-discovering the same configuration parameters, re-burning the same API budget. The reason this didn't happen: every experiment, every result, every lesson went into MEMORY.md and LONG-TERM.md before the session ended. Version 3 built directly on Version 2's lessons — including the $55 API lesson — without any repeated work.</p>
-</div>
 
 <p><strong>The fix:</strong> Before ending any work session on a project, write the state to a file. What was tried. What worked. What didn't. What's next. These notes are the handoff to your future self. Skip them and you're starting over.</p>
 
@@ -1247,13 +1206,9 @@
 
 <p>This one is simple and the most common. Something gets built, assumed to work because it "looks fine," and put into production. Nobody runs a real test. Nobody confirms the data went where it was supposed to go. Nobody checks whether the edge cases are handled.</p>
 
-<p>The three fake contact forms are the canonical example. They looked fine. They showed a success message. Nobody tested whether the data actually arrived anywhere. It didn't.</p>
+<p>The non-functional contact form is the canonical example. It looks fine and shows a success message, but nobody tested whether the data arrived anywhere.</p>
 
 <p><strong>The fix:</strong> Every automation gets a smoke test before being called done. Every form gets a real submission confirmed in the destination. Every cron job gets manually triggered and its output verified. "It ran without errors" is not the same as "it worked." Verify the output, not just the execution.</p>
-
-<div class="callout">
-  <p><strong>Property Appraiser Pro validation:</strong> 849 tests passing before release. Not "it seems to work." 849 specific assertions confirming specific behavior. That's what "tested" means in a production system that professionals will rely on.</p>
-</div>
 
 <h3>7. Chasing New Tools Instead of Maximizing Existing Ones</h3>
 
@@ -1461,7 +1416,7 @@
 <div style="margin-top:48px; padding:24px; background:#f5f8ff; border-radius:6px;">
   <h3 style="margin-top:0;">About This Guide</h3>
   <p><strong>Last updated:</strong> October 2026. Principles first; tool names second. We revise when operator practice changes, not every model release.</p>
-  <p>This guide was built from the actual experience of designing, building, and running Ainsley — a personal AI assistant operating on a Mac Studio (M4 Max, 36GB RAM) across multiple businesses simultaneously. The case studies, the numbers, and the lessons are real. Nothing was invented for the sake of sounding good.</p>
+  <p>This guide comes from running our own businesses with an AI assistant, and from the client work shown at nyclaw.io/work. Where a number appears, we have the record behind it.</p>
   <p style="margin-bottom:0;">NYClaw.io is an AI automation consultancy based in New York. We work with small businesses, agencies, and founders who want operational leverage without operational complexity.</p>
 </div>
 

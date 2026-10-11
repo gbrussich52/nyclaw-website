@@ -36,7 +36,7 @@ for (const file of ['app/page.tsx', 'app/services/page.tsx']) {
   if (!(await readFile(file, 'utf8')).includes('<WorkflowBlueprintOffer />')) errors.push(`${file}: specialist Blueprint offer missing from the wider agency.`)
 }
 const playbook = await readFile('public/ai-operators-playbook.html', 'utf8')
-if (/it's the model NYClaw.io is built on|Your \$2,000\/month retainer has an 8x ROI|real production numbers from building NYClaw.io/.test(playbook)) errors.push('Playbook reintroduced an unsupported revenue model or outcome.')
+if (/it's the model NYClaw.io is built on|Your \$2,000\/month retainer has an 8x ROI|real production numbers from building NYClaw.io|8 HVAC|\$55|849 tests|14 dead cron|Ainsley, AI Operations Lead/.test(playbook)) errors.push('Playbook reintroduced an unsupported revenue model or outcome.')
 for (const file of ['app/components/ResourceForm.tsx', 'app/components/PlaybookForm.tsx']) {
   const form = await readFile(file, 'utf8')
   if (!form.includes('href="/ai-operators-playbook.html"') || /check your inbox|guide (?:has been|will be) (?:sent|emailed)/i.test(form)) errors.push(`${file}: guide receipt must expose its actual destination, not promise missing email delivery.`)
