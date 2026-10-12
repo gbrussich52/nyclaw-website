@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex">
+  <title>Builder Notes | NYClaw.io</title>
+  <style>
+    /* ===== RESET & BASE ===== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Georgia', 'Times New Roman', serif;
+      font-size: 16px;
+      line-height: 1.8;
+      color: #1a1a2e;
+      background: #ffffff;
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 60px 48px;
+    }
+
+    /* ===== TYPOGRAPHY ===== */
+    h1 { font-size: 2.8rem; line-height: 1.2; color: #003366; margin-bottom: 16px; font-family: 'Arial Black', 'Helvetica Neue', sans-serif; }
+    h2 { font-size: 2rem; line-height: 1.25; color: #003366; margin-bottom: 14px; margin-top: 48px; font-family: 'Arial Black', 'Helvetica Neue', sans-serif; }
+    h3 { font-size: 1.35rem; color: #003366; margin-bottom: 10px; margin-top: 32px; font-family: 'Arial', 'Helvetica Neue', sans-serif; font-weight: 700; }
+    h4 { font-size: 1.05rem; color: #0066cc; margin-bottom: 8px; margin-top: 24px; font-family: 'Arial', 'Helvetica Neue', sans-serif; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; }
+    p { margin-bottom: 20px; }
+    ul, ol { margin: 0 0 20px 24px; }
+    li { margin-bottom: 8px; }
+    strong { color: #003366; }
+    a { color: #0066cc; }
+
+    /* ===== COVER PAGE ===== */
+    .cover {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 80px 0 60px;
+      border-bottom: 4px solid #0066cc;
+      page-break-after: always;
+    }
+    .cover-badge {
+      display: inline-block;
+      background: #0066cc;
+      color: #fff;
+      font-family: 'Arial', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 6px 16px;
+      border-radius: 3px;
+      margin-bottom: 32px;
+    }
+    .cover h1 {
+      font-size: 3.4rem;
+      line-height: 1.1;
+      margin-bottom: 12px;
+    }
+    .cover-subtitle {
+      font-size: 1.2rem;
+      color: #444;
+      font-style: italic;
+      margin-bottom: 48px;
+      line-height: 1.5;
+    }
+    .cover-divider {
+      width: 60px;
+      height: 4px;
+      background: #0066cc;
+      margin-bottom: 40px;
+    }
+    .cover-meta {
+      font-family: 'Arial', sans-serif;
+      font-size: 0.85rem;
+      color: #666;
+      margin-top: 60px;
+    }
+    .cover-meta strong { color: #003366; font-size: 0.95rem; }
+
+    /* ===== TABLE OF CONTENTS ===== */
+    .toc {
+      page-break-after: always;
+      padding-bottom: 60px;
+    }
+    .toc-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding: 10px 0;
+      border-bottom: 1px dotted #ccc;
+      font-family: 'Arial', sans-serif;
+    }
+    .toc-section { font-weight: 700; color: #003366; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.05em; }
+    .toc-title { color: #333; font-size: 1rem; margin-top: 4px; }
+    .toc-page { color: #aaa; font-weight: 400; font-size: 0.85rem; font-style: italic; }
+    .toc-group { margin-bottom: 8px; }
+
+    /* ===== PART HEADER ===== */
+    .part-header {
+      page-break-before: always;
+      padding: 80px 0 48px;
+      border-bottom: 3px solid #003366;
+      margin-bottom: 48px;
+    }
+    .part-label {
+      font-family: 'Arial', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: #0066cc;
+      margin-bottom: 12px;
+    }
+    .part-header h2 {
+      font-size: 2.6rem;
+      margin-top: 0;
+      margin-bottom: 16px;
+      line-height: 1.15;
+    }
+    .part-header .part-desc {
+      font-size: 1.05rem;
+      color: #555;
+      font-style: italic;
+      line-height: 1.65;
+    }
+
+    /* ===== CALLOUT BOXES ===== */
+    .callout {
+      background: #f0f6ff;
+      border-left: 5px solid #0066cc;
+      padding: 20px 24px;
+      margin: 28px 0;
+      border-radius: 0 6px 6px 0;
+    }
+    .callout p { margin-bottom: 0; }
+    .callout p:not(:last-child) { margin-bottom: 12px; }
+
+    .pull-quote {
+      font-size: 1.25rem;
+      font-style: italic;
+      color: #003366;
+      border-left: 5px solid #0066cc;
+      padding: 16px 24px;
+      margin: 36px 0;
+      line-height: 1.6;
+      background: #f8fbff;
+    }
+
+    /* ===== REAL EXAMPLE BOXES ===== */
+    .real-example {
+      border-left: 5px solid #e07b00;
+      background: #fffbf4;
+      padding: 20px 24px;
+      margin: 28px 0;
+      border-radius: 0 6px 6px 0;
+    }
+    .real-example-label {
+      font-family: 'Arial', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #e07b00;
+      margin-bottom: 8px;
+    }
+    .real-example h4 { color: #c45c00; margin-top: 0; margin-bottom: 12px; font-size: 1rem; text-transform: none; letter-spacing: 0; }
+    .real-example p:last-child { margin-bottom: 0; }
+
+    /* ===== TEMPLATE SECTIONS ===== */
+    .template {
+      border: 2px dashed #999;
+      background: #f9f9f9;
+      padding: 28px 32px;
+      margin: 36px 0;
+      border-radius: 6px;
+    }
+    .template-label {
+      font-family: 'Arial', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #666;
+      margin-bottom: 12px;
+    }
+    .template h3 { margin-top: 0; color: #333; }
+    .template-field {
+      background: #fff;
+      border: 1px solid #ddd;
+      padding: 10px 14px;
+      margin: 8px 0;
+      border-radius: 4px;
+      font-family: 'Courier New', monospace;
+      font-size: 0.88rem;
+      color: #555;
+    }
+    .template-field.filled { color: #0066cc; }
+    .template p:last-child { margin-bottom: 0; }
+
+    /* ===== WARNING BOX ===== */
+    .warning {
+      background: #fff8f0;
+      border-left: 5px solid #c41e3a;
+      padding: 20px 24px;
+      margin: 28px 0;
+      border-radius: 0 6px 6px 0;
+    }
+    .warning-label {
+      font-family: 'Arial', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #c41e3a;
+      margin-bottom: 8px;
+    }
+    .warning p:last-child { margin-bottom: 0; }
+
+    /* ===== STAT HIGHLIGHT ===== */
+    .stat-row {
+      display: flex;
+      gap: 20px;
+      margin: 28px 0;
+      flex-wrap: wrap;
+    }
+    .stat-box {
+      flex: 1;
+      min-width: 160px;
+      background: #003366;
+      color: #fff;
+      padding: 20px 16px;
+      border-radius: 6px;
+      text-align: center;
+    }
+    .stat-number {
+      font-family: 'Arial Black', sans-serif;
+      font-size: 2rem;
+      color: #5bb3f5;
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+    .stat-label {
+      font-family: 'Arial', sans-serif;
+      font-size: 0.78rem;
+      color: #aad4f5;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    /* ===== CHECKLIST ===== */
+    .checklist { list-style: none; margin-left: 0; }
+    .checklist li {
+      padding: 8px 0 8px 36px;
+      position: relative;
+      border-bottom: 1px solid #eee;
+    }
+    .checklist li::before {
+      content: '☐';
+      position: absolute;
+      left: 4px;
+      color: #0066cc;
+      font-size: 1.1rem;
+    }
+
+    /* ===== TABLE ===== */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 24px 0;
+      font-family: 'Arial', sans-serif;
+      font-size: 0.9rem;
+    }
+    th {
+      background: #003366;
+      color: #fff;
+      padding: 10px 14px;
+      text-align: left;
+      font-weight: 700;
+    }
+    td {
+      padding: 10px 14px;
+      border-bottom: 1px solid #e0e0e0;
+      vertical-align: top;
+    }
+    tr:nth-child(even) td { background: #f5f8ff; }
+    tr:hover td { background: #eef4ff; }
+
+    /* ===== APPENDIX ===== */
+    .appendix-header {
+      page-break-before: always;
+      padding: 60px 0 40px;
+      border-bottom: 3px solid #0066cc;
+      margin-bottom: 40px;
+    }
+
+    /* ===== CTA SECTION ===== */
+    .cta-box {
+      background: linear-gradient(135deg, #003366 0%, #0055aa 100%);
+      color: #fff;
+      padding: 48px 40px;
+      border-radius: 8px;
+      margin: 60px 0 40px;
+      text-align: center;
+    }
+    .cta-box h2 { color: #fff; margin-top: 0; font-size: 1.8rem; }
+    .cta-box p { color: #c8dff5; margin-bottom: 24px; font-size: 1.05rem; }
+    .cta-btn {
+      display: inline-block;
+      background: #fff;
+      color: #003366;
+      font-family: 'Arial Black', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 900;
+      text-decoration: none;
+      padding: 14px 36px;
+      border-radius: 4px;
+      letter-spacing: 0.04em;
+    }
+    .cta-url {
+      margin-top: 20px;
+      font-family: 'Arial', sans-serif;
+      font-size: 0.88rem;
+      color: #a0c4e8;
+    }
+
+    /* ===== FOOTER ===== */
+    .page-footer {
+      margin-top: 60px;
+      padding-top: 20px;
+      border-top: 1px solid #ddd;
+      font-family: 'Arial', sans-serif;
+      font-size: 0.78rem;
+      color: #999;
+      text-align: center;
+    }
+
+    /* ===== CODE / INLINE ===== */
+    code {
+      font-family: 'Courier New', monospace;
+      font-size: 0.88rem;
+      background: #f0f0f0;
+      padding: 2px 6px;
+      border-radius: 3px;
+      color: #c41e3a;
+    }
+
+    /* ===== PRINT / PDF ===== */
+    @media print {
+      body { padding: 40px 40px; }
+      .part-header { page-break-before: always; }
+      .cover { page-break-after: always; min-height: auto; padding: 60px 0; }
+      .toc { page-break-after: always; }
+      .appendix-header { page-break-before: always; }
+    }
+
+    /* ===== NUMBER BADGE ===== */
+    .num-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      background: #003366;
+      color: #fff;
+      border-radius: 50%;
+      font-family: 'Arial Black', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 900;
+      margin-right: 12px;
+      flex-shrink: 0;
+    }
+    .num-row {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 20px;
+    }
+    .num-row-content h4 { margin-top: 0; }
+
+    /* ===== PHONE WIDTH + WIDE TABLES ===== */
+    .table-wrap { overflow-x: auto; }
+    @media (max-width: 640px) {
+      body { padding: 32px 16px; }
+      .cover h1 { font-size: 2.4rem; }
+      .part-header { padding: 48px 0 32px; }
+      .part-header h2 { font-size: 1.9rem; }
+      .template { padding: 20px 16px; }
+      .cta-box { padding: 32px 20px; }
+      th, td { padding: 8px 10px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ===================== COVER ===================== -->
+<div class="cover">
+  <div class="cover-badge">Builder appendix</div>
+  <h1>Builder Notes</h1>
+  <div class="cover-subtitle">Technical notes for people who run their own AI agent setup.<br>A companion to The AI Operator's Playbook.</div>
+  <div class="cover-divider"></div>
+  <p style="color:#333; font-size:1.05rem; max-width:580px;">
+    This appendix is for builders. If you own a small business and don't write scripts, you don't need it. <a href="/ai-operators-playbook.html">The main guide</a> covers everything you need.
+  </p>
+  <p style="color:#333; font-size:1.05rem; max-width:580px;">
+    These are working habits, not rules from a vendor. Tools change. The habits have held up for us. Updated October 2026.
+  </p>
+  <div class="cover-meta">
+    <strong>NYClaw.io</strong> · nyclaw.io &nbsp;|&nbsp; Giani Brussich, Founder<br><br>
+    © 2026 NYClaw.io. All rights reserved.
+  </div>
+</div>
+
+<!-- ===================== TOC ===================== -->
+<div class="toc">
+  <h2 style="margin-top:0;">Contents</h2>
+  <div style="height:4px;background:#0066cc;width:50px;margin-bottom:28px;"></div>
+  <div class="toc-group">
+    <div class="toc-item"><div><div class="toc-section">1</div><div class="toc-title">Identity and instruction files</div></div></div>
+    <div class="toc-item"><div><div class="toc-section">2</div><div class="toc-title">Memory tiers and daily notes</div></div></div>
+    <div class="toc-item"><div><div class="toc-section">3</div><div class="toc-title">The two-layer watchdog, and the restart-loop trap</div></div></div>
+    <div class="toc-item"><div><div class="toc-section">4</div><div class="toc-title">Scheduled job hygiene</div></div></div>
+    <div class="toc-item"><div><div class="toc-section">5</div><div class="toc-title">Cost discipline and model choice</div></div></div>
+    <div class="toc-item"><div><div class="toc-section">6</div><div class="toc-title">Checklist before you call an automation done</div></div></div>
+  </div>
+</div>
+
+<!-- ===================== 1 ===================== -->
+<div class="part-header">
+  <div class="part-label">Section 1</div>
+  <h2>Identity and instruction files</h2>
+  <p class="part-desc">The agent starts every session blank. A few short files give it the context a new hire would need.</p>
+</div>
+
+<p>Most agent runtimes load instruction files at the start of a session. Names vary by tool. The jobs these files do are the same. Keep them as four separate files so each stays short and has one purpose.</p>
+
+<div class="num-row"><div class="num-badge">1</div><div class="num-row-content"><h4>Identity and principles (often SOUL.md or AGENTS.md)</h4><p>Who the agent is, how it writes, what it values, and the act/ask boundary. It answers: "If I can't reach my operator, what would they want me to do?" Give it a name; a named identity tends to keep tone steadier across sessions.</p></div></div>
+<div class="num-row"><div class="num-badge">2</div><div class="num-row-content"><h4>Who it serves (often USER.md)</h4><p>The person or team: goals, working style, what they dislike, how they want bad news delivered. What a good chief of staff knows without being told.</p></div></div>
+<div class="num-row"><div class="num-badge">3</div><div class="num-row-content"><h4>Durable facts (often MEMORY.md)</h4><p>Active projects, locked decisions, lessons learned, where things live. Curated, not a chat log.</p></div></div>
+<div class="num-row"><div class="num-badge">4</div><div class="num-row-content"><h4>Environment (often TOOLS.md)</h4><p>Your actual setup: hosts, services, where credentials are stored and which accounts it may use. References only. Never the keys themselves.</p></div></div>
+
+<div class="template">
+  <div class="template-label">Template · Act/ask block for the identity file</div>
+  <div class="template-field">## When to act vs. ask<br><br>ACT (no approval needed):<br>- Repair broken implementations of agreed-upon systems<br>- Maintenance, config corrections, bug fixes<br>- Internal notes and memory updates<br><br>ASK FIRST:<br>- Anything sent to an outside person<br>- Spending money, or paid API use beyond set limits<br>- New decisions not previously discussed<br>- Deleting data or changing access</div>
+</div>
+
+<div class="callout">
+  <p><strong>Prune as models improve.</strong> Stronger models need less instruction, not more. Every quarter, archive any instruction file, prompt or skill that nobody opened and that doesn't encode a real failure you learned from. A lean, current set beats a pile of stale playbooks.</p>
+</div>
+
+<!-- ===================== 2 ===================== -->
+<div class="part-header">
+  <div class="part-label">Section 2</div>
+  <h2>Memory tiers and daily notes</h2>
+  <p class="part-desc">If you don't design memory, you don't have it.</p>
+</div>
+
+<table>
+  <thead><tr><th>Tier</th><th>What it holds</th><th>Lifespan</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Session</strong></td><td>The current conversation</td><td>Gone when the session ends</td></tr>
+    <tr><td><strong>Daily notes</strong></td><td>One short file per day: done, decided, pending, lessons</td><td>Recent days load at session start; older ones are searched on demand</td></tr>
+    <tr><td><strong>Durable</strong></td><td>Curated facts and locked decisions, plus deeper project files loaded on demand</td><td>Until you prune them</td></tr>
+  </tbody>
+</table>
+
+<h3>Write it down now</h3>
+<p>There is no mental note in an agent system. The moment something worth keeping happens, write it to a file: an API quirk, a decision and its reason, a status change, a preference you learned. Not at the end of the day. Before moving on.</p>
+
+<h3>Compress, archive, delete</h3>
+<p>Memory files decay. Keep the always-loaded file small enough that the agent reads all of it every session; set a size limit and enforce it. When it grows past the limit, summarize old entries and move the full text to an archive. Move finished project detail to its own file. Delete what is resolved and will not matter again. Review monthly. Don't over-build: if the agent won't read a file, don't create it.</p>
+
+<div class="template">
+  <div class="template-label">Template · Daily note</div>
+  <div class="template-field">## [DATE]<br>### Done<br>- [item]<br>### Decided<br>- [item]: reason [brief]<br>### Pending / next<br>- [item]<br>### Lessons<br>- [item]</div>
+  <div class="template-field">## Durable file sections<br>WHO I'M HELPING · ACTIVE PROJECTS (keep the list short) · LOCKED DECISIONS (not re-debated unless reopened) · WHERE THINGS LIVE (references, never secrets) · LESSONS LEARNED (dated, specific) · LAST UPDATED</div>
+</div>
+
+<p>Before ending a session on any project, write the state: what was tried, what worked, what didn't, what's next. Skip it and the next session starts over and re-debates settled questions.</p>
+
+<!-- ===================== 3 ===================== -->
+<div class="part-header">
+  <div class="part-label">Section 3</div>
+  <h2>The two-layer watchdog</h2>
+  <p class="part-desc">Cheap checks run all the time. Expensive reasoning runs only when there is something to decide.</p>
+</div>
+
+<p><strong>Layer 1, process monitor.</strong> A small shell script or system service that checks whether long-running processes are alive and restarts them if they crash. No AI, no API cost.</p>
+<p><strong>Layer 2, intelligence.</strong> The model that reads results, handles odd cases and decides. It is called when there is something to decide, never as a heartbeat.</p>
+
+<div class="warning">
+  <div class="warning-label">The restart-loop trap</div>
+  <p>Never put a single-shot AI command under a "restart if exited" monitor. A command such as <code>claude --print</code> answers once and exits normally. The monitor sees "process exited," restarts it, which makes another paid call, which exits, which triggers another restart. It repeats silently until the bill shows up. Use the monitor only for processes meant to stay running, and have it tell a clean exit from a crash.</p>
+</div>
+
+<!-- ===================== 4 ===================== -->
+<div class="part-header">
+  <div class="part-label">Section 4</div>
+  <h2>Scheduled job hygiene</h2>
+  <p class="part-desc">A job that is scheduled but doing nothing gives false confidence.</p>
+</div>
+
+<p>Scheduled jobs (cron, launchd, cloud schedulers, assistant task schedulers) are where neglect builds up fastest. Jobs outlive the projects they served, call scripts that moved, or hit endpoints that changed. You think data is being collected. It isn't. You find out weeks later.</p>
+<ul class="checklist">
+  <li>Every job has a comment: what it does, why, and when it was created</li>
+  <li>Every job writes a timestamp when it finishes successfully, and something checks that timestamp</li>
+  <li>Monthly: confirm each job's script exists and its output is used; remove anything with no recent success</li>
+  <li>When a project is paused or killed, remove its jobs in the same session</li>
+  <li>No placeholder jobs; schedule only when the script is ready and tested</li>
+  <li>Run it by hand and check the output before you schedule it; watch the first few scheduled runs</li>
+</ul>
+
+<!-- ===================== 5 ===================== -->
+<div class="part-header">
+  <div class="part-label">Section 5</div>
+  <h2>Cost discipline and model choice</h2>
+  <p class="part-desc">Cost is the number of calls times the size of each call. Shape both.</p>
+</div>
+
+<h3>Cost</h3>
+<ul>
+  <li>Use code, not a model, for anything that is math or fixed logic.</li>
+  <li>Bound every paid call. No uncapped loops. Set a spend cap and an alert with the provider.</li>
+  <li>Estimate cost per run and per month before scheduling anything that calls a paid API.</li>
+  <li>A long context repeated many times is the expensive case. Start a fresh session with a short written spec, or batch items into fewer calls.</li>
+  <li>Review billing monthly. Anything costing more than it returns gets cut.</li>
+</ul>
+
+<h3>Model choice</h3>
+<ul>
+  <li>Use the cheapest model that does the job well. Small, fast models for lookups, file chores and status checks. Mid-tier for most writing and coding. The largest models for hard planning and review.</li>
+  <li>Don't run routine monitors on your most expensive model.</li>
+  <li>Upgrade when a specific job fails on the current model, not when a new leaderboard appears.</li>
+  <li>Test every external API with real data before building on it. Validate response content, not only the status code. Have a fallback, or at least an alert, for critical paths.</li>
+</ul>
+
+<!-- ===================== 6 ===================== -->
+<div class="appendix-header">
+  <div class="part-label">Section 6</div>
+  <h2>Before you call an automation done</h2>
+</div>
+
+<div class="template">
+  <div class="template-label">Checklist · Design, build, launch, maintain</div>
+  <p><strong>Design</strong></p>
+  <ul class="checklist">
+    <li>Does this need model reasoning, or is it logic? If logic, write code.</li>
+    <li>What happens when it fails? What does "completed" look like?</li>
+    <li>What does a run cost? Is there a cap?</li>
+  </ul>
+  <p><strong>Build</strong></p>
+  <ul class="checklist">
+    <li>Every external call has error handling</li>
+    <li>Logs record start, end and exit status</li>
+    <li>Credentials come from environment variables or a secret store, never the code</li>
+    <li>Dependencies are written down: what breaks if a service goes down?</li>
+  </ul>
+  <p><strong>Launch</strong></p>
+  <ul class="checklist">
+    <li>Run by hand; output confirmed at the real destination</li>
+    <li>First few scheduled runs watched</li>
+    <li>Off switch documented and tested</li>
+  </ul>
+  <p><strong>Maintain (monthly, plus a fuller review each quarter)</strong></p>
+  <ul class="checklist">
+    <li>Last successful run confirmed for each job; dead jobs removed</li>
+    <li>Is anyone using the output? If not, remove it</li>
+    <li>Security pass: rate limits, input handling, access</li>
+    <li>Costs reviewed against what the job is worth</li>
+  </ul>
+</div>
+
+<p style="font-size:0.95rem;">Back to <a href="/ai-operators-playbook.html">The AI Operator's Playbook</a> · <a href="https://nyclaw.io">nyclaw.io</a></p>
+
+<div class="page-footer">
+  © 2026 NYClaw.io. All rights reserved. &nbsp;|&nbsp; Builder appendix, updated October 2026. Tools change; check current docs before relying on any specific command.
+</div>
+
+</body>
+</html>
