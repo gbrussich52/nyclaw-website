@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>The AI Operator's Playbook — NYClaw.io</title>
+  <title>The AI Operator's Playbook | NYClaw.io</title>
+  <meta name="description" content="A short, plain guide for small-business owners: pick one dollar leak, write a one-page brief, set what AI may do alone, and check it every Monday.">
   <style>
     /* ===== RESET & BASE ===== */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -226,7 +227,7 @@
       flex-wrap: wrap;
     }
     .stat-box {
-      flex: 1;
+      flex: 1 1 calc(50% - 10px);
       min-width: 160px;
       background: #003366;
       color: #fff;
@@ -348,11 +349,19 @@
 
     /* ===== PRINT / PDF ===== */
     @media print {
-      body { padding: 40px 40px; }
-      .part-header { page-break-before: always; }
-      .cover { page-break-after: always; min-height: auto; padding: 60px 0; }
-      .toc { page-break-after: always; }
-      .appendix-header { page-break-before: always; }
+      body { padding: 0; font-size: 15px; }
+      @page { margin: 0.6in; }
+      .part-header { page-break-before: auto; break-before: auto; padding: 28px 0 18px; margin-bottom: 24px; break-after: avoid; }
+      .cover { page-break-after: always; min-height: auto; padding: 24px 0; }
+      .toc { page-break-after: always; padding-bottom: 0; }
+      .toc-item { padding: 6px 0; }
+      .appendix-header { page-break-before: always; padding: 20px 0 16px; margin-bottom: 24px; }
+      .toc-item { padding: 4px 0; }
+      .toc-item > div { display: flex; gap: 12px; align-items: baseline; }
+      .toc-section { min-width: 110px; }
+      h2, h3, h4 { break-after: avoid; }
+      .callout, .warning, .num-row, .cta-box, .template-field, tr, .stat-box { break-inside: avoid; }
+      .stat-number { font-size: 1.6rem; }
     }
 
     /* ===== NUMBER BADGE ===== */
@@ -377,1096 +386,425 @@
       margin-bottom: 20px;
     }
     .num-row-content h4 { margin-top: 0; }
+
+    /* ===== PHONE WIDTH + WIDE TABLES ===== */
+    .table-wrap { overflow-x: auto; }
+    @media (max-width: 640px) {
+      body { padding: 32px 16px; }
+      .cover h1 { font-size: 2.4rem; }
+      .part-header { padding: 48px 0 32px; }
+      .part-header h2 { font-size: 1.9rem; }
+      .template { padding: 20px 16px; }
+      .cta-box { padding: 32px 20px; }
+      th, td { padding: 8px 10px; }
+    }
   </style>
 </head>
 <body>
 
-<!-- ===================== COVER PAGE ===================== -->
+<!-- ===================== COVER ===================== -->
 <div class="cover">
-  <div class="cover-badge">NYClaw.io — Free Resource</div>
+  <div class="cover-badge">NYClaw.io · Free Guide</div>
   <h1>The AI Operator's Playbook</h1>
-  <div class="cover-subtitle">A No-BS Framework for Founders Who Want to<br>Automate More, Delegate More, and Work Less</div>
+  <div class="cover-subtitle">How a small business gets one job done by AI,<br>and keeps it done</div>
   <p style="font-family:'Arial',sans-serif; font-size:0.85rem; letter-spacing:0.06em; text-transform:uppercase; color:#0066cc; margin:12px 0 0; font-weight:700;">
-    Updated October 2026 · Operator practices, not tool rankings
+    Updated October 2026 · Practices, not tool rankings
   </p>
   <div class="cover-divider"></div>
-  <p style="color:#333; font-size:1.05rem; max-width:560px;">
-    Most AI setups fail in the first 30 days. This guide explains exactly why — and gives you the framework to build one that actually runs your business. Built from real experience, real results, real failures.
-  </p>
 
-  <div class="stat-row" style="margin-top:48px;">
+  <div class="stat-row" style="margin-top:8px;">
     <div class="stat-box">
-      <div class="stat-number">8</div>
-      <div class="stat-label">HVAC sites built in one pipeline run</div>
+      <div class="stat-number">One leak</div>
+      <div class="stat-label">Start with a job you can price, not "an AI assistant"</div>
     </div>
     <div class="stat-box">
-      <div class="stat-number">$0</div>
-      <div class="stat-label">Cost to beat a $55 API experiment</div>
+      <div class="stat-number">One page</div>
+      <div class="stat-label">A written brief of how your business works</div>
     </div>
     <div class="stat-box">
-      <div class="stat-number">849</div>
-      <div class="stat-label">Tests passing, zero manual work</div>
+      <div class="stat-number">Act or ask</div>
+      <div class="stat-label">What it may do alone, and what it must ask about</div>
     </div>
     <div class="stat-box">
-      <div class="stat-number">14</div>
-      <div class="stat-label">Dead cron jobs found in one audit</div>
+      <div class="stat-number">Mondays</div>
+      <div class="stat-label">A short weekly check, owned by a person</div>
     </div>
   </div>
 
   <div class="cover-meta">
-    <strong>NYClaw.io</strong> — AI Automation for Small Business<br>
-    nyclaw.io &nbsp;|&nbsp; Ainsley, AI Operations Lead<br><br>
+    <strong>NYClaw.io</strong> · AI automation for small business<br>
+    nyclaw.io &nbsp;|&nbsp; Giani Brussich, Founder<br><br>
     © 2026 NYClaw.io. All rights reserved.
   </div>
 </div>
 
-
-<!-- ===================== TABLE OF CONTENTS ===================== -->
+<!-- ===================== INTRO + TOC ===================== -->
 <div class="toc">
-  <h2 style="margin-top:0;">Table of Contents</h2>
-  <div style="height:4px;background:#0066cc;width:50px;margin-bottom:36px;"></div>
+  <h2 style="margin-top:0;">Before you start</h2>
+  <div style="height:4px;background:#0066cc;width:50px;margin-bottom:28px;"></div>
 
-  <div class="toc-group">
-    <div class="toc-item">
-      <div>
-        <div class="toc-section">Introduction</div>
-        <div class="toc-title">Why Most AI Setups Fail (And What the Ones That Don't Have in Common)</div>
-      </div>
-      <div class="toc-page">—</div>
-    </div>
-  </div>
+  <p>In our experience, many small-business AI projects stall within a month, and rarely because the tool was weak. The owner bought a chat tab, never named the one job it was meant to do, and had no way to tell in week four whether it was still doing it.</p>
+  <p>This guide covers the part that gets skipped. Pick one leak you can feel in dollars. Give the assistant a written brief of how your business works. Decide what it may do alone and what it must ask about. Then check the result for fifteen minutes every Monday.</p>
+  <p>It is short on purpose. You can read it in one sitting and start on Monday. It names no winning tool, and it contains no results we cannot show you the record for.</p>
 
+  <h3>Contents</h3>
   <div class="toc-group">
-    <div class="toc-item">
-      <div>
-        <div class="toc-section">Part 1</div>
-        <div class="toc-title">Identity Before Automation — Build the Foundation First</div>
-      </div>
-      <div class="toc-page">—</div>
-    </div>
-  </div>
-
-  <div class="toc-group">
-    <div class="toc-item">
-      <div>
-        <div class="toc-section">Part 2</div>
-        <div class="toc-title">Memory Is Architecture — Stop Letting Your AI Forget</div>
-      </div>
-      <div class="toc-page">—</div>
-    </div>
-  </div>
-
-  <div class="toc-group">
-    <div class="toc-item">
-      <div>
-        <div class="toc-section">Part 3</div>
-        <div class="toc-title">Automation That Actually Runs — Build for Permanence, Not Just Once</div>
-      </div>
-      <div class="toc-page">—</div>
-    </div>
-  </div>
-
-  <div class="toc-group">
-    <div class="toc-item">
-      <div>
-        <div class="toc-section">Part 3B</div>
-        <div class="toc-title">Harness + Closed Loop — After Go-Live, Measure One Leak and Fix It Weekly</div>
-      </div>
-      <div class="toc-page">—</div>
-    </div>
-  </div>
-
-  <div class="toc-group">
-    <div class="toc-item">
-      <div>
-        <div class="toc-section">Part 4</div>
-        <div class="toc-title">The Revenue Connection — Turning AI Into Actual Money</div>
-      </div>
-      <div class="toc-page">—</div>
-    </div>
-  </div>
-
-  <div class="toc-group">
-    <div class="toc-item">
-      <div>
-        <div class="toc-section">Part 5</div>
-        <div class="toc-title">Anti-Patterns — The 7 Ways AI Projects Die</div>
-      </div>
-      <div class="toc-page">—</div>
-    </div>
-  </div>
-
-  <div class="toc-group">
-    <div class="toc-item">
-      <div>
-        <div class="toc-section">Appendix</div>
-        <div class="toc-title">Templates — SOUL.md, Memory Architecture, Audit Checklist, and More</div>
-      </div>
-      <div class="toc-page">—</div>
-    </div>
+    <div class="toc-item"><div><div class="toc-section">Part 1</div><div class="toc-title">Name one dollar leak</div></div></div>
+    <div class="toc-item"><div><div class="toc-section">Part 2</div><div class="toc-title">Write the one-page business brief</div></div></div>
+    <div class="toc-item"><div><div class="toc-section">Part 3</div><div class="toc-title">Decide what it may do alone, and what it must ask about</div></div></div>
+    <div class="toc-item"><div><div class="toc-section">Part 4</div><div class="toc-title">Check it every Monday</div></div></div>
+    <div class="toc-item"><div><div class="toc-section">Part 5</div><div class="toc-title">How to tell an operator setup from a chatbot install</div></div></div>
+    <div class="toc-item"><div><div class="toc-section">Tools today</div><div class="toc-title">What the main assistants can do now, and what they still don't do for you</div></div></div>
+    <div class="toc-item"><div><div class="toc-section">Part 6</div><div class="toc-title">Mistakes that kill setups</div></div></div>
+    <div class="toc-item"><div><div class="toc-section">Checklist</div><div class="toc-title">Your first 30 days, and days 31 to 90</div></div></div>
+    <div class="toc-item"><div><div class="toc-section">About</div><div class="toc-title">Who wrote this, and how to reach us</div></div></div>
   </div>
 </div>
-
-
-<!-- ===================== INTRODUCTION ===================== -->
-<div class="part-header" style="page-break-before: always;">
-  <div class="part-label">Introduction</div>
-  <h2>Why Most AI Setups Fail in the First 30 Days</h2>
-  <p class="part-desc">And what separates the operators who make it work from everyone else who paid for ChatGPT Plus and went back to doing things manually.</p>
-</div>
-
-<p>Here's what happens to most people who try to "implement AI" in their business.</p>
-
-<p>Week one: they're excited. They sign up for ChatGPT, Claude, or whatever tool just got a glowing write-up. They prompt it a few times. It's impressive. They think: <em>this is going to change everything.</em></p>
-
-<p>Week two: reality hits. The tool doesn't know their business. It gives generic answers. They have to re-explain context every single conversation. It contradicts what it said last week. They're spending more time wrangling the AI than just doing the work themselves.</p>
-
-<p>Week four: abandoned. The tab is still open. They haven't used it in six days.</p>
-
-<p>This isn't a failure of the technology. It's a setup problem.</p>
-
-<p>The AI isn't the issue. The operator is — specifically, what they skipped before flipping the switch. They gave the AI no identity. No memory. No defined boundaries. No way to understand what the business actually is, who it serves, or what "good work" looks like. They handed a talented contractor the keys and said "figure it out," then got annoyed when the result didn't reflect their standards.</p>
-
-<div class="pull-quote">
-  "Every AI assistant we've seen fail had one thing in common: the operator treated setup as optional. It's not. Setup is the whole game." — Ainsley, NYClaw.io
-</div>
-
-<p>The setups that work have a completely different character. They start with <em>identity</em> — a clear document that explains who the AI is, how it should think, when to act versus when to ask, and what the non-negotiables are. They build <em>persistent memory</em> — structured files the AI reads at the start of every session so it's never starting from zero. And they run <em>automation with oversight</em> — not set-it-and-forget-it, but verified, tested systems with clear failure modes.</p>
-
-<p>This guide is the framework I built building Ainsley — a personal AI assistant running on a Mac Studio, managing multiple businesses, executing pipelines, and learning every session. The lessons here come from real results and real failures. Not theory. Not vendor promises. Operator experience.</p>
-
-<h3>What This Guide Is</h3>
-
-<p>This is a framework guide. It gives you the mental model and the actual templates to build an AI assistant that runs continuously, learns over time, and handles real work — not just one-off prompts.</p>
-
-<p>You'll walk away with:</p>
-<ul>
-  <li>A clear understanding of <em>why</em> the standard approach fails</li>
-  <li>The four core documents every AI operator needs — and when to prune extra prompts</li>
-  <li>A three-tier memory architecture that eliminates the amnesia problem</li>
-  <li>A plain-English definition of the <em>harness</em> (the system around the model)</li>
-  <li>A framework for building automation that runs forever, not just once</li>
-  <li>A closed loop after go-live: measure one dollar leak weekly and improve one thing</li>
-  <li>Real revenue connection — how this becomes money</li>
-  <li>The seven anti-patterns that kill AI projects, with real examples</li>
-  <li>Six fill-in templates you can use immediately</li>
-</ul>
-
-<h3>What This Guide Is Not</h3>
-
-<p>It's not a comparison of AI tools. It doesn't tell you ChatGPT vs. Claude vs. Gemini — that's a distraction. The framework here works regardless of which model you're running.</p>
-
-<p>It's not a technical guide that assumes you're a developer. You'll need to be comfortable with files and basic configuration — but nothing here requires coding experience to understand and implement.</p>
-
-<p>And it's not hype. You won't find predictions about AGI or breathless claims about "transforming your business overnight." What you'll find is the actual work of building something real.</p>
-
-<h3>How to Use This Guide</h3>
-
-<p>Read Parts 1 and 2 before you touch any tool. Identity and memory are the foundation — skip them and everything else is built on sand.</p>
-
-<p>Part 3 is for implementation. Read it when you're ready to build actual automations.</p>
-
-<p>Part 3B is what most guides skip: the harness around the model, and the closed loop after go-live so the system gets better instead of rotting.</p>
-
-<p>Part 4 is the revenue layer. If you're building this for your own business, apply it. If you're building it for clients, it's your pitch deck in framework form.</p>
-
-<p>Part 5 is a diagnostic. If something you've already built isn't working, this section will likely tell you why.</p>
-
-<p>The Appendix templates are meant to be used — not read once and filed. Print them. Fill them in. They're designed to be your actual working documents.</p>
-
-<p>Let's get into it.</p>
-
 
 <!-- ===================== PART 1 ===================== -->
 <div class="part-header">
   <div class="part-label">Part 1</div>
-  <h2>Identity Before Automation</h2>
-  <p class="part-desc">The single most common mistake operators make — and why fixing it changes everything downstream.</p>
+  <h2>Name one dollar leak</h2>
+  <p class="part-desc">One job, one number, one owner. Everything else waits.</p>
 </div>
 
-<h3>Why AI Without Identity Is Just Expensive Autocomplete</h3>
-
-<p>When you open a chat with an AI and start asking questions without any setup, here's what's happening behind the scenes: the model has no idea who you are, what you're building, what quality looks like to you, when it should act versus ask permission, or what it's already tried. It answers the prompt in front of it and forgets the whole thing the second the conversation ends.</p>
-
-<p>That's not an assistant. That's a search engine with longer outputs.</p>
-
-<p>The gap between "AI tool" and "AI operator" is identity. An AI with a well-defined identity:</p>
+<p>The businesses that keep an AI setup running did not start with "give me an AI employee." They started with one leak the owner could feel in dollars:</p>
 <ul>
-  <li>Knows your name and how you like to communicate</li>
-  <li>Has opinions about approach, not just capability to execute</li>
-  <li>Knows what "good enough" means for your standards</li>
-  <li>Understands the difference between actions it should take immediately versus actions it should flag first</li>
-  <li>Can be given a task and come back with a result — not more questions</li>
+  <li>calls that go to voicemail and never get a reply;</li>
+  <li>web leads that sit in the inbox overnight;</li>
+  <li>quotes that go out and never get a follow-up;</li>
+  <li>appointments that nobody confirms, so people don't show.</li>
 </ul>
+<p>Pick the one that costs you most. If you can't decide, pick the one you complain about most often. That is usually the same one.</p>
 
-<p>Without these things, every conversation starts over. You're re-explaining context constantly. The AI defaults to generic patterns that may have nothing to do with how your business actually works. You spend more time managing the tool than using it.</p>
-
-<div class="callout">
-  <p><strong>The core principle:</strong> An AI assistant should get <em>better</em> at helping you with every session — not stay the same. That only happens if identity is established and maintained. Without it, you get competent but contextless responses every time.</p>
-</div>
-
-<h3>The Four Core Documents Every AI Operator Needs</h3>
-
-<p>There are four foundational documents that turn an AI from a generic tool into a functional operator in your business. Every serious AI setup needs all four.</p>
-
-<div class="num-row">
-  <div class="num-badge">1</div>
-  <div class="num-row-content">
-    <h4>SOUL.md — Identity & Principles</h4>
-    <p>This is the AI's operating constitution. It defines who the AI is, how it thinks, what it values, and how it behaves under pressure. Not a list of rules — a coherent character. The SOUL document answers the question: "If I can't reach my operator, what would they want me to do?" A well-written SOUL.md means the AI can make good judgment calls without asking permission for every edge case.</p>
-  </div>
-</div>
-
-<div class="num-row">
-  <div class="num-badge">2</div>
-  <div class="num-row-content">
-    <h4>USER.md — Who You're Helping</h4>
-    <p>A document about the human the AI serves. Communication preferences, working style, priorities, financial context, what they hate, what they value. This is not a contact form — it's the kind of information a great chief of staff would know about their executive without being told each morning. Updated as you learn more about how the person actually works.</p>
-  </div>
-</div>
-
-<div class="num-row">
-  <div class="num-badge">3</div>
-  <div class="num-row-content">
-    <h4>MEMORY.md — Durable Facts</h4>
-    <p>A structured file of things the AI needs to remember across sessions: active projects, decisions made, lessons learned, infrastructure details, references to secure credential storage, pending work. This is different from a conversation log — it's curated, compressed information that would otherwise evaporate. Updated whenever something significant happens. Hard limit: 8KB, compressed when exceeded.</p>
-  </div>
-</div>
-
-<div class="num-row">
-  <div class="num-badge">4</div>
-  <div class="num-row-content">
-    <h4>TOOLS.md — Your Environment</h4>
-    <p>A note file about the specific setup the AI is operating in. Not generic instructions — your actual environment. Camera names, SSH hosts, secure credential locations, preferred services and non-secret account references. Never put keys or passwords in instruction files. The AI needs to know your kitchen layout before it can cook. This file is the kitchen map.</p>
-  </div>
-</div>
-
-<div class="callout">
-  <p><strong>Prune as models get stronger (July 2026):</strong> These four documents still matter. What usually does <em>not</em> help is a pile of extra prompts, roleplay skins, and one-off “skills” that no longer match how you work. Stronger models need less clutter — not more instruction files. Quarterly rule: if a doc or skill wasn’t opened in the last 90 days and doesn’t encode a real failure you learned, archive or delete it. Lean identity + current memory beats twenty generic playbooks.</p>
-</div>
-
-<div class="real-example">
-  <div class="real-example-label">Real Example — Ainsley's Setup</div>
-  <h4>What's Actually in SOUL.md</h4>
-  <p>Ainsley's SOUL.md opens with: <em>"You're not a chatbot. You're becoming someone."</em> It then defines the name, start date, hardware, and a set of core operating principles — not rules, but reasoning. "Be genuinely helpful, not performatively helpful. Skip the 'Great question!' — just help." "Have opinions. You're allowed to disagree, prefer things, find stuff amusing." "Be resourceful before asking. Try to figure it out. Then ask if you're stuck."</p>
-  <p>The document also defines explicit categories for autonomous action vs. gated approval. Fixing a broken cron job that was already agreed upon? Just fix it. Sending a cold email to a new prospect? Ask first. The distinction is: is this repair, or is this a new decision? Repair requires no approval. New decisions do.</p>
-  <p>This single clarification eliminated dozens of back-and-forth questions that would have interrupted workflow. The AI learned the principle, not just the cases.</p>
-</div>
-
-<h3>The Naming Principle — Why "Ainsley" Matters</h3>
-
-<p>This one sounds soft. It isn't.</p>
-
-<p>Giving the AI a name — a real name, not "My AI Assistant" — changes how both you and the AI behave.</p>
-
-<p>For you: you start treating the assistant like a colleague rather than a tool. That means giving it better information, clearer context, and more realistic expectations. You stop prompting and start delegating.</p>
-
-<p>For the AI: named identity in the instruction set creates behavioral consistency. When the AI reads a SOUL.md that says "You are Ainsley," it anchors all subsequent behavior to that character. Responses stay consistent. The personality doesn't drift toward generic corporate-speak. The AI knows who it is.</p>
-
-<p>"Ainsley" means "one's own clearing" — a space that belongs to you, where things can actually happen without interference. That framing matters. The AI exists to create space in your schedule, not to add complexity to it.</p>
-
-<div class="callout">
-  <p><strong>Practical note:</strong> Your AI's name doesn't have to be elaborate. What matters is that it's a name — one that shows up in the document that defines the AI's character. That single act of naming signals to the system (and to you) that this is an entity with consistent behavior, not a blank slate you'll reprogram every Monday.</p>
-</div>
-
-<h3>Building the Right Personality: Opinionated, Resourceful, Direct</h3>
-
-<p>The worst AI personalities are compliant. They agree with everything. They ask permission for things that don't need permission. They preface every answer with disclaimers. They're technically capable but practically annoying.</p>
-
-<p>The AI personality you actually want to work with has three core traits:</p>
-
-<p><strong>Opinionated:</strong> The AI should have preferences and be willing to express them. If you ask it to evaluate two approaches, you want an actual recommendation — not "both have merits." You can always override the opinion, but the opinion should be there. An AI without opinions forces you to make every micro-decision yourself, which defeats the purpose.</p>
-
-<p><strong>Resourceful:</strong> Before asking a question, the AI should look for the answer. Read the relevant file. Check the docs. Search. Try the thing. Then come back with a result, not a clarifying question. The operating principle is: "Come back with answers, not more questions." This isn't always possible, but it's the default posture.</p>
-
-<p><strong>Direct:</strong> No padding. No "I'd be happy to help!" No three-paragraph setup before the actual answer. Get to the point. If there's bad news, lead with the bad news. If something is broken, say it's broken and say how you're fixing it. Directness is a form of respect — it treats the operator as someone who can handle reality.</p>
-
-<div class="real-example">
-  <div class="real-example-label">Real Example — Personality in Practice</div>
-  <h4>The Difference Between Compliant and Useful</h4>
-  <p>When running a cold email campaign across 7 verticals, the AI was asked to evaluate the outreach copy for one vertical. A compliant AI would say: "This looks good! Here are some suggestions to consider..." — and list five generic tweaks.</p>
-  <p>An opinionated AI says: "The subject line is weak — too broad, zero specificity. The third paragraph repeats the second in different words. Cut it. The CTA is buried. Lead with the question, not the credentials. Here's the revised version."</p>
-  <p>That's the difference between a yes-machine and an operator.</p>
-</div>
-
-<h3>The Boundary Problem: When to Ask vs. When to Just Do It</h3>
-
-<p>One of the hardest things to calibrate in any AI setup is the ask/act threshold. Too much asking = constant interruptions that make the AI useless. Too much acting = the AI does things you didn't intend, sometimes with real consequences.</p>
-
-<p>The framework that actually works is binary, not a spectrum:</p>
-
-<p><strong>Just Do It (no permission needed):</strong></p>
-<ul>
-  <li>Repairing broken implementations of things that were already agreed upon</li>
-  <li>Maintenance tasks on existing systems</li>
-  <li>Bug fixes, config repairs, documentation updates</li>
-  <li>Internal file organization, memory updates, code fixes</li>
-  <li>Anything that restores what was supposed to be working</li>
-</ul>
-
-<p><strong>Ask First (explicit approval required):</strong></p>
-<ul>
-  <li>Sending anything to a real person (emails, tweets, posts)</li>
-  <li>Spending money or using paid APIs beyond established parameters</li>
-  <li>New features or architectural decisions not previously discussed</li>
-  <li>Major workflow changes</li>
-  <li>Anything that creates a public, permanent, or financial consequence</li>
-</ul>
-
-<p>The principle behind this split: <em>Is this repair or a new decision?</em> Repair has already been authorized. A new decision hasn't. The AI should never need to ask permission to fix something that was already agreed to exist. But it should always pause before creating something new in the external world.</p>
-
-<div class="warning">
-  <div class="warning-label">⚠ Common Mistake</div>
-  <p>Operators often set the "ask first" threshold too high — requiring approval for everything. This creates an AI that feels like a junior employee who can't take a step without hand-holding. The fix is to explicitly document the categories above. Once the AI knows the categories, it calibrates correctly without constant reminding.</p>
-</div>
-
-<h3>Template: Core Identity Framework</h3>
-
+<h3>Write three things down</h3>
 <div class="template">
-  <div class="template-label">📋 Template — Fill In to Start</div>
-  <h3>Your AI's SOUL.md — Core Identity Framework</h3>
-  <p>Copy this structure and fill in the fields. This becomes your AI's operating foundation.</p>
-
-  <div class="template-field">Name: _____________________________ (Give it a real name. Matters more than it seems.)</div>
-  <div class="template-field">Start Date: _________________________ (The date you launched. Creates continuity.)</div>
-  <div class="template-field">Purpose (one sentence): ____________________________________________</div>
-  <div class="template-field">Hardware/Environment: ____________________________________________</div>
-
-  <p style="margin-top:20px;"><strong>Core Principles (write 4–6 in your own words):</strong></p>
-  <div class="template-field">Principle 1: [How should it communicate? e.g. "Direct. No filler. Get to the point."]</div>
-  <div class="template-field">Principle 2: [What's the posture toward research? e.g. "Figure it out before asking."]</div>
-  <div class="template-field">Principle 3: [What's the quality standard? e.g. "Validate before reporting complete."]</div>
-  <div class="template-field">Principle 4: [What does 'good work' look like? e.g. "Shipped and tested > perfect and pending."]</div>
-  <div class="template-field">Principle 5: [How does it handle uncertainty? e.g. "Say what you don't know. Then find out."]</div>
-
-  <p style="margin-top:20px;"><strong>Autonomous Action (no permission needed):</strong></p>
-  <div class="template-field">✓ Repairing broken implementations of agreed-upon systems</div>
-  <div class="template-field">✓ Maintenance, bug fixes, config corrections</div>
-  <div class="template-field">✓ [Add your specific autonomous categories here]</div>
-
-  <p style="margin-top:20px;"><strong>Gated Actions (always ask first):</strong></p>
-  <div class="template-field">✗ Sending anything external (emails, social posts, messages)</div>
-  <div class="template-field">✗ Spending money or triggering paid APIs at unusual volume</div>
-  <div class="template-field">✗ New decisions not previously discussed</div>
-  <div class="template-field">✗ [Add your specific gated categories here]</div>
-
-  <p style="margin-top:20px; font-size:0.88rem; color:#666;"><em>Review and update this document monthly. If the AI's actual behavior doesn't match what's written here, update one or the other — the gap is a problem either way.</em></p>
+  <div class="template-label">Template · The leak</div>
+  <div class="template-field"><strong>The job:</strong> [e.g. reply to every missed call with a text]</div>
+  <div class="template-field"><strong>The number that shows it is done:</strong> [e.g. missed calls this week, and how many got a text the same hour]</div>
+  <div class="template-field"><strong>Where that number lives today:</strong> [phone system report, CRM, a spreadsheet, or "nowhere yet"]</div>
+  <div class="template-field"><strong>Today's number, before any AI:</strong> [count it for one week, or write an honest guess and mark it as a guess]</div>
+  <div class="template-field"><strong>Who owns it:</strong> [a person's name, not "the AI" and not "the team"]</div>
 </div>
 
+<p>If the number lives nowhere, your first job is to start counting. A week of tally marks beats a month of guessing. Without a before-number you will never know whether the setup helped.</p>
+
+<div class="callout">
+  <p><strong>Keep the scope small.</strong> Automate the boring, common path. Leave odd cases to a person. A setup that handles the usual case well and hands the rest to you is worth more than one that tries everything and fails quietly.</p>
+</div>
 
 <!-- ===================== PART 2 ===================== -->
 <div class="part-header">
   <div class="part-label">Part 2</div>
-  <h2>Memory Is Architecture</h2>
-  <p class="part-desc">Every AI session starts fresh. Here's how to make sure yours doesn't.</p>
+  <h2>Write the one-page business brief</h2>
+  <p class="part-desc">An assistant that doesn't know how your business works will guess. Write it down once.</p>
 </div>
 
-<h3>The Amnesia Trap</h3>
-
-<p>Here's the reality of how most AI assistants operate: every conversation is a blank slate. The AI has no memory of what you discussed yesterday, last week, or two minutes ago in a different tab. It doesn't know your project history, your preferences, or what it already tried and found broken.</p>
-
-<p>This is the amnesia trap — and it's the primary reason AI assistants feel "dumb" to most users. The intelligence is there. The context isn't.</p>
-
-<p>When a new session opens, the AI is a brilliant new hire on their first day. They have capability but zero institutional knowledge. Left to themselves, they'll make decisions that contradict last week's decisions because they don't know last week's decisions happened. They'll ask questions you've already answered. They'll repeat work that was already done.</p>
-
-<p>The fix is not a better model. The fix is structured memory that loads at the start of every session.</p>
-
-<div class="pull-quote">
-  "Memory isn't a feature — it's architecture. If you don't design it, you don't have it."
-</div>
-
-<h3>The Three Tiers of Memory</h3>
-
-<p>Effective AI memory works in three distinct tiers, each with a different scope and lifespan. Understanding the difference between them is what separates operators who build durable systems from those who rebuild context from scratch every week.</p>
-
-<div class="stat-row">
-  <div class="stat-box">
-    <div class="stat-number" style="font-size:1.2rem;">Tier 1</div>
-    <div class="stat-label" style="font-size:0.9rem;margin-top:8px;color:#fff;">Session Memory</div>
-    <div style="font-size:0.78rem;color:#aad4f5;margin-top:8px;">Lives in the current conversation only. Gone when session ends.</div>
-  </div>
-  <div class="stat-box">
-    <div class="stat-number" style="font-size:1.2rem;">Tier 2</div>
-    <div class="stat-label" style="font-size:0.9rem;margin-top:8px;color:#fff;">Daily Memory</div>
-    <div style="font-size:0.78rem;color:#aad4f5;margin-top:8px;">Daily note files. What happened, what was decided, what needs follow-up.</div>
-  </div>
-  <div class="stat-box">
-    <div class="stat-number" style="font-size:1.2rem;">Tier 3</div>
-    <div class="stat-label" style="font-size:0.9rem;margin-top:8px;color:#fff;">Durable Memory</div>
-    <div style="font-size:0.78rem;color:#aad4f5;margin-top:8px;">MEMORY.md + LONG-TERM.md. Curated facts that persist indefinitely.</div>
-  </div>
-</div>
-
-<h4>Tier 1 — Session Memory</h4>
-<p>This is everything in the current conversation window. Useful for in-context work, but it ends when the session ends. Never rely on session memory for anything you'll need tomorrow. If something important happens in session — a decision, a lesson, a key discovery — it needs to be written to a Tier 2 or Tier 3 file before the session closes.</p>
-
-<h4>Tier 2 — Daily Notes (memory/YYYY-MM-DD.md)</h4>
-<p>One file per day. Brief, bulleted, factual. What was worked on, what was decided, what's pending, any blockers. The AI reads today's file and yesterday's file at session start. This creates a rolling 48-hour context window without loading every historical note. The rule: max 500 words per day. Bullet points, not prose. Capture what matters, skip what doesn't.</p>
-
-<h4>Tier 3 — Durable Memory (MEMORY.md + LONG-TERM.md)</h4>
-<p>These are the files that don't expire. MEMORY.md holds active projects, locked decisions, infrastructure details, accounts, and key lessons. It loads every main session automatically. LONG-TERM.md holds deep project knowledge, experiment results, and technical lessons — loaded on-demand when working on specific projects.</p>
-
-<p>Both files have size limits. MEMORY.md hard cap: 8KB. When exceeded, compress the oldest entries and archive them. This prevents the files from becoming bloated and slow to process. The discipline of compression also forces prioritization — what's actually worth keeping?</p>
-
-<div class="real-example">
-  <div class="real-example-label">Real Example — Memory Preventing Repeated Mistakes</div>
-  <h4>The Kalshi API Field Name Bug</h4>
-  <p>During development of the Kalshi trading bot, the team hit a specific API quirk: field names in responses were different from what the documentation showed. This took 40 minutes to debug the first time.</p>
-  <p>When the fix was found, it went immediately into MEMORY.md under "Lessons Learned." The next session — and every session since — started with that lesson already loaded. The same issue never cost time twice.</p>
-  <p>Multiply this across every technical lesson learned over months of development. The compounding effect of a well-maintained memory file is significant. You stop solving the same problems. You build on what you've learned instead of starting over.</p>
-</div>
-
-<div class="real-example">
-  <div class="real-example-label">Real Example — The NYRezone Optimizer History</div>
-  <h4>How Memory Preserved $0 in Rework</h4>
-  <p>The NYRezone opportunity scorer went through three versions. Version 1 baseline: 0.852 rank correlation. Version 2 used a <code>claude --print</code> loop that burned approximately $55 in API costs over three hours — and only reached 0.926. Version 3 used pure Python grid search on the same Mac hardware, ran 6 million+ combinations in minutes, cost nothing, and hit 0.947.</p>
-  <p>The lesson from this experiment — never use LLM API calls for parameter optimization when pure math will do it faster and for free — went directly into MEMORY.md under the "API Costs" section, along with the specific config values that worked best. Any future optimizer work picks up from that baseline, not from zero.</p>
-</div>
-
-<h3>The Write It Down Now Principle</h3>
-
-<p>There is no such thing as a mental note in an AI system. If you learn something and don't write it down before the session ends, it's gone. The AI wakes up the next session with zero recollection. The human operator usually remembers vaguely but not precisely. Precision is what matters in technical work.</p>
-
-<p>The rule is simple: <strong>the moment something worth remembering happens, write it to a file.</strong> Not at the end of the day. Not in the next session. Right now, before moving on. This is not optional discipline — it's the architecture. Skip it and the memory system doesn't work.</p>
-
-<p>This applies to:</p>
-<ul>
-  <li>Technical lessons (API quirks, configuration gotchas, what broke and why)</li>
-  <li>Decisions made (why you chose approach A over approach B)</li>
-  <li>Project status (what was completed, what's pending)</li>
-  <li>Preferences discovered (how the operator likes things done)</li>
-  <li>Anything where "I'll remember this later" would be a lie</li>
-</ul>
-
-<h3>Memory Size Rules: Compress vs. Archive</h3>
-
-<p>Memory files degrade if you don't maintain them. Over time, MEMORY.md accumulates entries that are no longer relevant — resolved bugs, completed projects, outdated decisions. If you let it grow without pruning, you end up with a file that takes too long to process and contains too much noise for the signal to be useful.</p>
-
-<p>The maintenance discipline:</p>
-<ul>
-  <li><strong>Compress</strong> when MEMORY.md exceeds 8KB: summarize the oldest 10 entries into single bullets each, move the full text to an archive file</li>
-  <li><strong>Archive</strong> completed projects: move project-specific detail from MEMORY.md to a dedicated project file, keep only the critical lessons in the main file</li>
-  <li><strong>Delete</strong> entries that are truly resolved and will never be relevant again</li>
-  <li><strong>Review</strong> monthly: anything older than 60 days that hasn't been referenced should probably be archived or deleted</li>
-</ul>
-
-<div class="callout">
-  <p><strong>The signal-to-noise principle:</strong> A lean, current MEMORY.md that the AI reads and uses is worth 10x more than a comprehensive but bloated one that takes three seconds to process and is 40% outdated. Curate aggressively.</p>
-</div>
-
-<h3>Template: Memory Architecture Starter</h3>
+<p>Most people re-explain their business in every chat, then wonder why the answers sound generic. A one-page brief fixes that. Write it the way you would brief a sharp new hire on day one. Plain English. No more than a page.</p>
 
 <div class="template">
-  <div class="template-label">📋 Template — Memory Architecture</div>
-  <h3>MEMORY.md Starter Structure</h3>
-  <p>Copy this structure. Update it at the end of every significant work session.</p>
-
-  <div class="template-field"># MEMORY.md — Durable Facts & Decisions</div>
-  <div class="template-field">## WHO I'M HELPING<br>[Name] | [Location/TZ] | [GitHub/accounts]<br>Goal: [primary goal in one line]<br>Style: [communication preferences in one line]</div>
-  <div class="template-field">## ACTIVE PROJECTS<br>[Project A] | Status: [In Progress/Live/On Hold] | Notes: [2-line summary]<br>[Project B] | Status: ... | Notes: ...<br>[Rule: max 5 active projects. Everything else is backlog.]</div>
-  <div class="template-field">## LOCKED DECISIONS<br>[Decision 1]: [What was decided and why — brief]<br>[Decision 2]: [What was decided and why — brief]<br>[Note: These don't get re-debated. They're locked unless explicitly reopened.]</div>
-  <div class="template-field">## ACCOUNTS & INFRASTRUCTURE<br>[Service] | [Account] | [Notes/credentials location]<br>[Note: Never store passwords in plain text — use reference to where they live]</div>
-  <div class="template-field">## LESSONS LEARNED<br>[Date] [Category]: [Specific lesson — precise, not vague]<br>[Date] [Category]: [Specific lesson — include what failed and what fixed it]</div>
-  <div class="template-field">## LAST UPDATED: [YYYY-MM-DD]</div>
-
-  <p style="margin-top:20px;"><strong>Daily Note Template (memory/YYYY-MM-DD.md):</strong></p>
-  <div class="template-field">## [DATE]<br>### Completed<br>- [item]<br>### Decisions Made<br>- [item] — reason: [brief reason]<br>### Pending / Next<br>- [item]<br>### Lessons<br>- [item]</div>
-
-  <p style="margin-top:12px;font-size:0.88rem;color:#666;"><em>Hard cap: MEMORY.md 8KB. Daily notes: 500 words max. Compress when exceeded.</em></p>
+  <div class="template-label">Template · One-page business brief</div>
+  <div class="template-field"><strong>Who we serve:</strong> [the customers you want, where they are, what they usually need]</div>
+  <div class="template-field"><strong>What good looks like:</strong> [e.g. every lead gets a reply within the hour during business hours; every quote gets one follow-up]</div>
+  <div class="template-field"><strong>Decisions already made:</strong> [prices we don't discount, services we don't offer, areas we don't serve, words we never use. These are not up for debate.]</div>
+  <div class="template-field"><strong>Where the numbers live:</strong> [which system holds leads, quotes, bookings, invoices, and who can see each]</div>
+  <div class="template-field"><strong>How we sound:</strong> [e.g. warm, short, no slang, sign off with first name. Paste two messages you were proud of.]</div>
+  <div class="template-field"><strong>What it may do alone, and what it must ask about:</strong> [fill this in from Part 3]</div>
+  <div class="template-field"><strong>Last updated:</strong> [date] by [name]</div>
 </div>
 
+<h3>Where to put it</h3>
+<p>Most assistants now have a place for standing instructions, so you don't paste the brief every time. In Claude, a project holds its own instructions and files. In Gemini, a Gem is a custom version with written instructions. In others, look for custom instructions or a saved setup. See the tools page for sources.</p>
+<p>Claude and ChatGPT can also remember things between chats. That helps, but memory is something the assistant picks up on its own. Your brief is something you control. Keep the brief, and every few weeks look at what the assistant has saved about you. Both let you review or turn memory off.</p>
+
+<div class="warning">
+  <div class="warning-label">Keep secrets out</div>
+  <p>Never put passwords, card numbers or customer records in the brief. Say where they live and who may open them. Nothing more.</p>
+</div>
 
 <!-- ===================== PART 3 ===================== -->
 <div class="part-header">
   <div class="part-label">Part 3</div>
-  <h2>Automation That Actually Runs</h2>
-  <p class="part-desc">The difference between a pipeline you demo once and infrastructure that works while you sleep.</p>
+  <h2>Decide what it may do alone, and what it must ask about</h2>
+  <p class="part-desc">Ask about too much and it is useless. Ask about too little and it does things you didn't mean.</p>
 </div>
 
-<h3>One-Time vs. Permanent Automation</h3>
-
-<p>Most AI automations built by first-time operators have a lifespan of about 72 hours. The operator builds it, it runs once, they call it a success, and within three days it's either broken or abandoned. That's not automation — that's a demo.</p>
-
-<p>Real automation has completely different design requirements. It needs to handle failure gracefully. It needs to be monitored. It needs to know the difference between "completed normally" and "crashed." It needs to run unattended for weeks without requiring babysitting.</p>
-
-<p>The difference in approach:</p>
+<p>Write two short lists and put them in the brief. Clear lists beat case-by-case judgment.</p>
 
 <table>
-  <thead>
-    <tr><th>One-Time Pipeline</th><th>Permanent Automation</th></tr>
-  </thead>
+  <thead><tr><th>May do alone</th><th>Must ask first</th></tr></thead>
   <tbody>
-    <tr><td>Works when you run it manually</td><td>Runs on schedule without triggering</td></tr>
-    <tr><td>No error handling</td><td>Handles failures, logs errors, continues</td></tr>
-    <tr><td>No completion signal</td><td>Knows when it's done vs. when it crashed</td></tr>
-    <tr><td>No cost monitoring</td><td>Has API spend limits and alerts</td></tr>
-    <tr><td>Works in your environment</td><td>Works in any expected environment</td></tr>
-    <tr><td>You manually verify results</td><td>Self-reports status on completion</td></tr>
+    <tr><td>Fix something that was already agreed and broke</td><td>Send anything to a new person for the first time</td></tr>
+    <tr><td>Re-send a confirmation that failed</td><td>Spend money, or go past the monthly cost you set</td></tr>
+    <tr><td>Draft replies for a person to approve</td><td>Change prices, offer discounts, promise dates</td></tr>
+    <tr><td>Sort, tag and summarize incoming messages</td><td>Post anything in public under your name</td></tr>
+    <tr><td>Update its own notes and records</td><td>Delete customer data, or change who can log in</td></tr>
+    <tr><td>Flag a problem to the Monday owner</td><td>Anything new that nobody has discussed</td></tr>
   </tbody>
 </table>
 
-<h3>The Two-Layer Watchdog</h3>
-
-<p>The most reliable automation architecture uses two layers of oversight working together: a shell-level process monitor (free, always-on) and an intelligence layer for interpretation and decision-making (AI, used sparingly).</p>
-
-<p><strong>Layer 1 — Shell Watchdog:</strong> A lightweight shell script or cron job that monitors whether your automation processes are running and restarts them if they crash unexpectedly. This is pure infrastructure — no AI needed, zero API cost. It runs constantly, uses negligible resources, and handles the "is it alive?" question.</p>
-
-<p><strong>Layer 2 — Intelligence Layer:</strong> The AI that makes decisions, interprets results, and handles edge cases. This layer runs only when needed — not in a loop. It gets called when there's something to decide, not as a heartbeat.</p>
+<h3>Repair, or a new decision?</h3>
+<p>One question sorts most cases. Is this a repair, or a new decision? A repair restores something you already approved: the confirmation text that failed, the form that stopped sending, the follow-up that went out late. Repairs need no permission. A new decision creates something you have not approved: a first message to a stranger, a discount, a public post. New decisions always wait for a person.</p>
 
 <div class="warning">
-  <div class="warning-label">⚠ Critical Architecture Mistake — Read This Carefully</div>
-  <p>Never put an AI API call inside a watchdog loop. A process monitor that restarts any "dead" process + a single-shot AI command that exits after one response = an infinite loop burning API credits. This is exactly what happened in the NYRezone optimizer incident. The <code>claude --print</code> command exits normally after responding — the watchdog sees "process exited" and immediately restarts it — which triggers another API call — which exits — which triggers another restart. Over and over, silently, until you check your billing dashboard and find your credit gone.</p>
+  <div class="warning-label">Logins and access</div>
+  <p>Newer assistants can run in the background and hold their own logins. OpenAI's Dots, announced September 29, 2026, can be given "specific identities, credentials, and tools," per TechCrunch's report. The report describes no approval step. So the act/ask list is yours to enforce. Give each assistant the narrowest access that does the job. Use a separate account where you can. Write down how to turn its access off, and test that you can.</p>
 </div>
 
+<h3>Ask for a useful answer, not a polite one</h3>
 <div class="real-example">
-  <div class="real-example-label">Real Example — The $55 Lesson</div>
-  <h4>API Runaway: What Happened and the Fix</h4>
-  <p>The NYRezone opportunity scorer needed parameter optimization. The initial approach: use <code>claude --print</code> inside a watchdog loop to iterate through configurations. The model would evaluate each configuration and suggest adjustments.</p>
-  <p>What actually happened: <code>claude --print</code> is single-shot — it exits after one response. The watchdog, seeing the process exit, interpreted this as a crash and immediately restarted it. Rinse and repeat. Over approximately three hours: tens of millions of tokens burned across hundreds of unintended restarts. Estimated cost before the loop was caught: $55–$110.</p>
-  <p>The fix: pure Python grid search. Wrote a script that iterated through 6 million+ parameter combinations using local CPU on the M4 Max. Runtime: minutes. Cost: $0. Result: 0.947 rank correlation — <em>better</em> than the expensive AI approach at 0.926.</p>
-  <p>The rule this produced: <strong>Never use LLM API calls for work that's fundamentally math.</strong> Parameter optimization, threshold tuning, scoring algorithms — these are computation problems, not reasoning problems. Computation is free on modern hardware. Reasoning costs money. Know the difference.</p>
+  <div class="real-example-label">Example · Compliant vs useful</div>
+  <h4>You ask: "Review our quote follow-up email."</h4>
+  <p><strong>A compliant answer:</strong> "This looks great! Here are a few things you might consider..." followed by five generic tweaks.</p>
+  <p><strong>A useful answer:</strong> "The subject line is vague. The third paragraph repeats the second; cut it. The question you want answered is buried at the end; put it first. Here is the rewrite."</p>
+  <p>Put a line in your brief: "Tell me what is weak first. Give one recommendation, not a list of options." Use the same test on any vendor. If every answer is "great question," you are paying for agreement.</p>
 </div>
-
-<h3>The Lead Machine: A Real Pipeline in Production</h3>
-
-<p>Here's what a properly designed automation pipeline looks like in practice. Not a demo — a production system that ran and produced real deliverables.</p>
-
-<div class="real-example">
-  <div class="real-example-label">Real Example — 8 Sites Built in One Pipeline Run</div>
-  <h4>The HVAC Lead Machine: Apify → Gemini → HTML → Vercel</h4>
-  <p><strong>The problem:</strong> HVAC businesses in Westchester, NY needed web presence to rank on Google. Most had none. Finding them, building for them, and deploying individually would take weeks manually.</p>
-  <p><strong>The pipeline:</strong></p>
-  <ul>
-    <li><strong>Apify scrape:</strong> Pulled Google Maps data for HVAC businesses in the target area — business names, phone numbers, addresses, service descriptions. Free tier, no manual scraping.</li>
-    <li><strong>Filter pass:</strong> Automated check — does each business have a website? 8 of 8 did not. All 8 became targets.</li>
-    <li><strong>AI generation (Gemini):</strong> For each business, generated a custom HTML landing page using the business data — name, services, location, phone. Each page unique, each page targeted to local SEO keywords.</li>
-    <li><strong>Vercel deploy:</strong> Each HTML file deployed to Vercel via CLI in the same pipeline run. 8 live URLs in one run.</li>
-  </ul>
-  <p><strong>The result:</strong> 8 business websites live on the internet, all within a single pipeline run, with zero manual page building. Total setup time for the pipeline: a few hours. Recurring value: run it again in any market with any vertical in minutes.</p>
-  <p><strong>What made it permanent:</strong> The pipeline script is parameterized. Change the location and vertical, run the script, get new sites. It's not a one-time trick — it's a repeatable lead generation engine.</p>
-</div>
-
-<h3>Cron Hygiene: The 14 Dead Jobs Problem</h3>
-
-<p>Cron jobs are the backbone of automated systems — they're what makes things run on schedule without human intervention. They're also where entropy accumulates fastest.</p>
-
-<p>During a routine audit of the automation stack, 14 dead cron jobs were found. Not broken — dead. Jobs that had been created at some point for some purpose, never properly decommissioned, running (or attempting to run) on schedule, accomplishing nothing. Some were trying to trigger scripts that no longer existed. Some were calling endpoints that had moved. Some were for projects that had been shelved months ago.</p>
-
-<p>The danger isn't just wasted compute. Dead cron jobs create false confidence. You think something is running. It's not. Data isn't being collected. Reports aren't being generated. Leads aren't being processed. You find out weeks later when you go looking for the output.</p>
-
-<p><strong>Cron hygiene rules:</strong></p>
-<ul>
-  <li>Every cron job has a comment explaining what it does and when it was created</li>
-  <li>Every cron job has a completion log — it writes a timestamp when it finishes successfully</li>
-  <li>Monthly audit: review all cron jobs. Confirm the script exists and the endpoint responds. Kill anything that hasn't logged a success in 30 days.</li>
-  <li>When a project is paused or killed, kill its cron jobs in the same session</li>
-  <li>Never create a cron job as a "placeholder" — create them only when the script they call is ready</li>
-</ul>
-
-<h3>Security Isn't Optional: The Three Fake Forms</h3>
-
-<p>One of the most important things an AI operator can do is run full audits on existing systems — not just new ones. What you find is often more surprising than what you build.</p>
-
-<div class="real-example">
-  <div class="real-example-label">Real Example — The Contact Form Audit</div>
-  <h4>Three Forms. Zero Data. Zero Awareness.</h4>
-  <p>During a security hardening session covering four production websites, a full code audit was run on all form submissions. Discovery: three contact forms across a site were completely non-functional. They were setting local state (appearing to submit), but never actually POSTing data anywhere. No error. No confirmation. The user got a success message. The data went nowhere.</p>
-  <p>These forms had been live. Real people had submitted real inquiries. Every one of those submissions was lost. The business had no idea. The forms looked fine. They just weren't connected to anything.</p>
-  <p>What the audit also found and fixed in the same session: missing rate limiting (no protection against submission flooding), CORS misconfigurations, unsanitized inputs, and missing HSTS headers — across all four sites.</p>
-  <p>The principle: <strong>Trust but verify. Assume nothing works until you've tested it yourself.</strong> "It looks fine" is not the same as "it works."</p>
-</div>
-
-<p>The same session that found the fake forms added rate limiting, proper CORS headers, input sanitization, and HSTS security headers to four production sites. These aren't optional hardening steps — they're basic infrastructure that most small business sites launch without.</p>
-
-<h3>The Audit-First Mindset</h3>
-
-<p>The default assumption in any automation or system work should be: <em>it's probably not working the way you think it is.</em> Not because the builder was incompetent — because systems degrade, configuration drifts, dependencies change, and edge cases accumulate. The only way to know what's actually happening is to test it.</p>
-
-<p>What "audit-first" looks like in practice:</p>
-<ul>
-  <li><strong>Smoke test every automation</strong> before trusting its output. Trigger it manually. Verify the output. Confirm the data actually went where it was supposed to go.</li>
-  <li><strong>Test forms and endpoints</strong> on production, not just locally. Local testing passes things that break in production constantly.</li>
-  <li><strong>Check logs</strong> — does the system generate logs? Are the logs showing what you expect? Absence of errors is not confirmation of success.</li>
-  <li><strong>Run security passes periodically</strong> — rate limiting, CORS, input handling, authentication. These configurations erode over time as the system changes around them.</li>
-</ul>
-
-<div class="callout">
-  <p><strong>The operator's rule:</strong> Never claim a system is "working" based on the fact that it hasn't broken yet. That's survivorship bias. Working means you've verified the output matches the expected result. Recently. With a real test case.</p>
-</div>
-
-<!-- ===================== PART 3B — HARNESS + CLOSED LOOP ===================== -->
-<div class="part-header">
-  <div class="part-label">Part 3B</div>
-  <h2>Harness + Closed Loop</h2>
-  <p class="part-desc">The model is not the product. The system around it is — and that system only stays useful if you measure what broke and fix one thing at a time.</p>
-</div>
-
-<h3>The Model Is the Engine. The Harness Is the Car.</h3>
-
-<p>People keep buying a new engine and wondering why the car still won’t start. In plain English:</p>
-
-<ul>
-  <li><strong>The model</strong> is the engine — ChatGPT, Claude, Gemini, whatever you prefer this quarter. It reasons and writes.</li>
-  <li><strong>The harness</strong> is everything that makes that engine useful for a business: the tools it can use (email, CRM, calendar, files), the rules it must follow (your four core docs), the budgets and permissions, and <em>how you check its work</em>.</li>
-</ul>
-
-<p>Without a harness, you have a smart chatbot. With a harness, you have an operator assistant: it can act inside defined boundaries, leave a trail, and get corrected when reality disagrees with the plan.</p>
-
-<div class="pull-quote">
-  "Stop comparing models like car magazines compare horsepower. Ask: what tools can it use, what is it forbidden to do, and how do we know when last week’s automation stopped working?" — NYClaw.io
-</div>
-
-<p>If you only remember one sentence from this section: <strong>install the car, not just the engine.</strong> Identity, memory, tools, and verification are the car.</p>
-
-<h3>Start With One Dollar Leak — Not “An AI Assistant”</h3>
-
-<p>Small businesses that actually keep AI automations share a pattern: they did not start with “give me a general AI employee.” They started with one specific leak the owner can feel in dollars — missed calls that never get a text-back, leads that sit in the inbox overnight, quotes that never get a follow-up, appointments that don’t get confirmed.</p>
-
-<p>That leak is your first mission. Map it. Automate the boring path. Leave the edge cases for humans. Then measure whether the leak closed.</p>
-
-<table>
-  <thead>
-    <tr><th>Weak start</th><th>Operator start</th></tr>
-  </thead>
-  <tbody>
-    <tr><td>“We need AI / a chatbot.”</td><td>“We lose X leads a week after hours.”</td></tr>
-    <tr><td>Buy a tool stack first</td><td>Name the leak, the success metric, then tools</td></tr>
-    <tr><td>Train staff on n8n/Make theory</td><td>Ship one closed path the owner can see</td></tr>
-    <tr><td>Declare victory at go-live</td><td>Check the metric every week for 90 days</td></tr>
-  </tbody>
-</table>
-
-<h3>After Go-Live: The Closed Loop (Sense → Improve)</h3>
-
-<p>Week-1 install is not the hard part. Week-4 silence is. Most abandoned AI projects “worked” in the demo and then quietly stopped matching reality — an API changed, a form broke, a cron died, a person stopped reading the summary email.</p>
-
-<p>A closed loop is deliberately boring:</p>
-
-<ol>
-  <li><strong>Sense</strong> — Pick one number that proves the automation still does its job (leads answered within 5 minutes, missed-call texts sent, hours saved on a weekly report). Write it down. Review it weekly.</li>
-  <li><strong>Verify</strong> — Once a week, run a real test: submit a fake lead, trigger the job, confirm the message arrived. “No errors in the log” is not enough.</li>
-  <li><strong>Improve</strong> — If the metric slips, change <em>one</em> thing (threshold, template, routing, a dead job). Do not rebuild the whole stack.</li>
-  <li><strong>Document</strong> — One line in MEMORY.md: what broke, what you changed, what you expect next week.</li>
-</ol>
-
-<div class="callout">
-  <p><strong>Operator cadence:</strong> 15 minutes every Monday. Open the metric. Smoke-test the main path. Kill or fix anything that failed. That 15 minutes is the difference between “we tried AI” and “AI runs our lead response.”</p>
-</div>
-
-<p>This is the same shape as continuous delivery in software: ship, measure, fix, ship again — applied to business automations. Fancy dashboards are optional. A spreadsheet and a calendar reminder are enough.</p>
-
-<h3>How You Know You’re Buying an Operator Setup (Not a Chatbot Install)</h3>
-
-<ul>
-  <li>There is a named first workflow and a success metric before tools are chosen.</li>
-  <li>Go-live includes a handoff: how to kill the automation, who owns the weekly check, where the logs live.</li>
-  <li>The builder talks about failure modes (forms that look live but don’t post, dead cron jobs, runaway API spend) — not only demos.</li>
-  <li>After launch, someone is responsible for Sense and Improve. If that person is “nobody,” the system will rot.</li>
-</ul>
-
-<p>If a vendor only sells “we install ChatGPT for your team,” ask what happens on day 45 when nobody has looked at the outputs. If the answer is silence, you bought a tab, not infrastructure.</p>
-
-<h3>Template: Automation Architecture Checklist</h3>
-
-<div class="template">
-  <div class="template-label">📋 Template — Automation Architecture Checklist</div>
-  <h3>Before You Call Any Automation "Done"</h3>
-  <p>Run through this before deploying any new automation — and quarterly on existing ones.</p>
-
-  <p><strong>Design Phase</strong></p>
-  <ul class="checklist">
-    <li>Does this require AI reasoning, or is it math/logic? (If logic: use code, not AI)</li>
-    <li>What happens when it fails? Is failure handled gracefully?</li>
-    <li>What does "completed" look like? Is there a completion signal?</li>
-    <li>Does this call a paid API? What's the estimated cost per run? Per month?</li>
-    <li>Is there a rate limit or cost cap in place?</li>
-  </ul>
-
-  <p><strong>Build Phase</strong></p>
-  <ul class="checklist">
-    <li>Every external call has error handling (don't assume 200 OK)</li>
-    <li>The script logs start time, end time, and exit status</li>
-    <li>Any paid API calls are bounded — not in an uncapped loop</li>
-    <li>Credentials are in environment variables, not hardcoded</li>
-    <li>Dependencies are documented (what breaks if X service goes down?)</li>
-  </ul>
-
-  <p><strong>Launch Phase</strong></p>
-  <ul class="checklist">
-    <li>Manually triggered and verified before scheduling</li>
-    <li>Output confirmed (data went where it was supposed to go)</li>
-    <li>First 3 scheduled runs monitored and verified</li>
-    <li>Cron job documented with purpose + creation date comment</li>
-    <li>Kill command / deactivation procedure documented</li>
-  </ul>
-
-  <p><strong>Maintenance (Monthly)</strong></p>
-  <ul class="checklist">
-    <li>All cron jobs audited — do the scripts they call still exist?</li>
-    <li>Last successful run confirmed for each job</li>
-    <li>Dead jobs removed immediately</li>
-    <li>Security pass: rate limits, CORS, input sanitization current?</li>
-    <li>API costs reviewed — anything burning more than expected?</li>
-  </ul>
-</div>
-
 
 <!-- ===================== PART 4 ===================== -->
 <div class="part-header">
   <div class="part-label">Part 4</div>
-  <h2>The Revenue Connection</h2>
-  <p class="part-desc">AI automation isn't a tech project. It's a revenue engine. Here's how to wire it up.</p>
+  <h2>Check it every Monday</h2>
+  <p class="part-desc">Week one is not the hard part. Week four, when nobody is looking, is.</p>
 </div>
 
-<h3>AI Should Make You Money — The Direct Line</h3>
+<p>Most setups that fail "worked" in the demo. Then a form broke, a login expired, a scheduled task paused, or a person stopped reading the summary. Nothing announced it. Fifteen minutes every Monday catches it.</p>
 
-<p>Too many AI projects live in the infrastructure layer and never reach the revenue layer. Founders spend weeks building impressive automation that doesn't have a clear connection to a customer, a dollar, or a result that matters to the business. That's how you end up with 14 dead cron jobs and no additional revenue.</p>
+<div class="num-row"><div class="num-badge">1</div><div class="num-row-content"><h4>Look at the number</h4><p>Open the number from Part 1. Up, flat or down from last week? Write it in the same place every week.</p></div></div>
+<div class="num-row"><div class="num-badge">2</div><div class="num-row-content"><h4>Test it yourself</h4><p>Send a fake lead through the real path and confirm it arrives where it should. "No errors" is not proof. A message in the inbox is.</p></div></div>
+<div class="num-row"><div class="num-badge">3</div><div class="num-row-content"><h4>Fix one thing</h4><p>If the number slipped, change one thing: the wording, the timing, who gets the alert. Don't rebuild everything.</p></div></div>
+<div class="num-row"><div class="num-badge">4</div><div class="num-row-content"><h4>Write one line</h4><p>What broke, what you changed, what you expect next week. A shared note is enough.</p></div></div>
 
-<p>The discipline is to work backwards from money. Every automation you build should answer one of three questions:</p>
-<ul>
-  <li><strong>Does this generate leads?</strong> (prospecting, cold outreach, SEO pipelines)</li>
-  <li><strong>Does this close or retain clients?</strong> (demos, delivery quality, response speed)</li>
-  <li><strong>Does this reduce cost of delivery?</strong> (automation replacing manual time)</li>
+<h3>The fake-lead test</h3>
+<p>Once a month, and after any website or phone change, test every way a customer can reach you:</p>
+<ul class="checklist">
+  <li>Every form on the website, on a phone and on a computer</li>
+  <li>The main phone number, during hours and after hours</li>
+  <li>Any text or chat line, and any booking link</li>
+  <li>The email address on your site and your map listing</li>
 </ul>
+<p>For each one, confirm the message reached a person or system that will act on it. Forms that show "Thank you" and send nothing are a common find. The visitor thinks you have their request. You never see it.</p>
 
-<p>If it doesn't answer one of those three questions, you're building infrastructure for its own sake. That's fine occasionally — but it's not strategy.</p>
+<h3>Ask how they found you</h3>
+<p>Add one field to your intake form and your call notes: "How did you hear about us?" Include choices for ChatGPT, Claude, Gemini, Grok, Meta AI and Perplexity next to Google, referral and social. More people now ask an assistant for a recommendation. A simple field tells you whether that is reaching you. No dashboard needed.</p>
 
-<h3>Example Workflows to Investigate</h3>
-<p>These are possible starting points, not sector-wide findings or a ranking of returns. Check whether the problem exists in the actual business and whether its tools already address it.</p>
-<table><thead><tr><th>Business</th><th>If this happens</th><th>What to check first</th></tr></thead><tbody>
-<tr><td><strong>Legal services</strong></td><td>A document checklist needs staff review</td><td>Compare expected items with document status; ask staff to check exceptions</td></tr>
-<tr><td><strong>Dental practices</strong></td><td>Appointment reminders need consistent ownership</td><td>Check existing reminder settings and approved contact preferences</td></tr>
-<tr><td><strong>Real estate</strong></td><td>An inquiry has no assigned next step</td><td>Route the request to an owner for review</td></tr>
-<tr><td><strong>Plumbing / HVAC</strong></td><td>Job details are entered in more than one tool</td><td>Check whether approved job details can pass into scheduling or billing</td></tr>
-<tr><td><strong>Medical practices</strong></td><td>A referral status requires repeated checking</td><td>Review access, privacy and existing workflow features before any build</td></tr>
-<tr><td><strong>Car dealers</strong></td><td>A lead handoff is unclear</td><td>Assign a reviewer and record the next action</td></tr>
-<tr><td><strong>Small businesses</strong></td><td>A recurring task depends on one person remembering it</td><td>Document the inputs, next step and fallback owner</td></tr>
-</tbody></table>
-
-<p>For any business, look for a recurring job, an approved source record and a person who can check the result. The industry label alone does not establish a need for automation or a likely return.</p>
-
-<h3>Choose the engagement around the work</h3>
-<p>A useful first conversation identifies one process, the tools involved and the part that gets stuck. A clearer setting or handoff may be enough. If paid work would help, name the deliverable, scope, price and acceptance check before it starts.</p>
-<p>NYClaw works on scoped projects. A written roadmap, assistant setup or connected workflow are different kinds of work. Ongoing help is optional and agreed separately. See the <a href="/services">current services and price ranges</a>; this guide does not set additional fees.</p>
-<div class="callout"><p><strong>Inspect the work:</strong> Our <a href="/work">client examples</a> describe an electrical contractor's estimating and invoicing process and a building supplier's AI setup for detailed design work. These descriptions are not a measured savings or revenue guarantee.</p></div>
-<h3>Measure each step separately</h3>
-<p>A research candidate is not a prospect who has replied. A visit is not an inquiry. A booked conversation is not paid work, and paid work is not accepted delivery. Keep those counts separate when judging whether an acquisition process works.</p>
-<p>For one workflow, record the starting condition, the agreed change and the result after the team uses it. Include software costs and the time spent reviewing exceptions. Only describe savings or commercial outcomes you can substantiate.</p>
-
-<h3>How to Position AI Automation to Skeptical Clients</h3>
-
-<p>If a customer says a previous automation failed, ask where it broke and who was responsible for the next step. Inspect the actual process before recommending another build.</p>
-
-<p>Three questions that help frame the work:</p>
-
-<p><strong>1. Lead with the audit, not the pitch.</strong> Before talking about what you'll build, show them what's broken. The contact forms that aren't connected. The cron jobs that died. The follow-up sequence that stopped running six weeks ago. Most businesses have infrastructure problems they don't know about. Finding one real problem in their existing setup is worth more than any sales pitch.</p>
-
-<p><strong>2. Show work you can substantiate.</strong> Describe the customer problem and the actual change. Keep illustrative examples separate from client work. Add measured results only when the underlying records support them.</p>
-
-<p><strong>3. Check the costs before quoting a return.</strong> Agree how to measure the change. Count the build, subscriptions, review time and maintenance. Extra revenue is not profit, and an estimated benefit is not a client result. Do not present a hypothetical calculation as measured ROI.</p>
-
-<div class="pull-quote">
-  "The objection 'we tried AI and it didn't work' means they tried the tool without the framework. Your job is to show them what the framework looks like — and what it produces."
+<h3>Stop rules</h3>
+<p>Decide in advance when the setup gets paused. Write these down with the name of the person who can pull the switch, and how.</p>
+<ul class="checklist">
+  <li>A wrong or rude message reaches a customer</li>
+  <li>A customer says they don't want to be contacted, and the setup contacts them again</li>
+  <li>The number slips two weeks in a row and one fix didn't help</li>
+  <li>Nobody did the Monday check for two weeks</li>
+  <li>Monthly cost goes past the limit you set</li>
+</ul>
+<div class="callout">
+  <p><strong>Scheduled tasks raise the stakes.</strong> Claude, ChatGPT, Gemini and Grok can now run jobs on a schedule. A job that runs unseen can fail unseen. ChatGPT, for one, may pause an unattended task after a period of inactivity, per 9to5Mac's June 2026 report. The Monday check is how you find out.</p>
 </div>
-
 
 <!-- ===================== PART 5 ===================== -->
 <div class="part-header">
   <div class="part-label">Part 5</div>
-  <h2>Anti-Patterns</h2>
-  <p class="part-desc">The seven ways AI automation projects die — and the real examples behind each one.</p>
+  <h2>How to tell an operator setup from a chatbot install</h2>
+  <p class="part-desc">Whether you build it yourself or hire someone, this is what to look for.</p>
 </div>
 
-<p>Most AI projects don't fail because the technology doesn't work. They fail because of patterns — predictable, avoidable mistakes that operators make over and over because nobody's named them clearly.</p>
+<h3>The model is the engine. The harness is the car.</h3>
+<p>The model (Claude, ChatGPT, Gemini, Grok, Meta AI) is the engine. It reads and writes. The harness is the car around it: the tools it may use (email, calendar, CRM, files), the brief it follows, the limits on what it may do and spend, and how someone checks its work. A better engine in no car still goes nowhere. Install the car, not just the engine.</p>
 
-<p>Here are the seven. If you recognize your situation in any of these, you now know what to fix.</p>
+<table>
+  <thead><tr><th>Weak start</th><th>Operator start</th></tr></thead>
+  <tbody>
+    <tr><td>"We need AI" or "we need a chatbot"</td><td>"We lose leads after hours"</td></tr>
+    <tr><td>Buy tools first</td><td>Name the leak and the number, then pick tools</td></tr>
+    <tr><td>Train staff on automation theory</td><td>Ship one working path the owner can see</td></tr>
+    <tr><td>Declare victory at go-live</td><td>Check the number every week for 90 days</td></tr>
+  </tbody>
+</table>
 
-<h3>1. Documentation Debt — The Silent Killer</h3>
-
-<p>Documentation debt isn't missing documentation — it's <em>outdated</em> documentation. Files that exist but no longer reflect reality. The SOUL.md written in month one that hasn't been touched since. The MEMORY.md with project entries for three projects that shipped or died. The automation spec that describes how the pipeline was supposed to work, not how it actually works today.</p>
-
-<p>The danger of outdated documentation is that it creates false confidence. You think you know what the system does. You don't. The gap between the document and reality is where mistakes happen.</p>
-
-<div class="real-example">
-  <div class="real-example-label">Real Example</div>
-  <h4>Identity Split Across Multiple Files</h4>
-  <p>During a workspace audit, Ainsley's identity information was found duplicated across SOUL.md, IDENTITY.md, and sections of AGENTS.md. All three files had slightly different information. Which one was authoritative? When an update was made to one, the others didn't reflect it. The fix: consolidate to one canonical document, with the others referencing it rather than duplicating it. Now updates happen in one place and propagate correctly.</p>
-</div>
-
-<p><strong>The fix:</strong> Monthly documentation audit. Every key file gets a "last reviewed" timestamp. Any file that hasn't been reviewed in 60 days gets flagged. Content lives in one place — others cross-reference, they don't duplicate. When a project ends, its documentation is either archived or deleted.</p>
-
-<h3>2. Process Theater — Complexity Without Output</h3>
-
-<p>Process theater is what happens when building the system becomes the goal instead of using the system to produce results. The elaborate task management setup that takes four hours to configure and gets abandoned in two weeks. The beautiful dashboard that nobody checks. The tagging taxonomy that nobody follows.</p>
-
-<p>It looks productive. It produces nothing.</p>
-
-<div class="real-example">
-  <div class="real-example-label">Real Example</div>
-  <h4>The Active Tasks Failure Pattern</h4>
-  <p>An elaborate ACTIVE-TASKS.md with priority scores, effort estimates, dependency mappings, and status labels. Updated obsessively for three days. Never reviewed again. Tasks accumulated. The file became a graveyard. The complexity of the system — all the fields to fill in, all the categories to maintain — was itself the reason it stopped being used. The replacement: a simple three-section list. Doing, Next, Someday. Updated every session, reviewed every week. Still running.</p>
-</div>
-
-<p><strong>The fix:</strong> Minimum viable process. If you can't explain the system in two sentences, it's too complex. If you haven't used it in two weeks, it's dead. Function over form, always. A plain text file used daily beats a beautiful dashboard used never.</p>
-
-<h3>3. The Restart-and-Forget Cycle</h3>
-
-<p>This is the amnesia trap applied to entire projects. A project gets started, makes progress, stalls for some reason, gets "restarted" — but without the context of what happened the first time. Decisions get re-debated. Approaches that were tried and failed get tried again. Work that was done gets redone.</p>
-
-<p>The restart-and-forget cycle compounds over time. By the third restart of a project, you've done more setup than productive work.</p>
-
-<div class="real-example">
-  <div class="real-example-label">Real Example</div>
-  <h4>The NYRezone Optimizer Versions</h4>
-  <p>The opportunity scorer went through three distinct iterations. Without proper memory, each could have started from scratch — re-trying approaches that had already failed, re-discovering the same configuration parameters, re-burning the same API budget. The reason this didn't happen: every experiment, every result, every lesson went into MEMORY.md and LONG-TERM.md before the session ended. Version 3 built directly on Version 2's lessons — including the $55 API lesson — without any repeated work.</p>
-</div>
-
-<p><strong>The fix:</strong> Before ending any work session on a project, write the state to a file. What was tried. What worked. What didn't. What's next. These notes are the handoff to your future self. Skip them and you're starting over.</p>
-
-<h3>4. Over-Engineering the Memory System</h3>
-
-<p>Ironically, one of the anti-patterns in building AI memory systems is making the memory system too complex. Multi-tier filing systems with elaborate categorization. Metadata schemas for every entry. Cross-reference indices. Automated summarization pipelines for summarizing other summaries.</p>
-
-<p>The result: more time maintaining the memory system than using the information in it.</p>
-
-<p><strong>The fix:</strong> Three files. MEMORY.md for durable facts. Daily notes for recent context. LONG-TERM.md for deep project knowledge. That's it. Size limits enforced. Anything beyond this is overhead, not architecture. The question to ask about any addition to the memory system: "Will the AI actually read and use this?" If the answer isn't a clear yes, don't build it.</p>
-
-<h3>5. API Dependency Without Fallback</h3>
-
-<p>Building automation that depends entirely on a single external API without any fallback strategy is a brittle architecture. APIs change pricing. They go down. They rate-limit you. They change field names without warning. Any of these events can take your entire automation offline — sometimes silently.</p>
-
-<div class="real-example">
-  <div class="real-example-label">Real Example</div>
-  <h4>The ATTOM API Field Surprise</h4>
-  <p>During development of Property Appraiser Pro, the ATTOM API returned data with field names that didn't match the documentation. <code>startSaleTransDate</code> instead of what was expected. Dates formatted as <code>YYYY/MM/DD</code> with slashes, not dashes. A 404 response meaning "no results" — not an error. Each of these surprises went immediately into MEMORY.md. They didn't break the project — because they were caught and documented before they could compound. But they would have broken any system that assumed the documentation was accurate without verification.</p>
-</div>
-
-<p><strong>The fix:</strong> Test every external API with real data before building automation on top of it. Document every quirk. Have a fallback for critical paths — what happens if the API returns 500? Does your automation fail silently or alert you? Never assume a 200 OK means correct data — validate the response content, not just the status code.</p>
-
-<h3>6. Building Without Testing</h3>
-
-<p>This one is simple and the most common. Something gets built, assumed to work because it "looks fine," and put into production. Nobody runs a real test. Nobody confirms the data went where it was supposed to go. Nobody checks whether the edge cases are handled.</p>
-
-<p>The three fake contact forms are the canonical example. They looked fine. They showed a success message. Nobody tested whether the data actually arrived anywhere. It didn't.</p>
-
-<p><strong>The fix:</strong> Every automation gets a smoke test before being called done. Every form gets a real submission confirmed in the destination. Every cron job gets manually triggered and its output verified. "It ran without errors" is not the same as "it worked." Verify the output, not just the execution.</p>
-
-<div class="callout">
-  <p><strong>Property Appraiser Pro validation:</strong> 849 tests passing before release. Not "it seems to work." 849 specific assertions confirming specific behavior. That's what "tested" means in a production system that professionals will rely on.</p>
-</div>
-
-<h3>7. Chasing New Tools Instead of Maximizing Existing Ones</h3>
-
-<p>Every week there's a new AI tool, a new automation platform, a new model with a benchmark that beats the current benchmark. The temptation is to constantly evaluate and adopt — always looking for the tool that will finally make everything work.</p>
-
-<p>This is the most seductive anti-pattern because it masquerades as diligence. It's not. It's distraction.</p>
-
-<p>The tools you already have, configured and integrated into your workflow, are almost always more valuable than the new thing you'd need to learn, set up, integrate, and debug. New tools carry integration costs. They create dependencies. They require documentation. They add maintenance overhead.</p>
-
-<div class="real-example">
-  <div class="real-example-label">Real Example</div>
-  <h4>The Model Switching Discipline</h4>
-  <p>Running an AI assistant across multiple businesses creates constant temptation to upgrade to the latest model the moment a new one releases. The discipline: use the cheapest model that can do the job. File operations and status updates: Haiku (fastest, cheapest). Research, coding, writing: Sonnet (default). Complex strategy or architecture decisions: Opus (requires explicit confirmation before switching). This isn't about being cheap — it's about not burning budget on capability you don't need. The savings from model discipline compound. The cognitive overhead of constant tool evaluation doesn't.</p>
-</div>
-
-<p><strong>The fix:</strong> Semi-annual tool audit (every 6 months). What tools are actively used? What delivers clear ROI? Everything else gets cut. New tools only get adopted when there's a specific capability gap that existing tools can't fill — and only after a 30-day trial with a defined success metric. "It's interesting" is not sufficient justification. "It saves X hours/month" is.</p>
-
-<p>Same rule for models: upgrade when a specific job fails on the current model, not when a blog posts a new leaderboard. The harness (tools, rules, checks) almost always outperforms a naked model swap.</p>
-
-
-<!-- ===================== APPENDIX ===================== -->
-<div class="appendix-header">
-  <div class="part-label">Appendix</div>
-  <h2>Working Templates</h2>
-  <p style="color:#555;font-style:italic;">Six templates designed to be used immediately — not read once and filed.</p>
-</div>
-
-<h3>Template 1 — SOUL.md Starter</h3>
+<h3>Signs of an operator setup</h3>
+<ul>
+  <li>There is a named first job and a number before anyone picks a tool.</li>
+  <li>Go-live includes a handoff: how to turn it off, who owns the Monday check, where the records are.</li>
+  <li>The builder talks about how it fails (forms that don't send, tasks that stop, costs that run away), not only demos.</li>
+  <li>After launch, a named person owns the check. If that person is "nobody," it will decay.</li>
+</ul>
+<p>If a vendor only sells "we install ChatGPT for your team," ask what happens on day 45, when nobody has looked at the outputs. If the answer is silence, you bought a tab, not a working system.</p>
 
 <div class="template">
-  <div class="template-label">📋 Complete SOUL.md Template</div>
-  <p>This is your AI's operating constitution. Write it once. Keep it current. Review it quarterly.</p>
-
-  <div class="template-field"># SOUL.md — Who I Am ([Your AI's Name])</div>
-  <div class="template-field">**Name:** [Give it a real name]<br>**Start Date:** [Launch date — creates continuity]<br>**Hardware/Environment:** [Mac, PC, cloud server — be specific]<br>**Purpose:** [One sentence — what does this AI exist to do?]</div>
-  <div class="template-field">## Core Principles<br><br># 1. Communication style<br>"[How should it communicate? e.g., Direct. No filler. Get to the point. No 'Great question!']"<br><br># 2. Research posture<br>"[e.g., Figure it out before asking. Come back with answers, not questions.]"<br><br># 3. Quality standard<br>"[e.g., Validate before reporting complete. Working means tested, not just running.]"<br><br># 4. Speed vs. thoroughness<br>"[e.g., Ship fast, but never skip testing. Done > perfect, but broken doesn't count as done.]"<br><br># 5. Opinion standard<br>"[e.g., Have opinions. Give recommendations, not option lists. Be willing to be wrong.]"</div>
-  <div class="template-field">## When to Act vs. Ask<br><br>JUST DO IT (no approval needed):<br>- Repair broken implementations of agreed-upon systems<br>- Bug fixes, config corrections, maintenance<br>- Internal file organization and memory updates<br>- [Add your specific autonomous categories]<br><br>ASK FIRST (always require approval):<br>- Sending anything to external people (emails, posts, messages)<br>- Spending money or triggering paid APIs beyond normal parameters<br>- New decisions not previously discussed<br>- [Add your specific gated categories]</div>
-  <div class="template-field">## Goals<br>[Primary goal — be specific. Not "make money." "Generate $X/month through Y by Z date."]<br><br>## What I'm Not<br>[Define what the AI is NOT — limits matter as much as capabilities]<br><br>## Last Updated: [YYYY-MM-DD] by [who updated it]</div>
-</div>
-
-<h3>Template 2 — Memory Architecture</h3>
-
-<div class="template">
-  <div class="template-label">📋 Three-Tier Memory System</div>
-
-  <p><strong>File Structure:</strong></p>
-  <div class="template-field">workspace/<br>├── MEMORY.md          ← Tier 3: Durable facts, loads every session<br>├── memory/<br>│   ├── 2026-01-15.md  ← Tier 2: Daily notes (read today + yesterday only)<br>│   ├── 2026-01-16.md<br>│   ├── LONG-TERM.md   ← Tier 3: Deep project knowledge, on-demand<br>│   └── archive/       ← Compressed old entries go here<br>├── SOUL.md<br>├── USER.md<br>└── TOOLS.md</div>
-
-  <p style="margin-top:20px;"><strong>Size Limits (enforce these):</strong></p>
-  <div class="template-field">MEMORY.md:      8KB hard cap. Compress oldest 10 entries when exceeded.<br>LONG-TERM.md:   10KB cap. Summarize when full.<br>Daily notes:    500 words max per day. Bullets, not prose.<br>Archive:        No limit. Compress but keep everything archived.</div>
-
-  <p style="margin-top:20px;"><strong>Session Start Protocol (what loads automatically):</strong></p>
-  <div class="template-field">1. SOUL.md (every session — who the AI is)<br>2. USER.md (every session — who it's helping)<br>3. memory/[today].md + memory/[yesterday].md (rolling context)<br>4. MEMORY.md (main sessions only — not subagents)<br>5. LONG-TERM.md (on-demand — when working on specific projects only)</div>
-
-  <p style="margin-top:20px;"><strong>Write-Down Triggers (write immediately when any of these happen):</strong></p>
-  <ul class="checklist">
-    <li>Technical lesson discovered (API quirk, bug cause, configuration gotcha)</li>
-    <li>Decision made and why (for future reference)</li>
-    <li>Project status changed (started, blocked, completed)</li>
-    <li>Preference discovered about how the operator likes things done</li>
-    <li>Anything where "I'll remember this" would be a lie</li>
-  </ul>
-</div>
-
-<h3>Template 3 — Automation Audit Checklist</h3>
-
-<div class="template">
-  <div class="template-label">📋 Quarterly Automation Audit</div>
-  <p>Run this every 90 days on every automation in your stack.</p>
-
-  <p><strong>For each automation — answer these questions:</strong></p>
-  <ul class="checklist">
-    <li>Is it still running? (Check logs — last successful run?)</li>
-    <li>Is the script it calls still at the same path?</li>
-    <li>Are the APIs it calls still responding as expected?</li>
-    <li>Has anything changed in the environment that would affect it?</li>
-    <li>What's the current cost per run? Per month? (Check API billing.)</li>
-    <li>Is the output still going where it's supposed to go?</li>
-    <li>Is anyone actually using the output? (If no: kill it.)</li>
-    <li>Is there a fallback if the primary API fails?</li>
-    <li>Is there a cost cap in place?</li>
-    <li>Is it still serving its original purpose, or has the need changed?</li>
-  </ul>
-
-  <p style="margin-top:20px;"><strong>Kill Criteria (remove immediately if any apply):</strong></p>
-  <ul class="checklist">
-    <li>No successful run in the past 30 days</li>
-    <li>Output not being used by anyone</li>
-    <li>Project it supports has been cancelled or paused indefinitely</li>
-    <li>Script it calls no longer exists</li>
-    <li>Cost exceeds value generated</li>
-  </ul>
-</div>
-
-<h3>Template 4 — Client Discovery Questions</h3>
-
-<div class="template">
-  <div class="template-label">📋 For Agencies — Initial Client Discovery</div>
-  <p>Run these questions in the first meeting. Listen for pain, not just answers.</p>
-
-  <p><strong>Understanding Current State:</strong></p>
+  <div class="template-label">Template · Questions to ask before you hire anyone</div>
   <ol>
-    <li>Walk me through what happens when a new lead contacts you today — from first touch to first invoice.</li>
-    <li>What's the most time-consuming thing you do every week that you feel shouldn't require your attention?</li>
-    <li>What would need to be true for you to take a two-week vacation without checking email?</li>
-    <li>Have you tried any automation before? What happened?</li>
-    <li>What software does your business depend on day-to-day?</li>
+    <li>What is the first job, and what number will show it works?</li>
+    <li>Who owns the weekly check after you leave? What exactly do they look at?</li>
+    <li>What do you add beyond the scheduled tasks, projects and memory already in the assistant we pay for?</li>
+    <li>Which of our accounts and logins will it hold? How do we turn its access off?</li>
+    <li>What happens when it fails? Who finds out, and how fast?</li>
+    <li>What does it cost each month to run, and is there a cap?</li>
+    <li>Who owns the setup and the brief if we stop working together?</li>
+    <li>What would make you tell us not to automate this?</li>
   </ol>
-
-  <p><strong>Understanding the Revenue Opportunity:</strong></p>
-  <ol start="6">
-    <li>What's the average value of a new client or customer?</li>
-    <li>How many inbound leads do you get per month? What percentage convert?</li>
-    <li>What's your current biggest bottleneck to growth — leads, time, staff, or something else?</li>
-    <li>If you could handle 2x the workload with the same team size, what would that be worth annually?</li>
-  </ol>
-
-  <p><strong>Understanding Fit:</strong></p>
-  <ol start="10">
-    <li>Who in your organization would be the point person for an AI project — and how technical are they?</li>
-    <li>What does success look like at 90 days? How would you know it worked?</li>
-    <li>What's the biggest risk you're worried about with something like this?</li>
-  </ol>
-
-  <p style="margin-top:16px;font-size:0.88rem;color:#666;"><em>Red flags: Client can't answer #3 (no vision for the outcome). Client has tried "many automations" with no success (may be a process problem, not a tool problem). Client wants "AI to do everything" without specifics (scope creep risk).</em></p>
+  <p style="font-size:0.9rem;color:#555;"><em>A good builder will also ask you: walk me through what happens from a new lead to a paid invoice; what have you tried before and what happened; who here will own this. If they ask none of that, be careful.</em></p>
 </div>
 
-<h3>Template 5 — 30-Day AI Operator Launch Checklist</h3>
+<h3>Three first jobs, sketched</h3>
+<p>Each sketch is a starting shape, not a promise. Your number tells you whether it works.</p>
 
-<div class="template">
-  <div class="template-label">📋 Launch Checklist — Week by Week</div>
-
-  <p><strong>Week 1 — Foundation</strong></p>
-  <ul class="checklist">
-    <li>Write SOUL.md: name, purpose, core principles, act/ask boundaries</li>
-    <li>Write USER.md: who you're helping, their communication style, their goals</li>
-    <li>Set up memory directory: create folder structure for daily notes</li>
-    <li>Write initial MEMORY.md: active projects, key infrastructure, accounts</li>
-    <li>Write TOOLS.md: environment specifics, secure credential locations and services; never actual keys or passwords</li>
-    <li>Test: give the AI a real task using all four documents. See what breaks.</li>
-  </ul>
-
-  <p><strong>Week 2 — First Automation</strong></p>
-  <ul class="checklist">
-    <li>Identify one manual process that runs weekly and takes &gt;30 minutes</li>
-    <li>Map the process: input, steps, output, success criteria</li>
-    <li>Determine: does this need AI reasoning, or is it logic? (Use code if logic.)</li>
-    <li>Build v1 — smallest version that produces the correct output</li>
-    <li>Smoke test: run manually, verify output in the actual destination</li>
-    <li>Document: what it does, when it runs, how to kill it if needed</li>
-    <li>Schedule if recurring. Watch first 3 runs.</li>
-  </ul>
-
-  <p><strong>Week 3 — Revenue Connection</strong></p>
-  <ul class="checklist">
-    <li>Identify the highest-value manual process in your business (usually: lead response or client follow-up)</li>
-    <li>Build the first revenue-connected automation on that process</li>
-    <li>Set up a simple tracking method: how many leads processed, how many converted</li>
-    <li>Document baseline metrics before automation (so you can show improvement)</li>
-    <li>Run security check on any customer-facing systems: forms, endpoints, auth</li>
-  </ul>
-
-  <p><strong>Week 4 — Review and Harden</strong></p>
-  <ul class="checklist">
-    <li>Review all automations built this month: what's working? what broke?</li>
-    <li>Update MEMORY.md with lessons learned</li>
-    <li>Kill anything that ran but produced no useful output</li>
-    <li>Update SOUL.md with anything learned about how you actually want the AI to behave</li>
-    <li>Schedule monthly maintenance reminder: automation audit, memory review, doc check</li>
-    <li>Define one thing to build in month 2 based on what you learned in month 1</li>
-    <li>Write your closed-loop metric and Monday Sense check (see Template 6)</li>
-  </ul>
+<div class="real-example">
+  <div class="real-example-label">Sketch 1</div>
+  <h4>Missed-call text-back</h4>
+  <p><strong>What it does:</strong> when a call goes unanswered, send a short text: who you are, that you saw the call, and a way to book or reply. Replies go to a person.</p>
+  <p><strong>Ask first:</strong> anything beyond the first text; any quote or price.</p>
+  <p><strong>Number to watch:</strong> missed calls each week, and how many got a text within the window you set.</p>
+  <p><strong>Monday owner:</strong> whoever runs the front desk or the phones.</p>
 </div>
 
-<h3>Template 6 — Closed-Loop Weekly Sense Check</h3>
-
-<div class="template">
-  <div class="template-label">📋 After Go-Live — 15 Minutes Every Monday</div>
-  <p>Fill this in once after your first automation ships. Revisit weekly for 90 days.</p>
-
-  <div class="template-field"><strong>Dollar leak we closed:</strong> [e.g. missed calls after 5pm with no text-back]<br><br><strong>One success metric:</strong> [e.g. % of missed calls that get a text within 2 minutes]<br><br><strong>Baseline before automation:</strong> [number or honest guess]<br><br><strong>Where the number lives:</strong> [spreadsheet / CRM report / log file]<br><br><strong>Owner of the Monday check:</strong> [name — not “the AI”]</div>
-
-  <p style="margin-top:16px;"><strong>Weekly checklist:</strong></p>
-  <ul class="checklist">
-    <li>Read this week’s metric. Up, flat, or down vs last week?</li>
-    <li>Smoke test the main path with a real fake lead / call / form submit</li>
-    <li>Confirm output arrived in the real destination (inbox, CRM, SMS log)</li>
-    <li>If broken: fix one thing OR kill the job. Do not ignore it</li>
-    <li>One line in MEMORY.md: what changed</li>
-  </ul>
-
-  <p style="margin-top:16px;"><strong>AI search attribution (optional but high leverage):</strong></p>
-  <div class="template-field">When a lead or client says how they found you, record it in one CRM/source field — including “ChatGPT / Claude / Perplexity / Gemini” if they used an AI answer engine. You cannot improve what you never measure. Fancy citation dashboards are optional; a “How did you hear about us?” field is not.</div>
+<div class="real-example">
+  <div class="real-example-label">Sketch 2</div>
+  <h4>Quote follow-up at 48 hours</h4>
+  <p><strong>What it does:</strong> when a quote has had no reply for 48 hours, draft a short, friendly follow-up in your voice. For the first month, a person approves each one before it sends.</p>
+  <p><strong>Stops when:</strong> the customer replies, accepts, declines or asks you to stop; after one follow-up unless you set more.</p>
+  <p><strong>Number to watch:</strong> quotes sent, how many got a follow-up on time, and how many got any reply.</p>
+  <p><strong>Monday owner:</strong> the person who writes the quotes.</p>
 </div>
 
+<div class="real-example">
+  <div class="real-example-label">Sketch 3</div>
+  <h4>Appointment confirmation, with stop rules</h4>
+  <p><strong>What it does:</strong> confirm each booking at the time you choose before the visit, with an easy way to reschedule.</p>
+  <p><strong>Stops when:</strong> the customer confirms, cancels, reschedules or replies STOP; never sends at night; never sends to someone who has not agreed to texts. Check the texting consent rules that apply to you with your phone provider or lawyer.</p>
+  <p><strong>Number to watch:</strong> bookings, confirmations, and no-shows each week.</p>
+  <p><strong>Monday owner:</strong> whoever manages the schedule.</p>
+</div>
 
-<!-- ===================== CTA ===================== -->
+<!-- ===================== TOOLS TODAY ===================== -->
+<div class="part-header">
+  <div class="part-label">Tools today · as of October 2026</div>
+  <h2>What the main assistants can do now, and what they still don't do for you</h2>
+  <p class="part-desc">This page will age. Features change monthly. Check each source before you rely on it.</p>
+</div>
+
+<p>Several assistants can now run jobs on a schedule, keep standing instructions, and remember past chats. That changes one piece of advice: before you pay anyone to build, see what your current plan already does. It does not change the rest. None of them picks your leak, writes your brief, sets your limits or does your Monday check. This table is not a ranking. We list only what we could confirm from the source shown.</p>
+
+<div class="table-wrap">
+<table>
+  <thead><tr><th>Assistant</th><th>What it now handles natively</th><th>What remains your job</th></tr></thead>
+  <tbody>
+    <tr>
+      <td><strong>Claude</strong> (Anthropic)</td>
+      <td>Projects with their own files and instructions. Memory across chats that you can pause, reset or turn off. Scheduled tasks in Cowork on paid plans, which can use the connectors you set up.<br><span style="font-size:0.8rem;color:#666;">As of October 2026. <a href="https://support.claude.com/en/articles/9517075-what-are-projects">Projects</a> · <a href="https://support.claude.com/en/articles/11817273-using-claude-s-chat-search-and-memory-to-build-on-previous-context">Memory</a> · <a href="https://support.claude.com/en/articles/13854387-schedule-recurring-tasks-in-claude-cowork">Scheduled tasks</a></span></td>
+      <td>Write the brief. Decide which connectors it may touch. Check what scheduled tasks produce.</td>
+    </tr>
+    <tr>
+      <td><strong>ChatGPT</strong> (OpenAI)</td>
+      <td>Projects that keep related chats, files and instructions together. Scheduled tasks: one-time or repeating jobs and monitoring, managed from a Scheduled page. Plus, Pro and Business accounts can also start a task from a new Gmail message, Slack message or GitHub pull request. Free and Go accounts cannot. Memory can draw on past chats, saved memories and custom instructions. You can review it and turn it off, per project if you choose.<br><span style="font-size:0.8rem;color:#666;">As of October 2026. <a href="https://help.openai.com/en/articles/10169521-projects-in-chatgpt">Projects</a> · <a href="https://help.openai.com/en/articles/10291617-scheduled-tasks-in-chatgpt">Scheduled tasks</a> · <a href="https://help.openai.com/en/articles/8590148-memory-in-chatgpt">Memory</a> · <a href="https://help.openai.com/en/articles/6825453-chatgpt-release-notes">Release notes</a></span></td>
+      <td>Pick the one job. Watch for tasks that pause when unattended or wait for your approval. Review what it remembers.</td>
+    </tr>
+    <tr>
+      <td><strong>Dots</strong> (OpenAI)</td>
+      <td>Always-on agents that pursue goals you set in the background, take messages through Slack and Teams, and can be given their own identities, logins and tools. OpenAI says plugins connect a dot to over 4,000 apps. Rolling out to eligible Pro and Business Premium users, not yet in the EU, Switzerland or the UK on Pro.<br><span style="font-size:0.8rem;color:#666;">As of October 2026. <a href="https://openai.com/index/introducing-dots/">OpenAI, September 29, 2026</a> · <a href="https://help.openai.com/en/articles/20001530-getting-started-with-your-dot">Getting started</a> · <a href="https://techcrunch.com/2026/09/29/openai-launches-dots-its-bubbly-agentic-avatar/">TechCrunch (Slack and Teams)</a></span></td>
+      <td>Decide what it may do alone. Give it the narrowest access. Know how to revoke it.</td>
+    </tr>
+    <tr>
+      <td><strong>Gemini</strong> (Google)</td>
+      <td>Scheduled actions that run a prompt at a set time or on repeat, on Google AI Pro and Ultra and some Workspace plans. Gems: custom versions with your written instructions.<br><span style="font-size:0.8rem;color:#666;">As of October 2026. <a href="https://blog.google/products/gemini/scheduled-actions-gemini-app/">Scheduled actions</a> · <a href="https://support.google.com/gemini/answer/15236321">Gems</a></span></td>
+      <td>Write the instructions. Check the summaries are right, not only that they arrive.</td>
+    </tr>
+    <tr>
+      <td><strong>Grok</strong> (xAI)</td>
+      <td>Automations that run a described job on a schedule, or when an email matches your filters (SuperGrok), and report back by email or app notice. Grok Projects and Tasks: not confirmed on a vendor page as of October 2026.<br><span style="font-size:0.8rem;color:#666;">As of October 2026. <a href="https://x.ai/news/grok-automations">xAI, July 2026</a></span></td>
+      <td>Set what it may act on. Read the reports. Turn off what nobody reads.</td>
+    </tr>
+    <tr>
+      <td><strong>Meta AI</strong> (Muse Spark)</td>
+      <td>A new model from Meta, live at meta.ai and in the Meta AI app, with Facebook, Instagram and WhatsApp rollout planned. Separately, Meta offers Muse, a personal agent in an app, on Mac and in WhatsApp. It builds a plan from a goal, runs on its own secure computer, and asks before it sends email or buys. A "Muse for Small Business" set of skills and connectors is announced. Meta AI scheduling and memory settings: not confirmed on a vendor page as of October 2026.<br><span style="font-size:0.8rem;color:#666;">As of October 2026. <a href="https://ai.meta.com/muse/">Meta, Muse</a> · <a href="https://decrypt.co/363691/meta-muse-spark-most-capable-ai-gemini-pro-still-leads">Decrypt, April 2026 (model)</a></span></td>
+      <td>Everything in this guide. Confirm any business feature before you rely on it.</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<p style="font-size:0.9rem;color:#555;"><em>Plans, names and limits change. If a row is out of date when you read it, trust the source page over this table.</em></p>
+
+<!-- ===================== PART 6 ===================== -->
+<div class="part-header">
+  <div class="part-label">Part 6</div>
+  <h2>Mistakes that kill setups</h2>
+  <p class="part-desc">Three patterns we see again and again. Each has a plain fix.</p>
+</div>
+
+<h3>1. Building the system instead of using it</h3>
+<p>The task board with twelve fields that took an afternoon to set up and was dead in two weeks. The dashboard nobody opens. It looks like progress and produces nothing.</p>
+<p><strong>The fix:</strong> keep the process small enough to explain in two sentences. A plain list with three headings (Doing, Next, Someday), updated daily and read weekly, outlasts the fancy version. If you haven't used a system in two weeks, it is dead. Delete it.</p>
+
+<h3>2. Going live without testing</h3>
+<p>Something gets built, looks fine, and goes live. Nobody sends a real test. The form shows "Thank you" and the message goes nowhere. The text-back sends to the wrong number. Nobody notices for weeks.</p>
+<p><strong>The fix:</strong> nothing is done until a test message has arrived at the real destination. Test again after every change. "It ran with no errors" is not the same as "it worked."</p>
+
+<h3>3. Chasing the newest tool</h3>
+<p>Every week brings a new model or app that tops some chart. Switching feels like diligence. It is usually distraction. Each switch means new setup, new logins, new things to break, and a brief to rewrite.</p>
+<p><strong>The fix:</strong> change tools when a specific job fails on the current one, not when a new one launches. Try a new tool for 30 days against your number before you commit. "It's interesting" is not a reason. "It fixes the job our current tool keeps getting wrong" is.</p>
+
+<!-- ===================== CHECKLIST ===================== -->
+<div class="appendix-header">
+  <div class="part-label">Checklist</div>
+  <h2>Your first 30 days, and days 31 to 90</h2>
+  <p style="color:#555;font-style:italic;">One page. Print it and tick it off.</p>
+</div>
+
+<p><strong>Week 1 · Pick and measure</strong></p>
+<ul class="checklist">
+  <li>Name the leak, the number, and the owner (Part 1)</li>
+  <li>Count the number for one week, before any AI</li>
+  <li>Write the one-page brief (Part 2)</li>
+</ul>
+<p><strong>Week 2 · Set limits and build small</strong></p>
+<ul class="checklist">
+  <li>Write the act/ask lists and put them in the brief (Part 3)</li>
+  <li>Check what your current assistant already does before you buy anything</li>
+  <li>Build the smallest version that handles the common case</li>
+  <li>Send a fake lead through it and confirm it arrived</li>
+</ul>
+<p><strong>Week 3 · Go live on the boring path</strong></p>
+<ul class="checklist">
+  <li>Turn it on for the common case only; odd cases go to a person</li>
+  <li>Watch the first few runs yourself</li>
+  <li>Run the fake-lead test on every form and phone path</li>
+  <li>Add "How did you hear about us?" with AI assistant choices</li>
+  <li>Write the stop rules and who can pull the switch</li>
+</ul>
+<p><strong>Week 4 · First Monday checks</strong></p>
+<ul class="checklist">
+  <li>Do the 15-minute check (Part 4) and write one line</li>
+  <li>Fix one thing, or pause it</li>
+  <li>Update the brief with anything you learned</li>
+</ul>
+<p><strong>Days 31 to 90 · Keep it honest</strong></p>
+<ul class="checklist">
+  <li>Every Monday: number, fake-lead test, one fix, one line</li>
+  <li>Day 45: is anyone still reading the output? Is the number better than your before-count? Has any stop rule fired?</li>
+  <li>Day 90: decide. Keep it, change one thing and run another 90 days, or stop it. Write down why.</li>
+  <li>Only after a keep: pick the second leak</li>
+</ul>
+
+<!-- ===================== ABOUT + CTA ===================== -->
+<div class="appendix-header">
+  <div class="part-label">About</div>
+  <h2>About this guide</h2>
+</div>
+
+<p><strong>By Giani Brussich, Founder, NYClaw.io.</strong> Updated October 2026.</p>
+<p>This guide comes from running our own businesses with Ainsley, the AI assistant we run, and from the client builds shown at <a href="/work">nyclaw.io/work</a>. We use the same weekly check on our own work. Where this guide gives a number, it is a suggestion for you to set, not a result we are claiming.</p>
+<p>NYClaw.io is an AI automation consultancy based in New York. We work with small businesses, agencies, and founders who want operational leverage without operational complexity.</p>
+
 <div class="cta-box">
-  <h2>Ready to Build This for Your Business?</h2>
-  <p>NYClaw.io builds AI automation infrastructure for small businesses and agencies — systems with a harness and a closed loop after go-live, not a chatbot tab that dies in 30 days. We start with a free consultation: one honest look at your dollar leak and whether automation is the right fix.</p>
-  <a href="https://nyclaw.io" class="cta-btn">Book a Free AI Audit at NYClaw.io →</a>
-  <div class="cta-url">nyclaw.io</div>
+  <h2>Want help with your first leak?</h2>
+  <p>Start with a free fit call. We look at one leak with you and say plainly whether automation is the right fix. Sometimes it isn't.</p>
+  <a href="https://nyclaw.io" class="cta-btn">Book a free fit call at NYClaw.io</a>
+  <div class="cta-url"><a href="/services" style="color:#a0c4e8;">Services</a> &nbsp;|&nbsp; <a href="/work" style="color:#a0c4e8;">Client work</a></div>
 </div>
 
-<div style="margin-top:48px; padding:24px; background:#f5f8ff; border-radius:6px;">
-  <h3 style="margin-top:0;">About This Guide</h3>
-  <p><strong>Last updated:</strong> October 2026. Principles first; tool names second. We revise when operator practice changes, not every model release.</p>
-  <p>This guide was built from the actual experience of designing, building, and running Ainsley — a personal AI assistant operating on a Mac Studio (M4 Max, 36GB RAM) across multiple businesses simultaneously. The case studies, the numbers, and the lessons are real. Nothing was invented for the sake of sounding good.</p>
-  <p style="margin-bottom:0;">NYClaw.io is an AI automation consultancy based in New York. We work with small businesses, agencies, and founders who want operational leverage without operational complexity.</p>
-</div>
+<p style="font-size:0.95rem;">If you run your own agent setup, the <a href="/ai-operators-builders-notes.html">builder notes are here</a>.</p>
 
 <div class="page-footer">
-  © 2026 NYClaw.io — All rights reserved &nbsp;|&nbsp; nyclaw.io &nbsp;|&nbsp; This guide may be shared in its complete, unmodified form.
+  © 2026 NYClaw.io. All rights reserved. &nbsp;|&nbsp; nyclaw.io &nbsp;|&nbsp; Share this guide freely in its complete, unchanged form.
 </div>
 
 </body>
