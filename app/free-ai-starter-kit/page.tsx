@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Link from 'next/link'
 import {
   UtensilsCrossed,
   Stethoscope,
@@ -168,6 +169,13 @@ export default function FreeAIStarterKitPage() {
       </section>
 
       {/* --------------------------------------------------- What it does --- */}
+      <section className="px-6 pb-20" aria-labelledby="workflow-kit-next-step">
+        <div className="panel mx-auto flex max-w-[64rem] flex-col items-start justify-between gap-6 rounded-2xl p-7 sm:p-9 md:flex-row md:items-center">
+          <div className="max-w-[37rem]"><h2 id="workflow-kit-next-step" className="text-2xl font-medium leading-tight text-white">Put a small workflow to the test.</h2><p className="mt-3 text-sm leading-relaxed text-zinc-300">The free workflow kits check quote follow-up, invoice discrepancies, and order handoffs. Try fictional records in your browser, inspect the findings, then get the local install instructions.</p></div>
+          <Link href="/ai-workflows" className="inline-flex shrink-0 items-center rounded-full bg-white px-5 py-3 text-sm font-medium text-zinc-950 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-cyan-400">Explore workflow kits</Link>
+        </div>
+      </section>
+
       <DeliverablesChecklist
         title="What it does"
         blurb="One file becomes the source of truth. The assistant answers from it and nothing else."

@@ -31,7 +31,7 @@ const ENTRIES: Entry[] = [
 
   // Service pages
   { path: '/law-firm-workflows', lastModified: '2026-10-06', changeFrequency: 'monthly', priority: 0.9 },
-  { path: '/services', lastModified: '2026-10-07', changeFrequency: 'monthly', priority: 0.9 },
+  { path: '/services', lastModified: '2026-10-12', changeFrequency: 'monthly', priority: 0.9 },
   { path: '/services/ai-automation', lastModified: '2026-10-07', changeFrequency: 'monthly', priority: 0.9 },
   { path: '/services/ai-consulting', lastModified: '2026-10-07', changeFrequency: 'monthly', priority: 0.9 },
   { path: '/services/ai-marketing', lastModified: '2026-10-07', changeFrequency: 'monthly', priority: 0.9 },
@@ -48,7 +48,8 @@ const ENTRIES: Entry[] = [
 
   // Resources
   { path: '/resources', lastModified: '2026-10-07', changeFrequency: 'monthly', priority: 0.8 },
-  { path: '/free-ai-starter-kit', lastModified: '2026-09-17', changeFrequency: 'monthly', priority: 0.8 },
+  { path: '/free-ai-starter-kit', lastModified: '2026-10-12', changeFrequency: 'monthly', priority: 0.8 },
+  { path: '/ai-workflows', lastModified: '2026-10-12', changeFrequency: 'monthly', priority: 0.8 },
 
   // Blog
   { path: '/blog', lastModified: '2026-10-07', changeFrequency: 'weekly', priority: 0.8 },
