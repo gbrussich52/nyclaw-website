@@ -122,6 +122,13 @@ export default function ServicesPage() {
 
       <WorkflowExplorer />
 
+      <section className="px-6 pb-24" aria-labelledby="try-workflow-kits">
+        <div className="panel mx-auto flex max-w-[64rem] flex-col items-start justify-between gap-6 rounded-2xl p-7 sm:p-9 md:flex-row md:items-center">
+          <div className="max-w-[37rem]"><h2 id="try-workflow-kits" className="text-2xl font-medium leading-tight text-white">Try the checks before you scope a connection.</h2><p className="mt-3 text-sm leading-relaxed text-zinc-300">Use fictional quotes, invoices, and orders to see computed findings, review points, and draft previews. The workflow kits are free; real integrations are scoped separately.</p></div>
+          <Link href="/ai-workflows" className="inline-flex shrink-0 items-center gap-2 rounded-full bg-white px-5 py-3 text-sm font-medium text-zinc-950 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-cyan-400">Try the workflow kits <ArrowRight size={16} aria-hidden="true" /></Link>
+        </div>
+      </section>
+
       {/* ------------------------------------------------- Service cards --- */}
       <section className="px-6 pb-24">
         <div className="mx-auto grid max-w-[64rem] items-stretch gap-6 md:grid-cols-2">

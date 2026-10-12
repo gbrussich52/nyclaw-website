@@ -1,0 +1,14 @@
+{
+  "schema": 1,
+  "package": "mainstreet-mcp",
+  "version": "0.1.4",
+  "recipes": [
+    "quote-followup",
+    "invoice-discrepancies",
+    "order-handoff"
+  ],
+  "source_revision": "9e7d21ea428a4a0ad7f224adc2eb768b264ac6fa",
+  "core_sha256": "32a5b454074fb3aa87d80ada5ea234314ed31e587e045db6f01695307ee8aaf8",
+  "npm_integrity": "sha512-UcJJRyJ/PzX88zY7Z1SI5uozjCPIu/kbUFwq3nyCyxT5WHTMLN8tijqWRVDJfog1JjkGZPjoTYNDu3wzLM6Ccw==",
+  "release_url": "https://github.com/gbrussich52/mainstreet-mcp/releases/tag/v0.1.4"
+}

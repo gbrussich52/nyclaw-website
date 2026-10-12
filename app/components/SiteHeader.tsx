@@ -20,6 +20,7 @@ import { CALENDLY_URL } from '../config'
 
 const NAV = [
   { href: '/services', label: 'Services' },
+  { href: '/ai-workflows', label: 'Workflow kits' },
   { href: '/#process', label: 'How it works' },
   { href: '/work', label: 'Work' },
   { href: '/knowledge', label: 'Knowledge' },
@@ -63,7 +64,7 @@ export default function SiteHeader() {
             <Wordmark />
           </Link>
 
-          <nav className="hidden items-center gap-6 md:flex">
+          <nav className="hidden items-center gap-5 lg:flex">
             {NAV.map((item) => (
               <Link
                 key={item.href}
@@ -85,7 +86,7 @@ export default function SiteHeader() {
             in the hero) and is dropped here; "Tell us what’s stuck" stays as the
             one persistent nav CTA.
           */}
-          <div className="hidden items-center gap-2 md:flex">
+          <div className="hidden items-center gap-2 lg:flex">
             <Link
               href="/#contact"
               className="flex h-8 items-center rounded-md bg-white px-3 text-[13px] font-medium text-zinc-950 shadow-[0_1px_2px_rgba(0,0,0,.2)] transition-opacity hover:opacity-90"
@@ -100,14 +101,14 @@ export default function SiteHeader() {
             aria-expanded={open}
             aria-controls="mobile-nav"
             aria-label={open ? 'Close menu' : 'Open menu'}
-            className="grid h-9 w-9 place-items-center rounded-md text-zinc-300 outline outline-1 outline-white/15 transition-colors hover:text-white md:hidden"
+            className="grid h-9 w-9 place-items-center rounded-md text-zinc-300 outline outline-1 outline-white/15 transition-colors hover:text-white lg:hidden"
           >
             {open ? <X size={18} /> : <Menu size={18} />}
           </button>
         </div>
 
         {open && (
-          <div id="mobile-nav" className="border-t border-white/10 pb-5 pt-4 md:hidden">
+          <div id="mobile-nav" className="border-t border-white/10 pb-5 pt-4 lg:hidden">
             <nav className="flex flex-col gap-1">
               {NAV.map((item) => (
                 <Link

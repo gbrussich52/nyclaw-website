@@ -1,7 +1,8 @@
 // classification: PUBLIC
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import { workflowMetadata } from '@/lib/workflow-kits'
 import { CheckCircle2 } from 'lucide-react'
 import { CALENDLY_URL } from '../config'
 import { useContactSubmit } from '../hooks/useContactSubmit'
@@ -22,6 +23,14 @@ export default function ContactForm() {
     message: '',
   })
   const { loading, errorMsg, submitted: formSubmitted, submit, honeypotRef } = useContactSubmit()
+
+  useEffect(() => {
+    const kit = new URLSearchParams(window.location.search).get('workflow_kit')
+    if (!kit || !Object.prototype.hasOwnProperty.call(workflowMetadata, kit)) return
+    const title = workflowMetadata[kit as keyof typeof workflowMetadata].title
+    setFormData(current => current.message ? current : { ...current, message: `I'm interested in the ${title.toLowerCase()} kit. My current tools and the handoff I want to improve are: ` })
+  }, [])
+
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
