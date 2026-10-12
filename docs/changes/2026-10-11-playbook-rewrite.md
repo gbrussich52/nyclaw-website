@@ -1,0 +1,10 @@
+---
+classification: PUBLIC
+---
+# 2026-10-11 — Rewrite the free AI Operator's Playbook for owners, not developers
+
+Previously `public/ai-operators-playbook.html` ran 9,521 words and 50 printed pages, about 70% developer-only material. Its cover stats (8 HVAC sites, $55 vs $0, 849 tests, 14 dead cron jobs) and several stories (HVAC pipeline, $55 runaway, NYRezone optimizer, three fake forms) could not be verified in the repo; 849 was a March 2026 snapshot from another project. The byline read "Ainsley, AI Operations Lead". Part of the page also overpromised: 72h, 10x and 30-day outcomes, and a "30/60/90-day roadmap" on `/resources`.
+
+Now the guide is 3,588 words and 19 printed pages. It has claim-free cover tiles and six parts: name one dollar leak, a one-page business brief, the act-or-ask boundary, a Monday check, operator setup versus chatbot install, and common mistakes. It also has a dated "Tools today" page (assistant, handles natively, remains your job) and a 30-day checklist with days 31–90. The byline is Giani Brussich, Founder; Ainsley is named once as the assistant. Tool facts for ChatGPT, Dots and Meta Muse cite vendor pages; Grok Projects/Tasks and Meta AI scheduling/memory are marked not confirmed because no vendor page was found. Developer material moved to `public/ai-operators-builders-notes.html` (noindex, not in the sitemap, linked once from the guide's end). `/resources` now promises a 30-day launch checklist and a weekly check for the first 90 days.
+
+Why: a guide that readers pass on must be useful and true, and every number or story in it had to be checkable. Gate: `scripts/check-positioning-copy.mjs` now also blocks `8 HVAC`, `$55`, `849 tests`, `14 dead cron` and `Ainsley, AI Operations Lead`. Validation: positioning gate passes, div balance 0, link check (six OpenAI URLs return 403 to automated requests and were opened in a real browser), live pages verified after PR #22. No new price, schedule, loop or vendor. Open: confirm Grok and Meta AI claims on a vendor page when one exists.
