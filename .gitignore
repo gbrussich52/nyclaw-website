@@ -50,3 +50,7 @@ scripts/nyclaw-weekly-refresh/logs/
 # Private research plans and working drafts
 docs/loop/weekly-refresh-*.md
 docs/loop/drafts/
+
+# Python bytecode
+__pycache__/
+*.pyc
