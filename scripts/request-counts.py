@@ -12,6 +12,8 @@ import urllib.request
 from pathlib import Path
 
 SOURCES = ('contact_form', 'resource_form', 'playbook_form', 'unknown')
+FIT_RECIPES = ('quote-followup', 'invoice-discrepancies', 'order-handoff')
+FIT_ROUTES = ('native_first', 'native_check', 'groundwork', 'manual_first', 'scoped_review')
 CAP = 5000
 MAX_BYTES = 8 * 1024 * 1024
 
@@ -58,6 +60,7 @@ def aggregate(batch, days=7, now=None):
     cutoff = now - dt.timedelta(days=days)
     counts = {'guide_requests': 0, 'other_contact_submissions': 0}
     by_source = dict.fromkeys(SOURCES, 0)
+    fit_counts = {'total': 0, 'by_recipe': dict.fromkeys(FIT_RECIPES, 0), 'by_route': dict.fromkeys(FIT_ROUTES, 0)}
     timestamps = []
     latest_contact = None
     for encoded in rows:
@@ -73,6 +76,17 @@ def aggregate(batch, days=7, now=None):
         timestamps.append(created)
         if created < cutoff:
             continue
+        fit = entry.get('workflowFit')
+        if fit is not None:
+            if (not isinstance(fit, dict) or set(fit) != {'recipe','weeklyCases','minutesPerCase','nativeSupport','reviewOwner','route'} or
+                fit.get('recipe') not in FIT_RECIPES or fit.get('route') not in FIT_ROUTES or
+                type(fit.get('weeklyCases')) is not int or not 0 <= fit['weeklyCases'] <= 10000 or
+                type(fit.get('minutesPerCase')) is not int or not 0 <= fit['minutesPerCase'] <= 240 or
+                fit.get('nativeSupport') not in ('yes','no','unknown') or fit.get('reviewOwner') not in ('yes','no')):
+                raise MeasurementError('INVALID_FIT_RECORD')
+            fit_counts['total'] += 1
+            fit_counts['by_recipe'][fit['recipe']] += 1
+            fit_counts['by_route'][fit['route']] += 1
         guide = entry.get('challenge') == 'guide-download'
         counts['guide_requests' if guide else 'other_contact_submissions'] += 1
         if not guide and (latest_contact is None or created > latest_contact):
@@ -84,9 +98,9 @@ def aggregate(batch, days=7, now=None):
     return {
         'classification': 'PRIVATE', 'as_of': now.isoformat(), 'ok': True,
         'window_days': days, 'retained_records': total, 'counts': counts,
-        'by_form_source': by_source, 'latest_other_contact_at': latest_contact.isoformat() if latest_contact else None,
+        'by_form_source': by_source, 'workflow_fit_submissions': fit_counts, 'latest_other_contact_at': latest_contact.isoformat() if latest_contact else None,
         'owner_test_and_spam_records_excluded': False,
-        'measurement': 'Stored submissions, not people, qualified leads, guide reads, bookings or sales.',
+        'measurement': 'Stored submissions and server-recorded fit routes, not people, verified feasibility, qualified leads, guide reads, bookings or sales.',
         'coverage': 'Current capped Redis store; old records without source appear as unknown.',
         'privacy': 'No names, emails, messages, raw records or credentials exported; reads only.'
     }

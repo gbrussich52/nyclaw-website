@@ -50,6 +50,9 @@ const ENTRIES: Entry[] = [
   { path: '/resources', lastModified: '2026-10-07', changeFrequency: 'monthly', priority: 0.8 },
   { path: '/free-ai-starter-kit', lastModified: '2026-10-12', changeFrequency: 'monthly', priority: 0.8 },
   { path: '/ai-workflows', lastModified: '2026-10-12', changeFrequency: 'monthly', priority: 0.8 },
+  { path: '/ai-workflows/quote-followup', lastModified: '2026-10-12', changeFrequency: 'monthly', priority: 0.7 },
+  { path: '/ai-workflows/invoice-discrepancies', lastModified: '2026-10-12', changeFrequency: 'monthly', priority: 0.7 },
+  { path: '/ai-workflows/order-handoff', lastModified: '2026-10-12', changeFrequency: 'monthly', priority: 0.7 },
 
   // Blog
   { path: '/blog', lastModified: '2026-10-07', changeFrequency: 'weekly', priority: 0.8 },

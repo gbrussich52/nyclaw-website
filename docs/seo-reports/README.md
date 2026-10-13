@@ -1,18 +1,7 @@
-# docs/seo-reports/
+# Buyer-content reports
 
-Empty since April 2026. `docs/seo-audit-prompt.md` names this directory as the
-output of a "scheduled Claude Code trigger every Monday at 9am ET" — no such
-schedule currently exists (checked `~/Library/LaunchAgents/` and this
-session's cron list on 2026-08-24; the only active nyclaw automation is
-`com.giani.nyclaw-weekly-refresh`, Mon 8:00am). That prompt is effectively
-orphaned until someone re-wires it to a real scheduler.
+This directory holds reports from the existing weekly content producer. The older claim that this lane was orphaned is superseded by the active producer and content-PR reviewer. The current instructions are in docs/seo-audit-prompt.md and the next buyer question is in docs/content-calendar.md.
 
-The active weekly automation (`scripts/nyclaw-weekly-refresh/run.sh`) writes
-its reports elsewhere:
+Keep reports limited to public sources, observed checks, a reviewable PR and verified production status. Never include private firm packets, contact details, credentials or customer files. Research plans and draft-only acquisition packets use their separate existing lane. Missing analytics is unknown; pageviews and submissions are not paid customers.
 
-- Weekly plan: `docs/loop/weekly-refresh-YYYY-MM-DD.md`
-- New findings: appended to `docs/loop/improve-queue.md`
-- Optional P0 draft: `docs/loop/drafts/YYYY-MM-DD-*.md`
-
-If `docs/seo-audit-prompt.md` gets a real schedule again, its reports belong
-here. Until then, treat this directory as inactive rather than broken.
+The release CI now verifies source tests, production pages and browser paths on proposed changes; green checks are required before the existing reviewer publishes. Reports and green checks do not establish indexing or buyer intent.

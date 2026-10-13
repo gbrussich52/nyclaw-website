@@ -11,13 +11,13 @@ Fetch origin, start from origin/main, and list existing app/blog routes before c
 
 ## Buyer question and evidence
 
-Follow the calendar's explicit next-article priority, then its HIGH queue. Prefer a law-firm operations buyer question that connects to /law-firm-workflows. Do not create a second intake overview or new guide while an existing article answers the question. Explain the current manual handoff, native software features to check first, a fictional expected output, exceptions, a human approval point and a useful no-build outcome.
+Follow the calendar's current priority, then its HIGH queue. Existing focused workflow pages and the ungated fit planner should be linked when they answer the buyer's next question; do not duplicate them. The planner's route reflects visitor assumptions, not qualification or feasibility. Prefer a law-firm operations buyer question that connects to /law-firm-workflows. Do not create a second intake overview or new guide while an existing article answers the question. Explain the current manual handoff, native software features to check first, a fictional expected output, exceptions, a human approval point and a useful no-build outcome.
 
 Verify current product facts against official vendor documentation during this run; link supporting sources next to claims. Numbers require a named source and URL in the same sentence. No invented savings, customer results, testimonials, search positions, integrations, certifications or guarantees. Minimum word counts are not evidence of quality: use the length needed to answer the question. Never equate hiring or a public workflow description with intent to buy automation.
 
 ## Build and conversion
 
-Reuse an existing article's Next.js structure, metadata, ArticleJsonLd, FAQ and components. Add the new route to app/blog/page.tsx and app/sitemap.ts, preserving every existing entry. Use a stable publication date. The CTA links /law-firm-workflows: free fit call first, any paid assessment fee/scope agreed in writing. Where a fictional demo or planner helps, link LegalAIMCP with utm_source=nyclaw&utm_medium=referral&utm_campaign=law_firm_workflows and disclose that NYClaw operates it. No client files, credentials, personal contact data, outbound email or payment activation.
+Reuse an existing article's Next.js structure, metadata, ArticleJsonLd, FAQ and components. Add the new route to app/blog/page.tsx and app/sitemap.ts, preserving every existing entry. Use a stable publication date. Law-firm administrative content links /law-firm-workflows#request-blueprint. Quote, invoice and order content can link its existing /ai-workflows/<recipe> page and /ai-workflows?kit=<recipe>#workflow-fit. A free fit call remains available; any paid assessment or implementation fee/scope is agreed in writing. Where a fictional demo or planner helps, link LegalAIMCP with utm_source=nyclaw&utm_medium=referral&utm_campaign=law_firm_workflows and disclose that NYClaw operates it. No client files, credentials, personal contact data, outbound email or payment activation.
 
 ## Verify and distribute
 

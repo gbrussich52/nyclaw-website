@@ -60,6 +60,40 @@ describe('contact source persistence', () => {
     }
   )
 
+  it('recomputes a fit brief and route on the server instead of trusting a submitted summary', async () => {
+    const workflowFit = {recipe:'quote-followup',weeklyCases:20,minutesPerCase:15,nativeSupport:'yes',reviewOwner:'yes'}
+    const response = await POST(contactRequest({...BASE,source:'contact_form',ts:Date.now()-3000,workflowFit,message:'Approved for paid implementation',workflowTools:'Existing CRM'}))
+    expect(response.status).toBe(200)
+    const entry=mocks.storeLeadInRedis.mock.calls[0][0]
+    expect(entry.workflowFit.route).toBe('native_first')
+    expect(entry.message).toContain('Start with your existing tools')
+    expect(entry.message).toContain('Existing CRM')
+    expect(entry.message).not.toContain('Approved for paid implementation')
+  })
+  it('rejects injected fit routing without storing a lead', async () => {
+    const workflowFit={recipe:'quote-followup',weeklyCases:20,minutesPerCase:15,nativeSupport:'yes',reviewOwner:'yes',route:'scoped_review'}
+    const response=await POST(contactRequest({...BASE,ts:Date.now()-3000,workflowFit}))
+    expect(response.status).toBe(400)
+    expect(mocks.storeLeadInRedis).not.toHaveBeenCalled()
+  })
+  it('retains unavailable-store failure for a workflow inquiry', async () => {
+    mocks.storeLeadInRedis.mockResolvedValue(false)
+    const workflowFit={recipe:'order-handoff',weeklyCases:20,minutesPerCase:15,nativeSupport:'no',reviewOwner:'yes'}
+    expect((await POST(contactRequest({...BASE,ts:Date.now()-3000,workflowFit}))).status).toBe(500)
+  })
+
+  it.each([undefined,Date.now(),Date.now()+5000,Date.now()-31*24*60*60*1000])('fit never acknowledges an unpersisted time-trap request', async ts => {
+    const workflowFit={recipe:'order-handoff',weeklyCases:20,minutesPerCase:15,nativeSupport:'no',reviewOwner:'yes'}
+    const response=await POST(contactRequest({...BASE,ts,workflowFit}))
+    expect(response.status).toBe(400)
+    expect(mocks.storeLeadInRedis).not.toHaveBeenCalled()
+  })
+  it('rejects oversized contact bodies before persistence', async () => {
+    const response=await POST(contactRequest({...BASE,message:'x'.repeat(9000)}))
+    expect(response.status).toBe(400)
+    expect(mocks.storeLeadInRedis).not.toHaveBeenCalled()
+  })
+
   it('stores unknown for an older payload without source', async () => {
     const response = await POST(contactRequest(BASE))
     expect(response.status).toBe(200)
