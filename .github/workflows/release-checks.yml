@@ -37,7 +37,7 @@ jobs:
           npm test -- --configLoader runner
           python3 -m unittest discover -s scripts/__tests__ -p '*test.py'
       - name: Build production pages
-        run: npm run build -- --webpack
+        run: npm run build
       - name: Typecheck generated routes and source
         run: npx tsc --noEmit
       - name: Check production buyer paths in the runner browser
