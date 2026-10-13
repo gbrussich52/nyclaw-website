@@ -48,6 +48,8 @@ export function useContactSubmit(): UseContactSubmitResult {
     setLoading(true)
     setErrorMsg('')
     let ok = false
+    const controller = new AbortController()
+    const deadline = setTimeout(() => controller.abort(), 15_000)
     // Fires before the request so we can measure abandonment between attempt
     // and success — a drop here means the API is failing, not that visitors
     // are not trying.
@@ -55,6 +57,7 @@ export function useContactSubmit(): UseContactSubmitResult {
     try {
       const res = await fetch('/api/contact', {
         method: 'POST',
+        signal: controller.signal,
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           ...payload,
@@ -73,9 +76,10 @@ export function useContactSubmit(): UseContactSubmitResult {
         track('lead_submitted', { source })
       }
     } catch {
-      setErrorMsg('Network error. Please check your connection and try again.')
+      setErrorMsg(controller.signal.aborted ? 'We could not confirm receipt before the connection timed out. Your inquiry may have arrived. Keep your details and check before sending again.' : 'Network error. Please check your connection and try again.')
       track('form_submit_error', { source, status: 0 })
     } finally {
+      clearTimeout(deadline)
       setLoading(false)
     }
     return ok

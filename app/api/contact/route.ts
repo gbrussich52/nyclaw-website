@@ -6,6 +6,8 @@ import { sanitize } from '../../../lib/sanitize'
 import { createRateLimiter } from '../../../lib/rate-limit'
 import { storeLeadInRedis } from '../../../lib/leads'
 import { CONTACT_SOURCES } from '../../../lib/contact-sources'
+import { boundedText } from '../../../lib/workflow-assessment-admin'
+import { fitSchema, evaluateFit, formatFitBrief } from '../../../lib/workflow-fit'
 
 const ContactSchema = z.object({
   name: z.string().min(1).max(200),
@@ -15,6 +17,8 @@ const ContactSchema = z.object({
   challenge: z.string().min(1).max(200),
   message: z.string().max(5000).optional(),
   smsConsent: z.boolean().optional(),
+  workflowFit: fitSchema.optional(),
+  workflowTools: z.string().trim().max(300).optional(),
   source: z.enum(CONTACT_SOURCES).optional().default('unknown'),
   website: z.string().max(0).optional(), // honeypot — real visitors never fill this
   ts: z.coerce.number().optional(),      // form-render timestamp, for the time-trap check
@@ -47,7 +51,9 @@ export async function POST(req: NextRequest) {
 
   let body: unknown
   try {
-    body = await req.json()
+    const raw = await boundedText(req, 8192)
+    if (raw === null) return NextResponse.json({ error: 'Invalid request' }, { status: 400 })
+    body = JSON.parse(raw)
   } catch {
     return NextResponse.json({ error: 'Invalid request' }, { status: 400 })
   }
@@ -55,6 +61,13 @@ export async function POST(req: NextRequest) {
   const parsed = ContactSchema.safeParse(body)
   if (!parsed.success) {
     return NextResponse.json({ error: 'Invalid request' }, { status: 400 })
+  }
+
+  if (parsed.data.workflowFit) {
+    const ts = parsed.data.ts, elapsed = ts ? Date.now() - ts : -1
+    if (!Number.isSafeInteger(ts) || elapsed < 2000 || elapsed > 30 * 24 * 60 * 60 * 1000) {
+      return NextResponse.json({ error: 'Please wait a moment and try again. Refresh this page if it has been open a long time.' }, { status: 400 })
+    }
   }
 
   // Honeypot: a real visitor never sees or fills this field. A bot that
@@ -74,7 +87,9 @@ export async function POST(req: NextRequest) {
   const phone = sanitize(parsed.data.phone ?? '')
   const businessType = sanitize(parsed.data.businessType)
   const challenge = sanitize(parsed.data.challenge)
-  const message = sanitize(parsed.data.message ?? '')
+  const workflowFit = parsed.data.workflowFit
+  const fit = workflowFit ? { ...workflowFit, route: evaluateFit(workflowFit).route } : undefined
+  const message = workflowFit ? formatFitBrief(workflowFit) + '\nCurrent tools: ' + sanitize(parsed.data.workflowTools || 'Not supplied') : sanitize(parsed.data.message ?? '')
   const smsConsent = parsed.data.smsConsent === true
   const source = parsed.data.source
 
@@ -89,7 +104,7 @@ export async function POST(req: NextRequest) {
   }
 
   const timestamp = new Date().toISOString()
-  const entry = { timestamp, name, email, phone, businessType, challenge, message, smsConsent, source }
+  const entry = { timestamp, name, email, phone, businessType, challenge, message, smsConsent, source, ...(fit ? { workflowFit: fit } : {}) }
 
   // Track which persistence layers actually succeeded. The visitor only gets
   // a success response if at least one layer durably captured the lead —

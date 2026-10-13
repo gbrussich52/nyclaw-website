@@ -1,0 +1,79 @@
+# PUBLIC. Reuses release gates; no deploy, provider credentials or customer submissions.
+name: Release checks
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: release-checks-${{ github.head_ref || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  release-checks:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    env:
+      NEXT_TELEMETRY_DISABLED: '1'
+      UAT_BASE_URL: http://127.0.0.1:3112
+      UAT_OUTPUT: /tmp/nyclaw-proof
+    steps:
+      - name: Check out source without persisted credentials
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2, verified via GitHub API
+        with:
+          persist-credentials: false
+      - name: Use Node.js 22
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0, verified via GitHub API
+        with:
+          node-version: '22'
+      - name: Install locked dependencies without lifecycle scripts
+        run: npm ci --ignore-scripts
+      - name: Unit tests
+        run: |
+          npm test -- --configLoader runner
+          python3 -m unittest discover -s scripts/__tests__ -p '*test.py'
+      - name: Build production pages
+        run: npm run build -- --webpack
+      - name: Typecheck generated routes and source
+        run: npx tsc --noEmit
+      - name: Check production buyer paths in the runner browser
+        shell: bash
+        run: |
+          set -euo pipefail
+          # Official actions/runner-images Ubuntu2404-Readme.md lists Google Chrome.
+          # Resolve the installed binary; do not download another browser or run setup actions.
+          export CHROME_PATH="$(command -v google-chrome)"
+          test -x "$CHROME_PATH"
+          mkdir -p "$UAT_OUTPUT/kits" "$UAT_OUTPUT/customer-path" "$UAT_OUTPUT/fit"
+          npm start -- --hostname 127.0.0.1 --port 3112 > /tmp/nyclaw-server.log 2>&1 &
+          server_pid=$!
+          trap 'kill "$server_pid" 2>/dev/null || true' EXIT
+          ready=false
+          for attempt in {1..30}; do
+            if curl --fail --silent --max-time 2 "$UAT_BASE_URL/ai-workflows" > /dev/null; then
+              ready=true
+              break
+            fi
+            kill -0 "$server_pid"
+            sleep 1
+          done
+          if [[ "$ready" != true ]]; then
+            echo 'Local production server did not become ready within the bounded retry window.' >&2
+            exit 1
+          fi
+          # Each gate has a hard process timeout; all form POSTs use fictional mocked responses.
+          UAT_OUTPUT="$UAT_OUTPUT/kits" timeout --kill-after=5s 90s node scripts/workflow-kits-uat.mjs > "$UAT_OUTPUT/kits/summary.json"
+          UAT_OUTPUT="$UAT_OUTPUT/customer-path" timeout --kill-after=5s 90s node scripts/customer-path-uat.mjs > "$UAT_OUTPUT/customer-path/summary.json"
+          UAT_OUTPUT="$UAT_OUTPUT/fit" timeout --kill-after=5s 90s node scripts/workflow-fit-uat.mjs > "$UAT_OUTPUT/fit/summary.json"
+      - name: Retain public fictional browser reports
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2, verified via GitHub API
+        with:
+          name: release-browser-proof
+          path: /tmp/nyclaw-proof/**/*.json
+          if-no-files-found: ignore
+          retention-days: 3

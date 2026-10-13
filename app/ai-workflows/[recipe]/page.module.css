@@ -1,0 +1,24 @@
+/* classification: PUBLIC */
+.audience { display: block; margin-top: 2rem; }
+.section { padding: 2.5rem 0; border-top: 1px solid var(--line); scroll-margin-top: 110px; }
+.section h2 { color: var(--text-primary); font-size: clamp(1.5rem, 3vw, 2rem); line-height: 1.25; margin: .5rem 0 1.2rem; font-weight: 500; }
+.section p, .section li, .section dd { font-size: .9375rem; line-height: 1.85; }
+.section > p { max-width: 52rem; margin-bottom: 1.25rem; }
+.section ul { padding-left: 1.25rem; list-style: disc; max-width: 52rem; }
+.section li { margin: .65rem 0; padding-left: .25rem; }
+.fields { margin: 1.5rem 0; }
+.fields > div { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 2fr); gap: 1.5rem; padding: 1.25rem 0; border-bottom: 1px solid var(--line); }
+.fields dt { color: var(--text-primary); font-size: .8125rem; overflow-wrap: anywhere; line-height: 1.8; }
+.examples, .columns { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2rem; }
+.examples { margin-top: 1.75rem; }
+.example { padding: 1.5rem; border: 1px solid var(--line); border-radius: .75rem; background: var(--panel); min-width: 0; }
+.example h3 { color: var(--text-primary); font-size: 1.15rem; font-weight: 500; }
+.example p { margin-top: .75rem; }
+.state { color: var(--accent); }
+.findings > div { margin: 1.2rem 0; }
+.findings dt { font-size: .8125rem; font-weight: 500; color: var(--text-primary); }
+.findings dd { margin-top: .4rem; }
+.findings small { display: block; font-size: .75rem; color: var(--text-muted); margin-top: .4rem; overflow-wrap: anywhere; }
+.legal { border-top: 1px solid var(--line); padding-top: 2rem; max-width: 48rem; }
+.legal p { font-size: .875rem; line-height: 1.8; margin-bottom: 1rem; }
+@media (max-width: 700px) { .examples, .columns { grid-template-columns: 1fr; gap: 1rem; } .fields > div { grid-template-columns: 1fr; gap: .5rem; } .example { padding: 1.1rem; } }

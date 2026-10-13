@@ -25,6 +25,21 @@ class RequestCountsTest(unittest.TestCase):
         encoded=json.dumps(result)
         for secret in ('fictional@example.com','PRIVATE SENTINEL','private-email@example.com'):
             self.assertNotIn(secret,encoded)
+    def test_fit_counts_only_bounded_routes_not_raw_assumptions_or_personal_data(self):
+        fit={'recipe':'quote-followup','weeklyCases':20,'minutesPerCase':15,'nativeSupport':'no','reviewOwner':'yes','route':'scoped_review'}
+        result=counter.aggregate(batch(record(workflowFit=fit)),now=NOW)
+        counts=result['workflow_fit_submissions']
+        self.assertEqual(counts['total'],1)
+        self.assertEqual(counts['by_recipe']['quote-followup'],1)
+        self.assertEqual(counts['by_route']['scoped_review'],1)
+        self.assertNotIn('weeklyCases',json.dumps(result))
+        self.assertNotIn('PRIVATE SENTINEL',json.dumps(result))
+    def test_unknown_or_malformed_fit_records_fail_honestly(self):
+        for fit in ({'recipe':'private@example.com'}, {'recipe':'quote-followup','weeklyCases':True,'minutesPerCase':15,'nativeSupport':'no','reviewOwner':'yes','route':'scoped_review'}):
+            with self.assertRaises(counter.MeasurementError):counter.aggregate(batch(record(workflowFit=fit)),now=NOW)
+    def test_no_fit_records_have_measured_zero(self):
+        self.assertEqual(counter.aggregate(batch(record()),now=NOW)['workflow_fit_submissions']['total'],0)
+
     def test_old_records_outside_window_are_not_recent(self):
         result=counter.aggregate(batch(record(timestamp='2026-09-01T00:00:00Z')),now=NOW)
         self.assertEqual(sum(result['counts'].values()),0)

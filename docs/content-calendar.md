@@ -3,8 +3,8 @@ classification: PRIVATE
 ---
 # NYClaw.io Content Calendar
 
-> Updated: 2026-10-08
-> Target: 2-3 articles/week, 20+ articles in 60 days
+> Updated: 2026-10-12
+> Production cap: one useful, sourced buyer article per weekly run; evidence and qualified inquiry quality take precedence over volume.
 
 ## Published
 
@@ -34,11 +34,14 @@ classification: PRIVATE
 | 21 | How AI Saves Real Estate Agents Hours Every Week | /blog/ai-real-estate-agents | AI real estate, real estate automation | 2026-09-28 | **Published 2026-09-28** |
 | 21b | Missing-Document Follow-Up for Law Firms: What to Check Before Automating | /blog/law-firm-missing-document-follow-up | law firm missing document follow up, client document reminders law firm | 2026-10-08 | **Published 2026-10-08** |
 
-## Next article — missing-document follow-up (2026-10-06 priority)
+## Current priority — one buyer question, one useful next step (2026-10-12)
 
-> **Status 2026-10-08:** published at `/blog/law-firm-missing-document-follow-up` (row 21b above). Next HIGH item is #22.
+> Missing-document follow-up is already published (row 21b); do not duplicate it. Check the current route tree before choosing the next HIGH buyer question.
+> Quote, invoice and order workflow pages now exist at `/ai-workflows/<recipe>`; their fit planner at `/ai-workflows?kit=<recipe>#workflow-fit` produces an ungated brief and explicitly consented inquiry. Link a relevant existing workflow rather than creating another overview. Law-firm document content retains the dedicated `/law-firm-workflows#request-blueprint` path. Track submitted briefs separately from confirmed buying intent or paid acceptance.
 
-Write **Missing-Document Follow-Up for Law Firms: What to Check Before Automating** at `/blog/law-firm-missing-document-follow-up`. The route does not currently exist; check the route tree again before drafting. This is the one next editorial priority, ahead of the general queue below. It extends the existing intake article rather than duplicating it.
+### Completed historical missing-document brief
+
+Write **Missing-Document Follow-Up for Law Firms: What to Check Before Automating** at `/blog/law-firm-missing-document-follow-up`. The route is published; this completed brief records its original purpose. Do not draft it again.
 
 Audience: law-firm owners and operations leads. Explain an agreed checklist → received documents → missing/uncertain items → staff-reviewed reminder → stop/escalate workflow. Use fictional examples only. Do not claim measured time savings, customer results, automatic legal compliance or universal integration support.
 

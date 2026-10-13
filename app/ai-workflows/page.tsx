@@ -4,6 +4,8 @@ import Link from 'next/link'
 import { ArrowUpRight, ArrowDown, Check } from 'lucide-react'
 import { CALENDLY_URL, FREE_AUDIT_LABEL } from '../config'
 import WorkflowKits from './WorkflowKits'
+import WorkflowFit from './WorkflowFit'
+import fitStyles from './WorkflowFit.module.css'
 import styles from './page.module.css'
 
 export const metadata: Metadata = {
@@ -26,11 +28,22 @@ export default function AIWorkflowsPage() {
         <p className={styles.eyebrow}><span aria-hidden="true" /> Free AI workflow kits</p>
         <h1>Try a workflow before<br className={styles.desktopBreak} /> you connect it.</h1>
         <p className={styles.lede}>Check a quote, compare an invoice, or prepare an order handoff. Start with a small record and see which facts support the next step.</p>
-        <div className={styles.heroActions}><a href="#try-workflow" className={styles.primaryLink}>Try a workflow <ArrowDown size={16} aria-hidden="true" /></a><a href="#install-kit" className={styles.textLink}>Get the free kit</a></div>
+        <div className={styles.heroActions}><a href="#try-workflow" className={styles.primaryLink}>Try a workflow <ArrowDown size={16} aria-hidden="true" /></a><a href="#workflow-fit" className={styles.textLink}>Get my workflow plan</a></div>
         <p className={styles.heroNote}>Fictional examples. Computed in this page. No accounts connected or messages sent.</p>
       </header>
 
       <WorkflowKits />
+
+      <nav className={fitStyles.workflowGuides} aria-label="Workflow guides">
+        <p className={styles.kicker}>Explore one workflow in detail</p>
+        <div className={fitStyles.workflowCards}>
+          <Link href="/ai-workflows/quote-followup"><span>For sales coordinators</span><h2>Quote follow-up <ArrowUpRight size={16} aria-hidden="true" /></h2><p>Check contact timing, quote terms, and when a reminder should stop.</p></Link>
+          <Link href="/ai-workflows/invoice-discrepancies"><span>For billing coordinators</span><h2>Invoice differences <ArrowUpRight size={16} aria-hidden="true" /></h2><p>Compare supplied totals and define who reviews a mismatch.</p></Link>
+          <Link href="/ai-workflows/order-handoff"><span>For operations coordinators</span><h2>Order handoff <ArrowUpRight size={16} aria-hidden="true" /></h2><p>Reconcile payment, production, and shipment before the next step.</p></Link>
+        </div>
+      </nav>
+
+      <WorkflowFit />
 
       <section className={styles.nextSteps} aria-labelledby="next-step-title">
         <div className={styles.sectionIntro}><p className={styles.kicker}>Choose the right next step</p><h2 id="next-step-title">A useful starting point.<br />A separate scope for your business.</h2></div>

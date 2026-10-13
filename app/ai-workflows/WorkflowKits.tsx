@@ -117,6 +117,10 @@ export default function WorkflowKits() {
   const [draft, setDraft] = useState<string | null>(null)
   const [draftError, setDraftError] = useState('')
   const draftHeading = useRef<HTMLHeadingElement>(null)
+  useEffect(() => {
+    const selected = new URLSearchParams(window.location.search).get('kit')
+    if (workflowRecipes.some(item => item === selected)) setRecipe(selected as WorkflowRecipe)
+  }, [])
   const metadata = workflowMetadata[recipe]
   const input = workflowExamples[recipe]?.[scenario]
   const evaluated = useMemo(() => {
@@ -183,7 +187,7 @@ export default function WorkflowKits() {
             {result.state === 'ready' && draft && <div className={styles.draftPreview}><div className={styles.draftHeading}><FileText size={16} aria-hidden="true" /><h4 ref={draftHeading} tabIndex={-1}>Draft preview</h4><span>Not sent</span></div><pre>{draft}</pre><TransferControls key={`${recipe}-${scenario}-draft`} value={draft} filename={`${recipe}-fictional-draft.txt`} label="Draft" /></div>}
             <div className={styles.briefDownload}><TransferControls key={`${recipe}-${scenario}-brief`} value={brief} filename={`${recipe}-fictional-example.txt`} label="Example brief" copy={false} /><p>The brief includes the source example and findings. It does not submit a request to NYClaw.</p></div>
           </>}
-          <div className={styles.recipeContact}><p>Want to check this against the tools you already use?</p><Link href={`/?workflow_kit=${recipe}#contact`} className={styles.textLink}>Discuss this workflow <ArrowUpRight size={14} aria-hidden="true" /></Link></div>
+          <div className={styles.recipeContact}><p>Want to check this against the tools you already use?</p><a href={`/ai-workflows?kit=${recipe}#workflow-fit`} className={styles.textLink}>Get a plan for this workflow <ArrowUpRight size={14} aria-hidden="true" /></a><br /><Link href={`/ai-workflows/${recipe}`} className={styles.subtleLink}>Read the workflow guide</Link></div>
         </div>
       </div>
     </section>
