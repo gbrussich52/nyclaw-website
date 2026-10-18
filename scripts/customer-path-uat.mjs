@@ -25,6 +25,22 @@ try {
       check('Actual booking destination',await page.$$eval('a',a=>a.filter(e=>e.textContent.includes('Book a free')).every(e=>e.href==='https://calendly.com/nyclaw-io-proton/30min')))
     }else if(path.includes('/services/')||path.includes('/blog/'))check(path+' connects to real work',await page.$$eval('a[href^="/work"]',a=>a.length>0))
   }
+  // Leaf Open Graph/Twitter objects replace inherited image fields. Check actual rendered tags.
+  for (const path of ['/blog/ai-law-firm-client-intake', '/blog/ai-automations-dental', '/blog/chatgpt-vs-ai-consultant']) {
+    await page.goto(base+path,{waitUntil:'networkidle2'})
+    const social=await page.evaluate(()=>({
+      og:document.querySelector('meta[property="og:image"]')?.content,
+      twitter:document.querySelector('meta[name="twitter:image"]')?.content,
+      card:document.querySelector('meta[name="twitter:card"]')?.content,
+    }))
+    check(path+' absolute Open Graph image',social.og==='https://nyclaw.io/opengraph-image')
+    check(path+' absolute Twitter image',social.twitter==='https://nyclaw.io/opengraph-image')
+    check(path+' large social card',social.card==='summary_large_image')
+  }
+  // Fetch this build's image, not production, so a stale public asset cannot mask a broken release.
+  const image=await fetch(new URL('/opengraph-image',base),{signal:AbortSignal.timeout(10000)})
+  const png=Buffer.from(await image.arrayBuffer())
+  check('Shared social image returns a real 1200x630 PNG',image.ok&&image.headers.get('content-type')?.startsWith('image/png')&&png.length>24&&png.subarray(0,8).equals(Buffer.from([137,80,78,71,13,10,26,10]))&&png.readUInt32BE(16)===1200&&png.readUInt32BE(20)===630)
   const sitemap=await page.goto(base+'/sitemap.xml');check('Sitemap includes work and accurate release date',(await sitemap.text()).includes('<loc>https://nyclaw.io/work</loc>')&&(await sitemap.text()).includes('2026-10-07'))
   const guide=await page.goto(base+'/ai-operators-playbook.html');const guideText=await guide.text();check('Actual guide destination works',guide.status()===200&&guideText.includes('AI Operator'));check('Guide retires unsupported pipeline/retainer claim',!guideText.includes("it's the model NYClaw.io is built on")&&!guideText.includes('real production numbers from building NYClaw.io'))
   let mode='error',writes=0;const payloads=[]

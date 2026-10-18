@@ -11,7 +11,8 @@ const description = 'Compare DIY ChatGPT, an AI consulting roadmap and a workflo
 export const metadata: Metadata = {
   title, description,
   alternates: { canonical: 'https://nyclaw.io/blog/chatgpt-vs-ai-consultant' },
-  openGraph: { title, description, url: 'https://nyclaw.io/blog/chatgpt-vs-ai-consultant', type: 'article', siteName: 'NYClaw.io' },
+  openGraph: { title, description, url: 'https://nyclaw.io/blog/chatgpt-vs-ai-consultant', type: 'article', siteName: 'NYClaw.io', images: ['https://nyclaw.io/opengraph-image'] },
+  twitter: { card: 'summary_large_image', title, description, images: ['https://nyclaw.io/opengraph-image'] },
 }
 const faqItems = [
   { question: 'Do I need a consultant to use ChatGPT for my business?', answer: 'Not necessarily. If your team can prepare and check the work with its current tools, start there. A consultant may help when the process, instructions or handoff needs a clearer plan or a scoped build.' },
