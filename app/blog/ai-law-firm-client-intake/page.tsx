@@ -11,8 +11,8 @@ const url = 'https://nyclaw.io/blog/ai-law-firm-client-intake'
 export const metadata: Metadata = {
   title, description,
   alternates: { canonical: url },
-  openGraph: { title, description, url, type: 'article', siteName: 'NYClaw.io' },
-  twitter: { card: 'summary_large_image', title, description },
+  openGraph: { title, description, url, type: 'article', siteName: 'NYClaw.io', images: ['https://nyclaw.io/opengraph-image'] },
+  twitter: { card: 'summary_large_image', title, description, images: ['https://nyclaw.io/opengraph-image'] },
 }
 const faqItems = [
   {
