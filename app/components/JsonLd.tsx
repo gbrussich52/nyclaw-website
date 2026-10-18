@@ -2,6 +2,9 @@
 // JSON-LD structured data components for SEO
 // All content is hardcoded server-side data — no user input, no XSS risk.
 
+// Freshness signal for WebSite JSON-LD (geo audit 2026-10-16). Bump when page content changes.
+const SITE_LAST_MODIFIED = '2026-10-16'
+
 export function LocalBusinessJsonLd() {
   const jsonLd = {
     '@context': 'https://schema.org',
@@ -59,6 +62,12 @@ export function OrganizationJsonLd() {
       'AI and automation agency for small businesses in Westchester County and NYC. Advice, custom builds, marketing systems and a written handoff.',
     email: 'hello@nyclaw.io',
     areaServed: 'Westchester County, NY',
+    // hello@nyclaw.io is the address shown on /about, /privacy and /terms; no phone is published.
+    contactPoint: {
+      '@type': 'ContactPoint',
+      contactType: 'customer support',
+      email: 'hello@nyclaw.io',
+    },
     sameAs: [
       'https://github.com/gbrussich52',
     ],
@@ -89,6 +98,7 @@ export function WebSiteJsonLd() {
     name: 'NYClaw.io',
     url: 'https://nyclaw.io',
     description: 'Practical AI and automation for small businesses in Westchester County and NYC.',
+    dateModified: SITE_LAST_MODIFIED,
     publisher: {
       '@type': 'Organization',
       '@id': 'https://nyclaw.io/#organization',
