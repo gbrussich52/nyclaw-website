@@ -59,10 +59,10 @@ const posts = [
     tags: ['Pricing', 'AI Automation'],
   },
   {
-    title: 'ChatGPT or an AI Consultant? Start With the Work.',
+    title: 'ChatGPT vs. an AI Consultant for Small Business',
     description:
-      'Decide whether your current tools, a clearer process or a scoped build can help. Start with one recurring job and inspect real client examples.',
-    date: 'October 7, 2026',
+      'Compare DIY ChatGPT, a written roadmap and a scoped workflow build, with published project ranges and a practical first-task test.',
+    date: 'October 17, 2026',
     href: '/blog/chatgpt-vs-ai-consultant',
     tags: ['AI Tools', 'AI Consulting'],
   },
@@ -91,10 +91,10 @@ const posts = [
     tags: ['Legal', 'Workflow', 'Intake'],
   },
   {
-    title: 'How Law Firms Are Using AI to Handle Client Intake Without Hiring More Staff',
+    title: 'AI Client Intake for Law Firms: What to Automate',
     description:
-      "AI responds within 60 seconds, qualifies leads, schedules consultations, and runs follow-up — so attorneys spend time on billable work, not inbox management. The math: slow intake costs a $3,000 average case firm $312,000/year in lost leads.",
-    date: 'April 29, 2026',
+      'Plan one administrative intake handoff with approved fields, missing-information checks, staff review and a visible failure path.',
+    date: 'October 17, 2026',
     href: '/blog/ai-law-firm-client-intake',
     tags: ['Legal', 'AI Automation', 'Lead Intake'],
   },
@@ -115,10 +115,10 @@ const posts = [
     tags: ['AI Tools', 'Automation', 'Zapier'],
   },
   {
-    title: '5 AI Automations Every Dental Practice Should Be Running',
+    title: 'Dental Office Automation: Five Workflows to Review',
     description:
-      'Multi-touch appointment reminders cut no-shows 30-50%. Reactivation campaigns fill 10-20% of lapsed patients. Automated review requests 3-5x monthly Google volume. None of this requires changing Dentrix or Eaglesoft.',
-    date: 'April 29, 2026',
+      'Review reminders, recall, follow-up, neutral review requests and intake, starting with native software and staff review.',
+    date: 'October 17, 2026',
     href: '/blog/ai-automations-dental',
     tags: ['Dental', 'Healthcare', 'AI Automation'],
   },
