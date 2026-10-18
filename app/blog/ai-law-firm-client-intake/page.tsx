@@ -1,270 +1,65 @@
+// classification: PUBLIC
 import type { Metadata } from 'next'
+import Link from 'next/link'
 import { ArticleJsonLd, FAQJsonLd } from '../../components/JsonLd'
 import ArticleShell from '../../components/ArticleShell'
-import {
-  AuthorBio,
-  Callout,
-  CtaPanel,
-  FaqSection,
-  FeatureBlock,
-} from '../_components/post'
+import { AuthorBio, Callout, FaqSection } from '../_components/post'
 
+const title = "AI Client Intake for Law Firms: What to Automate"
+const description = "Plan AI-assisted legal intake: collect approved fields, flag missing documents, and prepare staff-reviewed follow-up. Start with one administrative handoff."
+const url = 'https://nyclaw.io/blog/ai-law-firm-client-intake'
 export const metadata: Metadata = {
-  title: 'How Law Firms Are Using AI to Handle Client Intake Without Hiring More Staff',
-  description:
-    'AI handles law firm intake automatically: initial response, lead qualification, scheduling, follow-up, and disqualification — without adding headcount. Here is exactly how it works.',
-  keywords:
-    'ai for law firm intake, ai client intake law firm, law firm automation, legal intake automation ai, law firm ai tools, attorney intake software',
-  openGraph: {
-    title: 'How Law Firms Are Using AI to Handle Client Intake Without Hiring More Staff',
-    description:
-      'AI handles the entire intake layer — response, qualification, scheduling, follow-up — so attorneys focus on billable work.',
-    url: 'https://nyclaw.io/blog/ai-law-firm-client-intake',
-    type: 'article',
-    siteName: 'NYClaw.io',
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'How Law Firms Are Using AI to Handle Client Intake Without Hiring More Staff',
-    description:
-      'AI handles the entire intake layer — response, qualification, scheduling, follow-up — so attorneys focus on billable work.',
-  },
-  alternates: {
-    canonical: 'https://nyclaw.io/blog/ai-law-firm-client-intake',
-  },
+  title, description,
+  alternates: { canonical: url },
+  openGraph: { title, description, url, type: 'article', siteName: 'NYClaw.io' },
+  twitter: { card: 'summary_large_image', title, description },
 }
-
 const faqItems = [
   {
-    question: 'Can AI handle client intake for a law firm?',
-    answer:
-      'Yes. AI agents can manage the full pre-attorney intake layer: responding to inbound inquiries within minutes, collecting qualification information (practice area, jurisdiction, case facts), scheduling consultations, and running multi-touch follow-up sequences. The attorney still makes every case decision — AI removes the administrative work that happens before that decision.',
+    "question": "Can AI help with law firm client intake?",
+    "answer": "AI can help summarize submitted information, flag missing fields and draft administrative follow-up. A firm-approved workflow defines the inputs and review points. Staff retain conflict checks, legal advice, case acceptance and decisions about deadlines."
   },
   {
-    question: 'What is the cost of slow client intake for a law firm?',
-    answer:
-      'If your average case is worth $3,000 and you lose two qualified leads per week to slow response or inconsistent follow-up, that is $6,000 per week in lost revenue — roughly $312,000 per year. Research consistently shows that leads contacted within 5 minutes are 9x more likely to convert than those contacted after an hour. AI response within 60 seconds directly addresses this.',
+    "question": "What should stay with the attorney or intake team?",
+    "answer": "Conflict review, legal judgment, engagement decisions and urgent or unclear inquiries need the firm\u2019s designated reviewer. An automated acknowledgment should not promise representation or say a case has been accepted."
   },
   {
-    question: 'Does AI for law firm intake replace paralegals or intake staff?',
-    answer:
-      'No. AI handles the administrative layer: form submission processing, initial response, qualification questions, scheduling, and follow-up cadence. Your paralegal or intake coordinator still handles complex questions, emotional support, conflict checks, and case evaluation. AI removes the repetitive work so your staff can focus on higher-value tasks.',
+    "question": "Can this connect to our practice management software?",
+    "answer": "That depends on your product, plan, permissions and supported integrations. Check existing form, reminder and task features first. NYClaw scopes a connection only after reviewing those constraints; no particular vendor integration is promised here."
   },
   {
-    question: 'How long does it take to set up AI intake for a law firm?',
-    answer:
-      'A basic AI intake system can be running in one week. You need: a clear definition of your ideal client, a list of the 5-8 questions you want answered before a consultation, access to your calendar for scheduling, and an email or phone number for the agent to operate from. Most of the setup time is configuration, not coding.',
-  },
-  {
-    question: 'Is AI client intake legal for law firms to use?',
-    answer:
-      'Yes, with appropriate configuration. AI intake tools do not provide legal advice — they collect information and schedule consultations. The agent should be clearly identified as an automated system or agency staff, not an attorney. Standard disclaimers apply. The attorney-client relationship begins when the attorney engages with the qualified lead, not before.',
-  },
+    "question": "What does an intake automation project cost?",
+    "answer": "NYClaw publishes a $3,500\u2013$8,000 range for custom agent sprints and $5,000\u2013$15,000 for automation builds. Your written scope determines the actual fee. A free 30-minute call comes first; a paid roadmap is optional."
+  }
 ]
 
 export default function BlogPost() {
-  return (
-    <>
-      <ArticleJsonLd
-        title="How Law Firms Are Using AI to Handle Client Intake Without Hiring More Staff"
-        description="AI handles law firm intake automatically: initial response, lead qualification, scheduling, follow-up, and disqualification — without adding headcount."
-        url="https://nyclaw.io/blog/ai-law-firm-client-intake"
-        datePublished="2026-04-29"
-        dateModified="2026-06-16"
-      />
-      <FAQJsonLd items={faqItems} />
-
-      <ArticleShell
-        backHref="/blog"
-        backLabel="Blog"
-        tags={['Legal Automation']}
-        meta="April 29, 2026 · Updated June 16, 2026 · 8 min read"
-        title="How Law Firms Are Using AI to Handle Client Intake Without Hiring More Staff"
-        deck="AI handles initial response, qualification, scheduling, and follow-up — so attorneys spend time on billable work, not inbox management."
-        related={[
-          { href: '/blog/ai-automations-dental', title: 'AI for Dental Practices' },
-          { href: '/blog/zapier-vs-ai-agent', title: 'Zapier vs AI Agents' },
-          { href: '/services/ai-automation', title: 'AI Automation Services' },
-        ]}
-      >
-        {/* Direct answer first — AIMODE / answer-engine optimization. */}
-        <Callout>
-          <strong>The short answer:</strong> Law firms use AI agents to respond to inbound inquiries
-          within minutes, collect qualification information conversationally, book consultations
-          directly to the attorney&apos;s calendar, and run multi-touch follow-up sequences — all
-          without staff involvement. The attorney still evaluates every case. AI handles everything
-          before that decision.
-        </Callout>
-
-        <p>
-          A potential client submits a contact form at 9pm. They have a question. They&apos;re
-          anxious. They&apos;re comparing you to three other law firms in New York City. The next
-          morning, someone on your team finally gets to the inquiry — eight hours later — and the
-          prospect has already hired someone else.
-        </p>
-        <p>
-          This is not a staffing problem. It is a timing problem. And AI agents solve it completely.
-        </p>
-        <p>
-          Based on intake data from NYC-area service businesses,{' '}
-          <strong>
-            NYClaw.io analysis shows that law firms responding within 5 minutes convert 40–60% more
-            qualified leads than those responding the next business day
-          </strong>{' '}
-          — a gap that grows as more competitors adopt automated intake.
-        </p>
-
-        <h2>What AI Can Handle in the Intake Process</h2>
-        <p>
-          Let&apos;s be specific, because &quot;AI for law firms&quot; is vague to the point of
-          uselessness. Here is exactly what an AI agent handles in a properly configured legal
-          intake workflow:
-        </p>
-
-        <FeatureBlock title="Initial response">
-          An AI agent responds to an inbound inquiry within minutes — any time of day, any day of
-          the week. Not a canned autoresponder, but a real response that acknowledges what the
-          prospect said, confirms receipt, and sets a clear next step. This alone can recover the
-          majority of after-hours leads that currently go cold.
-        </FeatureBlock>
-
-        <FeatureBlock title="Qualification">
-          Most firms have a standard intake questionnaire: practice area match, jurisdiction (New
-          York, New Jersey, federal), rough facts of the case, budget or ability to pay. An AI agent
-          can collect this information conversationally — via email, SMS, or website chat — before
-          any attorney or paralegal time is spent. By the time a human reviews the lead, you already
-          know if it fits your practice.
-        </FeatureBlock>
-
-        <FeatureBlock title="Scheduling">
-          Once a lead is qualified, the AI connects to your calendar, finds available consultation
-          slots, and books directly — without back-and-forth with your front desk. The prospect gets
-          a confirmation. The attorney gets a pre-qualified appointment. No manual coordination
-          required.
-        </FeatureBlock>
-
-        <FeatureBlock title="Follow-up sequences">
-          The majority of leads don&apos;t convert on first contact. An AI runs a structured
-          follow-up cadence — day 3, day 7, day 14 — with messages personalized to what the prospect
-          originally shared. Not a generic &quot;just checking in&quot; — a contextual message that
-          references their situation and maintains urgency without being pushy.
-        </FeatureBlock>
-
-        <FeatureBlock title="Disqualification">
-          Underrated. AI can identify leads that don&apos;t fit your practice — wrong jurisdiction,
-          outside your area of law, case type you do not handle — and give them a polite, helpful
-          redirect to other resources. This saves your team the time of evaluating bad fits and
-          leaves a professional impression on people who might refer business later.
-        </FeatureBlock>
-
-        <p>
-          Worth knowing if your attorneys already work inside Claude for case research: that is a
-          separate layer from intake automation.{' '}
-          <a href="https://legalaimcp.com" target="_blank" rel="noopener noreferrer">
-            LegalAIMCP
-          </a>{' '}
-          connects Claude directly to CourtListener case law and other legal data sources — it
-          handles the research side of the practice, not the intake workflow covered here.
-        </p>
-
-        <h2>What AI Does Not Replace</h2>
-        <p>
-          This matters, especially in legal: AI does not evaluate the merits of a case. It does not
-          give legal advice. It does not decide whether to take on a client. It does not build the
-          attorney-client relationship.
-        </p>
-        <p>That is still the attorney&apos;s job. Always will be.</p>
-        <p>
-          What AI removes is everything that happens <em>before</em> that decision — the data
-          collection, the scheduling coordination, the follow-up cadence. The administrative layer
-          that your intake staff either handles manually or lets slip through the cracks.
-        </p>
-
-        <h2>The Real Cost of Slow Intake</h2>
-        <p>Most law firms do not measure this, but the math is straightforward.</p>
-        <div className="panel rounded-xl p-6">
-          <p>
-            If your average case value is <strong>$3,000</strong> and you lose{' '}
-            <strong>2 qualified leads per week</strong> to slow response or inconsistent follow-up,
-            that is:
-          </p>
-          <ul className="mt-3 list-none space-y-2 pl-0">
-            <li className="flex items-center gap-2">
-              <span className="font-semibold text-white">$6,000/week</span> in lost revenue
-            </li>
-            <li className="flex items-center gap-2">
-              <span className="font-semibold text-white">$312,000/year</span> — not from bad
-              lawyering, but from bad intake
-            </li>
-          </ul>
-        </div>
-        <p>
-          Research consistently shows that leads contacted within 5 minutes of an inquiry are{' '}
-          <strong>9x more likely to convert</strong> than those contacted after an hour. For
-          personal injury, family law, immigration, and other consumer-facing practices in the New
-          York City metro area, where competition is intense and clients have immediate
-          alternatives, this window is even shorter.
-        </p>
-        <p>
-          An AI agent that responds within 60 seconds does not just improve operations. It compounds
-          revenue on every dollar you spend on marketing and referrals.
-        </p>
-
-        <h2>What Implementation Actually Looks Like</h2>
-        <p>
-          This is not a months-long software integration. A basic AI intake setup for a law firm can
-          be running in one week.
-        </p>
-        <div className="panel rounded-xl p-6">
-          <h4 className="font-medium text-white">What you need to get started:</h4>
-          <ul className="mt-4 list-none space-y-3 pl-0">
-            <li className="flex items-start gap-3">
-              <span className="mt-0.5 font-medium text-cyan-400">1.</span>
-              <span>A clear definition of your ideal client (practice area, geography, case type)</span>
-            </li>
-            <li className="flex items-start gap-3">
-              <span className="mt-0.5 font-medium text-cyan-400">2.</span>
-              <span>A list of the 5–8 questions you want answered before a consultation</span>
-            </li>
-            <li className="flex items-start gap-3">
-              <span className="mt-0.5 font-medium text-cyan-400">3.</span>
-              <span>Calendar access for scheduling (Google Calendar, Clio, or equivalent)</span>
-            </li>
-            <li className="flex items-start gap-3">
-              <span className="mt-0.5 font-medium text-cyan-400">4.</span>
-              <span>An email address or phone number for the agent to operate from</span>
-            </li>
-          </ul>
-        </div>
-        <p>
-          From there, the agent is configured around your intake workflow, tested against real
-          scenarios, and deployed. The output: every inbound inquiry gets responded to, qualified,
-          and followed up — without your staff lifting a finger for the administrative layer.
-        </p>
-        <p>
-          Your attorneys still make every case decision. They just spend less time chasing paperwork
-          and more time doing the work they are actually billed for.
-        </p>
-
-        <CtaPanel
-          title="Assess One Intake Handoff Before You Automate It"
-          blurb="For law-firm owners and operations leads: define the expected output, check your existing tools, and decide where staff approval is needed. Start with a free fit call; any follow-on assessment is scoped and priced in writing."
-          href="/law-firm-workflows"
-          label="Explore Law-Firm Workflows"
-        />
-
-        {/* Author bio — E-E-A-T signal. */}
-        <AuthorBio>
-          NYClaw.io builds AI automation systems for law firms, medical practices, and small
-          businesses across the New York metro area. We have implemented intake, follow-up, and
-          client management workflows for service businesses in NYC, Westchester County, and
-          surrounding areas. Our practice focuses on measurable revenue impact, not theoretical AI
-          capabilities.
-        </AuthorBio>
-
-        <h2>Frequently Asked Questions</h2>
-        <FaqSection items={faqItems} />
-      </ArticleShell>
-    </>
-  )
+  return <>
+    <ArticleJsonLd title={title} description={description} url={url} datePublished="2026-04-29" dateModified="2026-10-17" />
+    <FAQJsonLd items={faqItems} />
+    <ArticleShell backHref="/blog" backLabel="All articles" title={title} tags={["Legal intake", "Workflow planning"]} meta="Published April 29, 2026 · Updated October 17, 2026" deck={description}
+      related={[{"href": "/law-firm-workflows", "title": "Law-firm Workflow Blueprint"}, {"href": "/blog/law-firm-missing-document-follow-up", "title": "Missing-document follow-up"}, {"href": "/services/ai-automation", "title": "Workflow implementation scope"}]}>
+      <Callout><strong>Start with one handoff:</strong> turn an approved intake record into a missing-information checklist and a follow-up draft for staff to review. A complete form does not mean a client is accepted.</Callout>
+      <p>For a small law firm in Westchester County or NYC, the useful question is which intake step keeps waiting on the same missing detail. List the current forms, matter system, staff owner and next action before choosing an AI tool.</p>
+      <h2>A practical AI intake workflow</h2>
+      <ol>
+        <li><strong>Receive the inquiry.</strong> Use a firm-approved form and receipt message. Collect only what the team needs for this stage.</li>
+        <li><strong>Check the record.</strong> Compare submitted fields against the firm’s checklist. Mark missing or uncertain information rather than guessing.</li>
+        <li><strong>Prepare the next step.</strong> Draft a request for missing information or a staff task, with the source fields available beside it.</li>
+        <li><strong>Review and record.</strong> A named staff member checks the recipient, wording and next action. Confirm the approved task or message actually appears in the intended system.</li>
+      </ol>
+      <h2>Where the workflow must pause</h2>
+      <p>Route a possible conflict, urgent deadline, unclear identity, sensitive narrative or request for legal advice to the person the firm names. Do not let a model reject a prospective client, invent a deadline or decide whether representation has begun.</p>
+      <p>The <a href="https://nysba.org/new-york-state-bar-association-warns-that-ai-must-not-compromise-attorney-client-privilege/">New York State Bar Association’s AI guidance</a> emphasizes confidentiality and supervision. Have the firm review the provider’s data handling and proposed access before using real intake records. This article is a workflow planning guide, not legal advice or a compliance certification.</p>
+      <h2>Check existing software before commissioning a build</h2>
+      <p>Your current system may already provide forms, reminders or tasks. A fixed rule can be enough for a missing field. AI may help with an unstructured summary or draft, provided the source and reviewer remain clear. Read the <Link href="/blog/law-firm-missing-document-follow-up">missing-document follow-up checklist</Link> before adding another connection.</p>
+      <h2>Test the handoff before launch</h2>
+      <ul><li>An incomplete record holds for review.</li><li>A duplicate inquiry does not create duplicate follow-up.</li><li>An urgent inquiry reaches the assigned staff member.</li><li>A failed connection leaves a visible exception and manual fallback.</li><li>The reviewer can trace a draft back to the submitted facts.</li></ul>
+      <p>Measure your own response time, unresolved inquiries and staff review effort before and after a limited rollout. These checks are proposed acceptance cases, not reported client results. No conversion lift or implementation timetable is promised.</p>
+      <h2>Scope one administrative handoff</h2>
+      <p>Use a redacted example to describe the process. Keep client names, case facts and documents out of the inquiry form. <Link href="/law-firm-workflows#request-blueprint">Request a law-firm Workflow Blueprint review</Link>, or compare <Link href="/services/ai-automation">implementation scope and published project ranges</Link>.</p>
+      <AuthorBio>NYClaw.io builds scoped AI and workflow automations for small businesses in Westchester County and NYC. Law-firm work starts with an administrative workflow and the firm’s review rules.</AuthorBio>
+      <h2>Frequently asked questions</h2><FaqSection items={faqItems} />
+    </ArticleShell>
+  </>
 }

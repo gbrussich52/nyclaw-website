@@ -10,6 +10,7 @@ const files = [
   'app/locations/new-york-city/page.tsx', 'app/locations/westchester-county/page.tsx',
   'lib/own-operations.ts', 'app/components/OwnOperationsProof.tsx', 'app/components/ResourceForm.tsx', 'app/components/PlaybookForm.tsx', 'app/resources/page.tsx',
   'app/blog/chatgpt-vs-ai-consultant/page.tsx',
+  'app/blog/ai-law-firm-client-intake/page.tsx', 'app/blog/ai-automations-dental/page.tsx',
 ]
 const unsupported = [
   /avg\.?\s+cost reduction/i, /most clients (?:see|get|achieve)/i,
@@ -21,6 +22,12 @@ const errors = []
 for (const file of files) {
   const text = (await readFile(file, 'utf8')).replace(/\s+/g, ' ')
   for (const phrase of unsupported) if (phrase.test(text)) errors.push(`${file}: requires evidence or a plain-language rewrite (${phrase})`)
+}
+// These pages previously asserted unmeasured outcomes and integration guarantees.
+for (const file of ['app/blog/ai-law-firm-client-intake/page.tsx', 'app/blog/ai-automations-dental/page.tsx']) {
+  const text = await readFile(file, 'utf8')
+  if (/30[–-]50%|40[–-]60%|10[–-]20%|9x|312,000|recoverable annual revenue|without staff involvement|AI agents solve it completely|None require replacing/i.test(text)) errors.push(`${file}: unsupported outcome or integration guarantee returned.`)
+  if (/href=["']\/workshop["']/.test(text)) errors.push(`${file}: retired workshop CTA returned.`)
 }
 const home = await readFile('app/page.tsx', 'utf8')
 const caseSource = await readFile('lib/client-work.ts', 'utf8')
