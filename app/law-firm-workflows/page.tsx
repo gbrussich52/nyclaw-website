@@ -13,7 +13,9 @@ export const metadata: Metadata = {
     description: 'A reviewable workflow blueprint for one law-firm handoff, grounded in your current tools and staff decisions.',
     url: 'https://nyclaw.io/law-firm-workflows',
     type: 'website',
+    images: ['https://nyclaw.io/opengraph-image'],
   },
+  twitter: { card: 'summary_large_image', images: ['https://nyclaw.io/opengraph-image'] },
 }
 
 const attribution = 'utm_source=nyclaw&utm_medium=referral&utm_campaign=law_firm_workflows'

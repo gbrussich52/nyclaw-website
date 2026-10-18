@@ -15,7 +15,9 @@ export const metadata: Metadata = {
     description: 'See client work and systems built for our own businesses, from creative preparation to customer follow-up.',
     url: 'https://nyclaw.io/work',
     type: 'website',
+    images: ['https://nyclaw.io/opengraph-image'],
   },
+  twitter: { card: 'summary_large_image', images: ['https://nyclaw.io/opengraph-image'] },
 }
 
 const projectQuestions: Record<string, readonly string[]> = {

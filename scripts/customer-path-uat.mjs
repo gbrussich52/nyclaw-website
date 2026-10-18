@@ -26,7 +26,15 @@ try {
     }else if(path.includes('/services/')||path.includes('/blog/'))check(path+' connects to real work',await page.$$eval('a[href^="/work"]',a=>a.length>0))
   }
   // Leaf Open Graph/Twitter objects replace inherited image fields. Check actual rendered tags.
-  for (const path of ['/blog/ai-law-firm-client-intake', '/blog/ai-automations-dental', '/blog/chatgpt-vs-ai-consultant']) {
+  for (const [path, expectedCard] of [
+    ['/blog/ai-law-firm-client-intake', 'summary_large_image'],
+    ['/blog/ai-automations-dental', 'summary_large_image'],
+    ['/blog/chatgpt-vs-ai-consultant', 'summary_large_image'],
+    ['/about', 'summary'],
+    ['/work', 'summary_large_image'],
+    ['/law-firm-workflows', 'summary_large_image'],
+    ['/services', 'summary_large_image'],
+  ]) {
     await page.goto(base+path,{waitUntil:'networkidle2'})
     const social=await page.evaluate(()=>({
       og:document.querySelector('meta[property="og:image"]')?.content,
@@ -35,7 +43,7 @@ try {
     }))
     check(path+' absolute Open Graph image',social.og==='https://nyclaw.io/opengraph-image')
     check(path+' absolute Twitter image',social.twitter==='https://nyclaw.io/opengraph-image')
-    check(path+' large social card',social.card==='summary_large_image')
+    check(path+' declared social card',social.card===expectedCard)
   }
   // Fetch this build's image, not production, so a stale public asset cannot mask a broken release.
   const image=await fetch(new URL('/opengraph-image',base),{signal:AbortSignal.timeout(10000)})
