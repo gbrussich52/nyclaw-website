@@ -31,9 +31,11 @@ export const metadata: Metadata = {
     url: 'https://nyclaw.io/services',
     siteName: 'NYClaw.io',
     type: 'website',
+    images: ['https://nyclaw.io/opengraph-image'],
   },
   twitter: {
     card: 'summary_large_image',
+    images: ['https://nyclaw.io/opengraph-image'],
     title: 'AI Agency Services | NYClaw.io',
     description:
       'Custom agents and automations — project-based builds for small businesses.',

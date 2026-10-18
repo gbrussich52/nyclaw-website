@@ -11,8 +11,9 @@ export const metadata: Metadata = {
     title: 'About NYClaw',
     description: 'Practical AI and automation, starting with the work your team does every day.',
     url: 'https://nyclaw.io/about', type: 'website',
+    images: ['https://nyclaw.io/opengraph-image'],
   },
-  twitter: { card: 'summary', title: 'About NYClaw', description: 'The work, the founder and the way a NYClaw project starts.' },
+  twitter: { card: 'summary', images: ['https://nyclaw.io/opengraph-image'], title: 'About NYClaw', description: 'The work, the founder and the way a NYClaw project starts.' },
   alternates: { canonical: 'https://nyclaw.io/about' },
 }
 
