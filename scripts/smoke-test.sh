@@ -36,9 +36,10 @@ fi
 check "Calendly URL (correct)"    "nyclaw-io-proton/30min"    "$BODY"
 check "Calendly URL (no old)"     ""                          "$(echo "$BODY" | grep -v 'nyclaw-io-proton' | grep 'calendly.com/nyclaw[^-]' || echo 'OK')"
 check "Contact section exists"    'id="contact"'              "$BODY"
-check "Phone field in form"       'type="tel"'                "$BODY"
-# SMS consent is client-side React (only renders after phone input) — skip in static check
-echo "  ⚠️  SMS consent checkbox: client-side only, manual verify"
+# Current contact contract is email + business/workflow; phone/SMS was removed upstream.
+check "Required email field"      'id="contact-email"'        "$BODY"
+check "Business type field"       'id="contact-business-type"' "$BODY"
+check "Workflow challenge field"  'id="contact-challenge"'    "$BODY"
 check "No hardcoded old URL"      ""                          "$(echo "$BODY" | grep 'calendly.com/nyclaw\"' && echo FOUND || echo OK)"
 
 # --- Health check ---

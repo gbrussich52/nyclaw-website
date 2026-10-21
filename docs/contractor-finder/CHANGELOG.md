@@ -7,3 +7,5 @@ Compatible runtime dependency repairs: Next16.3.4→16.4.2, Nodemailer10.0.1→1
 Build reliability: the existing Google-font loader failed on its returned URL format. Bundle the same previously deployed Inter/Space Grotesk Latin fonts locally with their official SIL Open Font Licenses; remove build-time font fetching. Preserve typography and avoid adding a font service.
 
 Independent review repairs: business-hosted sources cannot become independent reviews through relabelling; separate publisher and documented affiliation assessment are required in addition to redistribution rights. Health now counts admitted evidence rather than a fixed number, fails on stale checks, and the existing resources page links to the finder.
+
+Live website smoke found a stale phone/SMS assertion: the current upstream ContactForm intentionally collects email, business type and workflow challenge, with no phone/SMS field. Update the existing smoke assertions to those actual required fields; no contact UI/API behavior changed. Live contractor17checks passed before this sensor repair.

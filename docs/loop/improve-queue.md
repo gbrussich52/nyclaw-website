@@ -53,3 +53,5 @@ Auto-appended by weekly refresh + any agent that finds a real gap.
 ## 2026-10-20 — Contractor launch observation
 
 New web/MCP slice reuses existing smoke-test.sh with failing source-freshness, exact EV result-count and public-page checks. Public health is not sales or traffic. No scheduled runner changed/added. Next Sense task after distribution: run the existing NYClaw acquisition/site sensor against the deployed finder, record actual qualified uses and evidence corrections, and decide whether a permissioned independent-review supply merits expansion. Initial zero independent reviews, no Facebook adapter, NYC residential electrician coverage empty. Do not add businesses/features to conceal those measured gaps.
+
+2026-10-20 launch self-correction: existing smoke expected a retired phone/SMS input. Inspected current ContactForm; email/business/workflow are current contract. Replaced stale assertion with those three explicit field checks and reran real production smoke. No contact behavior changed.
