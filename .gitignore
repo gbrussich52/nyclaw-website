@@ -54,3 +54,6 @@ docs/loop/drafts/
 # Python bytecode
 __pycache__/
 *.pyc
+
+# Reproducible local submission archives
+.release/

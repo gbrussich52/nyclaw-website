@@ -19,6 +19,7 @@ type Entry = {
  * stale date is worth far more than a fresh lie.
  */
 const ENTRIES: Entry[] = [
+  { path: '/contractor-finder', lastModified: '2026-10-20', changeFrequency: 'monthly', priority: 0.7 },
   // Homepage
   { path: '', lastModified: '2026-10-07', changeFrequency: 'weekly', priority: 1 },
   { path: '/about', lastModified: '2026-10-07', changeFrequency: 'monthly', priority: 0.6 },

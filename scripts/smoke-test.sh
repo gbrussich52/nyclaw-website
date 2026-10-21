@@ -36,14 +36,23 @@ fi
 check "Calendly URL (correct)"    "nyclaw-io-proton/30min"    "$BODY"
 check "Calendly URL (no old)"     ""                          "$(echo "$BODY" | grep -v 'nyclaw-io-proton' | grep 'calendly.com/nyclaw[^-]' || echo 'OK')"
 check "Contact section exists"    'id="contact"'              "$BODY"
-check "Phone field in form"       'type="tel"'                "$BODY"
-# SMS consent is client-side React (only renders after phone input) — skip in static check
-echo "  ⚠️  SMS consent checkbox: client-side only, manual verify"
+# Current contact contract is email + business/workflow; phone/SMS was removed upstream.
+check "Required email field"      'id="contact-email"'        "$BODY"
+check "Business type field"       'id="contact-business-type"' "$BODY"
+check "Workflow challenge field"  'id="contact-challenge"'    "$BODY"
 check "No hardcoded old URL"      ""                          "$(echo "$BODY" | grep 'calendly.com/nyclaw\"' && echo FOUND || echo OK)"
 
 # --- Health check ---
 HEALTH=$(curl -s --max-time 5 "$URL/api/health")
 check "Health endpoint OK"        '"status":"ok"'             "$HEALTH"
+
+# --- Contractor source and web distribution checks (read-only) ---
+CONTRACTOR_HEALTH=$(curl -fsS --max-time 10 "$URL/api/contractors/health")
+check "Contractor dated evidence healthy" '"ok":true' "$CONTRACTOR_HEALTH"
+CONTRACTOR_PAGE=$(curl -fsS --max-time 10 "$URL/contractor-finder")
+check "Contractor comparison published" 'Good work starts' "$CONTRACTOR_PAGE"
+CONTRACTOR_SOURCES=$(curl -fsS --max-time 10 "$URL/api/contractors/search?trade=electrician&area=westchester&job=ev-charger")
+check "Contractor EV source matching" '"totalMatches":2' "$CONTRACTOR_SOURCES"
 
 # --- Contact API check (POST with missing fields should return 400, not 500) ---
 CONTACT_CHECK=$(curl -s --max-time 5 -X POST "$URL/api/contact" \
