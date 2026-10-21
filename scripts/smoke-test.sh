@@ -45,6 +45,14 @@ check "No hardcoded old URL"      ""                          "$(echo "$BODY" | 
 HEALTH=$(curl -s --max-time 5 "$URL/api/health")
 check "Health endpoint OK"        '"status":"ok"'             "$HEALTH"
 
+# --- Contractor source and web distribution checks (read-only) ---
+CONTRACTOR_HEALTH=$(curl -fsS --max-time 10 "$URL/api/contractors/health")
+check "Contractor dated evidence healthy" '"ok":true' "$CONTRACTOR_HEALTH"
+CONTRACTOR_PAGE=$(curl -fsS --max-time 10 "$URL/contractor-finder")
+check "Contractor comparison published" 'Good work starts' "$CONTRACTOR_PAGE"
+CONTRACTOR_SOURCES=$(curl -fsS --max-time 10 "$URL/api/contractors/search?trade=electrician&area=westchester&job=ev-charger")
+check "Contractor EV source matching" '"totalMatches":2' "$CONTRACTOR_SOURCES"
+
 # --- Contact API check (POST with missing fields should return 400, not 500) ---
 CONTACT_CHECK=$(curl -s --max-time 5 -X POST "$URL/api/contact" \
   -H "Content-Type: application/json" \

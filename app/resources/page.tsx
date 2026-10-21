@@ -139,6 +139,13 @@ export default function ResourcesPage() {
         </div>
       </section>
 
+      <section className="mx-auto max-w-[64rem] px-6 pb-16">
+        <div className="panel rounded-xl p-7">
+          <h2 className="text-xl font-medium text-white">Try a working AI tool</h2>
+          <p className="mt-3 max-w-2xl text-zinc-300">Compare local electricians, plumbers and general contractors using dated business sources and clearly marked evidence gaps.</p>
+          <Link href="/contractor-finder" className="mt-5 inline-flex text-cyan-300 underline underline-offset-4">Open the free contractor finder</Link>
+        </div>
+      </section>
       {/* Related Articles */}
       <section className="px-6 pb-32">
         <div className="mx-auto max-w-[64rem]">

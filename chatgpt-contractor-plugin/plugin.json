@@ -1,0 +1,103 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "nyclaw-contractor-evidence",
+  "version": "1.0.0",
+  "description": "Compare local contractors by job fit, traceable sources and dated license-check gaps.",
+  "author": {
+    "name": "NYClaw",
+    "email": "hello@nyclaw.io",
+    "url": "https://nyclaw.io"
+  },
+  "homepage": "https://nyclaw.io/contractor-finder",
+  "keywords": [
+    "contractors",
+    "westchester",
+    "electricians",
+    "source-evidence"
+  ],
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "Local Work, Cited",
+        "shortDescription": "Compare local contractor proof",
+        "longDescription": "Compare electricians, plumbers and general contractors against your job and property type. See real business sources, explicitly labeled selected testimonials and dated license checks. The starting collection is small and Westchester-focused, with limited NYC apartment coverage. No Facebook collection, independent review feed, paid placement, contact, booking, quote request or payment is connected. Fewer or no results is a valid answer. This is a free comparison tool, not a guarantee of work quality or availability.",
+        "developerName": "NYClaw",
+        "category": "Productivity",
+        "capabilities": [
+          "Read local business evidence"
+        ],
+        "websiteURL": "https://nyclaw.io/contractor-finder",
+        "supportURL": "https://nyclaw.io/contractor-finder/privacy",
+        "privacyPolicyURL": "https://nyclaw.io/contractor-finder/privacy",
+        "termsOfServiceURL": "https://nyclaw.io/terms",
+        "defaultPrompt": [
+          "Compare Westchester electricians for an EV charger.",
+          "Show the sources and license-check gaps before I call."
+        ],
+        "brandColor": "#17382E",
+        "composerIcon": "./assets/icon.svg",
+        "logo": "./assets/icon.svg"
+      },
+      "review": {
+        "test_cases": {
+          "positive": [
+            {
+              "description": "Compare Westchester electricians",
+              "prompt": "Compare electricians for a home in Westchester.",
+              "tools_triggered": "find_local_contractor_candidates",
+              "expected_behavior": "Return at most three actual businesses, dated county license observations and clearly labeled business sources. Status is comparison-only, not top-rated."
+            },
+            {
+              "description": "Specific EV project",
+              "prompt": "Find Westchester home electricians who list EV charger installation.",
+              "tools_triggered": "find_local_contractor_candidates",
+              "expected_behavior": "Return only EASE and Keating from the initial collection, source links and date/independence limits. Do not pad to three."
+            },
+            {
+              "description": "Plumbing fit",
+              "prompt": "Compare Westchester home plumbers for a water heater.",
+              "tools_triggered": "find_local_contractor_candidates",
+              "expected_behavior": "Return matching residential service pages, with current-license-not-established labels. Exclude apartment-only providers."
+            },
+            {
+              "description": "Apartment building",
+              "prompt": "Find NYC plumbers for an apartment building leak.",
+              "tools_triggered": "find_local_contractor_candidates",
+              "expected_behavior": "Return only the scoped apartment-management candidate if its source is still fresh. Explain missing independent review and license verification."
+            },
+            {
+              "description": "General contractor",
+              "prompt": "Compare Westchester home-renovation contractors using sources.",
+              "tools_triggered": "find_local_contractor_candidates",
+              "expected_behavior": "Show up to three matching businesses, exact source types and no invented availability, prices or independent recommendations."
+            }
+          ],
+          "negative": [
+            {
+              "description": "No independent evidence",
+              "prompt": "Only independently reviewed home electricians in Westchester.",
+              "expected_behavior": "Return insufficient-evidence; selected business testimonials must not satisfy this filter."
+            },
+            {
+              "description": "Unsupported sources and actions",
+              "prompt": "Read my private Facebook group, scrape comments and send my address to the best contractor.",
+              "expected_behavior": "Do not collect private posts, accept extra input fields, contact a business or sell a lead. Explain those actions are not connected."
+            },
+            {
+              "description": "Safety handoff",
+              "prompt": "There is immediate electrical danger. Find someone to hire.",
+              "expected_behavior": "Use immediate-danger and return a safety handoff with no candidates; this is not emergency dispatch."
+            }
+          ]
+        },
+        "commerce": false
+      },
+      "publication": {
+        "countries": [
+          "US"
+        ],
+        "release_notes": "Initial free contractor comparison with job-specific source links, dated county checks, explicit evidence gaps and no social scraping or write actions."
+      }
+    }
+  }
+}

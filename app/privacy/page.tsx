@@ -48,6 +48,7 @@ export default function PrivacyPage() {
       </p>
 
       <h2>How we use it</h2>
+      <p>The contractor finder receives only general trade, area, property and job categories. It creates no homeowner profile or contractor inquiry. Its public business-source records, source permissions and corrections process are described in the <a href="/contractor-finder/privacy">contractor finder privacy and source policy</a>.</p>
       <p>
         We use the information you submit to respond to your inquiry or send you the guide you
         requested. We do not sell your information or share it for advertising. Service providers
