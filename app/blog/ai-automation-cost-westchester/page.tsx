@@ -4,24 +4,26 @@ import ArticleShell from '../../components/ArticleShell'
 import { AuthorBio, Callout, CtaPanel, FaqSection, FeatureBlock } from '../_components/post'
 
 export const metadata: Metadata = {
-  title: 'What AI Automation Actually Costs a Small Business in 2026',
+  title: "AI Automation Costs for Small Businesses",
   description:
-    'DIY tools, a freelance build, or a managed AI agency — three real paths to AI automation and what each actually costs in 2026, including our own $3.5K–15K project pricing.',
+    "Compare DIY tools, freelance builds and agency projects for small business AI automation, including NYClaw project pricing and ongoing costs.",
   keywords:
     'ai automation cost, how much does ai automation cost, small business ai automation pricing, ai agent cost, ai automation agency pricing, cost of ai automation for small business',
   openGraph: {
-    title: 'What AI Automation Actually Costs a Small Business in 2026',
+    title: "AI Automation Costs for Small Businesses",
     description:
-      'Three real paths to AI automation — DIY, freelancer, or agency — and what each one actually costs, with real numbers.',
+      "Compare DIY tools, freelance builds and agency projects for small business AI automation, including NYClaw project pricing and ongoing costs.",
     url: 'https://nyclaw.io/blog/ai-automation-cost-westchester',
     type: 'article',
     siteName: 'NYClaw.io',
+    images: ["https://nyclaw.io/opengraph-image"],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'What AI Automation Actually Costs a Small Business in 2026',
+    title: "AI Automation Costs for Small Businesses",
     description:
-      'Three real paths to AI automation — DIY, freelancer, or agency — and what each one actually costs, with real numbers.',
+      "Compare DIY tools, freelance builds and agency projects for small business AI automation, including NYClaw project pricing and ongoing costs.",
+    images: ["https://nyclaw.io/opengraph-image"],
   },
   alternates: {
     canonical: 'https://nyclaw.io/blog/ai-automation-cost-westchester',

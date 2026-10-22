@@ -5,15 +5,16 @@ import ArticleShell from '../components/ArticleShell'
 import { CALENDLY_URL } from '../config'
 
 export const metadata: Metadata = {
-  title: 'About NYClaw',
+  title: "About NYClaw and Giani Brussich",
   description: 'Meet Giani Brussich and learn how NYClaw builds practical AI and automation for small businesses in Westchester County and NYC.',
   openGraph: {
-    title: 'About NYClaw',
+    title: "About NYClaw and Giani Brussich",
     description: 'Practical AI and automation, starting with the work your team does every day.',
     url: 'https://nyclaw.io/about', type: 'website',
     images: ['https://nyclaw.io/opengraph-image'],
+    siteName: "NYClaw.io",
   },
-  twitter: { card: 'summary', images: ['https://nyclaw.io/opengraph-image'], title: 'About NYClaw', description: 'The work, the founder and the way a NYClaw project starts.' },
+  twitter: { card: 'summary', images: ['https://nyclaw.io/opengraph-image'], title: "About NYClaw and Giani Brussich", description: 'The work, the founder and the way a NYClaw project starts.' },
   alternates: { canonical: 'https://nyclaw.io/about' },
 }
 

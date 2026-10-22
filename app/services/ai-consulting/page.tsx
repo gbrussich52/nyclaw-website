@@ -35,12 +35,14 @@ export const metadata: Metadata = {
     url: 'https://nyclaw.io/services/ai-consulting',
     siteName: 'NYClaw.io',
     type: 'website',
+    images: ["https://nyclaw.io/opengraph-image"],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'AI Fit Audit & Roadmap | NYClaw.io',
     description:
       'Free 30-minute fit call. Optional written roadmap with scope, assumptions and build order.',
+    images: ["https://nyclaw.io/opengraph-image"],
   },
   alternates: {
     canonical: 'https://nyclaw.io/services/ai-consulting',

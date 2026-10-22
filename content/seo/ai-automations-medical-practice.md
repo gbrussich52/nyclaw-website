@@ -68,4 +68,4 @@ If you run a medical practice in the NYC area and want to see what this looks li
 
 No software pitches. No commitment. Just a working session on what's possible and whether it makes sense for where your practice is right now.
 
-[Register for the free AI automation workshop →](/workshop)
+[Discuss your workflow with NYClaw →](/#contact)

@@ -38,12 +38,14 @@ export const metadata: Metadata = {
     siteName: 'NYClaw.io',
     type: 'website',
     locale: 'en_US',
+    images: ["https://nyclaw.io/opengraph-image"],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'AI Agency for Westchester County Businesses | NYClaw.io',
     description:
       'Practical AI and workflow automation for small businesses across Westchester County, NY. Start with a free 30-minute call.',
+    images: ["https://nyclaw.io/opengraph-image"],
   },
   alternates: {
     canonical: 'https://nyclaw.io/locations/westchester-county',

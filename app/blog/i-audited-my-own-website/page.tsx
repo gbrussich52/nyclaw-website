@@ -6,24 +6,26 @@ import ArticleShell from '../../components/ArticleShell'
 import { CtaPanel, FaqSection, FeatureBlock } from '../_components/post'
 
 export const metadata: Metadata = {
-  title: "I Audited My Own AI Agency's Website. It Was Invisible to Google.",
+  title: "How I Fixed My AI Agency Website's SEO",
   description:
-    'We ran a full SEO audit on our own AI agency website and discovered it was completely invisible to Google. Here is what went wrong with client-side rendering in Next.js, and exactly how we fixed it.',
+    "Read how an SEO audit exposed rendering and indexing problems on NYClaw. See the Next.js changes we made and what to check on your own site.",
   keywords:
     'website SEO audit, Next.js SEO mistakes, why isn\'t my website on Google, client-side rendering SEO, use client SEO, Next.js server components, website invisible to Google, SEO fix',
   openGraph: {
-    title: "I Audited My Own AI Agency's Website. It Was Invisible to Google.",
+    title: "How I Fixed My AI Agency Website's SEO",
     description:
-      'Our entire homepage was client-rendered. Google saw nothing. Here is the full audit and fix.',
+      "Read how an SEO audit exposed rendering and indexing problems on NYClaw. See the Next.js changes we made and what to check on your own site.",
     url: 'https://nyclaw.io/blog/i-audited-my-own-website',
     type: 'article',
     siteName: 'NYClaw.io',
+    images: ["https://nyclaw.io/opengraph-image"],
   },
   twitter: {
     card: 'summary_large_image',
-    title: "I Audited My Own AI Agency's Website. It Was Invisible to Google.",
+    title: "How I Fixed My AI Agency Website's SEO",
     description:
-      'Our entire homepage was client-rendered. Google saw nothing. Here is the full audit and fix.',
+      "Read how an SEO audit exposed rendering and indexing problems on NYClaw. See the Next.js changes we made and what to check on your own site.",
+    images: ["https://nyclaw.io/opengraph-image"],
   },
   alternates: {
     canonical: 'https://nyclaw.io/blog/i-audited-my-own-website',

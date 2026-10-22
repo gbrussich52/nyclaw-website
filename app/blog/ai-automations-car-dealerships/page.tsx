@@ -10,24 +10,26 @@ import {
 } from '../_components/post'
 
 export const metadata: Metadata = {
-  title: 'How NYC Car Dealers Are Closing More Deals Without Hiring More Staff',
+  title: "AI Follow-Up for NYC Car Dealerships",
   description:
-    'Internet leads go cold in 30 minutes. Service reminders go unsent. Trade-in follow-ups die in a spreadsheet. Here is how AI agents fix the pipeline leaks in NYC auto dealerships.',
+    "Review AI workflows for NYC car dealerships: internet leads, service reminders and trade-in follow-up. Check your CRM and staff handoffs first.",
   keywords:
     'ai for car dealerships, dealership automation nyc, ai car dealer lead follow-up, automotive ai tools, car dealership crm automation, dealership internet leads',
   openGraph: {
-    title: 'How NYC Car Dealers Are Closing More Deals Without Hiring More Staff',
+    title: "AI Follow-Up for NYC Car Dealerships",
     description:
-      'Internet leads convert at 5x the rate when contacted within 30 minutes. Most dealers respond in 2-10 hours. AI closes that gap automatically.',
+      "Review AI workflows for NYC car dealerships: internet leads, service reminders and trade-in follow-up. Check your CRM and staff handoffs first.",
     url: 'https://nyclaw.io/blog/ai-automations-car-dealerships',
     type: 'article',
     siteName: 'NYClaw.io',
+    images: ["https://nyclaw.io/opengraph-image"],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'How NYC Car Dealers Are Closing More Deals Without Hiring More Staff',
+    title: "AI Follow-Up for NYC Car Dealerships",
     description:
-      'Internet leads convert at 5x the rate when contacted within 30 minutes. Most dealers respond in 2-10 hours. AI closes that gap.',
+      "Review AI workflows for NYC car dealerships: internet leads, service reminders and trade-in follow-up. Check your CRM and staff handoffs first.",
+    images: ["https://nyclaw.io/opengraph-image"],
   },
   alternates: {
     canonical: 'https://nyclaw.io/blog/ai-automations-car-dealerships',
@@ -193,9 +195,9 @@ export default function BlogPost() {
 
         <CtaPanel
           title="Want to See the Impact for Your Store?"
-          blurb="Free workshop for NYC dealer principals, GMs, and internet directors — the actual tools, setup, and close rate impact."
-          href="/workshop"
-          label="Register for the Free Workshop"
+          blurb="Tell us which recurring task you want to improve. We will review the workflow, tools and constraints with you."
+          href="/#contact"
+          label="Discuss Your Workflow"
         />
 
         <AuthorBio>

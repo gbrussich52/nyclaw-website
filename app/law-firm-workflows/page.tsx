@@ -14,6 +14,7 @@ export const metadata: Metadata = {
     url: 'https://nyclaw.io/law-firm-workflows',
     type: 'website',
     images: ['https://nyclaw.io/opengraph-image'],
+    siteName: "NYClaw.io",
   },
   twitter: { card: 'summary_large_image', images: ['https://nyclaw.io/opengraph-image'] },
 }

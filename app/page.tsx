@@ -21,25 +21,27 @@ import { CALENDLY_URL } from './config'
 import { work, workPaths } from '../lib/client-work'
 
 export const metadata: Metadata = {
-  title: 'AI Automation for Small Business | Westchester & NYC',
+  title: "AI Automation for Westchester & NYC",
   description:
     'NYClaw.io is an AI agency that builds custom automations and agents for small businesses in Westchester County, NY and NYC. Free 30-minute call.',
   keywords:
     'AI agency, custom AI agents, AI automation agency, small business AI, workflow automation, Westchester NY, NYC AI agency, agent development, OODA Loop',
   openGraph: {
-    title: 'NYClaw.io | AI Automation Agency | Westchester, NYC',
+    title: "AI Automation for Westchester & NYC",
     description:
       'Practical AI and automation for inquiries, follow-up and repeat work. Start with one job and the tools you already use.',
     url: 'https://nyclaw.io',
     siteName: 'NYClaw.io',
     type: 'website',
     locale: 'en_US',
+    images: ["https://nyclaw.io/opengraph-image"],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'NYClaw.io | AI Automation Agency | Westchester, NYC',
+    title: "AI Automation for Westchester & NYC",
     description:
       'Custom AI automations and agents for small businesses in Westchester County & NYC. Free 30-minute call.',
+    images: ["https://nyclaw.io/opengraph-image"],
   },
   alternates: {
     canonical: 'https://nyclaw.io',

@@ -34,12 +34,14 @@ export const metadata: Metadata = {
     url: 'https://nyclaw.io/services/ai-automation',
     siteName: 'NYClaw.io',
     type: 'website',
+    images: ["https://nyclaw.io/opengraph-image"],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Custom AI Agents & Automation | NYClaw.io',
     description:
       'Scoped agents and workflow automations for small businesses, with optional care after handoff.',
+    images: ["https://nyclaw.io/opengraph-image"],
   },
   alternates: {
     canonical: 'https://nyclaw.io/services/ai-automation',

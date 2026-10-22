@@ -4,24 +4,26 @@ import ArticleShell from '../../components/ArticleShell'
 import { AuthorBio, Callout, CtaPanel, FaqSection, FeatureBlock, ResultList } from '../_components/post'
 
 export const metadata: Metadata = {
-  title: 'How NYC Plumbers Are Losing Thousands Every Month to Missed Calls',
+  title: "Missed-Call Follow-Up for NYC Plumbers & HVAC",
   description:
-    'NYC plumbing and HVAC contractors miss 20-30% of inbound calls during peak hours — each one a potential $500-$5,000 job. Here is how AI agents capture every lead and close more estimates.',
+    "Explore missed-call response and estimate follow-up for NYC plumbing and HVAC businesses. Check current tools, response rules and staff review points.",
   keywords:
     'ai for plumbers, plumbing business automation, hvac business ai, plumber lead follow-up, ai for contractors nyc, missed call text back plumber',
   openGraph: {
-    title: 'How NYC Plumbers Are Losing Thousands Every Month to Missed Calls',
+    title: "Missed-Call Follow-Up for NYC Plumbers & HVAC",
     description:
-      'Every unanswered call is a job that goes to a competitor. AI agents respond within 60 seconds, qualify leads, and run follow-up sequences automatically.',
+      "Explore missed-call response and estimate follow-up for NYC plumbing and HVAC businesses. Check current tools, response rules and staff review points.",
     url: 'https://nyclaw.io/blog/ai-automations-plumbing-hvac',
     type: 'article',
     siteName: 'NYClaw.io',
+    images: ["https://nyclaw.io/opengraph-image"],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'How NYC Plumbers Are Losing Thousands Every Month to Missed Calls',
+    title: "Missed-Call Follow-Up for NYC Plumbers & HVAC",
     description:
-      'Every unanswered call is a job that goes to a competitor. AI responds in 60 seconds.',
+      "Explore missed-call response and estimate follow-up for NYC plumbing and HVAC businesses. Check current tools, response rules and staff review points.",
+    images: ["https://nyclaw.io/opengraph-image"],
   },
   alternates: {
     canonical: 'https://nyclaw.io/blog/ai-automations-plumbing-hvac',
@@ -183,9 +185,9 @@ export default function BlogPost() {
 
         <CtaPanel
           title="See the Actual System"
-          blurb="Free workshop for NYC plumbing, HVAC, and contracting businesses — the actual tools, the actual setup, the actual impact on your close rate."
-          href="/workshop"
-          label="Register for the Free Workshop"
+          blurb="Tell us which recurring task you want to improve. We will review the workflow, tools and constraints with you."
+          href="/#contact"
+          label="Discuss Your Workflow"
         />
 
         <AuthorBio>

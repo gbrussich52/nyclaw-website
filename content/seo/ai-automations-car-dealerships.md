@@ -71,4 +71,4 @@ If you're a dealer principal, GM, or internet director in the NYC area and want 
 
 No software to buy. No long-term commitment. Just a working session on where your biggest automation wins are.
 
-[Register for the free AI automation workshop →](/workshop)
+[Discuss your workflow with NYClaw →](/#contact)

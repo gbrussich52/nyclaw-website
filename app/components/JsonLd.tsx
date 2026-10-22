@@ -5,14 +5,15 @@
 // Freshness signal for WebSite JSON-LD (geo audit 2026-10-16). Bump when page content changes.
 const SITE_LAST_MODIFIED = '2026-10-16'
 
-export function LocalBusinessJsonLd() {
+export function ServiceOverviewJsonLd() {
   const jsonLd = {
     '@context': 'https://schema.org',
-    '@type': 'ProfessionalService',
+    '@type': 'Service',
+    '@id': 'https://nyclaw.io/#service',
+    provider: { '@id': 'https://nyclaw.io/#organization' },
     name: 'NYClaw.io',
     description: 'AI and automation agency for small businesses in Westchester County and NYC. Advice, custom builds, marketing systems and a written handoff.',
     url: 'https://nyclaw.io',
-    email: 'hello@nyclaw.io',
     sameAs: [
       'https://twitter.com/AinsleyNYC',
     ],
@@ -29,8 +30,6 @@ export function LocalBusinessJsonLd() {
       },
     ],
     serviceType: ['Custom AI Agents', 'Workflow Automation', 'AI Strategy & Roadmaps', 'Marketing Automations'],
-    priceRange: '$3,500 - $15,000',
-    knowsAbout: ['Artificial Intelligence', 'Custom AI Agents', 'Business Automation', 'OODA Loop Framework'],
   }
 
   return (
@@ -42,11 +41,9 @@ export function LocalBusinessJsonLd() {
 }
 
 /**
- * Organization JSON-LD — distinct from LocalBusinessJsonLd (ProfessionalService).
- * AEO/GEO audits and LLM answer engines look for schema.org Organization
- * specifically (logo, sameAs, founder) to resolve brand identity; the existing
- * ProfessionalService type alone was scoring as a gap. Additive, not a
- * replacement — both can validly describe the same entity.
+ * Organization identity supplies the provider for the separate Service node.
+ * No public office/address is claimed: Google's LocalBusiness requirements
+ * must not be satisfied by inventing a street address or private location.
  */
 export function OrganizationJsonLd() {
   const jsonLd = {

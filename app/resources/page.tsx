@@ -11,11 +11,15 @@ export const metadata: Metadata = {
     title: 'The AI Operator\'s Playbook — Free Download',
     description: 'Practical frameworks, templates, and the implementation roadmap we used to build Ainsley. Open it after your request is received.',
     type: 'website',
+    images: ["https://nyclaw.io/opengraph-image"],
+    url: "https://nyclaw.io/resources",
+    siteName: "NYClaw.io",
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Free AI Operator\'s Playbook',
     description: 'Frameworks, templates, and a 30-day launch checklist for AI systems that work.',
+    images: ["https://nyclaw.io/opengraph-image"],
   },
   alternates: {
     canonical: 'https://nyclaw.io/resources',

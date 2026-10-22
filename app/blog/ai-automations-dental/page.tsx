@@ -9,10 +9,10 @@ const title = "Dental Office Automation: Five Workflows to Review"
 const description = "Review five dental practice workflows: reminders, recall, follow-up, review requests and intake. Check native software, patient data access and staff review first."
 const url = 'https://nyclaw.io/blog/ai-automations-dental'
 export const metadata: Metadata = {
-  title, description,
+  title: "Dental Office Automation: Five Workflows", description: "Review dental reminders, recall, follow-up, review requests and intake. Check existing software, patient data access and staff review first.",
   alternates: { canonical: url },
-  openGraph: { title, description, url, type: 'article', siteName: 'NYClaw.io', images: ['https://nyclaw.io/opengraph-image'] },
-  twitter: { card: 'summary_large_image', title, description, images: ['https://nyclaw.io/opengraph-image'] },
+  openGraph: { title: "Dental Office Automation: Five Workflows", description: "Review dental reminders, recall, follow-up, review requests and intake. Check existing software, patient data access and staff review first.", url, type: 'article', siteName: 'NYClaw.io', images: ['https://nyclaw.io/opengraph-image'] },
+  twitter: { card: 'summary_large_image', title: "Dental Office Automation: Five Workflows", description: "Review dental reminders, recall, follow-up, review requests and intake. Check existing software, patient data access and staff review first.", images: ['https://nyclaw.io/opengraph-image'] },
 }
 const faqItems = [
   {

@@ -6,7 +6,7 @@ import Link from 'next/link'
 import { Analytics } from '@vercel/analytics/next'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import OutboundTracker from './components/OutboundTracker'
-import { LocalBusinessJsonLd, WebSiteJsonLd, OrganizationJsonLd } from './components/JsonLd'
+import { ServiceOverviewJsonLd, WebSiteJsonLd, OrganizationJsonLd } from './components/JsonLd'
 import SiteHeader, { Wordmark } from './components/SiteHeader'
 import { CALENDLY_URL } from './config'
 
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     template: '%s | NYClaw.io',
   },
   description:
-    'NYClaw.io is an AI agency that designs and builds custom automations and agents for small businesses in Westchester County, NY and NYC. Inquiries, follow-up and repeat work, built around the tools your team uses.',
+    'Custom AI agents and workflow automation for small businesses in Westchester and NYC. Improve inquiries, follow-up and repeat work with NYClaw.',
   keywords:
     'AI agency, custom AI agents, AI automation agency, small business AI, workflow automation, Westchester NY, NYC AI agency, AI consulting, agent development',
   openGraph: {
@@ -64,7 +64,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${spaceGrotesk.variable} ${inter.variable}`}>
       <body className="bg-zinc-950 text-zinc-300">
-        <LocalBusinessJsonLd />
+        <ServiceOverviewJsonLd />
         <WebSiteJsonLd />
         <OrganizationJsonLd />
         <SiteHeader />

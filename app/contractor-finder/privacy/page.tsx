@@ -1,6 +1,21 @@
 import type { Metadata } from 'next'
 import ArticleShell from '../../components/ArticleShell'
-export const metadata: Metadata = { title: 'Contractor Finder Privacy & Source Policy', alternates: { canonical: 'https://nyclaw.io/contractor-finder/privacy' } }
+export const metadata: Metadata = {
+  title: 'Contractor Finder Privacy & Source Policy',
+  description: 'How the contractor finder handles search categories, public business sources, evidence permissions and correction requests. No homeowner profiles.',
+  alternates: { canonical: 'https://nyclaw.io/contractor-finder/privacy' },
+  openGraph: {
+    title: 'Contractor Finder Privacy & Source Policy',
+    description: 'How the contractor finder handles search categories, public business sources, evidence permissions and correction requests. No homeowner profiles.',
+    url: 'https://nyclaw.io/contractor-finder/privacy',
+    type: 'website', siteName: 'NYClaw.io', images: ['https://nyclaw.io/opengraph-image'],
+  },
+  twitter: {
+    card: 'summary_large_image', title: 'Contractor Finder Privacy & Source Policy',
+    description: 'How the contractor finder handles search categories, public business sources, evidence permissions and correction requests. No homeowner profiles.',
+    images: ['https://nyclaw.io/opengraph-image'],
+  },
+}
 export default function FinderPrivacy() {
   return <ArticleShell backHref="/contractor-finder" backLabel="Contractor finder" meta="Effective October 20, 2026" title="Privacy & source policy" deck="A small, sourced collection of local businesses. No homeowner profiles or paid rankings.">
     <h2>What this finder receives</h2><p>The website and MCP app accept a trade, county/city area, property category, job category and evidence preference. Do not enter a street address, name, phone number, private group content or payment information. Searches do not create an account, lead, booking, message or payment.</p>

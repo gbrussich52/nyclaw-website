@@ -3,18 +3,22 @@ import Link from 'next/link'
 import { ArrowRight, ChevronRight } from 'lucide-react'
 
 export const metadata: Metadata = {
-  title: 'AI Automation Blog | Westchester & NYC Small Business Insights',
+  title: "AI Automation Blog for Small Business",
   description:
     'Insights on AI implementation, website SEO, automation, and small business technology from NYClaw.io — an AI agency serving Westchester County, NY and NYC.',
   openGraph: {
-    title: 'AI Automation Blog | Westchester & NYC Small Business Insights',
+    title: "AI Automation Blog for Small Business",
     description:
       'Insights on AI implementation, website SEO, automation, and small business technology.',
     url: 'https://nyclaw.io/blog',
+    images: ["https://nyclaw.io/opengraph-image"],
+    siteName: "NYClaw.io",
+    type: "website",
   },
   alternates: {
     canonical: 'https://nyclaw.io/blog',
   },
+  twitter: {"card":"summary_large_image","title":"AI Automation Blog for Small Business","description":"Insights on AI implementation, website SEO, automation, and small business technology from NYClaw.io — an AI agency serving Westchester County, NY and NYC.","images":["https://nyclaw.io/opengraph-image"]},
 }
 
 const posts = [

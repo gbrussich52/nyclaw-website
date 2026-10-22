@@ -4,24 +4,26 @@ import ArticleShell from '../../components/ArticleShell'
 import { AuthorBio, Callout, CtaPanel, FaqSection, FeatureBlock } from '../_components/post'
 
 export const metadata: Metadata = {
-  title: 'Why Westchester Businesses Are Hiring AI Consultants in 2026',
+  title: "AI Consulting for Westchester Businesses",
   description:
-    'AI consulting in Westchester County is growing fast — but most small businesses don\'t know what an AI consultant actually does or what it costs. Here\'s the honest guide.',
+    "Learn what an AI consultant does for Westchester small businesses, how projects are scoped and what to check when comparing costs and providers.",
   keywords:
     'ai consulting westchester, ai consultant westchester county, ai agency westchester ny, ai consulting small business ny, hire ai consultant westchester, ai automation westchester county',
   openGraph: {
-    title: 'Why Westchester Businesses Are Hiring AI Consultants in 2026',
+    title: "AI Consulting for Westchester Businesses",
     description:
-      'Most Westchester small businesses are still running the same manual processes they ran in 2022. Here\'s what an AI consultant does, what it costs, and what changes after.',
+      "Learn what an AI consultant does for Westchester small businesses, how projects are scoped and what to check when comparing costs and providers.",
     url: 'https://nyclaw.io/blog/ai-consulting-westchester',
     type: 'article',
     siteName: 'NYClaw.io',
+    images: ["https://nyclaw.io/opengraph-image"],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Why Westchester Businesses Are Hiring AI Consultants in 2026',
+    title: "AI Consulting for Westchester Businesses",
     description:
-      'Most Westchester small businesses are still running the same manual processes they ran in 2022. Here\'s what changes after AI consulting.',
+      "Learn what an AI consultant does for Westchester small businesses, how projects are scoped and what to check when comparing costs and providers.",
+    images: ["https://nyclaw.io/opengraph-image"],
   },
   alternates: {
     canonical: 'https://nyclaw.io/blog/ai-consulting-westchester',

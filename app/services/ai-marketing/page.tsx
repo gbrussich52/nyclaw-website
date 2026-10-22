@@ -24,22 +24,24 @@ import CtaPanel from '../../components/CtaPanel'
 export const metadata: Metadata = {
   title: 'AI Marketing Automations & Agents',
   description:
-    'NYClaw.io builds marketing workflows for small businesses: inquiry routing, follow-up drafts, approved content and clear measurement. Westchester County and NYC.',
+    "NYClaw builds small business marketing workflows for inquiry routing, follow-up drafts and approved content in Westchester County and NYC.",
   keywords:
     'AI marketing automation, AI lead generation agents, content engine build, AI email automation, AI marketing westchester, marketing automation agency',
   openGraph: {
     title: 'AI Marketing Automations & Agents | NYClaw.io',
     description:
-      'Give inquiries a clear next step with scoped follow-ups, content review and reporting.',
+      "NYClaw builds small business marketing workflows for inquiry routing, follow-up drafts and approved content in Westchester County and NYC.",
     url: 'https://nyclaw.io/services/ai-marketing',
     siteName: 'NYClaw.io',
     type: 'website',
+    images: ["https://nyclaw.io/opengraph-image"],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'AI Marketing Automations | NYClaw.io',
     description:
-      'Scoped marketing workflows for inquiries, follow-ups and content review.',
+      "NYClaw builds small business marketing workflows for inquiry routing, follow-up drafts and approved content in Westchester County and NYC.",
+    images: ["https://nyclaw.io/opengraph-image"],
   },
   alternates: {
     canonical: 'https://nyclaw.io/services/ai-marketing',

@@ -2,8 +2,11 @@ import { Metadata } from 'next'
 import ArticleShell from '../components/ArticleShell'
 
 export const metadata: Metadata = {
-  title: 'DMCA & Copyright Policy | NYClaw.io',
-  description: 'Copyright and DMCA takedown policy for NYClaw.io',
+  title: 'DMCA and Copyright Policy',
+  description: 'How to report copyright infringement on NYClaw.io, what a DMCA notice needs and how to submit a counter-notification.',
+  alternates: {"canonical":"https://nyclaw.io/dmca"},
+  openGraph: {"title":"DMCA and Copyright Policy","description":"How to report copyright infringement on NYClaw.io, what a DMCA notice needs and how to submit a counter-notification.","url":"https://nyclaw.io/dmca","type":"website","siteName":"NYClaw.io","images":["https://nyclaw.io/opengraph-image"]},
+  twitter: {"card":"summary_large_image","title":"DMCA and Copyright Policy","description":"How to report copyright infringement on NYClaw.io, what a DMCA notice needs and how to submit a counter-notification.","images":["https://nyclaw.io/opengraph-image"]},
 }
 
 export default function DMCAPage() {

@@ -4,24 +4,26 @@ import ArticleShell from '../../components/ArticleShell'
 import { AuthorBio, Callout, CtaPanel, FaqSection, FeatureBlock } from '../_components/post'
 
 export const metadata: Metadata = {
-  title: 'AI Appointment Scheduling: Complete Guide for Small Businesses (2026)',
+  title: "AI Appointment Scheduling for Small Business",
   description:
-    'AI scheduling eliminates phone tag, fills your calendar 24/7, and helps cut down on no-shows. Here\'s how small businesses are implementing it in 2026, from tools and costs to what to expect.',
+    "Explore AI appointment scheduling for small businesses: booking tools, reminders, costs and setup choices. Check what your current software supports.",
   keywords:
     'AI appointment scheduling, AI scheduling small business, appointment automation, AI booking system, automated appointment scheduling 2026, AI scheduler small business',
   openGraph: {
-    title: 'AI Appointment Scheduling: Complete Guide for Small Businesses (2026)',
+    title: "AI Appointment Scheduling for Small Business",
     description:
-      'Stop playing phone tag. AI scheduling fills your calendar around the clock, qualifies leads before they book, and helps cut down on no-shows. Here\'s how small businesses set it up.',
+      "Explore AI appointment scheduling for small businesses: booking tools, reminders, costs and setup choices. Check what your current software supports.",
     url: 'https://nyclaw.io/blog/ai-appointment-scheduling',
     type: 'article',
     siteName: 'NYClaw.io',
+    images: ["https://nyclaw.io/opengraph-image"],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'AI Appointment Scheduling for Small Businesses (2026)',
+    title: "AI Appointment Scheduling for Small Business",
     description:
-      'Phone tag is costing your business real time every week. AI scheduling books appointments 24/7 and helps cut down on no-shows. Here\'s the complete guide.',
+      "Explore AI appointment scheduling for small businesses: booking tools, reminders, costs and setup choices. Check what your current software supports.",
+    images: ["https://nyclaw.io/opengraph-image"],
   },
   alternates: {
     canonical: 'https://nyclaw.io/blog/ai-appointment-scheduling',

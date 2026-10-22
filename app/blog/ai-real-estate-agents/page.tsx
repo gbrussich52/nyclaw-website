@@ -4,24 +4,26 @@ import ArticleShell from '../../components/ArticleShell'
 import { AuthorBio, Callout, CtaPanel, FaqSection, FeatureBlock } from '../_components/post'
 
 export const metadata: Metadata = {
-  title: 'How AI Saves Real Estate Agents Hours Every Week (2026 Guide)',
+  title: "AI Workflows for Real Estate Agents",
   description:
-    'A property inquiry that sits for even 30 minutes is already gone. Here is how real estate agents are using AI to respond instantly, qualify leads, schedule showings, and follow up automatically in 2026.',
+    "Explore AI workflows for real estate inquiries, lead qualification, showing requests and follow-up. Review setup choices and where an agent checks the work.",
   keywords:
     'AI real estate, real estate automation, AI for real estate agents, real estate lead response, AI showing scheduler, real estate CRM automation',
   openGraph: {
-    title: 'How AI Saves Real Estate Agents Hours Every Week (2026 Guide)',
+    title: "AI Workflows for Real Estate Agents",
     description:
-      'A property inquiry that sits for even 30 minutes is already gone. Here is how real estate agents are using AI to respond instantly, qualify leads, and schedule showings automatically.',
+      "Explore AI workflows for real estate inquiries, lead qualification, showing requests and follow-up. Review setup choices and where an agent checks the work.",
     url: 'https://nyclaw.io/blog/ai-real-estate-agents',
     type: 'article',
     siteName: 'NYClaw.io',
+    images: ["https://nyclaw.io/opengraph-image"],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'How AI Saves Real Estate Agents Hours Every Week (2026 Guide)',
+    title: "AI Workflows for Real Estate Agents",
     description:
-      'A property inquiry that sits for even 30 minutes is already gone. Here is how AI closes that gap, and what it costs to set up.',
+      "Explore AI workflows for real estate inquiries, lead qualification, showing requests and follow-up. Review setup choices and where an agent checks the work.",
+    images: ["https://nyclaw.io/opengraph-image"],
   },
   alternates: {
     canonical: 'https://nyclaw.io/blog/ai-real-estate-agents',

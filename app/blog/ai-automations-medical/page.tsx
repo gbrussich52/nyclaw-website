@@ -10,24 +10,26 @@ import {
 } from '../_components/post'
 
 export const metadata: Metadata = {
-  title: '5 AI Automations Every NYC Medical Practice Should Be Running',
+  title: "5 AI Automations for NYC Medical Practices",
   description:
-    'NYC medical practices lose $30,000-$80,000 per year to no-shows, lapsed patients, and poor review volume. These five AI automations fix all of it without replacing your EMR.',
+    "Review five AI workflows for NYC medical practices, from reminders to intake. Check EMR capabilities, patient data access and staff review before setup.",
   keywords:
     'ai for medical practices, medical practice automation nyc, ai patient follow-up, reduce no-shows medical, ai for doctors office, medical practice management ai',
   openGraph: {
-    title: '5 AI Automations Every NYC Medical Practice Should Be Running',
+    title: "5 AI Automations for NYC Medical Practices",
     description:
-      'No-show sequences, lapsed patient reactivation, post-visit follow-up, Google review automation, and digital intake — all without replacing your EMR.',
+      "Review five AI workflows for NYC medical practices, from reminders to intake. Check EMR capabilities, patient data access and staff review before setup.",
     url: 'https://nyclaw.io/blog/ai-automations-medical',
     type: 'article',
     siteName: 'NYClaw.io',
+    images: ["https://nyclaw.io/opengraph-image"],
   },
   twitter: {
     card: 'summary_large_image',
-    title: '5 AI Automations Every NYC Medical Practice Should Be Running',
+    title: "5 AI Automations for NYC Medical Practices",
     description:
-      'NYC medical practices lose $30,000-$80,000/year to preventable gaps. Here is how AI fixes all five.',
+      "Review five AI workflows for NYC medical practices, from reminders to intake. Check EMR capabilities, patient data access and staff review before setup.",
+    images: ["https://nyclaw.io/opengraph-image"],
   },
   alternates: {
     canonical: 'https://nyclaw.io/blog/ai-automations-medical',
@@ -207,9 +209,9 @@ export default function BlogPost() {
 
         <CtaPanel
           title="See What This Looks Like for Your Practice"
-          blurb="Free workshop for NYC area medical practices — actual tools, actual setup, actual ROI math for your practice size."
-          href="/workshop"
-          label="Register for the Free Workshop"
+          blurb="Tell us which recurring task you want to improve. We will review the workflow, tools and constraints with you."
+          href="/#contact"
+          label="Discuss Your Workflow"
         />
 
         <AuthorBio>
