@@ -19,7 +19,17 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const recipe = resolveRecipe((await params).recipe)
   const page = workflowPages[recipe]
   const url = `https://nyclaw.io/ai-workflows/${recipe}`
-  return { title: page.title, description: page.description, alternates: { canonical: url }, openGraph: { title: page.title, description: page.description, url, type: 'website', siteName: 'NYClaw.io' } }
+  const title = recipe === 'order-handoff' ? 'Check Payment, Production & Shipment Handoffs' : page.title
+  const description = {
+    'quote-followup': 'Review open quotes, timing and expiry before preparing an unsent follow-up. Try a fictional example and check whether your CRM covers the job.',
+    'invoice-discrepancies': 'Compare expected, invoiced and paid totals in matching currencies. Try a fictional invoice check and an internal draft for human review.',
+    'order-handoff': 'Check payment, production and shipment status for one order. Try a fictional handoff with review holds for unknown or conflicting facts.',
+  }[recipe]
+  return {
+    title, description, alternates: { canonical: url },
+    openGraph: { title, description, url, type: 'website', siteName: 'NYClaw.io', images: ['https://nyclaw.io/opengraph-image'] },
+    twitter: { card: 'summary_large_image', title, description, images: ['https://nyclaw.io/opengraph-image'] },
+  }
 }
 export default async function WorkflowPage({ params }: Props) {
   const recipe = resolveRecipe((await params).recipe)

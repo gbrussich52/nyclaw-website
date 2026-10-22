@@ -3,18 +3,22 @@ import Link from 'next/link'
 import { ArrowRight, ChevronRight } from 'lucide-react'
 
 export const metadata: Metadata = {
-  title: 'AI Knowledge Base: Identity, Operations & Excellence',
+  title: "AI Knowledge Base for Small Businesses",
   description: 'Research-backed guides on building AI assistants, mission-driven systems, and operational frameworks for small businesses from NYClaw.io.',
   keywords: 'AI assistant guide, AI identity framework, operational excellence, mission-driven systems, AI implementation guide',
   openGraph: {
-    title: 'AI Knowledge Base | NYClaw.io',
+    title: "AI Knowledge Base for Small Businesses",
     description: 'Research-backed guides on AI identity design, mission-driven operations, and avoiding the failure modes that kill small teams.',
     type: 'website',
+    images: ["https://nyclaw.io/opengraph-image"],
+    url: "https://nyclaw.io/knowledge",
+    siteName: "NYClaw.io",
   },
   twitter: {
     card: 'summary',
-    title: 'AI Knowledge Base | NYClaw.io',
+    title: "AI Knowledge Base for Small Businesses",
     description: 'Free research-backed guides on building AI systems that work.',
+    images: ["https://nyclaw.io/opengraph-image"],
   },
   alternates: {
     canonical: 'https://nyclaw.io/knowledge',

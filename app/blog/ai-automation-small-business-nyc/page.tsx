@@ -10,24 +10,26 @@ import {
 } from '../_components/post'
 
 export const metadata: Metadata = {
-  title: '5 Things NYC Small Business Owners Are Automating in 2026',
+  title: "5 AI Automations for NYC Small Businesses",
   description:
-    'NYC small businesses automating lead response, follow-up, appointments, review requests, and reactivation campaigns are outperforming competitors on conversion without more ad spend.',
+    "Explore five NYC small business workflows: lead response, follow-up, appointments, review requests and reactivation. Check tools and review points first.",
   keywords:
     'ai automation small business nyc, small business ai tools new york, automate small business operations, ai for nyc entrepreneurs, small business workflow automation 2026',
   openGraph: {
-    title: '5 Things NYC Small Business Owners Are Automating in 2026',
+    title: "5 AI Automations for NYC Small Businesses",
     description:
-      'The NYC small businesses winning right now respond faster, follow up consistently, and reactivate past customers — all on autopilot.',
+      "Explore five NYC small business workflows: lead response, follow-up, appointments, review requests and reactivation. Check tools and review points first.",
     url: 'https://nyclaw.io/blog/ai-automation-small-business-nyc',
     type: 'article',
     siteName: 'NYClaw.io',
+    images: ["https://nyclaw.io/opengraph-image"],
   },
   twitter: {
     card: 'summary_large_image',
-    title: '5 Things NYC Small Business Owners Are Automating in 2026',
+    title: "5 AI Automations for NYC Small Businesses",
     description:
-      'The NYC small businesses winning right now respond faster, follow up consistently, and reactivate past customers — all on autopilot.',
+      "Explore five NYC small business workflows: lead response, follow-up, appointments, review requests and reactivation. Check tools and review points first.",
+    images: ["https://nyclaw.io/opengraph-image"],
   },
   alternates: {
     canonical: 'https://nyclaw.io/blog/ai-automation-small-business-nyc',

@@ -10,15 +10,17 @@ import styles from './page.module.css'
 
 export const metadata: Metadata = {
   title: 'Free AI Workflow Kits for Small Business',
-  description: 'Try quote follow-up, invoice comparison, and order handoff with fictional examples. See computed findings, review points, and draft previews before connecting your own systems.',
+  description: "Try quote follow-up, invoice comparison and order handoff with fictional examples. Inspect findings and draft previews before connecting your systems.",
   alternates: { canonical: 'https://nyclaw.io/ai-workflows' },
   openGraph: {
     title: 'Free AI Workflow Kits | NYClaw.io',
-    description: 'Test a small business workflow, inspect the source facts, and see where a person needs to review. Free kits, with separately scoped implementation.',
+    description: "Try quote follow-up, invoice comparison and order handoff with fictional examples. Inspect findings and draft previews before connecting your systems.",
     url: 'https://nyclaw.io/ai-workflows',
     siteName: 'NYClaw.io',
     type: 'website',
+    images: ["https://nyclaw.io/opengraph-image"],
   },
+  twitter: {"card":"summary_large_image","title":"Free AI Workflow Kits for Small Business","description":"Try quote follow-up, invoice comparison and order handoff with fictional examples. Inspect findings and draft previews before connecting your systems.","images":["https://nyclaw.io/opengraph-image"]},
 }
 
 export default function AIWorkflowsPage() {

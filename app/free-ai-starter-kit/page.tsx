@@ -23,22 +23,24 @@ const GITHUB_URL = 'https://github.com/gbrussich52/mainstreet-mcp'
 export const metadata: Metadata = {
   title: 'Free AI Starter Kit for Small Business',
   description:
-    'A free starter kit that lets Claude answer customer questions from your real business information — hours, services, prices, FAQs and policies. Ten industry versions, built by NYClaw.io.',
+    "Try a free Claude starter kit grounded in your business hours, services, prices, FAQs and policies. Choose from ten industry versions by NYClaw.",
   keywords:
     'AI starter kit small business, MCP server small business, Claude business assistant, Main Street MCP, free AI tool small business',
   openGraph: {
     title: 'Free AI Starter Kit for Small Business | NYClaw.io',
     description:
-      'Fill in one file with your hours, services, prices, FAQs and policies. Claude answers customer questions from your real information instead of guessing.',
+      "Try a free Claude starter kit grounded in your business hours, services, prices, FAQs and policies. Choose from ten industry versions by NYClaw.",
     url: 'https://nyclaw.io/free-ai-starter-kit',
     siteName: 'NYClaw.io',
     type: 'website',
+    images: ["https://nyclaw.io/opengraph-image"],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Free AI Starter Kit for Small Business | NYClaw.io',
     description:
-      'A free starter kit so Claude can answer from your real business information, not a guess.',
+      "Try a free Claude starter kit grounded in your business hours, services, prices, FAQs and policies. Choose from ten industry versions by NYClaw.",
+    images: ["https://nyclaw.io/opengraph-image"],
   },
   alternates: {
     canonical: 'https://nyclaw.io/free-ai-starter-kit',

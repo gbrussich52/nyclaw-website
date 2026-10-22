@@ -4,24 +4,26 @@ import ArticleShell from '../../components/ArticleShell'
 import { FaqSection } from '../_components/post'
 
 export const metadata: Metadata = {
-  title: "I Built a CLI That Turns RevenueCat's Charts API Into a Subscription Health Dashboard",
+  title: "RevenueCat Pulse: Subscription Metrics CLI",
   description:
-    "How I built revenuecat-pulse — a Python CLI and library that fetches MRR, churn, and subscription metrics from RevenueCat's Charts API, renders a terminal dashboard with sparklines, and uses Claude AI to generate strategic health insights.",
+    "See how revenuecat-pulse uses the RevenueCat Charts API for subscription metrics, terminal dashboards and optional AI analysis. Python CLI and library.",
   keywords:
     'RevenueCat Charts API, subscription health dashboard, MRR CLI, RevenueCat Python, subscription metrics CLI, revenuecat-pulse',
   openGraph: {
-    title: "I Built a CLI That Turns RevenueCat's Charts API Into a Subscription Health Dashboard",
+    title: "RevenueCat Pulse: Subscription Metrics CLI",
     description:
-      "revenuecat-pulse fetches MRR, churn, and subscription metrics from RevenueCat's Charts API and uses Claude AI to generate strategic health insights in your terminal.",
+      "See how revenuecat-pulse uses the RevenueCat Charts API for subscription metrics, terminal dashboards and optional AI analysis. Python CLI and library.",
     url: 'https://nyclaw.io/blog/revenuecat-pulse',
     type: 'article',
     siteName: 'NYClaw.io',
+    images: ["https://nyclaw.io/opengraph-image"],
   },
   twitter: {
     card: 'summary_large_image',
-    title: "RevenueCat Charts API CLI, Subscription Health Dashboard",
+    title: "RevenueCat Pulse: Subscription Metrics CLI",
     description:
-      'MRR, churn, sparklines, Claude AI insights, all in your terminal from RevenueCat Charts API.',
+      "See how revenuecat-pulse uses the RevenueCat Charts API for subscription metrics, terminal dashboards and optional AI analysis. Python CLI and library.",
+    images: ["https://nyclaw.io/opengraph-image"],
   },
   alternates: {
     canonical: 'https://nyclaw.io/blog/revenuecat-pulse',

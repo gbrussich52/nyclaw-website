@@ -4,24 +4,26 @@ import ArticleShell from '../../components/ArticleShell'
 import { CtaPanel, FaqSection } from '../_components/post'
 
 export const metadata: Metadata = {
-  title: 'Agentic AI Security: Best Practices for Developers Building AI Agents | NYClaw.io',
+  title: "Agentic AI Security: Developer Best Practices",
   description:
-    "AI agents that can write code, send emails, push to GitHub, and access production systems introduce security risks traditional software never had. Here's how to build them responsibly.",
+    "Review AI agent security risks: prompt injection, credentials and production access. Set permissions and review points before connecting tools.",
   keywords:
     'agentic AI security, AI agent security best practices, prompt injection AI, AI agent credentials, AI security 2026, autonomous AI security',
   openGraph: {
-    title: 'Agentic AI Security: Best Practices for Developers Building AI Agents',
+    title: "Agentic AI Security: Developer Best Practices",
     description:
-      'AI agents with access to code, email, and production systems have a new security surface. Here is how to build them without introducing vulnerabilities.',
+      "Review AI agent security risks: prompt injection, credentials and production access. Set permissions and review points before connecting tools.",
     url: 'https://nyclaw.io/blog/agentic-ai-security-best-practices',
     type: 'article',
     siteName: 'NYClaw.io',
+    images: ["https://nyclaw.io/opengraph-image"],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Agentic AI Security Best Practices',
+    title: "Agentic AI Security: Developer Best Practices",
     description:
-      'Prompt injection, credential exposure, blast radius. AI agents introduce security risks traditional software never had. How to build them right.',
+      "Review AI agent security risks: prompt injection, credentials and production access. Set permissions and review points before connecting tools.",
+    images: ["https://nyclaw.io/opengraph-image"],
   },
   alternates: {
     canonical: 'https://nyclaw.io/blog/agentic-ai-security-best-practices',

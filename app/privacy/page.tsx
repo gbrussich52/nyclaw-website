@@ -2,12 +2,14 @@ import type { Metadata } from 'next'
 import ArticleShell from '../components/ArticleShell'
 
 export const metadata: Metadata = {
-  title: 'Privacy Policy | NYClaw.io',
+  title: 'Privacy Policy and Data Use',
   description:
     'How NYClaw.io collects and uses your information: no accounts, no cookies, no data sold. Contact hello@nyclaw.io anytime.',
   alternates: {
     canonical: 'https://nyclaw.io/privacy',
   },
+  openGraph: {"title":"Privacy Policy and Data Use","description":"How NYClaw.io collects and uses your information: no accounts, no cookies, no data sold. Contact hello@nyclaw.io anytime.","url":"https://nyclaw.io/privacy","type":"website","siteName":"NYClaw.io","images":["https://nyclaw.io/opengraph-image"]},
+  twitter: {"card":"summary_large_image","title":"Privacy Policy and Data Use","description":"How NYClaw.io collects and uses your information: no accounts, no cookies, no data sold. Contact hello@nyclaw.io anytime.","images":["https://nyclaw.io/opengraph-image"]},
 }
 
 export default function PrivacyPage() {

@@ -2,12 +2,14 @@ import type { Metadata } from 'next'
 import ArticleShell from '../components/ArticleShell'
 
 export const metadata: Metadata = {
-  title: 'Terms of Service | NYClaw.io',
+  title: 'Website and Service Terms',
   description:
     "The terms governing use of NYClaw.io's website and AI automation services for Westchester County and NYC businesses.",
   alternates: {
     canonical: 'https://nyclaw.io/terms',
   },
+  openGraph: {"title":"Website and Service Terms","description":"The terms governing use of NYClaw.io's website and AI automation services for Westchester County and NYC businesses.","url":"https://nyclaw.io/terms","type":"website","siteName":"NYClaw.io","images":["https://nyclaw.io/opengraph-image"]},
+  twitter: {"card":"summary_large_image","title":"Website and Service Terms","description":"The terms governing use of NYClaw.io's website and AI automation services for Westchester County and NYC businesses.","images":["https://nyclaw.io/opengraph-image"]},
 }
 
 export default function TermsPage() {

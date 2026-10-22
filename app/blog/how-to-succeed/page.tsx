@@ -4,24 +4,26 @@ import ArticleShell from '../../components/ArticleShell'
 import { CtaPanel, FaqSection } from '../_components/post'
 
 export const metadata: Metadata = {
-  title: 'How to Build an AI Assistant That Actually Succeeds | NYClaw.io',
+  title: "How to Build an AI Assistant That Succeeds",
   description:
-    "70% of AI projects fail. Not because of bad code, but because of unclear identity. Here's the complete framework, identity, governance, accountability, scalability, that actually works.",
+    "Build a consistent AI assistant with a clear identity, governance, accountability and review process. Explore the framework and the Ainsley case study.",
   keywords:
     'how to build AI assistant, AI assistant framework, AI project failure, AI governance, AI identity, AI assistant design',
   openGraph: {
-    title: 'How to Build an AI Assistant That Actually Succeeds',
+    title: "How to Build an AI Assistant That Succeeds",
     description:
-      'Most AI projects fail because of unclear identity, not bad code. Here is the four-pillar framework that keeps AI assistants on track.',
+      "Build a consistent AI assistant with a clear identity, governance, accountability and review process. Explore the framework and the Ainsley case study.",
     url: 'https://nyclaw.io/blog/how-to-succeed',
     type: 'article',
     siteName: 'NYClaw.io',
+    images: ["https://nyclaw.io/opengraph-image"],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'How to Build an AI Assistant That Actually Succeeds',
+    title: "How to Build an AI Assistant That Succeeds",
     description:
-      'AI projects usually fail because of unclear identity, not bad code. Here is the framework that works.',
+      "Build a consistent AI assistant with a clear identity, governance, accountability and review process. Explore the framework and the Ainsley case study.",
+    images: ["https://nyclaw.io/opengraph-image"],
   },
   alternates: {
     canonical: 'https://nyclaw.io/blog/how-to-succeed',

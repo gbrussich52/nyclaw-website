@@ -5,24 +5,26 @@ import ArticleShell from '../../components/ArticleShell'
 import { AuthorBio, Callout, CtaPanel, FaqSection, FeatureBlock } from '../_components/post'
 
 export const metadata: Metadata = {
-  title: 'AI Automation Agency vs. AI Answering Service: What Are You Actually Comparing?',
+  title: "AI Automation Agency vs. AI Answering Service",
   description:
-    'Both get called "AI concierge." One answers phone calls with a script. The other builds a system that runs your workflow. Here is how to tell which one a Westchester or NYC business actually needs — and who else is in the local market.',
+    "Compare an AI answering service with a workflow automation agency. See which fits your Westchester or NYC business and what to check before hiring.",
   keywords:
     'ai automation agency vs ai answering service, best ai automation agency westchester, ai consultant vs ai answering service, ai concierge for small business, ai automation companies near me',
   openGraph: {
-    title: 'AI Automation Agency vs. AI Answering Service: What Are You Actually Comparing?',
+    title: "AI Automation Agency vs. AI Answering Service",
     description:
-      'Both get pitched as "AI concierge." They are not the same thing. Here is the real difference, and who else operates in Westchester County and NYC.',
+      "Compare an AI answering service with a workflow automation agency. See which fits your Westchester or NYC business and what to check before hiring.",
     url: 'https://nyclaw.io/blog/ai-automation-agency-vs-ai-answering-service',
     type: 'article',
     siteName: 'NYClaw.io',
+    images: ["https://nyclaw.io/opengraph-image"],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'AI Automation Agency vs. AI Answering Service: What Are You Actually Comparing?',
+    title: "AI Automation Agency vs. AI Answering Service",
     description:
-      'Both get pitched as "AI concierge." Here is the real difference, and who else operates in Westchester County and NYC.',
+      "Compare an AI answering service with a workflow automation agency. See which fits your Westchester or NYC business and what to check before hiring.",
+    images: ["https://nyclaw.io/opengraph-image"],
   },
   alternates: {
     canonical: 'https://nyclaw.io/blog/ai-automation-agency-vs-ai-answering-service',

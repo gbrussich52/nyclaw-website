@@ -9,18 +9,21 @@ const DESCRIPTION =
 const URL = 'https://nyclaw.io/blog/law-firm-missing-document-follow-up'
 
 export const metadata: Metadata = {
-  title: TITLE,
-  description: DESCRIPTION,
+  title: "Missing-Document Follow-Up for Law Firms",
+  description: "Review law-firm missing-document follow-up: check Clio first, define the checklist and staff approval point, then decide whether automation is needed.",
   keywords:
     'law firm missing document follow up, client document reminders law firm, law firm intake automation, Clio Grow document reminders',
   openGraph: {
-    title: TITLE,
-    description: DESCRIPTION,
+    title: "Missing-Document Follow-Up for Law Firms",
+    description: "Review law-firm missing-document follow-up: check Clio first, define the checklist and staff approval point, then decide whether automation is needed.",
     url: URL,
     type: 'article',
     siteName: 'NYClaw.io',
+    images: ["https://nyclaw.io/opengraph-image"],
   },
-  twitter: { card: 'summary_large_image', title: TITLE, description: DESCRIPTION },
+  twitter: { card: 'summary_large_image', title: "Missing-Document Follow-Up for Law Firms", description: "Review law-firm missing-document follow-up: check Clio first, define the checklist and staff approval point, then decide whether automation is needed." ,
+    images: ["https://nyclaw.io/opengraph-image"],
+  },
   alternates: { canonical: URL },
 }
 

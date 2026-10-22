@@ -4,17 +4,21 @@ import { ChevronRight } from 'lucide-react'
 import ArticleShell from '../../components/ArticleShell'
 
 export const metadata: Metadata = {
-  title: 'Mission-Driven Systems: Why Most Processes Fail | NYClaw.io',
+  title: "Mission-Driven Systems: Why Processes Fail",
   description: 'Why operational processes degrade over time and how to design mission-driven systems that resist entropy, with OKR frameworks and review cadences.',
   keywords: 'mission-driven systems, operational excellence, process design, OKR framework, accountability structures',
   openGraph: {
-    title: 'Mission-Driven Systems: Why Most Processes Fail (And How to Fix Them)',
+    title: "Mission-Driven Systems: Why Processes Fail",
     description: 'The entropy problem, mission statement design, and the operational frameworks that make processes stick.',
     type: 'article',
+    images: ["https://nyclaw.io/opengraph-image"],
+    url: "https://nyclaw.io/knowledge/mission-driven-systems",
+    siteName: "NYClaw.io",
   },
   alternates: {
     canonical: 'https://nyclaw.io/knowledge/mission-driven-systems',
   },
+  twitter: {"card":"summary_large_image","title":"Mission-Driven Systems: Why Processes Fail","description":"Why operational processes degrade over time and how to design mission-driven systems that resist entropy, with OKR frameworks and review cadences.","images":["https://nyclaw.io/opengraph-image"]},
 }
 
 const schemaData = {

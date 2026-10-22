@@ -7,15 +7,16 @@ import { CALENDLY_URL } from '../config'
 import { work, workPaths } from '../../lib/client-work'
 
 export const metadata: Metadata = {
-  title: 'Client Work & Our Own Builds | NYClaw',
+  title: 'Client Work and Our Own Builds',
   description: 'Client work plus creative, email, alert and content systems built for our own businesses. See the builds and consider what fits your process.',
   alternates: { canonical: 'https://nyclaw.io/work' },
   openGraph: {
-    title: 'Client Work & Our Own Builds | NYClaw',
+    title: 'Client Work and Our Own Builds',
     description: 'See client work and systems built for our own businesses, from creative preparation to customer follow-up.',
     url: 'https://nyclaw.io/work',
     type: 'website',
     images: ['https://nyclaw.io/opengraph-image'],
+    siteName: "NYClaw.io",
   },
   twitter: { card: 'summary_large_image', images: ['https://nyclaw.io/opengraph-image'] },
 }

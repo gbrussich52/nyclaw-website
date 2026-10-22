@@ -4,24 +4,26 @@ import ArticleShell from '../../components/ArticleShell'
 import { CtaPanel, FaqSection } from '../_components/post'
 
 export const metadata: Metadata = {
-  title: 'What GPT-5.4 Means for Building AI Assistants That Actually Work | NYClaw.io',
+  title: "GPT-5.4 for Building AI Assistants",
   description:
     "GPT-5.4 brings native computer use, tool search, and 1M token context. Here's what it means for autonomous AI assistants.",
   keywords:
     'GPT-5.4, AI assistant architecture, autonomous AI, computer use AI, OpenAI GPT-5.4, agentic AI 2026',
   openGraph: {
-    title: 'What GPT-5.4 Means for Building AI Assistants That Actually Work',
+    title: "GPT-5.4 for Building AI Assistants",
     description:
       'GPT-5.4 ships with native computer use and a much larger context window. Here is what that means for autonomous AI assistant design.',
     url: 'https://nyclaw.io/blog/gpt-5-4',
     type: 'article',
     siteName: 'NYClaw.io',
+    images: ["https://nyclaw.io/opengraph-image"],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'What GPT-5.4 Means for AI Assistants',
+    title: "GPT-5.4 for Building AI Assistants",
     description:
       'Computer use, tool search, a much larger context window. GPT-5.4 is infrastructure validation for autonomous AI.',
+    images: ["https://nyclaw.io/opengraph-image"],
   },
   alternates: {
     canonical: 'https://nyclaw.io/blog/gpt-5-4',
