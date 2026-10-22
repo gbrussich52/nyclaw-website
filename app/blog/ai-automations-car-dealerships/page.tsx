@@ -193,9 +193,9 @@ export default function BlogPost() {
 
         <CtaPanel
           title="Want to See the Impact for Your Store?"
-          blurb="Free workshop for NYC dealer principals, GMs, and internet directors — the actual tools, setup, and close rate impact."
-          href="/workshop"
-          label="Register for the Free Workshop"
+          blurb="Tell us which recurring task you want to improve. We will review the workflow, tools and constraints with you."
+          href="/#contact"
+          label="Discuss Your Workflow"
         />
 
         <AuthorBio>

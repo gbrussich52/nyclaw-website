@@ -202,9 +202,9 @@ export default function BlogPost() {
 
         <CtaPanel
           title="See What This Looks Like for Your Business"
-          blurb="We run a free workshop for NYC small business owners — the actual tools, the actual setup, the actual time savings and revenue impact for your specific business model."
-          href="/workshop"
-          label="Register for the Free Workshop"
+          blurb="Tell us which recurring task you want to improve. We will review the workflow, tools and constraints with you."
+          href="/#contact"
+          label="Discuss Your Workflow"
         />
 
         <AuthorBio>

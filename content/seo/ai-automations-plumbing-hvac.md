@@ -53,4 +53,4 @@ If you run a plumbing, HVAC, or contracting business in the NYC area and want to
 
 No software to buy. No commitment. Just a clear picture of what's possible and whether it makes sense for your business.
 
-[Register for the free AI automation workshop →](/workshop)
+[Discuss your workflow with NYClaw →](/#contact)

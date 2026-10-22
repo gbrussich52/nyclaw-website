@@ -70,4 +70,4 @@ If you want to see what this looks like for your specific type of business — t
 
 We'll walk through what automation makes sense for your business model, what it costs, and what results to realistically expect. No pitch. No commitment. Just a working session.
 
-[Register for the free AI automation workshop →](/workshop)
+[Discuss your workflow with NYClaw →](/#contact)

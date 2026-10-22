@@ -163,7 +163,7 @@ export default function GPT54Article() {
       </ol>
       <p>
         For a full setup guide, start here:{' '}
-        <a href="/guides/best-ai-assistant-setup-2026">Best AI Assistant Setup 2026</a>.
+        <a href="/ai-operators-playbook.html">AI Operator’s Playbook</a>.
       </p>
 
       <h2>The Bottom Line</h2>

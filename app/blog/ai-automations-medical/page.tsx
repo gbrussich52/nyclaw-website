@@ -207,9 +207,9 @@ export default function BlogPost() {
 
         <CtaPanel
           title="See What This Looks Like for Your Practice"
-          blurb="Free workshop for NYC area medical practices — actual tools, actual setup, actual ROI math for your practice size."
-          href="/workshop"
-          label="Register for the Free Workshop"
+          blurb="Tell us which recurring task you want to improve. We will review the workflow, tools and constraints with you."
+          href="/#contact"
+          label="Discuss Your Workflow"
         />
 
         <AuthorBio>

@@ -183,9 +183,9 @@ export default function BlogPost() {
 
         <CtaPanel
           title="See the Actual System"
-          blurb="Free workshop for NYC plumbing, HVAC, and contracting businesses — the actual tools, the actual setup, the actual impact on your close rate."
-          href="/workshop"
-          label="Register for the Free Workshop"
+          blurb="Tell us which recurring task you want to improve. We will review the workflow, tools and constraints with you."
+          href="/#contact"
+          label="Discuss Your Workflow"
         />
 
         <AuthorBio>
