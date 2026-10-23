@@ -159,13 +159,13 @@ export default function Home() {
 
           <div className="relative z-10 px-6 pb-16 pt-36 sm:px-12 sm:pb-24 sm:pt-44">
             <div className="mx-auto grid w-full max-w-[72rem] items-center gap-14 lg:grid-cols-[1.15fr_0.85fr]">
-              <div className="max-w-[38rem]">
+              <div className="max-w-[40rem]">
                 <div className="mb-6 inline-flex h-7 items-center gap-2 rounded-full px-3 text-xs font-medium text-zinc-300 outline outline-1 outline-white/[0.12] [background:color-mix(in_oklab,#27272a_55%,#000)]">
                   <span className="inline-block h-[5px] w-[5px] rounded-full bg-cyan-400" />
                   AI for small businesses · Westchester County &amp; NYC
                 </div>
 
-                <h1 className="text-balance text-[clamp(2.75rem,6.2vw,4.4rem)] font-normal leading-[1.03] tracking-[-0.035em] text-white">
+                <h1 className="text-balance text-[clamp(2.6rem,5.4vw,3.9rem)] font-normal leading-[1.03] tracking-[-0.035em] text-white">
                   Stop doing the same work twice.{' '}
                   <span className="text-gradient-ai">Let AI take the busywork.</span>
                 </h1>
