@@ -42,13 +42,14 @@ export default function ContactForm() {
       <div className="mx-auto max-w-[44rem]">
         <div className="mb-12 flex flex-col items-center gap-4 text-center">
           <h2 className="text-balance text-[clamp(2rem,4vw,2.75rem)] font-medium leading-[1.12] tracking-[-0.025em] text-white">
-            Tell us where work gets stuck
+            Rather write it down?
           </h2>
           <p className="text-[17px] leading-relaxed text-zinc-300">
-            Start with the problem. You do not need a technical brief.
+            Tell us where work gets stuck. No technical brief needed.
           </p>
           <p className="max-w-[34rem] text-[15px] leading-relaxed text-zinc-400">
-            Tell us what happens today, what gets repeated and which tools you use. This is an inquiry, not a booking or an agreement to start paid work.
+            Describe one recent example, what gets repeated and which tools you use. We will reply
+            by email with an honest read on whether AI can help.
           </p>
         </div>
 

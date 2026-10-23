@@ -4,7 +4,9 @@ import { useState } from 'react'
 import { CheckCircle2 } from 'lucide-react'
 import { useContactSubmit } from '../hooks/useContactSubmit'
 
-export default function PlaybookForm() {
+/** `compact` renders a slim closing strip for pages where the guide is the
+ *  fallback for visitors not ready to talk, not the main action. */
+export default function PlaybookForm({ compact = false }: { compact?: boolean } = {}) {
   const [playbookEmail, setPlaybookEmail] = useState('')
   const { loading, errorMsg, submitted: playbookSubmitted, submit, honeypotRef } = useContactSubmit()
 
@@ -22,7 +24,17 @@ export default function PlaybookForm() {
 
   return (
     <section id="playbook-guide" className="px-6 pb-24">
-      <div className="mx-auto max-w-[44rem]">
+      <div className={`mx-auto ${compact ? 'max-w-[64rem]' : 'max-w-[44rem]'}`}>
+        {compact ? (
+          <div className="mb-6 flex flex-col gap-2 text-center">
+            <h2 className="text-balance text-[clamp(1.4rem,2.6vw,1.75rem)] font-medium leading-[1.2] tracking-[-0.02em] text-white">
+              Not ready to talk yet?
+            </h2>
+            <p className="text-[15px] leading-relaxed text-zinc-400">
+              Read the free guide first: where AI fits a small business, what it costs and what to do first.
+            </p>
+          </div>
+        ) : (
         <div className="mb-10 flex flex-col items-center gap-4 text-center">
           <h2 className="text-balance text-[clamp(1.75rem,3.5vw,2.25rem)] font-medium leading-[1.15] tracking-[-0.025em] text-white">
             Free AI Readiness Guide
@@ -31,8 +43,9 @@ export default function PlaybookForm() {
             A plain-English guide to where AI fits your business, what it costs, and what to do first. No jargon. No fluff.
           </p>
         </div>
+        )}
 
-        <div className="panel relative isolate overflow-hidden rounded-2xl px-6 py-10 text-center sm:px-10">
+        <div className={`panel relative isolate mx-auto overflow-hidden rounded-2xl px-6 text-center sm:px-10 ${compact ? 'max-w-[44rem] py-8' : 'py-10'}`}>
           <div className="bloom-blue pointer-events-none absolute left-1/2 top-0 -z-10 h-[18rem] w-[30rem] -translate-x-1/2 rounded-full" />
           {playbookSubmitted ? (
             <div className="py-4" role="status" aria-live="polite">

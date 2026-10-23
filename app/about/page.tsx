@@ -2,84 +2,105 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import ArticleShell from '../components/ArticleShell'
-import { CALENDLY_URL } from '../config'
+import { CALENDLY_URL, FOUNDER } from '../config'
 
 export const metadata: Metadata = {
   title: "About NYClaw and Giani Brussich",
-  description: 'Meet Giani Brussich and learn how NYClaw builds practical AI and automation for small businesses in Westchester County and NYC.',
+  description: 'Giani Brussich spent close to ten years in analytics and automation at Moody’s, Morgan Stanley and HomeServe. Now he builds practical AI for small businesses in Westchester and NYC.',
   openGraph: {
     title: "About NYClaw and Giani Brussich",
-    description: 'Practical AI and automation, starting with the work your team does every day.',
+    description: 'Why NYClaw exists, who builds the work and how a project runs.',
     url: 'https://nyclaw.io/about', type: 'website',
     images: ['https://nyclaw.io/opengraph-image'],
     siteName: "NYClaw.io",
   },
-  twitter: { card: 'summary', images: ['https://nyclaw.io/opengraph-image'], title: "About NYClaw and Giani Brussich", description: 'The work, the founder and the way a NYClaw project starts.' },
+  twitter: { card: 'summary', images: ['https://nyclaw.io/opengraph-image'], title: "About NYClaw and Giani Brussich", description: 'Why NYClaw exists, who builds the work and how a project runs.' },
   alternates: { canonical: 'https://nyclaw.io/about' },
 }
+
+/** Career lines mirror what Giani publishes on gianibrussich.com. No figures beyond those. */
+const career = [
+  { years: '2015 to 2020', org: 'Moody’s', what: 'Operations analysis, regulatory reporting and a Six Sigma process improvement project.' },
+  { years: '2020 to 2023', org: 'Morgan Stanley', what: 'Assistant Vice President, Strategy and Solutions. Rolled out self-service reporting.' },
+  { years: '2024 to 2025', org: 'HomeServe USA', what: 'Owned forecasting, monthly reporting and the budget for a subscription business.' },
+  { years: 'Today', org: 'Data and AI team', what: 'Manages revenue analytics: forecasting models, lead routing and compliance monitoring.' },
+] as const
 
 export default function AboutPage() {
   return (
     <ArticleShell
       backHref="/" backLabel="Home"
-      title="A useful build starts with understanding your day."
-      deck="NYClaw builds practical AI and automation for small businesses in Westchester County and NYC. We start with the work, the people doing it and the tools already in place."
+      title="I help small businesses hand their busywork to AI."
+      deck={`I’m ${FOUNDER.name}. I build AI and automation for owner-led businesses in Westchester County and New York City, and I do the work myself.`}
     >
-      <h2>The work that keeps coming back</h2>
+      <h2>Why I started NYClaw</h2>
       <p>
-        Replying to an inquiry. Preparing an estimate. Chasing a missing detail. Getting an
-        invoice ready. These jobs matter to your customers, but moving each one forward can
-        take more attention than it should.
+        For close to ten years I have worked inside large companies, making their numbers and
+        processes run better. Big companies have whole teams whose job is to automate the boring
+        parts. A ten-person business has the same boring parts and nobody to fix them.
       </p>
       <p>
-        We work through one process with you, find where it stalls and check what your existing
-        software can handle. The next step might be a better setting, a clearer handoff or a
-        custom build. You should understand the recommendation before paying for the work.
+        That gap has closed fast. AI tools that once needed a team of engineers are now within
+        reach of any small business. What owners still lack is the time to set them up and the
+        confidence that nothing will break. That is the job I took on.
       </p>
 
-      <h2>What you can hire us for</h2>
+      <h2>My background</h2>
       <ul>
-        <li><Link href="/services/ai-automation">AI assistants and connected workflows</Link> for repeat tasks, draft preparation and moving approved information between tools.</li>
-        <li><Link href="/services/ai-marketing">Marketing and follow-up systems</Link> with clear review rules and a way to see what happens to inquiries.</li>
-        <li><Link href="/services/ai-consulting">Advice and written roadmaps</Link> when you want to decide what is worth changing before a build.</li>
+        {career.map((c) => (
+          <li key={c.org}><strong>{c.org}</strong> ({c.years}). {c.what}</li>
+        ))}
       </ul>
       <p>
-        For law firms, the <Link href="/law-firm-workflows">Workflow Blueprint</Link> examines
-        one administrative handoff before you decide what to configure, build or keep manual.
-        It is one specialist offer within NYClaw. NYClaw is not a law firm.
+        One habit carries through all of it. Before a number drives a decision, I check it against
+        the raw data. I build AI the same way: it gets tested on real examples before anyone relies on it.
       </p>
 
-      <h2>Real work, described plainly</h2>
+      <h2>How I work</h2>
+      <ul>
+        <li><strong>One job first.</strong> We fix one thing that eats your week, not your whole business at once.</li>
+        <li><strong>What you already pay for comes first.</strong> Sometimes the answer is a setting in software you own. If so, I will tell you.</li>
+        <li><strong>You keep the final say.</strong> AI drafts. Your team decides what goes out and what needs a second look.</li>
+        <li><strong>The price is in writing before you pay.</strong> Scope, cost and how we test it are agreed up front.</li>
+        <li><strong>You are not stuck with me.</strong> Every build ends with training and plain instructions. Ongoing help is optional.</li>
+      </ul>
+
+      <h2>I use it myself</h2>
       <p>
-        The <Link href="/work">client examples</Link> describe work
-        for Valentine Family Electric and Byram Mason, Building &amp; Stone Supply. They are
-        specific builds, not a promise that every business will get the same result.
+        I run my own small businesses on the systems I build, including an online store and a
+        video channel. Ad creative, customer emails, order alerts and video production all run
+        through AI, with a person checking the parts that matter. You can see those
+        builds on the <Link href="/work#own-operations">work page</Link>.
       </p>
 
-      <h2>You should know what happens next</h2>
+      <h2>Client work, described plainly</h2>
       <p>
-        A free 30-minute call starts the conversation. Before paid work, we agree the job, price,
-        access, timeline and how to check that it works. Builds include training and a written
-        handoff. Ongoing help is a separate choice; software costs are discussed where they apply.
-      </p>
-      <p>
-        Your team needs to know which steps run automatically, which need approval and who
-        handles an exception. Agree those decisions before the system handles real work.
+        The <Link href="/work">client examples</Link> describe work for Valentine Family Electric
+        and Byram Mason, Building &amp; Stone Supply. They are specific builds, not a promise that
+        every business will get the same result.
       </p>
 
-      <h2>Meet the founder</h2>
+      <h2>What is in the name</h2>
       <p>
-        Giani Brussich builds and operates NYClaw in Westchester County, New York. You can see
-        his work and background on <a href="https://linkedin.com/in/gianib" target="_blank" rel="noopener noreferrer">LinkedIn</a>,{' '}
-        <a href="https://github.com/gbrussich52" target="_blank" rel="noopener noreferrer">GitHub</a>{' '}
-        and <a href="https://gianibrussich.com" target="_blank" rel="noopener noreferrer">gianibrussich.com</a>.
+        NY for New York. Claw for OpenClaw, the open source AI agent project. NYClaw is not
+        a law firm. For law firms I do offer one specialist service, the{' '}
+        <Link href="/law-firm-workflows">Workflow Blueprint</Link>, which maps one office handoff
+        before anything is built.
+      </p>
+
+      <h2>Where to find me</h2>
+      <p>
+        I live in northern Westchester with my family. You can see more of my work on{' '}
+        <a href={FOUNDER.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn</a>,{' '}
+        <a href={FOUNDER.github} target="_blank" rel="noopener noreferrer">GitHub</a>{' '}
+        and <a href={FOUNDER.site} target="_blank" rel="noopener noreferrer">gianibrussich.com</a>.
       </p>
 
       <div className="panel rounded-xl p-5">
-        <p className="font-medium text-white">Tell us where work gets stuck.</p>
-        <p className="text-zinc-300">Bring one recent example and the names of the tools involved. You do not need to prepare a technical brief.</p>
-        <p><a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer">Book a free 30-minute call</a>{' '}or <Link href="/#contact">send an inquiry</Link>.</p>
-        <p className="text-sm text-zinc-400">Email: <a href="mailto:hello@nyclaw.io">hello@nyclaw.io</a></p>
+        <p className="font-medium text-white">Bring me one task that keeps coming back.</p>
+        <p className="text-zinc-300">You do not need a technical brief. A recent example and the names of the tools involved are plenty.</p>
+        <p><a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer">Book a free 30-minute call</a>{' '}or <Link href="/#contact">send a short note</Link>.</p>
+        <p className="text-sm text-zinc-400">Email: <a href={`mailto:${FOUNDER.email}`}>{FOUNDER.email}</a></p>
       </div>
     </ArticleShell>
   )

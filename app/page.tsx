@@ -2,34 +2,42 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import {
-  Bot,
-  Workflow,
-  Target,
-  Mail,
-  ChevronRight,
   ArrowUpRight,
+  Bot,
+  CheckCircle2,
+  ChevronRight,
+  ClipboardCheck,
+  Copy,
+  Mail,
+  MessageSquareReply,
+  PhoneMissed,
+  Repeat,
+  ShieldCheck,
+  Target,
+  Timer,
+  Workflow,
 } from 'lucide-react'
 import ContactForm from './components/ContactForm'
 import PlaybookForm from './components/PlaybookForm'
 import { FAQJsonLd } from './components/JsonLd'
-import HeroVideo from './components/HeroVideo'
 import FaqAccordion from './components/FaqAccordion'
 import Reveal from './components/Reveal'
+import HeroExampleCard from './components/HeroExampleCard'
+import FounderSection from './components/FounderSection'
 import WorkflowBlueprintOffer from './components/WorkflowBlueprintOffer'
-import WorkflowExplorer from './components/WorkflowExplorer'
 import { CALENDLY_URL } from './config'
 import { work, workPaths } from '../lib/client-work'
 
 export const metadata: Metadata = {
   title: "AI Automation for Westchester & NYC",
   description:
-    'NYClaw.io is an AI agency that builds custom automations and agents for small businesses in Westchester County, NY and NYC. Free 30-minute call.',
+    'NYClaw.io sets up AI for small businesses in Westchester County and NYC: first replies to new inquiries, estimate and invoice drafts, and less re-typing. Free 30-minute call.',
   keywords:
-    'AI agency, custom AI agents, AI automation agency, small business AI, workflow automation, Westchester NY, NYC AI agency, agent development, OODA Loop',
+    'AI agency, AI automation agency, small business AI, workflow automation, Westchester NY, NYC AI agency, AI for contractors, AI consulting',
   openGraph: {
     title: "AI Automation for Westchester & NYC",
     description:
-      'Practical AI and automation for inquiries, follow-up and repeat work. Start with one job and the tools you already use.',
+      'Hand the busywork to AI and keep the final say. Built for small businesses in Westchester County and NYC.',
     url: 'https://nyclaw.io',
     siteName: 'NYClaw.io',
     type: 'website',
@@ -40,7 +48,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: "AI Automation for Westchester & NYC",
     description:
-      'Custom AI automations and agents for small businesses in Westchester County & NYC. Free 30-minute call.',
+      'AI that drafts the replies, estimates and paperwork. You check it and send it. Free 30-minute call.',
     images: ["https://nyclaw.io/opengraph-image"],
   },
   alternates: {
@@ -48,69 +56,91 @@ export const metadata: Metadata = {
   },
 }
 
+/* The week, as owners describe it. Problems first; the offer only makes sense after. */
+const pains = [
+  { Icon: PhoneMissed, title: 'Leads wait while you work',
+    desc: 'A request comes in while you are on a job. By the time you call back, they hired someone else.' },
+  { Icon: Copy, title: 'The same details, typed three times',
+    desc: 'Name, address and job notes go into the estimate, then the calendar, then the invoice.' },
+  { Icon: Timer, title: 'Paperwork happens at night',
+    desc: 'Estimates, invoices and follow ups wait until the real work is done for the day.' },
+  { Icon: Repeat, title: 'Follow ups slip',
+    desc: 'Nobody owns the second email, so a warm customer goes cold without anyone noticing.' },
+] as const
+
+const gains = [
+  { Icon: MessageSquareReply, title: 'Every inquiry gets a first reply',
+    desc: 'A draft is ready while the lead is still warm, written the way you talk.' },
+  { Icon: Workflow, title: 'Type it once',
+    desc: 'Details move from the form to the customer list, the estimate and the invoice.' },
+  { Icon: ClipboardCheck, title: 'Paperwork waits for your review',
+    desc: 'Estimates, bills and reminders are drafted and lined up. You check them and send.' },
+  { Icon: ShieldCheck, title: 'You keep the final say',
+    desc: 'You decide what runs on its own and what needs your OK. Nothing else goes out.' },
+] as const
+
+const steps = [
+  { label: 'Free 30-minute call', when: 'Step one',
+    desc: 'Show us one task that eats your week. We tell you straight whether AI helps, or whether a setting in software you already pay for will do.' },
+  { label: 'A written plan and price', when: 'Before you pay',
+    desc: 'You see what we will build, what it costs, who reviews what and how we will test it. No surprises later.' },
+  { label: 'Build, test, train', when: 'Handoff',
+    desc: 'We build it, test it on real examples with your team and leave plain instructions. No monthly retainer required.' },
+] as const
+
 const services = [
   {
     Icon: Bot, eyebrow: 'AI assistants', title: 'Give one recurring job a capable assistant',
-    price: '$3.5K–8K', unit: 'per agent sprint',
-    desc: 'Prepare a research summary, sort an inquiry or draft the next response. We define the job, connect approved tools and make clear what your team reviews.',
+    price: '$3.5K to $8K', unit: 'per assistant build',
+    desc: 'Sort new inquiries, prepare research or draft the next reply. We connect the tools you approve and agree what your team reviews.',
     href: '/services/ai-automation', cta: 'See assistant builds',
   },
   {
-    Icon: Workflow, eyebrow: 'Connected workflows', title: 'Spend less time copying details between tools',
-    price: '$5K–15K', unit: 'project',
-    desc: 'Connect the form, customer record, calendar or invoice so approved information moves to the next step. Exceptions go to a named person.',
+    Icon: Workflow, eyebrow: 'Connected workflows', title: 'Stop copying details between tools',
+    price: '$5K to $15K', unit: 'per project',
+    desc: 'Link the form, customer record, calendar and invoice so approved details move to the next step. Odd cases go to a named person.',
     href: '/services/ai-automation', cta: 'See workflow builds',
   },
   {
-    Icon: Mail, eyebrow: 'Marketing & follow-up', title: 'Give inquiries a clear next step',
-    price: '$4K–12K', unit: 'marketing system build',
-    desc: 'Build the intake, follow-up and content process around how people become your customers. Set the review rules before messages or content go out.',
+    Icon: Mail, eyebrow: 'Marketing and follow up', title: 'Turn more inquiries into customers',
+    price: '$4K to $12K', unit: 'per system build',
+    desc: 'Intake, follow up and content built around how people actually become your customers, with review rules set before anything goes out.',
     href: '/services/ai-marketing', cta: 'See marketing systems',
   },
   {
-    Icon: Target, eyebrow: 'Advice & planning', title: 'Work out what is worth changing',
-    price: 'Free', unit: '30-minute call · written roadmap $1K–2.5K',
-    desc: 'Talk through one process and the tools you already have. If a deeper plan would help, agree the scope of a written roadmap before paying for it.',
-    href: '/services/ai-consulting', cta: 'See advice & roadmaps',
+    Icon: Target, eyebrow: 'Advice and planning', title: 'Not sure where to start?',
+    price: 'Free', unit: 'first call · written roadmap $1K to $2.5K',
+    desc: 'Talk through one process and the tools you have. If a deeper plan would help, you agree its scope before paying for it.',
+    href: '/services/ai-consulting', cta: 'See advice and roadmaps',
   },
-]
-
-const ooda = [
-  { letter: '1', timeline: 'First conversation', label: 'Show us the sticking point',
-    desc: 'Walk through one real job: who starts it, what gets repeated and where the next step waits.' },
-  { letter: '2', timeline: 'Before a proposal', label: 'Check the tools you have',
-    desc: 'Look for a simpler setting or process change first. Agree what is worth fixing and what should stay manual.' },
-  { letter: '3', timeline: 'Written scope', label: 'Agree the job and price',
-    desc: 'Name the inputs, permissions, reviewer and test cases. Set the scope, cost and acceptance check before work starts.' },
-  { letter: '4', timeline: 'Build & handoff', label: 'Test it with your team',
-    desc: 'Check normal work and exceptions, then hand over instructions and training. Ongoing support is a separate choice.' },
-]
-
-
+] as const
 
 const industries = [
+  'Contractors and trades',
   'Real estate',
-  'Legal services',
-  'Healthcare',
-  'Retail / e-comm',
-  'Hospitality',
-  'Contractors',
+  'Professional services',
+  'Healthcare offices',
+  'Retail and e-commerce',
+  'Restaurants and hospitality',
 ]
 
 const homepageFaqs = [
-  { question: 'What can you help us change?',
-    answer: 'We build AI assistants and automations for repeat work: inquiries, follow-up, scheduling, customer records, research, draft preparation and marketing. We start with a specific job and check what your current software can already do.' },
-  { question: 'Do we have to buy more software?',
-    answer: 'We check your existing tools first. A native setting or clearer handoff may be enough. If a build needs another service, its cost and access requirements belong in the proposal before you decide.' },
-  { question: 'Will our team still review the work?',
-    answer: 'We agree which steps can run automatically and which need approval. Unclear inputs and exceptions need a named person and a fallback. You should know what the system can do and when it needs help.' },
+  { question: 'What kind of work can AI take off my plate?',
+    answer: 'The repeat work around your real work: first replies to new inquiries, follow ups, scheduling, customer records, estimate and invoice drafts, research and marketing. We start with one specific job and check what your current software can already do.' },
+  { question: 'Do I have to buy new software?',
+    answer: 'Usually not. We start with the tools you already use, like email, calendars, spreadsheets and accounting software. If a build does need another service, its cost is in the written plan before you decide.' },
+  { question: 'Will AI send things to my customers without me?',
+    answer: 'Only if you decide it should. Together we set which steps run on their own and which wait for your OK. Anything unclear goes to a named person on your team.' },
   { question: 'What happens on the free call?',
-    answer: 'The 30-minute call is a chance to describe one process, the tools involved and the part that gets stuck. We discuss whether advice, configuration or a build could help. It does not start paid work or commit you to a project.' },
+    answer: 'You describe one process, the tools involved and where it gets stuck. We tell you honestly whether advice, a settings change or a build makes sense. The call is free and does not commit you to anything.' },
   { question: 'Do you require a monthly retainer?',
-    answer: 'No. Advice and builds are scoped as projects. You can choose ongoing help after a handoff, with its scope and cost agreed separately. Software subscriptions or usage charges may still apply where the project needs them.' },
-  { question: 'Is NYClaw only for law firms?',
-    answer: 'No. NYClaw is an AI and automation agency for small businesses in Westchester County and NYC, with remote work available. Our approved examples include an electrical contractor and a building and stone supplier. The law-firm Workflow Blueprint is one specialist assessment offer. NYClaw is not a law firm.' },
+    answer: 'No. Advice and builds are priced as projects. After the handoff you can choose ongoing help, priced separately. Some software subscriptions or usage fees may still apply where a project needs them.' },
+  { question: 'Is NYClaw a law firm?',
+    answer: 'No. The name is New York plus Claw, a nod to the OpenClaw AI agent project. NYClaw is an AI and automation business for small businesses in Westchester County, NYC and remotely. We also offer a specialist Workflow Blueprint for law firms, but we are not a law firm.' },
 ]
+
+const h2 = 'text-balance text-[clamp(2rem,4vw,2.75rem)] font-medium leading-[1.12] tracking-[-0.025em] text-white'
+const eyebrow = 'text-xs font-medium uppercase tracking-[0.12em] text-cyan-300'
 
 export default function Home() {
   return (
@@ -118,40 +148,34 @@ export default function Home() {
       <FAQJsonLd items={homepageFaqs} />
 
       {/* ---------------------------------------------------------- Hero --- */}
-      {/* -mt-[92px] cancels the layout spacer so the media card sits under the
-          fixed header, as in the mockup. */}
+      {/* -mt-[92px] cancels the layout spacer so the hero card sits under the
+          fixed header. The abstract video was replaced by a concrete example
+          of the work, which also takes the heaviest asset off first paint. */}
       <section className="-mt-[92px] px-2 pt-2">
         <div className="relative isolate overflow-hidden rounded-[48px] border border-white/5 bg-[#0a0a0c]">
-          <HeroVideo className="opacity-50" />
-
-          {/* Ambient blooms, then the scrims that protect the copy. */}
-          <div className="bloom-indigo pointer-events-none absolute -top-[10%] right-[2%] h-[44rem] w-[44rem] rounded-full" />
-          <div className="bloom-blue pointer-events-none absolute -bottom-[20%] left-[24%] h-[32rem] w-[32rem] rounded-full" />
-          <div className="hero-scrim-x pointer-events-none absolute inset-0" />
-          <div className="hero-scrim-y pointer-events-none absolute inset-0" />
+          <div className="bloom-indigo pointer-events-none absolute -top-[18%] right-[4%] h-[44rem] w-[44rem] rounded-full" />
+          <div className="bloom-blue pointer-events-none absolute -bottom-[25%] left-[10%] h-[32rem] w-[32rem] rounded-full" />
           <div className="hero-grid pointer-events-none absolute inset-0" />
 
-          <div className="relative z-10 flex min-h-[680px] flex-col justify-end px-6 pb-20 pt-40 sm:min-h-[780px] sm:px-12 sm:pb-32">
-            <div className="mx-auto w-full max-w-[80rem]">
-              <div className="max-w-[32rem]">
+          <div className="relative z-10 px-6 pb-16 pt-36 sm:px-12 sm:pb-24 sm:pt-44">
+            <div className="mx-auto grid w-full max-w-[72rem] items-center gap-14 lg:grid-cols-[1.15fr_0.85fr]">
+              <div className="max-w-[38rem]">
                 <div className="mb-6 inline-flex h-7 items-center gap-2 rounded-full px-3 text-xs font-medium text-zinc-300 outline outline-1 outline-white/[0.12] [background:color-mix(in_oklab,#27272a_55%,#000)]">
                   <span className="inline-block h-[5px] w-[5px] rounded-full bg-cyan-400" />
-                  AI &amp; automation · Westchester County &amp; NYC
+                  AI for small businesses · Westchester County &amp; NYC
                 </div>
 
-                <h1 className="text-balance text-[clamp(2.75rem,6vw,3.75rem)] font-normal leading-[1.05] tracking-[-0.03em] text-white">
-                  Keep work moving{' '}
-                  <span className="text-gradient-ai">with less chasing.</span>
+                <h1 className="text-balance text-[clamp(2.75rem,6.2vw,4.4rem)] font-normal leading-[1.03] tracking-[-0.035em] text-white">
+                  Stop doing the same work twice.{' '}
+                  <span className="text-gradient-ai">Let AI take the busywork.</span>
                 </h1>
 
-                <p className="mt-6 max-w-[28rem] text-balance text-lg leading-relaxed text-zinc-300">
-                  There is plenty to do without typing the same details again. We build practical
-                  AI and automation for follow-up, estimates and work that moves between tools.
-                  Start with one job and the software you already use.
+                <p className="mt-7 max-w-[33rem] text-lg leading-relaxed text-zinc-300">
+                  We set up AI that answers new inquiries, drafts estimates and invoices, and moves
+                  details between the tools you already use. You check the work and keep the final say.
                 </p>
 
-                <div className="mt-8 flex flex-wrap items-center gap-2">
-                  {/* Book directly or inspect a clearly labeled fictional workflow example. */}
+                <div className="mt-9 flex flex-wrap items-center gap-x-6 gap-y-4">
                   <a
                     href={CALENDLY_URL}
                     target="_blank"
@@ -162,12 +186,19 @@ export default function Home() {
                     <ChevronRight size={18} aria-hidden="true" />
                   </a>
                   <a
-                    href="#workflow-examples"
-                    className="inline-flex h-12 items-center rounded-full px-5 text-base font-medium text-white outline outline-1 outline-white/[0.18] transition-colors hover:bg-white/5"
+                    href="#work"
+                    className="inline-flex items-center gap-1 text-base font-medium text-white underline decoration-white/30 underline-offset-[6px] transition-colors hover:decoration-white"
                   >
-                    <span className="whitespace-nowrap">See workflow examples</span>
+                    See real client work
                   </a>
                 </div>
+                <p className="mt-5 text-sm text-zinc-400">
+                  Free, no pitch deck. Bring one task that eats your week.
+                </p>
+              </div>
+
+              <div className="flex justify-center lg:justify-end">
+                <HeroExampleCard />
               </div>
             </div>
           </div>
@@ -177,40 +208,70 @@ export default function Home() {
       {/* --------------------------------------------------- What we are --- */}
       {/* AEO: a quotable, disambiguating definition near the top of the page.
           "NYClaw" reads phonetically like "law," which pulls AI-answer
-          engines toward legal-AI products; this paragraph states plainly,
-          in one place, what the company is and is not so a citing engine
-          has an unambiguous sentence to quote. */}
-      <section className="px-6 py-10">
-        <div className="mx-auto max-w-[54rem]">
-          <p className="text-balance text-center text-lg leading-relaxed text-zinc-300">
-            <strong className="font-medium text-white">NYClaw.io is an AI automation agency</strong>
-            {' '}for small businesses in Westchester County and NYC. We help connect the work
-            between an inquiry, a decision and the next task. Advice, custom builds and
-            marketing systems are scoped separately, with training and a written handoff.
-          </p>
-          <p className="mt-3 text-center text-sm text-zinc-400">
-            Comparing options?{' '}
-            <a
-              href="/blog/ai-automation-agency-vs-ai-answering-service"
-              className="underline decoration-white/30 underline-offset-2 hover:text-white"
-            >
-              AI automation agency vs. AI answering service
-            </a>
-          </p>
+          engines toward legal-AI products; this sentence states plainly what
+          the company is so a citing engine has an unambiguous line to quote. */}
+      <section className="px-6 py-14">
+        <p className="mx-auto max-w-[50rem] text-balance text-center text-lg leading-relaxed text-zinc-300">
+          <strong className="font-medium text-white">NYClaw.io is an AI automation business</strong>
+          {' '}for small businesses in Westchester County and New York City. We build AI helpers
+          for the repeat work around your real work, then train your team and hand over plain instructions.
+        </p>
+      </section>
+
+      {/* ------------------------------------------------ Pain and gain --- */}
+      <section id="why" aria-labelledby="why-title" className="px-6 pb-24">
+        <div className="mx-auto flex max-w-[64rem] flex-col gap-12">
+          <div className="flex max-w-[42rem] flex-col gap-5">
+            <p className={eyebrow}>Sound familiar?</p>
+            <h2 id="why-title" className={h2}>
+              You started a business to do the work, not the paperwork about the work.
+            </h2>
+          </div>
+
+          <div className="hairline-grid grid overflow-hidden rounded-2xl border border-white/10 sm:grid-cols-2 lg:grid-cols-4">
+            {pains.map(({ Icon, title, desc }) => (
+              <div key={title} className="flex flex-col gap-3 p-6">
+                <Icon size={18} strokeWidth={1.75} className="text-zinc-400" aria-hidden="true" />
+                <h3 className="text-base font-medium text-white">{title}</h3>
+                <p className="text-sm leading-relaxed text-zinc-400">{desc}</p>
+              </div>
+            ))}
+          </div>
+
+          <div className="flex flex-col gap-8">
+            <h3 className="max-w-[40rem] text-balance text-[clamp(1.5rem,3vw,1.9rem)] font-medium leading-[1.2] tracking-[-0.02em] text-white">
+              What changes when AI does the first draft
+            </h3>
+            <div className="grid gap-5 sm:grid-cols-2">
+              {gains.map(({ Icon, title, desc }, i) => (
+                <Reveal key={title} delay={i * 70}>
+                  <div className="panel flex h-full gap-4 rounded-xl p-6">
+                    <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-cyan-300/10 text-cyan-300">
+                      <Icon size={18} strokeWidth={1.75} aria-hidden="true" />
+                    </span>
+                    <div>
+                      <p className="text-base font-medium text-white">{title}</p>
+                      <p className="mt-1.5 text-sm leading-relaxed text-zinc-400">{desc}</p>
+                    </div>
+                  </div>
+                </Reveal>
+              ))}
+            </div>
+          </div>
         </div>
       </section>
 
-      <WorkflowExplorer />
-
       {/* ---------------------------------------------------------- Work --- */}
-      <section id="work" className="px-6 pb-24">
+      <section id="work" aria-labelledby="work-title" className="px-6 pb-24">
         <div className="mx-auto flex max-w-[64rem] flex-col gap-12">
-          <div className="flex max-w-[36rem] flex-col gap-6">
-            <h2 className="text-balance text-[clamp(2rem,4vw,2.75rem)] font-medium leading-[1.12] tracking-[-0.025em] text-white">
-              What we have built for local businesses
+          <div className="flex max-w-[42rem] flex-col gap-5">
+            <p className={eyebrow}>Real work</p>
+            <h2 id="work-title" className={h2}>
+              Built for local businesses you can look up
             </h2>
             <p className="text-[17px] leading-relaxed text-zinc-400">
-              An electrical contractor’s estimating and invoicing process. A building supplier’s AI setup for detailed design work.
+              An electrician who was moving every job from estimate to invoice by hand. A building
+              supplier who needed AI that could hold a detailed design job from start to finish.
             </p>
           </div>
 
@@ -231,56 +292,66 @@ export default function Home() {
               </article>
             ))}
 
-            <article className="panel flex flex-col justify-between gap-6 rounded-xl p-7">
+            <article className="flex flex-col justify-between gap-6 rounded-xl border border-dashed border-white/15 p-7">
               <div className="flex flex-col gap-3">
                 <h3 className="text-lg font-medium tracking-[-0.01em] text-white">
-                  We build for our own businesses, too.
+                  We run our own businesses on it, too.
                 </h3>
                 <p className="text-sm leading-relaxed text-zinc-400">
-                  Creative preparation, customer emails, alerts and content production. Explore those systems alongside our client work.
+                  Ad creative, customer emails, order alerts and video production for our own store
+                  and channel. We test on ourselves before we build for you.
                 </p>
               </div>
-              <a
-                href={CALENDLY_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex h-10 w-fit items-center gap-1 rounded-full bg-white px-4 text-sm font-medium text-zinc-950 transition-opacity hover:opacity-90"
-              >
-                Book a free call
-                <ArrowUpRight size={16} aria-hidden="true" />
-              </a>
-              <Link href="/work#own-operations" className="text-sm font-medium text-cyan-300 underline underline-offset-4">Explore our own operating builds</Link>
+              <Link href="/work#own-operations" className="inline-flex items-center gap-1 text-sm font-medium text-cyan-300 underline underline-offset-4">
+                Explore our own operating builds <ArrowUpRight size={15} aria-hidden="true" />
+              </Link>
             </article>
           </div>
+        </div>
+      </section>
 
-          <div className="flex flex-wrap gap-3">
-            {industries.map((label) => (
-              <span
-                key={label}
-                className="rounded-full border border-white/10 px-5 py-2 text-sm text-zinc-400"
-              >
-                {label}
-              </span>
+      {/* ------------------------------------------------------- Founder --- */}
+      <FounderSection />
+
+      {/* ------------------------------------------------ How it works --- */}
+      <section id="process" aria-labelledby="process-title" className="px-6 pb-24">
+        <div className="mx-auto max-w-[64rem]">
+          <div className="mb-12 flex max-w-[42rem] flex-col gap-5">
+            <p className={eyebrow}>How it works</p>
+            <h2 id="process-title" className={h2}>Three steps. You know the price before we start.</h2>
+          </div>
+
+          <div className="relative grid gap-10 md:grid-cols-3 md:gap-8">
+            <span aria-hidden="true" className="connector-flow pointer-events-none absolute left-[16%] right-[16%] top-[22px] hidden h-px md:block" />
+            {steps.map((step, i) => (
+              <Reveal key={step.label} delay={i * 90}>
+                <div className="flex flex-col gap-3">
+                  <span className="relative z-10 grid h-11 w-11 place-items-center rounded-full border border-white/15 bg-zinc-950 text-[15px] font-semibold text-white">
+                    {i + 1}
+                  </span>
+                  <p className="text-[11px] font-medium uppercase tracking-[0.08em] text-zinc-400">{step.when}</p>
+                  <h3 className="text-lg font-medium text-white">{step.label}</h3>
+                  <p className="text-sm leading-relaxed text-zinc-400">{step.desc}</p>
+                </div>
+              </Reveal>
             ))}
           </div>
         </div>
       </section>
 
       {/* ------------------------------------------------------ Services --- */}
-      <section id="services" className="px-6 pb-24">
+      <section id="services" aria-labelledby="services-title" className="px-6 pb-24">
         <div className="mx-auto flex max-w-[64rem] flex-col gap-12">
-          <div className="flex max-w-[36rem] flex-col gap-6">
-            <h2 className="text-balance text-[clamp(2rem,4vw,2.75rem)] font-medium leading-[1.12] tracking-[-0.025em] text-white">
-              What would you like to fix first?
-            </h2>
+          <div className="flex max-w-[42rem] flex-col gap-5">
+            <p className={eyebrow}>Ways to work together</p>
+            <h2 id="services-title" className={h2}>Pick the problem. We price the fix up front.</h2>
             <p className="text-[17px] leading-relaxed text-zinc-400">
-              You may need a useful AI assistant, a connected workflow or a better follow-up
-              process. If you are unsure, start with a conversation before choosing a build.
+              Every project is scoped in writing before you pay. Not sure which one fits? That is what the free call is for.
             </p>
           </div>
 
           <div className="grid gap-6 md:grid-cols-2">
-            {services.map(({ Icon, eyebrow, title, price, unit, desc, href, cta }) => (
+            {services.map(({ Icon, eyebrow: label, title, price, unit, desc, href, cta }) => (
               <Link
                 key={title}
                 href={href}
@@ -289,24 +360,18 @@ export default function Home() {
                 <div className="flex items-center justify-between">
                   <Icon size={18} strokeWidth={1.75} className="text-zinc-300" aria-hidden="true" />
                   <span className="text-[11px] font-medium uppercase tracking-[0.08em] text-zinc-400">
-                    {eyebrow}
+                    {label}
                   </span>
                 </div>
                 <h3 className="text-xl font-medium tracking-[-0.01em] text-white">{title}</h3>
                 <div>
-                  <span className="text-[30px] font-semibold tracking-[-0.03em] text-white">
-                    {price}
-                  </span>
+                  <span className="text-[28px] font-semibold tracking-[-0.03em] text-white">{price}</span>
                   <p className="mt-1 text-[13px] text-zinc-400">{unit}</p>
                 </div>
                 <p className="flex-1 text-sm leading-relaxed text-zinc-400">{desc}</p>
                 <span className="inline-flex items-center gap-1 text-sm font-medium text-white">
                   {cta}
-                  <ChevronRight
-                    size={16}
-                    aria-hidden="true"
-                    className="transition-transform group-hover:translate-x-0.5"
-                  />
+                  <ChevronRight size={16} aria-hidden="true" className="transition-transform group-hover:translate-x-0.5" />
                 </span>
               </Link>
             ))}
@@ -314,73 +379,49 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ------------------------------------------------ How it works --- */}
-      <section id="process" className="px-6 pb-24">
-        <div className="mx-auto max-w-[64rem]">
-          <div className="panel relative overflow-hidden rounded-2xl px-6 py-14 sm:px-10">
-            <div className="mb-12 flex max-w-[36rem] flex-col gap-4">
-              <h2 className="text-balance text-[clamp(1.75rem,3.5vw,2.25rem)] font-medium leading-[1.15] tracking-[-0.025em] text-white">
-                Start with one job. Make the next step clear.
-              </h2>
-              <p className="text-[15px] leading-relaxed text-zinc-400">
-                You bring the process you know. We bring the questions, the build and the tests.
-              </p>
-            </div>
-
-            <div className="relative">
-              {/* Connector sits at the circles' vertical midpoint (44px / 2). */}
-              <div className="connector-flow pointer-events-none absolute left-[12%] right-[12%] top-[22px] hidden h-px md:block" />
-              <div className="grid gap-10 md:grid-cols-4 md:gap-12">
-                {ooda.map((step, i) => (
-                  <Reveal key={step.label} delay={i * 90}>
-                    <div className="flex flex-col gap-3">
-                      <div className="grid h-11 w-11 place-items-center rounded-full border border-white/15 bg-zinc-950 text-[15px] font-semibold text-white">
-                        {step.letter}
-                      </div>
-                      <p className="whitespace-nowrap text-[11px] font-medium uppercase tracking-[0.08em] text-zinc-400">
-                        Step {i + 1} · {step.timeline}
-                      </p>
-                      <p className="text-base font-medium text-white">{step.label}</p>
-                      <p className="text-[13px] leading-relaxed text-zinc-400">{step.desc}</p>
-                    </div>
-                  </Reveal>
-                ))}
-              </div>
-            </div>
-          </div>
+      {/* ------------------------------------------------- Who we serve --- */}
+      <section aria-labelledby="who-title" className="px-6 pb-10">
+        <div className="mx-auto flex max-w-[64rem] flex-col gap-6">
+          <h2 id="who-title" className="text-[clamp(1.5rem,3vw,1.9rem)] font-medium tracking-[-0.02em] text-white">
+            Who we work with
+          </h2>
+          <p className="max-w-[42rem] text-[15px] leading-relaxed text-zinc-400">
+            Owner-led businesses with a small team and more repeat work than people. If your week
+            runs on email, phone calls, spreadsheets and an invoicing tool, you are in the right place.
+          </p>
+          <ul className="flex flex-wrap gap-3">
+            {industries.map((label) => (
+              <li key={label} className="rounded-full border border-white/10 px-5 py-2 text-sm text-zinc-300">
+                {label}
+              </li>
+            ))}
+          </ul>
         </div>
       </section>
-
       <WorkflowBlueprintOffer />
 
-      {/* -------------------------------------------------- Free guide --- */}
-      <PlaybookForm />
-
       {/* ----------------------------------------------------------- FAQ --- */}
-      <section className="px-6 pb-24">
+      <section aria-labelledby="faq-title" className="px-6 pb-24">
         <div className="mx-auto flex max-w-[64rem] flex-col gap-10">
-          <h2 className="max-w-[36rem] text-balance text-[clamp(1.75rem,3.5vw,2.25rem)] font-medium leading-[1.15] tracking-[-0.025em] text-white">
-            Questions, answered
+          <h2 id="faq-title" className="max-w-[36rem] text-balance text-[clamp(1.75rem,3.5vw,2.25rem)] font-medium leading-[1.15] tracking-[-0.025em] text-white">
+            Fair questions
           </h2>
           <FaqAccordion items={homepageFaqs} />
         </div>
       </section>
 
-      {/* ------------------------------------------------------- Contact --- */}
-      <ContactForm />
-
       {/* ----------------------------------------------------- CTA panel --- */}
-      <section className="px-6 pb-24">
+      <section aria-labelledby="cta-title" className="px-6 pb-16">
         <div className="mx-auto max-w-[64rem]">
-          <div className="panel relative isolate overflow-hidden rounded-2xl px-6 py-14 text-center sm:px-10">
+          <div className="panel relative isolate overflow-hidden rounded-2xl px-6 py-16 text-center sm:px-10">
             <div className="bloom-blue pointer-events-none absolute left-1/2 top-0 -z-10 h-[24rem] w-[40rem] -translate-x-1/2 rounded-full" />
-            <div className="mx-auto flex max-w-[34rem] flex-col items-center gap-6">
-              <h2 className="text-balance text-[clamp(1.75rem,3.5vw,2.25rem)] font-medium leading-[1.15] tracking-[-0.025em] text-white">
-                Which part of the day keeps getting repeated?
+            <div className="mx-auto flex max-w-[36rem] flex-col items-center gap-6">
+              <h2 id="cta-title" className="text-balance text-[clamp(2rem,4vw,2.75rem)] font-medium leading-[1.1] tracking-[-0.025em] text-white">
+                What would you do with your evenings back?
               </h2>
-              <p className="text-[15px] leading-relaxed text-zinc-400">
-                Bring one example to a free 30-minute call. We will talk through the work,
-                your current tools and a sensible next step. Paid work needs a separate agreement.
+              <p className="text-[16px] leading-relaxed text-zinc-300">
+                Bring one task that keeps coming back. In 30 minutes you will know whether AI can
+                take it off your plate, and roughly what it would cost.
               </p>
               <a
                 href={CALENDLY_URL}
@@ -391,10 +432,23 @@ export default function Home() {
                 Book a free 30-minute call
                 <ChevronRight size={18} aria-hidden="true" />
               </a>
+              <ul className="flex flex-wrap justify-center gap-x-5 gap-y-2 text-[13px] text-zinc-400">
+                {['Free', 'No obligation', 'A straight answer, even if it is no'].map((t) => (
+                  <li key={t} className="inline-flex items-center gap-1.5">
+                    <CheckCircle2 size={14} className="text-cyan-300" aria-hidden="true" /> {t}
+                  </li>
+                ))}
+              </ul>
             </div>
           </div>
         </div>
       </section>
+
+      {/* ------------------------------------------------------- Contact --- */}
+      <ContactForm />
+
+      {/* -------------------------------------------------- Free guide --- */}
+      <PlaybookForm compact />
     </>
   )
 }

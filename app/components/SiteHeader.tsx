@@ -5,7 +5,7 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useEffect, useState } from 'react'
 import { Menu, X } from 'lucide-react'
-import { CALENDLY_URL } from '../config'
+import { CALENDLY_URL, SITE } from '../config'
 
 /**
  * SiteHeader — floating dusk header, per the 2026 handoff.
@@ -18,12 +18,13 @@ import { CALENDLY_URL } from '../config'
  * Knowledge / Free guide unreachable on a phone. That is fixed here.
  */
 
+// Five destinations a first-time visitor needs. Workflow kits, Knowledge and
+// the blog stay one click away in the footer.
 const NAV = [
   { href: '/services', label: 'Services' },
-  { href: '/ai-workflows', label: 'Workflow kits' },
-  { href: '/#process', label: 'How it works' },
   { href: '/work', label: 'Work' },
-  { href: '/knowledge', label: 'Knowledge' },
+  { href: '/#process', label: 'How it works' },
+  { href: '/about', label: 'About' },
   { href: '/resources', label: 'Free guide' },
 ] as const
 
@@ -35,10 +36,10 @@ function Wordmark({ size = 'md' }: { size?: 'md' | 'sm' }) {
       <span
         className={`${mark} grid place-items-center rounded-lg bg-white text-[13px] font-semibold tracking-[-0.04em] text-zinc-950`}
       >
-        NY
+        {SITE.wordmark.mark}
       </span>
       <span className={`${word} font-medium text-white`}>
-        NYClaw<span className="text-zinc-400">.io</span>
+        {SITE.wordmark.name}<span className="text-zinc-400">{SITE.wordmark.suffix}</span>
       </span>
     </span>
   )
@@ -60,7 +61,7 @@ export default function SiteHeader() {
     <header className="fixed inset-x-0 top-2 z-50 px-2">
       <div className="nav-dusk mx-auto max-w-[80rem] rounded-3xl px-5 md:px-8">
         <div className="flex items-center justify-between py-[18px]">
-          <Link href="/" aria-label="NYClaw.io home">
+          <Link href="/" aria-label={`${SITE.name} home`}>
             <Wordmark />
           </Link>
 
@@ -79,20 +80,19 @@ export default function SiteHeader() {
           </nav>
 
           {/*
-            Site launch baseline item 20: the fixed header sits over the hero,
-            so its CTA and the hero's two CTAs were competing above the fold
-            as three actionable elements. The "30-min fit audit" button was
-            the duplicate (Book a free 30-minute call already covers that action
-            in the hero) and is dropped here; "Tell us what’s stuck" stays as the
-            one persistent nav CTA.
+            One persistent action: the free call. The hero repeats the same
+            action, so the fold carries one decision, not three. The written
+            inquiry form stays reachable from the mobile menu and the page foot.
           */}
           <div className="hidden items-center gap-2 lg:flex">
-            <Link
-              href="/#contact"
-              className="flex h-8 items-center rounded-md bg-white px-3 text-[13px] font-medium text-zinc-950 shadow-[0_1px_2px_rgba(0,0,0,.2)] transition-opacity hover:opacity-90"
+            <a
+              href={CALENDLY_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex h-9 items-center rounded-full bg-white px-4 text-[13px] font-medium text-zinc-950 shadow-[0_1px_2px_rgba(0,0,0,.2)] transition-opacity hover:opacity-90"
             >
-              Tell us what’s stuck
-            </Link>
+              Book a free call
+            </a>
           </div>
 
           <button
@@ -123,21 +123,20 @@ export default function SiteHeader() {
               ))}
             </nav>
             <div className="mt-4 flex flex-col gap-2">
-              <Link
-                href="/#contact"
-                className="flex h-10 items-center justify-center rounded-md bg-white text-sm font-medium text-zinc-950"
-              >
-                Tell us what’s stuck
-              </Link>
               <a
                 href={CALENDLY_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex h-10 items-center justify-center rounded-md text-sm font-medium text-zinc-200 outline outline-1 outline-white/15"
-                style={{ background: 'color-mix(in oklab, #27272a 55%, #000)' }}
+                className="flex h-11 items-center justify-center rounded-full bg-white text-sm font-medium text-zinc-950"
               >
                 Book a free 30-minute call
               </a>
+              <Link
+                href="/#contact"
+                className="flex h-11 items-center justify-center rounded-full text-sm font-medium text-zinc-200 outline outline-1 outline-white/15"
+              >
+                Or send a short note
+              </Link>
             </div>
           </div>
         )}
