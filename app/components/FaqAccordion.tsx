@@ -50,8 +50,8 @@ export default function FaqAccordion({ items }: { items: readonly FaqItem[] }) {
             </h3>
             <div
               id={`faq-panel-${i}`}
-              className="overflow-hidden transition-[max-height] duration-300 ease-out"
-              style={{ maxHeight: isOpen ? 320 : 0 }}
+              className={isOpen ? 'faq-panel-open' : undefined}
+              hidden={!isOpen}
             >
               <p className="pb-5 text-[15px] leading-relaxed text-zinc-400">{item.answer}</p>
             </div>

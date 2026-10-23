@@ -8,7 +8,7 @@ export default function WorkflowBlueprintOffer() {
     <section className="px-6 pb-24" aria-labelledby="blueprint-offer-title">
       <div className="panel mx-auto grid max-w-[64rem] gap-8 rounded-2xl p-7 sm:p-10 md:grid-cols-[1.4fr_1fr] md:items-center">
         <div>
-          <p className="text-xs font-medium uppercase tracking-[0.08em] text-cyan-200">A specialist offer for law firms</p>
+          <p className="text-xs font-medium text-cyan-200">A specialist offer for law firms</p>
           <h2 id="blueprint-offer-title" className="mt-4 text-balance text-3xl font-medium leading-tight tracking-[-0.025em] text-white">Workflow Blueprint</h2>
           <p className="mt-4 text-base leading-relaxed text-zinc-300">
             Before changing intake, document collection or billing preparation, map one handoff.

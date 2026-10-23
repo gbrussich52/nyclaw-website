@@ -1,3 +1,4 @@
+/* Hallmark · v2.0.0 · redesign: restyle · built: the project · genre: atmospheric · theme: dusk (brand, kept) */
 /* classification: PUBLIC */
 .page { width: min(100% - 3rem, 72rem); margin: 0 auto; padding-bottom: 6rem; color: var(--text-secondary); }
 .page a:focus-visible, .page button:focus-visible, .page input:focus-visible, .page summary:focus-visible, .page pre:focus-visible { outline: 2px solid var(--accent); outline-offset: 5px; }
@@ -9,16 +10,16 @@
 .hero h1 { font-size: clamp(2.65rem, 5.8vw, 4.2rem); line-height: 1.05; font-weight: 400; letter-spacing: -.035em; color: var(--text-primary); margin: 1.25rem 0 0; }
 .lede { font-size: 1.0625rem; line-height: 1.8; max-width: 40rem; margin: 1.55rem 0 0; color: var(--text-secondary); }
 .heroActions { display: flex; flex-wrap: wrap; align-items: center; gap: 1.6rem; margin-top: 1.75rem; }
-.primaryLink { display: inline-flex; justify-content: center; align-items: center; gap: .7rem; border: 1px solid transparent; border-radius: 999px; padding: .8rem 1.25rem; color: var(--canvas); background: var(--text-primary); font-size: .875rem; font-weight: 500; line-height: 1.5; box-shadow: 0 1px 2px rgba(0,0,0,.2); }
+.primaryLink { display: inline-flex; justify-content: center; align-items: center; gap: .7rem; border: 1px solid transparent; border-radius: 999px; padding: .8rem 1.25rem; color: var(--canvas); background: var(--text-primary); font-size: .875rem; font-weight: 500; line-height: 1.5; box-shadow: 0 1px 2px var(--c-rgba-0-0-0-2); }
 .primaryLink:hover { background: var(--text-secondary); }
 .textLink { display: inline-flex; align-items: center; gap: .45rem; font-size: .875rem; line-height: 1.6; color: var(--text-primary); text-decoration: underline; text-underline-offset: 5px; text-decoration-color: var(--line-hover); }
 .textLink:hover { text-decoration-color: var(--text-primary); }
 .heroNote { margin-top: 1.25rem; font-size: .75rem; line-height: 1.8; color: var(--text-muted); }
-.kicker { font-size: .6875rem; font-weight: 500; text-transform: uppercase; letter-spacing: .08em; color: var(--text-muted); }
+.kicker { font-size: .8125rem; font-weight: 500;   color: var(--text-muted); }
 .workbench { scroll-margin-top: 108px; }
 .workbenchIntro { display: flex; align-items: flex-end; justify-content: space-between; gap: 1rem; padding-bottom: 1.5rem; }
 .workbenchIntro h2 { margin-top: .65rem; font-size: clamp(1.6rem, 3vw, 2rem); font-weight: 500; line-height: 1.2; color: var(--text-primary); }
-.localBadge { display: inline-flex; align-items: center; gap: .5rem; font-size: .6875rem; color: var(--text-muted); padding-bottom: .2rem; }
+.localBadge { display: inline-flex; align-items: center; gap: .5rem; font-size: .8125rem; color: var(--text-muted); padding-bottom: .2rem; }
 .recipeChooser { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border: 1px solid var(--line); border-radius: 1rem 1rem 0 0; background: var(--canvas); }
 .recipeButton { display: flex; align-items: center; gap: .8rem; text-align: left; padding: 1.3rem 1.5rem; min-width: 0; color: var(--text-muted); font-size: .875rem; line-height: 1.6; border-bottom: 2px solid transparent; }
 .recipeButton + .recipeButton { border-left: 1px solid var(--line); }
@@ -27,10 +28,10 @@
 .recipeButton:hover { color: var(--text-primary); background: var(--panel); }
 .recipeButton svg { margin-left: auto; flex-shrink: 0; }
 .recipeActive { color: var(--text-primary); background: var(--panel); border-bottom-color: var(--accent); }
-.recipeNumber { color: var(--text-muted); font-size: .6875rem; }
+.recipeNumber { color: var(--text-muted); font-size: .8125rem; }
 .exampleGrid { display: grid; grid-template-columns: .95fr 1.05fr; align-items: stretch; border: 1px solid var(--line); border-top: 0; border-radius: 0 0 1rem 1rem; overflow: hidden; }
 .sourcePanel { min-width: 0; padding: 2rem; background: var(--canvas); border-right: 1px solid var(--line); }
-.exampleHeading { display: flex; align-items: center; gap: .5rem; font-size: .6875rem; color: var(--text-muted); }
+.exampleHeading { display: flex; align-items: center; gap: .5rem; font-size: .8125rem; color: var(--text-muted); }
 .sourcePanel h3 { margin-top: 1rem; font-size: 1.55rem; font-weight: 500; line-height: 1.2; color: var(--text-primary); }
 .exampleIntro { margin-top: .75rem; font-size: .875rem; line-height: 1.8; color: var(--text-secondary); max-width: 32rem; }
 .nativeCheck { margin-top: 1.2rem; padding-left: .8rem; border-left: 2px solid var(--line-hover); }
@@ -38,7 +39,7 @@
 .nativeCheck p { color: var(--text-muted); font-size: .75rem; line-height: 1.8; margin-top: .3rem; }
 .scenarios { display: flex; flex-wrap: wrap; gap: .5rem; margin: 1.6rem 0 1.5rem; padding: 0; border: 0; }
 .scenarios legend { font-size: .75rem; color: var(--text-muted); padding: 0; margin-bottom: .7rem; }
-.scenario { display: flex; align-items: center; gap: .5rem; padding: .6rem .7rem; border: 1px solid var(--line); border-radius: .5rem; cursor: pointer; font-size: .6875rem; line-height: 1.5; color: var(--text-muted); }
+.scenario { display: flex; align-items: center; gap: .5rem; padding: .6rem .7rem; border: 1px solid var(--line); border-radius: .5rem; cursor: pointer; font-size: .8125rem; line-height: 1.5; color: var(--text-muted); }
 .scenarioActive { color: var(--text-primary); background: var(--solid); border-color: var(--line-hover); }
 .scenario input { appearance: auto; accent-color: var(--accent); width: .8rem; height: .8rem; margin: 0; flex-shrink: 0; }
 .snapshot { border-top: 1px solid var(--line); }
@@ -47,7 +48,7 @@
 .snapshot dd { font-size: .8125rem; line-height: 1.65; color: var(--text-primary); overflow-wrap: anywhere; text-align: right; }
 .snapshot .unknownValue { color: var(--accent); }
 .snapshotTime { padding-top: 1rem; }
-.snapshotTime p { display: flex; align-items: baseline; justify-content: space-between; flex-wrap: wrap; gap: .2rem .8rem; font-size: .6875rem; line-height: 1.8; }
+.snapshotTime p { display: flex; align-items: baseline; justify-content: space-between; flex-wrap: wrap; gap: .2rem .8rem; font-size: .8125rem; line-height: 1.8; }
 .snapshotTime p + p { margin-top: .25rem; }
 .snapshotTime span { color: var(--text-muted); }
 .snapshotTime time { color: var(--text-secondary); }
@@ -57,7 +58,7 @@
 .inputDetails summary, .configDetails summary { cursor: pointer; font-size: .75rem; line-height: 1.8; color: var(--text-secondary); padding: .3rem 0; }
 .inputDetails pre, .configDetails pre, .command { margin-top: 1rem; background: var(--code); border: 1px solid var(--line); border-radius: .6rem; padding: 1rem; overflow-x: auto; max-width: 100%; color: var(--text-secondary); font-size: .75rem; line-height: 1.8; font-family: ui-monospace, 'Geist Mono', Menlo, monospace; }
 .resultPanel { min-width: 0; padding: 2rem; background: var(--panel); }
-.resultTopline { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .4rem 1rem; color: var(--text-muted); font-size: .6875rem; padding-bottom: 1.35rem; border-bottom: 1px solid var(--line); }
+.resultTopline { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .4rem 1rem; color: var(--text-muted); font-size: .8125rem; padding-bottom: 1.35rem; border-bottom: 1px solid var(--line); }
 .resultHeading { padding: 1.6rem 0 1.4rem; }
 .resultIcon { display: flex; align-items: center; justify-content: center; width: 2.35rem; height: 2.35rem; border: 1px solid var(--line-hover); border-radius: 50%; color: var(--text-primary); margin-bottom: 1.1rem; }
 .resultHeading h3 { color: var(--text-primary); font-size: clamp(1.6rem, 3vw, 2rem); font-weight: 500; line-height: 1.2; }
@@ -66,8 +67,8 @@
 .findings li { padding: 1rem 0; border-top: 1px solid var(--line); }
 .findings h4 { font-size: .8125rem; font-weight: 500; color: var(--text-primary); }
 .findings p { margin-top: .5rem; font-size: .8125rem; line-height: 1.8; color: var(--text-secondary); }
-.findingSource { display: block; margin-top: .7rem; color: var(--text-muted); font-size: .6875rem; line-height: 1.8; }
-.findingSource code { display: block; font-size: .6875rem; font-family: ui-monospace, 'Geist Mono', Menlo, monospace; overflow-wrap: anywhere; }
+.findingSource { display: block; margin-top: .7rem; color: var(--text-muted); font-size: .8125rem; line-height: 1.8; }
+.findingSource code { display: block; font-size: .8125rem; font-family: ui-monospace, 'Geist Mono', Menlo, monospace; overflow-wrap: anywhere; }
 .reviewBoundary { border-left: 2px solid var(--line-hover); padding-left: .9rem; margin: 1rem 0 1.5rem; font-size: .8125rem; line-height: 1.8; color: var(--text-muted); }
 .error { border-left: 2px solid var(--accent); padding: .8rem 1rem; background: var(--solid); margin: 1rem 0; font-size: .875rem; line-height: 1.7; color: var(--text-primary); }
 .draftPreview { padding: 1.2rem; border: 1px solid var(--line-hover); border-radius: .75rem; background: var(--solid); }
@@ -82,7 +83,7 @@
 .transferStatus, .transferError { font-size: .75rem; line-height: 1.7; color: var(--text-secondary); min-height: .5rem; margin-top: .2rem; }
 .transferError { border-left: 2px solid var(--accent); padding-left: .6rem; }
 .briefDownload { border-top: 1px solid var(--line); margin-top: 1.7rem; padding-top: .8rem; }
-.briefDownload > p { font-size: .6875rem; line-height: 1.8; color: var(--text-muted); max-width: 27rem; }
+.briefDownload > p { font-size: .8125rem; line-height: 1.8; color: var(--text-muted); max-width: 27rem; }
 .recipeContact { border-top: 1px solid var(--line); margin-top: 1.5rem; padding-top: 1.15rem; }
 .recipeContact p { color: var(--text-muted); font-size: .8125rem; line-height: 1.8; margin-bottom: .6rem; }
 .recipeContact a { font-size: .8125rem; }
@@ -94,12 +95,12 @@
 .installDetails { padding: 1.75rem; border: 1px solid var(--line); border-radius: 1rem; background: var(--panel); min-width: 0; }
 .installTitle { display: flex; align-items: center; gap: .65rem; color: var(--text-secondary); padding-bottom: 1.3rem; border-bottom: 1px solid var(--line); }
 .installTitle h3 { font-size: 1rem; font-weight: 500; color: var(--text-primary); }
-.installTitle > span { font-size: .6875rem; margin-left: auto; color: var(--text-muted); }
+.installTitle > span { font-size: .8125rem; margin-left: auto; color: var(--text-muted); }
 .installDetails > p { margin-top: 1.2rem; color: var(--text-muted); font-size: .8125rem; line-height: 1.8; }
 .command { white-space: pre-wrap; overflow-wrap: anywhere; color: var(--accent); }
 .configDetails { padding: 1rem 0 0; border-top: 1px solid var(--line); margin-top: .6rem; }
 .configDetails p { font-size: .8125rem; line-height: 1.8; color: var(--text-muted); margin-top: .8rem; }
-.configDetails pre { font-size: .6875rem; }
+.configDetails pre { font-size: .8125rem; }
 .installDetails .installBoundary { margin-top: 1.25rem; border-top: 1px solid var(--line); padding-top: 1rem; font-size: .75rem; }
 .nextSteps { padding: 5rem 0; }
 .nextStepColumns { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; margin-top: 2.2rem; }
@@ -152,7 +153,7 @@
   .snapshot > div { grid-template-columns: minmax(6rem, .8fr) minmax(0, 1.2fr); }
   .snapshot dd { font-size: .75rem; }
   .scenarios { gap: .4rem; }
-  .scenario { font-size: .6875rem; padding: .6rem .55rem; }
+  .scenario { font-size: .8125rem; padding: .6rem .55rem; }
   .install { grid-template-columns: 1fr; gap: 1.8rem; padding: 3.5rem 0; }
   .installDetails { padding: 1.4rem 1.1rem; }
   .installTitle { flex-wrap: wrap; }

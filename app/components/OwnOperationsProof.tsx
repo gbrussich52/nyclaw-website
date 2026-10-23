@@ -8,7 +8,7 @@ export default function OwnOperationsProof() {
     <section id="own-operations" aria-labelledby="own-operations-title" className="px-6 pb-24 scroll-mt-28">
       <div className="mx-auto max-w-[64rem]">
         <div className="max-w-[43rem]">
-          <p className="text-xs font-medium uppercase tracking-[0.12em] text-cyan-300">Our own work</p>
+          <p className="text-xs font-medium text-cyan-300">Our own work</p>
           <h2 id="own-operations-title" className="mt-4 text-balance text-[clamp(2rem,4vw,2.75rem)] font-medium leading-[1.12] tracking-[-0.025em] text-white">
             Built for our own operations.
           </h2>
@@ -27,11 +27,11 @@ export default function OwnOperationsProof() {
               <h3 className="mt-5 text-balance text-2xl font-medium leading-tight tracking-[-0.025em] text-white">{item.title}</h3>
               <div className="mt-6 grid gap-5 border-t border-white/10 pt-5 sm:grid-cols-2">
                 <div>
-                  <p className="text-xs font-medium uppercase tracking-[0.1em] text-cyan-300">What we built</p>
+                  <p className="text-xs font-medium text-cyan-300">What we built</p>
                   <p className="mt-2 text-sm leading-relaxed text-zinc-200">{item.built}</p>
                 </div>
                 <div>
-                  <p className="text-xs font-medium uppercase tracking-[0.1em] text-cyan-300">For your business</p>
+                  <p className="text-xs font-medium text-cyan-300">For your business</p>
                   <p className="mt-2 text-sm leading-relaxed text-zinc-200">{item.application}</p>
                 </div>
               </div>

@@ -23,7 +23,7 @@ export default function ProcessSteps({ items }: { items: readonly ProcessPhase[]
               {i + 1}
             </div>
             <div className="flex flex-col gap-1.5">
-              <p className="text-[11px] font-medium uppercase tracking-[0.08em] text-zinc-400">
+              <p className="text-[13px] font-medium text-zinc-400">
                 {phase.step}
               </p>
               <h3 className="text-base font-medium text-white">{phase.title}</h3>

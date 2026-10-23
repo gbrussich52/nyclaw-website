@@ -115,7 +115,7 @@ export default function ContactForm() {
                 onChange={(e) => setFormData({ ...formData, businessType: e.target.value })}
                 className={selectClass}
               >
-                <option value="">Select your industry...</option>
+                <option value="">Select your industry…</option>
                 <option value="real-estate">Real Estate</option>
                 <option value="legal">Legal Services</option>
                 <option value="healthcare">Healthcare / Medical</option>

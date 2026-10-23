@@ -188,21 +188,21 @@ export default function Article3() {
 
             <div className="flex flex-col gap-5 p-6">
               <div>
-                <h3 className="mt-0 text-[11px] font-medium uppercase tracking-[0.08em] text-zinc-400">
+                <h3 className="mt-0 text-[13px] font-medium text-zinc-400">
                   What It Is
                 </h3>
                 <p className="mt-2 text-[15px] leading-relaxed text-zinc-300">{ap.what}</p>
               </div>
 
               <div className="rounded-lg border border-white/10 border-l-[3px] border-l-indigo-500 bg-white/[0.03] p-4">
-                <h3 className="mt-0 text-[11px] font-medium uppercase tracking-[0.08em] text-zinc-400">
+                <h3 className="mt-0 text-[13px] font-medium text-zinc-400">
                   Symptoms
                 </h3>
                 <p className="mt-2 text-sm leading-relaxed text-zinc-300">{ap.symptom}</p>
               </div>
 
               <div>
-                <h3 className="mt-0 text-[11px] font-medium uppercase tracking-[0.08em] text-zinc-400">
+                <h3 className="mt-0 text-[13px] font-medium text-zinc-400">
                   Prevention System
                 </h3>
                 <ul className="mt-2 list-none space-y-1.5 pl-0">

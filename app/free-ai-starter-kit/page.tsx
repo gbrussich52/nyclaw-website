@@ -134,7 +134,7 @@ export default function FreeAIStarterKitPage() {
         <div className="hero-grid pointer-events-none absolute inset-0 -z-10" />
 
         <div className="mx-auto flex max-w-[52rem] flex-col items-center">
-          <div className="inline-flex h-7 items-center gap-2 rounded-full px-3.5 text-xs font-medium text-zinc-300 outline outline-1 outline-white/[0.12] [background:color-mix(in_oklab,#27272a_55%,#000)]">
+          <div className="inline-flex h-7 items-center gap-2 rounded-full px-3.5 text-xs font-medium text-zinc-300 outline outline-1 outline-white/[0.12] [background:var(--chip-bg)]">
             <span className="inline-block h-[5px] w-[5px] rounded-full bg-cyan-400" />
             Free &amp; open source
           </div>
@@ -156,7 +156,7 @@ export default function FreeAIStarterKitPage() {
               href={GITHUB_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex h-12 items-center gap-1 rounded-full bg-white pl-5 pr-4 text-base font-medium text-zinc-950 shadow-[0_1px_2px_rgba(0,0,0,.2)] transition-opacity hover:opacity-90"
+              className="inline-flex h-12 items-center gap-1 rounded-full bg-white pl-5 pr-4 text-base font-medium text-zinc-950 shadow-[var(--shadow-btn)] transition-opacity hover:opacity-90"
             >
               Get the free kit
             </a>

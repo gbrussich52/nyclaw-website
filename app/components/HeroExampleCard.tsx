@@ -41,7 +41,7 @@ export default function HeroExampleCard() {
       <div className="panel rounded-3xl p-5 shadow-[0_30px_80px_-20px_rgba(0,0,0,.7)] sm:p-6">
         <div className="mb-5 flex items-center justify-between">
           <p className="text-[13px] font-medium text-white">One evening, with help</p>
-          <span className="rounded-full bg-white/[0.07] px-2.5 py-1 text-[11px] font-medium text-zinc-300">
+          <span className="rounded-full bg-white/[0.07] px-2.5 py-1 text-[13px] font-medium text-zinc-300">
             Example
           </span>
         </div>
@@ -62,7 +62,7 @@ export default function HeroExampleCard() {
                   {done ? <Check size={16} strokeWidth={2.25} aria-hidden="true" /> : <Icon size={16} strokeWidth={1.75} aria-hidden="true" />}
                 </span>
                 <div className="min-w-0 pt-0.5">
-                  <p className="text-[11px] font-medium uppercase tracking-[0.08em] text-zinc-400">{time}</p>
+                  <p className="text-[13px] font-medium text-zinc-400">{time}</p>
                   <p className="mt-1 text-[15px] font-medium leading-snug text-white">{title}</p>
                   <p className="mt-1 text-[13px] leading-relaxed text-zinc-400">{detail}</p>
                 </div>
