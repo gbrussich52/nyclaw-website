@@ -25,7 +25,7 @@ export default function BlogPost() {
     <ArticleJsonLd title={title} description={description} url="https://nyclaw.io/blog/chatgpt-vs-ai-consultant" datePublished="2026-08-07" dateModified="2026-10-17" />
     <FAQJsonLd items={faqItems} />
     <ArticleShell backHref="/blog" backLabel="All articles" title={title} tags={['Business decisions', 'Workflow']} meta="Updated October 17, 2026" deck="Buying another tool is easy. Deciding what needs to change takes a closer look."
-      related={[{ href: '/work', title: 'See real client work' }, { href: '/services/ai-consulting', title: 'Advice and roadmaps' }]}>
+      related={[{ href: '/work', title: 'See local examples' }, { href: '/services/ai-consulting', title: 'Advice and roadmaps' }]}>
       <Callout>Start with one job your team does repeatedly. Work out whether the problem is the draft, the instructions, the handoff or the process itself. That answer is more useful than choosing a tool first.</Callout>
       <h2>When your current tools may be enough</h2>
       <p>If someone prepares a draft, checks it and completes the next step reliably, you may need a better template or clearer instructions. Write down what a good result looks like and what the reviewer must check. Try that before adding more software.</p>
@@ -43,8 +43,8 @@ export default function BlogPost() {
       <h2>Test one task before buying more help</h2>
       <p>Choose a redacted example and record how long the current task takes. Write down the required output and who reviews it, then test the same task with your current tools. Count corrections and missed steps as well as drafting time. If the handoff remains unclear, bring that example to a fit call.</p>
       <p><Link href="/ai-workflows">Try a fictional quote, invoice or order handoff</Link> to see what source checks and review holds look like before connecting real systems.</p>
-      <h2>Two different kinds of client work</h2>
-      <p>Read the <Link href="/work#valentine-family-electric">Valentine Family Electric client example</Link> and the <Link href="/work#byram-mason">Byram Mason, Building &amp; Stone Supply client example</Link>. Use the descriptions and general buyer questions to consider which kind of help resembles your situation.</p>
+      <h2>Two local examples</h2>
+      <p>Read the <Link href="/work#valentine-family-electric">Valentine Family Electric example</Link> and the <Link href="/work#byram-mason">Byram Mason, Building &amp; Stone Supply example</Link>. Use the descriptions and general buyer questions to consider which kind of help resembles your situation.</p>
       <p>For an illustration of missing-information handling, <Link href="/services#workflow-examples">explore the fictional workflow examples</Link>. They are demonstrations of the decision points, not additional client results.</p>
       <h2>Bring one process to the conversation</h2>
       <ul><li>The job as it happens today.</li><li>The tools involved and where details get repeated.</li><li>The person who checks the result.</li><li>What should happen when information is incomplete.</li></ul>

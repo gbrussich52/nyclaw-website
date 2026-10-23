@@ -189,7 +189,7 @@ export default function Home() {
                     href="#work"
                     className="inline-flex items-center gap-1 text-base font-medium text-white underline decoration-white/30 underline-offset-[6px] transition-colors hover:decoration-white"
                   >
-                    See real client work
+                    See who I&apos;ve helped
                   </a>
                 </div>
                 <p className="mt-5 text-sm text-zinc-400">
@@ -265,13 +265,14 @@ export default function Home() {
       <section id="work" aria-labelledby="work-title" className="px-6 pb-24">
         <div className="mx-auto flex max-w-[64rem] flex-col gap-12">
           <div className="flex max-w-[42rem] flex-col gap-5">
-            <p className={eyebrow}>Real work</p>
+            <p className={eyebrow}>Local examples</p>
             <h2 id="work-title" className={h2}>
-              Built for local businesses you can look up
+              Local owners I have helped, by name
             </h2>
             <p className="text-[17px] leading-relaxed text-zinc-400">
-              An electrician who was moving every job from estimate to invoice by hand. A building
-              supplier who needed AI that could hold a detailed design job from start to finish.
+              An electrician moving every job from estimate to invoice by hand. A building supplier
+              who wanted AI to hold a detailed design job from start to finish. Both are friends I
+              advised by phone on how to put AI to work.
             </p>
           </div>
 
@@ -288,7 +289,7 @@ export default function Home() {
                 <p className="border-t border-white/10 pt-4 text-[13px] text-zinc-400">
                   {item.footer}
                 </p>
-                <Link href={`/work#${workPaths[index].id}`} className="text-sm font-medium text-cyan-300 underline underline-offset-4">See this client example</Link>
+                <Link href={`/work#${workPaths[index].id}`} className="text-sm font-medium text-cyan-300 underline underline-offset-4">Read the example</Link>
               </article>
             ))}
 

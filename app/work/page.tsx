@@ -8,11 +8,11 @@ import { work, workPaths } from '../../lib/client-work'
 
 export const metadata: Metadata = {
   title: 'Client Work and Our Own Builds',
-  description: 'Client work plus creative, email, alert and content systems built for our own businesses. See the builds and consider what fits your process.',
+  description: 'Advice for two local owners plus creative, email, alert and content systems built for our own businesses. See what fits your process.',
   alternates: { canonical: 'https://nyclaw.io/work' },
   openGraph: {
     title: 'Client Work and Our Own Builds',
-    description: 'See client work and systems built for our own businesses, from creative preparation to customer follow-up.',
+    description: 'See advice for local owners and systems built for our own businesses, from creative preparation to customer follow-up.',
     url: 'https://nyclaw.io/work',
     type: 'website',
     images: ['https://nyclaw.io/opengraph-image'],
@@ -42,12 +42,12 @@ export default function WorkPage() {
         <div className="hero-grid pointer-events-none absolute inset-0 -z-10" />
         <div className="mx-auto max-w-[64rem]">
           <Link href="/" className="text-sm text-zinc-400 transition-colors hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-300">← Home</Link>
-          <p className="mt-10 text-xs font-medium uppercase tracking-[0.14em] text-cyan-300">Client and own-business builds</p>
+          <p className="mt-10 text-xs font-medium uppercase tracking-[0.14em] text-cyan-300">Local advice and our own builds</p>
           <h1 id="work-title" className="mt-4 max-w-[48rem] text-balance text-[clamp(2.8rem,6vw,5.5rem)] font-normal leading-[1.04] tracking-[-0.045em] text-white">
             See the work <span className="text-gradient-ai">behind the offer.</span>
           </h1>
           <p className="mt-7 max-w-[39rem] text-[18px] leading-relaxed text-zinc-300">
-            Client work and systems built for our own businesses. See what we have built and which patterns fit your team.
+            Advice I gave two local owners by phone, and systems built for our own businesses. See which patterns fit your team.
           </p>
           <div className="mt-9 flex flex-wrap gap-x-7 gap-y-3 text-sm font-medium">
             {workPaths.map((path, index) => (
@@ -59,7 +59,7 @@ export default function WorkPage() {
         </div>
       </section>
 
-      <section aria-label="Client work" className="px-6 pb-20">
+      <section aria-label="Local examples" className="px-6 pb-20">
         <div className="mx-auto max-w-[64rem] space-y-14">
           {work.map((item, index) => {
             const path = workPaths[index]
@@ -89,7 +89,7 @@ export default function WorkPage() {
                       </div>
                       <FileText size={23} className="shrink-0 text-stone-500" aria-hidden="true" />
                     </div>
-                    <p className="mt-5 text-sm leading-relaxed text-stone-600">These are prompts for your own workflow, not facts about this client&apos;s project.</p>
+                    <p className="mt-5 text-sm leading-relaxed text-stone-600">These are prompts for your own workflow, not facts about this example.</p>
                     <ol className="mt-6 space-y-5">
                       {questions.map((question, questionIndex) => (
                         <li key={question} className="flex gap-4">

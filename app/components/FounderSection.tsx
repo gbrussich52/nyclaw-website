@@ -11,7 +11,7 @@ import { FOUNDER } from '../config'
 const background = [
   { label: 'Close to ten years', detail: 'building analytics and automation inside large companies' },
   { label: 'Moody’s, Morgan Stanley, HomeServe', detail: 'operations, reporting, forecasting and revenue work' },
-  { label: 'Today', detail: 'I manage revenue analytics on a Data and AI team' },
+  { label: 'Today', detail: 'I manage revenue analytics at National Debt Relief, on the Data and AI team' },
   { label: 'After hours', detail: 'I run my own small businesses on the same AI systems I build for clients' },
 ] as const
 

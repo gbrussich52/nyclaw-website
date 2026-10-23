@@ -6,7 +6,7 @@ import { CALENDLY_URL, FOUNDER } from '../config'
 
 export const metadata: Metadata = {
   title: "About NYClaw and Giani Brussich",
-  description: 'Giani Brussich spent close to ten years in analytics and automation at Moody’s, Morgan Stanley and HomeServe. Now he builds practical AI for small businesses in Westchester and NYC.',
+  description: 'Giani Brussich has close to ten years in analytics and automation at Moody’s, Morgan Stanley, HomeServe and National Debt Relief. Through NYClaw he builds practical AI for small businesses in Westchester and NYC.',
   openGraph: {
     title: "About NYClaw and Giani Brussich",
     description: 'Why NYClaw exists, who builds the work and how a project runs.',
@@ -18,12 +18,12 @@ export const metadata: Metadata = {
   alternates: { canonical: 'https://nyclaw.io/about' },
 }
 
-/** Career lines mirror what Giani publishes on gianibrussich.com. No figures beyond those. */
+/** Career lines mirror what Giani publishes on gianibrussich.com and confirmed directly. No figures beyond those. */
 const career = [
   { years: '2015 to 2020', org: 'Moody’s', what: 'Operations analysis, regulatory reporting and a Six Sigma process improvement project.' },
   { years: '2020 to 2023', org: 'Morgan Stanley', what: 'Assistant Vice President, Strategy and Solutions. Rolled out self-service reporting.' },
   { years: '2024 to 2025', org: 'HomeServe USA', what: 'Owned forecasting, monthly reporting and the budget for a subscription business.' },
-  { years: 'Today', org: 'Data and AI team', what: 'Manages revenue analytics: forecasting models, lead routing and compliance monitoring.' },
+  { years: 'Today', org: 'National Debt Relief', what: 'Revenue Analytics Manager on the Data and AI team. Forecasting, lead routing, agent performance and compliance monitoring.' },
 ] as const
 
 export default function AboutPage() {
@@ -55,6 +55,9 @@ export default function AboutPage() {
         One habit carries through all of it. Before a number drives a decision, I check it against
         the raw data. I build AI the same way: it gets tested on real examples before anyone relies on it.
       </p>
+      <p>
+        NYClaw is my own business, separate from my day job. None of these companies is a NYClaw client.
+      </p>
 
       <h2>How I work</h2>
       <ul>
@@ -73,11 +76,12 @@ export default function AboutPage() {
         builds on the <Link href="/work#own-operations">work page</Link>.
       </p>
 
-      <h2>Client work, described plainly</h2>
+      <h2>The examples, described plainly</h2>
       <p>
-        The <Link href="/work">client examples</Link> describe work for Valentine Family Electric
-        and Byram Mason, Building &amp; Stone Supply. They are specific builds, not a promise that
-        every business will get the same result.
+        The <Link href="/work">examples on the work page</Link> come from two friends who own local
+        businesses, Valentine Family Electric and Byram Mason, Building &amp; Stone Supply. I advised
+        them by phone on how to use AI in their work. They show the kind of problem I help with, not
+        a promise that every business will get the same result.
       </p>
 
       <h2>What is in the name</h2>
