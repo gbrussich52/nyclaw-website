@@ -21,16 +21,18 @@ export default function FounderSection() {
       <div className="mx-auto max-w-[64rem]">
         <div className="panel grid gap-10 overflow-hidden rounded-2xl p-7 sm:p-10 md:grid-cols-[0.8fr_1.2fr] md:gap-14">
           <div className="flex flex-col gap-6">
-            {/* Monogram until a headshot is added at public/giani.jpg. */}
-            <div
-              aria-hidden="true"
-              className="grid aspect-square w-full max-w-[15rem] place-items-center rounded-2xl border border-white/10 bg-[radial-gradient(120%_120%_at_0%_0%,rgba(46,139,255,.35),transparent_55%),radial-gradient(120%_120%_at_100%_100%,rgba(34,211,238,.25),transparent_55%)] bg-zinc-900"
-            >
-              <span className="font-[family-name:var(--font-display)] text-[5rem] font-medium tracking-[-0.06em] text-white">GB</span>
-            </div>
-            <div>
-              <p className="text-lg font-medium text-white">{FOUNDER.name}</p>
-              <p className="text-sm text-zinc-400">Founder · Westchester County, NY</p>
+            <div className="flex items-center gap-5 md:flex-col md:items-start md:gap-6">
+              {/* Monogram until a headshot is added at public/giani.jpg. Small beside the name on phones. */}
+              <div
+                aria-hidden="true"
+                className="grid aspect-square w-24 shrink-0 place-items-center rounded-2xl border border-white/10 bg-[radial-gradient(120%_120%_at_0%_0%,rgba(46,139,255,.35),transparent_55%),radial-gradient(120%_120%_at_100%_100%,rgba(34,211,238,.25),transparent_55%)] bg-zinc-900 md:w-full md:max-w-[15rem]"
+              >
+                <span className="font-[family-name:var(--font-display)] text-[2.25rem] font-medium tracking-[-0.06em] text-white md:text-[5rem]">GB</span>
+              </div>
+              <div>
+                <p className="text-lg font-medium text-white">{FOUNDER.name}</p>
+                <p className="text-sm text-zinc-400">Founder · Westchester County, NY</p>
+              </div>
             </div>
             <div className="flex flex-wrap gap-x-5 gap-y-2 text-sm">
               <a href={FOUNDER.linkedin} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 text-zinc-300 underline decoration-white/30 underline-offset-4 hover:text-white">

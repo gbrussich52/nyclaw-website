@@ -82,7 +82,7 @@ export default function RootLayout({
               <Link href="/" aria-label={`${SITE.name} home`}>
                 <Wordmark size="sm" />
               </Link>
-              <nav className="flex flex-wrap gap-x-6 gap-y-2 text-sm text-zinc-400">
+              <nav className="flex flex-wrap gap-x-6 gap-y-1 text-sm text-zinc-400 [&>a]:py-1.5">
                 <Link href="/services" className="transition-colors hover:text-white">Services</Link>
                 <Link href="/work" className="transition-colors hover:text-white">Work</Link>
                 <Link href="/about" className="transition-colors hover:text-white">About</Link>
