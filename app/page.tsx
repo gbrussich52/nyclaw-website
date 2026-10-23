@@ -59,7 +59,7 @@ export const metadata: Metadata = {
 
 /* The week, as owners describe it. Problems first; the offer only makes sense after. */
 const pains = [
-  { Icon: PhoneMissed, title: 'Leads wait while you work',
+  { Icon: PhoneMissed, title: 'The job goes to whoever answers first',
     desc: 'A request comes in while you are on a job. By the time you call back, they hired someone else.' },
   { Icon: Copy, title: 'The same details, typed three times',
     desc: 'Name, address and job notes go into the estimate, then the calendar, then the invoice.' },
@@ -71,7 +71,7 @@ const pains = [
 
 const gains = [
   { Icon: MessageSquareReply, title: 'Every inquiry gets a first reply',
-    desc: 'A draft is ready while the lead is still warm, written the way you talk.' },
+    desc: 'A reply is ready in minutes, written the way you talk, so the lead hears back while it is still warm.' },
   { Icon: Workflow, title: 'Type it once',
     desc: 'Details move from the form to the customer list, the estimate and the invoice.' },
   { Icon: ClipboardCheck, title: 'Paperwork waits for your review',
@@ -166,13 +166,14 @@ export default function Home() {
               </div>
 
               <h1 className="text-balance text-[clamp(2.6rem,5.6vw,4.25rem)] font-normal leading-[1.02] tracking-[-0.035em] text-white">
-                Stop doing the same work twice.{' '}
-                <span className="text-gradient-ai">Let AI take the busywork.</span>
+                Stop missing jobs.{' '}
+                <span className="text-gradient-ai">Let AI answer while you work.</span>
               </h1>
 
               <p className="mt-7 max-w-[33rem] text-lg leading-relaxed text-zinc-300">
-                We set up AI that answers new inquiries, drafts estimates and invoices, and moves
-                details between the tools you already use. You check the work and keep the final say.
+                Picture finishing a job and finding three emails answered and three jobs booked. We set
+                up AI that replies to new inquiries, drafts estimates and invoices, and moves details
+                between the tools you already use. You check the work and keep the final say.
               </p>
 
               <div className="mt-9 flex flex-wrap items-center gap-x-6 gap-y-4">
@@ -193,7 +194,7 @@ export default function Home() {
                 </a>
               </div>
               <p className="mt-5 text-sm text-zinc-400">
-                Free, no pitch deck. Bring one task that eats your week.
+                Free, no pitch deck. Bring the inbox that eats your evenings.
               </p>
             </div>
           </div>
@@ -226,7 +227,7 @@ export default function Home() {
           <div className="flex max-w-[42rem] flex-col gap-5 reveal-view">
             <p className={eyebrow}>Sound familiar?</p>
             <h2 id="why-title" className={h2}>
-              You started a business to do the work, not the paperwork about the work.
+              Every email you can&apos;t answer is a job someone else books.
             </h2>
           </div>
 
@@ -242,8 +243,11 @@ export default function Home() {
 
           <div className="flex flex-col gap-8">
             <h3 className="max-w-[40rem] text-balance text-[clamp(1.5rem,3vw,1.9rem)] font-medium leading-[1.2] tracking-[-0.02em] text-white">
-              What changes when AI does the first draft
+              Come back from the job to work already done
             </h3>
+            <p className="-mt-4 max-w-[36rem] text-[17px] leading-relaxed text-zinc-400">
+              Answering that email costs you nothing when an agent does it.
+            </p>
             <div className="grid gap-5 sm:grid-cols-2">
               {gains.map(({ Icon, title, desc }, i) => (
                 <Reveal key={title} delay={i * 70}>
@@ -424,7 +428,7 @@ export default function Home() {
             <div className="bloom-blue pointer-events-none absolute left-1/2 top-0 -z-10 h-[24rem] w-[40rem] -translate-x-1/2 rounded-full" />
             <div className="mx-auto flex max-w-[36rem] flex-col items-center gap-6">
               <h2 id="cta-title" className="text-balance text-[clamp(2rem,4vw,2.75rem)] font-medium leading-[1.1] tracking-[-0.025em] text-white">
-                What would you do with your evenings back?
+                Come back to three answered emails and three booked jobs.
               </h2>
               <p className="text-[16px] leading-relaxed text-zinc-300">
                 Bring one task that keeps coming back. In 30 minutes you will know whether AI can
