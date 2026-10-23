@@ -1,3 +1,5 @@
+/* Hallmark · v2.0.0 · redesign: restyle (polish + shared rhythm) · built: the project · genre: atmospheric · theme: dusk (brand, kept) · hero: Settled (/), Stage (inner) */
+/* Hallmark critique · dusk palette and helix kept; literals lifted to tokens, one section rhythm, sentence-case labels. */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -10,11 +12,13 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: clip;
 }
 
 body {
-  background: #09090b;
-  color: #d4d4d8;
+  overflow-x: clip;
+  background: var(--canvas);
+  color: var(--text-secondary);
   font-family: var(--font-body), -apple-system, BlinkMacSystemFont, sans-serif;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
@@ -37,6 +41,11 @@ h1 {
    ============================================================ */
 
 :root {
+  --chip-bg: color-mix(in oklab, #27272a 55%, #000);
+  --shadow-btn: 0 1px 2px rgba(0,0,0,.2);
+  --shadow-card: 0 16px 50px rgba(0,0,0,.2);
+  --zinc-500: #71717a;
+  --paper-warm: #f2f0e9;
   /* Surfaces */
   --canvas: #09090b;        /* zinc-950 — page canvas */
   --panel: color-mix(in oklab, #27272a 55%, #000); /* cards, FAQ/OODA panels */
@@ -44,7 +53,8 @@ h1 {
   --code: #0a0a0c;          /* pre blocks, hero media card fill */
 
   /* Text */
-  --text-primary: #ffffff;
+  --text-primary: #fafafa;   /* zinc-50, a tint of the canvas hue rather than pure white */
+  --ink-white: #fafafa;
   --text-secondary: #d4d4d8; /* zinc-300 — body copy, nav links */
   --text-muted: #a1a1aa;     /* zinc-400 — captions, eyebrows */
   --text-faint: #71717a;     /* zinc-500 — ".io", marquee, placeholders */
@@ -57,27 +67,110 @@ h1 {
   /* Accent */
   --brand-blue: #2e8bff;
   --accent: #22d3ee;
+  --indigo: #6366f1;
+  --violet: #8b5cf6;
+  --zinc-600: #52525b;
+  --scrim: 9, 9, 11;         /* canvas rgb for scrims */
+  --section-y: clamp(72px, 9vw, 128px);  /* one vertical rhythm between sections */
+  --text-section: clamp(30px, 3.4vw, 48px);
+  --focus-ring: 2px solid var(--accent);
+
+  /* Lifted literals from the route stylesheets */
+  --c-061216: #061216;
+  --c-0d1112: #0d1112;
+  --c-111114: #111114;
+  --c-122d34: #122d34;
+  --c-14191b: #14191b;
+  --c-14252a: #14252a;
+  --c-17382e: #17382e;
+  --c-18181b: #18181b;
+  --c-181b1d: #181b1d;
+  --c-18282d: #18282d;
+  --c-1b8aa0: #1b8aa0;
+  --c-1c4751: #1c4751;
+  --c-1f3439: #1f3439;
+  --c-274a53: #274a53;
+  --c-285b43: #285b43;
+  --c-294b35: #294b35;
+  --c-2e8bff: #2e8bff;
+  --c-303036: #303036;
+  --c-36565d: #36565d;
+  --c-3b3b40: #3b3b40;
+  --c-3c5960: #3c5960;
+  --c-3e4b4e: #3e4b4e;
+  --c-46636a: #46636a;
+  --c-476d76: #476d76;
+  --c-492528: #492528;
+  --c-49656d: #49656d;
+  --c-4d686f: #4d686f;
+  --c-52525b: #52525b;
+  --c-52655c: #52655c;
+  --c-526b72: #526b72;
+  --c-536a70: #536a70;
+  --c-557077: #557077;
+  --c-5cbac9: #5cbac9;
+  --c-60676a: #60676a;
+  --c-67e8f9: #67e8f9;
+  --c-6c2b1b: #6c2b1b;
+  --c-71717a: #71717a;
+  --c-8ddce8: #8ddce8;
+  --c-92535b: #92535b;
+  --c-929da1: #929da1;
+  --c-9b6825: #9b6825;
+  --c-9ce9f3: #9ce9f3;
+  --c-a5f3fc: #a5f3fc;
+  --c-a9c9ce: #a9c9ce;
+  --c-b6eef4: #b6eef4;
+  --c-b8cdd0: #b8cdd0;
+  --c-b9ced2: #b9ced2;
+  --c-bcbcc2: #bcbcc2;
+  --c-c4c4cc: #c4c4cc;
+  --c-c7c7cb: #c7c7cb;
+  --c-cad2c7: #cad2c7;
+  --c-cadadd: #cadadd;
+  --c-defaff: #defaff;
+  --c-e4e4e7: #e4e4e7;
+  --c-e4e9dc: #e4e9dc;
+  --c-e9ece1: #e9ece1;
+  --c-edf6f7: #edf6f7;
+  --c-eefcff: #eefcff;
+  --c-f2f2f3: #f2f2f3;
+  --c-f4dfd7: #f4dfd7;
+  --c-f4f4f5: #f4f4f5;
+  --c-f5f3eb: #f5f3eb;
+  --c-fafafa: #fafafa;
+  --c-fecaca: #fecaca;
+  --c-ffe5e5: #ffe5e5;
+  --c-fffdf8: #fffdf8;
+  --c-rgba-0-0-0-2: rgba(0,0,0,.2);
+  --c-rgba-0-0-0-31: rgba(0,0,0,.31);
+  --c-rgba-103-232-249-22: rgba(103,232,249,.22);
+  --c-rgba-103-232-249-4: rgba(103,232,249,.4);
+  --c-rgba-127-29-29-2: rgba(127,29,29,.2);
+  --c-rgba-24-24-27-8: rgba(24,24,27,.8);
+  --c-rgba-248-113-113-35: rgba(248,113,113,.35);
+  --c-rgba-255-255-255-1: rgba(255,255,255,.1);
+  --c-rgba-255-255-255-12: rgba(255,255,255,.12);
+  --c-rgba-255-255-255-17: rgba(255,255,255,.17);
+  --c-rgba-255-255-255-18: rgba(255,255,255,.18);
+  --c-rgba-255-255-255-2: rgba(255,255,255,.2);
+  --c-rgba-8-145-178-1: rgba(8,145,178,.1);
+  --c-rgba-9-9-11-6: rgba(9,9,11,.6);
 }
 
-/* Accent gradient text — reserved for the second line of an h1. */
+/* Accent text — the second line of an h1 (solid accent hue, no gradient fill). */
 .text-gradient-ai {
-  background-image: linear-gradient(100deg, #2e8bff 0%, #6366f1 55%, #22d3ee 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+  color: var(--accent);
 }
 
-/* Metric gradient — stat and result numbers only. */
+/* Metric numbers — stat and result figures, tabular. */
 .text-gradient-metric {
-  background-image: linear-gradient(to right, #fff, #52525b);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+  color: var(--ink-white);
 }
 
 /* Dark-glass navigation bar (global). */
 .nav-dusk {
-  background: rgba(9, 9, 11, 0.6);
+  background: rgb(var(--scrim) / 0.6);
   backdrop-filter: blur(40px);
   -webkit-backdrop-filter: blur(40px);
 }
@@ -89,8 +182,8 @@ h1 {
 }
 .marquee {
   overflow: hidden;
-  -webkit-mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
-  mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
+  -webkit-mask-image: linear-gradient(90deg, transparent, var(--canvas) 10%, var(--canvas) 90%, transparent);
+  mask-image: linear-gradient(90deg, transparent, var(--canvas) 10%, var(--canvas) 90%, transparent);
 }
 .marquee-track {
   display: flex;
@@ -112,10 +205,8 @@ h1 {
   background-image: linear-gradient(
     90deg,
     transparent 0%,
-    #2e8bff 20%,
-    #6366f1 45%,
-    #22d3ee 65%,
-    transparent 80%
+    var(--accent) 50%,
+    transparent 100%
   );
   background-size: 200% 100%;
   animation: flow 5s linear infinite;
@@ -157,11 +248,11 @@ section[id],
 /* 80px grid overlay for the hero, masked to fade downward. */
 .hero-grid {
   background-image:
-    linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+    linear-gradient(color-mix(in oklab, var(--ink-white) 3.5%, transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in oklab, var(--ink-white) 3.5%, transparent) 1px, transparent 1px);
   background-size: 80px 80px;
-  -webkit-mask-image: radial-gradient(60% 70% at 50% 0%, #000, transparent 80%);
-  mask-image: radial-gradient(60% 70% at 50% 0%, #000, transparent 80%);
+  -webkit-mask-image: radial-gradient(60% 70% at 50% 0%, var(--canvas), transparent 80%);
+  mask-image: radial-gradient(60% 70% at 50% 0%, var(--canvas), transparent 80%);
 }
 
 /* Hero scrims. The horizontal one is what keeps the left-aligned headline
@@ -169,32 +260,32 @@ section[id],
 .hero-scrim-x {
   background-image: linear-gradient(
     to right,
-    rgba(9, 9, 11, 0.97) 0%,
-    rgba(9, 9, 11, 0.92) 26%,
-    rgba(9, 9, 11, 0.62) 48%,
+    rgb(var(--scrim) / 0.97) 0%,
+    rgb(var(--scrim) / 0.92) 26%,
+    rgb(var(--scrim) / 0.62) 48%,
     transparent 78%
   );
 }
 .hero-scrim-y {
-  background-image: linear-gradient(to top, rgba(9, 9, 11, 0.85) 0%, transparent 55%);
+  background-image: linear-gradient(to top, rgb(var(--scrim) / 0.85) 0%, transparent 55%);
 }
 
 /* Ambient blooms behind headings and CTA panels. */
 .bloom-indigo {
-  background: radial-gradient(circle, rgba(99, 102, 241, 0.2) 0%, transparent 60%);
+  background: radial-gradient(circle, color-mix(in oklab, var(--indigo) 20%, transparent) 0%, transparent 60%);
   filter: blur(40px);
 }
 .bloom-blue {
-  background: radial-gradient(circle, rgba(46, 139, 255, 0.18) 0%, transparent 65%);
+  background: radial-gradient(circle, color-mix(in oklab, var(--brand-blue) 18%, transparent) 0%, transparent 65%);
   filter: blur(30px);
 }
 
 /* Dusk form inputs. */
 .input-dusk {
   background: var(--solid);
-  border: 1px solid var(--line-dashed);
+  border: 1px solid var(--zinc-500);
   border-radius: 8px;
-  color: #fff;
+  color: var(--ink-white);
 }
 .input-dusk::placeholder {
   color: var(--text-faint);
@@ -224,7 +315,7 @@ section[id],
 .prose-dusk > p:first-of-type {
   font-size: 20px;
   line-height: 1.6;
-  color: #fff;
+  color: var(--ink-white);
 }
 
 .prose-dusk h2 {
@@ -233,7 +324,7 @@ section[id],
   line-height: 1.2;
   font-weight: 500;
   letter-spacing: -0.02em;
-  color: #fff;
+  color: var(--ink-white);
   text-wrap: balance;
 }
 
@@ -243,23 +334,23 @@ section[id],
   line-height: 1.3;
   font-weight: 500;
   letter-spacing: -0.01em;
-  color: #fff;
+  color: var(--ink-white);
 }
 
 .prose-dusk strong {
-  color: #fff;
+  color: var(--ink-white);
   font-weight: 600;
 }
 
 .prose-dusk a {
-  color: #fff;
+  color: var(--ink-white);
   text-decoration: underline;
   text-underline-offset: 3px;
-  text-decoration-color: rgba(255, 255, 255, 0.35);
+  text-decoration-color: color-mix(in oklab, var(--ink-white) 35%, transparent);
   transition: text-decoration-color 0.15s;
 }
 .prose-dusk a:hover {
-  text-decoration-color: #fff;
+  text-decoration-color: var(--ink-white);
 }
 
 .prose-dusk ul,
@@ -272,7 +363,7 @@ section[id],
 .prose-dusk li::marker { color: var(--text-faint); }
 
 .prose-dusk blockquote {
-  border-left: 3px solid rgba(255, 255, 255, 0.2);
+  border-left: 3px solid color-mix(in oklab, var(--ink-white) 20%, transparent);
   padding-left: 20px;
   font-style: italic;
 }
@@ -282,7 +373,7 @@ section[id],
   border-left-color: var(--accent);
   font-style: normal;
   font-size: 18px;
-  color: #fff;
+  color: var(--ink-white);
 }
 
 .prose-dusk hr {
@@ -301,14 +392,14 @@ section[id],
   border-radius: 12px;
 }
 .prose-dusk thead {
-  background: rgba(255, 255, 255, 0.06);
+  background: color-mix(in oklab, var(--ink-white) 6%, transparent);
 }
 .prose-dusk th {
   text-align: left;
   padding: 12px 16px;
   font-size: 14px;
   font-weight: 500;
-  color: #fff;
+  color: var(--ink-white);
   white-space: nowrap;
 }
 .prose-dusk td {
@@ -320,7 +411,7 @@ section[id],
   border-top: 1px dashed var(--line);
 }
 .prose-dusk td:first-child {
-  color: #fff;
+  color: var(--ink-white);
   font-weight: 500;
 }
 
@@ -330,13 +421,13 @@ section[id],
   border-radius: 10px;
   padding: 18px 20px;
   overflow-x: auto;
-  font-family: ui-monospace, 'Geist Mono', Menlo, monospace;
+  font-family: ui-monospace, Menlo, monospace;
   font-size: 13.5px;
   line-height: 1.7;
   color: var(--accent);
 }
 .prose-dusk :not(pre) > code {
-  font-family: ui-monospace, 'Geist Mono', Menlo, monospace;
+  font-family: ui-monospace, Menlo, monospace;
   font-size: 0.9em;
   color: var(--accent);
 }
@@ -352,3 +443,46 @@ section[id],
     animation: none !important;
   }
 }
+
+/* ---------- Hallmark polish: states, focus, rhythm ---------- */
+
+:focus-visible {
+  outline: var(--focus-ring);
+  outline-offset: 3px;
+  transition: none;
+}
+.input-dusk:focus-visible { outline: var(--focus-ring); outline-offset: 0; }
+
+a:active,
+button:active,
+[role='button']:active {
+  transform: translateY(1px);
+  opacity: 0.92;
+}
+
+h1, h2, h3 { text-wrap: balance; }
+p { text-wrap: pretty; }
+
+/* Stat and price figures line up. */
+.text-gradient-metric,
+[class*='tabular'] { font-variant-numeric: tabular-nums; }
+
+/* Body copy never runs wider than 75ch, wherever a page sets it. */
+main p:not([class*='max-w']) { max-width: 75ch; }
+main p.mx-auto { margin-inline: auto; }
+
+/* Section rhythm: every page's sections breathe on one step instead of
+   the mix of 40/64/96px gaps the route files set by hand. */
+main > section[class*='pb-24'],
+main > section[class*='pb-20'] {
+  padding-bottom: var(--section-y);
+}
+main > section[class*='py-10'] {
+  padding-block: calc(var(--section-y) / 2);
+}
+
+/* FAQ answers fade in on open. The panel is hidden when closed, so a long
+   answer is never clipped by a fixed max-height. */
+@keyframes faq-open { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; transform: none; } }
+.faq-panel-open { animation: faq-open 200ms ease-out; }
+@media (prefers-reduced-motion: reduce) { .faq-panel-open { animation: none; } }

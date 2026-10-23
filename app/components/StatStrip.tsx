@@ -28,7 +28,7 @@ export default function StatStrip({ items }: { items: readonly Stat[] }) {
                 <div className="text-gradient-metric text-[32px] font-semibold leading-none tracking-[-0.03em]">
                   <CountUp to={stat.to} prefix={stat.prefix} suffix={stat.suffix} raw={stat.raw} />
                 </div>
-                <div className="mt-2 text-[11px] font-medium uppercase tracking-[0.08em] text-zinc-400">
+                <div className="mt-2 text-[13px] font-medium text-zinc-400">
                   {stat.label}
                 </div>
               </div>

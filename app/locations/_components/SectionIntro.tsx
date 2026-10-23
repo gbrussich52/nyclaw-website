@@ -19,7 +19,7 @@ export default function SectionIntro({
   return (
     <div className="mx-auto flex max-w-[38rem] flex-col gap-4 text-center">
       {eyebrow ? (
-        <p className="text-[11px] font-medium uppercase tracking-[0.08em] text-zinc-400">
+        <p className="text-[13px] font-medium text-zinc-400">
           {eyebrow}
         </p>
       ) : null}

@@ -89,7 +89,7 @@ export default function SiteHeader() {
               href={CALENDLY_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex h-9 items-center rounded-full bg-white px-4 text-[13px] font-medium text-zinc-950 shadow-[0_1px_2px_rgba(0,0,0,.2)] transition-opacity hover:opacity-90"
+              className="flex h-9 items-center rounded-full bg-white px-4 text-[13px] font-medium text-zinc-950 shadow-[var(--shadow-btn)] transition-opacity hover:opacity-90"
             >
               Book a free call
             </a>

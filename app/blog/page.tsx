@@ -183,7 +183,7 @@ export default function Blog() {
       <section className="relative isolate overflow-hidden px-6 pb-16 pt-[88px]">
         <div className="bloom-blue pointer-events-none absolute -top-[16rem] right-[10%] -z-10 h-[40rem] w-[40rem] rounded-full" />
         <div className="mx-auto max-w-[56rem]">
-          <div className="mb-6 inline-flex h-7 items-center gap-2 rounded-full px-3 text-xs font-medium text-zinc-300 outline outline-1 outline-white/[0.12] [background:color-mix(in_oklab,#27272a_55%,#000)]">
+          <div className="mb-6 inline-flex h-7 items-center gap-2 rounded-full px-3 text-xs font-medium text-zinc-300 outline outline-1 outline-white/[0.12] [background:var(--chip-bg)]">
             <span className="inline-block h-[5px] w-[5px] rounded-full bg-cyan-400" />
             Blog &amp; insights
           </div>
@@ -215,7 +215,7 @@ export default function Blog() {
                   {post.tags.map((tag) => (
                     <span
                       key={tag}
-                      className="rounded-full bg-white/[0.07] px-2 py-[3px] text-[11px] font-medium tracking-[0.04em] text-zinc-300"
+                      className="rounded-full bg-white/[0.07] px-2 py-[3px] text-[11px] font-medium text-zinc-300"
                     >
                       {tag}
                     </span>

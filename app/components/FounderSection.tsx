@@ -45,7 +45,7 @@ export default function FounderSection() {
           </div>
 
           <div className="flex flex-col gap-6">
-            <p className="text-xs font-medium uppercase tracking-[0.12em] text-cyan-300">Who you will work with</p>
+            <p className="text-xs font-medium text-cyan-300">Who you will work with</p>
             <h2 id="founder-title" className="text-balance text-[clamp(1.9rem,3.6vw,2.6rem)] font-medium leading-[1.12] tracking-[-0.025em] text-white">
               Hi, I’m {FOUNDER.firstName}. You talk to me, and I build it.
             </h2>

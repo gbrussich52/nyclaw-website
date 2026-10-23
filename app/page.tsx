@@ -140,7 +140,7 @@ const homepageFaqs = [
 ]
 
 const h2 = 'text-balance text-[clamp(2rem,4vw,2.75rem)] font-medium leading-[1.12] tracking-[-0.025em] text-white'
-const eyebrow = 'text-xs font-medium uppercase tracking-[0.12em] text-cyan-300'
+const eyebrow = 'text-xs font-medium text-cyan-300'
 
 export default function Home() {
   return (
@@ -152,7 +152,7 @@ export default function Home() {
           fixed header. The abstract video was replaced by a concrete example
           of the work, which also takes the heaviest asset off first paint. */}
       <section className="-mt-[92px] px-2 pt-2">
-        <div className="relative isolate overflow-hidden rounded-[48px] border border-white/5 bg-[#0a0a0c]">
+        <div className="relative isolate overflow-hidden rounded-[48px] border border-white/5 bg-[var(--code)]">
           <div className="bloom-indigo pointer-events-none absolute -top-[18%] right-[4%] h-[44rem] w-[44rem] rounded-full" />
           <div className="bloom-blue pointer-events-none absolute -bottom-[25%] left-[10%] h-[32rem] w-[32rem] rounded-full" />
           <div className="hero-grid pointer-events-none absolute inset-0" />
@@ -160,7 +160,7 @@ export default function Home() {
           <div className="relative z-10 px-6 pb-16 pt-36 sm:px-12 sm:pb-24 sm:pt-44">
             <div className="mx-auto grid w-full max-w-[72rem] items-center gap-14 lg:grid-cols-[1.15fr_0.85fr]">
               <div className="max-w-[40rem]">
-                <div className="mb-6 inline-flex h-7 items-center gap-2 rounded-full px-3 text-xs font-medium text-zinc-300 outline outline-1 outline-white/[0.12] [background:color-mix(in_oklab,#27272a_55%,#000)]">
+                <div className="mb-6 inline-flex h-7 items-center gap-2 rounded-full px-3 text-xs font-medium text-zinc-300 outline outline-1 outline-white/[0.12] [background:var(--chip-bg)]">
                   <span className="inline-block h-[5px] w-[5px] rounded-full bg-cyan-400" />
                   AI for small businesses · Westchester County &amp; NYC
                 </div>
@@ -180,7 +180,7 @@ export default function Home() {
                     href={CALENDLY_URL}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex h-12 items-center gap-1 rounded-full bg-white pl-5 pr-3 text-base font-medium text-zinc-950 shadow-[0_1px_2px_rgba(0,0,0,.2)] transition-opacity hover:opacity-90"
+                    className="inline-flex h-12 items-center gap-1 rounded-full bg-white pl-5 pr-3 text-base font-medium text-zinc-950 shadow-[var(--shadow-btn)] transition-opacity hover:opacity-90"
                   >
                     <span className="whitespace-nowrap">Book a free 30-minute call</span>
                     <ChevronRight size={18} aria-hidden="true" />
@@ -279,7 +279,7 @@ export default function Home() {
           <div className="grid gap-6 md:grid-cols-3">
             {work.map((item, index) => (
               <article key={item.title} className="panel panel-hover flex flex-col gap-4 rounded-xl p-7">
-                <span className="inline-flex w-fit rounded-full bg-white/[0.07] px-3 py-1 text-[11px] font-medium text-zinc-300">
+                <span className="inline-flex w-fit rounded-full bg-white/[0.07] px-3 py-1 text-[13px] font-medium text-zinc-300">
                   {item.badge}
                 </span>
                 <h3 className="text-lg font-medium leading-snug tracking-[-0.01em] text-white">
@@ -330,7 +330,7 @@ export default function Home() {
                   <span className="relative z-10 grid h-11 w-11 place-items-center rounded-full border border-white/15 bg-zinc-950 text-[15px] font-semibold text-white">
                     {i + 1}
                   </span>
-                  <p className="text-[11px] font-medium uppercase tracking-[0.08em] text-zinc-400">{step.when}</p>
+                  <p className="text-[13px] font-medium text-zinc-400">{step.when}</p>
                   <h3 className="text-lg font-medium text-white">{step.label}</h3>
                   <p className="text-sm leading-relaxed text-zinc-400">{step.desc}</p>
                 </div>
@@ -360,7 +360,7 @@ export default function Home() {
               >
                 <div className="flex items-center justify-between">
                   <Icon size={18} strokeWidth={1.75} className="text-zinc-300" aria-hidden="true" />
-                  <span className="text-[11px] font-medium uppercase tracking-[0.08em] text-zinc-400">
+                  <span className="text-[13px] font-medium text-zinc-400">
                     {label}
                   </span>
                 </div>

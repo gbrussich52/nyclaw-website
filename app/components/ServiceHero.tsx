@@ -42,7 +42,7 @@ export default function ServiceHero({
           &larr; All services
         </Link>
 
-        <div className="mt-5 inline-flex h-7 items-center gap-2 rounded-full px-3.5 text-xs font-medium text-zinc-300 outline outline-1 outline-white/[0.12] [background:color-mix(in_oklab,#27272a_55%,#000)]">
+        <div className="mt-5 inline-flex h-7 items-center gap-2 rounded-full px-3.5 text-xs font-medium text-zinc-300 outline outline-1 outline-white/[0.12] [background:var(--chip-bg)]">
           <BadgeIcon size={13} strokeWidth={2} aria-hidden="true" />
           {badge}
         </div>
@@ -59,7 +59,7 @@ export default function ServiceHero({
         <div className="mt-8 flex flex-wrap items-center justify-center gap-2">
           <Link
             href={primary.href}
-            className="inline-flex h-12 items-center gap-1 rounded-full bg-white pl-5 pr-3 text-base font-medium text-zinc-950 shadow-[0_1px_2px_rgba(0,0,0,.2)] transition-opacity hover:opacity-90"
+            className="inline-flex h-12 items-center gap-1 rounded-full bg-white pl-5 pr-3 text-base font-medium text-zinc-950 shadow-[var(--shadow-btn)] transition-opacity hover:opacity-90"
           >
             <span className="whitespace-nowrap">{primary.label}</span>
             <ChevronRight size={18} aria-hidden="true" />
