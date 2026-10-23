@@ -70,7 +70,7 @@ h1 {
   --indigo: #6366f1;
   --violet: #8b5cf6;
   --zinc-600: #52525b;
-  --scrim: 9, 9, 11;         /* canvas rgb for scrims */
+  --scrim: 9 9 11;           /* canvas rgb for scrims (space-separated so rgb(var(--scrim) / a) parses) */
   --section-y: clamp(72px, 9vw, 128px);  /* one vertical rhythm between sections */
   --text-section: clamp(30px, 3.4vw, 48px);
   --focus-ring: 2px solid var(--accent);
@@ -170,7 +170,7 @@ h1 {
 
 /* Dark-glass navigation bar (global). */
 .nav-dusk {
-  background: rgb(var(--scrim) / 0.6);
+  background: rgb(var(--scrim) / 0.8);
   backdrop-filter: blur(40px);
   -webkit-backdrop-filter: blur(40px);
 }
@@ -486,3 +486,67 @@ main > section[class*='py-10'] {
 @keyframes faq-open { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; transform: none; } }
 .faq-panel-open { animation: faq-open 200ms ease-out; }
 @media (prefers-reduced-motion: reduce) { .faq-panel-open { animation: none; } }
+
+/* ---------- Cinematic pass (2026-10-23) ---------- */
+
+/* Full-bleed hero stage. The WebGL helix sits on top of this fill; a soft
+   indigo/cyan light behind it gives the coil something to glow against. */
+.hero-stage {
+  background:
+    radial-gradient(60% 70% at 78% 40%, color-mix(in oklab, var(--indigo) 16%, transparent), transparent 70%),
+    radial-gradient(40% 50% at 62% 78%, color-mix(in oklab, var(--accent) 7%, transparent), transparent 70%),
+    var(--canvas);
+}
+/* Legibility scrim: dark behind the left-aligned copy, open on the right where
+   the helix lives, fading into the page canvas at the bottom. */
+.hero-scrim {
+  background-image:
+    linear-gradient(to right, rgb(var(--scrim) / 0.9) 0%, rgb(var(--scrim) / 0.72) 30%, rgb(var(--scrim) / 0.18) 56%, transparent 72%),
+    linear-gradient(to top, var(--canvas) 0%, rgb(var(--scrim) / 0.6) 14%, transparent 34%);
+}
+@media (max-width: 767px) {
+  .hero-scrim {
+    background-image:
+      linear-gradient(to bottom, rgb(var(--scrim) / 0.35) 0%, rgb(var(--scrim) / 0.62) 40%, rgb(var(--scrim) / 0.7) 70%, rgb(var(--scrim) / 0.3) 90%),
+      linear-gradient(to top, var(--canvas) 0%, transparent 14%);
+  }
+}
+
+/* Scroll-linked entrance for section headers and beats. Native scroll-driven
+   animation where supported; elsewhere the content is simply visible. */
+@supports (animation-timeline: view()) {
+  .reveal-view {
+    animation: reveal-view linear both;
+    animation-timeline: view();
+    animation-range: entry 0% entry 55%;
+  }
+}
+@keyframes reveal-view {
+  from { opacity: 0; transform: translateY(28px); }
+  to { opacity: 1; transform: none; }
+}
+
+/* The through-line: a double strand that draws itself across the three
+   process steps as they scroll into view. A clip wipe, not a dash offset:
+   dash lengths with pathLength + non-scaling strokes stop short in Chrome. */
+@supports (animation-timeline: view()) {
+  .strand-draw {
+    animation: strand-draw linear both;
+    animation-timeline: view();
+    animation-range: entry 0% entry 100%;
+  }
+}
+@keyframes strand-draw {
+  from { clip-path: inset(0 100% 0 0); }
+  to { clip-path: inset(0 0 0 0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal-view,
+  .strand-draw {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+    clip-path: none !important;
+  }
+}
