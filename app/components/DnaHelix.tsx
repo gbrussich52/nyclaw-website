@@ -237,6 +237,9 @@ export default function DnaHelix({ className = '' }: { className?: string }) {
         premultipliedAlpha: true,
         powerPreference: 'low-power',
         preserveDrawingBuffer: false,
+        // Software-only WebGL (no GPU: CI runners, some old laptops) would
+        // starve the main thread; those get the poster instead.
+        failIfMajorPerformanceCaveat: true,
       })
       if (!gl) return setFallback(true)
       const vs = compile(gl, gl.VERTEX_SHADER, VERT)
