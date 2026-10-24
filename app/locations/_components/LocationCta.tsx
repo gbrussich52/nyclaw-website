@@ -24,7 +24,7 @@ export default function LocationCta({
         <div className="panel relative isolate overflow-hidden rounded-2xl px-6 py-16 text-center sm:px-10">
           <div className="bloom-blue pointer-events-none absolute left-1/2 top-0 -z-10 h-[24rem] w-[36rem] -translate-x-1/2 rounded-full" />
 
-          <p className="text-[11px] font-medium uppercase tracking-[0.08em] text-zinc-400">
+          <p className="text-[13px] font-medium text-zinc-400">
             {eyebrow}
           </p>
           <h2 className="mt-4 text-balance text-[clamp(1.75rem,3.5vw,2.25rem)] font-medium leading-[1.15] tracking-[-0.025em] text-white">

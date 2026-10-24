@@ -106,7 +106,7 @@ export default function ServicesPage() {
         <div className="hero-grid pointer-events-none absolute inset-0 -z-10" />
 
         <div className="mx-auto max-w-[64rem]">
-          <div className="mb-6 inline-flex h-7 items-center gap-2 rounded-full px-3 text-xs font-medium text-zinc-300 outline outline-1 outline-white/[0.12] [background:color-mix(in_oklab,#27272a_55%,#000)]">
+          <div className="mb-6 inline-flex h-7 items-center gap-2 rounded-full px-3 text-xs font-medium text-zinc-300 outline outline-1 outline-white/[0.12] [background:var(--chip-bg)]">
             <span className="inline-block h-[5px] w-[5px] rounded-full bg-cyan-400" />
             Our services
           </div>
@@ -144,7 +144,7 @@ export default function ServicesPage() {
                 <span className="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-white/[0.07] text-white">
                   <service.Icon size={16} strokeWidth={1.75} aria-hidden="true" />
                 </span>
-                <span className="text-[11px] font-medium uppercase tracking-[0.08em] text-zinc-400">
+                <span className="text-[13px] font-medium text-zinc-400">
                   {service.badge}
                 </span>
               </div>

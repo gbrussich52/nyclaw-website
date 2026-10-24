@@ -48,7 +48,7 @@ export default function OodaPanel({
                     <div className="grid h-11 w-11 place-items-center rounded-full border border-white/15 bg-zinc-950 text-[15px] font-semibold text-white">
                       {step.letter}
                     </div>
-                    <p className="whitespace-nowrap text-[11px] font-medium uppercase tracking-[0.08em] text-zinc-400">
+                    <p className="whitespace-nowrap text-[13px] font-medium text-zinc-400">
                       Step {i + 1} &middot; {step.timeline}
                     </p>
                     <p className="text-base font-medium text-white">{step.label}</p>

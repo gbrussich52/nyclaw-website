@@ -8,11 +8,11 @@ import { work, workPaths } from '../../lib/client-work'
 
 export const metadata: Metadata = {
   title: 'Client Work and Our Own Builds',
-  description: 'Client work plus creative, email, alert and content systems built for our own businesses. See the builds and consider what fits your process.',
+  description: 'Advice for two local owners plus creative, email, alert and content systems built for our own businesses. See what fits your process.',
   alternates: { canonical: 'https://nyclaw.io/work' },
   openGraph: {
     title: 'Client Work and Our Own Builds',
-    description: 'See client work and systems built for our own businesses, from creative preparation to customer follow-up.',
+    description: 'See advice for local owners and systems built for our own businesses, from creative preparation to customer follow-up.',
     url: 'https://nyclaw.io/work',
     type: 'website',
     images: ['https://nyclaw.io/opengraph-image'],
@@ -42,12 +42,12 @@ export default function WorkPage() {
         <div className="hero-grid pointer-events-none absolute inset-0 -z-10" />
         <div className="mx-auto max-w-[64rem]">
           <Link href="/" className="text-sm text-zinc-400 transition-colors hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-300">← Home</Link>
-          <p className="mt-10 text-xs font-medium uppercase tracking-[0.14em] text-cyan-300">Client and own-business builds</p>
+          <p className="mt-10 text-xs font-medium text-cyan-300">Local advice and our own builds</p>
           <h1 id="work-title" className="mt-4 max-w-[48rem] text-balance text-[clamp(2.8rem,6vw,5.5rem)] font-normal leading-[1.04] tracking-[-0.045em] text-white">
             See the work <span className="text-gradient-ai">behind the offer.</span>
           </h1>
           <p className="mt-7 max-w-[39rem] text-[18px] leading-relaxed text-zinc-300">
-            Client work and systems built for our own businesses. See what we have built and which patterns fit your team.
+            Advice I gave two local owners by phone, and systems built for our own businesses. See which patterns fit your team.
           </p>
           <div className="mt-9 flex flex-wrap gap-x-7 gap-y-3 text-sm font-medium">
             {workPaths.map((path, index) => (
@@ -59,7 +59,7 @@ export default function WorkPage() {
         </div>
       </section>
 
-      <section aria-label="Client work" className="px-6 pb-20">
+      <section aria-label="Local examples" className="px-6 pb-20">
         <div className="mx-auto max-w-[64rem] space-y-14">
           {work.map((item, index) => {
             const path = workPaths[index]
@@ -68,7 +68,7 @@ export default function WorkPage() {
               <article id={path.id} key={path.id} className="scroll-mt-28">
                 <div className="grid gap-6 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:gap-10">
                   <div className="pt-2">
-                    <div className="flex items-center gap-3 text-xs font-medium uppercase tracking-[0.12em] text-zinc-400">
+                    <div className="flex items-center gap-3 text-xs font-medium text-zinc-400">
                       <span className="font-mono text-cyan-300">{String(index + 1).padStart(2, '0')}</span>
                       <span className="h-px w-9 bg-white/20" aria-hidden="true" />
                       <span>{item.badge}</span>
@@ -81,15 +81,15 @@ export default function WorkPage() {
                     </Link>
                   </div>
 
-                  <div className="min-w-0 rounded-2xl border border-stone-300 bg-[#f2f0e9] p-6 text-zinc-900 shadow-[0_16px_50px_rgba(0,0,0,.18)] sm:p-8">
+                  <div className="min-w-0 rounded-2xl border border-stone-300 bg-[var(--paper-warm)] p-6 text-zinc-900 shadow-[var(--shadow-card)] sm:p-8">
                     <div className="flex items-start justify-between gap-4 border-b border-stone-300 pb-5">
                       <div>
-                        <p className="text-xs font-semibold uppercase tracking-[0.12em] text-stone-600">General buyer questions</p>
+                        <p className="text-xs font-semibold text-stone-600">General buyer questions</p>
                         <h3 className="mt-2 text-xl font-semibold leading-snug">Questions for a similar project</h3>
                       </div>
                       <FileText size={23} className="shrink-0 text-stone-500" aria-hidden="true" />
                     </div>
-                    <p className="mt-5 text-sm leading-relaxed text-stone-600">These are prompts for your own workflow, not facts about this client&apos;s project.</p>
+                    <p className="mt-5 text-sm leading-relaxed text-stone-600">These are prompts for your own workflow, not facts about this example.</p>
                     <ol className="mt-6 space-y-5">
                       {questions.map((question, questionIndex) => (
                         <li key={question} className="flex gap-4">
@@ -111,7 +111,7 @@ export default function WorkPage() {
       <section className="px-6 pb-24" aria-labelledby="work-next-title">
         <div className="panel mx-auto grid max-w-[64rem] gap-8 rounded-2xl p-7 sm:p-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,0.9fr)] lg:items-center">
           <div>
-            <p className="text-xs font-medium uppercase tracking-[0.12em] text-cyan-300">Your next conversation</p>
+            <p className="text-xs font-medium text-cyan-300">Your next conversation</p>
             <h2 id="work-next-title" className="mt-4 text-balance text-3xl font-medium tracking-tight text-white">Bring one process your team knows well.</h2>
             <p className="mt-4 text-base leading-relaxed text-zinc-300">A useful call starts with the work as it happens today. We can check native features before discussing a custom build.</p>
             <ul className="mt-6 grid gap-3 text-sm text-zinc-200 sm:grid-cols-2">

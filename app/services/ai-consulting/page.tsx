@@ -250,7 +250,7 @@ export default function AIConsultingPage() {
 
       <section className="px-6 pb-12">
         <div className="mx-auto max-w-[64rem] border-t border-white/10 pt-7">
-          <p className="text-sm text-zinc-400">See related client work</p>
+          <p className="text-sm text-zinc-400">See a related example</p>
           <Link href="/work#byram-mason" className="mt-2 inline-block text-base font-medium text-cyan-300 underline underline-offset-4">See the building supplier example</Link>
         </div>
       </section>

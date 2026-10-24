@@ -67,9 +67,22 @@ jobs:
             exit 1
           fi
           # Each gate has a hard process timeout; all form POSTs use fictional mocked responses.
-          UAT_OUTPUT="$UAT_OUTPUT/kits" timeout --kill-after=5s 90s node scripts/workflow-kits-uat.mjs > "$UAT_OUTPUT/kits/summary.json"
-          UAT_OUTPUT="$UAT_OUTPUT/customer-path" timeout --kill-after=5s 90s node scripts/customer-path-uat.mjs > "$UAT_OUTPUT/customer-path/summary.json"
-          UAT_OUTPUT="$UAT_OUTPUT/fit" timeout --kill-after=5s 90s node scripts/workflow-fit-uat.mjs > "$UAT_OUTPUT/fit/summary.json"
+          # A failed gate is also raised as an annotation, so the failing check can be read from the
+          # PR's check run without downloading logs.
+          run_gate() {
+            local dir="$1" script="$2" status=0
+            UAT_OUTPUT="$UAT_OUTPUT/$dir" timeout --kill-after=5s 90s node "scripts/$script" > "$UAT_OUTPUT/$dir/summary.json" 2> "$UAT_OUTPUT/$dir/stderr.log" || status=$?
+            cat "$UAT_OUTPUT/$dir/stderr.log" >&2
+            if [[ "$status" != 0 ]]; then
+              local detail
+              detail="$( { tail -c 1500 "$UAT_OUTPUT/$dir/stderr.log"; jq -r '.checks[]? | select(.ok == false) | "failed: " + .name' "$UAT_OUTPUT/$dir/report.json" 2>/dev/null || true; } | sed 's/%/%25/g' | tr '\r\n' '  ')"
+              echo "::error title=$script failed (exit $status)::$detail"
+              return "$status"
+            fi
+          }
+          run_gate kits workflow-kits-uat.mjs
+          run_gate customer-path customer-path-uat.mjs
+          run_gate fit workflow-fit-uat.mjs
       - name: Retain public fictional browser reports
         if: always()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2, verified via GitHub API

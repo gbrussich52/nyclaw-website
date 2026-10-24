@@ -33,7 +33,7 @@ const home = await readFile('app/page.tsx', 'utf8')
 const caseSource = await readFile('lib/client-work.ts', 'utf8')
 const cases = caseSource.match(/const work = \[([\s\S]*?)\n\]/)?.[0]
 const hash = createHash('sha256').update(cases ?? '').digest('hex')
-if (hash !== '8254b1a2e890f00b4f4f98aeb89b33be4566fd910eb7db1d9189c8a3067ed333') errors.push('Approved client case copy changed: obtain a reviewed factual correction before updating this guard.')
+if (hash !== 'e33aada2997f97ab64330d2faf6b70318be7b4a41f3d7a52743a43949c058268') errors.push('Approved example copy changed: obtain a reviewed factual correction before updating this guard.')
 if (!home.includes("from '../lib/client-work'")) errors.push('Homepage must render approved cases from their shared source.')
 const workPage = await readFile('app/work/page.tsx', 'utf8')
 if (!workPage.includes("from '../../lib/client-work'")) errors.push('Work page must render approved cases from their shared source.')

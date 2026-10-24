@@ -8,7 +8,7 @@ import { SpeedInsights } from '@vercel/speed-insights/next'
 import OutboundTracker from './components/OutboundTracker'
 import { ServiceOverviewJsonLd, WebSiteJsonLd, OrganizationJsonLd } from './components/JsonLd'
 import SiteHeader, { Wordmark } from './components/SiteHeader'
-import { CALENDLY_URL } from './config'
+import { CALENDLY_URL, SITE } from './config'
 
 // Display: Space Grotesk — geometric, crafted letterforms (AI-native feel).
 const spaceGrotesk = localFont({
@@ -79,14 +79,16 @@ export default function RootLayout({
         <footer className="border-t border-white/10 py-12">
           <div className="mx-auto flex max-w-4xl flex-col gap-8 px-6">
             <div className="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
-              <Link href="/" aria-label="NYClaw.io home">
+              <Link href="/" aria-label={`${SITE.name} home`}>
                 <Wordmark size="sm" />
               </Link>
-              <nav className="flex flex-wrap gap-x-6 gap-y-2 text-sm text-zinc-400">
+              <nav className="flex flex-wrap gap-x-6 gap-y-1 text-sm text-zinc-400 [&>a]:py-1.5">
                 <Link href="/services" className="transition-colors hover:text-white">Services</Link>
+                <Link href="/work" className="transition-colors hover:text-white">Work</Link>
+                <Link href="/about" className="transition-colors hover:text-white">About</Link>
+                <Link href="/ai-workflows" className="transition-colors hover:text-white">Workflow kits</Link>
                 <Link href="/knowledge" className="transition-colors hover:text-white">Knowledge</Link>
                 <Link href="/blog" className="transition-colors hover:text-white">Blog</Link>
-                <Link href="/about" className="transition-colors hover:text-white">About</Link>
                 <Link href="/resources" className="transition-colors hover:text-white">Free guide</Link>
                 <Link href="/free-ai-starter-kit" className="transition-colors hover:text-white">Starter kit</Link>
                 <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-white">Free 30-minute call</a>
@@ -96,8 +98,8 @@ export default function RootLayout({
               </nav>
             </div>
             <div className="flex flex-col gap-2 text-[13px] text-zinc-400 sm:flex-row sm:items-center sm:justify-between">
-              <p>© {new Date().getFullYear()} NYClaw.io · AI agency · Westchester County, NY</p>
-              <p>Practical AI. Clear next steps.</p>
+              <p>© {new Date().getFullYear()} {SITE.name} · AI for small businesses · Westchester County, NY</p>
+              <p>Less busywork. You keep the final say.</p>
             </div>
           </div>
         </footer>

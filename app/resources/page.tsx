@@ -59,7 +59,7 @@ export default function ResourcesPage() {
         {/* Indigo bloom behind the page header, per TOKENS.md. */}
         <div className="bloom-indigo pointer-events-none absolute -top-[16rem] left-1/2 h-[44rem] w-[48rem] -translate-x-1/2 rounded-full" />
         <div className="relative mx-auto max-w-[48rem]">
-          <div className="mb-6 inline-flex h-7 items-center rounded-full bg-gradient-to-br from-cyan-400 to-indigo-500 px-3 text-[11px] font-semibold uppercase tracking-[0.1em] text-zinc-950">
+          <div className="mb-6 inline-flex h-7 items-center rounded-full bg-cyan-400 px-3 text-[13px] font-semibold text-zinc-950">
             Free Download
           </div>
           <h1 className="text-balance text-[clamp(2.5rem,5.5vw,3.5rem)] font-normal leading-[1.08] tracking-[-0.03em] text-white">
@@ -71,7 +71,7 @@ export default function ResourcesPage() {
           <p className="mx-auto mt-3 max-w-[36rem] text-sm leading-relaxed text-zinc-400">
             Submit a request to open the playbook directly on this page.
           </p>
-          <p className="mt-4 text-[11px] font-medium uppercase tracking-[0.08em] text-zinc-400">
+          <p className="mt-4 text-[13px] font-medium text-zinc-400">
             Updated October 2026
           </p>
           <div className="mt-7 flex flex-wrap justify-center gap-6 text-sm text-zinc-400">
@@ -104,7 +104,7 @@ export default function ResourcesPage() {
                   className="flex gap-5 border-b border-dashed border-white/[0.12] py-6"
                 >
                   <div className="w-[72px] flex-shrink-0 text-center">
-                    <div className="rounded-md bg-white/[0.07] px-1.5 py-1 text-[11px] font-medium tracking-[0.04em] text-zinc-300">
+                    <div className="rounded-md bg-white/[0.07] px-1.5 py-1 text-[13px] font-medium text-zinc-300">
                       {item.section}
                     </div>
                   </div>

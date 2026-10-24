@@ -38,9 +38,10 @@ heading reads as a different brand.
 
 ### 3. Violet `#8b5cf6` is not part of the UI palette
 
-One accent gradient, one standalone accent hue (`#22d3ee`). Violet appears in
-exactly one place: the hero helix artwork in `lib/heroHelixDraw.ts`, which is the
-designer's own composition and is explicitly exempt. Do **not** pull violet into
+One accent gradient, one standalone accent hue (`#22d3ee`). The homepage hero
+helix (`app/components/DnaHelix.tsx`) is artwork and is exempt: it lights its
+spheres in cyan → indigo → a pale violet-white. Do **not** pull those hues out of
+the canvas. Do **not** pull violet into
 buttons, borders, text, blooms or gradients. Do not add a second accent hue either.
 
 ---
@@ -95,7 +96,12 @@ Chip / tag fill is `white/[0.07]`. Ghost hover fill is `white/5`–`white/[0.06]
 | `--brand-blue` | `#2e8bff` | `brand-blue` | gradient stop; the one custom color |
 | `--accent` | `#22d3ee` | `cyan-400` | the **only** standalone accent — code text, article CTA rule, hero badge dot |
 
-`#6366f1` (`indigo-500`) exists only as a gradient/bloom stop, never as a flat fill.
+`#6366f1` (`indigo-500`, `--indigo`) exists only as a gradient/bloom/strand stop, never as a flat fill.
+
+`--scrim: 9 9 11` is the canvas color as **space-separated RGB channels** so that
+`rgb(var(--scrim) / 0.8)` parses. It was once written `9, 9, 11`, which made every
+`rgb(var(--scrim) / a)` declaration invalid: the nav glass and hero scrims silently
+painted nothing. Keep it space-separated.
 
 ### Gradients & blooms (utility classes)
 
@@ -105,9 +111,10 @@ Chip / tag fill is `white/[0.07]`. Ghost hover fill is `white/5`–`white/[0.06]
 | `.text-gradient-metric` | `linear-gradient(to right, #fff, #52525b)`, clipped to text | stat and result numbers only |
 | `.bloom-indigo` | `radial-gradient(circle, rgba(99,102,241,.2), transparent 60%)`, `blur(40px)` | behind page headers / hero |
 | `.bloom-blue` | `radial-gradient(circle, rgba(46,139,255,.18), transparent 65%)`, `blur(30px)` | behind CTA and form panels |
-| `.connector-flow` | animated blue → indigo → cyan sweep, `200%` background-size | the OODA timeline connector |
-| `.hero-scrim-x` | left-heavy `zinc-950` ramp (`.97 → .92 → .62 → transparent`) | keeps hero copy legible over the video (media is weighted right) |
-| `.hero-scrim-y` | bottom-up `rgba(9,9,11,.85) → transparent 55%` | grounds the hero card |
+| `.connector-flow` | animated blue → indigo → cyan sweep, `200%` background-size | the OODA timeline connector (`OodaPanel`) |
+| `.hero-stage` | indigo + faint cyan radial light over `--canvas` | the full-bleed homepage hero the helix sits in |
+| `.hero-scrim` | left-heavy `--scrim` ramp (`.9 → .72 → .18 → transparent` at 72%) + bottom fade to canvas; on mobile a top-to-bottom ramp | keeps hero copy legible over the helix |
+| `.hero-scrim-x` / `.hero-scrim-y` | older left / bottom scrims | unused since the cinematic hero; kept for the unused `HeroVideo` |
 | `.hero-grid` | `rgba(255,255,255,.035)` 1px lines on an `80px` grid, radially masked | hero + service-hero texture |
 
 ---
@@ -196,10 +203,18 @@ buttons only. No large soft shadows anywhere.
 | `CountUp` ramp | 1500ms | easeOutCubic |
 | marquee loop | 34s | linear, infinite |
 | connector flow | 5s | linear, infinite |
+| hero helix rotation | continuous, ~one slow turn per ~20s; 1.2s intro fade | WebGL, rAF |
+| `.reveal-view` section headers | scroll-linked, `entry 0% → entry 55%` | `animation-timeline: view()` |
+| `.strand-draw` process strand | scroll-linked clip wipe, `entry 0% → entry 100%` | `animation-timeline: view()` |
+
+Scroll-driven animations sit inside `@supports (animation-timeline: view())`.
+Browsers without it simply show the content: nothing is ever hidden waiting for JS.
+No scroll-jacking, no pinned sections, no cursor followers, no popups.
 
 **Reduced motion is handled and must stay handled.** `globals.css` kills
-`.marquee-track`, `.connector-flow` and the aurora/float/pulse animations under
-`prefers-reduced-motion: reduce`; `Reveal` and `CountUp` short-circuit to their
+`.marquee-track`, `.connector-flow`, `.reveal-view`, `.strand-draw` and the
+aurora/float/pulse animations under `prefers-reduced-motion: reduce`; `DnaHelix`
+draws one still frame and never starts its loop; `Reveal` and `CountUp` short-circuit to their
 final state; `HeroVideo` renders the poster still and never mounts the `<video>`
 (so the loop isn't even downloaded).
 
@@ -213,9 +228,11 @@ final state; `HeroVideo` renders the poster still and never mounts the `<video>`
 | `.panel-hover` | border → `--line-hover` and `translateY(-2px)` on hover, `.2s`. |
 | `.hairline-grid` | Wrapper paints `--line`; children get the canvas fill, so the `1px` gap reads as a hairline. Used for stat strips and capability grids. |
 | `.hero-grid` | 80px masked grid overlay. |
-| `.hero-scrim-x` / `.hero-scrim-y` | Hero legibility scrims. |
+| `.hero-stage` / `.hero-scrim` | Homepage hero light and legibility scrim (see §2). |
+| `.reveal-view` | Scroll-linked header entrance (native `view()` timeline; visible without support). |
+| `.strand-draw` | The process-step double strand; clip-wipes in on scroll. |
 | `.bloom-indigo` / `.bloom-blue` | Ambient radial blooms (position them absolutely, `pointer-events-none`). |
-| `.nav-dusk` | Dark-glass header: `rgba(9,9,11,.6)` + `blur(40px)`. |
+| `.nav-dusk` | Dark-glass header: `rgb(var(--scrim) / .8)` + `blur(40px)`. |
 | `.marquee` / `.marquee-track` | Edge-masked infinite marquee; pauses on hover. |
 | `.connector-flow` | Animated OODA connector line. |
 | `.input-dusk` | Form field: `--solid` fill, `--line-dashed` border, `8px` radius, white text, faint placeholder, `--line-hover` focus outline. |
@@ -263,8 +280,9 @@ final state; `HeroVideo` renders the poster still and never mounts the `<video>`
 |---|---|
 | `Reveal` | One-shot IntersectionObserver fade/slide-up. Pass an incrementing `delay` (80–90ms) to stagger a row. Disconnects after firing; renders instantly under reduced motion. |
 | `CountUp` | Animates `0 → to` on first scroll into view. Pass `raw` for non-numeric values. |
-| `HeroVideo` | The homepage hero background loop. Serves `hero.webm` + `hero.mp4` (Safari doesn't play VP9-in-WebM reliably) and the poster still under reduced motion. |
-| `HeroHelix` | The **live `<canvas>`** version of the helix. Currently **not imported by any route** — the homepage ships the baked video instead. Kept because it shares `lib/heroHelixDraw.ts`; treat it as available-but-unused, not as the shipping hero. |
+| `DnaHelix` | **The shipping homepage hero.** A 3D ball-and-stick DNA double helix in raw WebGL 1 (no library), diagonal, glossy spheres, base-pair rungs, depth-of-field glow and dust. See §10. |
+| `HeroVideo` | **Unused since 2026-10-23.** The old hero background loop. Serves `hero.webm` + `hero.mp4` (Safari doesn't play VP9-in-WebM reliably) and the poster still under reduced motion. |
+| `HeroHelix` | The older 2D `<canvas>` ribbon helix. **Not imported by any route.** Kept because it shares `lib/heroHelixDraw.ts`; treat it as available-but-unused, not as the shipping hero. |
 
 ---
 
@@ -296,30 +314,36 @@ tags and add no per-tag classes.**
 
 ---
 
-## 10. The hero video is generated — do not hand-edit it
+## 10. The hero helix — `DnaHelix`
 
-```bash
-npm run render:hero      # node scripts/render-hero.mjs
-```
+`app/components/DnaHelix.tsx` is the whole renderer: raw WebGL 1 in one client
+component, about 4 KB gzipped on the page chunk. No three.js.
 
-`lib/heroHelixDraw.ts` is the single framework-free drawing core. It feeds **two**
-consumers:
+- **Scene.** Two backbones (a glossy sphere at every base pair plus smaller beads)
+  and base-pair rungs in two tints, with a real major/minor groove offset, and a
+  sparse field of out-of-focus dust. Every position is computed in the vertex
+  shader from static attributes; per frame the CPU sets only a few uniforms.
+- **Passes.** A solid, sphere-lit pass with depth write, then an additive glow pass
+  that grows and softens points by distance from the focal plane (depth of field)
+  and fog.
+- **Budget.** 72 base pairs / 150 dust on desktop; 52 / 70 below 768px. DPR capped
+  at 2 (1.5 on coarse pointers). Measured 60fps on desktop and on a 390px phone
+  profile at 4x CPU throttle.
+- **Composition.** Desktop: tilted diagonal, weighted right, cropped by the frame.
+  Portrait: pushed right and dimmed behind the copy.
+- **Lifecycle.** Starts only after `load` and an idle slot, so first paint and the
+  h1 (the LCP element) never wait on shader compile. Pauses offscreen
+  (IntersectionObserver) and on hidden tabs. Pointer parallax on fine pointers
+  only. Scroll gently unwinds and recedes the coil.
+- **Fallbacks.** No WebGL, a failed link, or a lost context → `public/dna-poster.webp`.
+  Reduced motion (or `?helix-still`) → one still frame, no loop.
+- **Gotcha.** A uniform declared in both shaders must have the same precision in
+  both, or the program fails to link and the canvas is silently empty. Always check
+  the rendered pixels, not that the canvas mounted.
 
-1. `app/components/HeroHelix.tsx` — the live `<canvas>` component (currently unused)
-2. `scripts/render-hero.mjs` — bakes `public/hero.webm` + `public/hero.mp4` (+ poster)
-
-**Edit the shared module, then re-render. Never fork or copy it** — a second copy
-means the live canvas and the baked video drift apart silently.
-
-Why a baked video rather than the live canvas on the homepage: the hero is a
-full-bleed media card, and a GPU-decoded loop costs no main-thread JS on an
-LCP-critical surface. The original mockup used a 20MB stock clip, which would also
-have been blocked by the CSP (`default-src 'self'`, no `media-src`) — rendering our
-own footage keeps it first-party and far lighter.
-
-The renderer is deterministic (no `Math.random()`; particle seeds are arithmetic) and
-verifies frame 0 and frame N are byte-identical before encoding, so the loop is
-genuinely seamless.
+`lib/heroHelixDraw.ts`, `HeroHelix.tsx`, `HeroVideo.tsx`, `scripts/render-hero.mjs`
+and `public/hero.*` are the previous 2D/video hero. They are unused and can be
+removed in a cleanup pass.
 
 ---
 
@@ -339,11 +363,13 @@ genuinely seamless.
 - Don't introduce violet, or any second accent hue (§0.3).
 - Don't add box-shadows for depth.
 - Don't reintroduce navy / `slate-*` / `sky-blue` / `charcoal` / `dark-red`.
-- Don't copy `heroHelixDraw.ts`; edit it and re-render.
+- Don't hide content until JS runs; scroll reveals must degrade to visible.
+- Don't add popups, modals, toasts, scroll-jacking or cursor followers.
 - Don't remove `scroll-margin-top` from `section[id]` — anchors will land under the fixed header.
 
 ---
 
-*Rewritten 2026-07-28 — documents the shipped dusk system. Sources: `app/globals.css`,
+*Updated 2026-10-23 for the cinematic homepage pass (WebGL helix hero, scroll-linked
+reveals, process strand, `--scrim` fix). Rewritten 2026-07-28 — documents the shipped dusk system. Sources: `app/globals.css`,
 `tailwind.config.ts`, `app/layout.tsx`, `app/components/*`, `lib/heroHelixDraw.ts`,
 and the 2026 dusk handoff `TOKENS.md`.*
