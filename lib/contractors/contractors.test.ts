@@ -10,7 +10,7 @@ import { contractorWidget, WIDGET_URI } from './widget'
 import { POST, GET as mcpGet } from '../../app/api/contractors/mcp/route'
 import { GET as healthGet } from '../../app/api/contractors/health/route'
 import { GET as searchGet } from '../../app/api/contractors/search/route'
-const now = new Date('2026-10-20T20:00:00Z')
+const now = new Date('2026-10-28T20:00:00Z')
 const input = { trade: 'electrician', area: 'westchester' } as const
 const compare = (args = input) => findContractors(args, contractors, now)
 
@@ -22,6 +22,9 @@ describe('source-backed contractor comparison', () => {
     expect(result.candidates.every(c => c.independentReviewCount === 0 && !c.recommendationEligible)).toBe(true)
     expect(result.candidates.every(c => c.license.currentAtCheck)).toBe(true)
     expect(result.candidates.map(c => c.license.number).sort()).toEqual(['1668', '2115', '217'])
+    const fanning = result.candidates.find(c => c.id === 'fanning-electric')!
+    expect(fanning.license).toMatchObject({ checkedAt: '2026-10-28', expiresAt: '2027-12-31' })
+    expect(fanning.evidence.every(e => e.checkedAt === '2026-10-20')).toBe(true)
     expect(JSON.stringify(result)).not.toContain('rating":')
   })
   it('matches the exact job instead of padding an EV shortlist to three', () => {
@@ -50,7 +53,11 @@ describe('source-backed contractor comparison', () => {
   it('expires stale and future source checks and does not redate source observations', () => {
     expect(findContractors(input, contractors, new Date('2027-02-01T12:00:00Z')).candidates).toEqual([])
     expect(findContractors(input, contractors, new Date('2026-10-19T12:00:00Z')).candidates).toEqual([])
-    const later = findContractors(input, contractors, new Date('2026-11-25T12:00:00Z'))
+    const beforeLicenseCheck = findContractors(input, contractors, new Date('2026-10-27T12:00:00Z'))
+    expect(beforeLicenseCheck.candidates.find(c => c.id === 'fanning-electric')!.license.currentAtCheck).toBe(false)
+    expect(beforeLicenseCheck.candidates.filter(c => c.id !== 'fanning-electric').every(c => c.license.currentAtCheck)).toBe(true)
+    const later = findContractors(input, contractors, new Date('2026-11-28T12:00:00Z'))
+    expect(later.candidates).toHaveLength(3)
     expect(later.candidates.every(c => !c.license.currentAtCheck && c.evidence[0].checkedAt === '2026-10-20')).toBe(true)
   })
   it('deduplicates permissioned evidence lineage and needs relevant license for recommendation eligibility', () => {

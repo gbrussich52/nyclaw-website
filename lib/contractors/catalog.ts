@@ -27,7 +27,7 @@ export const contractors = validateCatalog([
       source('keating-testimonial', 'https://www.keatingelectric.com/', 'The business publishes selected customer feedback about its electrical work and communication. This is not an independently verified review feed.', ['any'], true),
     ] },
   { id: 'fanning-electric', name: 'Fanning Electric Company', trade: 'electrician', areas: ['westchester'], propertyTypes: ['residential', 'multifamily'],
-    website: 'https://www.fanningelectric.com/', license: license('217'), evidence: [
+    website: 'https://www.fanningelectric.com/', license: { ...license('217'), checkedAt: '2026-10-28', expiresAt: '2027-12-31' }, evidence: [
       source('fanning-services', 'https://www.fanningelectric.com/', 'The business describes residential electrical repairs and installations, plus generator work, in Westchester and Putnam.', ['lighting-outlets']),
       source('fanning-testimonial', 'https://www.fanningelectric.com/', 'Selected testimonials displayed by the business discuss electrical work and project experience. We have not verified the underlying reviewers or reproduced its star rating.', ['any'], true),
     ] },

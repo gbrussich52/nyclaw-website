@@ -1,3 +1,17 @@
+# October 28, 2026 — Fanning county license observation
+
+The catalog previously recorded license 217 with a December 31, 2026 expiry. A fresh
+check of the [Westchester County trade-license register](https://tradelicenses.westchestercountyny.gov/TradeLicenses/)
+on October 28 matched Fanning Electric Co Inc, 55 Central Ave, Ossining, and showed
+December 31, 2027. Update only Fanning's license checked date and expiry. Business
+service/testimonial sources remain checked October 20; the county lookup does not
+refresh them. EASE 2115 and Keating 1668 license records are unchanged.
+
+Existing date tests now evaluate current results after the recheck, reject a
+future-dated Fanning observation and still mark all license checks stale after 30
+days without expiring or redating service evidence. No ranking, workflow, auth,
+contact behavior or schedule changes.
+
 # October 20, 2026
 
 Previously NYClaw had no resident-facing contractor comparison or ChatGPT endpoint. Adds a free source-backed comparison, strict evidence/permission/freshness rules, read-only official MCP app, mobile/desktop web interface, local unsent comparison brief and reproducible review package. Real business-selected testimonials are distinguished from independent recommendations; no fabricated ratings, live availability or private-group collection.
