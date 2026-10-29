@@ -2,15 +2,23 @@
 /** Browser gate for client evidence and guide receipts. All contact POSTs are mocked, on any base URL. */
 import puppeteer from 'puppeteer-core'
 import assert from 'node:assert/strict'
+import { mkdir, writeFile } from 'node:fs/promises'
 const base=process.env.UAT_BASE_URL || 'http://127.0.0.1:4388'
+const output=process.env.UAT_OUTPUT || '/private/tmp/customer-path-browser'
+await mkdir(output,{recursive:true})
 const browser=await puppeteer.launch({executablePath:process.env.CHROME_PATH || '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',headless:true})
-const results=[],errors=[]
-const check=(name,pass)=>{results.push({name,pass:!!pass});assert(pass,name)}
+const results=[],errors=[],pending=new Map()
+let page,phase='new page',failure
+const publicPath=url=>{try{const parsed=new URL(url,base);return parsed.origin===new URL(base).origin?parsed.pathname:'[external]'}catch{return '[invalid URL]'}}
+const check=(name,pass)=>{console.error('CHECK',name,!!pass);results.push({name,ok:!!pass});assert(pass,name)}
 // The hero helix renders every frame, which stops Chrome from firing its own network-idle
 // lifecycle event. Wait for load, then for puppeteer's request tracker to go quiet instead.
-const open=async(page,url)=>{const r=await page.goto(url,{waitUntil:'load'});await page.waitForNetworkIdle({idleTime:500,concurrency:2});return r}
+const open=async(page,url)=>{phase='load '+publicPath(url);console.error('OPEN',publicPath(url));const r=await page.goto(url,{waitUntil:'load'});phase='network idle '+publicPath(url);await page.waitForNetworkIdle({idleTime:500,concurrency:2});phase='assertions '+publicPath(url);return r}
 try {
-  const page=await browser.newPage();page.on('pageerror',e=>errors.push(e.message))
+  console.error('BROWSER',await browser.version())
+  page=await browser.newPage();page.on('pageerror',e=>errors.push(e.message))
+  page.on('request',r=>pending.set(r,{path:publicPath(r.url()),method:r.method(),type:r.resourceType()}))
+  page.on('requestfinished',r=>pending.delete(r));page.on('requestfailed',r=>pending.delete(r))
   await page.setViewport({width:1440,height:1000});await open(page,base)
   const approved=await page.$$eval('#work article p.flex-1',els=>els.map(e=>e.textContent))
   check('Two approved case descriptions on home',approved.length===2)
@@ -70,5 +78,13 @@ try {
     check(kind+' payload preserved',payloads.at(-1).challenge==='guide-download'&&payloads.at(-1).email==='fictional@example.com'&&payloads.at(-1).source===(kind==='resource'?'resource_form':'playbook_form'))
   }
   check('Exactly four mocked contact requests',writes===4);check('No browser runtime errors',errors.length===0)
-  console.log(JSON.stringify({passed:results.length,total:results.length,mockedContactOnly:true,errors}))
-}finally{await browser.close()}
+}catch(error){
+  failure={message:error.message.replace(/https?:\/\/[^\s]+/g,publicPath).slice(0,1000),phase,page:page?publicPath(page.url()):undefined,pending:[...pending.values()]}
+  console.error('FAILURE',JSON.stringify(failure))
+  await page?.screenshot({path:output+'/failure.png',timeout:5000}).catch(()=>{})
+  process.exitCode=1
+}finally{
+  await writeFile(output+'/report.json',JSON.stringify({ok:!failure&&results.every(x=>x.ok),checks:results,errors,failure,mockedContactOnly:true},null,2))
+  await browser.close()
+  console.log(JSON.stringify({passed:results.filter(x=>x.ok).length,total:results.length,mockedContactOnly:true,errors,output,...(failure?{failure}:{})}))
+}

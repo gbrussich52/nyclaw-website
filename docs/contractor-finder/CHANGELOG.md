@@ -1,5 +1,17 @@
 # October 29, 2026 — compatible dependency security repair
 
+Release-checks run 40937730961 passed the 33-check kits gate, then the customer-path
+gate timed out in a network-idle wait without recording the page or completed
+checks. Its artifact contained no customer-path report or screenshot. All 63
+customer-path assertions pass locally with the patched dependencies and installed
+Chrome; the exact CI cause remains unknown. Add named page/check progress plus a
+failure report with current pathname, pending request paths and a screenshot to
+the existing gate, and retain PNGs in the existing short-lived CI artifact. Strip
+URL queries, credentials and external origins from diagnostic paths. Existing
+buyer assertions, waits/timeouts and fictional intercepted contact requests are
+unchanged. This is diagnostic coverage for one bounded CI rerun, not a claim that
+the runner failure is repaired; no application behavior or permission changes.
+
 The locked dependency tree had eight npm advisory findings (five high, three
 moderate), including Zod validation resource exhaustion, compressed-body parsing
 denial of service, and development-tool file-read/code-injection issues. Update
