@@ -152,6 +152,42 @@ describe('official MCP and web surfaces', () => {
     expect((await call('https://nyclaw.io/api/contractors/mcp', {}, '{broken')).status).toBe(400)
     expect(mcpGet().status).toBe(405)
   })
+  it('lists and calls the read-only tool over HTTP while preserving safety and evidence boundaries', async () => {
+    vi.useFakeTimers()
+    vi.setSystemTime(now)
+    const rpc = async (method: string, params = {}) => {
+      const response = await POST(new Request('https://nyclaw.io/api/contractors/mcp', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json, text/event-stream', 'MCP-Protocol-Version': '2025-03-26' },
+        body: JSON.stringify({ jsonrpc: '2.0', id: 1, method, params }),
+      }))
+      expect(response.status).toBe(200)
+      expect(response.headers.get('Cache-Control')).toBe('no-store')
+      return (await response.json()).result
+    }
+    const call = (args: Record<string, unknown>) => rpc('tools/call', { name: 'find_local_contractor_candidates', arguments: args })
+    try {
+      const listed = await rpc('tools/list')
+      expect(listed.tools).toHaveLength(1)
+      expect(listed.tools[0].annotations).toMatchObject({ readOnlyHint: true, destructiveHint: false, openWorldHint: false })
+      const result = await call(input)
+      expect(result.isError).not.toBe(true)
+      expect(result.structuredContent.status).toBe('comparison-only')
+      expect(result.structuredContent.candidates).toHaveLength(3)
+      for (const [args, status] of [
+        [{ ...input, urgency: 'immediate-danger' }, 'safety-handoff'],
+        [{ ...input, job: 'water-heater' }, 'needs-clarification'],
+        [{ ...input, evidence: 'independent-only' }, 'insufficient-evidence'],
+      ] as const) {
+        const held = await call(args)
+        expect(held.isError).not.toBe(true)
+        expect(held.structuredContent.status).toBe(status)
+        expect(held.structuredContent.candidates).toEqual([])
+      }
+      expect((await call({ ...input, streetAddress: 'private' })).isError).toBe(true)
+      expect((await call({ ...input, limit: 100 })).isError).toBe(true)
+    } finally { vi.useRealTimers() }
+  })
   it('rejects invalid browser filters without fetching arbitrary URLs or accepting source writes', async () => {
     expect(searchGet(new Request('https://nyclaw.io/api/contractors/search?trade=electrician&area=westchester&website=https://evil.example')).status).toBe(400)
     const response = searchGet(new Request('https://nyclaw.io/api/contractors/search?trade=electrician&area=westchester&job=ev-charger'))
