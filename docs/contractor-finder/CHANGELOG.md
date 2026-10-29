@@ -1,3 +1,43 @@
+# October 29, 2026 — compatible dependency security repair
+
+Release-checks run 40937730961 passed the 33-check kits gate, then the customer-path
+gate timed out in a network-idle wait without recording the page or completed
+checks. Its artifact contained no customer-path report or screenshot. All 63
+customer-path assertions pass locally with the patched dependencies and installed
+Chrome; the exact CI cause remains unknown. Add named page/check progress plus a
+failure report with current pathname, pending request paths and a screenshot to
+the existing gate, and retain PNGs in the existing short-lived CI artifact. Strip
+URL queries, credentials and external origins from diagnostic paths. Existing
+buyer assertions, waits/timeouts and fictional intercepted contact requests are
+unchanged. This is diagnostic coverage for one bounded CI rerun, not a claim that
+the runner failure is repaired; no application behavior or permission changes.
+
+The locked dependency tree had eight npm advisory findings (five high, three
+moderate), including Zod validation resource exhaustion, compressed-body parsing
+denial of service, and development-tool file-read/code-injection issues. Update
+the existing MCP SDK 1.32.1 → 1.32.2 and Zod 4.5.4 → 4.6.7; keep the existing
+SDK route and schema implementation. Update Puppeteer Core 25.4.0 → 25.16.0 and
+Vitest 4.1.8 → 4.1.12 within their current major versions. Pin these direct
+dependencies and refresh compatible transitive locks, including body-parser
+2.4.0, Chromium BiDi 157.0.8090-0, Vite 8.3.5 and postcss-selector-parser 6.1.5.
+Install scripts were disabled, so the update did not download a browser.
+Regenerate the existing self-contained widget so its bundled SDK/Zod code also
+uses the patched releases and its CSP hash matches the result.
+
+Fresh npm audit reports zero findings. All 124 tests across 10 files pass,
+including a new HTTP MCP tools/list and tools/call regression covering the normal
+comparison, immediate-danger handoff, mismatched trade/job, independent-only
+evidence gap, private-field rejection and oversized-limit rejection. The existing
+official-client initialization/resource test and host/origin/body-size rejection
+tests also pass. A loopback production-build probe with the official SDK client
+also initializes, lists/calls the tool, reads its resource and verifies those
+safety/evidence outcomes and HTTP rejection statuses. TypeScript and the
+production build pass. Patched Puppeteer with the installed Chrome renders the
+regenerated widget's two EV candidates, danger handoff and independent-only
+evidence gap without JavaScript errors. This is local Verify
+evidence; publication and production Sense remain separate. Contractor facts,
+source observations, license dates, contact behavior and paid flows are unchanged.
+
 # October 28, 2026 — Fanning county license observation
 
 The catalog previously recorded license 217 with a December 31, 2026 expiry. A fresh
