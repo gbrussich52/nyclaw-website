@@ -149,7 +149,9 @@ const phases = [
 
 const explore = [
   { label: 'Homepage', href: '/' },
+  { label: 'AI for White Plains Businesses', href: '/locations/white-plains' },
   { label: 'AI for NYC Businesses', href: '/locations/new-york-city' },
+  { label: 'AI Automation', href: '/services/ai-automation' },
   { label: 'Knowledge Base', href: '/knowledge' },
   { label: 'Free AI Readiness Guide', href: '/resources' },
   { label: 'Blog', href: '/blog' },
@@ -239,20 +241,36 @@ export default function WestchesterCountyPage() {
             blurb="Discuss an in-person meeting or remote review for a specific workflow."
           />
           <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
-            {towns.map((town) => (
-              <div
-                key={town}
-                className="panel panel-hover flex flex-col items-center gap-2.5 rounded-xl px-3 py-5"
-              >
-                <MapPin
-                  size={17}
-                  strokeWidth={1.75}
-                  className="text-zinc-300"
-                  aria-hidden="true"
-                />
-                <p className="text-center text-[13px] font-medium text-white">{town}</p>
-              </div>
-            ))}
+            {towns.map((town) => {
+              const href = town === 'White Plains' ? '/locations/white-plains' : undefined
+              const inner = (
+                <>
+                  <MapPin
+                    size={17}
+                    strokeWidth={1.75}
+                    className="text-zinc-300"
+                    aria-hidden="true"
+                  />
+                  <p className="text-center text-[13px] font-medium text-white">{town}</p>
+                </>
+              )
+              return href ? (
+                <Link
+                  key={town}
+                  href={href}
+                  className="panel panel-hover flex flex-col items-center gap-2.5 rounded-xl px-3 py-5"
+                >
+                  {inner}
+                </Link>
+              ) : (
+                <div
+                  key={town}
+                  className="panel panel-hover flex flex-col items-center gap-2.5 rounded-xl px-3 py-5"
+                >
+                  {inner}
+                </div>
+              )
+            })}
           </div>
           <p className="text-center text-sm text-zinc-400">
             Plus every community in between.{' '}
