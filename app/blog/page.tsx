@@ -95,6 +95,14 @@ const posts = [
     tags: ['Legal', 'Workflow', 'Intake'],
   },
   {
+    title: 'Client Status Updates for Law Firms: What to Check Before Automating',
+    description:
+      'Check what your client portal already shares, define update triggers and the attorney approval point, and decide whether automating status updates is worth it.',
+    date: 'November 9, 2026',
+    href: '/blog/law-firm-client-status-updates',
+    tags: ['Legal', 'Workflow', 'Client Communication'],
+  },
+  {
     title: 'AI Client Intake for Law Firms: What to Automate',
     description:
       'Plan one administrative intake handoff with approved fields, missing-information checks, staff review and a visible failure path.',
