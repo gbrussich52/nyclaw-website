@@ -8,7 +8,8 @@ describe('White Plains location page', () => {
   const westchester = readFileSync('app/locations/westchester-county/page.tsx', 'utf8')
 
   it('targets White Plains AI search intent in title and first copy', () => {
-    expect(page).toMatch(/title:\s*'AI Automation & Consulting for White Plains NY Businesses'/)
+    // Claude Sonnet 5.5, 2026-11-12: title shortened so '<title> | NYClaw.io' stays under 60 chars.
+    expect(page).toMatch(/title:\s*'AI Automation & Consulting, White Plains NY'/)
     expect(page).toContain('canonical: \'https://nyclaw.io/locations/white-plains\'')
     expect(page).toContain('AI Automation for')
     expect(page).toContain('White Plains Businesses')

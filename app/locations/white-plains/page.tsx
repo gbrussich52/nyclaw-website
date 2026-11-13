@@ -25,7 +25,8 @@ import InternalLinks from '../_components/InternalLinks'
 import { CALENDLY_URL } from '../../config'
 
 export const metadata: Metadata = {
-  title: 'AI Automation & Consulting for White Plains NY Businesses',
+  // Claude Sonnet 5.5, 2026-11-12: layout adds ' | NYClaw.io', so the old title rendered at 69 chars. Now 55 and keeps the Consulting keyword.
+  title: 'AI Automation & Consulting, White Plains NY',
   description:
     'NYClaw.io helps White Plains small businesses connect inquiries, follow-ups and job records with scoped AI and workflow automation. Free 30-minute call.',
   keywords:

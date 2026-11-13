@@ -29,6 +29,10 @@ const ENTRIES: Entry[] = [
   // Legal pages
   { path: '/privacy', lastModified: '2026-09-19', changeFrequency: 'monthly', priority: 0.3 },
   { path: '/terms', lastModified: '2026-09-19', changeFrequency: 'monthly', priority: 0.3 },
+  // Claude Sonnet 5.5, 2026-11-12: Ahrefs flagged 3 indexable pages missing from the sitemap. Dates are each file's last commit.
+  { path: '/dmca', lastModified: '2026-10-22', changeFrequency: 'monthly', priority: 0.3 },
+  { path: '/contractor-finder/privacy', lastModified: '2026-10-22', changeFrequency: 'monthly', priority: 0.3 },
+  { path: '/ai-operators-playbook.html', lastModified: '2026-10-11', changeFrequency: 'monthly', priority: 0.8 },
 
   // Service pages
   { path: '/law-firm-workflows', lastModified: '2026-10-06', changeFrequency: 'monthly', priority: 0.9 },

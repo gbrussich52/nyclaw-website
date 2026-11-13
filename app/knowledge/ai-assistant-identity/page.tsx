@@ -24,6 +24,8 @@ export const metadata: Metadata = {
 const schemaData = {
   "@context": "https://schema.org",
   "@type": "Article",
+  // Claude Sonnet 5.5, 2026-11-12: Article rich results need `image`; same OG image the page already declares.
+  "image": "https://nyclaw.io/opengraph-image",
   "headline": "How to Build a Scalable AI Assistant: The Complete Identity Framework",
   "description": "The complete identity framework for building consistent, scalable AI assistants.",
   "author": { "@type": "Organization", "name": "NYClaw.io" },

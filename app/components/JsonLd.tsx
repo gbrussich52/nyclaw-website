@@ -2,6 +2,8 @@
 // JSON-LD structured data components for SEO
 // All content is hardcoded server-side data — no user input, no XSS risk.
 
+import { OG_IMAGE_URL } from '../config'
+
 // Freshness signal for WebSite JSON-LD (geo audit 2026-10-16). Bump when page content changes.
 const SITE_LAST_MODIFIED = '2026-10-16'
 
@@ -166,6 +168,8 @@ export function ArticleJsonLd({
     headline: title,
     description,
     url,
+    // Claude Sonnet 5.5, 2026-11-12: deep checks found Article schema with no `image` on 19 blog pages. Fixed here once for all callers.
+    image: OG_IMAGE_URL,
     datePublished,
     dateModified: dateModified || datePublished,
     author: {

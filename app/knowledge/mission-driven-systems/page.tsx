@@ -24,6 +24,8 @@ export const metadata: Metadata = {
 const schemaData = {
   "@context": "https://schema.org",
   "@type": "Article",
+  // Claude Sonnet 5.5, 2026-11-12: Article rich results need `image`; same OG image the page already declares.
+  "image": "https://nyclaw.io/opengraph-image",
   "headline": "Mission-Driven Systems: Why Most Processes Fail (And How to Fix Them)",
   "author": { "@type": "Organization", "name": "NYClaw.io" },
   "publisher": { "@type": "Organization", "name": "NYClaw.io", "url": "https://nyclaw.io" },
