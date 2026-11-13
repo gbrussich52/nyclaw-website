@@ -11,6 +11,10 @@ export const CALENDLY_URL = 'https://calendly.com/nyclaw-io-proton/30min'
 export const FREE_AUDIT_LABEL = 'Book a free 30-minute call'
 export const FREE_AUDIT_SHORT = 'Free 30-minute call'
 
+// Claude Sonnet 5.5, 2026-11-12: one OG image URL for Article JSON-LD. app/opengraph-image.tsx serves it, and
+// every page's openGraph.images already points here. Article rich results need `image`.
+export const OG_IMAGE_URL = 'https://nyclaw.io/opengraph-image'
+
 export const SITE = {
   name: 'NYClaw.io',
   tagline: 'AI help for small businesses',
