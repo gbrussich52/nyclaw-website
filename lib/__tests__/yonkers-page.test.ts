@@ -15,6 +15,13 @@ describe('Yonkers location page', () => {
     expect(page).toContain("canonical: 'https://nyclaw.io/locations/yonkers'")
     expect(page).toContain("url: 'https://nyclaw.io/locations/yonkers'")
     expect(page).toContain('titleAccent="Yonkers Businesses"')
+    const meta = page.match(/export const metadata[\s\S]*?description:\s*'([^']+)'/)
+    expect(meta?.[1]).toContain('AI automation')
+    expect(meta?.[1]).toContain('Yonkers')
+    expect(meta?.[1].length).toBeLessThanOrEqual(160)
+    const lede = page.match(/lede="([^"]+)"/)?.[1] ?? ''
+    expect(lede).toContain('AI automation')
+    expect(lede).toContain('Yonkers')
     expect(page).toMatch(/look up AI automation in Yonkers/)
   })
 

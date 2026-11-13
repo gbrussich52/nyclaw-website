@@ -27,7 +27,7 @@ import { CALENDLY_URL } from '../../config'
 export const metadata: Metadata = {
   title: 'AI Automation & Consulting for Yonkers NY Businesses',
   description:
-    'NYClaw.io helps Yonkers small businesses stop losing leads between the inbox, the calendar and the job record, with scoped AI and human review. Free 30-minute call.',
+    'NYClaw.io uses AI automation to help Yonkers small businesses stop losing leads between the inbox, the calendar and the job record. Free 30-minute call.',
   keywords:
     'AI automation Yonkers, AI consulting Yonkers NY, AI for small business Yonkers, AI agency Yonkers, AI workflow automation Yonkers NY, small business AI Yonkers',
   openGraph: {
@@ -99,21 +99,21 @@ const services = [
     Icon: Settings2,
     title: 'Custom AI Agents & Automation',
     price: '$3,500–$8,000 agent sprint · project-based',
-    desc: 'We trace an agreed workflow, check what your tools already do, then scope the missing handoffs and human review points.',
+    desc: 'We walk through one process you already run, see which steps your software already covers, and name only the gaps that still need a build and a person to review them.',
     href: '/services/ai-automation',
   },
   {
     Icon: Target,
     title: 'Fit Audit + Roadmap',
     price: 'Free 30-min fit · $1K–$2.5K roadmap',
-    desc: 'The free call starts with one stuck workflow. An optional paid roadmap records options, estimated costs and the assumptions behind a build order.',
+    desc: 'Bring one stalled process to the free call. If you want a written plan after that, it lists the choices, rough costs and the reasons for a suggested order of work.',
     href: '/services/ai-consulting',
   },
   {
     Icon: Megaphone,
     title: 'Marketing Automations',
     price: '$4K–$12K build · optional ops after',
-    desc: 'Scope an inquiry, follow-up or content-review workflow with a clear owner and a way to check actual results.',
+    desc: 'We can map how a new inquiry, a follow-up or a content check should move, who owns each step and how you will tell whether it is working.',
     href: '/services/ai-marketing',
   },
 ]
@@ -128,18 +128,18 @@ const stats = [
 const phases = [
   {
     step: 'Scope',
-    title: 'Trace one workflow',
-    desc: 'Show us where an inquiry, customer update or job detail gets stuck. We check native tool features and agree who reviews exceptions.',
+    title: 'Find the stuck step',
+    desc: 'Point to the request, update or job note that stalls. We look at what your current software already offers and decide who should review the odd cases.',
   },
   {
     step: 'Build',
-    title: 'Agree and connect',
-    desc: 'A written quote names the tools, handoffs, price and delivery timing. We build only the connections included in that scope.',
+    title: 'Quote, then connect',
+    desc: 'You get a written quote that lists the tools, the links between them, the price and when we will deliver. We build nothing outside that list.',
   },
   {
     step: 'Handoff',
-    title: 'Test and train',
-    desc: 'We test agreed examples with your team, document how to handle exceptions and leave a runbook. Actual results can then be checked against the starting baseline.',
+    title: 'Prove it, then hand it over',
+    desc: 'Your team runs the agreed test cases with us. We write down how to handle odd cases and leave a runbook, so you can compare later results with how things worked at the start.',
   },
 ]
 
@@ -162,7 +162,7 @@ const faqs = [
   {
     question: 'How much does AI automation cost for a Yonkers business?',
     answer:
-      'Agent sprints are listed at $3,500–$8,000, workflow systems at $5,000–$15,000 and marketing builds at $4,000–$12,000. The first 30-minute call is free; optional written roadmaps are $1,000–$2,500. We agree any paid scope and price before work starts.',
+      'Listed prices are $3,500–$8,000 for an agent sprint, $5,000–$15,000 for a workflow system and $4,000–$12,000 for a marketing build. The opening 30-minute call has no charge. If you want a written roadmap, that work is $1,000–$2,500. No paid work starts until you have agreed the scope and the price.',
   },
   {
     question: 'Is AI worth it for a small business in Yonkers?',
@@ -196,7 +196,7 @@ export default function YonkersPage() {
         badge="Serving Yonkers, NY"
         titleTop="AI Automation for"
         titleAccent="Yonkers Businesses"
-        lede="Answer the next lead before it goes cold."
+        lede="Let AI automation help your Yonkers team answer the next lead before it goes cold."
         blurb="A Yonkers team may take a request by phone, text or web form and track the job somewhere else. We map the steps, use what your tools already do and build only the missing links, with a person checking the hard cases."
         primary={{ label: 'Book a free 30-minute call', href: CALENDLY_URL, external: true }}
         secondary={{ label: 'Tell us where work gets stuck', href: '/#contact' }}
@@ -312,7 +312,7 @@ export default function YonkersPage() {
           <SectionIntro
             eyebrow="What We Offer"
             title="AI and Workflow Automation for Yonkers Businesses"
-            blurb="Start with a free call, scope a build if useful and arrange ongoing care only when needed."
+            blurb="Begin with a free conversation, define a build only if it is useful, and add ongoing care later if you want it."
           />
           <ServiceCards items={services} />
         </div>
@@ -325,8 +325,8 @@ export default function YonkersPage() {
         <div className="mx-auto flex max-w-[56rem] flex-col gap-10">
           <SectionIntro
             eyebrow="Our Process"
-            title="From One Workflow to a Tested Handoff"
-            blurb="The timeline depends on the systems and approvals involved. We agree it in writing before work starts."
+            title="One Stuck Process, Then a Checked Handoff"
+            blurb="How long it takes depends on your tools and who must sign off. That timing is written down before we begin."
           />
           <ProcessSteps items={phases} />
         </div>
