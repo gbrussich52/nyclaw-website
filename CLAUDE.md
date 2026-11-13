@@ -4,7 +4,7 @@ Live marketing + lead-gen site for the AI Solution Builder offering. Active SEO 
 
 ## Stack
 
-- Next.js 15 (App Router, `"type": "module"`) + React 19
+- Next.js 16 (App Router, `"type": "module"`) + React 19
 - TypeScript, Tailwind CSS 3
 - `nodemailer` (transactional email) — `googleapis` was removed once the Google Sheets lead log integration was dropped; do not reintroduce without a live consumer
 - Lucide React for icons
@@ -23,7 +23,7 @@ npm test         # vitest run — lib/__tests__/ covers sanitize, leads, rate-li
 
 - `app/` — App Router (flat, no `src/`)
 - `content/drafts/`, `content/seo/` — markdown/JSON content
-- `docs/` — internal docs (8 files)
+- `docs/` — internal docs (plans, loop, research, security, seo-reports)
 - `middleware.ts` — request middleware (read first)
 - `DESIGN.md` — design system / brand notes; **stale as of the 2026-07-28 dusk redesign** — verify against current UI before treating it as authoritative
 - `scripts/` — utility scripts
