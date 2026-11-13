@@ -85,6 +85,11 @@ const industries = [
   },
 ]
 
+const townPages: Record<string, string> = {
+  'White Plains': '/locations/white-plains',
+  Yonkers: '/locations/yonkers',
+}
+
 const towns = [
   'White Plains',
   'Yonkers',
@@ -150,6 +155,7 @@ const phases = [
 const explore = [
   { label: 'Homepage', href: '/' },
   { label: 'AI for White Plains Businesses', href: '/locations/white-plains' },
+  { label: 'AI for Yonkers Businesses', href: '/locations/yonkers' },
   { label: 'AI for NYC Businesses', href: '/locations/new-york-city' },
   { label: 'AI Automation', href: '/services/ai-automation' },
   { label: 'Knowledge Base', href: '/knowledge' },
@@ -242,7 +248,7 @@ export default function WestchesterCountyPage() {
           />
           <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
             {towns.map((town) => {
-              const href = town === 'White Plains' ? '/locations/white-plains' : undefined
+              const href = townPages[town]
               const inner = (
                 <>
                   <MapPin

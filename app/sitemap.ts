@@ -38,8 +38,9 @@ const ENTRIES: Entry[] = [
   { path: '/services/ai-marketing', lastModified: '2026-10-07', changeFrequency: 'monthly', priority: 0.9 },
 
   // Location pages
-  { path: '/locations/westchester-county', lastModified: '2026-11-05', changeFrequency: 'monthly', priority: 0.8 },
+  { path: '/locations/westchester-county', lastModified: '2026-11-13', changeFrequency: 'monthly', priority: 0.8 },
   { path: '/locations/white-plains', lastModified: '2026-11-05', changeFrequency: 'monthly', priority: 0.8 },
+  { path: '/locations/yonkers', lastModified: '2026-11-13', changeFrequency: 'monthly', priority: 0.8 },
   { path: '/locations/new-york-city', lastModified: '2026-10-07', changeFrequency: 'monthly', priority: 0.8 },
 
   // Knowledge base

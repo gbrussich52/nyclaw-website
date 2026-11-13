@@ -29,6 +29,6 @@ describe('White Plains location page', () => {
 
   it('is linked from the Westchester County page', () => {
     expect(westchester).toContain("href: '/locations/white-plains'")
-    expect(westchester).toContain("href = town === 'White Plains' ? '/locations/white-plains'")
+    expect(westchester).toContain("'White Plains': '/locations/white-plains'")
   })
 })
