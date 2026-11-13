@@ -1,6 +1,6 @@
 // classification: PRIVATE
 import { describe, expect, it } from 'vitest'
-import { readFileSync } from 'node:fs'
+import { readFileSync, readdirSync } from 'node:fs'
 
 describe('Yonkers location page', () => {
   const page = readFileSync('app/locations/yonkers/page.tsx', 'utf8')
@@ -11,7 +11,8 @@ describe('Yonkers location page', () => {
   const jsonLd = readFileSync('app/components/JsonLd.tsx', 'utf8')
 
   it('targets Yonkers AI search intent in title, canonical and first copy', () => {
-    expect(page).toMatch(/title:\s*'AI Automation & Consulting for Yonkers NY Businesses'/)
+    // Claude Sonnet 5.5, 2026-11-13: shortened so the rendered title (with ' | NYClaw.io') stays within 60 characters.
+    expect(page).toMatch(/title:\s*'AI Automation & Consulting, Yonkers NY'/)
     expect(page).toContain("canonical: 'https://nyclaw.io/locations/yonkers'")
     expect(page).toContain("url: 'https://nyclaw.io/locations/yonkers'")
     expect(page).toContain('titleAccent="Yonkers Businesses"')
@@ -51,5 +52,15 @@ describe('Yonkers location page', () => {
     expect(westchester).toContain("Yonkers: '/locations/yonkers'")
     expect(whitePlains).toContain("href: '/locations/yonkers'")
     expect(nyc).toContain("href: '/locations/yonkers'")
+  })
+
+  // Claude Sonnet 5.5, 2026-11-13: Yonkers rendered at 64 characters. Guard every location page, since the layout appends ' | NYClaw.io'.
+  it('keeps every location page title within 60 characters once the layout suffix is added', () => {
+    for (const dir of readdirSync('app/locations', { withFileTypes: true }).filter(d => d.isDirectory() && !d.name.startsWith('_'))) {
+      const src = readFileSync(`app/locations/${dir.name}/page.tsx`, 'utf8')
+      const title = src.match(/export const metadata[\s\S]*?\n\s*title:\s*'([^']+)'/)?.[1] ?? ''
+      expect(title, dir.name).not.toBe('')
+      expect(title.length + ' | NYClaw.io'.length, dir.name).toBeLessThanOrEqual(60)
+    }
   })
 })
