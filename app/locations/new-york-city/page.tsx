@@ -187,6 +187,7 @@ const phases = [
 const explore = [
   { label: 'Homepage', href: '/' },
   { label: 'AI for Westchester Businesses', href: '/locations/westchester-county' },
+  { label: 'AI for Yonkers Businesses', href: '/locations/yonkers' },
   { label: 'Knowledge Base', href: '/knowledge' },
   { label: 'Free AI Readiness Guide', href: '/resources' },
   { label: 'Blog', href: '/blog' },

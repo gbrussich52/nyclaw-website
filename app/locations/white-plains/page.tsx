@@ -146,6 +146,7 @@ const phases = [
 const explore = [
   { label: 'Homepage', href: '/' },
   { label: 'AI for Westchester Businesses', href: '/locations/westchester-county' },
+  { label: 'AI for Yonkers Businesses', href: '/locations/yonkers' },
   { label: 'AI for NYC Businesses', href: '/locations/new-york-city' },
   { label: 'AI Automation', href: '/services/ai-automation' },
   { label: 'AI Consulting', href: '/services/ai-consulting' },
