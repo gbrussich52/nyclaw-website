@@ -7,6 +7,7 @@ import { createRateLimiter } from '../../../lib/rate-limit'
 import { storeLeadInRedis } from '../../../lib/leads'
 import { CONTACT_SOURCES } from '../../../lib/contact-sources'
 import { boundedText } from '../../../lib/workflow-assessment-admin'
+import { isGuideSource, sendGuideEmail } from '../../../lib/guide-email'
 import { fitSchema, evaluateFit, formatFitBrief } from '../../../lib/workflow-fit'
 
 const ContactSchema = z.object({
@@ -137,13 +138,36 @@ export async function POST(req: NextRequest) {
   const gmailPass = process.env.GMAIL_APP_PASSWORD
   const notifyEmail = process.env.NOTIFY_EMAIL
 
-  if (gmailUser && gmailPass && notifyEmail) {
+  // Claude Sonnet 5.5, 2026-11-15: one transporter serves both the visitor guide email and the
+  // owner alert. The guide goes first so the alert can report whether it was sent.
+  let guideEmailed = false
+  let guideStatus = ''
+  let transporter: { sendMail: (o: Record<string, unknown>) => Promise<unknown> } | null = null
+  if (gmailUser && gmailPass) {
     try {
       const nodemailer = await import('nodemailer')
-      const transporter = nodemailer.default.createTransport({
+      transporter = nodemailer.default.createTransport({
         service: 'gmail',
         auth: { user: gmailUser, pass: gmailPass },
       })
+    } catch (err) {
+      console.error('[contact] Mail transport setup failed:', err)
+    }
+  }
+
+  if (isGuideSource(source)) {
+    if (!transporter) {
+      guideStatus = 'GUIDE EMAIL: FAILED mail transport not configured'
+    } else {
+      const result = await sendGuideEmail(transporter, email, name)
+      guideEmailed = result.sent
+      guideStatus = result.sent ? 'GUIDE EMAIL: sent' : `GUIDE EMAIL: FAILED ${result.reason}`
+    }
+    if (!guideEmailed) console.error('[contact] Guide email failed', { timestamp, source })
+  }
+
+  if (transporter && notifyEmail) {
+    try {
       await transporter.sendMail({
         from: `"NYClaw Lead" <${gmailUser}>`,
         to: notifyEmail,
@@ -151,6 +175,7 @@ export async function POST(req: NextRequest) {
         text: [
           `New contact form submission on NYClaw.io`,
           ``,
+          ...(guideStatus ? [guideStatus, ``] : []),
           `Name: ${name}`,
           `Email: ${email}`,
           `Phone: ${phone || 'Not provided'}`,
@@ -186,5 +211,6 @@ export async function POST(req: NextRequest) {
     )
   }
 
-  return NextResponse.json({ ok: true })
+  // Claude Sonnet 5.5, 2026-11-15: tell the page the truth about the guide email.
+  return NextResponse.json(isGuideSource(source) ? { ok: true, guide_emailed: guideEmailed } : { ok: true })
 }
