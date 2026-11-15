@@ -58,8 +58,9 @@ export default function Article2() {
         deck="The entropy problem, mission statement design, and the frameworks that make operations stick."
         cta={{
           href: '/resources',
-          label: 'Get the complete operational framework',
-          blurb: '50-page PDF with OKR templates and review checklists.',
+          // Claude Sonnet 5.5, 2026-11-15: copy now matches the rewritten guide; old lines promised a 50-page PDF and templates the guide does not hold.
+          label: 'Get the free guide',
+          blurb: 'A short guide with a weekly check and a 30-day checklist.',
         }}
         related={[
           {
@@ -294,18 +295,18 @@ KR3: Automate 80% of client delivery workflows by [date]`}</code></pre>
         <div className="panel relative isolate mt-16 overflow-hidden rounded-2xl px-6 py-14 text-center sm:px-10">
           <div className="bloom-indigo pointer-events-none absolute -bottom-[10rem] left-1/2 -z-10 h-[22rem] w-[32rem] -translate-x-1/2 rounded-full" />
           <h2 className="mt-0 text-[clamp(1.625rem,3vw,2rem)] font-medium leading-[1.15] tracking-[-0.025em] text-white">
-            See the complete operational framework
+            Get the free guide
           </h2>
           <p className="mx-auto mt-3.5 max-w-[32rem] text-base leading-relaxed text-zinc-300">
-            50-page guide with OKR templates, weekly review checklists, mission statement workshop,
-            and the 30/60/90-day roadmap. Free.
+            A short guide: set what an assistant may do alone, check it every Monday, and follow
+            a 30-day checklist. Free.
           </p>
           <div className="mt-7 flex justify-center">
             <Link
               href="/resources"
               className="inline-flex h-11 items-center gap-1 rounded-full bg-white pl-5 pr-3 text-[15px] font-medium text-zinc-950 no-underline transition-opacity hover:opacity-90"
             >
-              Download Complete Guide (PDF)
+              Get the free guide
               <ChevronRight size={17} aria-hidden="true" />
             </Link>
           </div>

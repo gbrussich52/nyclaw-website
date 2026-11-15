@@ -80,15 +80,16 @@ export default function KnowledgePage() {
             Ainsley — the hard way.
           </p>
 
+          {/* Claude Sonnet 5.5, 2026-11-15: copy now matches the rewritten guide; old lines promised a 50-page PDF and templates the guide does not hold. */}
           <div className="mt-8 flex flex-wrap items-center gap-4">
             <Link
               href="/resources"
               className="inline-flex h-11 items-center gap-1 rounded-full bg-white pl-5 pr-3 text-[15px] font-medium text-zinc-950 transition-opacity hover:opacity-90"
             >
-              Download free guide (PDF)
+              Get the free guide
               <ChevronRight size={17} aria-hidden="true" />
             </Link>
-            <span className="text-sm text-zinc-400">50 pages. No fluff. Free with email.</span>
+            <span className="text-sm text-zinc-400">About 15 minutes to read. Free with email.</span>
           </div>
         </div>
       </section>
@@ -144,21 +145,20 @@ export default function KnowledgePage() {
             Get the complete guide
           </h2>
           <p className="mx-auto mt-4 max-w-[38rem] text-[17px] leading-relaxed text-zinc-300">
-            50 pages of frameworks, templates and the 30/60/90-day implementation roadmap.
-            Everything in these articles — plus the printable checklists, OKR templates and
-            SOUL.md template. Free.
+            A short, plain guide with a 30-day checklist, a filled-in law-office example, three
+            starter jobs, eight questions to ask a builder and a one-page worksheet. Free.
           </p>
           <div className="mt-8 flex justify-center">
             <Link
               href="/resources"
               className="inline-flex h-11 items-center gap-1 rounded-full bg-white pl-5 pr-3 text-[15px] font-medium text-zinc-950 transition-opacity hover:opacity-90"
             >
-              Download free (PDF)
+              Get the free guide
               <ChevronRight size={17} aria-hidden="true" />
             </Link>
           </div>
           <p className="mt-4 text-[13px] text-zinc-400">
-            Just your email. No spam. Unsubscribe anytime.
+            Just your email. We send you the guide.
           </p>
         </div>
       </section>

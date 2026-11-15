@@ -51,7 +51,8 @@ export default function Article1() {
         cta={{
           href: '/resources',
           label: 'Get the complete guide',
-          blurb: '50-page PDF with full templates and roadmap.',
+          // Claude Sonnet 5.5, 2026-11-15: copy now matches the rewritten guide; old lines promised a 50-page PDF and templates the guide does not hold.
+          blurb: 'A short guide with a 30-day checklist and a worksheet.',
         }}
         related={[
           {
@@ -298,15 +299,15 @@ EXTERNAL ACTION MODE → Maximum caution, confirm before sending`}</code></pre>
             Get the complete guide
           </h2>
           <p className="mx-auto mt-3.5 max-w-[32rem] text-base leading-relaxed text-zinc-300">
-            50 pages including the full SOUL.md template, mission statement frameworks, and the
-            30/60/90-day implementation roadmap. Free.
+            A short guide with a filled-in law-office example, three starter jobs and eight
+            questions to ask a builder. Free.
           </p>
           <div className="mt-7 flex justify-center">
             <Link
               href="/resources"
               className="inline-flex h-11 items-center gap-1 rounded-full bg-white pl-5 pr-3 text-[15px] font-medium text-zinc-950 no-underline transition-opacity hover:opacity-90"
             >
-              Download Complete Guide (PDF)
+              Get the free guide
               <ChevronRight size={17} aria-hidden="true" />
             </Link>
           </div>

@@ -5,11 +5,12 @@ import ResourceForm from '../components/ResourceForm'
 
 export const metadata: Metadata = {
   title: 'Free AI Operator\'s Playbook',
-  description: 'Download the free AI Operator\'s Playbook: Practical frameworks, templates, and a 30-day launch checklist with a weekly check for the first 90 days.',
+  // Claude Fable 5.2, 2026-11-15: every description on this page now matches the guide as rewritten today; the old copy listed sections and templates from the March guide that the guide has not held since October.
+  description: 'The free AI Operator\'s Playbook: pick one costly leak, write a one-page brief, set what an AI assistant may do alone, and check it every Monday. Includes a 30-day checklist and a worksheet.',
   keywords: 'AI playbook, AI implementation guide, AI assistant framework, free AI guide, AI templates',
   openGraph: {
-    title: 'The AI Operator\'s Playbook — Free Download',
-    description: 'Practical frameworks, templates, and the implementation roadmap we used to build Ainsley. Open it after your request is received.',
+    title: 'The AI Operator\'s Playbook: Free Guide',
+    description: 'A short, plain guide for small firms, with a 30-day checklist and a one-page worksheet. Open it after your request is received.',
     type: 'website',
     images: ["https://nyclaw.io/opengraph-image"],
     url: "https://nyclaw.io/resources",
@@ -18,7 +19,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Free AI Operator\'s Playbook',
-    description: 'Frameworks, templates, and a 30-day launch checklist for AI systems that work.',
+    description: 'A short, plain guide for small firms, with a 30-day checklist and a one-page worksheet.',
     images: ["https://nyclaw.io/opengraph-image"],
   },
   alternates: {
@@ -27,26 +28,25 @@ export const metadata: Metadata = {
 }
 
 const whatsInside = [
-  { section: 'Section 1', title: 'Building AI Identity', desc: 'The Four-Quadrant Persona Taxonomy, principle-first documentation, priority hierarchies, and the full SOUL.md template.' },
-  { section: 'Section 2', title: 'Mission-Driven Systems', desc: 'Why processes fail, how to design mission statements that actually drive decisions, OKR frameworks, and the review cadence.' },
-  { section: 'Section 3', title: 'Operational Excellence', desc: 'All 7 anti-patterns with real-world examples and specific prevention systems for each.' },
-  { section: 'Section 4', title: 'Implementation Roadmap', desc: 'A 30-day launch checklist and a weekly check for the first 90 days.' },
-  { section: 'Appendix', title: 'Templates & Checklists', desc: 'Printable: SOUL.md template, weekly review checklist, monthly audit checklist, anti-pattern scorecard, OKR template.' },
+  { section: 'Parts 1-2', title: 'One leak and a one-page brief', desc: 'Name the job, the number that shows it is done and the person who owns it. Then write how your firm works on one page, and what to keep out of an assistant.' },
+  { section: 'Parts 3-4', title: 'Limits and the Monday check', desc: 'Two lists: what the assistant may do alone and what it must ask about. A 15-minute weekly check, the fake-lead test and stop rules.' },
+  { section: 'Part 5', title: 'Your first 30 days', desc: 'A week-by-week checklist, then what to check through day 90.' },
+  { section: 'Parts 6-8', title: 'A worked example and three first jobs', desc: 'A small law office filled in as an illustration, three starter jobs with what to ask your software provider, and eight questions to ask any builder.' },
+  { section: 'Appendix', title: 'What four assistants do today', desc: 'Claude, ChatGPT, Gemini and Grok, each line checked against the vendor page on November 15, 2026, with sources.' },
 ]
 
 const templates = [
-  'SOUL.md Identity Template (copy-pasteable)',
-  'Weekly Review Checklist',
-  'Monthly Documentation Audit',
-  'Anti-Pattern Audit Scorecard',
-  'OKR Template for Small Teams',
-  'System Health Dashboard',
+  'The five-line leak form',
+  'One-page business brief',
+  'May do alone / must ask first lists',
+  'First 30 days checklist',
+  'One-page plan worksheet',
 ]
 
 const trustSignals = [
-  'Practical checklists',
-  'Reusable templates',
-  '30-day launch checklist',
+  'About 15 minutes to read',
+  'Printable worksheet',
+  '30-day checklist',
   'Free. No credit card.',
 ]
 
@@ -66,13 +66,13 @@ export default function ResourcesPage() {
             The AI Operator&apos;s Playbook
           </h1>
           <p className="mx-auto mt-6 max-w-[36rem] text-balance text-lg leading-relaxed text-zinc-300">
-            Practical instructions, reference files and review checklists for putting AI to work. Use the templates to clarify the job, check the result and keep the setup useful.
+            A short, plain guide for a small firm that wants an AI assistant to take one repeating job. Name the job, set its limits and check it every week.
           </p>
           <p className="mx-auto mt-3 max-w-[36rem] text-sm leading-relaxed text-zinc-400">
             Submit a request to open the playbook directly on this page.
           </p>
           <p className="mt-4 text-[13px] font-medium text-zinc-400">
-            Updated October 2026
+            Facts checked November 15, 2026
           </p>
           <div className="mt-7 flex flex-wrap justify-center gap-6 text-sm text-zinc-400">
             {trustSignals.map((signal) => (
@@ -120,7 +120,7 @@ export default function ResourcesPage() {
             <div className="panel mt-7 rounded-xl p-6">
               <h3 className="mb-4 flex items-center gap-2 text-[15px] font-medium text-white">
                 <ClipboardList className="h-4 w-4 flex-shrink-0" strokeWidth={1.75} />
-                Printable Templates Included
+                Printable forms included
               </h3>
               <ul className="flex flex-col gap-2.5 text-sm leading-relaxed text-zinc-300">
                 {templates.map((t) => (
@@ -132,13 +132,7 @@ export default function ResourcesPage() {
               </ul>
             </div>
 
-            {/* Ainsley story */}
-            <div className="mt-8 border-l-4 border-white/15 pl-4">
-              <p className="text-[15px] italic leading-relaxed text-zinc-300">
-                &ldquo;Every AI assistant we&apos;ve seen fail had one thing in common: the operator treated setup as optional. It&apos;s not. Setup is the whole game.&rdquo;
-              </p>
-              <p className="mt-2.5 text-sm font-medium text-white">— Ainsley, NYClaw.io</p>
-            </div>
+            {/* Claude Fable 5.2, 2026-11-15: removed a quote attributed to our AI assistant that claimed a record of failed setups we cannot show. */}
           </div>
         </div>
       </section>
