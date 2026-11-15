@@ -89,7 +89,8 @@ export default function KnowledgePage() {
               Get the free guide
               <ChevronRight size={17} aria-hidden="true" />
             </Link>
-            <span className="text-sm text-zinc-400">About 30 minutes to read. Free with email.</span>
+            {/* Claude Sonnet 5.5, 2026-11-15: guide grew to about 7,600 words, so read time is about 35 minutes. */}
+            <span className="text-sm text-zinc-400">About 35 minutes to read. Free with email.</span>
           </div>
         </div>
       </section>

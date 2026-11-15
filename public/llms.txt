@@ -14,7 +14,7 @@
 - [Westchester County](https://nyclaw.io/locations/westchester-county): Location-specific service page.
 - [New York City](https://nyclaw.io/locations/new-york-city): Location-specific service page.
 - [Knowledge Base](https://nyclaw.io/knowledge): Research-backed guides on AI identity, mission-driven systems, and operational excellence.
-- [Free AI Operator's Playbook](https://nyclaw.io/resources): Free guide (about 30 minutes to read): name one costly leak, brief an AI assistant, show it what good looks like, set its limits, make it check its own work, and check it every week.
+- [Free AI Operator's Playbook](https://nyclaw.io/resources): Free guide (about 35 minutes to read): name one costly leak, brief an AI assistant, show it what good looks like, set its limits, make it check its own work, and check it every week.
 - [Blog](https://nyclaw.io/blog): Articles on AI automation cost, AI vs. consultants, and small business AI adoption.
 - [What AI Automation Actually Costs a Small Business in 2026](https://nyclaw.io/blog/ai-automation-cost-westchester): Pricing breakdown across DIY, freelance, and agency paths.
 - [ChatGPT vs. Hiring an AI Consultant](https://nyclaw.io/blog/chatgpt-vs-ai-consultant): When a manual tool is enough vs. when a business needs a built system.
@@ -33,3 +33,5 @@
 ## Contact
 
 Book the free 30-minute fit audit or send a project inquiry via the contact form at https://nyclaw.io/#contact.
+
+<!-- Claude Sonnet 5.5, 2026-11-15: playbook read time changed from about 30 to about 35 minutes because the guide grew to about 7,600 words. -->

@@ -58,5 +58,17 @@ Sources: `docs/tasks/2026-11-15-playbook-practitioner-fulltext.json` (full post 
 
 Dates are US Eastern time (the saved timestamps are UTC). Housekeeping: Sources gains one entry for the posts (C1), About says the people quoted did not review the guide (C2), and the Start-here note names "three people who build them" (C3). `app/resources/page.tsx` is unchanged.
 
+## Third pass (Claude Sonnet 5.5, 2026-11-15)
+From the director's read of the second-pass diff.
+- F1 (Part 5, Boris Cherny paragraph): last two sentences now "For a programmer the check is a test that runs. Yours is the pass-or-fail list in the next section." (removes the repeat of the line above).
+- F2 (Part 5, section 3): the Lauren Tan paragraph and its source line now follow the "In an office, that means opening a new chat" paragraph. Ending now "The checklist you paste in is what tells the fresh reader your goals."
+- F3: "Lauren Tan, who works on Grok Bot at SpaceXSI, wrote" and, in Sources, "Lauren Tan, Grok Bot at SpaceXSI" (her saved profile reads "grok @bot at @SpaceXSI"). No "engineer" is attached to her.
+- F4 (Part 6): "build it into a check that cannot be skipped. For her that is code. In an office it is a required field on the intake form or a fixed template, not a tenth sentence in the brief." The quote "make it deterministic" is unchanged.
+- F5: "Two people who build these tools have seen old instructions get in the way."
+- F6: "Asked why anyone still needs to read the code, Boris Cherny answered:" (his post is about diffs).
+- F7: "Boris Cherny passed on the same habit from the Claude Code team in one line."
+- F8: "describes a setting" (was "setup").
+- F9 read time, about 7,600 words (32 to 38 minutes): `public/ai-operators-playbook.html` "about thirty minutes" became "about thirty-five minutes"; `app/resources/page.tsx` trust signal "About 30 minutes to read" became "About 35 minutes to read"; `app/knowledge/page.tsx` "About 30 minutes to read" became "About 35 minutes to read"; `public/llms.txt` playbook line "about 30 minutes" became "about 35 minutes". The "30-minute fit audit" lines in `llms.txt` are the call, not the guide, and are unchanged. Each non-HTML file carries a dated comment. `scripts/check-positioning-copy.mjs` does not pin the read time.
+
 ## Roll back
 Revert this commit.

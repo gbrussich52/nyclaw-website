@@ -49,7 +49,8 @@ const templates = [
 ]
 
 const trustSignals = [
-  'About 30 minutes to read',
+  // Claude Sonnet 5.5, 2026-11-15: guide grew to about 7,600 words, so read time is about 35 minutes.
+  'About 35 minutes to read',
   'Sources beside every borrowed idea',
   'Printable worksheet',
   'Free. No credit card.',

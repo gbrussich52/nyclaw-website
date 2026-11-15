@@ -16,6 +16,7 @@
        Change log: docs/changes/2026-11-15-guide-second-edition.md -->
   <!-- Claude Sonnet 5.5, 2026-11-15: corrections from the line-by-line fact-check (vendor name, three titles, eight overstated lines, Appendix A plan facts); see docs/changes/2026-11-15-guide-verified-corrections.md -->
   <!-- Claude Sonnet 5.5, 2026-11-15 (second pass): exact quote punctuation, ABA cite from the ABA news release, and nine lines from three people who build these tools (Boris Cherny, Lauren Tan, Tibo), each quote matched to the full post text read on X; same change log file. -->
+  <!-- Claude Sonnet 5.5, 2026-11-15 (third pass): tightened the nine added lines (repeat removed, second-look paragraph moved after the fresh-reader paragraph, role wording limited to what profiles show) and read time now about 35 minutes because the guide grew to about 7,600 words; same change log file. -->
   <link rel="canonical" href="https://nyclaw.io/ai-operators-playbook.html">
   <meta name="description" content="A plain guide for small firms: pick one costly leak, brief an AI assistant, show it what good looks like, set its limits, make it check its own work, and check it yourself every week. Facts checked November 15, 2026.">
   <style>
@@ -203,7 +204,7 @@
 </header>
 
 <h2 id="start" class="newpage">Start here</h2>
-<p style="margin-top:14px;">This guide is for an owner or office manager who wants an AI assistant to take one repeating job off the firm's plate. It takes about thirty minutes to read. You need no technical background.</p>
+<p style="margin-top:14px;">This guide is for an owner or office manager who wants an AI assistant to take one repeating job off the firm's plate. It takes about thirty-five minutes to read. You need no technical background.</p>
 <p>The method has seven steps. Name one leak that costs you money. Write a one-page brief of how your firm works. Show the assistant what good work looks like. Decide what it may do alone. Make it check its own work. Write down anything you had to explain twice. Then check the result yourself, on a set day, every week.</p>
 <p>In this guide, the <strong>operator</strong> is the person who owns that one job: who sets it up, checks it each week, and can turn it off. That is you, or someone you name.</p>
 <div class="note">
@@ -382,7 +383,7 @@
   </div>
 </div>
 <p>When something fits both lists, it goes on the right. SpaceXSI's approval settings work the same way: if an allow rule and an ask-first rule both match, the documentation says, ask first wins.</p>
-<p>The two lists also guard against the opposite mistake. Tibo at OpenAI describes a setup "that requires you to approve everything" as "prone to decision fatigue unless you spend a lot of time configuring specific rules." A tired approver stops reading. The lists are those rules.</p>
+<p>The two lists also guard against the opposite mistake. Tibo at OpenAI describes a setting "that requires you to approve everything" as "prone to decision fatigue unless you spend a lot of time configuring specific rules." A tired approver stops reading. The lists are those rules.</p>
 <p class="src">Tibo (@thsottiaux), <a href="https://x.com/thsottiaux/status/2107368734981517634">post on X</a>, October 5, 2026</p>
 
 <h3>Start with drafts only</h3>
@@ -417,7 +418,7 @@
   <cite>Anthropic, "Best practices for Claude Code," read November 15, 2026</cite>
 </div>
 <p>That guide is written for programmers, but the fix carries over to an office. Give the assistant a way to check, and ask to see the check.</p>
-<p>Boris Cherny, who created Claude Code at Anthropic, calls this "probably the most important thing" for getting good results from it: "give Claude a way to verify its work. If Claude has that feedback loop, it will 2-3x the quality of the final result." He was writing for programmers, whose check is a test that runs. Yours is the pass-or-fail list in the next section.</p>
+<p>Boris Cherny, who created Claude Code at Anthropic, calls this "probably the most important thing" for getting good results from it: "give Claude a way to verify its work. If Claude has that feedback loop, it will 2-3x the quality of the final result." For a programmer the check is a test that runs. Yours is the pass-or-fail list in the next section.</p>
 <p class="src">Boris Cherny (@bcherny), <a href="https://x.com/bcherny/status/2007179861115511237">post on X</a>, January 2, 2026</p>
 
 <h3>1. Give it a standard it can pass or fail</h3>
@@ -449,9 +450,9 @@
   <q>A second session is also the easiest independent reviewer you can get.</q>
   <cite>Anthropic, "Best practices for Claude Code," read November 15, 2026</cite>
 </div>
-<p>A second look has limits. Lauren Tan, an engineer on the Grok Bot team at SpaceXSI, wrote in November 2026 that she now considers reviews by a second AI "mostly a waste of tokens" when nothing is run or measured. Her reason: the reviewers "likely have 0 context around your goals and intent, and they tend to pick up things that don't matter" or push the work the wrong way. She was writing about code, and the point carries. Keep the order of this part: the pass-or-fail list first, proof second, the fresh reader third. And hand the fresh reader the list.</p>
-<p class="src">Lauren Tan (@poteto), posts on X, November 2, 2026 (<a href="https://x.com/poteto/status/2117437607940681849">first post</a>, <a href="https://x.com/poteto/status/2117445316043825393">second post</a>)</p>
 <p>In an office, that means opening a new chat with no history, pasting in the draft and the checklist, and asking what is wrong with it. Use it for anything that goes to many people at once or that would be costly to get wrong.</p>
+<p>A second look has limits. Lauren Tan, who works on Grok Bot at SpaceXSI, wrote in November 2026 that she now considers reviews by a second AI "mostly a waste of tokens" when nothing is run or measured. Her reason: the reviewers "likely have 0 context around your goals and intent, and they tend to pick up things that don't matter" or push the work the wrong way. She was writing about code, and the point carries. Keep the order of this part: the pass-or-fail list first, proof second, the fresh reader third. The checklist you paste in is what tells the fresh reader your goals.</p>
+<p class="src">Lauren Tan (@poteto), posts on X, November 2, 2026 (<a href="https://x.com/poteto/status/2117437607940681849">first post</a>, <a href="https://x.com/poteto/status/2117445316043825393">second post</a>)</p>
 
 <h3>4. A person still signs</h3>
 <p>None of this replaces you. Anthropic's Claude Code team wrote in October 2026 about how they review work their assistant produces, and two of their rules fit any firm:</p>
@@ -460,7 +461,7 @@
   <cite>Addy Osmani, Morgan Westlee Lunt and Qing Wang, "How the Claude Code team does code review," October 15, 2026</cite>
 </div>
 <p>The other is that whoever asked for the work answers for it. In your firm that is the operator from Part 1. The assistant's checks cut down what reaches your desk. They do not change whose name is on it.</p>
-<p>Asked why anyone still needs to read the work, Boris Cherny answered: "I read diffs when it's touching critical code, or code that's important to get right." A diff is the list of changes the assistant made. The office version: read every word of anything that carries money, a deadline or your name.</p>
+<p>Asked why anyone still needs to read the code, Boris Cherny answered: "I read diffs when it's touching critical code, or code that's important to get right." A diff is the list of changes the assistant made. The office version: read every word of anything that carries money, a deadline or your name.</p>
 <p class="src">Boris Cherny (@bcherny), <a href="https://x.com/bcherny/status/2098210496109572123">post on X</a>, September 10, 2026</p>
 <p>One more caution, from an Anthropic study published October 27, 2026. Fifty professional analysts each worked with an AI agent that had been set to lean one way on each choice. They went with the agent's lean 86% of the time, where chance would give about 50%. The ones who followed it most closely were about as likely as the rest to call the work their own judgment. The authors strengthened the lean on purpose, so everyday assistants may sway people less. For decisions that are yours, such as whether to take a matter or what to charge, ask for the strongest case for each option before you ask what it would do.</p>
 
@@ -475,9 +476,9 @@
   <q>Anything you've had to correct twice already</q>
   <cite>Anthropic, "Best practices for Claude Code," read November 15, 2026</cite>
 </div>
-<p>Boris Cherny gives Claude Code users the same habit in one line. After every correction, end with: "Update your CLAUDE.md so you don't make that mistake again." CLAUDE.md is the file of standing rules that Claude Code loads into every session. He adds: "Claude is eerily good at writing rules for itself." Try it with your own assistant. After you correct it, ask it to write the rule, then read the rule before you keep it.</p>
+<p>Boris Cherny passed on the same habit from the Claude Code team in one line. After every correction, end with: "Update your CLAUDE.md so you don't make that mistake again." CLAUDE.md is the file of standing rules that Claude Code loads into every session. He adds: "Claude is eerily good at writing rules for itself." Try it with your own assistant. After you correct it, ask it to write the rule, then read the rule before you keep it.</p>
 <p class="src">Boris Cherny (@bcherny), <a href="https://x.com/bcherny/status/2017742747067945390">post on X</a>, January 31, 2026</p>
-<p>Lauren Tan goes one step further. She would rather take a rule out of the written instructions and "make it deterministic": build it into something that cannot be skipped. In an office that is a required field on the intake form or a fixed template, not a tenth sentence in the brief.</p>
+<p>Lauren Tan goes one step further. She would rather take a rule out of the written instructions and "make it deterministic": build it into a check that cannot be skipped. For her that is code. In an office it is a required field on the intake form or a fixed template, not a tenth sentence in the brief.</p>
 <p class="src">Lauren Tan (@poteto), <a href="https://x.com/poteto/status/2111211085575716902">post on X</a>, October 16, 2026</p>
 <p>There are two places to write things down, and they hold different things.</p>
 <ul>
@@ -507,7 +508,7 @@
 <h3>Keep it short, and prune it</h3>
 <p>Every line of standing instructions is read on every job. Anthropic's guidance on skills asks for instructions that are "concise, well-structured, and tested with real usage." Write what the assistant could not have guessed, and leave out what it already does well.</p>
 <p>Read the whole file once a quarter. Cut any rule whose reason has gone. Anthropic's guidance for its Claude Fable 5.2 model warns that cautious instructions build up in memory, notes and instruction files, and can make the assistant ask for approval it does not need.</p>
-<p>Two people who build these tools report the same thing. Lauren Tan, on her own set of saved methods: "the more capable models get, the less instructions they need." Tibo at OpenAI, listing fixes his team had shipped in September 2026: "Some skills written for previous models were triggering too often or preventing the model from checking its work." An instruction that helped last year's assistant can hold back this year's.</p>
+<p>Two people who build these tools have seen old instructions get in the way. Lauren Tan, on her own set of saved methods: "the more capable models get, the less instructions they need." Tibo at OpenAI, listing fixes his team had shipped in September 2026: "Some skills written for previous models were triggering too often or preventing the model from checking its work." An instruction that helped last year's assistant can hold back this year's.</p>
 <p class="src">Lauren Tan (@poteto), <a href="https://x.com/poteto/status/2114099131845423142">post on X</a>, October 24, 2026; Tibo (@thsottiaux), <a href="https://x.com/thsottiaux/status/2098612714704891959">post on X</a>, September 11, 2026</p>
 <p>When the same mistake keeps coming back, fix the instructions. Anthropic's code-review team does exactly this: when their reviewer flags the same problem again and again, they change the standing file it works from.</p>
 
@@ -793,7 +794,7 @@
   <li><strong>SpaceXSI:</strong> Grok Bot documentation, <a href="https://docs.x.ai/grok-bot/skills-routines-and-automations">Skills and routines</a>, <a href="https://docs.x.ai/grok-bot/bots">Create and manage Bots</a>, <a href="https://docs.x.ai/grok-bot/approvals-security-and-privacy">Approvals, security, and privacy</a>, read November 15, 2026; <a href="https://x.ai/news/grok-bot-customer-support">How SpaceXSI is using Grok Bot to scale customer support</a>, September 22, 2026; <a href="https://x.ai/news/grok-automations">Automations in Grok</a>, July 16, 2026.</li>
   <li><strong>OpenAI:</strong> <a href="https://help.openai.com/en/articles/10291617-scheduled-tasks-in-chatgpt">Scheduled tasks in ChatGPT</a>; <a href="https://help.openai.com/en/articles/8590148-memory-in-chatgpt">Memory in ChatGPT</a> (includes model-training defaults by plan); <a href="https://help.openai.com/en/articles/10169521-projects-in-chatgpt">Projects in ChatGPT</a>; <a href="https://developers.openai.com/api/docs/guides/prompt-engineering">Prompt engineering guide</a>. Read November 15, 2026.</li>
   <li><strong>Google:</strong> <a href="https://support.google.com/gemini/answer/16275805">Gemini plans and limits</a>; <a href="https://support.google.com/gemini/answer/16316416">Schedules in Gemini Apps</a>; <a href="https://support.google.com/gemini/answer/18560919">Gems move to skills</a>; <a href="https://blog.google/products-and-platforms/products/gemini/automate-tasks-with-skills/">Skills in Gemini</a>, September 30, 2026.</li>
-  <li><strong>People who build these tools:</strong> posts on X read November 15, 2026 (dates in US Eastern time). Boris Cherny, creator of Claude Code at Anthropic, <a href="https://x.com/bcherny/status/2007179861115511237">January 2</a>, <a href="https://x.com/bcherny/status/2017742747067945390">January 31</a> (<a href="https://x.com/bcherny/status/2017742748984742078">two posts</a>) and <a href="https://x.com/bcherny/status/2098210496109572123">September 10</a>, 2026; Lauren Tan, Grok Bot team at SpaceXSI, <a href="https://x.com/poteto/status/2111211085575716902">October 16</a>, <a href="https://x.com/poteto/status/2114099131845423142">October 24</a> and <a href="https://x.com/poteto/status/2117437607940681849">November 2</a> (<a href="https://x.com/poteto/status/2117445316043825393">two posts</a>), 2026; Tibo, Codex and ChatGPT at OpenAI, <a href="https://x.com/thsottiaux/status/2073466730643399043">July 4</a>, <a href="https://x.com/thsottiaux/status/2098612714704891959">September 11</a> and <a href="https://x.com/thsottiaux/status/2107368734981517634">October 5</a>, 2026.</li>
+  <li><strong>People who build these tools:</strong> posts on X read November 15, 2026 (dates in US Eastern time). Boris Cherny, creator of Claude Code at Anthropic, <a href="https://x.com/bcherny/status/2007179861115511237">January 2</a>, <a href="https://x.com/bcherny/status/2017742747067945390">January 31</a> (<a href="https://x.com/bcherny/status/2017742748984742078">two posts</a>) and <a href="https://x.com/bcherny/status/2098210496109572123">September 10</a>, 2026; Lauren Tan, Grok Bot at SpaceXSI, <a href="https://x.com/poteto/status/2111211085575716902">October 16</a>, <a href="https://x.com/poteto/status/2114099131845423142">October 24</a> and <a href="https://x.com/poteto/status/2117437607940681849">November 2</a> (<a href="https://x.com/poteto/status/2117445316043825393">two posts</a>), 2026; Tibo, Codex and ChatGPT at OpenAI, <a href="https://x.com/thsottiaux/status/2073466730643399043">July 4</a>, <a href="https://x.com/thsottiaux/status/2098612714704891959">September 11</a> and <a href="https://x.com/thsottiaux/status/2107368734981517634">October 5</a>, 2026.</li>
   <li><strong>American Bar Association, Standing Committee on Ethics and Professional Responsibility:</strong> Formal Opinion 512, July 29, 2024, as announced in the ABA news release <a href="https://www.americanbar.org/news/abanews/aba-news-archives/2024/07/aba-issues-first-ethics-guidance-ai-tools/">ABA issues first ethics guidance on a lawyer's use of AI tools</a>.</li>
 </ul>
 
