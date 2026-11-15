@@ -89,7 +89,7 @@ export default function KnowledgePage() {
               Get the free guide
               <ChevronRight size={17} aria-hidden="true" />
             </Link>
-            <span className="text-sm text-zinc-400">About 15 minutes to read. Free with email.</span>
+            <span className="text-sm text-zinc-400">About 30 minutes to read. Free with email.</span>
           </div>
         </div>
       </section>
