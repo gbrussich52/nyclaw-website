@@ -33,8 +33,9 @@ export default function PrivacyPage() {
           The homepage newsletter form: your email address, to send the free AI Readiness Guide.
         </li>
         <li>
+          {/* Claude Sonnet 5.5, 2026-11-15: copy now matches the rewritten guide; old lines promised a 50-page PDF and templates the guide does not hold. */}
           The Resources page guide form: your first name, email, and an optional company name, to
-          send the free AI Operator&apos;s Playbook PDF.
+          email you a link to the free AI Operator&apos;s Playbook guide.
         </li>
         <li>
           The law-firm workflow assessment form: your name, business email, firm name, selected

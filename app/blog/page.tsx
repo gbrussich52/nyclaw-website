@@ -255,8 +255,9 @@ export default function Blog() {
             <h2 className="text-balance text-[26px] font-medium tracking-[-0.02em] text-white">
               Want the whole playbook instead?
             </h2>
+            {/* Claude Sonnet 5.5, 2026-11-15: copy now matches the rewritten guide; old lines promised a 50-page PDF and templates the guide does not hold. */}
             <p className="mt-2.5 text-[15px] leading-relaxed text-zinc-400">
-              50 pages of frameworks, templates and a 30/60/90-day roadmap. Free with your email.
+              A short, plain guide: name one costly leak, write a one-page brief, check it weekly. Free with your email.
             </p>
           </div>
           <Link

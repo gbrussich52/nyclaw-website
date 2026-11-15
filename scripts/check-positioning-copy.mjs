@@ -44,6 +44,15 @@ for (const file of ['app/page.tsx', 'app/services/page.tsx']) {
 }
 const playbook = await readFile('public/ai-operators-playbook.html', 'utf8')
 if (/it's the model NYClaw.io is built on|Your \$2,000\/month retainer has an 8x ROI|real production numbers from building NYClaw.io|8 HVAC|\$55|849 tests|14 dead cron|Ainsley, AI Operations Lead/.test(playbook)) errors.push('Playbook reintroduced an unsupported revenue model or outcome.')
+// Claude Fable 5.2, 2026-11-15: the guide once claimed client builds and a pattern "we see again and again" with no record,
+// and /resources described a guide that no longer existed. Fail if either returns, or if the dated fact-check line goes missing.
+if (/In our experience|we see again and again|client builds|Client work|href="\/work"|results we cannot show/i.test(playbook)) errors.push('Playbook implies a client record we cannot show.')
+const checkedOn = playbook.match(/Facts checked ([A-Z][a-z]+ \d{1,2}, \d{4})/)?.[1]
+if (!checkedOn) errors.push('Playbook must carry a "Facts checked <date>" line.')
+if (/\u2014|\bleverage\b/i.test(playbook.replace(/<!--[\s\S]*?-->/g, ''))) errors.push('Playbook: em dash or banned word returned.')
+const resources = await readFile('app/resources/page.tsx', 'utf8')
+if (/SOUL\.md|Anti-Pattern Audit|OKR Template|Persona Taxonomy/i.test(resources)) errors.push('app/resources/page.tsx describes contents the guide does not hold.')
+if (checkedOn && !resources.includes(`Facts checked ${checkedOn}`)) errors.push('app/resources/page.tsx date does not match the guide\'s "Facts checked" date.')
 for (const file of ['app/components/ResourceForm.tsx', 'app/components/PlaybookForm.tsx']) {
   const form = await readFile(file, 'utf8')
   if (!form.includes('href="/ai-operators-playbook.html"') || /check your inbox|guide (?:has been|will be) (?:sent|emailed)/i.test(form)) errors.push(`${file}: guide receipt must expose its actual destination, not promise missing email delivery.`)

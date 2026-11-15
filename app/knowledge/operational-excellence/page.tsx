@@ -151,8 +151,9 @@ export default function Article3() {
         deck="The failure modes we hit building NYClaw.io — and specific prevention systems for each one."
         cta={{
           href: '/resources',
-          label: 'Get the printable anti-pattern audit scorecard',
-          blurb: 'Full implementation roadmap (PDF, free).',
+          // Claude Sonnet 5.5, 2026-11-15: copy now matches the rewritten guide; old lines promised a 50-page PDF and templates the guide does not hold.
+          label: 'Get the free guide',
+          blurb: 'A 30-day checklist and a one-page worksheet (free).',
         }}
         related={[
           {
@@ -252,18 +253,17 @@ export default function Article3() {
         <div className="panel relative isolate mt-16 overflow-hidden rounded-2xl px-6 py-14 text-center sm:px-10">
           <div className="bloom-indigo pointer-events-none absolute -bottom-[10rem] left-1/2 -z-10 h-[22rem] w-[32rem] -translate-x-1/2 rounded-full" />
           <h2 className="mt-0 text-[clamp(1.625rem,3vw,2rem)] font-medium leading-[1.15] tracking-[-0.025em] text-white">
-            Get the full implementation roadmap
+            Get the 30-day checklist
           </h2>
           <p className="mx-auto mt-3.5 max-w-[32rem] text-base leading-relaxed text-zinc-300">
-            Includes the printable anti-pattern audit scorecard, 30/60/90-day roadmap, and all
-            templates from this guide. Free PDF.
+            Includes a 30-day checklist, three starter jobs and a one-page worksheet. Free.
           </p>
           <div className="mt-7 flex justify-center">
             <Link
               href="/resources"
               className="inline-flex h-11 items-center gap-1 rounded-full bg-white pl-5 pr-3 text-[15px] font-medium text-zinc-950 no-underline transition-opacity hover:opacity-90"
             >
-              Download Free (PDF)
+              Get the free guide
               <ChevronRight size={17} aria-hidden="true" />
             </Link>
           </div>

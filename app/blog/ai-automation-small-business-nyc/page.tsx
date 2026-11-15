@@ -89,12 +89,12 @@ export default function BlogPost() {
           { href: '/services/ai-automation', title: 'AI Automation Services' },
         ]}
       >
+        {/* Claude Sonnet 5.5, 2026-11-15: copy now matches the rewritten guide; old lines promised a 50-page PDF and templates the guide does not hold. */}
         <Callout>
           <strong>The five automations NYC small businesses are running in 2026:</strong> (1) AI
           lead response within 5 minutes, (2) multi-touch follow-up sequences, (3) appointment
           booking and reminders, (4) automated Google review requests, and (5) reactivation
-          campaigns for past customers. None require technical expertise. All have measurable ROI
-          within 60 days.
+          campaigns for past customers. None require technical expertise.
         </Callout>
 
         <p>
