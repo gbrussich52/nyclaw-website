@@ -54,7 +54,8 @@ describe('contact source persistence', () => {
     'stores recognized source %s with the lead', async (source) => {
       const response = await POST(contactRequest({ ...BASE, source }))
       expect(response.status).toBe(200)
-      expect(await response.json()).toEqual({ ok: true })
+      // Claude Sonnet 5.5, 2026-11-15: guide sources now also report guide_emailed (false here, no mail env).
+      expect(await response.json()).toEqual(source === 'contact_form' ? { ok: true } : { ok: true, guide_emailed: false })
       expect(mocks.storeLeadInRedis).toHaveBeenCalledOnce()
       expect(mocks.storeLeadInRedis.mock.calls[0][0]).toMatchObject({ ...BASE, source })
     }

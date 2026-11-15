@@ -11,7 +11,7 @@ const labelClass = 'mb-1.5 block text-[13px] font-medium text-zinc-300'
 
 export default function ResourceForm() {
   const [formData, setFormData] = useState({ firstName: '', email: '', company: '' })
-  const { loading, errorMsg, submitted, submit, honeypotRef } = useContactSubmit()
+  const { loading, errorMsg, submitted, guideEmailed, submit, honeypotRef } = useContactSubmit()
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -31,7 +31,7 @@ export default function ResourceForm() {
         <div className="panel rounded-2xl p-8">
           <h2 className="text-xl font-medium tracking-[-0.02em] text-white">Get the free guide</h2>
           <p className="mt-2 text-sm leading-relaxed text-zinc-400">
-            Enter your details. Once your request is received, you can open the playbook here.
+            Enter your details. The guide opens here and a copy is emailed to you.
           </p>
 
           <form onSubmit={handleSubmit} className="mt-6 flex flex-col gap-4">
@@ -96,7 +96,7 @@ export default function ResourceForm() {
               {loading ? 'Sending...' : 'Get the playbook →'}
             </button>
             <p className="text-center text-xs leading-relaxed text-zinc-400">
-              We use your email to record your request. A link to the playbook appears here after a successful submission.
+              We use your email to record your request and send you the guide. The guide opens here after you submit.
             </p>
           </form>
         </div>
@@ -106,6 +106,8 @@ export default function ResourceForm() {
           <h2 className="mb-3 text-xl font-medium tracking-[-0.02em] text-white">Request received</h2>
           <p className="mb-6 text-sm leading-relaxed text-zinc-400">
             Your guide request has been received. The playbook is ready to open.
+            {/* Claude Sonnet 5.5, 2026-11-15: only claim the email when the server confirmed it. */}
+            {guideEmailed && ` We also emailed it to ${formData.email}.`}
           </p>
           <a
             href="/ai-operators-playbook.html"

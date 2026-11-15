@@ -21,6 +21,8 @@ export interface UseContactSubmitResult {
   loading: boolean
   errorMsg: string
   submitted: boolean
+  /** Claude Sonnet 5.5, 2026-11-15: true only when the server confirmed the guide email went out. */
+  guideEmailed: boolean
   /** POSTs `payload` to /api/contact. Returns true on success. */
   submit: (payload: Record<string, unknown>, source?: ContactSource) => Promise<boolean>
   /**
@@ -35,6 +37,7 @@ export function useContactSubmit(): UseContactSubmitResult {
   const [loading, setLoading] = useState(false)
   const [errorMsg, setErrorMsg] = useState('')
   const [submitted, setSubmitted] = useState(false)
+  const [guideEmailed, setGuideEmailed] = useState(false)
   const honeypotRef = useRef<HTMLInputElement>(null)
   // Captured once, at first render, as the form's render timestamp — the
   // server rejects submissions that arrive suspiciously soon after (see
@@ -71,6 +74,9 @@ export function useContactSubmit(): UseContactSubmitResult {
         setErrorMsg((data as { error?: string }).error ?? 'Something went wrong. Please try again.')
         track('form_submit_error', { source, status: res.status })
       } else {
+        // Claude Sonnet 5.5, 2026-11-15: read guide_emailed so the receipt copy matches what happened.
+        const data = await res.json().catch(() => ({}))
+        setGuideEmailed((data as { guide_emailed?: boolean }).guide_emailed === true)
         setSubmitted(true)
         ok = true
         track('lead_submitted', { source })
@@ -85,5 +91,5 @@ export function useContactSubmit(): UseContactSubmitResult {
     return ok
   }
 
-  return { loading, errorMsg, submitted, submit, honeypotRef }
+  return { loading, errorMsg, submitted, guideEmailed, submit, honeypotRef }
 }

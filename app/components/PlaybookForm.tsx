@@ -8,7 +8,7 @@ import { useContactSubmit } from '../hooks/useContactSubmit'
  *  fallback for visitors not ready to talk, not the main action. */
 export default function PlaybookForm({ compact = false }: { compact?: boolean } = {}) {
   const [playbookEmail, setPlaybookEmail] = useState('')
-  const { loading, errorMsg, submitted: playbookSubmitted, submit, honeypotRef } = useContactSubmit()
+  const { loading, errorMsg, submitted: playbookSubmitted, guideEmailed, submit, honeypotRef } = useContactSubmit()
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -55,6 +55,8 @@ export default function PlaybookForm({ compact = false }: { compact?: boolean } 
               </h3>
               <p className="mb-6 text-sm leading-relaxed text-zinc-400">
                 Your request was received. The playbook is ready to open.
+                {/* Claude Sonnet 5.5, 2026-11-15: only claim the email when the server confirmed it. */}
+                {guideEmailed && ` We also emailed it to ${playbookEmail}.`}
               </p>
               <a
                 href="/ai-operators-playbook.html"
@@ -108,7 +110,7 @@ export default function PlaybookForm({ compact = false }: { compact?: boolean } 
                   {errorMsg}
                 </p>
               )}
-              <p className="mt-3 text-xs text-zinc-400">After your request is received, you can open the playbook here.</p>
+              <p className="mt-3 text-xs text-zinc-400">The guide opens here and a copy is emailed to you.</p>
             </>
           )}
         </div>
