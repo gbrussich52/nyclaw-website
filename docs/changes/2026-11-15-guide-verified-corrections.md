@@ -33,5 +33,30 @@ Files: `public/ai-operators-playbook.html`, `public/downloads/ai-operators-playb
 ## Quotation check
 A script (`python3 -I`, case-sensitive; only quote marks, whitespace and a space before punctuation are normalised) found every attributed quotation in the guide in a saved source. One exception: the ABA opinion title (R16), whose page the saved copies could not read. A space before a period in the saved text of the Claude Academy page ("style .") comes from page markup, not from the source wording.
 
+## Second pass (Claude Sonnet 5.5, 2026-11-15)
+Sources: `docs/tasks/2026-11-15-playbook-practitioner-fulltext.json` (full post text read on X) and `docs/tasks/2026-11-15-aba-press-release.txt`.
+
+### Fixes to pass 1
+- A1: two quotations no longer end `do".` or `little".`. Part 2 now reads `(... "Tell Claude what to do instead of what not to do"). Both points ...`. Part 5 now reads `The same Anthropic guide says a claim of success "on its own tells you very little" and tells programmers to ask for evidence.` A grep for a closing quote mark directly followed by a full stop or comma finds nothing.
+- A2: removed "Skills need code execution turned on in settings." Skills sentence now: "Skills are saved methods you write once, and they need code execution turned on." (20.txt: "This feature requires code execution to be enabled.")
+- A3: Sources link text "Grok Automations" became "Automations in Grok" (29.html title "Automations in Grok | SpaceXSI").
+- A4: Part 4 adds `Save "never" for rules with no exceptions.` after "where you want to keep the decision."
+- A5: Part 2 now "ABA Formal Opinion 512 (July 29, 2024) covers a lawyer's use of generative AI". The Sources line now cites the ABA news release "ABA issues first ethics guidance on a lawyer's use of AI tools" (July 29, 2024), linked. The unverified title "Generative Artificial Intelligence Tools" is gone. Source: release text "released today its first formal opinion covering the growing use of generative artificial intelligence (GAI) in the practice of law ... Formal Opinion 512".
+
+### Nine additions (each quote is an exact substring of the post's `full_text`)
+| Id | Where | Post |
+|---|---|---|
+| B1 | Part 2, end of "Give the reason with the rule" | Tibo, 2073466730643399043, July 4, 2026 |
+| B2 | Part 5, before section 1 | Boris Cherny, 2007179861115511237, January 2, 2026 |
+| B3 | Part 5, second look, after the Anthropic quote | Lauren Tan, 2117437607940681849 ("mostly a waste of tokens") and 2117445316043825393 ("likely have 0 context ..."), November 2, 2026 |
+| B4 | Part 5, "A person still signs", after the "The other is ..." paragraph | Boris Cherny, 2098210496109572123, September 10, 2026 |
+| B5 | Part 6, after "Anything you've had to correct twice already" | Boris Cherny, 2017742747067945390, January 31, 2026 |
+| B6 | Part 6, after B5 | Lauren Tan, 2111211085575716902, October 16, 2026 |
+| B7 | Part 6, after the "make it reliable, save, automate" quote | Boris Cherny, 2017742748984742078, January 31, 2026 |
+| B8 | Part 6, after the pruning paragraph | Lauren Tan, 2114099131845423142, October 24, 2026; Tibo, 2098612714704891959, September 11, 2026 |
+| B9 | Part 4, after the "ask first wins" paragraph | Tibo, 2107368734981517634, October 5, 2026 |
+
+Dates are US Eastern time (the saved timestamps are UTC). Housekeeping: Sources gains one entry for the posts (C1), About says the people quoted did not review the guide (C2), and the Start-here note names "three people who build them" (C3). `app/resources/page.tsx` is unchanged.
+
 ## Roll back
 Revert this commit.
