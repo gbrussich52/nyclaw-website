@@ -6,11 +6,11 @@ import ResourceForm from '../components/ResourceForm'
 export const metadata: Metadata = {
   title: 'Free AI Operator\'s Playbook',
   // Claude Fable 5.2, 2026-11-15: every description on this page now matches the guide as rewritten today; the old copy listed sections and templates from the March guide that the guide has not held since October.
-  description: 'The free AI Operator\'s Playbook: pick one costly leak, write a one-page brief, set what an AI assistant may do alone, and check it every Monday. Includes a 30-day checklist and a worksheet.',
+  description: 'The free AI Operator\'s Playbook: pick one costly leak, brief an AI assistant, show it what good looks like, set its limits, make it check its own work, and check it every week. Includes a 30-day checklist and a worksheet.',
   keywords: 'AI playbook, AI implementation guide, AI assistant framework, free AI guide, AI templates',
   openGraph: {
     title: 'The AI Operator\'s Playbook: Free Guide',
-    description: 'A short, plain guide for small firms, with a 30-day checklist and a one-page worksheet. Open it after your request is received.',
+    description: 'A plain guide for small firms, sourced to what the vendors publish, with a 30-day checklist and a one-page worksheet. Open it after your request is received.',
     type: 'website',
     images: ["https://nyclaw.io/opengraph-image"],
     url: "https://nyclaw.io/resources",
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Free AI Operator\'s Playbook',
-    description: 'A short, plain guide for small firms, with a 30-day checklist and a one-page worksheet.',
+    description: 'A plain guide for small firms, sourced to what the vendors publish, with a 30-day checklist and a one-page worksheet.',
     images: ["https://nyclaw.io/opengraph-image"],
   },
   alternates: {
@@ -27,26 +27,31 @@ export const metadata: Metadata = {
   },
 }
 
+// Claude Fable 5.2, 2026-11-15: second edition of the guide adds three parts and a copy-and-paste appendix; the prior lists described the eight-part first edition.
 const whatsInside = [
   { section: 'Parts 1-2', title: 'One leak and a one-page brief', desc: 'Name the job, the number that shows it is done and the person who owns it. Then write how your firm works on one page, and what to keep out of an assistant.' },
-  { section: 'Parts 3-4', title: 'Limits and the Monday check', desc: 'Two lists: what the assistant may do alone and what it must ask about. A 15-minute weekly check, the fake-lead test and stop rules.' },
-  { section: 'Part 5', title: 'Your first 30 days', desc: 'A week-by-week checklist, then what to check through day 90.' },
-  { section: 'Parts 6-8', title: 'A worked example and three first jobs', desc: 'A small law office filled in as an illustration, three starter jobs with what to ask your software provider, and eight questions to ask any builder.' },
-  { section: 'Appendix', title: 'What four assistants do today', desc: 'Claude, ChatGPT, Gemini and Grok, each line checked against the vendor page on November 15, 2026, with sources.' },
+  { section: 'Part 3', title: 'Show it what good looks like', desc: 'Real examples, your voice described from your own writing, a one-page brand sheet, and a template where the shape repeats.' },
+  { section: 'Parts 4-5', title: 'Limits, and making it check its own work', desc: 'Two lists of what it may do alone and what it must ask about. Then a pass-or-fail standard, proof for every fact, and a second look.' },
+  { section: 'Parts 6-7', title: 'Saved methods and the weekly check', desc: 'Write down anything you explained twice. A 15-minute check on a set day, the fake-lead test and stop rules.' },
+  { section: 'Parts 8-11', title: 'First 30 days, a worked example, three first jobs', desc: 'A week-by-week checklist, a small law office filled in as an illustration, three starter jobs, and eight questions to ask any builder.' },
+  { section: 'Appendices', title: 'Four assistants, words to paste, a worksheet', desc: 'Claude, ChatGPT, Gemini and Grok, each line checked against the vendor page on November 15, 2026. Seven ready-made instructions. A one-page plan to print.' },
 ]
 
 const templates = [
   'The five-line leak form',
   'One-page business brief',
+  'One-page brand sheet',
   'May do alone / must ask first lists',
+  'Saved-method outline',
+  'Seven instructions to copy and paste',
   'First 30 days checklist',
   'One-page plan worksheet',
 ]
 
 const trustSignals = [
-  'About 15 minutes to read',
+  'About 30 minutes to read',
+  'Sources beside every borrowed idea',
   'Printable worksheet',
-  '30-day checklist',
   'Free. No credit card.',
 ]
 
@@ -66,7 +71,7 @@ export default function ResourcesPage() {
             The AI Operator&apos;s Playbook
           </h1>
           <p className="mx-auto mt-6 max-w-[36rem] text-balance text-lg leading-relaxed text-zinc-300">
-            A short, plain guide for a small firm that wants an AI assistant to take one repeating job. Name the job, set its limits and check it every week.
+            A plain guide for a small firm that wants an AI assistant to take one repeating job. Name the job, show it what good looks like, set its limits and check it every week.
           </p>
           <p className="mx-auto mt-3 max-w-[36rem] text-sm leading-relaxed text-zinc-400">
             Submit a request to open the playbook directly on this page.
