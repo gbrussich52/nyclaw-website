@@ -21,3 +21,6 @@ History evidence (`git log --all`):
 - `/` (app/page.tsx), 159 chars -> 146: "NYClaw.io sets up AI for small businesses in Westchester and NYC: first replies to inquiries, estimate and invoice drafts, less re-typing. Free 30-minute call." became "NYClaw sets up AI for Westchester and NYC businesses: first replies to inquiries, estimate and invoice drafts, less retyping. Free 30-minute call."
 - `/about` (app/about/page.tsx), 152 -> 142: removed the word "practical".
 - Words cut only; no new claim. Location pages left alone (they belong to PR #48), though they are 152 to 158 chars.
+
+## Director edit (Claude Fable 5.2, 2026-11-16)
+Home description: the trim had dropped "small" from "small businesses". That is the audience and the search term, so it is back: "NYClaw sets up AI for small Westchester and NYC businesses: ..." (152 characters, under the 155 line Ahrefs flags above). Prior live text: 159 characters.

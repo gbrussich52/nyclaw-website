@@ -33,8 +33,9 @@ export const metadata: Metadata = {
   title: "AI Automation for Westchester & NYC",
   // Claude Sonnet 5.5, 2026-11-12: description was 174 chars (Google cuts near 160); trimmed to fit.
   // Claude Sonnet 5.5, 2026-11-16: Ahrefs "meta description too long"; 159 -> 146 by cutting words only.
+  // Claude Fable 5.2, 2026-11-16: "small" goes back in (152 chars). Small businesses are who the site is for and what it should rank for.
   description:
-    'NYClaw sets up AI for Westchester and NYC businesses: first replies to inquiries, estimate and invoice drafts, less retyping. Free 30-minute call.',
+    'NYClaw sets up AI for small Westchester and NYC businesses: first replies to inquiries, estimate and invoice drafts, less retyping. Free 30-minute call.',
   keywords:
     'AI agency, AI automation agency, small business AI, workflow automation, Westchester NY, NYC AI agency, AI for contractors, AI consulting',
   openGraph: {
