@@ -33,5 +33,3 @@
 ## Contact
 
 Book the free 30-minute fit audit or send a project inquiry via the contact form at https://nyclaw.io/#contact.
-
-<!-- Claude Sonnet 5.5, 2026-11-15: playbook read time changed from about 30 to about 35 minutes because the guide grew to about 7,600 words. -->

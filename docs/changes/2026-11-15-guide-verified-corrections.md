@@ -54,7 +54,7 @@ Sources: `docs/tasks/2026-11-15-playbook-practitioner-fulltext.json` (full post 
 | B6 | Part 6, after B5 | Lauren Tan, 2111211085575716902, October 16, 2026 |
 | B7 | Part 6, after the "make it reliable, save, automate" quote | Boris Cherny, 2017742748984742078, January 31, 2026 |
 | B8 | Part 6, after the pruning paragraph | Lauren Tan, 2114099131845423142, October 24, 2026; Tibo, 2098612714704891959, September 11, 2026 |
-| B9 | Part 4, after the "ask first wins" paragraph | Tibo, 2107368734981517634, October 5, 2026 |
+| B9 | Part 4, after the "ask first wins" paragraph | Tibo, 2107368734981517634, October 6, 2026 |
 
 Dates are US Eastern time (the saved timestamps are UTC). Housekeeping: Sources gains one entry for the posts (C1), About says the people quoted did not review the guide (C2), and the Start-here note names "three people who build them" (C3). `app/resources/page.tsx` is unchanged.
 
@@ -69,6 +69,16 @@ From the director's read of the second-pass diff.
 - F7: "Boris Cherny passed on the same habit from the Claude Code team in one line."
 - F8: "describes a setting" (was "setup").
 - F9 read time, about 7,600 words (32 to 38 minutes): `public/ai-operators-playbook.html` "about thirty minutes" became "about thirty-five minutes"; `app/resources/page.tsx` trust signal "About 30 minutes to read" became "About 35 minutes to read"; `app/knowledge/page.tsx` "About 30 minutes to read" became "About 35 minutes to read"; `public/llms.txt` playbook line "about 30 minutes" became "about 35 minutes". The "30-minute fit audit" lines in `llms.txt` are the call, not the guide, and are unchanged. Each non-HTML file carries a dated comment. `scripts/check-positioning-copy.mjs` does not pin the read time.
+
+## Fourth pass (Claude Sonnet 5.5, 2026-11-15)
+An independent re-check of 3bc000c against the live sources confirmed 71 of 75 lines and found four to fix; the director confirmed each against the saved posts and added two.
+- G1: Tibo's post 2107368734981517634 was posted October 6, 2026 at 3:13 AM Eastern (the id decodes to 2026-10-06 03:13 ET), not October 5. Fixed in the Part 4 source line and the Sources entry (and in the B9 row above).
+- G2 (Part 5, Lauren Tan, second look): the paragraph now quotes "adversarial reviews mostly a waste of tokens" (post 2117437607940681849) and "just having agents review code without running it" (post 2117440753551204735), explains "adversarial review", and keeps "likely have 0 context ..." (post 2117445316043825393). The old line "when nothing is run or measured" was a paraphrase, not her words. The source line links all three posts; Sources now reads "November 2 (second and third posts)".
+- G3 (Part 6, Lauren Tan): now quotes "to move stuff out of prose and make it deterministic." (post 2111211085575716902), then defines prose and deterministic. The old "make it deterministic" fragment and "For her that is code" are gone.
+- G4: "Two people who build these tools give reasons from their own work."
+- G5: no change. Appendix B holds seven paste blocks (seven `paste-label` and seven `paste` elements), so `app/resources/page.tsx` "Seven ready-made instructions" and "Seven instructions to copy and paste" are correct. No other "seven" in `app/`, `lib/`, `public/llms.txt` or the tests refers to these blocks.
+- G6: removed the HTML comment from the end of `public/llms.txt`; the reason for the read-time change lives here and in the commit message.
+- New check: every link to an X post is decoded from its id (`(id >> 22) + 1288834974657` ms, UTC) to America/New_York and compared with the date written beside it. All pass.
 
 ## Roll back
 Revert this commit.
