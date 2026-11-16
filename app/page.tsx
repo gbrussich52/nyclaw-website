@@ -32,8 +32,9 @@ import { work, workPaths } from '../lib/client-work'
 export const metadata: Metadata = {
   title: "AI Automation for Westchester & NYC",
   // Claude Sonnet 5.5, 2026-11-12: description was 174 chars (Google cuts near 160); trimmed to fit.
+  // Claude Sonnet 5.5, 2026-11-16: Ahrefs "meta description too long"; 159 -> 146 by cutting words only.
   description:
-    'NYClaw.io sets up AI for small businesses in Westchester and NYC: first replies to inquiries, estimate and invoice drafts, less re-typing. Free 30-minute call.',
+    'NYClaw sets up AI for Westchester and NYC businesses: first replies to inquiries, estimate and invoice drafts, less retyping. Free 30-minute call.',
   keywords:
     'AI agency, AI automation agency, small business AI, workflow automation, Westchester NY, NYC AI agency, AI for contractors, AI consulting',
   openGraph: {

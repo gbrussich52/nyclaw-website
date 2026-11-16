@@ -7,7 +7,8 @@ import { CALENDLY_URL, FOUNDER } from '../config'
 export const metadata: Metadata = {
   title: "About NYClaw and Giani Brussich",
   // Claude Sonnet 5.5, 2026-11-12: description was 212 chars; trimmed to fit 110-160. Employer list stays in the page body.
-  description: 'Giani Brussich has close to ten years in analytics and automation. Through NYClaw he builds practical AI for small businesses in Westchester and NYC.',
+  // Claude Sonnet 5.5, 2026-11-16: Ahrefs "meta description too long"; 152 -> 142 by cutting one word.
+  description: 'Giani Brussich has close to ten years in analytics and automation. Through NYClaw he builds AI for small businesses in Westchester and NYC.',
   openGraph: {
     title: "About NYClaw and Giani Brussich",
     description: 'Why NYClaw exists, who builds the work and how a project runs.',
