@@ -31,7 +31,8 @@ export default function PlaybookForm({ compact = false }: { compact?: boolean } 
               Not ready to talk yet?
             </h2>
             <p className="text-[15px] leading-relaxed text-zinc-400">
-              Read the free guide first: where AI fits a small business, what it costs and what to do first.
+              {/* Claude Fable 5.2, 2026-11-16: dropped "what it costs"; the guide gives no cost figures, so the form must not promise them. */}
+              Read the free guide first: where AI fits a small business and what to do first.
             </p>
           </div>
         ) : (
@@ -40,7 +41,8 @@ export default function PlaybookForm({ compact = false }: { compact?: boolean } 
             Free AI Readiness Guide
           </h2>
           <p className="max-w-[34rem] text-[15px] leading-relaxed text-zinc-400">
-            A plain-English guide to where AI fits your business, what it costs, and what to do first. No jargon. No fluff.
+            {/* Claude Fable 5.2, 2026-11-16: dropped "what it costs" here too, same reason. */}
+            A plain-English guide to where AI fits your business and what to do first. No jargon. No fluff.
           </p>
         </div>
         )}

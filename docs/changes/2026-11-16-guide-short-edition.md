@@ -36,3 +36,9 @@ Why: an independent checker and a page-by-page look found loose wording, misplac
 - `app/resources/page.tsx`: Part 3 description reworded.
 - Print: Part 11, Appendix A and References start on a new page; Stop rules and each Part 8 week stay whole; reference spacing tightened (type size unchanged). On a phone the two evidence links stack with no indent.
 - `scripts/check-guide-structure.py`: new staleness guard. It fails when the PDF text lacks an `ours` paragraph, a part or note heading or the References lead line, or lists a different number of references. Reason: a silent Chrome failure left a stale PDF in round 2.
+
+## Round 4 (Claude Fable 5.2, 2026-11-16): home page form copy
+
+- **What changed:** `app/components/PlaybookForm.tsx`, both variants. "where AI fits a small business, what it costs and what to do first" is now "where AI fits a small business and what to do first".
+- **What the prior code did:** promised that the free guide covers what AI costs.
+- **Why:** the guide gives no cost figures. A form must not promise what the download does not hold. Found by the independent check of the short edition.
