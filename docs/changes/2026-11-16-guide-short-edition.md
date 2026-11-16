@@ -53,3 +53,9 @@ Why: an independent checker and a page-by-page look found loose wording, misplac
 - **What the prior code did:** the PDF was built with a hand-typed Chrome command that no file recorded. One run failed silently in a sandbox and a stale PDF was reported as current.
 - **Why:** `scripts/build-guide-pdf.sh` prints the page to PDF, refuses an empty result, and runs the structure and layout checks. One script added; it retires the hand-typed command.
 - PDF rebuilt with the script: 25 pages, both checks pass.
+
+## Round 6 (Claude Fable 5.2, 2026-11-16): guide form topic line
+
+- **What changed:** `app/components/PlaybookForm.tsx` topic line. "Real Costs & Timelines" is now "Your First 30 Days".
+- **What the prior code did:** the form on the home page and the guide page listed "Real Costs & Timelines" as a topic. The guide gives no cost figures.
+- **Why:** the form must list only what the guide holds. "Your First 30 Days" is the guide's own section title. "Common Mistakes" stays: the guide has "Two mistakes to avoid".

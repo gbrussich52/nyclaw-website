@@ -75,7 +75,8 @@ export default function PlaybookForm({ compact = false }: { compact?: boolean } 
                 Get the free guide
               </h3>
               <p className="mb-6 text-sm leading-relaxed text-zinc-400">
-                Where AI Fits Your Business &middot; What to Automate First &middot; Real Costs &amp; Timelines &middot; Common Mistakes
+                {/* Claude Fable 5.2, 2026-11-16: "Real Costs & Timelines" became "Your First 30 Days", the guide's own section title; the guide gives no cost figures. */}
+                Where AI Fits Your Business &middot; What to Automate First &middot; Your First 30 Days &middot; Common Mistakes
               </p>
               <form onSubmit={handleSubmit} className="flex flex-col gap-3 sm:flex-row">
                 <input
