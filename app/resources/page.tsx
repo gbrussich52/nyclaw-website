@@ -52,7 +52,8 @@ const trustSignals = [
   // Claude Sonnet 5.5, 2026-11-15: guide grew to about 7,600 words, so read time is about 35 minutes.
   // Claude Sonnet 5.5, 2026-11-16: short edition. The method (Start here to step 7) reads in about 10 minutes; the rest is pages you use.
   'The method reads in about 10 minutes',
-  'Sources beside every borrowed idea',
+  // Claude Sonnet 5.5, 2026-11-16: sources are now numbered in the text and listed under References, not placed beside each idea.
+  'Every source numbered and listed',
   'Printable worksheet',
   'Free. No credit card.',
 ]

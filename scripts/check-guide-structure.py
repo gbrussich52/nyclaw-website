@@ -7,7 +7,7 @@
 # them silently. check-guide-pdf-layout.py checks page layout only.
 # Fails when: any href="#x" has no matching id; a sup.ref number has no id="rN" or its text differs from its
 # target; a reference is never cited; reference numbers are not in order of first use; the visible text from
-# the Start heading to the end of Part 7 is over 2,350 words (about ten minutes at 235 words a minute); the
+# the Start heading to the end of Part 7 is over 2,500 words (about ten minutes at about 240 words a minute); the notes are over 1,400 words; the PDF is over 25 pages; the
 # contents page omits a section id; the PDF lacks a named destination for a contents target; Contents is not on
 # PDF page 2 or Start is not on page 3.
 # Run from the repo root after rebuilding the PDF (poppler's pdfinfo and pdftotext must be installed):
@@ -16,7 +16,10 @@ import re, subprocess, sys
 
 HTML = sys.argv[1] if len(sys.argv) > 1 else 'public/ai-operators-playbook.html'
 PDF = sys.argv[2] if len(sys.argv) > 2 else 'public/downloads/ai-operators-playbook.pdf'
-MAX_CORE_WORDS = 2350
+MAX_CORE_WORDS = 2500
+MAX_NOTES_WORDS = 1400
+MAX_PAGES = 25
+# Claude Sonnet 5.5, 2026-11-16: director raised the core from 2,350 to 2,500 words and set notes and page limits.
 SECTIONS = ['start'] + [f'p{i}' for i in range(1, 12)] + ['a', 'b', 'c', 'notes', 'refs', 'about']
 
 raw = open(HTML, encoding='utf-8').read()
@@ -76,6 +79,12 @@ pts = [(label, pos(i)) for i, label in marks] + [('end', len(body))]
 for (label, a), (_, b) in zip(pts, pts[1:]):
     if a >= 0 and b >= 0:
         print(f'  {label}: {words(body[a:b])}')
+ns, ne = pos('notes'), pos('refs')
+if ns >= 0 and ne > ns:
+    nw = words(body[ns:ne])
+    print('WORDS notes:', nw, '(limit', MAX_NOTES_WORDS, ')')
+    if nw > MAX_NOTES_WORDS:
+        errors.append(f'notes are {nw} words, over {MAX_NOTES_WORDS}')
 print('WORDS whole document (body):', words(body[body.find('<header'):]))
 
 # ---- 6. contents page lists every section
@@ -106,6 +115,8 @@ try:
         errors.append(f'Contents is not on PDF page 2 (page 2 starts: {p2[:1]})')
     if not p3 or p3[0] != 'Start here':
         errors.append(f'Start here does not begin PDF page 3 (page 3 starts: {p3[:1]})')
+    if npages > MAX_PAGES:
+        errors.append(f'PDF is {npages} pages, over {MAX_PAGES}')
     print('PDF pages:', npages, '| page 2 starts:', p2[:1], '| page 3 starts:', p3[:1])
 except (OSError, subprocess.CalledProcessError, AttributeError) as ex:
     errors.append(f'PDF check could not run: {ex}')
