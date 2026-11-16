@@ -18,7 +18,8 @@ export default function PlaybookForm({ compact = false }: { compact?: boolean } 
       email: playbookEmail,
       businessType: 'playbook-signup',
       challenge: 'guide-download',
-      message: 'Requested via Free AI Readiness Guide form',
+      // Claude Sonnet 5.5, 2026-11-16: lead message uses the guide's real title.
+      message: "Requested via The AI Operator's Playbook form",
     }, 'playbook_form')
   }
 
@@ -38,7 +39,8 @@ export default function PlaybookForm({ compact = false }: { compact?: boolean } 
         ) : (
         <div className="mb-10 flex flex-col items-center gap-4 text-center">
           <h2 className="text-balance text-[clamp(1.75rem,3.5vw,2.25rem)] font-medium leading-[1.15] tracking-[-0.025em] text-white">
-            Free AI Readiness Guide
+            {/* Claude Sonnet 5.5, 2026-11-16: heading uses the real title of the download. */}
+            The AI Operator&apos;s Playbook
           </h2>
           <p className="max-w-[34rem] text-[15px] leading-relaxed text-zinc-400">
             {/* Claude Fable 5.2, 2026-11-16: dropped "what it costs" here too, same reason. */}

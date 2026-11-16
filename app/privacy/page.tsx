@@ -30,7 +30,7 @@ export default function PrivacyPage() {
           want built first, and an optional message describing your workflow.
         </li>
         <li>
-          The homepage newsletter form: your email address, to send the free AI Readiness Guide.
+          The homepage newsletter form: your email address, to send the free guide, The AI Operator&apos;s Playbook.
         </li>
         <li>
           {/* Claude Sonnet 5.5, 2026-11-15: copy now matches the rewritten guide; old lines promised a 50-page PDF and templates the guide does not hold. */}

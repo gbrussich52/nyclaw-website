@@ -7,7 +7,7 @@ import { createRateLimiter } from '../../../lib/rate-limit'
 import { storeLeadInRedis } from '../../../lib/leads'
 import { CONTACT_SOURCES } from '../../../lib/contact-sources'
 import { boundedText } from '../../../lib/workflow-assessment-admin'
-import { isGuideSource, sendGuideEmail } from '../../../lib/guide-email'
+import { isFormCheckAddress, isGuideSource, sendGuideEmail } from '../../../lib/guide-email'
 import { fitSchema, evaluateFit, formatFitBrief } from '../../../lib/workflow-fit'
 
 const ContactSchema = z.object({
@@ -105,7 +105,12 @@ export async function POST(req: NextRequest) {
   }
 
   const timestamp = new Date().toISOString()
-  const entry = { timestamp, name, email, phone, businessType, challenge, message, smsConsent, source, ...(fit ? { workflowFit: fit } : {}) }
+  // Claude Sonnet 5.5, 2026-11-16: the weekly form-delivery check submits one fixed address on Giani's
+  // own domain. It runs the same send path as a real visitor; only the owner alert is skipped and the
+  // lead is tagged. Exact match only, so no other address changes behavior. Honeypot, time-trap and
+  // rate limit above still apply to it.
+  const isFormCheck = isFormCheckAddress(email)
+  const entry = { timestamp, name, email, phone, businessType, challenge, message, smsConsent, source, ...(isFormCheck ? { test: true } : {}), ...(fit ? { workflowFit: fit } : {}) }
 
   // Track which persistence layers actually succeeded. The visitor only gets
   // a success response if at least one layer durably captured the lead —
@@ -166,7 +171,8 @@ export async function POST(req: NextRequest) {
     if (!guideEmailed) console.error('[contact] Guide email failed', { timestamp, source })
   }
 
-  if (transporter && notifyEmail) {
+  // Claude Sonnet 5.5, 2026-11-16: no owner alert for the form check, so Giani gets no fake lead.
+  if (transporter && notifyEmail && !isFormCheck) {
     try {
       await transporter.sendMail({
         from: `"NYClaw Lead" <${gmailUser}>`,
