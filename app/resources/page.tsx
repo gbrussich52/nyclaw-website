@@ -30,7 +30,8 @@ export const metadata: Metadata = {
 // Claude Fable 5.2, 2026-11-15: second edition of the guide adds three parts and a copy-and-paste appendix; the prior lists described the eight-part first edition.
 const whatsInside = [
   { section: 'Parts 1-2', title: 'One leak and a one-page brief', desc: 'Name the job, the number that shows it is done and the person who owns it. Then write how your firm works on one page, and what to keep out of an assistant.' },
-  { section: 'Part 3', title: 'Show it what good looks like', desc: 'Real examples, your voice described from your own writing, a one-page brand sheet, and a template where the shape repeats.' },
+  // Claude Sonnet 5.5, 2026-11-16: the brand sheet and template moved to the notes at the back of the guide.
+  { section: 'Part 3', title: 'Show it what good looks like', desc: 'Real examples, and your voice described from your own writing. The notes add a one-page brand sheet and a template.' },
   { section: 'Parts 4-5', title: 'Limits, and making it check its own work', desc: 'Two lists of what it may do alone and what it must ask about. Then a pass-or-fail standard, proof for every fact, and a second look.' },
   { section: 'Parts 6-7', title: 'Saved methods and the weekly check', desc: 'Write down anything you explained twice. A 15-minute check on a set day, the fake-lead test and stop rules.' },
   { section: 'Parts 8-11', title: 'First 30 days, a worked example, three first jobs', desc: 'A week-by-week checklist, a small law office filled in as an illustration, three starter jobs, and eight questions to ask any builder.' },
@@ -50,8 +51,10 @@ const templates = [
 
 const trustSignals = [
   // Claude Sonnet 5.5, 2026-11-15: guide grew to about 7,600 words, so read time is about 35 minutes.
-  'About 35 minutes to read',
-  'Sources beside every borrowed idea',
+  // Claude Sonnet 5.5, 2026-11-16: short edition. The method (Start here to step 7) reads in about 10 minutes; the rest is pages you use.
+  'The method reads in about 10 minutes',
+  // Claude Sonnet 5.5, 2026-11-16: sources are now numbered in the text and listed under References, not placed beside each idea.
+  'Every source numbered and listed',
   'Printable worksheet',
   'Free. No credit card.',
 ]

@@ -5,6 +5,10 @@
 # Checks: (1) each source line sits on the same PDF page as the text before it, (2) each heading sits on the
 # same page as what follows it, (3) no paragraph or list item leaves a single line on either side of a page
 # break; it also prints the first and last two lines of every page.
+# Claude Sonnet 5.5, 2026-11-16 (short edition): the contents page is now its own PDF page of two-column link
+# rows (a label and a right-aligned target), which pdftotext reads in a different order, so it is left out of the
+# heading check; its position (page 2) and its jump destinations are checked by scripts/check-guide-structure.py.
+# Source lines now exist only in Appendix A (everything else is a numbered reference), so the source check covers those.
 # Run from the repo root after rebuilding the PDF (poppler's pdftotext and pdfinfo must be installed):
 #   python3 -I scripts/check-guide-pdf-layout.py
 # Exit status 0 means no failures or flags; look at the page images for blank space (over 30% blank is only
@@ -19,6 +23,8 @@ n=int(re.search(r'Pages:\s+(\d+)',subprocess.run(['pdfinfo',PDF],capture_output=
 pages=[None]+[norm(subprocess.run(['pdftotext','-f',str(i),'-l',str(i),PDF,'-'],capture_output=True,text=True).stdout) for i in range(1,n+1)]
 raw=open(G).read(); body=raw[raw.find('<body'):]
 body=re.sub(r'<!--.*?-->','',body,flags=re.S)
+# Claude Sonnet 5.5, 2026-11-16: leave the contents page out (see header note).
+body=re.sub(r'<section class="toc.*?</section>','',body,flags=re.S)
 def strip(t):
     t=re.sub(r'</?(a|strong|em|mark|small|span|code|i|q|cite)\b[^>]*>','',t)
     return re.sub(r'<[^>]+>',' ',t)

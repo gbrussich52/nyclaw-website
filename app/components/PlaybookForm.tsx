@@ -31,7 +31,8 @@ export default function PlaybookForm({ compact = false }: { compact?: boolean } 
               Not ready to talk yet?
             </h2>
             <p className="text-[15px] leading-relaxed text-zinc-400">
-              Read the free guide first: where AI fits a small business, what it costs and what to do first.
+              {/* Claude Fable 5.2, 2026-11-16: dropped "what it costs"; the guide gives no cost figures, so the form must not promise them. */}
+              Read the free guide first: where AI fits a small business and what to do first.
             </p>
           </div>
         ) : (
@@ -40,7 +41,8 @@ export default function PlaybookForm({ compact = false }: { compact?: boolean } 
             Free AI Readiness Guide
           </h2>
           <p className="max-w-[34rem] text-[15px] leading-relaxed text-zinc-400">
-            A plain-English guide to where AI fits your business, what it costs, and what to do first. No jargon. No fluff.
+            {/* Claude Fable 5.2, 2026-11-16: dropped "what it costs" here too, same reason. */}
+            A plain-English guide to where AI fits your business and what to do first. No jargon. No fluff.
           </p>
         </div>
         )}
@@ -73,7 +75,8 @@ export default function PlaybookForm({ compact = false }: { compact?: boolean } 
                 Get the free guide
               </h3>
               <p className="mb-6 text-sm leading-relaxed text-zinc-400">
-                Where AI Fits Your Business &middot; What to Automate First &middot; Real Costs &amp; Timelines &middot; Common Mistakes
+                {/* Claude Fable 5.2, 2026-11-16: "Real Costs & Timelines" became "Your First 30 Days", the guide's own section title; the guide gives no cost figures. */}
+                Where AI Fits Your Business &middot; What to Automate First &middot; Your First 30 Days &middot; Common Mistakes
               </p>
               <form onSubmit={handleSubmit} className="flex flex-col gap-3 sm:flex-row">
                 <input
