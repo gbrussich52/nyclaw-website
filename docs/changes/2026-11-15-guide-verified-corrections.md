@@ -83,5 +83,14 @@ An independent re-check of 3bc000c against the live sources confirmed 71 of 75 l
 ## Fifth pass (Claude Sonnet 5.5, 2026-11-15)
 - G7 (Appendix A, Gemini): "Scheduled actions run a prompt at a set time or on repeat, on Google AI Plus, Pro and Ultra plans." became "Scheduled actions repeat a request daily, weekly or monthly at a time you set. Google's plans table lists them under Google AI Plus, Pro and Ultra, and its help page says the feature is being opened to all personal accounts in stages." Why: the plans page (support.google.com/gemini/answer/16275805) ticks Scheduled actions for Plus, Pro and Ultra only, while the Schedules page (answer/16316416, saved as g_sched.txt) says "We're gradually making this feature available to all personal Google Accounts, so it might not be available to you just yet" and describes "daily, weekly, and monthly routines" with "a delivery time that works for your schedule", not one-off runs. No other sentence in the guide, `app/resources/page.tsx`, `app/knowledge/page.tsx` or `public/llms.txt` says which Gemini plans can schedule or that Gemini runs a one-off task at a set time.
 
+## Sixth pass (Claude Sonnet 5.5, 2026-11-15): PDF layout only, no wording change
+Page 15 of the PDF was half blank because the "What goes in a saved method" box jumped whole to the next page. All changes are in `@media print` or are class names, so the screen page is unchanged.
+- H1: that box is now `class="sheet long"`.
+- H4: filled example boxes may break between rows (rows stay whole). The old rule `break-inside: avoid` on boxes now skips `.long` and `.filled`.
+- H5: `.src { break-before: avoid; }` so a source line never starts a page (the Boris Cherny line sat alone at the top of page 15).
+- H7: `p, li { orphans: 2; widows: 2; }` did not move the lone line at the top of page 26, so the three-line "Switching tools because a new one launched." paragraph got `class="keep"` and `p.keep { break-inside: avoid; }`.
+- Result: 31 pages. Only the page before Appendix B (27) and the last page (31) are over 30% blank.
+- Check: `scripts/check-guide-pdf-layout.py` tests source lines, headings and paragraph splits against the PDF.
+
 ## Roll back
 Revert this commit.

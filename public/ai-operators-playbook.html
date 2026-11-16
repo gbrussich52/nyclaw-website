@@ -19,6 +19,7 @@
   <!-- Claude Sonnet 5.5, 2026-11-15 (fourth pass): four fixes from an independent re-check against the live posts (Tibo date October 6, Lauren Tan quotes tied to the right posts, one reason sentence reworded); same change log file. -->
   <!-- Claude Sonnet 5.5, 2026-11-15 (third pass): tightened the nine added lines (repeat removed, second-look paragraph moved after the fresh-reader paragraph, role wording limited to what profiles show) and read time now about 35 minutes because the guide grew to about 7,600 words; same change log file. -->
   <!-- Claude Sonnet 5.5, 2026-11-15 (fifth pass): Gemini scheduling line now states what both Google help pages say (plans table versus staged rollout to personal accounts); same change log file. -->
+  <!-- Claude Sonnet 5.5, 2026-11-15 (sixth pass): the saved-method box is now a "long" sheet, filled example boxes may break between rows, and source lines may not start a PDF page (print rules only); page 15 of the PDF was half blank. Also: paragraphs and list items keep two lines on each side of a page break (orphans/widows), and the three-line "Switching tools" paragraph carries class="keep" so it stays whole. No wording change; same change log file. -->
   <link rel="canonical" href="https://nyclaw.io/ai-operators-playbook.html">
   <meta name="description" content="A plain guide for small firms: pick one costly leak, brief an AI assistant, show it what good looks like, set its limits, make it check its own work, and check it yourself every week. Facts checked November 15, 2026.">
   <style>
@@ -161,8 +162,15 @@
       .contents { margin-top: 22px; }
       .contents a { padding: 6px 2px; font-size: 10.5pt; }
       .contents a small { display: none; }
-      .sheet:not(.blank):not(.long) { break-inside: avoid; }
+      /* Claude Sonnet 5.5, 2026-11-15: filled example boxes may now break between rows (rows stay whole) so a box no longer jumps whole and leaves a third of a PDF page blank (pages 20 and 23). */
+      .sheet:not(.blank):not(.long):not(.filled) { break-inside: avoid; }
+      /* Claude Sonnet 5.5, 2026-11-15: a source line landed alone at the top of PDF page 15; it must never start a page. */
+      .src { break-before: avoid; }
       .ours { break-before: avoid; }
+      /* Claude Sonnet 5.5, 2026-11-15: a single line of a paragraph landed alone at the top of PDF page 26; keep at least two lines on each side of a page break. */
+      p, li { orphans: 2; widows: 2; }
+      /* Claude Sonnet 5.5, 2026-11-15: orphans/widows alone did not move the line, so this one three-line paragraph stays whole. */
+      p.keep { break-inside: avoid; }
       .tick li { padding-top: 6px; padding-bottom: 6px; }
       .tick li::before { top: 10px; }
       .week { margin-top: 16px; }
@@ -490,7 +498,7 @@
 <p>Keep this week's special case out of both. Put it in the message where you ask for the work.</p>
 
 <h3>What goes in a saved method</h3>
-<div class="sheet">
+<div class="sheet long">
   <div class="row"><b>Name and when to use it</b>"New inquiry reply. Use for every web-form or email inquiry from someone who is not yet a client."</div>
   <div class="row"><b>The steps, in order</b>Five to eight lines. What to read, what to write, what to leave alone.</div>
   <div class="row"><b>Two worked examples</b>A real inquiry and the reply you would send. One easy, one awkward. Anthropic's help page asks for the same: "example inputs and outputs."</div>
@@ -704,7 +712,7 @@
 
 <h3>Two mistakes to avoid</h3>
 <p><strong>Going live without a test.</strong> Nothing is finished until a test message has arrived at the real destination. Test again after every change.</p>
-<p><strong>Switching tools because a new one launched.</strong> Each switch means new setup, new logins and a brief to rewrite. Change tools when a specific job keeps failing on the current one. Give a new tool 30 days against your number before you commit.</p>
+<p class="keep"><strong>Switching tools because a new one launched.</strong> Each switch means new setup, new logins and a brief to rewrite. Change tools when a specific job keeps failing on the current one. Give a new tool 30 days against your number before you commit.</p>
 
 <!-- ===================== APPENDIX A ===================== -->
 <div class="part" id="a">
