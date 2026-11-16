@@ -80,5 +80,8 @@ An independent re-check of 3bc000c against the live sources confirmed 71 of 75 l
 - G6: removed the HTML comment from the end of `public/llms.txt`; the reason for the read-time change lives here and in the commit message.
 - New check: every link to an X post is decoded from its id (`(id >> 22) + 1288834974657` ms, UTC) to America/New_York and compared with the date written beside it. All pass.
 
+## Fifth pass (Claude Sonnet 5.5, 2026-11-15)
+- G7 (Appendix A, Gemini): "Scheduled actions run a prompt at a set time or on repeat, on Google AI Plus, Pro and Ultra plans." became "Scheduled actions repeat a request daily, weekly or monthly at a time you set. Google's plans table lists them under Google AI Plus, Pro and Ultra, and its help page says the feature is being opened to all personal accounts in stages." Why: the plans page (support.google.com/gemini/answer/16275805) ticks Scheduled actions for Plus, Pro and Ultra only, while the Schedules page (answer/16316416, saved as g_sched.txt) says "We're gradually making this feature available to all personal Google Accounts, so it might not be available to you just yet" and describes "daily, weekly, and monthly routines" with "a delivery time that works for your schedule", not one-off runs. No other sentence in the guide, `app/resources/page.tsx`, `app/knowledge/page.tsx` or `public/llms.txt` says which Gemini plans can schedule or that Gemini runs a one-off task at a set time.
+
 ## Roll back
 Revert this commit.
