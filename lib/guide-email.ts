@@ -12,6 +12,14 @@ export const GUIDE_PATH = '/ai-operators-playbook.html'
 export const GUIDE_SUBJECT = "Your AI Operator's Playbook from NYClaw"
 export const DEFAULT_GUIDE_FROM = 'hello@nyclaw.io'
 
+// Claude Sonnet 5.5, 2026-11-16: fixed recipient for the weekly form-delivery check. It is on our own
+// domain; plus-addressing falls through the forwardemail catch-all to Giani's inbox. Not a secret.
+export const FORM_CHECK_ADDRESS = 'hello+formcheck@nyclaw.io'
+
+export function isFormCheckAddress(email: string): boolean {
+  return email.trim().toLowerCase() === FORM_CHECK_ADDRESS
+}
+
 export function isGuideSource(source: string): boolean {
   return (GUIDE_SOURCES as readonly string[]).includes(source)
 }

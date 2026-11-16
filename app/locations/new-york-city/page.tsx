@@ -189,7 +189,7 @@ const explore = [
   { label: 'AI for Westchester Businesses', href: '/locations/westchester-county' },
   { label: 'AI for Yonkers Businesses', href: '/locations/yonkers' },
   { label: 'Knowledge Base', href: '/knowledge' },
-  { label: 'Free AI Readiness Guide', href: '/resources' },
+  { label: "Free guide: The AI Operator's Playbook", href: '/resources' }, // Claude Sonnet 5.5, 2026-11-16: label matches the real title of the download
   { label: 'Blog', href: '/blog' },
 ]
 
