@@ -7,9 +7,10 @@
 # them silently. check-guide-pdf-layout.py checks page layout only.
 # Fails when: any href="#x" has no matching id; a sup.ref number has no id="rN" or its text differs from its
 # target; a reference is never cited; reference numbers are not in order of first use; the visible text from
-# the Start heading to the end of Part 7 is over 2,500 words (about ten minutes at about 240 words a minute); the notes are over 1,400 words; the PDF is over 25 pages; the
+# the Start heading to the end of Part 7 is over 2,500 words (about ten minutes at about 240 words a minute); the notes are over 1,500 words; the PDF is over 25 pages; the
 # contents page omits a section id; the PDF lacks a named destination for a contents target; Contents is not on
-# PDF page 2 or Start is not on page 3.
+# PDF page 2 or Start is not on page 3; the PDF text lacks an `ours` paragraph, a part or note heading or the
+# References lead line, or lists a different number of references than the page (a stale PDF).
 # Run from the repo root after rebuilding the PDF (poppler's pdfinfo and pdftotext must be installed):
 #   python3 -I scripts/check-guide-structure.py [guide.html [guide.pdf]]
 import re, subprocess, sys
@@ -17,7 +18,7 @@ import re, subprocess, sys
 HTML = sys.argv[1] if len(sys.argv) > 1 else 'public/ai-operators-playbook.html'
 PDF = sys.argv[2] if len(sys.argv) > 2 else 'public/downloads/ai-operators-playbook.pdf'
 MAX_CORE_WORDS = 2500
-MAX_NOTES_WORDS = 1400
+MAX_NOTES_WORDS = 1500
 MAX_PAGES = 25
 # Claude Sonnet 5.5, 2026-11-16: director raised the core from 2,350 to 2,500 words and set notes and page limits.
 SECTIONS = ['start'] + [f'p{i}' for i in range(1, 12)] + ['a', 'b', 'c', 'notes', 'refs', 'about']
@@ -120,6 +121,36 @@ try:
     print('PDF pages:', npages, '| page 2 starts:', p2[:1], '| page 3 starts:', p3[:1])
 except (OSError, subprocess.CalledProcessError, AttributeError) as ex:
     errors.append(f'PDF check could not run: {ex}')
+
+# ---- 9. the PDF was built from this page (no file times: compare text)
+# Claude Sonnet 5.5, 2026-11-16 (round 3): a PDF build failed silently inside the sandbox and the old PDF shipped with
+# new checks passing. Fails when an `ours` paragraph, a part or note heading or the References lead line is missing
+# from the PDF text (whitespace collapsed, quotes straightened), or when the PDF lists a different number of references.
+import html as _html
+def _norm(t):
+    t = _html.unescape(re.sub(r'<[^>]+>', ' ', t))
+    t = t.replace('\u201c', '"').replace('\u201d', '"').replace('\u2019', "'").replace('\u2018', "'").replace('\xa0', ' ')
+    return re.sub(r'\s+', ' ', t).strip()
+try:
+    pdf_text = _norm(subprocess.run(['pdftotext', PDF, '-'], capture_output=True, text=True, check=True).stdout)
+    expected = [_norm(x) for x in re.findall(r'<p class="ours">(.*?)</p>', body, flags=re.S)]
+    expected += [_norm(x) for x in re.findall(r'<h2[^>]*>(.*?)</h2>', body, flags=re.S)]
+    expected += [_norm(x) for x in re.findall(r'<section class="nstep"[^>]*>\s*<h3>(.*?)</h3>', body, flags=re.S)]
+    expected += [_norm(x) for x in re.findall(r'<p class="reflead">(.*?)</p>', body, flags=re.S)]
+    expected = [x for x in expected if x]
+    if len(expected) < 20:
+        errors.append(f'staleness guard found only {len(expected)} strings to look for')
+    for x in expected:
+        if x not in pdf_text:
+            errors.append(f'PDF text lacks: {x[:70]}')
+    n_html = len(re.findall(r'<li id="r\d+"', body))
+    tail = pdf_text[pdf_text.rfind('Every page below was read'):] if 'Every page below was read' in pdf_text else ''
+    n_pdf = len(set(re.findall(r'(?:^| )(\d+)\. (?=[A-Z])', tail)) & {str(i) for i in range(1, n_html + 1)})
+    if n_pdf != n_html:
+        errors.append(f'PDF lists {n_pdf} references, page has {n_html}')
+    print('PDF built from this page: checked', len(expected), 'strings and', n_html, 'references')
+except (OSError, subprocess.CalledProcessError) as ex:
+    errors.append(f'PDF text check could not run: {ex}')
 
 if errors:
     print('FAIL')

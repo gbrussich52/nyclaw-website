@@ -157,6 +157,12 @@
     .refs li { margin-bottom: 8px; padding-left: 4px; word-break: break-word; }
     .refs li:target { background: var(--mark); }
     h2.newpage { margin-top: 56px; }
+    /* Claude Sonnet 5.5, 2026-11-16 (round 3): reference lead line; on a phone the two evidence links stack with no indent. */
+    .reflead { font: 0.9rem/1.5 var(--sans); color: var(--quiet); margin: 14px 0 0; }
+    @media (max-width: 640px) {
+      .find li.multi .go { display: flex; flex-direction: column; align-items: flex-start; text-align: left; }
+      .find .go a { margin-left: 0; }
+    }
 
     @media (max-width: 640px) {
       body { padding: 32px 16px 32px; font-size: 17px; }
@@ -241,6 +247,12 @@
       .sheet.blank .row { min-height: 54px; }
       .sheet.blank .row.tall { min-height: 84px; }
       h2.newpage { margin-top: 0; }
+      /* Claude Sonnet 5.5, 2026-11-16 (round 3): keep Stop rules whole, keep each Part 8 week with its tick items. */
+      .keep, .week + .tick { break-inside: avoid; }
+      .week { break-after: avoid; }
+      /* Claude Sonnet 5.5, 2026-11-16 (round 3): tighter reference spacing so the CTA stays on the last page; type size unchanged. */
+      .refs li { margin-bottom: 2px; }
+      .reflead { margin-top: 8px; }
     }
 
   </style>
@@ -270,7 +282,7 @@
       <li><a href="#b"><span>I want the words to paste.</span><span class="go">Words to copy and paste</span></a></li>
       <li><a href="#p9"><span>Show me one job, filled in.</span><span class="go">A small law office, filled in</span></a></li>
       <li><a href="#p11"><span>Someone else will build it.</span><span class="go">Eight questions for any builder</span></a></li>
-      <li><a href="#a"><span>Which assistant should I use?</span><span class="go">What four assistants do today</span></a></li>
+      <li><a href="#a"><span>What can my assistant already do?</span><span class="go">What four assistants do today</span></a></li>
       <li class="multi"><span>I want the evidence.</span><span class="go"><a href="#notes">Notes on each step</a><a href="#refs">References</a></span></li>
     </ul>
   </div>
@@ -350,7 +362,7 @@
 <p>So write the brief the way you would brief a sharp new hire on day one.</p>
 <div class="sheet long">
   <div class="row"><b>Who we serve</b>The clients you want and what they usually need</div>
-  <div class="row"><b>What good looks like</b>For example: every inquiry gets a reply within the hour</div>
+  <div class="row"><b>What good looks like</b>For example: every inquiry gets a reply within the hour during business hours</div>
   <div class="row"><b>Decisions already made, and why</b>Prices you don't discount, work you don't take, words you never use</div>
   <div class="row"><b>Where the facts live</b>Which system holds leads, quotes, bookings and invoices, and who can see each</div>
   <div class="row"><b>How we sound</b>For example: warm, short, no slang. Samples come in Part 3.</div>
@@ -397,7 +409,7 @@
   <cite>Anthropic, Claude Academy, "Write in my voice"<sup class="ref"><a href="#r3">3</a></sup></cite>
 </div>
 <p>Save the description it gives you into the brief.</p>
-<p class="more"><a href="#n3">Notes on step 3</a></p>
+<p class="more"><a href="#n3">Notes on step 3: pieces you dislike, a brand sheet, a template</a></p>
 
 
 <!-- ===================== PART 4 ===================== -->
@@ -442,7 +454,7 @@
 
 <h3>Logins, access, and messages that give orders</h3>
 <p>Some assistants can now work in the background and connect to your email, calendar and files. Give each one the narrowest access that does the job. Use a separate account where you can. Write down how to turn the access off, then test that you can.</p>
-<p>An assistant that reads your inbox reads whatever strangers send you, and a message can be written to give it orders. An assistant that cannot send, pay or delete without your yes is much harder to turn against you.</p>
+<p>An assistant that reads your inbox reads whatever strangers send you, and a message can be written to give it orders. An assistant that cannot send, pay or delete without your yes is much harder to turn against you. Still read what you approve, because a planted message can shape the draft in front of you.</p>
 <p class="more"><a href="#n4">Notes on step 4</a></p>
 
 <!-- ===================== PART 5 ===================== -->
@@ -452,8 +464,7 @@
 </div>
 
 <p>An assistant will tell you a job is finished when it is not. Give the assistant a way to check, and ask to see the check.</p>
-<p>Boris Cherny, who created Claude Code at Anthropic, calls this "probably the most important thing" for getting good results from it: "give Claude a way to verify its work. If Claude has that feedback loop, it will 2-3x the quality of the final result." For a programmer the check is a test that runs. Yours is the pass-or-fail list in the next section.<sup class="ref"><a href="#r5">5</a></sup></p>
-<p class="ours">What we have found: a second reader catches what the writer misses. One checked this guide against its sources before it went out and found a date that was off by a day.</p>
+<p>Boris Cherny, who created Claude Code at Anthropic, calls this "probably the most important thing" for getting good results from it: "give Claude a way to verify its work. If Claude has that feedback loop, it will 2-3x the quality of the final result."<sup class="ref"><a href="#r5">5</a></sup> For a programmer the check is a test that runs. Yours is the pass-or-fail list in the next section.</p>
 
 <h3>1. Give it a standard it can pass or fail</h3>
 <p>"Make it good" cannot be checked. A short list can. Anthropic suggests the wording:</p>
@@ -479,6 +490,7 @@
 
 <h3>3. Get a second look from a reader that didn't write it</h3>
 <p>A writer rereads its own draft kindly. A fresh reader does not. In an office, that means opening a new chat with no history, pasting in the draft and the checklist, and asking what is wrong with it. Use it for anything that goes to many people at once or that would be costly to get wrong.</p>
+<p class="ours">What we have found: a second reader catches what the writer misses. One checked this guide against its sources before it went out and found a date that was off by a day.</p>
 
 <h3>4. A person still signs</h3>
 <p>None of this replaces you. Anthropic's Claude Code team wrote about how they review work their assistant produces, and two of their rules fit any firm:</p>
@@ -502,7 +514,7 @@
   <cite>Anthropic, "Best practices for Claude Code"<sup class="ref"><a href="#r7">7</a></sup></cite>
 </div>
 <p>Boris Cherny passed on the same habit from the Claude Code team in one line. After every correction, end with: "Update your CLAUDE.md so you don't make that mistake again." CLAUDE.md is the file of standing rules that Claude Code loads into every session. He adds: "Claude is eerily good at writing rules for itself." Try it with your own assistant. After you correct it, ask it to write the rule, then read the rule before you keep it.<sup class="ref"><a href="#r8">8</a></sup></p>
-<p>Lauren Tan goes one step further. The point of one of her own posts, she wrote, is "to move stuff out of prose and make it deterministic." Prose is the written instructions. Deterministic means it happens the same way every time, whatever the assistant decides. In an office that is a required field on the intake form or a fixed template, not a tenth sentence in the brief.<sup class="ref"><a href="#r9">9</a></sup></p>
+<p>Lauren Tan, who works on Grok Bot at SpaceXSI, goes one step further. The point of one of her own posts, she wrote, is "to move stuff out of prose and make it deterministic." Prose is the written instructions. Deterministic means it happens the same way every time, whatever the assistant decides. In an office that is a required field on the intake form or a fixed template, not a tenth sentence in the brief.<sup class="ref"><a href="#r9">9</a></sup></p>
 <ul>
   <li><strong>Standing rules</strong> say how the firm works, on every job. They live in the brief.</li>
   <li><strong>A saved method</strong> says how to do one repeating job, step by step. Claude, Gemini and Grok Bot all call this a <strong>skill</strong>.</li>
@@ -550,8 +562,9 @@
   <li>For each one, note when the message reached someone who will act on it, and whether the visitor got what the page promised. A "Thank you" page proves nothing until the message arrives.</li>
   <li>Delete the test records when you finish.</li>
 </ol>
-<p class="ours">What we have come across: a form on our own site that showed a thank-you page and sent no email. That is why the last check is on the list.</p>
+<p class="ours">What we have come across: a form on our own site that showed a thank-you page and sent no email. That is why step 6 asks whether the visitor got what the page promised.</p>
 
+<div class="keep">
 <h3>Stop rules</h3>
 <p>Decide in advance when the setup gets paused.</p>
 <ul class="tick">
@@ -561,6 +574,7 @@
   <li>Nobody did the weekly check for two weeks</li>
   <li>Monthly cost passes the limit you set</li>
 </ul>
+</div>
 <p class="more"><a href="#n7">Notes on step 7</a></p>
 
 <!-- ===================== PART 8 ===================== -->
@@ -688,7 +702,7 @@
 </div>
 
 <!-- ===================== PART 11 ===================== -->
-<div class="part" id="p11">
+<div class="part newpage" id="p11">
   <div class="n">11</div>
   <div><h2>If you hire someone</h2><p>Eight questions to ask any builder, including us.</p></div>
 </div>
@@ -710,12 +724,12 @@
 <p class="keep"><strong>Switching tools because a new one launched.</strong> Each switch means new setup, new logins and a brief to rewrite. Change tools when a specific job keeps failing on the current one. Give a new tool 30 days against your number before you commit.</p>
 
 <!-- ===================== APPENDIX A ===================== -->
-<div class="part" id="a">
+<div class="part newpage" id="a">
   <div class="n word">Appendix A</div>
   <div><h2>What four assistants do today</h2><p>Checked November 15, 2026. Features, names and plan limits change often. If a line here is out of date, trust the vendor's page.</p></div>
 </div>
 
-<p>This is not a ranking. Each line comes from the vendor page linked beside it, read on the date above. We left out products we could not confirm on the vendor's own page.</p>
+<p>This is not a ranking. Each line comes from the vendor page numbered beside it and listed under References, read on the date above. We left out products we could not confirm on the vendor's own page.</p>
 
 <div class="tool">
   <p><strong>Claude (Anthropic).</strong> Projects hold their own instructions and files. Skills are saved methods you write once, and they need code execution turned on. Memory across chats can be paused, reset or turned off. Scheduled tasks are available on all paid plans, and you can review upcoming and past runs under Scheduled.</p>
@@ -760,7 +774,7 @@
 <p class="paste-label">To turn a correction into a rule (Part 6)</p>
 <div class="paste">I have corrected this twice now: [what happened]. Write one rule, with its reason, that would have prevented it. Show me the rule before you save it.</div>
 
-<p class="paste-label">The weekly report it brings to your check (Part 7)</p>
+<p class="paste-label">The weekly report it brings to your check (Notes, step 7)</p>
 <div class="paste">Every [Monday] at [8:00], send me three short lists for the past week: what you finished, where you were unsure or made a mistake, and what is waiting on me.</div>
 
 <!-- ===================== APPENDIX C ===================== -->
@@ -788,7 +802,7 @@
 
 <section class="nstep" id="n1">
   <h3>Step 1: Name one leak</h3>
-  <p>Anthropic gives builders the same advice:</p>
+  <p>Keep the job small. Anthropic gives builders the same advice:</p>
   <div class="said">
     <q>When building applications with LLMs, we recommend finding the simplest solution possible, and only increasing complexity when needed.</q>
     <cite>Anthropic, "Building effective agents"<sup class="ref"><a href="#r25">25</a></sup></cite>
@@ -825,7 +839,7 @@
 <h4>Pieces you like, and pieces you don't</h4>
 <p>Keep a short running list in two columns. On one side, things you would be glad to have sent. On the other, things that made you wince: the stiff form letter, the reply that buried the answer in the third paragraph.</p>
 <p>For every piece you dislike, write one line on what to do instead. "Too long" tells the assistant little. "Too long. Give the answer in the first sentence and stop at five" gives it something to do.</p>
-<p class="ours">This list is our own practice. The vendors recommend good examples and clear instructions; none we read tells you to collect bad examples, and Anthropic's advice is to say what you want rather than only what you don't.</p>
+<p class="ours">This list is our own practice. The vendors recommend good examples and clear instructions; none we read tells you to collect bad examples, and Anthropic's advice is to say what you want rather than only what you don't.<sup class="ref"><a href="#r1">1</a></sup></p>
 
 <h4>A one-page brand sheet</h4>
 <p>If the assistant makes anything a client will see, give it the firm's look and wording in one place.</p>
@@ -843,8 +857,8 @@
 
 <section class="nstep" id="n4">
   <h3>Step 4: Set what it may do alone</h3>
-  <p>The two lists also guard against the opposite mistake. Tibo at OpenAI describes a setting "that requires you to approve everything" as "prone to decision fatigue unless you spend a lot of time configuring specific rules." A tired approver stops reading. The lists are those rules.<sup class="ref"><a href="#r28">28</a></sup></p>
-  <p>Anthropic's safety page for its desktop assistant suggests "a dedicated working folder" in place of broad access, and backups of anything important.<sup class="ref"><a href="#r15">15</a></sup> Anthropic calls this prompt injection and warns about it on the same page.<sup class="ref"><a href="#r15">15</a></sup> Still read what you approve, because a planted message can shape the draft in front of you.</p>
+  <p>The two lists also guard against the opposite mistake: an assistant that asks about everything. Tibo at OpenAI describes a setting "that requires you to approve everything" as "prone to decision fatigue unless you spend a lot of time configuring specific rules." A tired approver stops reading. The lists are those rules.<sup class="ref"><a href="#r28">28</a></sup></p>
+  <p>Anthropic's safety page for its desktop assistant suggests "a dedicated working folder" in place of broad access, and backups of anything important.<sup class="ref"><a href="#r15">15</a></sup> The same page warns about messages written to give an assistant orders, which Anthropic calls prompt injection.<sup class="ref"><a href="#r15">15</a></sup></p>
 <h4>The repair test</h4>
 <p>A <strong>repair</strong> restores something you already approved: the confirmation text that failed, the form that stopped sending. Repairs need no permission. A <strong>new decision</strong> creates something you have not approved: a first message to a stranger, a discount, a public post. New decisions wait for a person.</p>
 <p class="ours">The repair test is our own practice.</p>
@@ -853,7 +867,7 @@
 
 <section class="nstep" id="n5">
   <h3>Step 5: Make it check its own work</h3>
-  <p>A second look has limits. Lauren Tan, who works on Grok Bot at SpaceXSI, wrote in November 2026 that she now considers "adversarial reviews mostly a waste of tokens" and added that she meant "just having agents review code without running it" or checking it with a tool. An adversarial review is one AI looking for faults in another's work. Her reason: the reviewers "likely have 0 context around your goals and intent, and they tend to pick up things that don't matter" or push the work the wrong way. She was writing about code, and the point carries. Keep the order of this part: the pass-or-fail list first, proof second, the fresh reader third. The checklist you paste in is what tells the fresh reader your goals.<sup class="ref"><a href="#r29">29</a></sup><sup class="ref"><a href="#r30">30</a></sup><sup class="ref"><a href="#r31">31</a></sup></p>
+  <p>A second look has limits. Lauren Tan, who works on Grok Bot at SpaceXSI, wrote in November 2026 that she now considers "adversarial reviews mostly a waste of tokens" and added that she meant "just having agents review code without running it" or checking it with a tool. An adversarial review is one AI looking for faults in another's work. Her reason: the reviewers "likely have 0 context around your goals and intent, and they tend to pick up things that don't matter" or push the work the wrong way. She was writing about code, and the point carries. Keep the order of step 5: the pass-or-fail list first, proof second, the fresh reader third. The checklist you paste in is what tells the fresh reader your goals.<sup class="ref"><a href="#r29">29</a></sup><sup class="ref"><a href="#r30">30</a></sup><sup class="ref"><a href="#r31">31</a></sup></p>
   <p>Asked why anyone still needs to read the code, Boris Cherny answered: "I read diffs when it's touching critical code, or code that's important to get right." A diff is the list of changes the assistant made.<sup class="ref"><a href="#r32">32</a></sup></p>
   <p>One more caution, from an Anthropic study published October 27, 2026. Fifty professional analysts each worked with an AI agent that had been set to lean one way on each choice. They went with the agent's lean 86% of the time, where chance would give about 50%. The ones who followed it most closely were about as likely as the rest to call the work their own judgment. The authors strengthened the lean on purpose, so everyday assistants may sway people less. For decisions that are yours, such as whether to take a matter or what to charge, ask for the strongest case for each option before you ask what it would do.<sup class="ref"><a href="#r33">33</a></sup></p>
   <p class="more"><a href="#p5">Back to step 5</a></p>
@@ -870,58 +884,60 @@
     <div class="row"><b>When to stop and ask</b>For example: any mention of a court date, a deadline or another lawyer</div>
   </div>
   <p>The Claude Code team's rule for when to save a method: "If you do something more than once a day, turn it into a skill or command" (Boris Cherny, January 2026).<sup class="ref"><a href="#r34">34</a></sup></p>
-  <p>Two people who build these tools give reasons from their own work. Lauren Tan, on her own set of saved methods: "the more capable models get, the less instructions they need."<sup class="ref"><a href="#r35">35</a></sup> Tibo at OpenAI, listing fixes his team had shipped in September 2026: "Some skills written for previous models were triggering too often or preventing the model from checking its work."<sup class="ref"><a href="#r36">36</a></sup> An instruction that helped last year's assistant can hold back this year's.</p>
+  <p>Two people who build these tools give reasons for keeping instructions short, from their own work. Lauren Tan, on her own set of saved methods: "the more capable models get, the less instructions they need."<sup class="ref"><a href="#r35">35</a></sup> Tibo at OpenAI, listing fixes his team had shipped in September 2026: "Some skills written for previous models were triggering too often or preventing the model from checking its work."<sup class="ref"><a href="#r36">36</a></sup> An instruction that helped last year's assistant can hold back this year's.</p>
   <p class="more"><a href="#p6">Back to step 6</a></p>
 </section>
 
 <section class="nstep" id="n7">
   <h3>Step 7: Check it every Monday</h3>
+  <p>You can also ask the assistant to bring its own list to the check. Ask yours for three lines: what it finished, where it was unsure, what is waiting on you. Read the list, then do your own check anyway.</p>
   <p>SpaceXSI's documentation says Grok Bot may ask whether to keep scheduled routines running after you have been away, and "pause them if there is no response."<sup class="ref"><a href="#r10">10</a></sup> OpenAI's help page says a ChatGPT task may pause if it is inactive or needs your approval.<sup class="ref"><a href="#r16">16</a></sup> A job that waits on an approval nobody sees has stopped, whatever the screen says.</p>
   <p class="more"><a href="#p7">Back to step 7</a></p>
 </section>
 
 <!-- Claude Sonnet 5.5, 2026-11-16: one numbered list, one source page or post per entry, numbered in order of first use. Built only from the old Sources list and in-text citations. -->
-<div class="part" id="refs">
+<div class="part newpage" id="refs">
   <div><h2>References</h2></div>
 </div>
+<p class="reflead">Every page below was read on November 15, 2026.</p>
 
 <ol class="refs">
-  <li id="r1">Anthropic, <a href="https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices">Prompting best practices</a>, Claude documentation. Read November 15, 2026.</li>
-  <li id="r2">Tibo, <a href="https://x.com/thsottiaux/status/2073466730643399043">post on X</a>, July 4, 2026 (US Eastern time). Read November 15, 2026.</li>
-  <li id="r3">Anthropic, Claude Academy, <a href="https://academy.claude.com/use-cases/my-voice">Write in my voice</a>. Read November 15, 2026.</li>
+  <li id="r1">Anthropic, <a href="https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices">Prompting best practices</a>, Claude documentation.</li>
+  <li id="r2">Tibo (@thsottiaux), <a href="https://x.com/thsottiaux/status/2073466730643399043">post on X</a>, July 4, 2026 (US Eastern time).</li>
+  <li id="r3">Anthropic, Claude Academy, <a href="https://academy.claude.com/use-cases/my-voice">Write in my voice</a>.</li>
   <li id="r4">Anthropic, <a href="https://www.anthropic.com/news/claude-for-small-business">Introducing Claude for Small Business</a>, May 13, 2026.</li>
-  <li id="r5">Boris Cherny, <a href="https://x.com/bcherny/status/2007179861115511237">post on X</a>, January 2, 2026 (US Eastern time). Read November 15, 2026.</li>
+  <li id="r5">Boris Cherny (@bcherny), <a href="https://x.com/bcherny/status/2007179861115511237">post on X</a>, January 2, 2026 (US Eastern time).</li>
   <li id="r6">Anthropic, <a href="https://claude.dev/blog/solving-code-review-at-anthropic/">How the Claude Code team does code review</a>, by Addy Osmani, Morgan Westlee Lunt and Qing Wang, October 15, 2026.</li>
-  <li id="r7">Anthropic, <a href="https://code.claude.com/docs/en/best-practices">Best practices for Claude Code</a>. Read November 15, 2026.</li>
-  <li id="r8">Boris Cherny, <a href="https://x.com/bcherny/status/2017742747067945390">post on X</a>, January 31, 2026 (US Eastern time). Read November 15, 2026.</li>
-  <li id="r9">Lauren Tan, <a href="https://x.com/poteto/status/2111211085575716902">post on X</a>, October 16, 2026 (US Eastern time). Read November 15, 2026.</li>
-  <li id="r10">SpaceXSI, Grok Bot documentation, <a href="https://docs.x.ai/grok-bot/skills-routines-and-automations">Skills and routines</a>. Read November 15, 2026.</li>
-  <li id="r11">Anthropic Help Center, <a href="https://support.claude.com/en/articles/9517075-what-are-projects">What are projects</a>. Read November 15, 2026.</li>
-  <li id="r12">Anthropic Help Center, <a href="https://support.claude.com/en/articles/12512198-how-to-create-custom-skills">How to create custom skills</a>. Read November 15, 2026.</li>
-  <li id="r13">Anthropic Help Center, <a href="https://support.claude.com/en/articles/11817273-using-claude-s-chat-search-and-memory-to-build-on-previous-context">Chat search and memory</a>. Read November 15, 2026.</li>
-  <li id="r14">Anthropic Help Center, <a href="https://support.claude.com/en/articles/13854387-schedule-recurring-tasks-in-claude-cowork">Schedule recurring tasks</a>. Read November 15, 2026.</li>
-  <li id="r15">Anthropic Help Center, <a href="https://support.claude.com/en/articles/13364135-use-claude-cowork-safely">Use Claude Cowork safely</a>. Read November 15, 2026.</li>
-  <li id="r16">OpenAI, <a href="https://help.openai.com/en/articles/10291617-scheduled-tasks-in-chatgpt">Scheduled tasks in ChatGPT</a>. Read November 15, 2026.</li>
-  <li id="r17">OpenAI, <a href="https://help.openai.com/en/articles/8590148-memory-in-chatgpt">Memory in ChatGPT</a> (includes model-training defaults by plan). Read November 15, 2026.</li>
-  <li id="r18">OpenAI, <a href="https://help.openai.com/en/articles/10169521-projects-in-chatgpt">Projects in ChatGPT</a>. Read November 15, 2026.</li>
+  <li id="r7">Anthropic, <a href="https://code.claude.com/docs/en/best-practices">Best practices for Claude Code</a>.</li>
+  <li id="r8">Boris Cherny (@bcherny), <a href="https://x.com/bcherny/status/2017742747067945390">post on X</a>, January 31, 2026 (US Eastern time).</li>
+  <li id="r9">Lauren Tan (@poteto), <a href="https://x.com/poteto/status/2111211085575716902">post on X</a>, October 16, 2026 (US Eastern time).</li>
+  <li id="r10">SpaceXSI, Grok Bot documentation, <a href="https://docs.x.ai/grok-bot/skills-routines-and-automations">Skills and routines</a>.</li>
+  <li id="r11">Anthropic Help Center, <a href="https://support.claude.com/en/articles/9517075-what-are-projects">What are projects</a>.</li>
+  <li id="r12">Anthropic Help Center, <a href="https://support.claude.com/en/articles/12512198-how-to-create-custom-skills">How to create custom skills</a>.</li>
+  <li id="r13">Anthropic Help Center, <a href="https://support.claude.com/en/articles/11817273-using-claude-s-chat-search-and-memory-to-build-on-previous-context">Chat search and memory</a>.</li>
+  <li id="r14">Anthropic Help Center, <a href="https://support.claude.com/en/articles/13854387-schedule-recurring-tasks-in-claude-cowork">Schedule recurring tasks</a>.</li>
+  <li id="r15">Anthropic Help Center, <a href="https://support.claude.com/en/articles/13364135-use-claude-cowork-safely">Use Claude Cowork safely</a>.</li>
+  <li id="r16">OpenAI, <a href="https://help.openai.com/en/articles/10291617-scheduled-tasks-in-chatgpt">Scheduled tasks in ChatGPT</a>.</li>
+  <li id="r17">OpenAI, <a href="https://help.openai.com/en/articles/8590148-memory-in-chatgpt">Memory in ChatGPT</a> (includes model-training defaults by plan).</li>
+  <li id="r18">OpenAI, <a href="https://help.openai.com/en/articles/10169521-projects-in-chatgpt">Projects in ChatGPT</a>.</li>
   <li id="r19">Google, <a href="https://support.google.com/gemini/answer/16275805">Gemini plans and limits</a>.</li>
   <li id="r20">Google, <a href="https://support.google.com/gemini/answer/16316416">Schedules in Gemini Apps</a>.</li>
   <li id="r21">Google, <a href="https://support.google.com/gemini/answer/18560919">Gems move to skills</a>.</li>
   <li id="r22">Google, <a href="https://blog.google/products-and-platforms/products/gemini/automate-tasks-with-skills/">Skills in Gemini</a>, September 30, 2026.</li>
   <li id="r23">SpaceXSI, <a href="https://x.ai/news/grok-automations">Automations in Grok</a>, July 16, 2026.</li>
-  <li id="r24">SpaceXSI, Grok Bot documentation, <a href="https://docs.x.ai/grok-bot/approvals-security-and-privacy">Approvals, security, and privacy</a>. Read November 15, 2026.</li>
+  <li id="r24">SpaceXSI, Grok Bot documentation, <a href="https://docs.x.ai/grok-bot/approvals-security-and-privacy">Approvals, security, and privacy</a>.</li>
   <li id="r25">Anthropic, <a href="https://www.anthropic.com/engineering/building-effective-agents">Building effective agents</a>, December 19, 2024.</li>
-  <li id="r26">SpaceXSI, Grok Bot documentation, <a href="https://docs.x.ai/grok-bot/bots">Create and manage Bots</a>. Read November 15, 2026.</li>
+  <li id="r26">SpaceXSI, Grok Bot documentation, <a href="https://docs.x.ai/grok-bot/bots">Create and manage Bots</a>.</li>
   <li id="r27">American Bar Association, Standing Committee on Ethics and Professional Responsibility, Formal Opinion 512, July 29, 2024, as announced in the ABA news release <a href="https://www.americanbar.org/news/abanews/aba-news-archives/2024/07/aba-issues-first-ethics-guidance-ai-tools/">ABA issues first ethics guidance on a lawyer's use of AI tools</a>.</li>
-  <li id="r28">Tibo, <a href="https://x.com/thsottiaux/status/2107368734981517634">post on X</a>, October 6, 2026 (US Eastern time). Read November 15, 2026.</li>
-  <li id="r29">Lauren Tan, <a href="https://x.com/poteto/status/2117437607940681849">post on X</a>, November 2, 2026 (US Eastern time), first of three posts. Read November 15, 2026.</li>
-  <li id="r30">Lauren Tan, <a href="https://x.com/poteto/status/2117440753551204735">post on X</a>, November 2, 2026 (US Eastern time), second of three posts. Read November 15, 2026.</li>
-  <li id="r31">Lauren Tan, <a href="https://x.com/poteto/status/2117445316043825393">post on X</a>, November 2, 2026 (US Eastern time), third of three posts. Read November 15, 2026.</li>
-  <li id="r32">Boris Cherny, <a href="https://x.com/bcherny/status/2098210496109572123">post on X</a>, September 10, 2026 (US Eastern time). Read November 15, 2026.</li>
+  <li id="r28">Tibo (@thsottiaux), <a href="https://x.com/thsottiaux/status/2107368734981517634">post on X</a>, October 6, 2026 (US Eastern time).</li>
+  <li id="r29">Lauren Tan (@poteto), <a href="https://x.com/poteto/status/2117437607940681849">post on X</a>, November 2, 2026 (US Eastern time), first of three posts.</li>
+  <li id="r30">Lauren Tan (@poteto), <a href="https://x.com/poteto/status/2117440753551204735">post on X</a>, November 2, 2026 (US Eastern time), second of three posts.</li>
+  <li id="r31">Lauren Tan (@poteto), <a href="https://x.com/poteto/status/2117445316043825393">post on X</a>, November 2, 2026 (US Eastern time), third of three posts.</li>
+  <li id="r32">Boris Cherny (@bcherny), <a href="https://x.com/bcherny/status/2098210496109572123">post on X</a>, September 10, 2026 (US Eastern time).</li>
   <li id="r33">Anthropic, <a href="https://www.anthropic.com/research/agents-judgment-calls">How AI agents shape experts' judgment calls</a>, October 27, 2026.</li>
-  <li id="r34">Boris Cherny, <a href="https://x.com/bcherny/status/2017742748984742078">post on X</a>, January 31, 2026 (US Eastern time). Read November 15, 2026.</li>
-  <li id="r35">Lauren Tan, <a href="https://x.com/poteto/status/2114099131845423142">post on X</a>, October 24, 2026 (US Eastern time). Read November 15, 2026.</li>
-  <li id="r36">Tibo, <a href="https://x.com/thsottiaux/status/2098612714704891959">post on X</a>, September 11, 2026 (US Eastern time). Read November 15, 2026.</li>
+  <li id="r34">Boris Cherny (@bcherny), <a href="https://x.com/bcherny/status/2017742748984742078">post on X</a>, January 31, 2026 (US Eastern time).</li>
+  <li id="r35">Lauren Tan (@poteto), <a href="https://x.com/poteto/status/2114099131845423142">post on X</a>, October 24, 2026 (US Eastern time).</li>
+  <li id="r36">Tibo (@thsottiaux), <a href="https://x.com/thsottiaux/status/2098612714704891959">post on X</a>, September 11, 2026 (US Eastern time).</li>
 </ol>
 
 <!-- Claude Sonnet 5.5, 2026-11-16: "What this guide rests on" moved here from Start (sources sentence changed to match the numbered references); Sources list replaced by the References section above. -->

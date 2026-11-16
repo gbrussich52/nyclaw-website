@@ -26,3 +26,13 @@ Why: the 2,350-word budget was too tight for the director's own keep list. Budge
 - References: handles (@name) removed from X entries; "Read November 15, 2026" removed from three Google entries because the old Sources list gave Google no read date.
 - `app/resources/page.tsx`: "Sources beside every borrowed idea" is now "Every source numbered and listed". The first HTML comment in the guide no longer says "a source beside every borrowed idea".
 - PDF rebuilt.
+
+## Round 3 (Claude Sonnet 5.5, 2026-11-16): director review of 1149442
+Why: an independent checker and a page-by-page look found loose wording, misplaced citations and blank print pages.
+- Core: "during business hours" back on the Part 2 sheet example; Part 3 notes link names what is in the notes; Part 4 sentence "Still read what you approve..." back in Part 4 (removed from note 4); reference 5 sits right after the Boris Cherny quotation; the Part 5 `ours` line moved to the end of section 3; Lauren Tan gets her role; the Part 7 `ours` line points at step 6.
+- Notes: note 1 opens "Keep the job small."; note 3 `ours` line cites reference 1; note 4 first sentence and the two safety-page sentences reworded; note 5 and note 6 wording; note 7 gets the weekly-report paragraph from old Part 7. Notes limit is now 1,500.
+- Appendix A intro, Appendix B label and the Contents "Find your situation" row reworded.
+- References: one lead line "Every page below was read on November 15, 2026." replaces the per-entry read dates; X handles restored in all 12 X entries (they were visible in the old file).
+- `app/resources/page.tsx`: Part 3 description reworded.
+- Print: Part 11, Appendix A and References start on a new page; Stop rules and each Part 8 week stay whole; reference spacing tightened (type size unchanged). On a phone the two evidence links stack with no indent.
+- `scripts/check-guide-structure.py`: new staleness guard. It fails when the PDF text lacks an `ours` paragraph, a part or note heading or the References lead line, or lists a different number of references. Reason: a silent Chrome failure left a stale PDF in round 2.
