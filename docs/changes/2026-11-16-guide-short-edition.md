@@ -42,3 +42,14 @@ Why: an independent checker and a page-by-page look found loose wording, misplac
 - **What changed:** `app/components/PlaybookForm.tsx`, both variants. "where AI fits a small business, what it costs and what to do first" is now "where AI fits a small business and what to do first".
 - **What the prior code did:** promised that the free guide covers what AI costs.
 - **Why:** the guide gives no cost figures. A form must not promise what the download does not hold. Found by the independent check of the short edition.
+
+## Round 5 (Claude Fable 5.2, 2026-11-16): second independent check, build script
+
+- **What changed:** four lines in `public/ai-operators-playbook.html`, and a new `scripts/build-guide-pdf.sh`.
+  - Part 7 own-practice line now ends "That is why the test asks whether the visitor got what the page promised." It said "step 6", which a reader takes for the guide's step 6.
+  - "Who wrote this": dropped "with the date we read it". The read date now sits once, on the References lead line.
+  - Cover: "The rest is pages you use" is now "Then the pages you use". The rest also holds notes and references.
+  - Note 7: "You can also ask" is now "You can ask". "Also" had nothing before it.
+- **What the prior code did:** the PDF was built with a hand-typed Chrome command that no file recorded. One run failed silently in a sandbox and a stale PDF was reported as current.
+- **Why:** `scripts/build-guide-pdf.sh` prints the page to PDF, refuses an empty result, and runs the structure and layout checks. One script added; it retires the hand-typed command.
+- PDF rebuilt with the script: 25 pages, both checks pass.
