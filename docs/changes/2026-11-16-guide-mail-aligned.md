@@ -16,3 +16,8 @@ It sent every guide through Gmail SMTP as `hello@nyclaw.io`. The Return-Path is 
 
 ## Why
 The DNS for Resend is already on nyclaw.io, so mail sent through Resend passes. No key means no change in behavior. The owner alert, form check, duplicate guard and visitor copy are untouched.
+
+## 2026-11-17 (Claude Sonnet 5.5): rebase and test proof
+- Rebased onto origin/main 0fa44f4 (Next pinned 16.4.6); no conflicts, package files untouched.
+- Added one route test: Resend fails and Gmail also throws, so `guide_emailed` is false and the owner alert says FAILED with both reasons. Before, both-fail was proven only at the function level or with Gmail env missing.
+- Mutation checks (temporary, restored): ignoring a missing key, a wrong From, swallowing a Gmail failure, and treating a Resend error as success each turn the suite red.

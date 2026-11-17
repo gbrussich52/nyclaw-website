@@ -182,6 +182,20 @@ describe('route status lines', () => {
     expect(JSON.stringify(vi.mocked(console.error).mock.calls)).not.toContain(KEY)
   })
 
+  // Claude Sonnet 5.5, 2026-11-17: proves the both-fail case at the route with Gmail configured: the
+  // visitor-facing flag is false and the owner alert says FAILED with both reasons (no silent success).
+  it('Resend fails and Gmail send throws: guide_emailed false, alert says FAILED', async () => {
+    vi.stubEnv('GMAIL_USER', 's@example.test'); vi.stubEnv('GMAIL_APP_PASSWORD', 'x'); vi.stubEnv('RESEND_API_KEY', KEY)
+    fetchMock.mockResolvedValue(json(500, {}))
+    mocks.sendMail.mockImplementation(async (o: { to: string }) => {
+      if (o.to !== 'owner@example.test') throw new Error('smtp down')
+      return {}
+    })
+    const res = await POST(req())
+    expect(await res.json()).toEqual({ ok: true, guide_emailed: false })
+    expect(ownerText()).toContain('GUIDE EMAIL: FAILED Resend HTTP 500; Gmail: smtp down')
+  })
+
   it('neither key nor Gmail: FAILED as before', async () => {
     vi.stubEnv('GMAIL_USER', ''); vi.stubEnv('GMAIL_APP_PASSWORD', ''); vi.stubEnv('RESEND_API_KEY', '')
     const res = await POST(req())
