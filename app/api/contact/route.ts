@@ -161,12 +161,18 @@ export async function POST(req: NextRequest) {
   }
 
   if (isGuideSource(source)) {
-    if (!transporter) {
+    // Claude Sonnet 5.5, 2026-11-16: the guide no longer needs the Gmail transporter. With RESEND_API_KEY
+    // set it sends through Resend (signed for nyclaw.io); Gmail is the fallback. With neither, it fails
+    // as before. The status line says which path was used so Giani sees a spam-prone send.
+    if (!transporter && !process.env.RESEND_API_KEY?.trim()) {
       guideStatus = 'GUIDE EMAIL: FAILED mail transport not configured'
     } else {
       const result = await sendGuideEmail(transporter, email, name)
       guideEmailed = result.sent
-      guideStatus = result.sent ? 'GUIDE EMAIL: sent' : `GUIDE EMAIL: FAILED ${result.reason}`
+      if (!result.sent) guideStatus = `GUIDE EMAIL: FAILED ${result.reason}`
+      else if (result.via === 'resend') guideStatus = 'GUIDE EMAIL: sent (signed for nyclaw.io)'
+      else if (result.resendNote) guideStatus = `GUIDE EMAIL: sent through Gmail after ${result.resendNote} (may land in spam)`
+      else guideStatus = 'GUIDE EMAIL: sent through Gmail (may land in spam until RESEND_API_KEY is set)'
     }
     if (!guideEmailed) console.error('[contact] Guide email failed', { timestamp, source })
   }

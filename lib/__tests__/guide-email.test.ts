@@ -32,7 +32,7 @@ describe('sendGuideEmail', () => {
   beforeEach(() => resetGuideSendGuard())
   it('sends from hello@nyclaw.io with matching reply-to, no attachment', async () => {
     const sendMail = vi.fn().mockResolvedValue({})
-    expect(await sendGuideEmail({ sendMail }, 'a@example.test', 'Ana')).toEqual({ sent: true })
+    expect(await sendGuideEmail({ sendMail }, 'a@example.test', 'Ana')).toEqual({ sent: true, via: 'gmail' })
     const o = sendMail.mock.calls[0][0]
     expect(o.from).toBe('"Giani Brussich, NYClaw" <hello@nyclaw.io>')
     expect(o.replyTo).toBe('hello@nyclaw.io')

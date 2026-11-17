@@ -67,40 +67,103 @@ export interface MailTransport {
 }
 
 // Per-instance guard so one visitor retrying the form does not get the guide twice in a row.
-const recentSends = new Map<string, number>()
+// Claude Sonnet 5.5, 2026-11-16: stores which path sent it, so a repeat request reports the same path.
+const recentSends = new Map<string, { at: number; via: GuideVia }>()
 const DEDUPE_MS = 10 * 60 * 1000
 
-export type GuideSendResult = { sent: true } | { sent: false; reason: string }
+// Claude Sonnet 5.5, 2026-11-16: `via` says which path sent the mail. `resendNote` is set only when
+// Resend was tried, failed, and Gmail sent instead. It holds a short safe reason, never the key.
+export type GuideVia = 'resend' | 'gmail'
+export type GuideSendResult = { sent: true; via: GuideVia; resendNote?: string } | { sent: false; reason: string }
 
+const RESEND_URL = 'https://api.resend.com/emails'
+const RESEND_TIMEOUT_MS = 8000
+
+type ResendOutcome = { ok: true } | { ok: false; note: string }
+
+// Claude Sonnet 5.5, 2026-11-16: Gmail SMTP mail fails SPF and DKIM alignment for nyclaw.io (DMARC
+// quarantine), so outside inboxes junk it. Resend signs for nyclaw.io, so the guide goes there first.
+// The note carries the HTTP status and Resend's short error name at most. No key, no body, no address.
+async function sendViaResend(
+  apiKey: string,
+  payload: { from: string; replyTo: string; to: string; subject: string; text: string; html: string }
+): Promise<ResendOutcome> {
+  try {
+    const res = await fetch(RESEND_URL, {
+      method: 'POST',
+      headers: { Authorization: `Bearer ${apiKey}`, 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        from: payload.from,
+        to: payload.to,
+        reply_to: payload.replyTo,
+        subject: payload.subject,
+        text: payload.text,
+        html: payload.html,
+      }),
+      signal: AbortSignal.timeout(RESEND_TIMEOUT_MS),
+    })
+    if (res.ok) return { ok: true }
+    let name = ''
+    try {
+      const data = (await res.json()) as { name?: unknown }
+      if (typeof data.name === 'string' && /^[a-z0-9_]{1,40}$/i.test(data.name)) name = ` ${data.name}`
+    } catch {
+      // Body was not JSON; the status alone is enough.
+    }
+    return { ok: false, note: `Resend HTTP ${res.status}${name}` }
+  } catch (err) {
+    const timedOut = err instanceof Error && (err.name === 'TimeoutError' || err.name === 'AbortError')
+    return { ok: false, note: timedOut ? 'Resend timeout' : 'Resend network error' }
+  }
+}
+
+// Claude Sonnet 5.5, 2026-11-16: `transport` may now be null (Resend-only setup). Before this change it
+// was required and Gmail was the only path.
 export async function sendGuideEmail(
-  transport: MailTransport,
+  transport: MailTransport | null,
   to: string,
   name: string,
   now: number = Date.now()
 ): Promise<GuideSendResult> {
   const key = to.toLowerCase()
   const last = recentSends.get(key)
-  if (last !== undefined && now - last < DEDUPE_MS) {
+  if (last !== undefined && now - last.at < DEDUPE_MS) {
     // The visitor already has it from the first request.
-    return { sent: true }
+    return { sent: true, via: last.via }
   }
   const from = process.env.GUIDE_FROM_EMAIL || DEFAULT_GUIDE_FROM
   const { subject, text, html } = buildGuideEmail(name)
+  const fromHeader = `"Giani Brussich, NYClaw" <${from}>`
+
+  const apiKey = process.env.RESEND_API_KEY?.trim()
+  let resendNote: string | undefined
+  if (apiKey) {
+    const out = await sendViaResend(apiKey, { from: fromHeader, replyTo: from, to, subject, text, html })
+    if (out.ok) {
+      recentSends.set(key, { at: now, via: 'resend' })
+      return { sent: true, via: 'resend' }
+    }
+    resendNote = out.note
+  }
+
+  if (!transport) {
+    return { sent: false, reason: resendNote ? `${resendNote}; mail transport not configured` : 'mail transport not configured' }
+  }
   try {
     await transport.sendMail({
-      from: `"Giani Brussich, NYClaw" <${from}>`,
+      from: fromHeader,
       replyTo: from,
       to,
       subject,
       text,
       html,
     })
-    recentSends.set(key, now)
-    return { sent: true }
+    recentSends.set(key, { at: now, via: 'gmail' })
+    return resendNote ? { sent: true, via: 'gmail', resendNote } : { sent: true, via: 'gmail' }
   } catch (err) {
     // Reason only, never the visitor address.
-    const reason = err instanceof Error ? err.message.replace(/\S+@\S+/g, '[address]').slice(0, 120) : 'unknown error'
-    return { sent: false, reason }
+    const gmail = err instanceof Error ? err.message.replace(/\S+@\S+/g, '[address]').slice(0, 120) : 'unknown error'
+    return { sent: false, reason: resendNote ? `${resendNote}; Gmail: ${gmail}` : gmail }
   }
 }
 
