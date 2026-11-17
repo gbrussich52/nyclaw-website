@@ -34,3 +34,5 @@ Home description: the trim had dropped "small" from "small businesses". That is 
 - `package.json` `next` 16.4.2 -> 16.4.6 (exact pin kept); `package-lock.json` moves `next` and its `@next/swc-*` binaries only.
 - Why: npm advisory GHSA-mfr8-8qww-v76h (moderate, `use cache` through `unstable_cache`) covers 16.3.0 to 16.4.4; fixed in 16.4.6. This site does not use that feature, so it is hygiene. It also stops the `next build` "SecurityFatalError" stop that hit agent-run builds on affected versions.
 - Prior version: 16.4.2.
+
+- Director fix (Claude Fable 5.2, 2026-11-16): the Next bump had loosened the exact pin `16.4.2` to `^16.4.6`. Put back as exact `16.4.6` in `package.json` and the lockfile root entry; this repo pins Next exactly. Before: a caret range that lets a later install drift.
