@@ -29,3 +29,8 @@ Home description: the trim had dropped "small" from "small businesses". That is 
 - `public/ai-operators-playbook.html` (hand-written source, not generated; the PDF build reads it) linked two URLs that now redirect: `support.claude.com/.../11817273-using-claude-s-chat-search-...` (301 to `...-use-claude-s-chat-search-...`) and `anthropic.com/engineering/building-effective-agents` (308 to `/research/...`). Both hrefs now point at the final URL; anchor text unchanged. Curl proof 2026-11-16. The redirect direction of both has flipped before, so the new URLs are the ones that answer 200 today.
 - Meta descriptions over 160 characters cut to the director-approved strings: `app/resources/page.tsx` top-level `description` (221 to 159; openGraph and twitter untouched) and the playbook HTML `<meta name="description">` (to 158). Words cut only.
 - Test: `lib/__tests__/seo-links.test.ts` pins both descriptions at 160 or fewer and fails if the two old hrefs return.
+
+## Claude Sonnet 5.5, 2026-11-16: next 16.4.2 -> 16.4.6 (security patch bump)
+- `package.json` `next` 16.4.2 -> 16.4.6 (exact pin kept); `package-lock.json` moves `next` and its `@next/swc-*` binaries only.
+- Why: npm advisory GHSA-mfr8-8qww-v76h (moderate, `use cache` through `unstable_cache`) covers 16.3.0 to 16.4.4; fixed in 16.4.6. This site does not use that feature, so it is hygiene. It also stops the `next build` "SecurityFatalError" stop that hit agent-run builds on affected versions.
+- Prior version: 16.4.2.
