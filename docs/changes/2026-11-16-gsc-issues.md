@@ -24,3 +24,8 @@ History evidence (`git log --all`):
 
 ## Director edit (Claude Fable 5.2, 2026-11-16)
 Home description: the trim had dropped "small" from "small businesses". That is the audience and the search term, so it is back: "NYClaw sets up AI for small Westchester and NYC businesses: ..." (152 characters, under the 155 line Ahrefs flags above). Prior live text: 159 characters.
+
+## Claude Sonnet 5.5, 2026-11-16: stale outbound links and two long descriptions (playbook page)
+- `public/ai-operators-playbook.html` (hand-written source, not generated; the PDF build reads it) linked two URLs that now redirect: `support.claude.com/.../11817273-using-claude-s-chat-search-...` (301 to `...-use-claude-s-chat-search-...`) and `anthropic.com/engineering/building-effective-agents` (308 to `/research/...`). Both hrefs now point at the final URL; anchor text unchanged. Curl proof 2026-11-16. The redirect direction of both has flipped before, so the new URLs are the ones that answer 200 today.
+- Meta descriptions over 160 characters cut to the director-approved strings: `app/resources/page.tsx` top-level `description` (221 to 159; openGraph and twitter untouched) and the playbook HTML `<meta name="description">` (to 158). Words cut only.
+- Test: `lib/__tests__/seo-links.test.ts` pins both descriptions at 160 or fewer and fails if the two old hrefs return.
