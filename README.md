@@ -70,6 +70,10 @@ vercel deploy
 
 Or push to GitHub and connect to Vercel for auto-deployment.
 
+## Guide email sender
+
+`RESEND_API_KEY` (optional) makes the free guide email go out through Resend as `hello@nyclaw.io`, signed for nyclaw.io so it passes SPF, DKIM and DMARC. Without it, or if Resend fails, the guide goes through the Gmail transport and may land in spam. With the key set, the weekly form check shows a real inbox copy; without it, that copy is the Gmail one.
+
 ## Domain Configuration
 
 Update domain to `nyclaw.io` in Vercel project settings.
