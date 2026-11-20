@@ -34,4 +34,24 @@ describe('Article schema and sitemap coverage', () => {
       expect(m![1].length, f).toBeLessThanOrEqual(160)
     }
   })
+
+  // Claude Sonnet 5.5, 2026-11-19: guards for the 19 Nov Ahrefs fixes (Open Graph and X card on the static playbook, Article schema on workflow guides).
+  it('static playbook carries complete Open Graph and X card tags matching its canonical', () => {
+    const html = readFileSync('public/ai-operators-playbook.html', 'utf8')
+    const canonical = html.match(/<link rel="canonical" href="([^"]+)"/)?.[1]
+    for (const tag of ['og:title', 'og:description', 'og:type', 'og:url', 'og:image', 'og:image:width', 'og:image:height', 'og:image:alt']) {
+      expect(html, tag).toContain(`<meta property="${tag}"`)
+    }
+    for (const tag of ['twitter:card', 'twitter:title', 'twitter:description', 'twitter:image']) {
+      expect(html, tag).toContain(`<meta name="${tag}"`)
+    }
+    expect(html.match(/<meta property="og:url" content="([^"]+)"/)?.[1]).toBe(canonical)
+    expect(html.match(/<meta property="og:image" content="([^"]+)"/)?.[1]).toMatch(/^https:\/\//)
+  })
+
+  it('workflow guide pages emit Article JSON-LD', () => {
+    const src = readFileSync('app/ai-workflows/[recipe]/page.tsx', 'utf8')
+    expect(src).toContain('<ArticleJsonLd')
+    expect(src).toMatch(/datePublished=\{WORKFLOW_PAGE_PUBLISHED\}/)
+  })
 })
