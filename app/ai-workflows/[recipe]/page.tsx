@@ -5,6 +5,7 @@ import { notFound } from 'next/navigation'
 import { ArrowUpRight } from 'lucide-react'
 import { analyzeWorkflow, workflowExamples, workflowRecipes, workflowCurrencies, type WorkflowRecipe } from '@/lib/workflow-kits'
 import { workflowPages } from '@/lib/workflow-pages'
+import { ArticleJsonLd } from '../../components/JsonLd'
 import styles from '../page.module.css'
 import detail from './page.module.css'
 
@@ -15,16 +16,22 @@ function resolveRecipe(value: string): WorkflowRecipe {
 }
 export const dynamicParams = false
 export function generateStaticParams() { return workflowRecipes.map(recipe => ({ recipe })) }
+// Claude Sonnet 5.5, 2026-11-19: title and description hoisted so the page metadata and the Article JSON-LD read the same text (Ahrefs: Article page missing Article schema)
+const workflowDescriptions: Record<WorkflowRecipe, string> = {
+  'quote-followup': 'Review open quotes, timing and expiry before preparing an unsent follow-up. Try a fictional example and check whether your CRM covers the job.',
+  'invoice-discrepancies': 'Compare expected, invoiced and paid totals in matching currencies. Try a fictional invoice check and an internal draft for human review.',
+  'order-handoff': 'Check payment, production and shipment status for one order. Try a fictional handoff with review holds for unknown or conflicting facts.',
+}
+function workflowTitle(recipe: WorkflowRecipe): string {
+  return recipe === 'order-handoff' ? 'Check Payment, Production & Shipment Handoffs' : workflowPages[recipe].title
+}
+// Real dates: page first committed 2026-10-12 (git), same date as its sitemap lastModified. The 2026-10-22 commit changed metadata only.
+const WORKFLOW_PAGE_PUBLISHED = '2026-10-12'
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const recipe = resolveRecipe((await params).recipe)
-  const page = workflowPages[recipe]
   const url = `https://nyclaw.io/ai-workflows/${recipe}`
-  const title = recipe === 'order-handoff' ? 'Check Payment, Production & Shipment Handoffs' : page.title
-  const description = {
-    'quote-followup': 'Review open quotes, timing and expiry before preparing an unsent follow-up. Try a fictional example and check whether your CRM covers the job.',
-    'invoice-discrepancies': 'Compare expected, invoiced and paid totals in matching currencies. Try a fictional invoice check and an internal draft for human review.',
-    'order-handoff': 'Check payment, production and shipment status for one order. Try a fictional handoff with review holds for unknown or conflicting facts.',
-  }[recipe]
+  const title = workflowTitle(recipe)
+  const description = workflowDescriptions[recipe]
   return {
     title, description, alternates: { canonical: url },
     openGraph: { title, description, url, type: 'website', siteName: 'NYClaw.io', images: ['https://nyclaw.io/opengraph-image'] },
@@ -36,6 +43,7 @@ export default async function WorkflowPage({ params }: Props) {
   const page = workflowPages[recipe]
   const fitUrl = `/ai-workflows?kit=${recipe}#workflow-fit`
   return <div className={styles.page}>
+    <ArticleJsonLd title={workflowTitle(recipe)} description={workflowDescriptions[recipe]} url={`https://nyclaw.io/ai-workflows/${recipe}`} datePublished={WORKFLOW_PAGE_PUBLISHED} />
     <header className={styles.hero}>
       <Link href="/ai-workflows" className={styles.textLink}>All workflow kits</Link>
       <p className={`${styles.eyebrow} ${detail.audience}`}>{page.audience}</p>
