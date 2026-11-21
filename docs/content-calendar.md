@@ -3,7 +3,7 @@ classification: PRIVATE
 ---
 # NYClaw.io Content Calendar
 
-> Updated: 2026-10-12
+> Updated: 2026-11-09
 > Production cap: one useful, sourced buyer article per weekly run; evidence and qualified inquiry quality take precedence over volume.
 
 ## Published
@@ -33,6 +33,7 @@ classification: PRIVATE
 | 21a | AI Automation Agency vs. AI Answering Service | /blog/ai-automation-agency-vs-ai-answering-service | ai automation agency vs ai answering service, ai concierge for small business | 2026-09-24 | **Published 2026-09-24** (shipped outside this loop; added to calendar and blog index by 2026-09-28 audit) |
 | 21 | How AI Saves Real Estate Agents Hours Every Week | /blog/ai-real-estate-agents | AI real estate, real estate automation | 2026-09-28 | **Published 2026-09-28** |
 | 21b | Missing-Document Follow-Up for Law Firms: What to Check Before Automating | /blog/law-firm-missing-document-follow-up | law firm missing document follow up, client document reminders law firm | 2026-10-08 | **Published 2026-10-08** |
+| 21c | Client Status Updates for Law Firms: What to Check Before Automating | /blog/law-firm-client-status-updates | law firm client status updates, law firm client communication automation | 2026-11-09 | **Prepared in PR 2026-11-09** (not live until merged and production route verified) |
 
 ## Current priority — one buyer question, one useful next step (2026-10-12)
 
