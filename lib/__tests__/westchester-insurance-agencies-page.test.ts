@@ -26,7 +26,7 @@ describe('Westchester insurance agencies page', () => {
     expect(page).toContain('titleTop="AI for Insurance"')
     expect(page).toContain('titleAccent="Agencies in Westchester"')
     expect(page.match(/lede="([^"]+)"/)?.[1]).toMatch(/^AI for insurance agencies/)
-    expect(page).toMatch(/search for AI for insurance agencies/)
+    expect(page).not.toMatch(/search for AI for insurance agencies/)
   })
 
   it('ships Breadcrumb, FAQ and Service JSON-LD, and no LocalBusiness or street address', () => {
@@ -40,9 +40,17 @@ describe('Westchester insurance agencies page', () => {
     expect(page).not.toMatch(/\d{2,5}\s+[A-Z][a-z]+(?:\s+[A-Z][a-z]+)*\s+(?:Ave|St|Rd|Blvd|Street|Avenue)/)
   })
 
+  const RESULT_PROMISE = /testimonial|five-star|case study|our clients|\d+% (more|fewer|faster)|hours saved|guarantee|save[sd]? (up to )?\d+\+? hours|\d+\+? hours (a|per|each) (day|week|month)|most agency owners/i
+
   it('makes no client, result or review claims', () => {
     expect(page).toContain('not client results')
-    expect(page).not.toMatch(/testimonial|five-star|case study|our clients|\d+% (more|fewer|faster)|hours saved/i)
+    expect(page).not.toMatch(RESULT_PROMISE)
+  })
+
+  it('the result guard catches a guaranteed-hours promise', () => {
+    for (const bad of ['guaranteed to save 20 hours a week', 'saves 10 hours per week', 'Save up to 15 hours each month']) {
+      expect(bad).toMatch(RESULT_PROMISE)
+    }
   })
 
   it('reuses only prices the site already lists', () => {
@@ -58,11 +66,14 @@ describe('Westchester insurance agencies page', () => {
       expect(page).toContain(cite)
     }
     expect(page).toContain('the Banking Law, the Insurance Law or the Financial Services Law')
-    expect(page).toContain('fewer than 20 employees and contractors')
+    expect(page).toContain('fewer than 20 employees and independent contractors')
+    expect(page).toContain('Each of those counts includes the entity’s affiliates.')
     expect(page).toContain('under $7.5 million in yearly revenue in each of the last three years')
     expect(page).toContain('under $15 million in assets')
     expect(page).toContain('does not remove the rules on third-party service providers (500.11) or multi-factor authentication (500.12)')
-    expect(page).toContain('remote access to its systems, for cloud apps that hold nonpublic information, and for privileged accounts')
+    expect(page).toContain('for remote access to third-party apps (cloud apps included) from which nonpublic information can be reached')
+    expect(page).toContain('privileged accounts other than service accounts that do not allow interactive login')
+    expect(page).not.toContain('cloud apps that hold nonpublic information')
     expect(page).toContain('It adds no new rules.')
     expect(page).toContain('we do not give legal advice')
     expect(page).not.toMatch(/guarantee[sd]? compliance|fully compliant|DFS[- ]approved|certified/i)

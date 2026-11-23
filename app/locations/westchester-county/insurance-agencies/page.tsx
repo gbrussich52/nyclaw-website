@@ -80,7 +80,7 @@ const workflows = [
   {
     Icon: ShieldCheck,
     label: 'Vendor and access check',
-    desc: 'Before any AI tool touches client data, we list where that data goes, who can log in and what the vendor contract says, so the agency can review it under its own Part 500 program.',
+    desc: 'Before any AI tool touches nonpublic information, we list where that data goes, who can log in and what the vendor contract says, so the agency can review it under its own Part 500 program.',
   },
 ]
 
@@ -93,7 +93,7 @@ const phases = [
   {
     step: 'Build',
     title: 'Written quote, then connect',
-    desc: 'The quote names each tool, where client data flows, the price and the delivery timing. Nothing outside that list gets built.',
+    desc: 'The quote names each tool, where nonpublic information flows, the price and the delivery timing. Nothing outside that list gets built.',
   },
   {
     step: 'Handoff',
@@ -126,12 +126,12 @@ const faqs = [
   {
     question: 'We are a small agency. Are we exempt?',
     answer:
-      'Only in part. Section 500.19(a) gives a limited exemption to a covered entity with fewer than 20 employees and contractors, under $7.5 million in yearly revenue in each of the last three years, or under $15 million in assets. That exemption does not remove the rules on third-party service providers (500.11) or multi-factor authentication (500.12).',
+      'Only in part. Section 500.19(a) gives a limited exemption to a covered entity with fewer than 20 employees and independent contractors, under $7.5 million in yearly revenue in each of the last three years, or under $15 million in assets. Each of those counts includes the entity’s affiliates. That exemption does not remove the rules on third-party service providers (500.11) or multi-factor authentication (500.12).',
   },
   {
     question: 'What does Part 500 mean for an AI tool?',
     answer:
-      'An outside AI vendor that keeps, processes or can access your nonpublic information fits Part 500’s definition of a third-party service provider. Your written vendor policies then apply to it, and they should cover its access controls, its encryption and how it will tell you about a cyber event. Under 500.12, an agency with the limited exemption still needs multi-factor authentication for remote access to its systems, for cloud apps that hold nonpublic information, and for privileged accounts.',
+      'An outside AI vendor that keeps, processes or can access your nonpublic information fits Part 500’s definition of a third-party service provider. Your written vendor policies then apply to it, and they should cover its access controls, its encryption and how it will tell you about a cyber event. Under 500.12, an agency with the limited exemption still needs multi-factor authentication for remote access to its systems, for remote access to third-party apps (cloud apps included) from which nonpublic information can be reached, and for privileged accounts other than service accounts that do not allow interactive login.',
   },
   {
     question: 'Has DFS said anything about AI itself?',
@@ -165,7 +165,7 @@ export default function WestchesterInsuranceAgenciesPage() {
         badge="Insurance agencies in Westchester, NY"
         titleTop="AI for Insurance"
         titleAccent="Agencies in Westchester"
-        lede="AI for insurance agencies works best on the queues your CSRs already dread: certificates, renewals and missing forms."
+        lede="AI for insurance agencies starts with the queues your CSRs work every day: certificates, renewals and missing forms."
         blurb="We map one queue, use what your agency system and email already do, and build only the missing links. A licensed person approves what goes to clients, and the written scope lists every tool for your DFS Part 500 review."
         primary={{ label: 'Book a free 30-minute call', href: CALENDLY_URL, external: true }}
         secondary={{ label: 'Tell us which queue is stuck', href: '/#contact' }}
@@ -176,19 +176,18 @@ export default function WestchesterInsuranceAgenciesPage() {
           <SectionIntro eyebrow="Where Time Goes" title="The Work Behind Each Policy" />
           <div className="flex flex-col gap-5 text-[17px] leading-relaxed text-zinc-300">
             <p>
-              Most agency owners who search for AI for insurance agencies are not after a chatbot.
-              They want the same email, form and reminder to stop eating a CSR’s morning. A
-              certificate request, a renewal that needs new details, an application missing one
-              signature: each is small, and together they fill the day.
+              A certificate request, a renewal that needs new details, an application missing one
+              signature: each is small, and each takes a CSR’s time. These are the emails, forms
+              and reminders we look at first.
             </p>
             <p>
               In New York there is one more step. An agency licensed under the Insurance Law is
               usually a covered entity under DFS’s cybersecurity rule, 23 NYCRR Part 500. So any
-              tool that reads client data has to fit your vendor policy and your multi-factor
+              tool that reads nonpublic information has to fit your vendor policy and your multi-factor
               login rules before it goes live, even at a small agency.
             </p>
             <p>
-              We start there. The written scope lists where client data goes, which vendor holds it
+              We start there. The written scope lists where nonpublic information goes, which vendor holds it
               and who can log in, so your compliance lead can review it. Then we build the drafts,
               trackers and routing your team agreed to, and test them with your staff.
             </p>
