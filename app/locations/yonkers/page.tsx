@@ -151,6 +151,7 @@ const explore = [
   { label: 'AI for NYC Businesses', href: '/locations/new-york-city' },
   { label: 'AI Automation', href: '/services/ai-automation' },
   { label: 'AI Consulting', href: '/services/ai-consulting' },
+  { label: 'AI for Westchester Insurance Agencies', href: '/locations/westchester-county/insurance-agencies' }, // Grok Bot (Crack Bot), 2026-11-23: industry page link
 ]
 
 const breadcrumbs = [

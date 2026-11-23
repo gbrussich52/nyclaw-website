@@ -46,6 +46,8 @@ const ENTRIES: Entry[] = [
   { path: '/locations/westchester-county', lastModified: '2026-11-13', changeFrequency: 'monthly', priority: 0.8 },
   { path: '/locations/white-plains', lastModified: '2026-11-05', changeFrequency: 'monthly', priority: 0.8 },
   { path: '/locations/yonkers', lastModified: '2026-11-13', changeFrequency: 'monthly', priority: 0.8 },
+  // Grok Bot (Crack Bot), 2026-11-23, why: daily Google loop, industry-by-area page for "ai for insurance agencies" in Westchester.
+  { path: '/locations/westchester-county/insurance-agencies', lastModified: '2026-11-23', changeFrequency: 'monthly', priority: 0.8 },
   { path: '/locations/new-york-city', lastModified: '2026-10-07', changeFrequency: 'monthly', priority: 0.8 },
 
   // Knowledge base

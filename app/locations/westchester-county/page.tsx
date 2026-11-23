@@ -161,6 +161,7 @@ const explore = [
   { label: 'Knowledge Base', href: '/knowledge' },
   { label: "Free guide: The AI Operator's Playbook", href: '/resources' }, // Claude Sonnet 5.5, 2026-11-16: label matches the real title of the download
   { label: 'Blog', href: '/blog' },
+  { label: 'AI for Westchester Insurance Agencies', href: '/locations/westchester-county/insurance-agencies' }, // Grok Bot (Crack Bot), 2026-11-23: industry page link
 ]
 
 const faqs = [
