@@ -152,6 +152,7 @@ const explore = [
   { label: 'AI Automation', href: '/services/ai-automation' },
   { label: 'AI Consulting', href: '/services/ai-consulting' },
   { label: "Free guide: The AI Operator's Playbook", href: '/resources' }, // Claude Sonnet 5.5, 2026-11-16: label matches the real title of the download
+  { label: 'AI for Westchester Insurance Agencies', href: '/locations/westchester-county/insurance-agencies' }, // Grok Bot (Crack Bot), 2026-11-23: industry page link
 ]
 
 const faqs = [
