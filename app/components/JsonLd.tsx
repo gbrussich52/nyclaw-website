@@ -17,7 +17,7 @@ export function ServiceOverviewJsonLd() {
     description: 'AI and automation agency for small businesses in Westchester County and NYC. Advice, custom builds, marketing systems and a written handoff.',
     url: 'https://nyclaw.io',
     sameAs: [
-      'https://twitter.com/AinsleyNYC',
+      'https://x.com/AinsleyNYC',
     ],
     areaServed: [
       {
@@ -75,7 +75,7 @@ export function OrganizationJsonLd() {
       '@id': 'https://gianibrussich.com/#person',
       name: 'Giani Brussich',
       sameAs: [
-        'https://linkedin.com/in/gianib',
+        'https://www.linkedin.com/in/gianib',
         'https://github.com/gbrussich52',
         'https://gianibrussich.com',
       ],
@@ -177,7 +177,7 @@ export function ArticleJsonLd({
       name: 'NYClaw.io',
       url: 'https://nyclaw.io',
       sameAs: [
-        'https://twitter.com/AinsleyNYC',
+        'https://x.com/AinsleyNYC',
       ],
     },
     publisher: {
@@ -185,7 +185,7 @@ export function ArticleJsonLd({
       name: 'NYClaw.io',
       url: 'https://nyclaw.io',
       sameAs: [
-        'https://twitter.com/AinsleyNYC',
+        'https://x.com/AinsleyNYC',
       ],
     },
   }

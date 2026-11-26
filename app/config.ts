@@ -33,7 +33,7 @@ export const SITE = {
 export const FOUNDER = {
   name: 'Giani Brussich',
   firstName: 'Giani',
-  linkedin: 'https://linkedin.com/in/gianib',
+  linkedin: 'https://www.linkedin.com/in/gianib',
   github: 'https://github.com/gbrussich52',
   site: 'https://gianibrussich.com',
   email: 'hello@nyclaw.io',

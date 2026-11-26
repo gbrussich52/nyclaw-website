@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build --webpack",
+    "postbuild": "node scripts/seo/indexnow-submit.mjs",
     "start": "next start",
     "lint": "next lint",
     "test": "vitest run",

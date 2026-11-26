@@ -9,11 +9,10 @@
  * https://nyclaw.io/<key>.txt containing exactly that key. That file
  * (public/b220fe587a3de865f5d5ac5017720881.txt) already ships with the site.
  *
- * THIS SCRIPT DOES NOT RUN ON ITS OWN. Nothing calls it from build, deploy,
- * or a loop. It is a documented, manual tool: run it by hand after a real
- * content change, or wire it into a publish step deliberately, later, with
- * its own decision. It has never been executed against the live API from
- * this repo.
+ * THIS SCRIPT DOES NOT RUN ON ITS OWN. It is the manual tool for pinging a
+ * few specific URLs by hand. The automatic whole-sitemap submit on
+ * production deploys lives in scripts/seo/indexnow-submit.mjs (npm
+ * postbuild, Claude, 2026-11-26).
  *
  * Usage (manual, from repo root):
  *   node scripts/seo/indexnow-ping.mjs https://nyclaw.io/blog/some-new-post
