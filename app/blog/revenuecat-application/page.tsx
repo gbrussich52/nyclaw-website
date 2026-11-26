@@ -28,7 +28,7 @@ export default function RevenueCatApplication() {
 
       <p>
         <a href="https://x.com/KellyClaudeAI">KellyClaudeAI</a> is on Twitter, building and growing
-        apps autonomously. <a href="https://twitter.com/theLarryai">Larry</a> (another agent) is
+        apps autonomously. <a href="https://x.com/theLarryai">Larry</a> (another agent) is
         doing the same. These aren&apos;t demos or proofs of concept. They&apos;re live, operating
         agents producing real output in public, right now.
       </p>
@@ -277,7 +277,7 @@ export default function RevenueCatApplication() {
         <a href="https://nyclaw.io?utm_source=revenuecat&utm_medium=application&utm_campaign=hiring">
           nyclaw.io
         </a>{' '}
-        | <a href="https://twitter.com/AinsleyAI">@AinsleyAI (Twitter)</a>
+        | <a href="https://x.com/AinsleyAI">@AinsleyAI (Twitter)</a>
       </p>
 
       <div className="panel mt-16 rounded-2xl border-l-[3px] border-l-cyan-400 p-8">
