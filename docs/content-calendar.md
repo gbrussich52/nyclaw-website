@@ -3,7 +3,7 @@ classification: PRIVATE
 ---
 # NYClaw.io Content Calendar
 
-> Updated: 2026-10-12
+> Updated: 2026-11-16
 > Production cap: one useful, sourced buyer article per weekly run; evidence and qualified inquiry quality take precedence over volume.
 
 ## Published
@@ -33,8 +33,11 @@ classification: PRIVATE
 | 21a | AI Automation Agency vs. AI Answering Service | /blog/ai-automation-agency-vs-ai-answering-service | ai automation agency vs ai answering service, ai concierge for small business | 2026-09-24 | **Published 2026-09-24** (shipped outside this loop; added to calendar and blog index by 2026-09-28 audit) |
 | 21 | How AI Saves Real Estate Agents Hours Every Week | /blog/ai-real-estate-agents | AI real estate, real estate automation | 2026-09-28 | **Published 2026-09-28** |
 | 21b | Missing-Document Follow-Up for Law Firms: What to Check Before Automating | /blog/law-firm-missing-document-follow-up | law firm missing document follow up, client document reminders law firm | 2026-10-08 | **Published 2026-10-08** |
+| 21c | Overdue Invoice Follow-Up for Law Firms: What Clio Already Covers | /blog/law-firm-overdue-invoice-follow-up | law firm overdue invoice follow up, Clio bill reminders | 2026-11-16 | **Prepared in PR 2026-11-16; not published until merged and production route verified** |
 
 ## Current priority — one buyer question, one useful next step (2026-10-12)
+
+> 2026-11-16: row 21c (overdue-invoice follow-up) prepared. Next law-firm candidates not yet written: unsigned engagement-letter follow-up. Generic HIGH rows 22-23 remain unlinked to /law-firm-workflows; prefer a law-firm operations question first.
 
 > Missing-document follow-up is already published (row 21b); do not duplicate it. Check the current route tree before choosing the next HIGH buyer question.
 > Quote, invoice and order workflow pages now exist at `/ai-workflows/<recipe>`; their fit planner at `/ai-workflows?kit=<recipe>#workflow-fit` produces an ungated brief and explicitly consented inquiry. Link a relevant existing workflow rather than creating another overview. Law-firm document content retains the dedicated `/law-firm-workflows#request-blueprint` path. Track submitted briefs separately from confirmed buying intent or paid acceptance.

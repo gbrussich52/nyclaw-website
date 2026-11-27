@@ -95,6 +95,14 @@ const posts = [
     tags: ['Legal', 'Workflow', 'Intake'],
   },
   {
+    title: 'Overdue Invoice Follow-Up for Law Firms: What Clio Already Covers',
+    description:
+      'Check what Clio bill reminders already do, what stays manual, and where staff must approve an overdue-invoice message before automating.',
+    date: 'November 16, 2026',
+    href: '/blog/law-firm-overdue-invoice-follow-up',
+    tags: ['Legal', 'Workflow', 'Billing'],
+  },
+  {
     title: 'AI Client Intake for Law Firms: What to Automate',
     description:
       'Plan one administrative intake handoff with approved fields, missing-information checks, staff review and a visible failure path.',
