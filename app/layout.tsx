@@ -91,6 +91,7 @@ export default function RootLayout({
                 <Link href="/blog" className="transition-colors hover:text-white">Blog</Link>
                 <Link href="/resources" className="transition-colors hover:text-white">Free guide</Link>
                 <Link href="/free-ai-starter-kit" className="transition-colors hover:text-white">Starter kit</Link>
+                <Link href="/lead-leak-grader" className="transition-colors hover:text-white">Lead Leak Grader</Link>
                 <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-white">Free 30-minute call</a>
                 <Link href="/privacy" className="transition-colors hover:text-white">Privacy</Link>
                 <Link href="/terms" className="transition-colors hover:text-white">Terms</Link>
